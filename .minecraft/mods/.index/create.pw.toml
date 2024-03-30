@@ -1,0 +1,13 @@
+filename = 'create-1.20.1-0.5.1.f.jar'
+name = 'Create'
+side = 'both'
+
+[download]
+hash = '426c1ce8b9cbaa3b3d6964ff5669401734146648ae024b14ea1e7bfc0768fb768310a7e464b81d40eac1cf07b24c4a7b01c84dfc879ed637c05947c6b6516961'
+hash-format = 'sha512'
+mode = 'url'
+url = 'https://cdn.modrinth.com/data/LNytGWDc/versions/HNYrbfZZ/create-1.20.1-0.5.1.f.jar'
+
+[update.modrinth]
+mod-id = 'LNytGWDc'
+version = 'HNYrbfZZ'

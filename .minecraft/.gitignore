@@ -1,0 +1,15 @@
+local/
+logs/
+resourcepacks/
+saves/
+schematics/
+screenshots/
+server-resource-packs/
+shaderpacks/
+texturepacks/
+
+.qmenu_opened.marker
+patchouli_data.json
+rhino.local.properties
+usernamecache.json
+usercache.json

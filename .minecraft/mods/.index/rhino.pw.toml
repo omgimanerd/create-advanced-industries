@@ -1,0 +1,13 @@
+filename = 'rhino-forge-2001.2.2-build.18.jar'
+name = 'Rhino'
+side = 'both'
+
+[download]
+hash = '1fd5f5667e0f078797112df7ae5f300d2fed2c992fdfd0818569e9286d9bdf6c311cf722cbef542a9ecd78577dde5f88e3cfaa48824d0d75bfede9fd4e1be18e'
+hash-format = 'sha512'
+mode = 'url'
+url = 'https://cdn.modrinth.com/data/sk9knFPE/versions/w5HiejeN/rhino-forge-2001.2.2-build.18.jar'
+
+[update.modrinth]
+mod-id = 'sk9knFPE'
+version = 'w5HiejeN'

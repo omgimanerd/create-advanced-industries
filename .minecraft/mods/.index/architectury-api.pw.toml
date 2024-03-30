@@ -1,0 +1,13 @@
+filename = 'architectury-9.2.14-forge.jar'
+name = 'Architectury API'
+side = 'both'
+
+[download]
+hash = 'cf67f2050cafa00f0bee42e6d7bef77fdb808ac4f71742f7b4d6d5c1e6ffb49561a5a252f332d2b78a9767bdb5faa284611790dba303fbdc736ae36d794f61c7'
+hash-format = 'sha512'
+mode = 'url'
+url = 'https://cdn.modrinth.com/data/lhGA9TYQ/versions/1MKTLiiG/architectury-9.2.14-forge.jar'
+
+[update.modrinth]
+mod-id = 'lhGA9TYQ'
+version = '1MKTLiiG'

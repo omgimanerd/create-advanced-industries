@@ -1,0 +1,13 @@
+filename = 'Searchables-forge-1.20.1-1.0.2.jar'
+name = 'Searchables'
+side = 'both'
+
+[download]
+hash = '15548b2b50b700c0ffe2b9c4de80dfe510db208d'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 4779110
+project-id = 858542
