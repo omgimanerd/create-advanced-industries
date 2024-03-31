@@ -1,0 +1,11 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "chapter_2b_source_mechanisms"
+	group: "5B3547AEADCBC841"
+	id: "0F84A2AB0AED373E"
+	order_index: 2
+	quest_links: [ ]
+	quests: [ ]
+	title: "Chapter 2b: Source Mechanisms"
+}

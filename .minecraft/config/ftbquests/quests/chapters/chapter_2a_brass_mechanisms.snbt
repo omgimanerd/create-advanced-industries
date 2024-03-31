@@ -1,0 +1,11 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "chapter_2a_brass_mechanisms"
+	group: "5B3547AEADCBC841"
+	id: "56013D2B21D9B0EA"
+	order_index: 1
+	quest_links: [ ]
+	quests: [ ]
+	title: "Chapter 2a: Brass Mechanisms"
+}

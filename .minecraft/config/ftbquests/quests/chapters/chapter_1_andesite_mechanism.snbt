@@ -1,0 +1,11 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "chapter_1_andesite_mechanism"
+	group: "5B3547AEADCBC841"
+	id: "3DC530BB099B8934"
+	order_index: 0
+	quest_links: [ ]
+	quests: [ ]
+	title: "Chapter 1: Andesite Mechanisms"
+}

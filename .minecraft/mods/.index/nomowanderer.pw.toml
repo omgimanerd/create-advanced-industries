@@ -1,0 +1,13 @@
+filename = 'nomowanderer-1.20.1_1.6.4.jar'
+name = 'NoMoWanderer'
+side = 'both'
+
+[download]
+hash = '5413f310abbb7e5936accb635bcc1323867af305'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 5060170
+project-id = 354428

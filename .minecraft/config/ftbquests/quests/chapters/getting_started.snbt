@@ -1,0 +1,20 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "getting_started"
+	group: ""
+	id: "58C6D236CDB1A43C"
+	order_index: 0
+	quest_links: [ ]
+	quests: [{
+		id: "76EA7D462C854493"
+		tasks: [{
+			id: "44F22E90B9746689"
+			title: "Welcome!"
+			type: "checkmark"
+		}]
+		x: -1.0d
+		y: -3.0d
+	}]
+	title: "Getting Started"
+}
