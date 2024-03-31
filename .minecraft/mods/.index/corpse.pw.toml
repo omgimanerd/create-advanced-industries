@@ -1,0 +1,13 @@
+filename = 'corpse-forge-1.20.1-1.0.12.jar'
+name = 'Corpse'
+side = 'both'
+
+[download]
+hash = '6da44b292908851cd8d3c522d5e00c320942830f'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 5157034
+project-id = 316582
