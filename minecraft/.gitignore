@@ -1,3 +1,5 @@
+ESM/
+local/
 logs/
 mods/
 resourcepacks/
@@ -7,3 +9,8 @@ screenshots/
 server-resource-packs/
 shaderpacks/
 texturepacks/
+
+options.txt
+rhino.local.properties
+usercache.json
+usernamecache.json
