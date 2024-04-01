@@ -1,0 +1,63 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "progression"
+	group: ""
+	id: "72AF0A15ACA9A59E"
+	order_index: 2
+	quest_links: [ ]
+	quests: [
+		{
+			icon: "kubejs:andesite_mechanism"
+			id: "2F39752E838CCB4F"
+			tasks: [{
+				id: "694815C7631AB847"
+				title: "Chapter 1: Andesite Mechanisms"
+				type: "checkmark"
+			}]
+			title: "Chapter 1: Andesite Mechanisms"
+			x: -5.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["2F39752E838CCB4F"]
+			icon: "kubejs:copper_mechanism"
+			id: "413CB04319D49CDB"
+			tasks: [{
+				id: "3F9FB28E37E75E39"
+				title: "Chapter 2a: Copper Mechanisms"
+				type: "checkmark"
+			}]
+			title: "Chapter 2a: Copper Mechanisms"
+			x: -3.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["2F39752E838CCB4F"]
+			icon: "kubejs:source_mechanism"
+			id: "5013E6F84B112682"
+			tasks: [{
+				id: "448E46E68A2F75A1"
+				title: "Chapter 2b: Source Mechanisms"
+				type: "checkmark"
+			}]
+			title: "Chapter 2b: Source Mechanisms"
+			x: -3.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["2F39752E838CCB4F"]
+			icon: "create:precision_mechanism"
+			id: "556060C29831B165"
+			tasks: [{
+				id: "10588558ACAA84F3"
+				title: "Chapter 2c: Brass Mechanisms"
+				type: "checkmark"
+			}]
+			title: "Chapter 2c: Precision Mechanisms"
+			x: -3.0d
+			y: 2.0d
+		}
+	]
+	title: "Progression"
+}

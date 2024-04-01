@@ -3,7 +3,7 @@
 JEIEvents.hideItems(e => {
 
   // Hide intermediate mechanism items.
-  e.hide('incomplete_andesite_mechanism')
-  e.hide('incomplete_copper_mechanism')
-  e.hide('incomplete_source_mechanism')
+  e.hide('kubejs:incomplete_andesite_mechanism')
+  e.hide('kubejs:incomplete_copper_mechanism')
+  e.hide('kubejs:incomplete_source_mechanism')
 })

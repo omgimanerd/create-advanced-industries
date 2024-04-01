@@ -6,6 +6,16 @@
 	id: "3DC530BB099B8934"
 	order_index: 0
 	quest_links: [ ]
-	quests: [ ]
+	quests: [{
+		dependencies: ["694815C7631AB847"]
+		id: "0A1CEFA45C20D991"
+		tasks: [{
+			id: "0D26CBE5DF687B89"
+			title: "Start"
+			type: "checkmark"
+		}]
+		x: -4.5d
+		y: 0.0d
+	}]
 	title: "Chapter 1: Andesite Mechanisms"
 }

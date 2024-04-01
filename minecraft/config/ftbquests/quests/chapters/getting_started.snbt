@@ -7,14 +7,71 @@
 	order_index: 0
 	quest_links: [ ]
 	quests: [{
+		description: [
+			"Welcome to Create: Name tbd!"
+			""
+			"Here's some basic items to get you started. Check out the chapters included in the quest book to understand the progression on this pack."
+		]
 		id: "76EA7D462C854493"
+		rewards: [
+			{
+				count: 16
+				id: "03599A438A41E159"
+				item: "minecraft:apple"
+				type: "item"
+			}
+			{
+				id: "1BD482322C3737A1"
+				item: {
+					Count: 1b
+					id: "minecraft:stone_pickaxe"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}
+			{
+				id: "3CE35A820B775982"
+				item: {
+					Count: 1b
+					id: "minecraft:stone_shovel"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}
+			{
+				id: "17935A7C860D71B2"
+				item: {
+					Count: 1b
+					id: "minecraft:stone_axe"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}
+			{
+				id: "2DF6F1B1AC785858"
+				item: {
+					Count: 1b
+					id: "minecraft:stone_sword"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}
+		]
 		tasks: [{
 			id: "44F22E90B9746689"
 			title: "Welcome!"
 			type: "checkmark"
 		}]
-		x: -1.0d
-		y: -3.0d
+		x: 0.0d
+		y: 0.0d
 	}]
 	title: "Getting Started"
 }
