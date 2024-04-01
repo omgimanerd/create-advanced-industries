@@ -1,0 +1,6 @@
+{
+	ui: {
+		# Default: false
+		old_scroll_wheel: false
+	}
+}
