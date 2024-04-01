@@ -1,9 +1,6 @@
 // priority: 100
 
 ServerEvents.recipes(e => {
-
-  // Additional Shaft recipes are more efficient
-
   // Andesite Mechanism
   new SequencedAssembly('create:andesite_alloy')
     .transitional('kubejs:incomplete_andesite_mechanism')
