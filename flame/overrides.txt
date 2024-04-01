@@ -215,9 +215,9 @@ kubejs/assets/ponderjs_generated/lang/en_us.json
 kubejs/client_scripts/mechanisms.js
 kubejs/config/client.properties
 kubejs/config/common.properties
-kubejs/README.txt
 kubejs/server_scripts/mechanisms.js
 kubejs/startup_scripts/mechanisms.js
+local/.gitignore
 local/ftbchunks/client-config.snbt
 local/ftbchunks/data/50e8d883-a385-4bf7-81a5-e449fefad8d2/biome_map.txt
 local/ftbchunks/data/50e8d883-a385-4bf7-81a5-e449fefad8d2/block_map.txt
@@ -241,5 +241,5 @@ local/ftbquests/client-config.snbt
 local/ftbultimine-client.snbt
 local/kubejs/dev.properties
 mods/.gitignore
+mods/iris-mc1.20.1-1.6.9.jar
 mods/theoneprobe-1.20.1-10.0.2.jar
-options.txt
