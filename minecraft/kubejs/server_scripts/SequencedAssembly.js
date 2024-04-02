@@ -31,7 +31,7 @@ SequencedAssembly.prototype.press = function() {
 }
 
 SequencedAssembly.prototype.fill = function(fluid_id, qty_mb) {
-  this.steps.push({ fill: Fluid.of(Fluid.getId(fluid_id), qty_mb) })
+  this.steps.push({ fill: Fluid.of(fluid_id, qty_mb) })
   return this
 }
 
