@@ -3,19 +3,378 @@
 	default_quest_shape: ""
 	filename: "chapter_1_andesite_mechanism"
 	group: "5B3547AEADCBC841"
+	icon: "kubejs:andesite_mechanism"
 	id: "3DC530BB099B8934"
 	order_index: 0
 	quest_links: [ ]
-	quests: [{
-		dependencies: ["694815C7631AB847"]
-		id: "0A1CEFA45C20D991"
-		tasks: [{
-			id: "0D26CBE5DF687B89"
-			title: "Start"
-			type: "checkmark"
-		}]
-		x: -4.5d
-		y: 0.0d
-	}]
+	quests: [
+		{
+			dependencies: ["2F39752E838CCB4F"]
+			description: ["Ready to start Chapter 1? Here we go!"]
+			id: "0A1CEFA45C20D991"
+			tasks: [{
+				id: "0D26CBE5DF687B89"
+				title: "Start"
+				type: "checkmark"
+			}]
+			x: -1.5d
+			y: 2.5d
+		}
+		{
+			dependencies: ["0A1CEFA45C20D991"]
+			description: [
+				"In the sweat of thy face thou shall eat bread,"
+				"Till thou return unto the ground;"
+				"For out of it wast thou taken; for cobblestone thou art,"
+				"And unto cobblestone shalt thou return."
+				""
+				"[You'll need a cobble gen to start!]"
+			]
+			icon: "minecraft:cobblestone"
+			id: "1846D065B001B15F"
+			rewards: [{
+				count: 8
+				id: "1F4EF1E167FB3F1C"
+				item: "minecraft:bread"
+				type: "item"
+			}]
+			tasks: [
+				{
+					icon: "create:mechanical_drill"
+					id: "7917824D5C1DAF45"
+					observe_type: 0
+					optional_task: true
+					timer: 0L
+					to_observe: "create:mechanical_drill"
+					type: "observation"
+				}
+				{
+					id: "67CF2A0AC64ED0E0"
+					item: "minecraft:lava_bucket"
+					type: "item"
+				}
+				{
+					id: "74FE68559FB55B10"
+					item: "minecraft:cobblestone"
+					type: "item"
+				}
+			]
+			title: "Cobblestone"
+			x: -1.5d
+			y: 0.0d
+		}
+		{
+			dependencies: ["1846D065B001B15F"]
+			description: ["If you crush cobblestone in a millstone, you'll get gravel."]
+			icon: "minecraft:gravel"
+			id: "05DB2A211C1BB3C1"
+			tasks: [
+				{
+					icon: "create:millstone"
+					id: "03E2F9C7C18457F1"
+					observe_type: 0
+					optional_task: true
+					timer: 0L
+					to_observe: "create:millstone"
+					type: "observation"
+				}
+				{
+					id: "2301CCE3EC575BCE"
+					item: "minecraft:gravel"
+					type: "item"
+				}
+			]
+			title: "Gravel"
+			x: 1.5d
+			y: 0.0d
+		}
+		{
+			dependencies: ["05DB2A211C1BB3C1"]
+			description: ["Crushing gravel again will yield flint."]
+			id: "25EFBFAE28D15EF0"
+			tasks: [
+				{
+					icon: "create:millstone"
+					id: "6F08EA28A2BD03E9"
+					observe_type: 0
+					optional_task: true
+					timer: 0L
+					to_observe: "create:millstone"
+					type: "observation"
+				}
+				{
+					id: "704D2E6EB0237FF4"
+					item: "minecraft:flint"
+					type: "item"
+				}
+			]
+			title: "Flint"
+			x: 4.5d
+			y: 0.0d
+		}
+		{
+			dependencies: ["05DB2A211C1BB3C1"]
+			description: ["Washing gravel with an encased fan will yield iron nuggets."]
+			icon: "minecraft:iron_nugget"
+			id: "74BAF01AA001DC2F"
+			tasks: [
+				{
+					icon: "create:encased_fan"
+					id: "2F2852C585F7E7E1"
+					observe_type: 0
+					optional_task: true
+					timer: 0L
+					to_observe: "create:encased_fan"
+					type: "observation"
+				}
+				{
+					id: "7C7E785F68DE6124"
+					item: "minecraft:iron_nugget"
+					type: "item"
+				}
+			]
+			title: "Iron Nugget"
+			x: 4.5d
+			y: -2.5d
+		}
+		{
+			dependencies: [
+				"25EFBFAE28D15EF0"
+				"1846D065B001B15F"
+			]
+			description: [
+				"Crafting cobblestone and flint together will get you andesite."
+				""
+				"Hint: If you compact them in a basin, you get double the yield!"
+			]
+			id: "51846CF26EF82312"
+			tasks: [
+				{
+					icon: "create:mechanical_press"
+					id: "238CD14E521C3A11"
+					observe_type: 0
+					optional_task: true
+					timer: 0L
+					to_observe: "create:mechanical_press"
+					type: "observation"
+				}
+				{
+					id: "0782693005449004"
+					item: "minecraft:andesite"
+					type: "item"
+				}
+			]
+			title: "Andesite"
+			x: 4.5d
+			y: 2.5d
+		}
+		{
+			dependencies: [
+				"51846CF26EF82312"
+				"74BAF01AA001DC2F"
+			]
+			description: [
+				"Combining the andesite and iron nuggets gets andesite alloy."
+				""
+				"Did you see how you get more if you use a mechanical mixer?"
+				""
+				"There might be a theme here..."
+			]
+			icon: "create:andesite_alloy"
+			id: "65F00346034419C5"
+			tasks: [
+				{
+					icon: "create:mechanical_mixer"
+					id: "33F76AA3F3BF7B69"
+					observe_type: 0
+					optional_task: true
+					timer: 0L
+					to_observe: "create:mechanical_mixer"
+					type: "observation"
+				}
+				{
+					id: "6FF32B638C744B26"
+					item: "create:andesite_alloy"
+					type: "item"
+				}
+			]
+			title: "Andesite Alloy"
+			x: 7.5d
+			y: 0.0d
+		}
+		{
+			dependencies: ["65F00346034419C5"]
+			description: ["Andesite alloys can be cut into shafts."]
+			id: "2FF85F7E00F74EE8"
+			tasks: [
+				{
+					icon: "create:mechanical_saw"
+					id: "6A1BBC86C7FBA15B"
+					observe_type: 0
+					optional_task: true
+					timer: 0L
+					to_observe: "create:mechanical_saw"
+					type: "observation"
+				}
+				{
+					id: "42437B30BCE45B81"
+					item: "create:shaft"
+					type: "item"
+				}
+			]
+			x: 7.5d
+			y: 2.5d
+		}
+		{
+			dependencies: ["0A1CEFA45C20D991"]
+			description: ["Automating logs will be pretty helpful. Wood is always a good thing to have."]
+			id: "6FA4151E4E653522"
+			tasks: [
+				{
+					icon: "create:mechanical_saw"
+					id: "08BE195BE67719B5"
+					observe_type: 0
+					optional_task: true
+					timer: 0L
+					to_observe: "create:mechanical_saw"
+					type: "observation"
+				}
+				{
+					id: "64C6679E1B38FD9F"
+					item: {
+						Count: 1b
+						id: "ftbfiltersystem:smart_filter"
+						tag: {
+							"ftbfiltersystem:filter": "ftbfiltersystem:item_tag(minecraft:logs)"
+						}
+					}
+					title: "Any #minecraft:logs"
+					type: "item"
+				}
+			]
+			title: "Logs"
+			x: -1.5d
+			y: 5.0d
+		}
+		{
+			dependencies: ["6FA4151E4E653522"]
+			description: ["You can use a mechanical saw to also strip the logs."]
+			id: "0F38B72E1CAA406C"
+			tasks: [
+				{
+					icon: "create:mechanical_saw"
+					id: "6D7DF1F1F34F5DDD"
+					observe_type: 0
+					optional_task: true
+					timer: 0L
+					to_observe: "create:mechanical_saw"
+					type: "observation"
+				}
+				{
+					id: "4ED6DA8AF40937D9"
+					item: {
+						Count: 1b
+						id: "ftbfiltersystem:smart_filter"
+						tag: {
+							"ftbfiltersystem:filter": "ftbfiltersystem:item_tag(forge:stripped_logs)"
+						}
+					}
+					title: "Any #forge:stripped_logs"
+					type: "item"
+				}
+			]
+			title: "Stripped Logs"
+			x: 1.5d
+			y: 5.0d
+		}
+		{
+			dependencies: ["6FA4151E4E653522"]
+			description: ["Sawing the stripped logs again will yield you planks, at a higher ratio than if you were to handcraft them."]
+			id: "79839708653EABAC"
+			tasks: [
+				{
+					icon: "create:mechanical_saw"
+					id: "5D95A16F96D3FD65"
+					observe_type: 0
+					optional_task: true
+					timer: 0L
+					to_observe: "create:mechanical_saw"
+					type: "observation"
+				}
+				{
+					id: "1284F739C030C99B"
+					item: {
+						Count: 1b
+						id: "ftbfiltersystem:smart_filter"
+						tag: {
+							"ftbfiltersystem:filter": "ftbfiltersystem:item_tag(minecraft:planks)"
+						}
+					}
+					title: "Any #minecraft:planks"
+					type: "item"
+				}
+			]
+			title: "Planks"
+			x: 4.5d
+			y: 5.0d
+		}
+		{
+			dependencies: [
+				"0F38B72E1CAA406C"
+				"2FF85F7E00F74EE8"
+			]
+			description: ["You can always craft cogwheels the normal way, but if you automate this with a deployer, then ... well you get the idea."]
+			icon: "create:cogwheel"
+			id: "08E85F97B03195BF"
+			tasks: [
+				{
+					icon: "create:deployer"
+					id: "4898F149B5A85EC1"
+					observe_type: 0
+					optional_task: true
+					timer: 0L
+					to_observe: "create:deployer"
+					type: "observation"
+				}
+				{
+					id: "573CA9CDE4A1B44E"
+					item: "create:cogwheel"
+					type: "item"
+				}
+			]
+			x: 7.5d
+			y: 7.5d
+		}
+		{
+			dependencies: [
+				"65F00346034419C5"
+				"08E85F97B03195BF"
+				"2FF85F7E00F74EE8"
+				"79839708653EABAC"
+			]
+			description: ["Now deploy all of these on an andesite alloy and you've got an andesite mechanism!"]
+			id: "33F8E4848D9165B2"
+			rewards: [
+				{
+					count: 16
+					id: "403F1541B7DA50FF"
+					item: "kubejs:andesite_mechanism"
+					type: "item"
+				}
+				{
+					id: "6D9B80A3A9E867FF"
+					type: "xp"
+					xp: 100
+				}
+			]
+			tasks: [{
+				id: "7175424A0E95216E"
+				item: "kubejs:andesite_mechanism"
+				type: "item"
+			}]
+			x: 11.0d
+			y: 2.5d
+		}
+	]
 	title: "Chapter 1: Andesite Mechanisms"
 }

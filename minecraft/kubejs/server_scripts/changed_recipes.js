@@ -37,17 +37,36 @@ ServerEvents.recipes((e) => {
     )
   }
 
+  // Andesite and iron nugget overhaul
+  e.remove({ id: 'minecraft:andesite' })
+  e.remove({ id: 'create:compacting/andesite_from_flint' })
+  e.shapeless('minecraft:andesite', [
+    'minecraft:cobblestone',
+    'minecraft:flint',
+  ]).id('kubejs:andesite_manual_only')
+  e.recipes.create.compacting(Item.of('minecraft:andesite', 2), [
+    'minecraft:cobblestone',
+    'minecraft:flint',
+  ])
+  e.recipes.create.splashing(
+    [
+      Item.of('minecraft:iron_nugget').withChance(0.25),
+      Item.of('minecraft:flint').withChance(0.1),
+    ],
+    'minecraft:gravel'
+  )
+
   // Andesite alloy crafting
   e.remove({ id: 'create:crafting/materials/andesite_alloy_from_zinc' })
   e.remove({ type: 'create:mixing', output: 'create:andesite_alloy' })
-  e.recipes.create.mixing(Item.of('create:andesite_alloy', 4), [
+  e.recipes.create.mixing(Item.of('create:andesite_alloy', 2), [
     'minecraft:andesite',
     'minecraft:iron_nugget',
   ])
 
   // Cogwheel crafting
   e.remove({ type: 'create:deploying', output: 'create:cogwheel' })
-  e.recipes.create.deploying(Item.of('create:cogwheel', 6), [
+  e.recipes.create.deploying(Item.of('create:cogwheel', 8), [
     'create:shaft',
     '#forge:stripped_logs',
   ])

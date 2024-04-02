@@ -6,6 +6,17 @@
 	id: "56013D2B21D9B0EA"
 	order_index: 1
 	quest_links: [ ]
-	quests: [ ]
-	title: "Chapter 2a: Copper Mechanisms"
+	quests: [{
+		dependencies: ["413CB04319D49CDB"]
+		description: ["Chapter 2 focuses on the copper mechanism, which unlocks fluid manipulation in Create and lets you automate belts as well."]
+		id: "58368DE8C5423BBE"
+		tasks: [{
+			id: "59F483DCE625251C"
+			title: "Start"
+			type: "checkmark"
+		}]
+		x: -8.0d
+		y: -1.5d
+	}]
+	title: "Chapter 2: Copper Mechanisms"
 }

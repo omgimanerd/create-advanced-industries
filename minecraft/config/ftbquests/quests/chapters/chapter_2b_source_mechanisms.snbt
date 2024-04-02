@@ -6,6 +6,16 @@
 	id: "0F84A2AB0AED373E"
 	order_index: 2
 	quest_links: [ ]
-	quests: [ ]
+	quests: [{
+		description: ["Chapter 2a unlocks source mechanisms, which are the entry point into Ars Nouveau."]
+		id: "001AE1E4A8E1972E"
+		tasks: [{
+			id: "6488E7699DC3D8FB"
+			title: "Start"
+			type: "checkmark"
+		}]
+		x: 0.0d
+		y: 0.0d
+	}]
 	title: "Chapter 2b: Source Mechanisms"
 }

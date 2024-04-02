@@ -13,6 +13,11 @@
 				""
 				"Here's a Charging Gadget on us to help you out!"
 			]
+			icon: {
+				Count: 1b
+				id: "buildinggadgets2:gadget_building"
+				tag: { }
+			}
 			id: "338E33764FE38864"
 			rewards: [
 				{
@@ -31,86 +36,34 @@
 					type: "item"
 				}
 			]
-			tasks: [
-				{
-					id: "54E8D270F29A2FF5"
-					item: {
-						Count: 1b
-						id: "buildinggadgets2:gadget_building"
-						tag: { }
+			tasks: [{
+				id: "54E8D270F29A2FF5"
+				item: {
+					Count: 1b
+					id: "ftbfiltersystem:smart_filter"
+					tag: {
+						"ftbfiltersystem:filter": "or(item(buildinggadgets2:gadget_building)item(buildinggadgets2:gadget_exchanging)item(buildinggadgets2:gadget_copy_paste)item(buildinggadgets2:gadget_cut_paste)item(buildinggadgets2:gadget_destruction))"
 					}
-					optional_task: true
-					type: "item"
 				}
-				{
-					id: "2276268571649411"
-					item: {
-						Count: 1b
-						id: "buildinggadgets2:gadget_exchanging"
-						tag: { }
-					}
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "42C270249B0F90B4"
-					item: {
-						Count: 1b
-						id: "buildinggadgets2:gadget_copy_paste"
-						tag: { }
-					}
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "45325283B3D4B55E"
-					item: {
-						Count: 1b
-						id: "buildinggadgets2:gadget_cut_paste"
-						tag: {
-							pastereplace: 1b
-						}
-					}
-					optional_task: true
-					type: "item"
-				}
-				{
-					id: "4B7C1288E8F6443F"
-					item: "buildinggadgets2:gadget_destruction"
-					optional_task: true
-					type: "item"
-				}
-			]
+				optional_task: true
+				type: "item"
+			}]
 			x: -3.0d
 			y: -2.5d
 		}
 		{
+			description: ["Building Wands are in this modpack as early game building QOL."]
 			id: "1403FC7592E32818"
-			tasks: [
-				{
-					id: "018C2116112C326F"
-					item: {
-						Count: 1b
-						id: "wands:stone_wand"
-						tag: {
-							Damage: 0
-						}
-					}
-					optional_task: true
-					type: "item"
+			tasks: [{
+				id: "018C2116112C326F"
+				item: {
+					Count: 1b
+					id: "wands:stone_wand"
+					tag: { }
 				}
-				{
-					id: "30A0C5306CE9E8F4"
-					item: {
-						Count: 1b
-						id: "wands:iron_wand"
-						tag: {
-							Damage: 0
-						}
-					}
-					type: "item"
-				}
-			]
+				optional_task: true
+				type: "item"
+			}]
 			x: -5.0d
 			y: -2.5d
 		}

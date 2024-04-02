@@ -3,75 +3,290 @@
 	default_quest_shape: ""
 	filename: "getting_started"
 	group: ""
+	icon: "minecraft:oak_log"
 	id: "58C6D236CDB1A43C"
 	order_index: 0
 	quest_links: [ ]
-	quests: [{
-		description: [
-			"Welcome to Create: Name tbd!"
-			""
-			"Here's some basic items to get you started. Check out the chapters included in the quest book to understand the progression on this pack."
-		]
-		id: "76EA7D462C854493"
-		rewards: [
-			{
-				count: 16
-				id: "03599A438A41E159"
-				item: "minecraft:apple"
-				type: "item"
-			}
-			{
-				id: "1BD482322C3737A1"
+	quests: [
+		{
+			description: [
+				"Welcome to Create: Name tbd!"
+				""
+				"Here's some basic items to get you started. Check out the chapters included in the quest book to understand the progression on this pack."
+			]
+			id: "76EA7D462C854493"
+			rewards: [
+				{
+					count: 16
+					id: "03599A438A41E159"
+					item: "minecraft:apple"
+					type: "item"
+				}
+				{
+					id: "1BD482322C3737A1"
+					item: {
+						Count: 1b
+						id: "minecraft:stone_pickaxe"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "3CE35A820B775982"
+					item: {
+						Count: 1b
+						id: "minecraft:stone_shovel"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "17935A7C860D71B2"
+					item: {
+						Count: 1b
+						id: "minecraft:stone_axe"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "2DF6F1B1AC785858"
+					item: {
+						Count: 1b
+						id: "minecraft:stone_sword"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+			]
+			tasks: [{
+				id: "44F22E90B9746689"
+				title: "Welcome!"
+				type: "checkmark"
+			}]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["76EA7D462C854493"]
+			description: ["Start your journey by punching some wood. FTB Ultimine is in this pack, so use that ~ key."]
+			icon: "minecraft:oak_log"
+			id: "511CD0C93DDEB3F2"
+			rewards: [{
+				id: "6B576D41D287D1A9"
+				type: "xp"
+				xp: 100
+			}]
+			tasks: [{
+				id: "16D9B6649110EFC8"
 				item: {
 					Count: 1b
-					id: "minecraft:stone_pickaxe"
+					id: "ftbfiltersystem:smart_filter"
 					tag: {
-						Damage: 0
+						"ftbfiltersystem:filter": "item_tag(minecraft:logs)"
 					}
 				}
+				title: "Logs"
 				type: "item"
-			}
-			{
-				id: "3CE35A820B775982"
-				item: {
-					Count: 1b
-					id: "minecraft:stone_shovel"
-					tag: {
-						Damage: 0
-					}
+			}]
+			title: "Logs"
+			x: 3.0d
+			y: -1.5d
+		}
+		{
+			dependencies: ["76EA7D462C854493"]
+			description: ["This modpack revolves around Create, so naturally you're going to need to find some Andesite to make Andesite Alloy."]
+			id: "709E1E620074E3ED"
+			rewards: [{
+				id: "41F107CC6F660C96"
+				type: "xp"
+				xp: 100
+			}]
+			tasks: [{
+				id: "3D5F424980A85517"
+				item: "minecraft:andesite"
+				type: "item"
+			}]
+			x: 3.0d
+			y: 1.5d
+		}
+		{
+			dependencies: ["709E1E620074E3ED"]
+			description: [
+				"Woohoo, your first Andesite Alloy! You're going to be automating this very soon!"
+				""
+				"Here's some more to help you on your way."
+			]
+			id: "3CD18FA2BBA17E39"
+			rewards: [{
+				count: 32
+				id: "786D90E5B716E65C"
+				item: "create:andesite_alloy"
+				type: "item"
+			}]
+			tasks: [{
+				id: "3AB6160874E26D50"
+				item: "create:andesite_alloy"
+				type: "item"
+			}]
+			x: 6.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"3CD18FA2BBA17E39"
+				"511CD0C93DDEB3F2"
+			]
+			description: [
+				"Everything in Create is powered by Rotational Force, and the first thing you'll need is a source of it."
+				""
+				"Introducing the Water Wheel, your first source of Rotational Force."
+				""
+				"You can use the 'W' key to ponder the Water Wheel. Almost all of Create's mechanics are explained in the ponders."
+			]
+			id: "461B84C39BFB31C7"
+			rewards: [
+				{
+					count: 16
+					id: "62A90D645CA7D0DF"
+					item: "create:shaft"
+					type: "item"
 				}
-				type: "item"
-			}
-			{
-				id: "17935A7C860D71B2"
-				item: {
-					Count: 1b
-					id: "minecraft:stone_axe"
-					tag: {
-						Damage: 0
-					}
+				{
+					count: 16
+					id: "3E60450F51C1C0D5"
+					item: "create:cogwheel"
+					type: "item"
 				}
-				type: "item"
-			}
-			{
-				id: "2DF6F1B1AC785858"
-				item: {
-					Count: 1b
-					id: "minecraft:stone_sword"
-					tag: {
-						Damage: 0
-					}
+				{
+					count: 16
+					id: "5B2E7E42CF65EE2E"
+					item: "create:large_cogwheel"
+					type: "item"
 				}
+				{
+					count: 16
+					id: "5732C8A6611F7D68"
+					item: "create:belt_connector"
+					type: "item"
+				}
+			]
+			tasks: [{
+				id: "656CC6E2526346BE"
+				item: "create:water_wheel"
 				type: "item"
-			}
-		]
-		tasks: [{
-			id: "44F22E90B9746689"
-			title: "Welcome!"
-			type: "checkmark"
-		}]
-		x: 0.0d
-		y: 0.0d
-	}]
+			}]
+			x: 6.0d
+			y: -1.5d
+		}
+		{
+			dependencies: ["461B84C39BFB31C7"]
+			description: [
+				"Found the Large Water Wheels? Nice!"
+				""
+				"They spin slower then the small water wheels, so here's some cogs to speed them up."
+			]
+			id: "4103B7F4B1A13FA6"
+			invisible: true
+			rewards: [
+				{
+					count: 8
+					id: "26AD1165FA89BA07"
+					item: "create:large_water_wheel"
+					type: "item"
+				}
+				{
+					count: 4
+					id: "59ECFEE0F86ECF00"
+					item: "create:large_cogwheel"
+					type: "item"
+				}
+				{
+					count: 4
+					id: "5E54CC11E9DFE55D"
+					item: "create:cogwheel"
+					type: "item"
+				}
+			]
+			tasks: [{
+				id: "48257A6685FA4F73"
+				item: "create:large_water_wheel"
+				type: "item"
+			}]
+			x: 6.0d
+			y: -4.0d
+		}
+		{
+			dependencies: ["461B84C39BFB31C7"]
+			description: [
+				"Did you get it spinning? Great work!"
+				""
+				"Here's some useful tools to help you with Create's machines and kinetics."
+			]
+			id: "4D904A448A2EAA12"
+			rewards: [
+				{
+					id: "09C89326E4875138"
+					item: "create:wrench"
+					type: "item"
+				}
+				{
+					id: "30F9A0991106C514"
+					item: "create:goggles"
+					type: "item"
+				}
+				{
+					id: "0851222B07CE3240"
+					item: "create:stressometer"
+					type: "item"
+				}
+			]
+			tasks: [{
+				icon: "create:shaft"
+				id: "0E33DD3B4D795430"
+				observe_type: 0
+				timer: 0L
+				to_observe: "create:shaft"
+				type: "observation"
+			}]
+			x: 9.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"4D904A448A2EAA12"
+				"3CD18FA2BBA17E39"
+			]
+			description: [
+				"Andesite Mechanisms unlock the basics of Create, and are the subject of Chapter 1."
+				""
+				"Have you noticed that you can handcraft them?"
+				""
+				"They're quite expensive if you do so though, let's try and automate them in Chapter 1."
+			]
+			id: "327F51A143F583D4"
+			rewards: [{
+				count: 15
+				id: "670BA254F927F34B"
+				item: "kubejs:andesite_mechanism"
+				type: "item"
+			}]
+			tasks: [{
+				id: "22F640220A84726B"
+				item: "kubejs:andesite_mechanism"
+				type: "item"
+			}]
+			x: 9.0d
+			y: 1.5d
+		}
+	]
 	title: "Getting Started"
 }
