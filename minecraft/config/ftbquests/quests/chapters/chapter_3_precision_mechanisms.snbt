@@ -1,7 +1,7 @@
 {
 	default_hide_dependency_lines: false
 	default_quest_shape: ""
-	filename: "chapter_2c_precision_mechanisms"
+	filename: "chapter_3_precision_mechanisms"
 	group: "5B3547AEADCBC841"
 	icon: "create:precision_mechanism"
 	id: "482B038D660A4A9A"
