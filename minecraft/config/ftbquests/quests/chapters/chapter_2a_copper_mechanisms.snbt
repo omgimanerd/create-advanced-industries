@@ -1,0 +1,200 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "chapter_2a_copper_mechanisms"
+	group: "5B3547AEADCBC841"
+	icon: "kubejs:copper_mechanism"
+	id: "56013D2B21D9B0EA"
+	order_index: 1
+	quest_links: [ ]
+	quests: [
+		{
+			dependencies: ["413CB04319D49CDB"]
+			description: [
+				"Chapter 2 focuses on the copper mechanism, which unlocks fluid manipulation in Create and lets you automate belts as well."
+				""
+				"There will be a little less hand-holding in this chapter, but everything you need to know can be found in JEI and the ponders."
+			]
+			id: "58368DE8C5423BBE"
+			tasks: [{
+				id: "59F483DCE625251C"
+				title: "Start"
+				type: "checkmark"
+			}]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["58368DE8C5423BBE"]
+			description: ["Like Chapter 1, we start off with a cobble generator."]
+			id: "04A647A73DBB98F5"
+			tasks: [{
+				id: "2315A2F11BBCCE67"
+				item: "minecraft:cobblestone"
+				type: "item"
+			}]
+			x: 0.0d
+			y: -2.5d
+		}
+		{
+			dependencies: ["58368DE8C5423BBE"]
+			description: ["You'll need to automate red dye. You can farm beetroot or rose bushes. No limits here!"]
+			id: "41EA296A863B1FEC"
+			tasks: [{
+				id: "6477C86CF90F5B97"
+				item: "minecraft:red_dye"
+				type: "item"
+			}]
+			x: 2.5d
+			y: -2.5d
+		}
+		{
+			dependencies: [
+				"04A647A73DBB98F5"
+				"41EA296A863B1FEC"
+			]
+			id: "7888616BBBCC35C6"
+			tasks: [{
+				id: "5A28BE2FFF898678"
+				item: "minecraft:granite"
+				type: "item"
+			}]
+			x: 0.0d
+			y: -5.0d
+		}
+		{
+			dependencies: ["7888616BBBCC35C6"]
+			description: ["Crushing granite will yield red sand."]
+			id: "779B734BB5F58876"
+			tasks: [{
+				id: "2F5EAD15A6EFA239"
+				item: "minecraft:red_sand"
+				type: "item"
+			}]
+			x: 2.5d
+			y: -5.0d
+		}
+		{
+			dependencies: ["779B734BB5F58876"]
+			description: ["Washing red sand yields copper nuggets."]
+			id: "28543B559D0C5D68"
+			tasks: [{
+				id: "4E745769E740A1CC"
+				item: "create:copper_nugget"
+				type: "item"
+			}]
+			x: 5.0d
+			y: -5.0d
+		}
+		{
+			dependencies: ["28543B559D0C5D68"]
+			description: ["Turn the nuggets back into ingots."]
+			id: "526716FCDC9F250D"
+			tasks: [{
+				id: "4D96750A934C611A"
+				item: "minecraft:copper_ingot"
+				type: "item"
+			}]
+			x: 7.5d
+			y: -5.0d
+		}
+		{
+			dependencies: ["526716FCDC9F250D"]
+			description: ["Then press the copper ingots into sheets."]
+			id: "45CB879FCDF7A8CF"
+			tasks: [{
+				id: "3EF248F697BBE319"
+				item: "create:copper_sheet"
+				type: "item"
+			}]
+			x: 7.5d
+			y: -2.5d
+		}
+		{
+			dependencies: ["58368DE8C5423BBE"]
+			description: ["Make an arboreal extractor to get resin from jungle or rubberwood trees."]
+			icon: "thermal:latex_bucket"
+			id: "0B61887101FB42F6"
+			rewards: [{
+				count: 16
+				id: "6D1610871D3A3AA2"
+				item: "thermal:rubberwood_sapling"
+				type: "item"
+			}]
+			tasks: [{
+				id: "0B1920AB97CEA147"
+				item: "thermal:device_tree_extractor"
+				type: "item"
+			}]
+			x: 0.0d
+			y: 2.5d
+		}
+		{
+			dependencies: ["0B61887101FB42F6"]
+			description: ["Compacting the latex in a heated basin yields rubber."]
+			id: "75355ADF3D7F976A"
+			tasks: [{
+				id: "1CD1AF136E48CAB9"
+				item: "thermal:rubber"
+				type: "item"
+			}]
+			x: 2.5d
+			y: 2.5d
+		}
+		{
+			dependencies: ["75355ADF3D7F976A"]
+			description: ["Smelt or blast the rubber to get cured rubber."]
+			id: "5901D1978F5CC0C8"
+			tasks: [{
+				id: "097589CB14CD92CE"
+				item: "thermal:cured_rubber"
+				type: "item"
+			}]
+			x: 5.0d
+			y: 2.5d
+		}
+		{
+			dependencies: [
+				"45CB879FCDF7A8CF"
+				"5901D1978F5CC0C8"
+			]
+			description: ["You know what to do by now."]
+			id: "2D2665410D75CA15"
+			rewards: [
+				{
+					count: 16
+					id: "2F5A3BFC1FB8C833"
+					item: "kubejs:copper_mechanism"
+					type: "item"
+				}
+				{
+					count: 32
+					id: "5AFC55B1BA869A20"
+					item: "thermal:cured_rubber"
+					type: "item"
+				}
+			]
+			tasks: [{
+				id: "2E9CA64348FE83FE"
+				item: "kubejs:copper_mechanism"
+				type: "item"
+			}]
+			x: 7.5d
+			y: 0.0d
+		}
+		{
+			dependencies: ["75355ADF3D7F976A"]
+			description: ["Did you notice sawing a block of cured rubber nets you double the yield?"]
+			id: "595B0928142C3067"
+			invisible: true
+			tasks: [{
+				id: "5A8384E34B50F79D"
+				item: "thermal:cured_rubber_block"
+				type: "item"
+			}]
+			x: 2.5d
+			y: 0.0d
+		}
+	]
+	title: "Chapter 2a: Copper Mechanisms"
+}

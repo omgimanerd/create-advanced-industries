@@ -13,11 +13,6 @@
 				""
 				"Here's a Charging Gadget on us to help you out!"
 			]
-			icon: {
-				Count: 1b
-				id: "buildinggadgets2:gadget_building"
-				tag: { }
-			}
 			id: "338E33764FE38864"
 			rewards: [
 				{
@@ -48,8 +43,8 @@
 				optional_task: true
 				type: "item"
 			}]
-			x: -3.0d
-			y: -2.5d
+			x: 0.0d
+			y: 0.0d
 		}
 		{
 			description: ["Building Wands are in this modpack as early game building QOL."]
@@ -59,13 +54,15 @@
 				item: {
 					Count: 1b
 					id: "wands:stone_wand"
-					tag: { }
+					tag: {
+						Damage: 0
+					}
 				}
 				optional_task: true
 				type: "item"
 			}]
-			x: -5.0d
-			y: -2.5d
+			x: -2.5d
+			y: 0.0d
 		}
 	]
 	title: "QOL Mods"

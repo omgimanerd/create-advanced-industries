@@ -50,7 +50,7 @@ ServerEvents.recipes((e) => {
   ])
   e.recipes.create.splashing(
     [
-      Item.of('minecraft:iron_nugget').withChance(0.25),
+      Item.of('minecraft:iron_nugget'),
       Item.of('minecraft:flint').withChance(0.1),
     ],
     'minecraft:gravel'
@@ -276,8 +276,8 @@ ServerEvents.recipes((e) => {
   ])
   e.recipes.create.splashing(
     [
-      Item.of('create:copper_nugget', 12),
-      Item.of('minecraft:clay_ball').withChance(0.1),
+      Item.of('create:copper_nugget', 1),
+      Item.of('minecraft:clay_ball').withChance(0.25),
     ],
     'minecraft:red_sand'
   )
@@ -288,9 +288,7 @@ ServerEvents.recipes((e) => {
     F: '#minecraft:flowers',
     W: 'minecraft:water_bucket',
   })
-  e.recipes.create
-    .compacting('thermal:rubber', [Fluid.of('thermal:latex', 50)])
-    .heated()
+  e.recipes.create.compacting('thermal:rubber', [Fluid.of('thermal:latex', 50)])
   e.smelting('thermal:cured_rubber_block', 'thermal:rubber_block')
   e.remove({ id: 'thermal:storage/cured_rubber_from_block' })
   e.recipes.create.cutting(
@@ -379,12 +377,22 @@ ServerEvents.recipes((e) => {
     'ars_nouveau:sourceberry_bush'
   )
 
+  // Gold automation from sand.
+  e.remove({ id: 'create:splashing/sand' })
+  e.recipes.create.splashing(
+    [
+      Item.of('minecraft:gold_nugget'),
+      Item.of('minecraft:clay_ball').withChance(0.25),
+    ],
+    'minecraft:sand'
+  )
+
   // Source gem crafting
   e.remove({ id: 'ars_nouveau:imbuement_amethyst' })
   e.remove({ id: 'ars_nouveau:imbuement_lapis' })
   e.recipes.create.filling('ars_nouveau:source_gem', [
     Fluid.of('starbunclemania:source_fluid', 250),
-    'minecraft:iron_nugget',
+    'minecraft:gold_nugget',
   ])
 
   const redefineEnchantingRecipe = function (

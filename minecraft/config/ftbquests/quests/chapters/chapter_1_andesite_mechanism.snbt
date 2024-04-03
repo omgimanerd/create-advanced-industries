@@ -17,8 +17,8 @@
 				title: "Start"
 				type: "checkmark"
 			}]
-			x: -1.5d
-			y: 2.5d
+			x: 0.0d
+			y: 0.0d
 		}
 		{
 			dependencies: ["0A1CEFA45C20D991"]
@@ -60,8 +60,8 @@
 				}
 			]
 			title: "Cobblestone"
-			x: -1.5d
-			y: 0.0d
+			x: 0.0d
+			y: -2.5d
 		}
 		{
 			dependencies: ["1846D065B001B15F"]
@@ -85,12 +85,13 @@
 				}
 			]
 			title: "Gravel"
-			x: 1.5d
-			y: 0.0d
+			x: 0.0d
+			y: -5.0d
 		}
 		{
 			dependencies: ["05DB2A211C1BB3C1"]
 			description: ["Crushing gravel again will yield flint."]
+			icon: "minecraft:flint"
 			id: "25EFBFAE28D15EF0"
 			tasks: [
 				{
@@ -109,8 +110,8 @@
 				}
 			]
 			title: "Flint"
-			x: 4.5d
-			y: 0.0d
+			x: 2.5d
+			y: -5.0d
 		}
 		{
 			dependencies: ["05DB2A211C1BB3C1"]
@@ -134,8 +135,8 @@
 				}
 			]
 			title: "Iron Nugget"
-			x: 4.5d
-			y: -2.5d
+			x: 2.5d
+			y: -7.5d
 		}
 		{
 			dependencies: [
@@ -147,6 +148,7 @@
 				""
 				"Hint: If you compact them in a basin, you get double the yield!"
 			]
+			icon: "minecraft:andesite"
 			id: "51846CF26EF82312"
 			tasks: [
 				{
@@ -165,8 +167,8 @@
 				}
 			]
 			title: "Andesite"
-			x: 4.5d
-			y: 2.5d
+			x: 2.5d
+			y: -2.5d
 		}
 		{
 			dependencies: [
@@ -199,12 +201,13 @@
 				}
 			]
 			title: "Andesite Alloy"
-			x: 7.5d
-			y: 0.0d
+			x: 5.0d
+			y: -5.0d
 		}
 		{
 			dependencies: ["65F00346034419C5"]
 			description: ["Andesite alloys can be cut into shafts."]
+			icon: "create:shaft"
 			id: "2FF85F7E00F74EE8"
 			tasks: [
 				{
@@ -222,12 +225,13 @@
 					type: "item"
 				}
 			]
-			x: 7.5d
-			y: 2.5d
+			x: 5.0d
+			y: -2.5d
 		}
 		{
 			dependencies: ["0A1CEFA45C20D991"]
 			description: ["Automating logs will be pretty helpful. Wood is always a good thing to have."]
+			icon: "minecraft:oak_log"
 			id: "6FA4151E4E653522"
 			tasks: [
 				{
@@ -253,12 +257,13 @@
 				}
 			]
 			title: "Logs"
-			x: -1.5d
-			y: 5.0d
+			x: 2.5d
+			y: 0.0d
 		}
 		{
 			dependencies: ["6FA4151E4E653522"]
 			description: ["You can use a mechanical saw to also strip the logs."]
+			icon: "minecraft:stripped_oak_log"
 			id: "0F38B72E1CAA406C"
 			tasks: [
 				{
@@ -284,12 +289,13 @@
 				}
 			]
 			title: "Stripped Logs"
-			x: 1.5d
-			y: 5.0d
+			x: 5.0d
+			y: 0.0d
 		}
 		{
 			dependencies: ["6FA4151E4E653522"]
 			description: ["Sawing the stripped logs again will yield you planks, at a higher ratio than if you were to handcraft them."]
+			icon: "minecraft:oak_planks"
 			id: "79839708653EABAC"
 			tasks: [
 				{
@@ -315,8 +321,8 @@
 				}
 			]
 			title: "Planks"
-			x: 4.5d
-			y: 5.0d
+			x: 5.0d
+			y: 2.5d
 		}
 		{
 			dependencies: [
@@ -343,7 +349,7 @@
 				}
 			]
 			x: 7.5d
-			y: 7.5d
+			y: 0.0d
 		}
 		{
 			dependencies: [
@@ -372,8 +378,8 @@
 				item: "kubejs:andesite_mechanism"
 				type: "item"
 			}]
-			x: 11.0d
-			y: 2.5d
+			x: 10.0d
+			y: 0.0d
 		}
 	]
 	title: "Chapter 1: Andesite Mechanisms"

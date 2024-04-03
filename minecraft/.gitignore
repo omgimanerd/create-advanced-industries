@@ -1,8 +1,11 @@
+backups/
+crash-reports/
 defaultconfigs/
 ESM/
 local/
 logs/
 mods/
+patchouli_books/
 resourcepacks/
 saves/
 schematics/

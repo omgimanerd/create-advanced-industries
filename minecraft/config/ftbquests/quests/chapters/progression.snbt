@@ -17,13 +17,13 @@
 				type: "checkmark"
 			}]
 			title: "Chapter 1: Andesite Mechanisms"
-			x: -5.0d
+			x: 0.0d
 			y: 0.0d
 		}
 		{
 			dependencies: [
-				"2F39752E838CCB4F"
 				"3DC530BB099B8934"
+				"2F39752E838CCB4F"
 			]
 			icon: "kubejs:copper_mechanism"
 			id: "413CB04319D49CDB"
@@ -32,12 +32,15 @@
 				title: "OK"
 				type: "checkmark"
 			}]
-			title: "Chapter 2: Copper Mechanisms"
-			x: -3.0d
-			y: 0.0d
+			title: "Chapter 2a: Copper Mechanisms"
+			x: 2.5d
+			y: -1.5d
 		}
 		{
-			dependencies: ["413CB04319D49CDB"]
+			dependencies: [
+				"3DC530BB099B8934"
+				"2F39752E838CCB4F"
+			]
 			icon: "kubejs:source_mechanism"
 			id: "5013E6F84B112682"
 			tasks: [{
@@ -46,11 +49,18 @@
 				type: "checkmark"
 			}]
 			title: "Chapter 2b: Source Mechanisms"
-			x: -1.5d
-			y: -1.5d
+			x: 2.5d
+			y: 1.5d
 		}
 		{
-			dependencies: ["413CB04319D49CDB"]
+			dependencies: [
+				"3DC530BB099B8934"
+				"2F39752E838CCB4F"
+				"56013D2B21D9B0EA"
+				"413CB04319D49CDB"
+				"0F84A2AB0AED373E"
+				"5013E6F84B112682"
+			]
 			icon: "create:precision_mechanism"
 			id: "556060C29831B165"
 			tasks: [{
@@ -58,9 +68,9 @@
 				title: "Acknowledge"
 				type: "checkmark"
 			}]
-			title: "Chapter 2c: Precision Mechanisms"
-			x: -1.5d
-			y: 1.5d
+			title: "Chapter 3: Precision Mechanisms"
+			x: 5.0d
+			y: 0.0d
 		}
 	]
 	title: "Progression"
