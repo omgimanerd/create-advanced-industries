@@ -89,7 +89,11 @@
 				"76BD6D31D984B5A6"
 				"1572F6384788F1BA"
 			]
-			description: ["Using iron nuggets as a catalyst, you can make source gems by pouring liquefied source on them."]
+			description: [
+				"Using gold nuggets as a catalyst, you can make source gems by pouring liquefied source on them."
+				""
+				"Incidentally, gold will also be very useful for crafting Ars Nouveau items. What a coincidence!"
+			]
 			id: "7639F3BB40822434"
 			tasks: [{
 				id: "484E74B0BA8EE369"

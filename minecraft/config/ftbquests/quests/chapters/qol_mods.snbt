@@ -64,6 +64,48 @@
 			x: -2.5d
 			y: 0.0d
 		}
+		{
+			description: ["Functional Storage drawers are in this pack!"]
+			id: "0187FA4673644B91"
+			rewards: [
+				{
+					id: "7BB8A12C51D4D2D8"
+					item: "functionalstorage:configuration_tool"
+					type: "item"
+				}
+				{
+					count: 4
+					id: "46451B17166691AC"
+					item: "functionalstorage:iron_downgrade"
+					type: "item"
+				}
+				{
+					count: 4
+					id: "52607FFBD091329F"
+					item: "functionalstorage:copper_upgrade"
+					type: "item"
+				}
+				{
+					count: 4
+					id: "29CB06A93FEB8694"
+					item: "functionalstorage:void_upgrade"
+					type: "item"
+				}
+			]
+			tasks: [{
+				id: "1B522B5886E12F75"
+				item: {
+					Count: 1b
+					id: "ftbfiltersystem:smart_filter"
+					tag: {
+						"ftbfiltersystem:filter": "item_tag(functionalstorage:drawer)"
+					}
+				}
+				type: "item"
+			}]
+			x: 2.5d
+			y: 0.0d
+		}
 	]
 	title: "QOL Mods"
 }
