@@ -1,37 +1,41 @@
 
 [World]
 
-	[World.Ores]
+	[World.Features]
 
-		[World.Ores."Oil Sand"]
-			#Whether this ore should spawn in the world.
+		[World.Features."Oil Sand"]
+			#Whether this feature should naturally spawn in the world.
 			Enable = true
 
-		[World.Ores.Silver]
-			#Whether this ore should spawn in the world.
+		[World.Features.Silver]
+			#Whether this feature should naturally spawn in the world.
 			Enable = true
 
-		[World.Ores.Lead]
-			#Whether this ore should spawn in the world.
+		[World.Features.Lead]
+			#Whether this feature should naturally spawn in the world.
 			Enable = true
 
-		[World.Ores.Nickel]
-			#Whether this ore should spawn in the world.
+		[World.Features.Nickel]
+			#Whether this feature should naturally spawn in the world.
 			Enable = true
 
-		[World.Ores.Cinnabar]
-			#Whether this ore should spawn in the world.
+		[World.Features."Rubberwood Trees"]
+			#Whether this feature should naturally spawn in the world.
 			Enable = true
 
-		[World.Ores.Sulfur]
-			#Whether this ore should spawn in the world.
+		[World.Features.Cinnabar]
+			#Whether this feature should naturally spawn in the world.
 			Enable = true
 
-		[World.Ores.Tin]
-			#Whether this ore should spawn in the world.
+		[World.Features.Sulfur]
+			#Whether this feature should naturally spawn in the world.
 			Enable = true
 
-		[World.Ores.Niter]
-			#Whether this ore should spawn in the world.
+		[World.Features.Tin]
+			#Whether this feature should naturally spawn in the world.
+			Enable = true
+
+		[World.Features.Niter]
+			#Whether this feature should naturally spawn in the world.
 			Enable = true
 

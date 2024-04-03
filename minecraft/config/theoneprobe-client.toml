@@ -83,30 +83,28 @@ chestContentsBorderColor = "ff006699"
 #0 means don't show break progress, 1 is show as bar, 2 is show as text
 #Range: 0 ~ 2
 showBreakProgress = 1
-#true means shows harvestability with vanilla style icons
-harvestStyleVanilla = true
 
 [style]
 	#Text style. Use a comma delimited list with colors like: 'red', 'green', 'blue', ... or style codes like 'underline', 'bold', 'italic', 'strikethrough', ..."
-	ModName = "blue,italic"
-	#Text style. Use a comma delimited list with colors like: 'red', 'green', 'blue', ... or style codes like 'underline', 'bold', 'italic', 'strikethrough', ..."
-	InfoImportant = "blue"
+	Name = "white"
 	#Text style. Use a comma delimited list with colors like: 'red', 'green', 'blue', ... or style codes like 'underline', 'bold', 'italic', 'strikethrough', ..."
 	Label = "gray"
 	#Text style. Use a comma delimited list with colors like: 'red', 'green', 'blue', ... or style codes like 'underline', 'bold', 'italic', 'strikethrough', ..."
-	Name = "white"
+	High = "gold"
+	#Text style. Use a comma delimited list with colors like: 'red', 'green', 'blue', ... or style codes like 'underline', 'bold', 'italic', 'strikethrough', ..."
+	Warning = "yellow"
 	#Text style. Use a comma delimited list with colors like: 'red', 'green', 'blue', ... or style codes like 'underline', 'bold', 'italic', 'strikethrough', ..."
 	Info = "white"
 	#Text style. Use a comma delimited list with colors like: 'red', 'green', 'blue', ... or style codes like 'underline', 'bold', 'italic', 'strikethrough', ..."
 	Error = "red,bold"
 	#Text style. Use a comma delimited list with colors like: 'red', 'green', 'blue', ... or style codes like 'underline', 'bold', 'italic', 'strikethrough', ..."
-	High = "gold"
+	InfoImportant = "blue"
 	#Text style. Use a comma delimited list with colors like: 'red', 'green', 'blue', ... or style codes like 'underline', 'bold', 'italic', 'strikethrough', ..."
 	Obsolete = "gray,strikethrough"
 	#Text style. Use a comma delimited list with colors like: 'red', 'green', 'blue', ... or style codes like 'underline', 'bold', 'italic', 'strikethrough', ..."
-	Warning = "yellow"
-	#Text style. Use a comma delimited list with colors like: 'red', 'green', 'blue', ... or style codes like 'underline', 'bold', 'italic', 'strikethrough', ..."
 	Ok = "green"
+	#Text style. Use a comma delimited list with colors like: 'red', 'green', 'blue', ... or style codes like 'underline', 'bold', 'italic', 'strikethrough', ..."
+	ModName = "blue,italic"
 	#Text style. Use a comma delimited list with colors like: 'red', 'green', 'blue', ... or style codes like 'underline', 'bold', 'italic', 'strikethrough', ..."
 	Progress = "white"
 

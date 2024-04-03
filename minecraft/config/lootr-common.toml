@@ -39,8 +39,6 @@ refresh_modids = []
 randomise_seed = true
 #when true, custom inventories will act like trapped chests when opened
 trapped_custom = false
-#whether or not quark chests used in world generation for loot purposes should be replaced with Lootr chests
-convert_quark = true
 #how long (in ticks) a decaying loot containers should take to decay (default 5 minutes = 5 * 60 * 20)
 #Range: > 0
 decay_value = 6000
