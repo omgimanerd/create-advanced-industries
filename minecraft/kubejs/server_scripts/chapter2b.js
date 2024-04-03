@@ -12,6 +12,13 @@ ServerEvents.recipes((e) => {
     'ars_nouveau:sourceberry_bush'
   )
 
+  // Gold nugget washing automation
+  e.remove({ id: 'create:splashing/sand' })
+  e.recipes.create.splashing(
+    ['minecraft:gold_nugget', Item.of('minecraft:clay_ball').withChance(0.25)],
+    'minecraft:sand'
+  )
+
   // Source gem crafting
   e.remove({ id: 'ars_nouveau:imbuement_amethyst' })
   e.remove({ id: 'ars_nouveau:imbuement_lapis' })

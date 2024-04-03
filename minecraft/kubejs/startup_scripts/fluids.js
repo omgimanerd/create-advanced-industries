@@ -1,14 +1,18 @@
 // priority: 0
 
 StartupEvents.registry('fluid', (e) => {
-  e.create('molten_copper')
-    .thickTexture(0xa33b1f)
-    .bucketColor(0xa33b1f)
-    .displayName('Molten Copper')
   e.create('molten_iron')
     .thickTexture(0xa62c2b)
     .bucketColor(0xa62c2b)
     .displayName('Molten Iron')
+  e.create('molten_copper')
+    .thickTexture(0xa33b1f)
+    .bucketColor(0xa33b1f)
+    .displayName('Molten Copper')
+  e.create('molten_gold')
+    .thickTexture(0xf3d000)
+    .bucketColor(0xf3d000)
+    .displayName('Molten Gold')
   e.create('molten_zinc')
     .thickTexture(0xaebda8)
     .bucketColor(0xaebda8)
@@ -18,10 +22,10 @@ StartupEvents.registry('fluid', (e) => {
     .bucketColor(0xf8ca67)
     .displayName('Molten Brass')
 
-  e.create('molten_obsidian')
-    .thickTexture(0x2f1434)
-    .bucketColor(0x2f1434)
-    .displayName('Molten Obsidian')
+  // e.create('molten_obsidian')
+  //   .thickTexture(0x2f1434)
+  //   .bucketColor(0x2f1434)
+  //   .displayName('Molten Obsidian')
 
   e.create('molten_quartz')
     .thickTexture(0xd6c0bf)

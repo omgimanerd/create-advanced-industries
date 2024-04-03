@@ -15,6 +15,26 @@ ServerEvents.recipes((e) => {
     'minecraft:soul_sand'
   )
 
+  // copper + zinc melted = brass (heated)
+  // brass + cast = brass
+  // clay press = cast
+
+  // Clay block automation, dirt comes from thermal recipe
+  e.recipes.create.mixing(Item.of('minecraft:clay', 2), [
+    'minecraft:dirt',
+    'minecraft:sand',
+    Fluid.of('minecraft:water', 1000),
+  ])
+
+  // Clay block processing
+  e.remove({ id: 'create:milling/clay' })
+  e.recipes.create.milling(Item.of('minecraft:clay_ball', 4), 'minecraft:clay')
+  e.recipes.create.cutting(Item.of('minecraft:clay_ball', 4), 'minecraft:clay')
+
+  // Clay block pressing into cast
+  e.stonecutting('kubejs:clay_ingot_cast', 'minecraft:clay')
+  e.stonecutting('kubejs:clay_gem_cast', 'minecraft:clay')
+
   // Precision mechanism
   e.remove({ output: 'create:precision_mechanism' })
   new SequencedAssembly('kubejs:andesite_mechanism')
