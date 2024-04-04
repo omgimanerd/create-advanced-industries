@@ -11,22 +11,18 @@ StartupEvents.registry('item', (e) => {
   registerItem('clay_ingot_cast').maxStackSize(16)
   registerItem('clay_gem_cast').maxStackSize(16)
 
-  const registerCast = (material) => {
-    registerItem(
-      `${material}_intermediate_cast`,
-      'create:sequenced_assembly'
-    ).maxStackSize(16)
-  }
-
-  registerCast('iron')
-  registerCast('copper')
-  registerCast('gold')
-  registerCast('zinc')
-  registerCast('brass')
-
-  registerCast('quartz')
-  registerCast('diamond')
-  registerCast('emerald')
-  registerCast('lapis')
-  registerCast('redstone')
+  e.create('steel_ingot_cast')
+    .textureJson({
+      layer0: 'createadvancedindustries:item/clay_ingot_cast',
+    })
+    .color(0, 0x626262)
+    .displayName('Steel Ingot Cast')
+    .maxStackSize(16)
+  e.create('steel_gem_cast')
+    .textureJson({
+      layer0: 'createadvancedindustries:item/clay_gem_cast',
+    })
+    .color(0, 0x626262)
+    .displayName('Steel Gem Cast')
+    .maxStackSize(16)
 })
