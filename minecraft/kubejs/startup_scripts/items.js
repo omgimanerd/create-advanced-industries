@@ -5,9 +5,6 @@ StartupEvents.registry('item', (e) => {
 
   registerItem('zinc_hand')
 
-  registerItem('steel_nugget')
-  registerItem('steel_ingot')
-
   registerItem('clay_ingot_cast').maxStackSize(16)
   registerItem('clay_gem_cast').maxStackSize(16)
 

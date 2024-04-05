@@ -7,17 +7,376 @@
 	id: "482B038D660A4A9A"
 	order_index: 3
 	quest_links: [ ]
-	quests: [{
-		dependencies: ["556060C29831B165"]
-		description: ["Chapter 3 unlocks precision mechanisms, an important pillar in Create logistics."]
-		id: "256AB7BB1AE145A6"
-		tasks: [{
-			id: "32C1DE9643377F52"
-			title: "Start"
-			type: "checkmark"
-		}]
-		x: 0.0d
-		y: 0.0d
-	}]
+	quests: [
+		{
+			dependencies: ["556060C29831B165"]
+			description: [
+				"Chapter 3 unlocks precision mechanisms, an important pillar in Create logistics."
+				""
+				"Some of these tasks will actually be a little hard without brass filtering capabilities, but I'm sure you can think of clever ways to do this."
+				""
+				"From here on forward, there will be a lot less hand-holding to guide you."
+			]
+			id: "256AB7BB1AE145A6"
+			tasks: [{
+				id: "32C1DE9643377F52"
+				title: "Start"
+				type: "checkmark"
+			}]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["256AB7BB1AE145A6"]
+			description: ["No explanation needed :)"]
+			id: "42AD35328B048497"
+			tasks: [{
+				id: "7B0967E539C9C9A2"
+				item: "minecraft:cobblestone"
+				type: "item"
+			}]
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"29D21CC7608DD114"
+				"0AB76939C1A393CA"
+			]
+			description: [
+				"Congratulations! You now have access to Brass Logistics!"
+				""
+				"There's a lot of powerful stuff you can do with it."
+				""
+				"The production cycles will only get harder from here!"
+			]
+			id: "08663D81454F44E8"
+			rewards: [
+				{
+					count: 16
+					id: "085016E14F497AD8"
+					item: "create:precision_mechanism"
+					type: "item"
+				}
+				{
+					count: 16
+					id: "7D0094763B636DED"
+					item: "create:brass_ingot"
+					type: "item"
+				}
+			]
+			tasks: [{
+				id: "12FD4E64758D90DB"
+				item: "create:precision_mechanism"
+				type: "item"
+			}]
+			x: 12.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["7D237B5C30B4AECC"]
+			id: "29D21CC7608DD114"
+			tasks: [{
+				id: "4CDCDB773F9E0B11"
+				item: "create:electron_tube"
+				type: "item"
+			}]
+			x: 10.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["35FEE70D2889724B"]
+			id: "0AB76939C1A393CA"
+			tasks: [{
+				id: "56BC10F9C51EA75E"
+				item: "create:brass_sheet"
+				type: "item"
+			}]
+			x: 12.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["4A50DE1D6F439D92"]
+			id: "35FEE70D2889724B"
+			tasks: [{
+				id: "75973D6BF57FB3FD"
+				item: "create:brass_ingot"
+				type: "item"
+			}]
+			x: 12.0d
+			y: 2.0d
+		}
+		{
+			dependencies: [
+				"30DEFE72650445CE"
+				"66C109F90DAEFFAD"
+			]
+			id: "4A50DE1D6F439D92"
+			tasks: [{
+				id: "739E59579E632A00"
+				item: "kubejs:molten_brass_clay_cast"
+				type: "item"
+			}]
+			x: 10.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["16096B10FDF70979"]
+			id: "7D237B5C30B4AECC"
+			tasks: [{
+				id: "5F710035892313B3"
+				item: "create:polished_rose_quartz"
+				type: "item"
+			}]
+			x: 8.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["2CD3C925392DD277"]
+			id: "16096B10FDF70979"
+			tasks: [{
+				id: "67FD59D47D71ACCA"
+				item: "create:rose_quartz"
+				type: "item"
+			}]
+			x: 6.0d
+			y: -2.0d
+		}
+		{
+			dependencies: [
+				"304CF0A2294E0134"
+				"42AD35328B048497"
+				"519D022ECB5F6F42"
+			]
+			description: ["If we get some red stone, then all we need is a little bit of magic and heat to turn it into redstone!"]
+			id: "2CD3C925392DD277"
+			tasks: [{
+				id: "4B417CC9F2E4BBE9"
+				item: "minecraft:redstone"
+				type: "item"
+			}]
+			x: 4.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["16096B10FDF70979"]
+			id: "3053435FE174AD3C"
+			tasks: [{
+				id: "5BF4CE9148F5DCE3"
+				item: "kubejs:molten_redstone_bucket"
+				type: "item"
+			}]
+			x: 6.0d
+			y: -4.0d
+		}
+		{
+			dependencies: ["71FAA310DA3D588D"]
+			id: "3383144C6D0FBAD4"
+			tasks: [{
+				id: "45AA33A2D32A2A01"
+				item: "kubejs:molten_copper_bucket"
+				type: "item"
+			}]
+			x: 4.0d
+			y: 8.0d
+		}
+		{
+			dependencies: ["38E010EEA4A77E38"]
+			id: "5581B367614EA274"
+			tasks: [{
+				id: "4FA26E8302F01648"
+				item: "kubejs:molten_zinc_bucket"
+				type: "item"
+			}]
+			x: 4.0d
+			y: 6.0d
+		}
+		{
+			dependencies: ["42AD35328B048497"]
+			id: "38E010EEA4A77E38"
+			tasks: [{
+				id: "7B5DA1C0E9F28197"
+				item: "minecraft:tuff"
+				type: "item"
+			}]
+			x: 2.0d
+			y: 6.0d
+		}
+		{
+			dependencies: ["256AB7BB1AE145A6"]
+			description: ["I hope you automated these from Chapter 2a."]
+			id: "71FAA310DA3D588D"
+			tasks: [{
+				id: "6AFFCC46CEAF64FA"
+				item: "create:copper_nugget"
+				type: "item"
+			}]
+			x: 0.0d
+			y: 8.0d
+		}
+		{
+			dependencies: ["7CB72E5D1BF48057"]
+			description: [
+				"For now, we don't have the capabilities to make reuseable casts. Clay casts have a chance of breaking each time they are used to cast something."
+				""
+				"It would be good to automate clay anyway, since it might be useful in the future as well (hint hint)."
+			]
+			id: "30DEFE72650445CE"
+			tasks: [{
+				id: "241015E19BE6C321"
+				item: "kubejs:clay_ingot_cast"
+				type: "item"
+			}]
+			x: 8.0d
+			y: 2.0d
+		}
+		{
+			dependencies: [
+				"360E45D9718B6578"
+				"2B8298F4B50342A6"
+			]
+			id: "7CB72E5D1BF48057"
+			tasks: [{
+				id: "24EF9CD4D86AFEFD"
+				item: "minecraft:clay"
+				type: "item"
+			}]
+			x: 6.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["42AD35328B048497"]
+			id: "49D1BE5206E9F4EA"
+			tasks: [{
+				id: "4C779D50540CA22B"
+				item: "minecraft:gravel"
+				type: "item"
+			}]
+			x: 4.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["49D1BE5206E9F4EA"]
+			id: "360E45D9718B6578"
+			tasks: [{
+				id: "64B2B9C9C9B185C0"
+				item: "minecraft:sand"
+				type: "item"
+			}]
+			x: 6.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["49D1BE5206E9F4EA"]
+			id: "1CC432A2892B42D5"
+			tasks: [{
+				id: "7C53BB2658CD595F"
+				item: "thermal:slag"
+				type: "item"
+			}]
+			x: 4.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["256AB7BB1AE145A6"]
+			description: [
+				"Compost is made by putting things into a Batch Composter."
+				""
+				"It works similar to a vanilla composter. If you look at the input items, they have a percent chance of increasing the compost stage. When the compost stage reaches &l7&r, a single piece of compost will be produced."
+				""
+				"Note that the batch composter can theoretically process 9 items at once."
+			]
+			icon: "thermal:compost"
+			id: "360D9ADBFF3CDE8F"
+			optional: true
+			rewards: [{
+				count: 4
+				id: "2059BAC03626673F"
+				item: "thermal:device_composter"
+				type: "item"
+			}]
+			tasks: [
+				{
+					id: "1B447494399E1036"
+					type: "checkmark"
+				}
+				{
+					id: "0D499F456535526D"
+					item: "thermal:compost"
+					type: "item"
+				}
+			]
+			x: 1.0d
+			y: 4.0d
+		}
+		{
+			dependencies: [
+				"1CC432A2892B42D5"
+				"360D9ADBFF3CDE8F"
+				"360E45D9718B6578"
+			]
+			id: "2B8298F4B50342A6"
+			tasks: [{
+				id: "40B2F39DA9F25F42"
+				item: "minecraft:dirt"
+				type: "item"
+			}]
+			x: 4.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["256AB7BB1AE145A6"]
+			description: ["I hope you automated these from Chapter 2a."]
+			id: "304CF0A2294E0134"
+			tasks: [{
+				id: "215D74AB14B9DBF4"
+				item: "minecraft:red_dye"
+				type: "item"
+			}]
+			x: 2.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["256AB7BB1AE145A6"]
+			description: ["I hope you automated these from chapter 2b."]
+			id: "519D022ECB5F6F42"
+			tasks: [{
+				id: "2DFD6231A55F9ED2"
+				item: "starbunclemania:source_fluid_bucket"
+				type: "item"
+			}]
+			x: 2.0d
+			y: -4.0d
+		}
+		{
+			dependencies: [
+				"3383144C6D0FBAD4"
+				"5581B367614EA274"
+			]
+			id: "66C109F90DAEFFAD"
+			tasks: [{
+				id: "011D39A0BE46CBAA"
+				item: "kubejs:molten_brass_bucket"
+				type: "item"
+			}]
+			x: 6.0d
+			y: 6.0d
+		}
+		{
+			dependencies: [
+				"30DEFE72650445CE"
+				"5581B367614EA274"
+			]
+			id: "6B79A03DFFD8B049"
+			invisible: true
+			tasks: [{
+				id: "4EE527B97EF20D7F"
+				item: "thermal:lead_ingot"
+				type: "item"
+			}]
+			x: 6.0d
+			y: 4.0d
+		}
+	]
 	title: "Chapter 3: Precision Mechanisms"
 }

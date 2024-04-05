@@ -1,0 +1,11 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "chapter_4a_steel_mechanisms"
+	group: "5B3547AEADCBC841"
+	id: "64F475F4DF1CC100"
+	order_index: 4
+	quest_links: [ ]
+	quests: [ ]
+	title: "Chapter 4a: Steel Mechanisms"
+}

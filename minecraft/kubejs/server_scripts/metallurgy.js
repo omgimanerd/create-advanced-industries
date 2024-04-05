@@ -2,10 +2,6 @@
 
 // Recipes for molten fluids
 ServerEvents.recipes((e) => {
-  const kDefaultNuggetValue = 10
-  const kDefaultIngotValue = 90
-  const kDefaultBlockRatio = 9
-
   const createMeltingRecipe = (item, fluid, superheated) => {
     const recipe = e.recipes.create.mixing([fluid], item)
     if (superheated) {
@@ -29,16 +25,16 @@ ServerEvents.recipes((e) => {
       : 'kubejs:steel_ingot_cast'
 
     e.recipes.create.filling(clayCastOutput, [
-      Fluid.of(o.fluid, kDefaultIngotValue),
+      Fluid.of(o.fluid, global.kDefaultIngotFluid),
       inputClayCast,
     ])
     e.recipes.create.filling(steelCastOutput, [
-      Fluid.of(o.fluid, kDefaultIngotValue),
+      Fluid.of(o.fluid, global.kDefaultIngotFluid),
       inputSteelCast,
     ])
 
     e.recipes.create.splashing(
-      [isGem ? o.gem : o.ingot, Item.of(inputClayCast).withChance(0.1)],
+      [isGem ? o.gem : o.ingot, Item.of(inputClayCast).withChance(0.5)],
       clayCastOutput
     )
     e.recipes.create.splashing(
@@ -53,23 +49,25 @@ ServerEvents.recipes((e) => {
     }
 
     if (data.gem === undefined) {
-      const nuggetFluid = Fluid.of(data.fluid, kDefaultNuggetValue)
+      const nuggetFluid = Fluid.of(data.fluid, global.kDefaultNuggetFluid)
       createMeltingRecipe(data.nugget, nuggetFluid, data.superheated)
-      const ingotFluid = Fluid.of(data.fluid, kDefaultIngotValue)
+      const ingotFluid = Fluid.of(data.fluid, global.kDefaultIngotFluid)
       createMeltingRecipe(data.ingot, ingotFluid, data.superheated)
       createCastingRecipe(data)
     } else {
-      const gemFluid = Fluid.of(data.fluid, kDefaultIngotValue)
+      const gemFluid = Fluid.of(data.fluid, global.kDefaultIngotFluid)
       createMeltingRecipe(data.gem, gemFluid, data.superheated)
       createCastingRecipe(data)
     }
 
     if (data.block !== undefined) {
       const ratio =
-        data.block_ratio === undefined ? kDefaultBlockRatio : data.block_ratio
+        data.block_ratio === undefined
+          ? global.kDefaultBlockRatio
+          : data.block_ratio
       createMeltingRecipe(
         data.block,
-        Fluid.of(data.fluid, kDefaultIngotValue * ratio),
+        Fluid.of(data.fluid, global.kDefaultIngotFluid * ratio),
         data.superheated
       )
     }

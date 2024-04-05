@@ -1,12 +1,16 @@
 // priority: 0
 
+global.kDefaultNuggetFluid = 10
+global.kDefaultIngotFluid = 90
+global.kDefaultBlockRatio = 9
+
 global.meltable_item_data = [
   {
     nugget: 'minecraft:iron_nugget',
     ingot: 'minecraft:iron_ingot',
     block: 'minecraft:iron_block',
     fluid: 'kubejs:molten_iron',
-    color: 0xa62c2b,
+    color: 0xe05555,
   },
   {
     nugget: 'create:copper_nugget',
@@ -37,11 +41,18 @@ global.meltable_item_data = [
     color: 0xf8ca67,
   },
   {
-    nugget: 'kubejs:steel_nugget',
-    ingot: 'kubejs:steel_ingot',
-    block: 'kubejs:steel_block', // Not implemented
-    fluid: 'kubejs:molten_steel',
-    color: 0x626262,
+    nugget: 'thermal:lead_nugget',
+    ingot: 'thermal:lead_ingot',
+    block: 'thermal:lead_block',
+    fluid: 'kubejs:molten_lead',
+    color: 0x262653,
+  },
+  {
+    nugget: 'thermal:silver_nugget',
+    ingot: 'thermal:silver_ingot',
+    block: 'thermal:silver_block',
+    fluid: 'kubejs:molten_silver',
+    color: 0x64747c,
   },
   {
     gem: 'minecraft:quartz',

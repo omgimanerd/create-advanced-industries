@@ -72,6 +72,16 @@
 			x: 5.0d
 			y: 0.0d
 		}
+		{
+			id: "45F67208743BAE3E"
+			tasks: [{
+				id: "26408A22A3BB3920"
+				item: "tfmg:steel_mechanism"
+				type: "item"
+			}]
+			x: 7.5d
+			y: -1.5d
+		}
 	]
 	title: "Progression"
 }
