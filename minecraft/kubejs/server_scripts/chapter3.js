@@ -8,6 +8,9 @@ ServerEvents.compostableRecipes((e) => {
 })
 
 ServerEvents.recipes((e) => {
+  const nuggetFluid = global.metallurgy.kDefaultNuggetFluid
+  const ingotFluid = global.metallurgy.kDefaultIngotFluid
+
   // Blaze burner crafting
   e.recipes.ars_nouveau.enchanting_apparatus(
     Array(8).fill('ars_nouveau:fire_essence'),
@@ -52,8 +55,8 @@ ServerEvents.recipes((e) => {
   e.recipes.create
     .compacting(
       [
-        Fluid.of('kubejs:molten_zinc', 3 * global.kDefaultNuggetFluid),
-        Fluid.of('kubejs:molten_lead', 3 * global.kDefaultNuggetFluid),
+        Fluid.of('kubejs:molten_zinc', 3 * nuggetFluid),
+        Fluid.of('kubejs:molten_lead', 3 * nuggetFluid),
       ],
       'minecraft:tuff'
     )
@@ -61,9 +64,9 @@ ServerEvents.recipes((e) => {
 
   // Brass mixing
   e.recipes.create
-    .mixing(Fluid.of('kubejs:molten_brass', 2 * global.kDefaultIngotFluid), [
-      Fluid.of('kubejs:molten_copper', global.kDefaultIngotFluid),
-      Fluid.of('kubejs:molten_zinc', global.kDefaultIngotFluid),
+    .mixing(Fluid.of('kubejs:molten_brass', 2 * ingotFluid), [
+      Fluid.of('kubejs:molten_copper', ingotFluid),
+      Fluid.of('kubejs:molten_zinc', ingotFluid),
     ])
     .heated()
 
@@ -85,7 +88,7 @@ ServerEvents.recipes((e) => {
   // Rose quartz overhaul
   e.recipes.create.filling('create:rose_quartz', [
     'minecraft:quartz',
-    Fluid.of('kubejs:molten_redstone', global.kDefaultIngotFluid * 4),
+    Fluid.of('kubejs:molten_redstone', ingotFluid * 4),
   ])
 
   // Polished rose quartz overhaul

@@ -1,10 +1,21 @@
 // priority: 0
 
-global.kDefaultNuggetFluid = 10
-global.kDefaultIngotFluid = 90
-global.kDefaultBlockRatio = 9
+global.metallurgy = {}
+global.metallurgy.kDefaultNuggetFluid = 10
+global.metallurgy.kDefaultIngotFluid = 90
+global.metallurgy.kDefaultBlockRatio = 9
+global.metallurgy.clayCastLayerColor = 0xabb5d0
+global.metallurgy.steelCastLayerColor = 0x272122
 
-global.meltable_item_data = [
+global.metallurgy.getClayCastName = (fluid) => {
+  return `kubejs:${fluid.replace(/[a-z]+:/, '')}_clay_cast`
+}
+
+global.metallurgy.getSteelCastName = (fluid) => {
+  return `kubejs:${fluid.replace(/[a-z]+:/, '')}_steel_cast`
+}
+
+global.metallurgy.meltable_item_data = [
   {
     nugget: 'minecraft:iron_nugget',
     ingot: 'minecraft:iron_ingot',
@@ -55,6 +66,13 @@ global.meltable_item_data = [
     color: 0x64747c,
   },
   {
+    ingot: 'tfmg:steel_ingot',
+    block: 'tfmg:steel_block',
+    fluid: 'tfmg:molten_steel',
+    noRegisterFluid: true,
+    color: 0xffed56,
+  },
+  {
     gem: 'minecraft:quartz',
     block: 'minecraft:quartz_block',
     block_ratio: 4,
@@ -91,38 +109,37 @@ global.meltable_item_data = [
 
 // Register fluids for all the molten metals
 StartupEvents.registry('fluid', (e) => {
-  for (const data of global.meltable_item_data) {
-    e.create(data.fluid)
-      .thickTexture(data.color)
-      .bucketColor(data.color)
-      .displayName(getDisplayName(data.fluid))
+  for (const data of global.metallurgy.meltable_item_data) {
+    if (!data.noRegisterFluid) {
+      e.create(data.fluid)
+        .thickTexture(data.color)
+        .bucketColor(data.color)
+        .displayName(getDisplayName(data.fluid))
+    }
   }
 })
 
 // Register items for all the metal cast intermediates
 StartupEvents.registry('item', (e) => {
-  const clayCastLayerColor = 0xabb5d0
-  const steelCastLayerColor = 0x272122
-
-  global.meltable_item_data.forEach((data) => {
+  global.metallurgy.meltable_item_data.forEach((data) => {
     const isGem = data.gem !== undefined
     const baseLayer = 'createadvancedindustries:item/blank_cast'
     const fluidLayer = getResourceLocation(isGem ? data.gem : data.ingot)
     const displayName = getDisplayName(data.fluid)
-    e.create(`${data.fluid}_clay_cast`)
+    e.create(global.metallurgy.getClayCastName(data.fluid))
       .textureJson({
         layer0: baseLayer,
         layer1: fluidLayer,
       })
-      .color(0, clayCastLayerColor)
+      .color(0, global.metallurgy.clayCastLayerColor)
       .color(1, data.color)
       .displayName(`Claycast ${displayName}`)
-    e.create(`${data.fluid}_steel_cast`)
+    e.create(global.metallurgy.getSteelCastName(data.fluid))
       .textureJson({
         layer0: baseLayer,
         layer1: fluidLayer,
       })
-      .color(0, steelCastLayerColor)
+      .color(0, global.metallurgy.steelCastLayerColor)
       .color(1, data.color)
       .displayName(`Steelcast ${displayName}`)
   })

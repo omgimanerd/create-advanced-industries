@@ -14,8 +14,8 @@ ServerEvents.recipes((e) => {
   const createCastingRecipe = (o) => {
     const isGem = o.gem !== undefined
 
-    const clayCastOutput = `${o.fluid}_clay_cast`
-    const steelCastOutput = `${o.fluid}_steel_cast`
+    const clayCastOutput = global.metallurgy.getClayCastName(o.fluid)
+    const steelCastOutput = global.metallurgy.getSteelCastName(o.fluid)
 
     const inputClayCast = isGem
       ? 'kubejs:clay_gem_cast'
@@ -43,31 +43,42 @@ ServerEvents.recipes((e) => {
     )
   }
 
-  global.meltable_item_data.forEach((data) => {
+  global.metallurgy.meltable_item_data.forEach((data) => {
     if (data.fluid === undefined) {
       throw new Error('No output fluid specified!')
     }
+    const nuggetFluid = global.metallurgy.kDefaultNuggetFluid
+    const ingotFluid = global.metallurgy.kDefaultIngotFluid
 
     if (data.gem === undefined) {
-      const nuggetFluid = Fluid.of(data.fluid, global.kDefaultNuggetFluid)
-      createMeltingRecipe(data.nugget, nuggetFluid, data.superheated)
-      const ingotFluid = Fluid.of(data.fluid, global.kDefaultIngotFluid)
-      createMeltingRecipe(data.ingot, ingotFluid, data.superheated)
+      createMeltingRecipe(
+        data.nugget,
+        Fluid.of(data.fluid, nuggetFluid),
+        data.superheated
+      )
+      createMeltingRecipe(
+        data.ingot,
+        Fluid.of(data.fluid, ingotFluid),
+        data.superheated
+      )
       createCastingRecipe(data)
     } else {
-      const gemFluid = Fluid.of(data.fluid, global.kDefaultIngotFluid)
-      createMeltingRecipe(data.gem, gemFluid, data.superheated)
+      createMeltingRecipe(
+        data.gem,
+        Fluid.of(data.fluid, ingotFluid),
+        data.superheated
+      )
       createCastingRecipe(data)
     }
 
     if (data.block !== undefined) {
       const ratio =
         data.block_ratio === undefined
-          ? global.kDefaultBlockRatio
+          ? global.metallurgy.kDefaultBlockRatio
           : data.block_ratio
       createMeltingRecipe(
         data.block,
-        Fluid.of(data.fluid, global.kDefaultIngotFluid * ratio),
+        Fluid.of(data.fluid, ingotFluid * ratio),
         data.superheated
       )
     }
