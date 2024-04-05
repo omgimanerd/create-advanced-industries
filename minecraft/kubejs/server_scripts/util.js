@@ -24,22 +24,24 @@ const redefineMechanismRecipe_ = (e) => {
   // A BOT A
   // where A = air, M = given mechanism, and
   // TOP, MID, BOT are the respective arguments
-  return (mechanism, output, top, middle, bottom) => {
-    e.remove({ output: output })
-    return e.shaped(
-      output,
-      [
-        ' T ', //
-        'ZMZ', //
-        ' B ', //
-      ],
-      {
-        T: top,
-        M: middle,
-        B: bottom,
-        Z: mechanism,
-      }
-    )
+  return (mechanism) => {
+    return (output, top, middle, bottom) => {
+      e.remove({ output: output })
+      return e.shaped(
+        output,
+        [
+          ' T ', //
+          'ZMZ', //
+          ' B ', //
+        ],
+        {
+          T: top,
+          M: middle,
+          B: bottom,
+          Z: mechanism,
+        }
+      )
+    }
   }
 }
 
