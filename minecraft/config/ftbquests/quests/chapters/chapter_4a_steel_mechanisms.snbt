@@ -7,15 +7,342 @@
 	id: "64F475F4DF1CC100"
 	order_index: 4
 	quest_links: [ ]
-	quests: [{
-		id: "61A87B555F6F736C"
-		tasks: [{
-			id: "5DFADA564A5EDDDA"
-			title: "Start"
-			type: "checkmark"
-		}]
-		x: 0.0d
-		y: 0.0d
-	}]
+	quests: [
+		{
+			id: "61A87B555F6F736C"
+			tasks: [{
+				id: "5DFADA564A5EDDDA"
+				title: "Start"
+				type: "checkmark"
+			}]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			id: "2061A7E481B97D93"
+			tasks: [{
+				id: "4CBA31340600085C"
+				item: "tfmg:steel_mechanism"
+				type: "item"
+			}]
+			x: 16.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["565A7C5F6646857A"]
+			id: "318C60A121F68C81"
+			tasks: [{
+				id: "314E4C658008473A"
+				item: "tfmg:steel_ingot"
+				type: "item"
+			}]
+			x: 12.0d
+			y: -4.0d
+		}
+		{
+			dependencies: [
+				"1DB7690FA91A5285"
+				"2C9F49CC3FB7A113"
+				"08046E96E707A76C"
+			]
+			id: "565A7C5F6646857A"
+			tasks: [{
+				id: "53DB94F5D7B16C87"
+				item: "tfmg:molten_steel_bucket"
+				type: "item"
+			}]
+			x: 9.0d
+			y: -4.5d
+		}
+		{
+			id: "1DB7690FA91A5285"
+			tasks: [{
+				id: "759770D41D42C989"
+				item: "kubejs:molten_iron_bucket"
+				type: "item"
+			}]
+			x: 7.0d
+			y: -6.5d
+		}
+		{
+			dependencies: ["32945248A0491741"]
+			id: "2C9F49CC3FB7A113"
+			tasks: [{
+				id: "536C87939CD70DE3"
+				item: "tfmg:coal_coke_dust"
+				type: "item"
+			}]
+			x: 6.5d
+			y: -5.0d
+		}
+		{
+			dependencies: ["3426D798E4ECFC01"]
+			id: "08046E96E707A76C"
+			tasks: [{
+				id: "53B42749C21B4E85"
+				item: "tfmg:limesand"
+				type: "item"
+			}]
+			x: 6.5d
+			y: -3.5d
+		}
+		{
+			dependencies: ["0E92C48953887C96"]
+			id: "3426D798E4ECFC01"
+			tasks: [{
+				id: "487A87108850BB91"
+				item: "create:limestone"
+				type: "item"
+			}]
+			x: 4.0d
+			y: -3.5d
+		}
+		{
+			dependencies: ["3F554592E7237AA6"]
+			id: "0E92C48953887C96"
+			tasks: [{
+				id: "532E0A0CC41F1BE0"
+				item: "minecraft:bone_block"
+				type: "item"
+			}]
+			x: 2.0d
+			y: -3.5d
+		}
+		{
+			id: "3F554592E7237AA6"
+			tasks: [{
+				id: "0B493952B50088F7"
+				item: "minecraft:milk_bucket"
+				type: "item"
+			}]
+			x: 0.0d
+			y: -4.0d
+		}
+		{
+			dependencies: [
+				"10032B52BBCCF403"
+				"4923401248EF8C10"
+			]
+			dependency_requirement: "one_completed"
+			icon: "create:blaze_burner"
+			id: "3C9F4B037437C8CD"
+			size: 2.0d
+			tasks: [{
+				id: "5CF796AB1F19F1D3"
+				item: {
+					Count: 1b
+					id: "ftbfiltersystem:smart_filter"
+					tag: {
+						"ftbfiltersystem:filter": "or(item(create:blaze_cake)item(createaddition:bioethanol_bucket))"
+					}
+				}
+				title: "Superheating Source"
+				type: "item"
+			}]
+			title: "Superheated Blaze Burners"
+			x: 8.0d
+			y: -0.5d
+		}
+		{
+			dependencies: [
+				"06044A8D0AD15923"
+				"662CE9859BE0F913"
+			]
+			id: "10032B52BBCCF403"
+			tasks: [{
+				id: "4ADFE951272D2440"
+				item: "create:blaze_cake"
+				type: "item"
+			}]
+			x: 6.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"3EF1F54AE35B9018"
+				"5F120264857F4393"
+				"386370F5D73C8A51"
+			]
+			id: "4923401248EF8C10"
+			tasks: [{
+				id: "7CDCA94E75AD8755"
+				item: "createaddition:bioethanol_bucket"
+				type: "item"
+			}]
+			x: 9.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"746D63075D3BB1BE"
+				"386370F5D73C8A51"
+				"5F120264857F4393"
+			]
+			id: "06044A8D0AD15923"
+			tasks: [{
+				id: "29728C49532F5436"
+				item: "create:blaze_cake_base"
+				type: "item"
+			}]
+			x: 4.5d
+			y: 1.5d
+		}
+		{
+			id: "5F120264857F4393"
+			tasks: [{
+				id: "0E3C9F2CFF9631CB"
+				item: "minecraft:sugar"
+				type: "item"
+			}]
+			x: 2.0d
+			y: 3.5d
+		}
+		{
+			dependencies: ["51D735C846DF85D9"]
+			id: "386370F5D73C8A51"
+			tasks: [{
+				id: "62B87D6573B837F3"
+				item: "create:cinder_flour"
+				type: "item"
+			}]
+			x: 2.0d
+			y: 5.0d
+		}
+		{
+			dependencies: ["68104DF3A66FB0DC"]
+			id: "746D63075D3BB1BE"
+			tasks: [{
+				id: "267E0DA42E9FFCE8"
+				item: "minecraft:egg"
+				type: "item"
+			}]
+			x: 2.5d
+			y: 1.5d
+		}
+		{
+			dependencies: ["5004C4D4D6A40E1C"]
+			id: "3EF1F54AE35B9018"
+			tasks: [{
+				id: "786E9C11008DB798"
+				item: "createaddition:biomass"
+				type: "item"
+			}]
+			x: 7.0d
+			y: 4.5d
+		}
+		{
+			dependencies: ["05659E1DE2D77A38"]
+			id: "662CE9859BE0F913"
+			tasks: [{
+				id: "4C25E37E0CE76135"
+				item: "minecraft:lava_bucket"
+				type: "item"
+			}]
+			x: 3.5d
+			y: 7.5d
+		}
+		{
+			dependencies: ["22762C01E26FB48B"]
+			id: "68104DF3A66FB0DC"
+			tasks: [{
+				id: "5804FF0C665F16A8"
+				item: "farmersdelight:wheat_dough"
+				type: "item"
+			}]
+			x: 0.5d
+			y: 1.5d
+		}
+		{
+			dependencies: ["5004C4D4D6A40E1C"]
+			id: "22762C01E26FB48B"
+			tasks: [{
+				id: "101C5B991B7ECFD3"
+				item: "create:wheat_flour"
+				type: "item"
+			}]
+			x: -1.5d
+			y: 2.0d
+		}
+		{
+			id: "5004C4D4D6A40E1C"
+			tasks: [{
+				id: "1B7D9D271490975A"
+				item: "minecraft:wheat"
+				type: "item"
+			}]
+			x: -3.5d
+			y: 4.0d
+		}
+		{
+			id: "05659E1DE2D77A38"
+			tasks: [{
+				id: "49C9389AC6929A70"
+				item: {
+					Count: 1b
+					id: "ftbfiltersystem:smart_filter"
+					tag: {
+						"ftbfiltersystem:filter": "or(item_tag(forge:cobblestone))"
+					}
+				}
+				type: "item"
+			}]
+			title: "Any #forge:cobblestone"
+			x: 0.5d
+			y: 7.5d
+		}
+		{
+			dependencies: ["662CE9859BE0F913"]
+			id: "51D735C846DF85D9"
+			tasks: [{
+				id: "0C9026A2C43651A6"
+				item: "minecraft:netherrack"
+				type: "item"
+			}]
+			x: 2.0d
+			y: 6.5d
+		}
+		{
+			dependencies: ["3AE6CA0134B44049"]
+			id: "32945248A0491741"
+			tasks: [{
+				id: "1D97BDA3057DF19F"
+				item: "tfmg:coal_coke"
+				type: "item"
+			}]
+			x: 5.0d
+			y: -5.0d
+		}
+		{
+			dependencies: ["3D4E029D6ECC3F90"]
+			id: "3AE6CA0134B44049"
+			tasks: [{
+				id: "49CCB819E7C6B3DD"
+				item: "minecraft:coal"
+				type: "item"
+			}]
+			x: 3.5d
+			y: -6.0d
+		}
+		{
+			id: "3D4E029D6ECC3F90"
+			tasks: [{
+				id: "5F9744D884D9F4F9"
+				item: "minecraft:charcoal"
+				type: "item"
+			}]
+			x: 1.5d
+			y: -6.5d
+		}
+		{
+			id: "56194FBB8BFDBC86"
+			tasks: [{
+				id: "6926345E78DD7BAE"
+				item: "create:sturdy_sheet"
+				type: "item"
+			}]
+			x: 13.0d
+			y: 5.0d
+		}
+	]
 	title: "Chapter 4a: Steel Mechanisms"
 }
