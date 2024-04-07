@@ -1,11 +1,11 @@
-// priority: 0
+// priority: 10
 
 global.metallurgy = {}
 global.metallurgy.kDefaultNuggetFluid = 10
 global.metallurgy.kDefaultIngotFluid = 90
 global.metallurgy.kDefaultBlockRatio = 9
 global.metallurgy.clayCastLayerColor = 0xabb5d0
-global.metallurgy.steelCastLayerColor = 0x272122
+global.metallurgy.steelCastLayerColor = 0x959d9a
 
 global.metallurgy.getClayCastName = (fluid) => {
   return `kubejs:${fluid.replace(/[a-z]+:/, '')}_clay_cast`
@@ -123,7 +123,7 @@ StartupEvents.registry('fluid', (e) => {
 StartupEvents.registry('item', (e) => {
   global.metallurgy.meltable_item_data.forEach((data) => {
     const isGem = data.gem !== undefined
-    const baseLayer = 'createadvancedindustries:item/blank_cast'
+    const baseLayer = `${global.cai}:item/blank_cast`
     const fluidLayer = getResourceLocation(isGem ? data.gem : data.ingot)
     const displayName = getDisplayName(data.fluid)
     e.create(global.metallurgy.getClayCastName(data.fluid))
@@ -134,6 +134,7 @@ StartupEvents.registry('item', (e) => {
       .color(0, global.metallurgy.clayCastLayerColor)
       .color(1, data.color)
       .displayName(`Claycast ${displayName}`)
+      .maxStackSize(16)
     e.create(global.metallurgy.getSteelCastName(data.fluid))
       .textureJson({
         layer0: baseLayer,
@@ -142,5 +143,6 @@ StartupEvents.registry('item', (e) => {
       .color(0, global.metallurgy.steelCastLayerColor)
       .color(1, data.color)
       .displayName(`Steelcast ${displayName}`)
+      .maxStackSize(16)
   })
 })

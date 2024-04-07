@@ -15,10 +15,14 @@ const getResourceLocation = (name) => {
 }
 
 const registerItem_ = (e) => {
+  if (item.search(/[a-z]+:/) < 0) {
+    throw Error('Item does not have a mod prefix.')
+  }
+
   return (name, type) => {
     const item = type === undefined ? e.create(name) : e.create(name, type)
     return item
-      .texture(`${global.cai}:item/${name}`)
+      .texture(getResourceLocation(name))
       .displayName(getDisplayName(name))
   }
 }
