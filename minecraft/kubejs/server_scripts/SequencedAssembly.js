@@ -6,7 +6,7 @@ function SequencedAssembly(input) {
   this.input = input
   this.intermediate = input
 
-  this.loops = 1
+  this.n_loops = 1
   this.steps = []
 }
 
@@ -16,17 +16,19 @@ SequencedAssembly.prototype.transitional = function (intermediate) {
 }
 
 SequencedAssembly.prototype.loops = function (n) {
-  this.loops = n
+  this.n_loops = n
   return this
 }
 
-SequencedAssembly.prototype.cut = function () {
-  this.steps.push({ cut: true })
+SequencedAssembly.prototype.cut = function (repeats) {
+  if (repeats === undefined) repeats = 1
+  this.steps.concat(Array(repeats).fill({ cut: true }))
   return this
 }
 
-SequencedAssembly.prototype.press = function () {
-  this.steps.push({ press: true })
+SequencedAssembly.prototype.press = function (repeats) {
+  if (repeats === undefined) repeats = 1
+  this.steps.concat(Array(repeats).fill({ press: true }))
   return this
 }
 
@@ -38,7 +40,6 @@ SequencedAssembly.prototype.fill = function (fluid, qty_mb) {
     // 2-argument, fluid id + quantity in mb
     this.steps.push({ fill: Fluid.of(fluid, qty_mb) })
   }
-
   return this
 }
 
@@ -71,5 +72,5 @@ SequencedAssembly.prototype.outputs = function (e, output) {
   e.recipes.create
     .sequenced_assembly(outputArray, this.input, steps)
     .transitionalItem(this.intermediate)
-    .loops(this.loops)
+    .loops(this.n_loops)
 }

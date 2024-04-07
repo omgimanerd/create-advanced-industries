@@ -37,7 +37,7 @@ ServerEvents.recipes((e) => {
   e.recipes.create.milling(Item.of('minecraft:clay_ball', 4), 'minecraft:clay')
   e.recipes.create.cutting(Item.of('minecraft:clay_ball', 4), 'minecraft:clay')
 
-  // Clay block pressing into cast
+  // Clay block cutting into cast
   e.stonecutting('kubejs:clay_ingot_cast', 'minecraft:clay')
   e.stonecutting('kubejs:clay_gem_cast', 'minecraft:clay')
 
