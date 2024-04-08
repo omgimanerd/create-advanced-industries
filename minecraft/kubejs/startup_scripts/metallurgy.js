@@ -5,14 +5,14 @@ global.metallurgy.kDefaultNuggetFluid = 10
 global.metallurgy.kDefaultIngotFluid = 90
 global.metallurgy.kDefaultBlockRatio = 9
 global.metallurgy.clayCastLayerColor = 0xabb5d0
-global.metallurgy.steelCastLayerColor = 0x959d9a
+global.metallurgy.steelCastLayerColor = 0x7f8382
 
 global.metallurgy.getClayCastName = (fluid) => {
-  return `kubejs:${fluid.replace(/[a-z]+:/, '')}_clay_cast`
+  return `kubejs:${stripPrefix(fluid)}_clay_cast`
 }
 
 global.metallurgy.getSteelCastName = (fluid) => {
-  return `kubejs:${fluid.replace(/[a-z]+:/, '')}_steel_cast`
+  return `kubejs:${stripPrefix(fluid)}_steel_cast`
 }
 
 global.metallurgy.meltable_item_data = [
@@ -21,7 +21,7 @@ global.metallurgy.meltable_item_data = [
     ingot: 'minecraft:iron_ingot',
     block: 'minecraft:iron_block',
     fluid: 'kubejs:molten_iron',
-    color: 0xe05555,
+    color: 0x790a0a,
   },
   {
     nugget: 'create:copper_nugget',
@@ -64,6 +64,12 @@ global.metallurgy.meltable_item_data = [
     block: 'thermal:silver_block',
     fluid: 'kubejs:molten_silver',
     color: 0x64747c,
+  },
+  {
+    ingot: 'tfmg:cast_iron_ingot',
+    block: 'tfmg:cast_iron_block',
+    fluid: 'kubejs:molten_cast_iron',
+    color: 0x363639,
   },
   {
     ingot: 'tfmg:steel_ingot',
@@ -119,8 +125,57 @@ StartupEvents.registry('fluid', (e) => {
   }
 })
 
-// Register items for all the metal cast intermediates
+// Register all items for all the metallurgy
 StartupEvents.registry('item', (e) => {
+  const registerItem = registerItem_(e)
+
+  // Breakable clay casts for early metallurgy
+  registerItem('kubejs:clay_ingot_cast').maxStackSize(16)
+  registerItem('kubejs:clay_gem_cast').maxStackSize(16)
+
+  // Intermediate item when cast iron is forged into industrial iron
+  e.create('kubejs:intermediate_industrial_iron_ingot')
+    .texture('createdeco:item/industrial_iron_ingot')
+    .maxStackSize(16)
+
+  // Intermediate cast items created during the sequenced assembly recipes to
+  // make the reuseable casts. NOT the same as the intermediate items when
+  // metal is casted INTO the steel casts.
+  e.create('kubejs:intermediate_steel_ingot_cast')
+    .textureJson({
+      layer0: `${global.cai}:item/blank_cast`,
+      layer1: 'minecraft:item/iron_ingot',
+    })
+    .color(0, global.metallurgy.steelCastLayerColor)
+    .color(1, 0x232323)
+    .maxStackSize(16)
+  e.create('kubejs:intermediate_steel_gem_cast')
+    .textureJson({
+      layer0: `${global.cai}:item/blank_cast`,
+      layer1: 'minecraft:item/diamond',
+    })
+    .color(0, global.metallurgy.steelCastLayerColor)
+    .color(1, 0x232323)
+    .maxStackSize(16)
+
+  // Reuseable steel casts used for metallurgy.
+  e.create('kubejs:steel_ingot_cast')
+    .textureJson({
+      layer0: `${global.cai}:item/clay_ingot_cast`,
+    })
+    .color(0, global.metallurgy.steelCastLayerColor)
+    .displayName('Steel Ingot Cast')
+    .maxStackSize(16)
+  e.create('kubejs:steel_gem_cast')
+    .textureJson({
+      layer0: `${global.cai}:item/clay_gem_cast`,
+    })
+    .color(0, global.metallurgy.steelCastLayerColor)
+    .displayName('Steel Gem Cast')
+    .maxStackSize(16)
+
+  // Register casting recipes for molten metals into both the clay and steel
+  // casts.
   global.metallurgy.meltable_item_data.forEach((data) => {
     const isGem = data.gem !== undefined
     const baseLayer = `${global.cai}:item/blank_cast`
