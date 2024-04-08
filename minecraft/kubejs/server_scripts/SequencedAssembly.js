@@ -22,13 +22,13 @@ SequencedAssembly.prototype.loops = function (n) {
 
 SequencedAssembly.prototype.cut = function (repeats) {
   if (repeats === undefined) repeats = 1
-  this.steps.concat(Array(repeats).fill({ cut: true }))
+  this.steps = this.steps.concat(Array(repeats).fill({ cut: true }))
   return this
 }
 
 SequencedAssembly.prototype.press = function (repeats) {
   if (repeats === undefined) repeats = 1
-  this.steps.concat(Array(repeats).fill({ press: true }))
+  this.steps = this.steps.concat(Array(repeats).fill({ press: true }))
   return this
 }
 
