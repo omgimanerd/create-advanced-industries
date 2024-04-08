@@ -50,19 +50,14 @@ ServerEvents.recipes((e) => {
     const nuggetFluid = global.metallurgy.kDefaultNuggetFluid
     const ingotFluid = global.metallurgy.kDefaultIngotFluid
 
-    if (data.gem === undefined) {
+    if (data.nugget !== undefined) {
       createMeltingRecipe(
         data.nugget,
         Fluid.of(data.fluid, nuggetFluid),
         data.superheated
       )
-      createMeltingRecipe(
-        data.ingot,
-        Fluid.of(data.fluid, ingotFluid),
-        data.superheated
-      )
-      createCastingRecipe(data)
-    } else {
+    }
+    if (data.gem !== undefined) {
       createMeltingRecipe(
         data.gem,
         Fluid.of(data.fluid, ingotFluid),
@@ -70,7 +65,14 @@ ServerEvents.recipes((e) => {
       )
       createCastingRecipe(data)
     }
-
+    if (data.ingot !== undefined) {
+      createMeltingRecipe(
+        data.ingot,
+        Fluid.of(data.fluid, ingotFluid),
+        data.superheated
+      )
+      createCastingRecipe(data)
+    }
     if (data.block !== undefined) {
       const ratio =
         data.block_ratio === undefined
