@@ -8,8 +8,8 @@ ServerEvents.compostableRecipes((e) => {
 })
 
 ServerEvents.recipes((e) => {
-  const nuggetFluid = global.metallurgy.kDefaultNuggetFluid
-  const ingotFluid = global.metallurgy.kDefaultIngotFluid
+  const nuggetFluid = global.MeltableItem.DEFAULT_NUGGET_FLUID
+  const ingotFluid = global.MeltableItem.DEFAULT_INGOT_FLUID
 
   // Blaze burner crafting
   e.recipes.ars_nouveau.enchanting_apparatus(
@@ -24,6 +24,11 @@ ServerEvents.recipes((e) => {
     'thermal:slag',
     '#forge:sand',
   ])
+
+  // Sand is millable from both gravel and sandstone
+  e.remove({ id: 'create:milling/sandstone' })
+  e.recipes.create.milling('minecraft:sand', 'minecraft:gravel')
+  e.recipes.create.milling(Item.of('minecraft:sand', 4), 'minecraft:sandstone')
 
   // Clay block automation, dirt comes from thermal recipe
   e.recipes.create.mixing(Item.of('minecraft:clay', 2), [
@@ -40,8 +45,10 @@ ServerEvents.recipes((e) => {
   // Clay block cutting into cast
   e.stonecutting('kubejs:clay_ingot_cast', 'minecraft:clay')
   e.stonecutting('kubejs:clay_gem_cast', 'minecraft:clay')
+  e.stonecutting('kubejs:clay_block_cast', 'minecraft:clay')
 
   // Tuff recipe overhaul
+  e.remove({ id: 'ars_nouveau:manipulation_essence_to_tuff' })
   e.recipes.ars_nouveau.imbuement(
     'minecraft:cobblestone',
     'minecraft:tuff',
@@ -70,13 +77,29 @@ ServerEvents.recipes((e) => {
     ])
     .heated()
 
-  // Nether quartz automation from soul sand
+  // Remove ars soul sand recipes
+  e.remove({ id: 'ars_nouveau:conjuration_essence_to_soul_sand' })
+
+  // Nether quartz automation from soul sand, can be washed or melted for
+  // different yields.
   e.recipes.create.splashing(
-    ['minecraft:quartz', Item.of('minecraft:clay_ball').withChance(0.25)],
+    [
+      Item.of('minecraft:quartz').withChance(0.75),
+      Item.of('minecraft:clay_ball').withChance(0.25),
+    ],
     'minecraft:soul_sand'
   )
+  e.recipes.create
+    .mixing(
+      [
+        Fluid.of('kubejs:molten_quartz', 2 * ingotFluid),
+        Fluid.of('kubejs:molten_glass', 2 * ingotFluid),
+      ],
+      ['minecraft:soul_sand']
+    )
+    .heated()
 
-  // Redstone automation
+  // Renewable redstone automation
   e.recipes.create
     .mixing(Item.of('minecraft:redstone', 8), [
       Item.of('minecraft:cobblestone', 8),
@@ -92,11 +115,9 @@ ServerEvents.recipes((e) => {
   ])
 
   // Polished rose quartz overhaul
-  e.remove({ id: 'create:sandpaper_polishing/rose_quartz' })
-  e.remove({ id: 'create:sandpaper_polishing/rose_quartz_using_deployer' })
   e.recipes.create.mixing(
     ['create:polished_rose_quartz', Item.of('minecraft:sand').withChance(0.9)],
-    'create:rose_quartz'
+    ['create:rose_quartz', 'minecraft:sand']
   )
 
   // Electron tube overhaul

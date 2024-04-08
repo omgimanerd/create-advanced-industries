@@ -1,14 +1,14 @@
-// priority: 0
+// priority: 1000
 
 global.cai = 'createadvancedindustries'
 
 const stripPrefix = (s) => {
-  return s.replace(/[a-z]+:/, '')
+  return s.replace(/^#{0,1}[a-z]+:/, '')
 }
 
 const checkPrefix = (s) => {
-  if (s.search(/[a-z]+:/) < 0) {
-    throw new Error('Item does not have a mod prefix.')
+  if (s.search(/^#{0,1}[#a-z]+:/) < 0) {
+    throw new Error(`${s} does not have a mod prefix.`)
   }
 }
 

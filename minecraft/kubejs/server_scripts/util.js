@@ -1,4 +1,4 @@
-// priority: 0
+// priority: 1000
 
 // This file contains wrappers for utility functions to define them within
 // the callbacks where they will be used.
