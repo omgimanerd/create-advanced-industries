@@ -6,8 +6,130 @@ ServerEvents.recipes((e) => {
   // Generate utility functions from util.js
   const redefineRecipe = redefineRecipe_(e)
   const redefineMechanismRecipe = redefineMechanismRecipe_(e)
+  const redefineEnchantingRecipe = redefineEnchantingRecipe_(e)
 
-  // Create mod, in order of JEI search.
+  /////////////////
+  // Ars Nouveau //
+  /////////////////
+  redefineRecipe('ars_nouveau:novice_spell_book', [
+    'minecraft:book',
+    'kubejs:source_mechanism',
+  ])
+  e.replaceInput(
+    'ars_nouveau:enchanting_apparatus',
+    'minecraft:gold_ingot',
+    'kubejs:source_mechanism'
+  )
+  redefineRecipe(
+    'ars_nouveau:source_jar',
+    [
+      'SSS', //
+      'G G', //
+      'SMS', //
+    ],
+    {
+      S: 'ars_nouveau:archwood_slab',
+      G: '#forge:glass',
+      M: 'kubejs:source_mechanism',
+    }
+  )
+  e.replaceInput(
+    'ars_nouveau:relay',
+    'ars_nouveau:source_gem_block',
+    'kubejs:source_mechanism'
+  )
+  redefineRecipe(
+    'ars_nouveau:scribes_table',
+    [
+      'PPP', //
+      'NMN', //
+      'L L', //
+    ],
+    {
+      P: 'ars_nouveau:archwood_slab',
+      N: 'minecraft:gold_nugget',
+      M: 'kubejs:source_mechanism',
+      L: '#forge:logs/archwood',
+    }
+  )
+  redefineRecipe(
+    'ars_nouveau:imbuement_chamber',
+    [
+      'PGP', //
+      'P P',
+      'PMP', //
+    ],
+    {
+      P: 'ars_nouveau:archwood_planks',
+      G: 'minecraft:gold_ingot',
+      M: 'kubejs:source_mechanism',
+    }
+  )
+  redefineEnchantingRecipe(
+    'ars_nouveau:relay_splitter',
+    [
+      'minecraft:quartz',
+      'minecraft:lapis_lazuli',
+      'kubejs:source_mechanism',
+      'minecraft:lapis_lazuli',
+      'minecraft:quartz',
+      'minecraft:lapis_lazuli',
+      'kubejs:source_mechanism',
+      'minecraft:lapis_lazuli',
+    ],
+    'ars_nouveau:relay'
+  )
+  e.replaceInput(
+    'ars_nouveau:arcane_core',
+    'ars_nouveau:source_gem',
+    'kubejs:source_mechanism'
+  )
+  e.remove({ id: 'ars_nouveau:basic_spell_turret' })
+  e.shaped(
+    'ars_nouveau:basic_spell_turret',
+    [
+      ' S ', //
+      'GMG', //
+      ' S ', //
+    ],
+    {
+      S: 'ars_nouveau:source_gem',
+      G: 'minecraft:gold_ingot',
+      M: 'kubejs:source_mechanism',
+    }
+  )
+  redefineRecipe(
+    'starbunclemania:fluid_sourcelink',
+    [
+      ' G ', //
+      'GBG', //
+      ' M ',
+    ],
+    {
+      G: 'minecraft:gold_ingot',
+      B: 'minecraft:bucket',
+      M: 'kubejs:source_mechanism',
+    }
+  )
+  // TODO: remove other sourcelink recipes and hide from JEI.
+
+  ///////////////////////////
+  // Compressed Creativity //
+  ///////////////////////////
+  e.replaceInput(
+    { mod: 'compressedcreativity' },
+    'pneumaticcraft:ingot_iron_compressed',
+    'tfmg:steel_ingot'
+  )
+  e.replaceInput(
+    { mod: 'compressedcreativity' },
+    'compressedcreativity:compressed_iron_casing',
+    'tfmg:steel_casing'
+  )
+
+  ////////////
+  // Create //
+  ////////////
   redefineRecipe(
     'create:copper_backtank',
     [
@@ -279,7 +401,9 @@ ServerEvents.recipes((e) => {
     'create:brass_casing'
   )
 
-  // Create Crafts & Additions
+  ///////////////////////////////
+  // Create Crafts & Additions //
+  ///////////////////////////////
   redefineRecipe(
     'createaddition:rolling_mill',
     [
@@ -297,7 +421,9 @@ ServerEvents.recipes((e) => {
   )
   // TODO: overhaul tesla coil and intermediate items
 
-  // Create: Slice and Dice
+  ////////////////////////////
+  // Create: Slice and Dice //
+  ////////////////////////////
   redefineMechanismRecipe('kubejs:andesite_mechanism')(
     'sliceanddice:slicer',
     'create:cogwheel',
@@ -305,7 +431,9 @@ ServerEvents.recipes((e) => {
     'create:turntable'
   )
 
-  // Create: Enchantment Industry
+  //////////////////////////////////
+  // Create: Enchantment Industry //
+  //////////////////////////////////
   redefineRecipe('create_enchantment_industry:disenchanter', ['S', 'D'], {
     S: '#create:sandpaper',
     D: 'create:item_drain',
@@ -315,4 +443,107 @@ ServerEvents.recipes((e) => {
     M: 'kubejs:copper_mechanism',
     P: 'create:mechanical_press',
   })
+
+  ///////////////////////////////////
+  // Create: The Factory Must Grow //
+  ///////////////////////////////////
+  e.replaceInput(
+    {
+      mod: 'tfmg',
+    },
+    'tfmg:aluminum_ingot',
+    'tfmg:cast_iron_ingot'
+  )
+  // Replace concrete stonecutting recipes with vanilla concrete
+  e.forEachRecipe(
+    {
+      mod: 'tfmg',
+      type: 'minecraft:stonecutting',
+      input: /tfmg:[a-z_]+_concrete$/,
+    },
+    (r) => {
+      const recipe = JSON.parse(r.json)
+      const item = recipe.ingredient.item
+      if (item.search(/^tfmg:[a-z_]+_concrete/) >= 0) {
+        r.replaceInput(item, item.replace('tfmg:', 'minecraft:'))
+      }
+    }
+  )
+
+  // TODO: add efficient liquid concrete overhaul
+  // Make pipes require a sheet
+  const redefinePipeRecipe = (output, ingot, sheet) => {
+    e.remove({ output: output })
+    const keys = {
+      I: ingot,
+      S: sheet,
+    }
+    e.shaped(output, ['SIS'], keys)
+    e.shaped(output, ['I', 'S', 'I'], keys)
+  }
+  const aestheticPipeReplacements = [
+    {
+      material: 'steel',
+      ingot: 'tfmg:steel_ingot',
+      sheet: 'tfmg:heavy_plate',
+    },
+    {
+      material: 'brass',
+      ingot: 'create:brass_ingot',
+      sheet: 'create:brass_sheet',
+    },
+    {
+      material: 'cast_iron',
+      ingot: 'createdeco:industrial_iron_ingot',
+      sheet: 'createdeco:industrial_iron_sheet',
+    },
+    {
+      material: 'plastic',
+      ingot: 'tfmg:plastic_sheet',
+      sheet: 'pneumaticcraft:plastic',
+    },
+  ]
+  aestheticPipeReplacements.forEach((r) => {
+    redefinePipeRecipe(`tfmg:${r.material}_pipe`, r.ingot, r.sheet)
+    redefineRecipe(`tfmg:${r.material}_smart_fluid_pipe`, [
+      'create:smart_fluid_pipe',
+      r.sheet,
+    ])
+    redefineRecipe(`tfmg:${r.material}_fluid_valve`, [
+      'create:fluid_valve',
+      r.sheet,
+    ])
+    redefineRecipe(`tfmg:${r.material}_mechanical_pump`, [
+      'create:mechanical_pump',
+      r.sheet,
+    ])
+  })
+  e.replaceInput(
+    'tfmg:steel_fluid_tank',
+    'tfmg:steel_ingot',
+    'tfmg:heavy_plate'
+  )
+
+  ///////////////////////////////////
+  // Pneumaticcraft: Repressurized //
+  ///////////////////////////////////
+  e.replaceInput(
+    { mod: 'pneumaticcraft' },
+    'pneumaticcraft:ingot_iron_compressed',
+    'tfmg:steel_ingot'
+  )
+  e.replaceInput(
+    { mod: 'pneumaticcraft' },
+    '#pneumaticcraft:compressed_iron_block',
+    'tfmg:steel_block'
+  )
+
+  /////////////////////
+  // Refined Storage //
+  /////////////////////
+  e.remove({ output: 'refinedstorage:machine_casing' })
+  e.recipes.create.item_application('refinedstorage:machine_casing', [
+    'tfmg:steel_casing',
+    'refinedstorage:quartz_enriched_iron',
+  ])
 })

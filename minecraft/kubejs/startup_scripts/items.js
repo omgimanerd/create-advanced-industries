@@ -3,6 +3,7 @@
 StartupEvents.registry('item', (e) => {
   const registerItem = registerItem_(e)
 
+  // Zinc hand used for crafting deployers
   registerItem('kubejs:zinc_hand')
 
   // Unbreakable screwdriver for crafting steel mechanisms

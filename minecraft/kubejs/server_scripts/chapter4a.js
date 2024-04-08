@@ -206,7 +206,7 @@ ServerEvents.recipes((e) => {
     .outputs(e, 'kubejs:steel_gem_cast')
   new SequencedAssembly('tfmg:heavy_plate')
     .transitional('kubejs:intermediate_steel_block_cast')
-    .deploy('minecraft:steel_block')
+    .deploy('tfmg:steel_block')
     .press(3)
     .outputs(e, 'kubejs:steel_block_cast')
 

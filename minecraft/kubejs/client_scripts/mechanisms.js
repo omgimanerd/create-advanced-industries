@@ -13,6 +13,15 @@ Ponder.registry((e) => {
 })
 
 JEIEvents.hideItems((e) => {
+  // Defined in server_scripts/removed_recipes.js
+  if (global.hideJEI) {
+    global.removedRecipes.forEach((r) => {
+      if (r.output) {
+        e.hide(r.output)
+      }
+    })
+  }
+
   // Hide intermediate mechanism items.
   // e.hide('kubejs:incomplete_andesite_mechanism')
   // e.hide('kubejs:incomplete_copper_mechanism')
