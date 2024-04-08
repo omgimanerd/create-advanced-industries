@@ -296,11 +296,15 @@
 			[kinetics.stressValues.v2.capacity]
 				copper_valve_handle = 8.0
 				hand_crank = 8.0
-				steam_engine = 256.0
+				# Superheated produces 16384 SU each
+				steam_engine = 1024.0
 				creative_motor = 16384.0
-				large_water_wheel = 64.0
+				# 128 * 4 RPM base = 512 SU
+				large_water_wheel = 128.0
+				# 32 x 8 RPM base = 256 SU
 				water_wheel = 32.0
-				windmill_bearing = 128.0
+				# Maxed windmill bearing produces 4096 SU
+				windmill_bearing = 256.0
 
 #.
 #Create's liquid manipulation tools
