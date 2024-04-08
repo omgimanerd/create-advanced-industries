@@ -225,7 +225,7 @@
 					type: "item"
 				}
 			]
-			title: "Shafts"
+			title: "Shaft"
 			x: 5.0d
 			y: -5.0d
 		}
@@ -322,8 +322,8 @@
 				}
 			]
 			title: "Any #minecraft:planks"
-			x: 5.0d
-			y: 2.5d
+			x: 7.5d
+			y: 0.0d
 		}
 		{
 			dependencies: [
@@ -349,14 +349,16 @@
 					type: "item"
 				}
 			]
-			title: "Cogwheels"
-			x: 7.5d
-			y: 0.0d
+			title: "Cogwheel"
+			x: 5.0d
+			y: -2.5d
 		}
 		{
 			dependencies: [
 				"4850DF538DD8B5D9"
 				"65F00346034419C5"
+				"2FF85F7E00F74EE8"
+				"08E85F97B03195BF"
 			]
 			description: ["Now deploy all of these on an andesite alloy and you've got an andesite mechanism!"]
 			id: "33F8E4848D9165B2"
@@ -380,7 +382,7 @@
 				type: "item"
 			}]
 			x: 10.0d
-			y: 0.0d
+			y: -5.0d
 		}
 		{
 			dependencies: ["79839708653EABAC"]
@@ -397,8 +399,8 @@
 				type: "item"
 			}]
 			title: "Any #minecraft:wooden_slabs"
-			x: 7.5d
-			y: 2.5d
+			x: 10.0d
+			y: 0.0d
 		}
 	]
 	title: "Chapter 1: Andesite Mechanisms"

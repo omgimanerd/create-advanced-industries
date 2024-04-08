@@ -174,19 +174,21 @@
 					type: "item"
 				}
 			]
+			size: 2.0d
 			tasks: [{
 				id: "2E9CA64348FE83FE"
 				item: "kubejs:copper_mechanism"
 				type: "item"
 			}]
 			x: 7.5d
-			y: 0.0d
+			y: 2.5d
 		}
 		{
 			dependencies: ["75355ADF3D7F976A"]
 			description: ["Did you notice sawing a block of cured rubber nets you double the yield?"]
 			id: "595B0928142C3067"
 			invisible: true
+			optional: true
 			tasks: [{
 				id: "5A8384E34B50F79D"
 				item: "thermal:cured_rubber_block"

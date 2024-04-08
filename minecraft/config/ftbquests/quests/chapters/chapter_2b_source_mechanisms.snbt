@@ -52,6 +52,7 @@
 				"7639F3BB40822434"
 			]
 			id: "39E20F0E25618A92"
+			size: 2.0d
 			tasks: [{
 				id: "30DDACD9E1044275"
 				item: "kubejs:source_mechanism"
