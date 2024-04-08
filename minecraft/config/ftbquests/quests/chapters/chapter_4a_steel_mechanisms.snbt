@@ -9,7 +9,20 @@
 	quest_links: [ ]
 	quests: [
 		{
+			dependencies: ["45F67208743BAE3E"]
+			description: [
+				"Chapter 4a unlocks Steel Mechanisms, which unlock things like oil refining and power."
+				""
+				"In order to smelt steel, you need to be able to superheat a blaze burner. There are two paths to do this, either by automating blaze cakes or biofuel. They are equivalent in cost and share similar ingredients, so it's up to you which path you choose."
+				""
+				"Just looking at this chapter is making me hungry..."
+			]
 			id: "61A87B555F6F736C"
+			rewards: [{
+				id: "66557E0BB6651A23"
+				item: "farmersdelight:bacon_sandwich"
+				type: "item"
+			}]
 			tasks: [{
 				id: "5DFADA564A5EDDDA"
 				title: "Start"
@@ -19,13 +32,39 @@
 			y: 0.0d
 		}
 		{
+			dependencies: [
+				"318C60A121F68C81"
+				"56194FBB8BFDBC86"
+				"0D49F7009518DEC8"
+				"5FD60166A60F0448"
+			]
+			description: [
+				"Congratulations! You've unlocked Steel Mechanisms."
+				""
+				"Steel mechanisms open the gate to petrochemical processing and the industrial revolution."
+			]
 			id: "2061A7E481B97D93"
+			rewards: [
+				{
+					count: 16
+					id: "495F30C4A003B2ED"
+					item: "tfmg:steel_mechanism"
+					type: "item"
+				}
+				{
+					count: 16
+					id: "5E7B22507E2EE2DF"
+					item: "tfmg:steel_ingot"
+					type: "item"
+				}
+			]
+			size: 2.0d
 			tasks: [{
 				id: "4CBA31340600085C"
 				item: "tfmg:steel_mechanism"
 				type: "item"
 			}]
-			x: 16.0d
+			x: 18.0d
 			y: 0.0d
 		}
 		{
@@ -36,14 +75,15 @@
 				item: "tfmg:steel_ingot"
 				type: "item"
 			}]
-			x: 12.0d
-			y: -4.0d
+			x: 16.0d
+			y: -6.0d
 		}
 		{
 			dependencies: [
 				"1DB7690FA91A5285"
 				"2C9F49CC3FB7A113"
 				"08046E96E707A76C"
+				"3C9F4B037437C8CD"
 			]
 			id: "565A7C5F6646857A"
 			tasks: [{
@@ -51,18 +91,19 @@
 				item: "tfmg:molten_steel_bucket"
 				type: "item"
 			}]
-			x: 9.0d
-			y: -4.5d
+			x: 14.0d
+			y: -6.0d
 		}
 		{
+			dependencies: ["61A87B555F6F736C"]
 			id: "1DB7690FA91A5285"
 			tasks: [{
 				id: "759770D41D42C989"
 				item: "kubejs:molten_iron_bucket"
 				type: "item"
 			}]
-			x: 7.0d
-			y: -6.5d
+			x: 2.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["32945248A0491741"]
@@ -72,8 +113,8 @@
 				item: "tfmg:coal_coke_dust"
 				type: "item"
 			}]
-			x: 6.5d
-			y: -5.0d
+			x: 14.0d
+			y: -12.0d
 		}
 		{
 			dependencies: ["3426D798E4ECFC01"]
@@ -83,8 +124,8 @@
 				item: "tfmg:limesand"
 				type: "item"
 			}]
-			x: 6.5d
-			y: -3.5d
+			x: 8.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["0E92C48953887C96"]
@@ -94,8 +135,8 @@
 				item: "create:limestone"
 				type: "item"
 			}]
-			x: 4.0d
-			y: -3.5d
+			x: 6.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["3F554592E7237AA6"]
@@ -105,17 +146,25 @@
 				item: "minecraft:bone_block"
 				type: "item"
 			}]
-			x: 2.0d
-			y: -3.5d
+			x: 4.0d
+			y: -4.0d
 		}
 		{
+			dependencies: ["61A87B555F6F736C"]
+			description: ["Got milk?"]
 			id: "3F554592E7237AA6"
+			rewards: [{
+				count: 4
+				id: "69700767B2CC706D"
+				item: "minecraft:cow_spawn_egg"
+				type: "item"
+			}]
 			tasks: [{
 				id: "0B493952B50088F7"
 				item: "minecraft:milk_bucket"
 				type: "item"
 			}]
-			x: 0.0d
+			x: 2.0d
 			y: -4.0d
 		}
 		{
@@ -124,6 +173,7 @@
 				"4923401248EF8C10"
 			]
 			dependency_requirement: "one_completed"
+			description: ["Hot stuff!"]
 			icon: "create:blaze_burner"
 			id: "3C9F4B037437C8CD"
 			size: 2.0d
@@ -140,22 +190,23 @@
 				type: "item"
 			}]
 			title: "Superheated Blaze Burners"
-			x: 8.0d
-			y: -0.5d
+			x: 14.0d
+			y: 0.0d
 		}
 		{
 			dependencies: [
 				"06044A8D0AD15923"
 				"662CE9859BE0F913"
 			]
+			description: ["Blaze cakes can be fed into blaze burners with a deployer or a mechanical arm."]
 			id: "10032B52BBCCF403"
 			tasks: [{
 				id: "4ADFE951272D2440"
 				item: "create:blaze_cake"
 				type: "item"
 			}]
-			x: 6.0d
-			y: 1.5d
+			x: 14.0d
+			y: 2.0d
 		}
 		{
 			dependencies: [
@@ -163,14 +214,24 @@
 				"5F120264857F4393"
 				"386370F5D73C8A51"
 			]
+			description: [
+				"Nice work, biofuel can be pumped into blaze burners to superheat them."
+				""
+				"To make the blaze burner to accept fuels, right click it with a straw."
+			]
 			id: "4923401248EF8C10"
+			rewards: [{
+				id: "5193CFAB7B9050B7"
+				item: "createaddition:straw"
+				type: "item"
+			}]
 			tasks: [{
 				id: "7CDCA94E75AD8755"
 				item: "createaddition:bioethanol_bucket"
 				type: "item"
 			}]
-			x: 9.0d
-			y: 3.0d
+			x: 12.0d
+			y: 0.0d
 		}
 		{
 			dependencies: [
@@ -184,18 +245,19 @@
 				item: "create:blaze_cake_base"
 				type: "item"
 			}]
-			x: 4.5d
-			y: 1.5d
+			x: 12.0d
+			y: 2.0d
 		}
 		{
+			dependencies: ["49789F2A01DB4EB2"]
 			id: "5F120264857F4393"
 			tasks: [{
 				id: "0E3C9F2CFF9631CB"
 				item: "minecraft:sugar"
 				type: "item"
 			}]
-			x: 2.0d
-			y: 3.5d
+			x: 4.0d
+			y: 2.0d
 		}
 		{
 			dependencies: ["51D735C846DF85D9"]
@@ -205,8 +267,8 @@
 				item: "create:cinder_flour"
 				type: "item"
 			}]
-			x: 2.0d
-			y: 5.0d
+			x: 4.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["68104DF3A66FB0DC"]
@@ -216,19 +278,24 @@
 				item: "minecraft:egg"
 				type: "item"
 			}]
-			x: 2.5d
-			y: 1.5d
+			x: 8.0d
+			y: -2.0d
 		}
 		{
-			dependencies: ["5004C4D4D6A40E1C"]
+			dependencies: [
+				"5004C4D4D6A40E1C"
+				"49789F2A01DB4EB2"
+			]
+			dependency_requirement: "one_completed"
+			description: ["Biomass can be made in a ton of different ways."]
 			id: "3EF1F54AE35B9018"
 			tasks: [{
 				id: "786E9C11008DB798"
 				item: "createaddition:biomass"
 				type: "item"
 			}]
-			x: 7.0d
-			y: 4.5d
+			x: 2.0d
+			y: 0.0d
 		}
 		{
 			dependencies: ["05659E1DE2D77A38"]
@@ -238,8 +305,8 @@
 				item: "minecraft:lava_bucket"
 				type: "item"
 			}]
-			x: 3.5d
-			y: 7.5d
+			x: 0.0d
+			y: 8.0d
 		}
 		{
 			dependencies: ["22762C01E26FB48B"]
@@ -249,8 +316,8 @@
 				item: "farmersdelight:wheat_dough"
 				type: "item"
 			}]
-			x: 0.5d
-			y: 1.5d
+			x: 6.0d
+			y: -2.0d
 		}
 		{
 			dependencies: ["5004C4D4D6A40E1C"]
@@ -260,20 +327,28 @@
 				item: "create:wheat_flour"
 				type: "item"
 			}]
-			x: -1.5d
-			y: 2.0d
+			x: 4.0d
+			y: -2.0d
 		}
 		{
+			dependencies: ["61A87B555F6F736C"]
+			description: ["If you choose to automate blaze cakes though, you'll need eggs for the blaze cake base."]
 			id: "5004C4D4D6A40E1C"
 			tasks: [{
 				id: "1B7D9D271490975A"
 				item: "minecraft:wheat"
 				type: "item"
 			}]
-			x: -3.5d
-			y: 4.0d
+			x: 2.0d
+			y: -2.0d
 		}
 		{
+			dependencies: ["61A87B555F6F736C"]
+			description: [
+				"Regardless of which superheating source you choose, you'll need automated lava for this chapter."
+				""
+				"You can melt cobblestone into lava, but, this cycle requires superheating to start. You'll need to carefully balance how you use your superheating fuel so that you never run out."
+			]
 			id: "05659E1DE2D77A38"
 			tasks: [{
 				id: "49C9389AC6929A70"
@@ -287,8 +362,8 @@
 				type: "item"
 			}]
 			title: "Any #forge:cobblestone"
-			x: 0.5d
-			y: 7.5d
+			x: 0.0d
+			y: 2.0d
 		}
 		{
 			dependencies: ["662CE9859BE0F913"]
@@ -299,62 +374,92 @@
 				type: "item"
 			}]
 			x: 2.0d
-			y: 6.5d
+			y: 4.0d
 		}
 		{
-			dependencies: ["3AE6CA0134B44049"]
+			dependencies: [
+				"3AE6CA0134B44049"
+				"7607FF74026E97E8"
+			]
+			description: ["Coal coke, aside from being a requirement to smelt steel, is also a high quality solid fuel."]
 			id: "32945248A0491741"
 			tasks: [{
 				id: "1D97BDA3057DF19F"
 				item: "tfmg:coal_coke"
 				type: "item"
 			}]
-			x: 5.0d
-			y: -5.0d
+			x: 6.0d
+			y: -12.0d
 		}
 		{
 			dependencies: ["3D4E029D6ECC3F90"]
+			description: ["You can enchant charcoal to transmute it into coal."]
 			id: "3AE6CA0134B44049"
+			rewards: [
+				{
+					count: 16
+					id: "5E107B2F5C996BE5"
+					item: "ars_nouveau:fire_essence"
+					type: "item"
+				}
+				{
+					count: 16
+					id: "3107AE65C0A2059F"
+					item: "ars_nouveau:earth_essence"
+					type: "item"
+				}
+			]
 			tasks: [{
 				id: "49CCB819E7C6B3DD"
 				item: "minecraft:coal"
 				type: "item"
 			}]
-			x: 3.5d
-			y: -6.0d
+			x: 2.0d
+			y: -12.0d
 		}
 		{
+			dependencies: ["61A87B555F6F736C"]
+			description: [
+				"Did you automate wood in the earlier chapters?"
+				""
+				"If so, charcoal is a easy-to-access renewable fuel source."
+			]
 			id: "3D4E029D6ECC3F90"
 			tasks: [{
 				id: "5F9744D884D9F4F9"
 				item: "minecraft:charcoal"
 				type: "item"
 			}]
-			x: 1.5d
-			y: -6.5d
+			x: 0.0d
+			y: -12.0d
 		}
 		{
+			dependencies: [
+				"3A708FE87956300D"
+				"19FA45774983DA79"
+			]
 			id: "56194FBB8BFDBC86"
 			tasks: [{
 				id: "6926345E78DD7BAE"
 				item: "create:sturdy_sheet"
 				type: "item"
 			}]
-			x: 13.0d
-			y: 5.0d
+			x: 18.0d
+			y: 2.0d
 		}
 		{
 			dependencies: [
 				"3AE6CA0134B44049"
 				"1DB7690FA91A5285"
 			]
+			description: ["Cast iron is a precursor form that doesn't require superheating. It's still useful for several things."]
 			id: "7F3705D39789C4D0"
 			tasks: [{
 				id: "6F166A472A36CCBC"
 				item: "kubejs:molten_cast_iron_bucket"
 				type: "item"
 			}]
-			x: 9.0d
+			x: 2.0d
 			y: -8.0d
 		}
 		{
@@ -365,7 +470,202 @@
 				item: "tfmg:cast_iron_ingot"
 				type: "item"
 			}]
-			x: 10.5d
+			x: 6.0d
+			y: -8.0d
+		}
+		{
+			dependencies: ["27A1B10B3D3FD676"]
+			id: "5A4A984E4C6E0ADC"
+			tasks: [{
+				id: "4DE52C9A8596B777"
+				item: "minecraft:obsidian"
+				type: "item"
+			}]
+			x: 18.0d
+			y: 8.0d
+		}
+		{
+			dependencies: ["662CE9859BE0F913"]
+			id: "27A1B10B3D3FD676"
+			tasks: [{
+				id: "693EA265FDD5CB21"
+				item: "minecraft:magma_block"
+				type: "item"
+			}]
+			x: 8.0d
+			y: 8.0d
+		}
+		{
+			dependencies: ["5A4A984E4C6E0ADC"]
+			id: "3A708FE87956300D"
+			tasks: [{
+				id: "289DDA3E205844A1"
+				item: "create:powdered_obsidian"
+				type: "item"
+			}]
+			x: 18.0d
+			y: 5.0d
+		}
+		{
+			dependencies: ["318C60A121F68C81"]
+			id: "0D49F7009518DEC8"
+			tasks: [{
+				id: "70F5B80D543D4B48"
+				item: "tfmg:screw"
+				type: "item"
+			}]
+			x: 16.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["318C60A121F68C81"]
+			id: "79B63BFC11E77382"
+			tasks: [{
+				id: "5DC49B94BEC67F05"
+				item: "tfmg:heavy_plate"
+				type: "item"
+			}]
+			x: 18.0d
+			y: -6.0d
+		}
+		{
+			dependencies: [
+				"318C60A121F68C81"
+				"62D9B093C6D6B232"
+			]
+			description: ["Screwdrivers have durability, if only there were a way to get an unbreakable one..."]
+			id: "5FD60166A60F0448"
+			tasks: [{
+				id: "23F85CFE9E74B2AD"
+				item: {
+					Count: 1b
+					id: "tfmg:screwdriver"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: 18.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["79B63BFC11E77382"]
+			id: "62D9B093C6D6B232"
+			tasks: [{
+				id: "096E5BE16880028A"
+				item: "tfmg:rebar"
+				type: "item"
+			}]
+			x: 18.0d
+			y: -4.0d
+		}
+		{
+			dependencies: ["61A87B555F6F736C"]
+			id: "49789F2A01DB4EB2"
+			tasks: [{
+				id: "2D5B274F7C1AF71A"
+				item: "minecraft:sugar_cane"
+				type: "item"
+			}]
+			x: 2.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["19FA45774983DA79"]
+			description: ["See the Create ponder for how to set up a Coke Oven."]
+			id: "7607FF74026E97E8"
+			rewards: [{
+				count: 8
+				id: "4C9D46CDACD5720A"
+				item: "tfmg:coke_oven"
+				type: "item"
+			}]
+			tasks: [{
+				id: "22D90C220EF6BFBE"
+				item: "tfmg:coke_oven"
+				type: "item"
+			}]
+			x: 6.0d
+			y: -10.0d
+		}
+		{
+			dependencies: ["3C9F4B037437C8CD"]
+			description: ["Unlocking superheated blaze burners opens the gate to the most powerful source of kinetic energy in Create."]
+			icon: "create:steam_engine"
+			id: "28D76BDC9F8E5E85"
+			optional: true
+			rewards: [
+				{
+					count: 64
+					id: "2AA0245CA87BA9BB"
+					item: "create:fluid_tank"
+					type: "item"
+				}
+				{
+					count: 8
+					id: "5C7FDB7EE13011E3"
+					item: "create:steam_engine"
+					type: "item"
+				}
+			]
+			tasks: [{
+				icon: "create:steam_engine"
+				id: "7F328AACF422DBCB"
+				observe_type: 0
+				timer: 0L
+				to_observe: "create:steam_engine"
+				type: "observation"
+			}]
+			title: "Steam Engines"
+			x: 16.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["19FA45774983DA79"]
+			description: ["Industrial iron is hammered from cast iron, and is purely decorative in this pack."]
+			id: "0DADA566EB134994"
+			optional: true
+			tasks: [{
+				id: "70B50773E71B9CE8"
+				item: "createdeco:industrial_iron_ingot"
+				type: "item"
+			}]
+			x: 8.0d
+			y: -8.0d
+		}
+		{
+			dependencies: ["79B63BFC11E77382"]
+			description: ["With steel unlocked, you can now make reusable casts for all your metallurgy needs."]
+			id: "319612B4B3D441C1"
+			optional: true
+			rewards: [
+				{
+					count: 16
+					id: "77B44FDC63DCC18E"
+					item: "kubejs:steel_gem_cast"
+					type: "item"
+				}
+				{
+					count: 16
+					id: "25033B91F31F44D2"
+					item: "kubejs:steel_ingot_cast"
+					type: "item"
+				}
+			]
+			tasks: [{
+				id: "2B6FB6CF481C817D"
+				item: {
+					Count: 1b
+					id: "ftbfiltersystem:smart_filter"
+					tag: {
+						"ftbfiltersystem:filter": "or(item_tag(kubejs:steel_casts))"
+					}
+				}
+				type: "item"
+			}]
+			title: "Steel Casting"
+			x: 18.0d
 			y: -8.0d
 		}
 	]

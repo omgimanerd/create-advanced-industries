@@ -3,13 +3,16 @@
 
 ServerEvents.tags('item', (e) => {
   e.add('kubejs:screwdriver', 'tfmg:screwdriver')
-  e.add('kubejs:screwdriver', 'kubejs:screwdriver_of_assblasting')
+  e.add('kubejs:screwdriver', 'kubejs:unbreakable_screwdriver')
+
+  e.add('kubejs:steel_casts', 'kubejs:steel_ingot_cast')
+  e.add('kubejs:steel_casts', 'kubejs:steel_gem_cast')
+  e.add('kubejs:steel_casts', 'kubejs:steel_block_cast')
 })
 
 ServerEvents.recipes((e) => {
   const redefineRecipe = redefineRecipe_(e)
   const ingotFluid = global.MeltableItem.DEFAULT_INGOT_FLUID
-  const blockFluid = ingotFluid * global.MeltableItem.DEFAULT_BLOCK_RATIO
 
   // Eggs from dough
   e.recipes.create.haunting('minecraft:egg', 'create:dough')
@@ -42,6 +45,18 @@ ServerEvents.recipes((e) => {
     },
     burnTime: 25600, // 25600 ticks per bucket (equivalent to 8x blaze cake)
     superheated: true,
+  })
+
+  // Additional straw recipe from sugarcane
+  e.custom({
+    type: 'createaddition:rolling',
+    input: {
+      item: 'minecraft:sugar_cane',
+    },
+    result: {
+      item: 'createaddition:straw',
+      count: 1,
+    },
   })
 
   // Bone blocks
@@ -166,6 +181,17 @@ ServerEvents.recipes((e) => {
     )
     .superheated()
     .id('kubejs:steel_smelting_overhaul')
+  e.shaped(
+    'tfmg:steel_block',
+    [
+      'SSS', //
+      'SSS', //
+      'SSS', //
+    ],
+    {
+      S: 'tfmg:steel_ingot',
+    }
+  )
 
   // Recipes for reusable steel casts
   new SequencedAssembly('tfmg:heavy_plate')
@@ -180,9 +206,35 @@ ServerEvents.recipes((e) => {
     .outputs(e, 'kubejs:steel_gem_cast')
   new SequencedAssembly('tfmg:heavy_plate')
     .transitional('kubejs:intermediate_steel_block_cast')
-    .deploy('minecraft:iron_block')
+    .deploy('minecraft:steel_block')
     .press(3)
     .outputs(e, 'kubejs:steel_block_cast')
+
+  // Recipe for screwdriver with rebar overhaul.
+  e.remove({ id: 'tfmg:stonecutting/rebar' })
+  e.custom({
+    type: 'createaddition:rolling',
+    input: {
+      item: 'tfmg:heavy_plate',
+    },
+    result: {
+      item: 'tfmg:rebar',
+      count: 2,
+    },
+  })
+  redefineRecipe(
+    'tfmg:screwdriver',
+    [
+      '  R', //
+      ' S ', //
+      'D  ', //
+    ],
+    {
+      R: 'tfmg:rebar',
+      S: 'tfmg:steel_ingot',
+      D: 'minecraft:red_dye',
+    }
+  )
 
   // Steel mechanism overhaul
   e.remove({ id: 'tfmg:sequenced_assembly/steel_mechanism' })

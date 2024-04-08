@@ -109,6 +109,27 @@
 			x: 2.5d
 			y: 0.0d
 		}
+		{
+			description: ["Simply Magnets is in this modpack, the superior magnet mod in my humble opinion."]
+			id: "64E1AA2E7E85D8DF"
+			rewards: [{
+				count: 4
+				id: "31B3E65B49A605D5"
+				item: "simplemagnets:basic_demagnetization_coil"
+				type: "item"
+			}]
+			tasks: [{
+				id: "17530114C5F24840"
+				item: {
+					Count: 1b
+					id: "simplemagnets:basicmagnet"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: 5.0d
+			y: 0.0d
+		}
 	]
 	title: "QOL Mods"
 }

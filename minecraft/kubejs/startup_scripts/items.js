@@ -6,9 +6,9 @@ StartupEvents.registry('item', (e) => {
   registerItem('kubejs:zinc_hand')
 
   // Unbreakable screwdriver for crafting steel mechanisms
-  e.create('kubejs:screwdriver_of_assblasting')
+  e.create('kubejs:unbreakable_screwdriver')
     .texture('tfmg:item/screwdriver')
-    .displayName('Unbreakable Screwdriver of Assblasting')
+    .displayName('Unbreakable Screwdriver')
     .glow(true)
     .fireResistant(true)
     .maxDamage(0)

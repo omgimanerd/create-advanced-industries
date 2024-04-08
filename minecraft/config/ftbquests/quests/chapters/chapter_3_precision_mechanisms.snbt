@@ -18,6 +18,11 @@
 				"From here on forward, there will be a lot less hand-holding to guide you. Don't give up! JEI is your best friend."
 			]
 			id: "256AB7BB1AE145A6"
+			rewards: [{
+				id: "754028A9354218F1"
+				item: "farmersdelight:honey_cookie"
+				type: "item"
+			}]
 			tasks: [{
 				id: "32C1DE9643377F52"
 				title: "Start"
