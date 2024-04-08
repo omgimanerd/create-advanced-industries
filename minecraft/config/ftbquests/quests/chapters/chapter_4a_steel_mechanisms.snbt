@@ -343,6 +343,30 @@
 			x: 13.0d
 			y: 5.0d
 		}
+		{
+			dependencies: [
+				"3AE6CA0134B44049"
+				"1DB7690FA91A5285"
+			]
+			id: "7F3705D39789C4D0"
+			tasks: [{
+				id: "6F166A472A36CCBC"
+				item: "kubejs:molten_cast_iron_bucket"
+				type: "item"
+			}]
+			x: 9.0d
+			y: -8.0d
+		}
+		{
+			id: "19FA45774983DA79"
+			tasks: [{
+				id: "0937060DB8AC8BDE"
+				item: "tfmg:cast_iron_ingot"
+				type: "item"
+			}]
+			x: 10.5d
+			y: -8.0d
+		}
 	]
 	title: "Chapter 4a: Steel Mechanisms"
 }

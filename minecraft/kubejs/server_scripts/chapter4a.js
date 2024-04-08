@@ -7,10 +7,9 @@ ServerEvents.tags('item', (e) => {
 })
 
 ServerEvents.recipes((e) => {
-  const ingotFluid = global.metallurgy.kDefaultIngotFluid
-
-  // Generate utility functions from util.js
   const redefineRecipe = redefineRecipe_(e)
+  const ingotFluid = global.MeltableItem.DEFAULT_INGOT_FLUID
+  const blockFluid = ingotFluid * global.MeltableItem.DEFAULT_BLOCK_RATIO
 
   // Eggs from dough
   e.recipes.create.haunting('minecraft:egg', 'create:dough')
@@ -56,35 +55,79 @@ ServerEvents.recipes((e) => {
     Fluid.water(1000),
   ])
 
-  // Charcoal transmutation to coal, with a slight discount for blocks
-  const pedestalItems = [
-    'ars_nouveau:earth_essence',
-    'minecraft:coal_block',
-    'ars_nouveau:earth_essence',
-    'minecraft:coal_block',
-  ]
-  e.recipes.ars_nouveau.imbuement(
+  // Charcoal transmutation to coal, with a discount for blocks
+  e.recipes.ars_nouveau.enchanting_apparatus(
+    ['ars_nouveau:earth_essence', 'ars_nouveau:fire_essence'],
     'minecraft:charcoal',
     'minecraft:coal',
-    2000,
-    pedestalItems
+    200
   )
-  e.recipes.ars_nouveau.imbuement(
+  e.recipes.ars_nouveau.enchanting_apparatus(
+    ['ars_nouveau:earth_essence', 'ars_nouveau:fire_essence'],
     'thermal:charcoal_block',
     'minecraft:coal_block',
-    15000,
-    pedestalItems
+    1000
   )
 
+  // Overhaul cast iron
+  e.remove({ id: 'tfmg:mixing/cast_iron_ingot' })
+  e.recipes.create
+    .mixing(
+      [
+        Fluid.of('kubejs:molten_cast_iron', ingotFluid),
+        Item.of('thermal:slag').withChance(0.25),
+      ],
+      [Fluid.of('kubejs:molten_iron', ingotFluid), Item.of('minecraft:coal', 2)]
+    )
+    .heated()
+
+  // Industrial iron made from cast iron, decorative only
+  e.remove({ id: 'create:industrial_iron_block_from_ingots_iron_stonecutting' })
+  e.remove({ id: 'create:industrial_iron_block_from_iron_ingots_stonecutting' })
+  e.remove({ id: 'createdeco:compacting/industrial_iron_ingot' })
+  new SequencedAssembly('tfmg:cast_iron_ingot')
+    .transitional('kubejs:intermediate_industrial_iron_ingot')
+    .press(3)
+    .outputs(e, 'createdeco:industrial_iron_ingot')
+
+  // Obsidian overhaul for sturdy sheets
+  e.remove({ output: 'minecraft:magma_block' })
+  e.remove({ id: 'thermal:machines/press/packing2x2/press_magma_packing' })
+  e.recipes.create.filling('minecraft:magma_block', [
+    '#forge:cobblestone',
+    Fluid.lava(250),
+  ])
+  e.remove({ id: 'create:crushing/obsidian' })
+  e.recipes.ars_nouveau.crush('minecraft:obsidian', [
+    Item.of('create:powdered_obsidian').withChance(1),
+    Item.of('create:powdered_obsidian').withChance(0.1),
+  ])
+  e.recipes.create
+    .crushing(
+      Item.of('create:powdered_obsidian').withChance(0.5),
+      'minecraft:obsidian'
+    )
+    .processingTime(200)
+
+  // Overhaul sturdy sheets to start from cast iron
+  e.remove({ id: 'create:sequenced_assembly/sturdy_sheet' })
+  new SequencedAssembly('tfmg:cast_iron_ingot')
+    .transitional('create:unprocessed_obsidian_sheet')
+    .deploy('create:powdered_obsidian')
+    .press(2)
+    .loops(2)
+    .outputs(e, 'create:sturdy_sheet')
+
   // Coke oven blocks
-  // todo overhaul coke oven blocks
+  redefineRecipe('tfmg:coke_oven', ['CCC', 'CFC', 'TTT'], {
+    C: 'tfmg:cast_iron_ingot',
+    F: 'minecraft:furnace',
+    T: 'minecraft:terracotta',
+  })
 
   // Coke overhaul, this actually produces the fluid amount per tick, so the
   // total output is determined by multiplying by the processing time.
-  e.forEachRecipe({ type: 'tfmg:coking' }, (r) => {
-    console.log(r)
-    r.remove()
-  })
+  e.remove({ id: 'tfmg:coking/coal_coke' })
   e.custom({
     type: 'tfmg:coking',
     ingredients: [
@@ -106,13 +149,15 @@ ServerEvents.recipes((e) => {
     ],
   })
 
-  // Remove TFMG steel recipes
-  e.remove({ id: 'tfmg:casting/steel' })
   // Steel overhaul
+  e.remove({ id: 'tfmg:casting/steel' })
   e.remove({ id: 'tfmg:industrial_blasting/steel' })
   e.recipes.create
     .mixing(
-      [Fluid.of('tfmg:molten_steel', 3 * ingotFluid), 'thermal:slag'],
+      [
+        Fluid.of('tfmg:molten_steel', 3 * ingotFluid),
+        Item.of('thermal:slag').withChance(0.5),
+      ],
       [
         Item.of('tfmg:coal_coke_dust', 2),
         Fluid.of('kubejs:molten_iron', 3 * ingotFluid),
@@ -133,8 +178,11 @@ ServerEvents.recipes((e) => {
     .deploy('minecraft:diamond')
     .press(3)
     .outputs(e, 'kubejs:steel_gem_cast')
-
-  // Overhaul sturdy sheets and make them require industrial iron
+  new SequencedAssembly('tfmg:heavy_plate')
+    .transitional('kubejs:intermediate_steel_block_cast')
+    .deploy('minecraft:iron_block')
+    .press(3)
+    .outputs(e, 'kubejs:steel_block_cast')
 
   // Steel mechanism overhaul
   e.remove({ id: 'tfmg:sequenced_assembly/steel_mechanism' })

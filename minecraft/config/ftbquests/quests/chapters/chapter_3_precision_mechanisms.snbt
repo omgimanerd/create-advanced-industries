@@ -13,9 +13,9 @@
 			description: [
 				"Chapter 3 unlocks precision mechanisms, an important pillar in Create logistics."
 				""
-				"Some of these tasks will actually be a little hard without brass filtering capabilities, but I'm sure you can think of clever ways to do this."
+				"Some of these tasks will actually be a little hard without brass filtering capabilities, but I'm sure you can think of clever ways to do this. The chapter &olooks&r hard, but you've already automated a lot of these steps."
 				""
-				"From here on forward, there will be a lot less hand-holding to guide you."
+				"From here on forward, there will be a lot less hand-holding to guide you. Don't give up! JEI is your best friend."
 			]
 			id: "256AB7BB1AE145A6"
 			tasks: [{
@@ -47,8 +47,6 @@
 				"Congratulations! You now have access to Brass Logistics!"
 				""
 				"There's a lot of powerful stuff you can do with it."
-				""
-				"The production cycles will only get harder from here!"
 			]
 			id: "08663D81454F44E8"
 			rewards: [
@@ -65,16 +63,22 @@
 					type: "item"
 				}
 			]
+			size: 2.0d
 			tasks: [{
 				id: "12FD4E64758D90DB"
 				item: "create:precision_mechanism"
 				type: "item"
 			}]
-			x: 12.0d
-			y: -2.0d
+			x: 10.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["7D237B5C30B4AECC"]
+			description: [
+				"Apply the rose quartz to an iron sheet get an electron tube."
+				""
+				"I hope you automated iron already."
+			]
 			id: "29D21CC7608DD114"
 			tasks: [{
 				id: "4CDCDB773F9E0B11"
@@ -82,7 +86,7 @@
 				type: "item"
 			}]
 			x: 10.0d
-			y: -2.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["35FEE70D2889724B"]
@@ -92,25 +96,31 @@
 				item: "create:brass_sheet"
 				type: "item"
 			}]
-			x: 12.0d
-			y: 0.0d
+			x: 10.0d
+			y: -2.0d
 		}
 		{
 			dependencies: ["4A50DE1D6F439D92"]
+			description: [
+				"And wash it to cool it down."
+				""
+				"You have a chance of getting back the clay cast here."
+			]
 			id: "35FEE70D2889724B"
 			tasks: [{
 				id: "75973D6BF57FB3FD"
 				item: "create:brass_ingot"
 				type: "item"
 			}]
-			x: 12.0d
-			y: 2.0d
+			x: 10.0d
+			y: 0.0d
 		}
 		{
 			dependencies: [
 				"30DEFE72650445CE"
 				"66C109F90DAEFFAD"
 			]
+			description: ["Pour the molten brass into a cast."]
 			id: "4A50DE1D6F439D92"
 			tasks: [{
 				id: "739E59579E632A00"
@@ -122,6 +132,7 @@
 		}
 		{
 			dependencies: ["16096B10FDF70979"]
+			description: ["Rose quartz can be polished by tumbling it with sand, or by sanding it with a machine. Take your pick."]
 			id: "7D237B5C30B4AECC"
 			tasks: [{
 				id: "5F710035892313B3"
@@ -129,10 +140,14 @@
 				type: "item"
 			}]
 			x: 8.0d
-			y: -2.0d
+			y: -6.0d
 		}
 		{
-			dependencies: ["2CD3C925392DD277"]
+			dependencies: [
+				"2CD3C925392DD277"
+				"0271D4BB5B166DC6"
+			]
+			description: ["Combine redstone and nether quartz into rose quartz."]
 			id: "16096B10FDF70979"
 			tasks: [{
 				id: "67FD59D47D71ACCA"
@@ -140,7 +155,7 @@
 				type: "item"
 			}]
 			x: 6.0d
-			y: -2.0d
+			y: -6.0d
 		}
 		{
 			dependencies: [
@@ -148,7 +163,11 @@
 				"42AD35328B048497"
 				"519D022ECB5F6F42"
 			]
-			description: ["If we get some red stone, then all we need is a little bit of magic and heat to turn it into redstone!"]
+			description: [
+				"If we get some red stone, then all we need is a little bit of magic and heat to turn it into redstone!"
+				""
+				"Mix cobblestone, red dye, and liquefied source together to get redstone."
+			]
 			id: "2CD3C925392DD277"
 			tasks: [{
 				id: "4B417CC9F2E4BBE9"
@@ -156,18 +175,21 @@
 				type: "item"
 			}]
 			x: 4.0d
-			y: -2.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["16096B10FDF70979"]
+			description: ["Did you notice melting the redstone and pouring it on the nether quartz is more efficient?"]
 			id: "3053435FE174AD3C"
+			invisible: true
+			optional: true
 			tasks: [{
 				id: "5BF4CE9148F5DCE3"
 				item: "kubejs:molten_redstone_bucket"
 				type: "item"
 			}]
 			x: 6.0d
-			y: -4.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["71FAA310DA3D588D"]
@@ -182,6 +204,11 @@
 		}
 		{
 			dependencies: ["38E010EEA4A77E38"]
+			description: [
+				"Melting down tuff yields molten zinc..."
+				""
+				"...and some other impurities."
+			]
 			id: "5581B367614EA274"
 			tasks: [{
 				id: "4FA26E8302F01648"
@@ -193,6 +220,7 @@
 		}
 		{
 			dependencies: ["42AD35328B048497"]
+			description: ["With a little bit of source, we can transmute cobblestone to tuff."]
 			id: "38E010EEA4A77E38"
 			tasks: [{
 				id: "7B5DA1C0E9F28197"
@@ -217,6 +245,8 @@
 		{
 			dependencies: ["7CB72E5D1BF48057"]
 			description: [
+				"Clay blocks can be cut into ingot or gem casts."
+				""
 				"For now, we don't have the capabilities to make reuseable casts. Clay casts have a chance of breaking each time they are used to cast something."
 				""
 				"It would be good to automate clay anyway, since it might be useful in the future as well (hint hint)."
@@ -235,6 +265,7 @@
 				"360E45D9718B6578"
 				"2B8298F4B50342A6"
 			]
+			description: ["Mix sand, dirt, and water to get clay."]
 			id: "7CB72E5D1BF48057"
 			tasks: [{
 				id: "24EF9CD4D86AFEFD"
@@ -246,6 +277,7 @@
 		}
 		{
 			dependencies: ["42AD35328B048497"]
+			description: ["Mill or crush cobblestone to get gravel."]
 			id: "49D1BE5206E9F4EA"
 			tasks: [{
 				id: "4C779D50540CA22B"
@@ -257,6 +289,7 @@
 		}
 		{
 			dependencies: ["49D1BE5206E9F4EA"]
+			description: ["Crush it again to get sand."]
 			id: "360E45D9718B6578"
 			tasks: [{
 				id: "64B2B9C9C9B185C0"
@@ -268,6 +301,7 @@
 		}
 		{
 			dependencies: ["49D1BE5206E9F4EA"]
+			description: ["You can smelt or blast gravel into slag."]
 			id: "1CC432A2892B42D5"
 			tasks: [{
 				id: "7C53BB2658CD595F"
@@ -303,6 +337,7 @@
 				{
 					id: "0D499F456535526D"
 					item: "thermal:compost"
+					optional_task: true
 					type: "item"
 				}
 			]
@@ -315,6 +350,7 @@
 				"360D9ADBFF3CDE8F"
 				"360E45D9718B6578"
 			]
+			description: ["Dirt can be automated from sand, compost, and slag."]
 			id: "2B8298F4B50342A6"
 			tasks: [{
 				id: "40B2F39DA9F25F42"
@@ -334,48 +370,142 @@
 				type: "item"
 			}]
 			x: 2.0d
-			y: -2.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["256AB7BB1AE145A6"]
-			description: ["I hope you automated these from chapter 2b."]
+			description: ["I hope you automated this from chapter 2b."]
 			id: "519D022ECB5F6F42"
 			tasks: [{
 				id: "2DFD6231A55F9ED2"
 				item: "starbunclemania:source_fluid_bucket"
 				type: "item"
 			}]
-			x: 2.0d
-			y: -4.0d
+			x: 0.0d
+			y: -6.0d
 		}
 		{
 			dependencies: [
 				"3383144C6D0FBAD4"
 				"5581B367614EA274"
 			]
+			description: ["Molten brass can be made by combining molten copper and molten zinc."]
 			id: "66C109F90DAEFFAD"
 			tasks: [{
 				id: "011D39A0BE46CBAA"
 				item: "kubejs:molten_brass_bucket"
 				type: "item"
 			}]
-			x: 6.0d
-			y: 6.0d
+			x: 10.0d
+			y: 8.0d
 		}
 		{
 			dependencies: [
 				"30DEFE72650445CE"
 				"5581B367614EA274"
 			]
+			description: [
+				"Did you end up casting the lead too?"
+				""
+				"Seems useless now though..."
+			]
 			id: "6B79A03DFFD8B049"
 			invisible: true
+			rewards: [{
+				id: "31D00C9515A7AC0E"
+				type: "xp"
+				xp: 1000
+			}]
 			tasks: [{
 				id: "4EE527B97EF20D7F"
 				item: "thermal:lead_ingot"
 				type: "item"
 			}]
+			x: 8.0d
+			y: 6.0d
+		}
+		{
+			dependencies: ["360E45D9718B6578"]
+			description: ["Haunting sand will get you soul sand."]
+			id: "1FAF850E383E186C"
+			tasks: [{
+				id: "33AB8534DD362F33"
+				item: "minecraft:soul_sand"
+				type: "item"
+			}]
 			x: 6.0d
-			y: 4.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["1FAF850E383E186C"]
+			description: ["You can wash soul sand to get nether quartz."]
+			id: "0271D4BB5B166DC6"
+			tasks: [{
+				id: "3E4BE0EFD0EA5942"
+				item: "minecraft:quartz"
+				type: "item"
+			}]
+			x: 6.0d
+			y: -4.0d
+		}
+		{
+			dependencies: ["256AB7BB1AE145A6"]
+			description: [
+				"Chapter 3 has some heated recipes, which will require delving into the nether to find a blaze for a blaze burner."
+				""
+				"Here's one on us."
+				""
+				"Luckily, you can also create a filled blaze burner with some fire essences from Ars Nouveau."
+			]
+			id: "75DF00BC8C5543BB"
+			rewards: [{
+				id: "7A07CA3E00A39F37"
+				item: "create:blaze_burner"
+				type: "item"
+			}]
+			tasks: [
+				{
+					dimension: "minecraft:the_nether"
+					id: "4F638D3E4FA1D61B"
+					type: "dimension"
+				}
+				{
+					id: "7012B1E80F4079CD"
+					item: "create:empty_blaze_burner"
+					type: "item"
+				}
+			]
+			x: -2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"1FAF850E383E186C"
+				"7CB72E5D1BF48057"
+			]
+			description: ["You can also choose to melt the nether quartz instead."]
+			id: "064458511DEB323C"
+			optional: true
+			rewards: [{
+				count: 16
+				id: "271264FD6A0CDA69"
+				item: "kubejs:clay_gem_cast"
+				type: "item"
+			}]
+			tasks: [
+				{
+					id: "70A1E028AFA44130"
+					item: "kubejs:clay_gem_cast"
+					type: "item"
+				}
+				{
+					id: "07F3484B900E9C6E"
+					item: "kubejs:molten_quartz_clay_cast"
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: -2.0d
 		}
 	]
 	title: "Chapter 3: Precision Mechanisms"
