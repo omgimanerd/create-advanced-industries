@@ -176,6 +176,12 @@
 			description: ["Hot stuff!"]
 			icon: "create:blaze_burner"
 			id: "3C9F4B037437C8CD"
+			rewards: [{
+				count: 8
+				id: "56D2688D62865C5E"
+				item: "create:blaze_burner"
+				type: "item"
+			}]
 			size: 2.0d
 			tasks: [{
 				id: "5CF796AB1F19F1D3"
@@ -332,7 +338,7 @@
 		}
 		{
 			dependencies: ["61A87B555F6F736C"]
-			description: ["If you choose to automate blaze cakes though, you'll need eggs for the blaze cake base."]
+			description: ["If you choose to blaze cakes though, you'll need eggs for the blaze cake base."]
 			id: "5004C4D4D6A40E1C"
 			tasks: [{
 				id: "1B7D9D271490975A"
@@ -562,6 +568,7 @@
 		}
 		{
 			dependencies: ["61A87B555F6F736C"]
+			description: ["Sugar is required for both blaze cakes and biofuel."]
 			id: "49789F2A01DB4EB2"
 			tasks: [{
 				id: "2D5B274F7C1AF71A"

@@ -32,6 +32,7 @@
 			]
 			icon: "minecraft:cobblestone"
 			id: "1846D065B001B15F"
+			min_width: 350
 			rewards: [{
 				count: 8
 				id: "1F4EF1E167FB3F1C"

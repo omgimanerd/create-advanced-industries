@@ -12,6 +12,11 @@
 			dependencies: ["5013E6F84B112682"]
 			description: ["Chapter 2b unlocks source mechanisms, which are the entry point into Ars Nouveau."]
 			id: "001AE1E4A8E1972E"
+			rewards: [{
+				id: "2429CB2EA5BCEE9D"
+				item: "ars_nouveau:source_berry_roll"
+				type: "item"
+			}]
 			tasks: [{
 				id: "6488E7699DC3D8FB"
 				title: "Start"
