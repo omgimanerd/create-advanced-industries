@@ -135,7 +135,7 @@
 				}
 			]
 			title: "Iron Nugget"
-			x: 2.5d
+			x: 0.0d
 			y: -7.5d
 		}
 		{
@@ -202,7 +202,7 @@
 			]
 			title: "Andesite Alloy"
 			x: 5.0d
-			y: -5.0d
+			y: -7.5d
 		}
 		{
 			dependencies: ["65F00346034419C5"]
@@ -225,8 +225,9 @@
 					type: "item"
 				}
 			]
+			title: "Shafts"
 			x: 5.0d
-			y: -2.5d
+			y: -5.0d
 		}
 		{
 			dependencies: ["0A1CEFA45C20D991"]
@@ -256,7 +257,7 @@
 					type: "item"
 				}
 			]
-			title: "Logs"
+			title: "Any #minecraft:logs"
 			x: 2.5d
 			y: 0.0d
 		}
@@ -288,12 +289,12 @@
 					type: "item"
 				}
 			]
-			title: "Stripped Logs"
+			title: "Any #forge:stripped_logs"
 			x: 5.0d
 			y: 0.0d
 		}
 		{
-			dependencies: ["6FA4151E4E653522"]
+			dependencies: ["0F38B72E1CAA406C"]
 			description: ["Sawing the stripped logs again will yield you planks, at a higher ratio than if you were to handcraft them."]
 			icon: "minecraft:oak_planks"
 			id: "79839708653EABAC"
@@ -320,7 +321,7 @@
 					type: "item"
 				}
 			]
-			title: "Planks"
+			title: "Any #minecraft:planks"
 			x: 5.0d
 			y: 2.5d
 		}
@@ -329,7 +330,7 @@
 				"0F38B72E1CAA406C"
 				"2FF85F7E00F74EE8"
 			]
-			description: ["You can always craft cogwheels the normal way, but if you automate this with a deployer, then ... well you get the idea."]
+			description: ["You can always craft cogwheels the normal way or with a mixer, but if you automate this with a deployer, then ... well you get the idea."]
 			icon: "create:cogwheel"
 			id: "08E85F97B03195BF"
 			tasks: [
@@ -348,15 +349,14 @@
 					type: "item"
 				}
 			]
+			title: "Cogwheels"
 			x: 7.5d
 			y: 0.0d
 		}
 		{
 			dependencies: [
+				"4850DF538DD8B5D9"
 				"65F00346034419C5"
-				"08E85F97B03195BF"
-				"2FF85F7E00F74EE8"
-				"79839708653EABAC"
 			]
 			description: ["Now deploy all of these on an andesite alloy and you've got an andesite mechanism!"]
 			id: "33F8E4848D9165B2"
@@ -373,6 +373,7 @@
 					xp: 100
 				}
 			]
+			size: 2.0d
 			tasks: [{
 				id: "7175424A0E95216E"
 				item: "kubejs:andesite_mechanism"
@@ -380,6 +381,24 @@
 			}]
 			x: 10.0d
 			y: 0.0d
+		}
+		{
+			dependencies: ["79839708653EABAC"]
+			id: "4850DF538DD8B5D9"
+			tasks: [{
+				id: "451FE5A772714F7C"
+				item: {
+					Count: 1b
+					id: "ftbfiltersystem:smart_filter"
+					tag: {
+						"ftbfiltersystem:filter": "or(item_tag(minecraft:wooden_slabs))"
+					}
+				}
+				type: "item"
+			}]
+			title: "Any #minecraft:wooden_slabs"
+			x: 7.5d
+			y: 2.5d
 		}
 	]
 	title: "Chapter 1: Andesite Mechanisms"

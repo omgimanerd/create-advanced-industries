@@ -2,10 +2,6 @@
 // Recipe overhauls for Chapter 1 progression.
 
 ServerEvents.recipes((e) => {
-  // Generate utility functions from util.js
-  const redefineRecipe = redefineRecipe_(e)
-  const redefineMechanismRecipe = redefineMechanismRecipe_(e)
-
   // Andesite and iron nugget overhaul
   e.remove({ id: 'minecraft:andesite' })
   e.remove({ id: 'create:compacting/andesite_from_flint' })
@@ -29,6 +25,17 @@ ServerEvents.recipes((e) => {
     'minecraft:andesite',
     'minecraft:iron_nugget',
   ])
+
+  // Cutting recipes for all wooden slabs.
+  e.forEachRecipe(
+    { type: 'minecraft:crafting_shaped', output: '#minecraft:wooden_slabs' },
+    (r) => {
+      const parsed = JSON.parse(r.json)
+      const wood = parsed.key['#'].item
+      const result = parsed.result.item
+      e.recipes.create.cutting(Item.of(result, 3), wood)
+    }
+  )
 
   // Cogwheel crafting
   e.remove({ type: 'create:deploying', output: 'create:cogwheel' })
@@ -54,7 +61,7 @@ ServerEvents.recipes((e) => {
   ).id('kubejs:andesite_mechanism_manual_only')
   new SequencedAssembly('create:andesite_alloy')
     .transitional('kubejs:incomplete_andesite_mechanism')
-    .deploy('#minecraft:planks')
+    .deploy('#minecraft:wooden_slabs')
     .deploy('create:shaft')
     .deploy('create:cogwheel')
     .outputs(e, 'kubejs:andesite_mechanism')
