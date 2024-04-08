@@ -8,13 +8,32 @@ ServerEvents.recipes((e) => {
   const redefineMechanismRecipe = redefineMechanismRecipe_(e)
   const redefineEnchantingRecipe = redefineEnchantingRecipe_(e)
 
+  //////////////
+  // Ars Creo //
+  //////////////
+  redefineRecipe('ars_creo:starbuncle_wheel', [
+    'ars_nouveau:starbuncle_charm',
+    'create:water_wheel',
+    'create:precision_mechanism',
+  ])
+
   /////////////////
   // Ars Nouveau //
   /////////////////
-  redefineRecipe('ars_nouveau:novice_spell_book', [
-    'minecraft:book',
-    'kubejs:source_mechanism',
-  ])
+  redefineRecipe(
+    'ars_nouveau:novice_spell_book',
+    [
+      ' M ', //
+      'MBM', //
+      ' M ', //
+    ],
+    {
+      B: 'minecraft:book',
+      M: 'kubejs:source_mechanism',
+    }
+  )
+  // Gate warp scrolls behind quantum
+
   e.replaceInput(
     'ars_nouveau:enchanting_apparatus',
     'minecraft:gold_ingot',
@@ -98,20 +117,21 @@ ServerEvents.recipes((e) => {
       M: 'kubejs:source_mechanism',
     }
   )
-  redefineRecipe(
-    'starbunclemania:fluid_sourcelink',
+  redefineEnchantingRecipe(
+    'ars_nouveau:storage_lectern',
     [
-      ' G ', //
-      'GBG', //
-      ' M ',
+      'kubejs:source_mechanism',
+      '#forge:chests',
+      'create:precision_mechanism',
+      '#forge:chests',
+      'kubejs:source_mechanism',
+      '#forge:chests',
+      'create:precision_mechanism',
+      '#forge:chests',
     ],
-    {
-      G: 'minecraft:gold_ingot',
-      B: 'minecraft:bucket',
-      M: 'kubejs:source_mechanism',
-    }
+    'minecraft:lectern',
+    1000
   )
-  // TODO: remove other sourcelink recipes and hide from JEI.
 
   ///////////////////////////
   // Compressed Creativity //
@@ -546,4 +566,21 @@ ServerEvents.recipes((e) => {
     'tfmg:steel_casing',
     'refinedstorage:quartz_enriched_iron',
   ])
+
+  /////////////////////
+  // Starbunclemania //
+  /////////////////////
+  redefineRecipe(
+    'starbunclemania:fluid_sourcelink',
+    [
+      ' G ', //
+      'GBG', //
+      ' M ',
+    ],
+    {
+      G: 'minecraft:gold_ingot',
+      B: 'minecraft:bucket',
+      M: 'kubejs:source_mechanism',
+    }
+  )
 })

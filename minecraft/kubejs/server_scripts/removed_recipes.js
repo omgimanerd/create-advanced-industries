@@ -4,6 +4,7 @@
 // here.
 global.hideJEI = false
 global.removedRecipes = [
+  { output: /^ars_nouveau:[a-z]+_sourcelink/ },
   { output: 'compressedcreativity:compressed_iron_casing' },
   { output: 'createaddition:electric_motor' },
   { output: 'createaddition:alternator' },
