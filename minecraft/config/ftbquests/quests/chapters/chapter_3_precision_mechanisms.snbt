@@ -90,6 +90,7 @@
 		}
 		{
 			dependencies: ["35FEE70D2889724B"]
+			description: ["Press the brass into a sheet."]
 			id: "0AB76939C1A393CA"
 			tasks: [{
 				id: "56BC10F9C51EA75E"
