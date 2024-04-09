@@ -13,4 +13,5 @@ StartupEvents.registry('item', (e) => {
   registerMechanism('kubejs:andesite_mechanism')
   registerMechanism('kubejs:copper_mechanism')
   registerMechanism('kubejs:source_mechanism')
+  registerMechanism('kubejs:plastic_mechanism')
 })

@@ -80,7 +80,18 @@
 				type: "item"
 			}]
 			x: 7.5d
-			y: -1.5d
+			y: 0.0d
+		}
+		{
+			icon: "kubejs:plastic_mechanism"
+			id: "11BA49A842F724F6"
+			tasks: [{
+				id: "28CFD4CE6924A0A5"
+				type: "checkmark"
+			}]
+			title: "Plastic Mechanisms"
+			x: 5.5d
+			y: -2.5d
 		}
 	]
 	title: "Progression"

@@ -63,7 +63,7 @@
 				type: "item"
 			}]
 			title: "Building Wands"
-			x: -2.5d
+			x: -2.0d
 			y: 0.0d
 		}
 		{
@@ -106,7 +106,7 @@
 				type: "item"
 			}]
 			title: "Functional Storage"
-			x: 2.5d
+			x: 2.0d
 			y: 0.0d
 		}
 		{
@@ -127,8 +127,87 @@
 				}
 				type: "item"
 			}]
-			x: 5.0d
+			x: 4.0d
 			y: 0.0d
+		}
+		{
+			description: [
+				"Want to sleep without resetting your spawn point?"
+				""
+				"Or sleep to pass the day?"
+			]
+			id: "11336DA3B627B311"
+			rewards: [{
+				id: "46A2C677FC4E0957"
+				type: "xp"
+				xp: 100
+			}]
+			tasks: [{
+				id: "7EFC94E7A93C74A2"
+				item: {
+					Count: 1b
+					id: "ftbfiltersystem:smart_filter"
+					tag: {
+						"ftbfiltersystem:filter": "or(item_tag(comforts:hammocks)item_tag(comforts:sleeping_bags))"
+					}
+				}
+				title: "Sleeping Bag or Hammock"
+				type: "item"
+			}]
+			title: "Comforts"
+			x: -2.0d
+			y: 2.0d
+		}
+		{
+			description: ["Need more inventory space? How about a Sophisticated Backpack?"]
+			id: "79B54F4808B55E13"
+			rewards: [
+				{
+					id: "13ABCC786C8C68DF"
+					item: "sophisticatedbackpacks:stack_upgrade_starter_tier"
+					type: "item"
+				}
+				{
+					id: "6FC1CB6ABF189CE0"
+					item: "sophisticatedbackpacks:crafting_upgrade"
+					type: "item"
+				}
+			]
+			tasks: [{
+				id: "22767FB4894F58A3"
+				item: {
+					Count: 1b
+					id: "ftbfiltersystem:smart_filter"
+					tag: {
+						"ftbfiltersystem:filter": "or(item(sophisticatedbackpacks:backpack)item(sophisticatedbackpacks:copper_backpack)item(sophisticatedbackpacks:iron_backpack)item(sophisticatedbackpacks:gold_backpack)item(sophisticatedbackpacks:diamond_backpack)item(sophisticatedbackpacks:netherite_backpack))"
+					}
+				}
+				type: "item"
+			}]
+			title: "Sophisticated Backpacks"
+			x: 0.0d
+			y: 2.0d
+		}
+		{
+			description: ["Pocket Storage Units are good for storing lots of the same block."]
+			id: "6B8A6F359881D460"
+			rewards: [{
+				id: "53DC48414A0CF0A9"
+				type: "xp"
+				xp: 100
+			}]
+			tasks: [{
+				id: "0AEBD57C41CF2D1E"
+				item: {
+					Count: 1b
+					id: "pocketstorage:psu_1"
+					tag: { }
+				}
+				type: "item"
+			}]
+			title: "Pocket Storage Unit"
+			x: 2.0d
+			y: 2.0d
 		}
 	]
 	title: "QOL Mods"

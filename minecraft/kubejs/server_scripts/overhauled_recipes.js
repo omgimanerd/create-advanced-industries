@@ -8,6 +8,22 @@ ServerEvents.recipes((e) => {
   const redefineMechanismRecipe = redefineMechanismRecipe_(e)
   const redefineEnchantingRecipe = redefineEnchantingRecipe_(e)
 
+  /////////////////////////
+  // Custom KubeJS items //
+  /////////////////////////
+  e.shaped(
+    'kubejs:wooden_hand',
+    [
+      ' A ', //
+      'SSS', //
+      ' S ', //
+    ],
+    {
+      A: 'create:andesite_alloy',
+      S: '#minecraft:planks',
+    }
+  )
+
   //////////////
   // Ars Creo //
   //////////////
@@ -360,7 +376,7 @@ ServerEvents.recipes((e) => {
     'create:deployer',
     'create:shaft',
     'create:andesite_casing',
-    'kubejs:zinc_hand'
+    'kubejs:wooden_hand'
   )
   redefineMechanismRecipe('kubejs:andesite_mechanism')(
     Item.of('create:portable_storage_interface', 2),
@@ -440,6 +456,46 @@ ServerEvents.recipes((e) => {
     }
   )
   // TODO: overhaul tesla coil and intermediate items
+
+  ////////////////////
+  // Create Jetpack //
+  ////////////////////
+  e.remove({ id: 'create_jetpack:jetpack' })
+  e.recipes.create.mechanical_crafting(
+    'create_jetpack:jetpack',
+    [
+      ' BHB ', //
+      'BPTPB', //
+      'BCSCB', //
+      ' C C ', //
+    ],
+    {
+      H: 'create:shaft',
+      B: 'create:brass_sheet',
+      P: 'create:precision_mechanism',
+      T: 'create:copper_backtank',
+      C: 'create:chute',
+      S: 'tfmg:steel_mechanism',
+    }
+  )
+  e.remove({ id: 'create_jetpack:netherite_jetpack' })
+  e.recipes.create.mechanical_crafting(
+    'create_jetpack:netherite_jetpack',
+    [
+      ' SHS ', //
+      'SMPMS', //
+      'SCJCS', //
+      ' C C ', //
+    ],
+    {
+      H: 'create:shaft',
+      S: 'createdeco:netherite_sheet',
+      M: 'tfmg:steel_mechanism',
+      P: 'kubejs:plastic_mechanism',
+      C: 'create:smart_chute',
+      J: 'create_jetpack:jetpack',
+    }
+  )
 
   ////////////////////////////
   // Create: Slice and Dice //
@@ -543,6 +599,17 @@ ServerEvents.recipes((e) => {
     'tfmg:steel_ingot',
     'tfmg:heavy_plate'
   )
+
+  ////////////////////////////////
+  // Create Mechanical Extruder //
+  ////////////////////////////////
+  redefineMechanismRecipe('kubejs:steel_mechanism')(
+    'create_mechanical_extruder:mechanical_extruder',
+    'create:shaft',
+    'create:mechanical_press',
+    'create:andesite_casing'
+  )
+  e.remove({ mod: 'create_mechanical_extruder', output: 'minecraft:stone' })
 
   ///////////////////////////////////
   // Pneumaticcraft: Repressurized //

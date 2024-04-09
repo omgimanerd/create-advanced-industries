@@ -239,6 +239,7 @@ ServerEvents.recipes((e) => {
   // Steel mechanism overhaul
   e.remove({ id: 'tfmg:sequenced_assembly/steel_mechanism' })
   new SequencedAssembly('create:precision_mechanism')
+    .transitional('tfmg:unfinished_steel_mechanism')
     .deploy('tfmg:heavy_plate')
     .deploy('create:sturdy_sheet')
     .press()

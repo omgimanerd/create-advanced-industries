@@ -1,10 +1,16 @@
 // priority: 10
 
+ItemEvents.modification((e) => {
+  e.modify('tfmg:plastic_sheet', (i) => {
+    i.displayName = 'Plastic'
+  })
+})
+
 StartupEvents.registry('item', (e) => {
   const registerItem = registerItem_(e)
 
-  // Zinc hand used for crafting deployers
-  registerItem('kubejs:zinc_hand')
+  // Wooden hand used for crafting deployers
+  registerItem('kubejs:wooden_hand')
 
   // Unbreakable screwdriver for crafting steel mechanisms
   e.create('kubejs:unbreakable_screwdriver')

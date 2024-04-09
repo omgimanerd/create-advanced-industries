@@ -3,6 +3,14 @@
 // This file contains wrappers for utility functions to define them within
 // the callbacks where they will be used.
 
+const randRange = (low, high) => {
+  if (high === undefined) {
+    high = low
+    low = 0
+  }
+  return Math.random() * (high - low) + low
+}
+
 const redefineRecipe_ = (e) => {
   // Overrides shaped/shapeless recipes for a given output
   return (output, shape, keys) => {
