@@ -73,25 +73,42 @@
 			y: 0.0d
 		}
 		{
+			dependencies: ["556060C29831B165"]
 			id: "45F67208743BAE3E"
 			tasks: [{
 				id: "26408A22A3BB3920"
 				item: "tfmg:steel_mechanism"
 				type: "item"
 			}]
+			title: "Chapter 4: Steel Mechanisms"
 			x: 7.5d
 			y: 0.0d
 		}
 		{
+			dependencies: [
+				"45F67208743BAE3E"
+				"413CB04319D49CDB"
+			]
 			icon: "kubejs:plastic_mechanism"
 			id: "11BA49A842F724F6"
 			tasks: [{
 				id: "28CFD4CE6924A0A5"
 				type: "checkmark"
 			}]
-			title: "Plastic Mechanisms"
-			x: 5.5d
-			y: -2.5d
+			title: "Chapter 5a: Logistics Mechanisms"
+			x: 10.0d
+			y: -1.5d
+		}
+		{
+			id: "6B75CD039419AEFC"
+			tasks: [{
+				id: "50CD5C40DCF675C9"
+				item: "kubejs:plastic_mechanism"
+				type: "item"
+			}]
+			title: "Chapter 5b: Placeholder"
+			x: 10.0d
+			y: 1.5d
 		}
 	]
 	title: "Progression"

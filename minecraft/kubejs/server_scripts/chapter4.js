@@ -1,5 +1,5 @@
 // priority: 100
-// Recipe overhauls for Chapter 4A progression.
+// Recipe overhauls for Chapter 4 progression.
 
 ItemEvents.rightClicked('kubejs:unbreakable_screwdriver', (e) => {
   const player = e.player
