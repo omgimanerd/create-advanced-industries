@@ -1,5 +1,10 @@
 // priority: 200
 
+ServerEvents.tags('item', (e) => {
+  // Allow Create wheat flour to be used in PneumaticCraft sourdough.
+  e.add('forge:dusts/flour', 'create:wheat_flour')
+})
+
 // Contains all recipes from all mods that are overhauled, but not directly
 // related to the progression content.
 ServerEvents.recipes((e) => {
@@ -614,16 +619,158 @@ ServerEvents.recipes((e) => {
   ///////////////////////////////////
   // Pneumaticcraft: Repressurized //
   ///////////////////////////////////
-  e.replaceInput(
-    { mod: 'pneumaticcraft' },
-    'pneumaticcraft:ingot_iron_compressed',
-    'tfmg:steel_ingot'
+  const pneumaticcraftMapping = {
+    '#forge:ingots/compressed_iron': 'tfmg:steel_ingot',
+    'pneumaticcraft:compressed_iron_block': 'tfmg:steel_block',
+    'pneumaticcraft:reinforced_brick_wall': 'tfmg:heavy_plate',
+    'pneumaticcraft:reinforced_brick_slab': 'tfmg:steel_ingot',
+    'pneumaticcraft:reinforced_stone_slab': 'tfmg:heavy_plate',
+    'pneumaticcraft:compressed_iron_gear': 'thermal:iron_gear',
+    'pneumaticcraft:logistics_core': 'kubejs:logistics_mechanism',
+  }
+  // Replace all recipes that used reinforced bricks or stone and make them
+  // use steel and heavy plates. Replace all recipes with logistics cores with
+  // logistics mechanisms.
+  for (let [from, to] of Object.entries(pneumaticcraftMapping)) {
+    e.replaceInput(
+      {
+        mod: 'pneumaticcraft',
+        not: [
+          { output: 'pneumaticcraft:compressed_iron_block' },
+          { output: 'pneumaticcraft:ingot_iron_compressed' },
+          { output: 'pneumaticcraft:compressed_iron_gear' },
+        ],
+      },
+      from,
+      to
+    )
+  }
+  const pneumaticcraftKeys = {
+    S: 'tfmg:steel_ingot',
+    H: 'tfmg:heavy_plate',
+    M: 'tfmg:steel_mechanism',
+    A: 'pneumaticcraft:advanced_pressure_tube',
+    T: 'pneumaticcraft:pressure_tube',
+  }
+  redefineRecipe(
+    'pneumaticcraft:advanced_air_compressor',
+    [
+      'HHH', //
+      'HCA', //
+      'SMS', //
+    ],
+    Object.assign({}, pneumaticcraftKeys, {
+      C: 'pneumaticcraft:air_compressor',
+    })
   )
-  e.replaceInput(
-    { mod: 'pneumaticcraft' },
-    '#pneumaticcraft:compressed_iron_block',
-    'tfmg:steel_block'
+  redefineRecipe(
+    'pneumaticcraft:advanced_liquid_compressor',
+    [
+      'HHH', //
+      'HCA', //
+      'SMS', //
+    ],
+    Object.assign({}, pneumaticcraftKeys, {
+      C: 'pneumaticcraft:liquid_compressor',
+    })
   )
+  // TODO (pneumaticcraft:advanced_pressure_tube)
+  redefineRecipe(
+    'pneumaticcraft:air_cannon',
+    [
+      ' B ', //
+      ' MT', //
+      'SXS', //
+    ],
+    Object.assign({}, pneumaticcraftKeys, {
+      B: 'pneumaticcraft:cannon_barrel',
+      X: 'pneumaticcraft:stone_base',
+    })
+  )
+  redefineRecipe(
+    'pneumaticcraft:air_compressor',
+    [
+      'HHH', //
+      'HFT', //
+      'SMS', //
+    ],
+    Object.assign({}, pneumaticcraftKeys, { F: 'minecraft:furnace' })
+  )
+  // TODO(pneumaticcraft:assembly_controller)
+  // TODO(pneumaticcraft:assembly_drill)
+  // TODO(pneumaticcraft:assembly_io_unit_export)
+  // TODO(pneumaticcraft:assembly_io_unit_import)
+  // TODO(pneumaticcraft:assembly_laser)
+  // TODO(pneumaticcraft:assembly_platform)
+  // TODO(pneumaticcraft:charging_station)
+  redefineRecipe(
+    Item.of('pneumaticcraft:heat_pipe', 6),
+    [
+      'LLL', //
+      'CCC', //
+      'LLL',
+    ],
+    {
+      L: 'pneumaticcraft:thermal_lagging',
+      C: 'minecraft:copper_ingot',
+    }
+  )
+  redefineRecipe(
+    'pneumaticcraft:liquid_compressor',
+    [
+      ' C ', //
+      'TFT', //
+      'SMS', //
+    ],
+    Object.assign({}, pneumaticcraftKeys, {
+      C: 'pneumaticcraft:air_compressor',
+      F: {
+        item: 'pneumaticcraft:small_tank',
+        count: 1,
+        type: 'forge:nbt',
+      },
+    })
+  )
+  redefineRecipe(
+    'pneumaticcraft:manual_compressor',
+    [
+      ' C ', //
+      ' T ', //
+      'SBS',
+    ],
+    Object.assign({}, pneumaticcraftKeys, {
+      C: 'create:hand_crank',
+      B: 'pneumaticcraft:stone_base',
+    })
+  )
+  redefineRecipe(
+    'pneumaticcraft:omnidirectional_hopper',
+    [
+      'HMH', //
+      'HCH', //
+      ' H ', //
+    ],
+    Object.assign({}, pneumaticcraftKeys, {
+      C: '#forge:chests/wooden',
+    })
+  )
+  // TODO(pneumaticcraft:capacitor)
+  // TODO(pneumaticcraft:logistics_core)
+  // TODO(pneumaticcraft:pneumatic_cylinder) requires lubricant
+  redefineRecipe(
+    'pneumaticcraft:pressure_gauge',
+    [
+      ' H ', //
+      'HZH', //
+      ' H ', //
+    ],
+    Object.assign({}, pneumaticcraftKeys, { Z: 'create:stressometer' })
+  )
+  redefineRecipe
+  // TODO(pneumaticcraft:transistor)
+  // TODO(pneumaticcraft:turbine_blade)
+
+  // todo overhaul all recipes to require steel + steel mechs
 
   /////////////////////
   // Refined Storage //

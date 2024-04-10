@@ -9,7 +9,10 @@ global.removedRecipes = [
   { output: 'create:brass_hand' },
   { output: 'createaddition:electric_motor' },
   { output: 'createaddition:alternator' },
-  { output: /createconnected:copycat_[a-z_]+/ },
+  { output: /^createconnected:copycat_[a-z_]+/ },
+  { output: /^pneumaticcraft:compressed_iron.*/ },
+  { output: 'pneumaticcraft:ingot_iron_compressed' },
+  { output: 'pneumaticcraft:wheat_flour' },
   { output: /^tfmg:[a-z_]+_concrete$/ },
   { output: /^tfmg:aluminum_.*/ },
   { output: /^tfmg:cast_iron_distillation.*/ },
@@ -37,6 +40,13 @@ ServerEvents.recipes((e) => {
   ////////////
   e.remove({ output: '#forge:nuggets', type: 'create:splashing' })
 
+  ///////////////////////////////////
+  // PneumaticCraft: Repressurized //
+  ///////////////////////////////////
+  e.remove({ id: /^pneumaticcraft:[a-z_/]+compressed_iron_block$/ })
+  e.remove({ id: /^pneumaticcraft:[a-z_/]+compressed_iron_ingot$/ })
+  e.remove({ id: /^pneumaticcraft:[a-z_/]+wheat_flour$/ })
+
   ////////////////////
   // Thermal Series //
   ////////////////////
@@ -44,6 +54,6 @@ ServerEvents.recipes((e) => {
   e.remove({ id: /^thermal:furnace_[0-9]+/ })
 
   // Can't remove pumpjack hammer holder recipe warning?
-  // e.remove(/tfmg:mechanical_crafting\/pumpjack_hammer_holder/)
-  e.remove(/tfmg:colored_concrete\/full_block\/[a-z_]+concrete/)
+  // e.remove(/tfmg:mechanical_crafting\/pumpjack_hammer_holder.*/)
+  e.remove(/^tfmg:colored_concrete\/full_block\/[a-z_]+concrete/)
 })
