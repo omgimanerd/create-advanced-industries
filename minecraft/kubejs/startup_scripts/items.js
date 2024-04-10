@@ -1,11 +1,5 @@
 // priority: 10
 
-ItemEvents.modification((e) => {
-  e.modify('tfmg:plastic_sheet', (i) => {
-    i.displayName = 'Plastic'
-  })
-})
-
 StartupEvents.registry('item', (e) => {
   const registerItem = registerItem_(e)
 
@@ -19,10 +13,4 @@ StartupEvents.registry('item', (e) => {
     .glow(true)
     .fireResistant(true)
     .maxDamage(0)
-    .use((level, player) => {
-      if (level.isClientSide()) {
-        player.tell('You got screwed!')
-      }
-      return true
-    })
 })

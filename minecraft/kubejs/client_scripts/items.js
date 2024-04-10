@@ -6,3 +6,7 @@ ItemEvents.tooltip((e) => {
     Text.green('An unbreakable screwdriver!')
   )
 })
+
+ClientEvents.lang('en_us', (e) => {
+  e.renameItem('tfmg:plastic_sheet', 'Plastic')
+})
