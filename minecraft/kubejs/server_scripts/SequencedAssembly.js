@@ -1,4 +1,4 @@
-// priority: 0
+// priority: 900
 
 // JS prototype class to make registering mechanism sequenced assemblies
 // easier.
@@ -6,7 +6,7 @@ function SequencedAssembly(input) {
   this.input = input
   this.intermediate = input
 
-  this.n_loops = 1
+  this.nLoops = 1
   this.steps = []
 }
 
@@ -16,7 +16,7 @@ SequencedAssembly.prototype.transitional = function (intermediate) {
 }
 
 SequencedAssembly.prototype.loops = function (n) {
-  this.n_loops = n
+  this.nLoops = n
   return this
 }
 
@@ -43,8 +43,8 @@ SequencedAssembly.prototype.fill = function (fluid, qty_mb) {
   return this
 }
 
-SequencedAssembly.prototype.deploy = function (item) {
-  this.steps.push({ deploy: item })
+SequencedAssembly.prototype.deploy = function (item, keepHeldItem) {
+  this.steps.push({ deploy: item, keepHeldItem: !!keepHeldItem })
   return this
 }
 
@@ -60,17 +60,21 @@ SequencedAssembly.prototype.outputs = function (e, output) {
         step.fill,
       ])
     } else if (step.deploy !== undefined) {
-      return e.recipes.createDeploying(this.intermediate, [
+      let r = e.recipes.createDeploying(this.intermediate, [
         this.intermediate,
         step.deploy,
       ])
+      if (step.keepHeldItem) {
+        return r.keepHeldItem()
+      }
+      return r
     } else {
       throw new Error('Unknown SequencedAssembly step!')
     }
   })
   const outputArray = typeof output === 'string' ? [output] : output
-  e.recipes.create
+  return e.recipes.create
     .sequenced_assembly(outputArray, this.input, steps)
     .transitionalItem(this.intermediate)
-    .loops(this.n_loops)
+    .loops(this.nLoops)
 }
