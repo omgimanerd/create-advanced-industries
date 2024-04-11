@@ -115,6 +115,12 @@ StartupEvents.registry('fluid', (e) => {
   global.metallurgy.meltable_items.forEach((i) => {
     i.registerFluid(e)
   })
+
+  // Molten Silicon has a custom fluid type and cannot be casted
+  e.create('kubejs:molten_silicon')
+    .thickTexture(0x6e6074)
+    .bucketColor(0x6e6074)
+    .displayName('Molten Silicon')
 })
 
 // Register all metallurgy related items.
