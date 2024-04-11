@@ -53,6 +53,8 @@ ServerEvents.recipes((e) => {
   // Automate moss + growth => sprinkly bits
   // liquid fert can be augmented into crystal growth accelerator
 
+  // amethyst?
+
   // Catalyst for first moss block
   e.recipes.create
     .item_application('minecraft:moss_block', [

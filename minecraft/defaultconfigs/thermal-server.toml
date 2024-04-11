@@ -200,18 +200,18 @@
 
 	[Recipes.Bottler]
 		#If TRUE, Bucket filling recipes will be automatically created for the Fluid Encapsulator.
-		"Default Bucket Recipes" = true
+		"Default Bucket Recipes" = false
 		#If TRUE, Florb filling recipes will be automatically created for the Fluid Encapsulator.
-		"Default Florb Recipes" = true
+		"Default Florb Recipes" = false
 		#If TRUE, Potion filling recipes will be automatically created for the Fluid Encapsulator.
-		"Default Potion Recipes" = true
+		"Default Potion Recipes" = false
 		#This sets the recipe energy multiplier for the Fluid Encapsulator. This scales all recipe energy requirements.
 		#Range: 0.0625 ~ 16.0
 		"Energy Multiplier" = 1.0
 
 	[Recipes.Brewer]
 		#If TRUE, default Potion recipes will be automatically created for the Alchemical Imbuer.
-		"Default Potion Recipes" = true
+		"Default Potion Recipes" = false
 		#This sets the recipe energy multiplier for the Crystallizer. This scales all recipe energy requirements.
 		#Range: 0.0625 ~ 16.0
 		"Energy Multiplier" = 1.0

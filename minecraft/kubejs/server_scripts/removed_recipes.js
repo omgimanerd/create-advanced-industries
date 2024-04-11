@@ -51,7 +51,6 @@ ServerEvents.recipes((e) => {
   // Thermal Series //
   ////////////////////
   e.remove({ id: /^thermal:machines.*/ })
-  e.remove({ id: /^thermal:furnace_[0-9]+/ })
 
   // Can't remove pumpjack hammer holder recipe warning?
   // e.remove(/tfmg:mechanical_crafting\/pumpjack_hammer_holder.*/)

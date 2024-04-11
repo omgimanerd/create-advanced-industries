@@ -12,6 +12,11 @@ Ponder.registry((e) => {
   // )
 })
 
+JEIEvents.addItems((e) => {
+  e.add('thermal:drill_head')
+  e.add('thermal:saw_blade')
+})
+
 JEIEvents.hideItems((e) => {
   // Defined in server_scripts/removed_recipes.js
   if (global.hideJEI) {
@@ -26,6 +31,9 @@ JEIEvents.hideItems((e) => {
   // e.hide('kubejs:incomplete_andesite_mechanism')
   // e.hide('kubejs:incomplete_copper_mechanism')
   // e.hide('kubejs:incomplete_source_mechanism')
-  // Hide removed recipes from JEI.
-  // e.hide('createaddition:electric_motor')
+})
+
+JEIEvents.removeCategories((e) => {
+  e.remove('thermal:bottler')
+  e.remove('thermal:furnace')
 })

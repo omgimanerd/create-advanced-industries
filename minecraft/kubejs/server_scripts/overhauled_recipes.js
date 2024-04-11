@@ -797,4 +797,28 @@ ServerEvents.recipes((e) => {
       M: 'kubejs:source_mechanism',
     }
   )
+
+  ////////////////////
+  // Thermal Series //
+  ////////////////////
+  redefineRecipe(
+    'thermal:saw_blade',
+    [
+      ' S ', //
+      'S S', //
+      ' S ', //
+    ],
+    {
+      S: 'create:iron_sheet',
+    }
+  )
+  redefineRecipe(
+    'thermal:drill_head',
+    [
+      ' I ', //
+      'ISI', //
+      'ISI', //
+    ],
+    { I: 'minecraft:iron_ingot', S: 'create:shaft' }
+  )
 })

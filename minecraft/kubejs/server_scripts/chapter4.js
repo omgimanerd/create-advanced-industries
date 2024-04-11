@@ -24,7 +24,7 @@ ServerEvents.recipes((e) => {
   // Eggs from dough
   e.recipes.create.haunting('minecraft:egg', 'create:dough')
 
-  // Lava generation should be cheaper as well.
+  // Lava generation should be cheaper
   e.remove({ id: 'create:mixing/lava_from_cobble' })
   e.recipes.create
     .mixing(Fluid.lava(250), '#minecraft:cobblestone')
