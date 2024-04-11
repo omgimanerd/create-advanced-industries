@@ -102,6 +102,5 @@ ThermoPlantRecipe.prototype.outputs = function (e, outputs) {
     }
     throw new Error(`Output did not match a known format: ${output}`)
   }
-
   e.custom(base)
 }

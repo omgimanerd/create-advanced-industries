@@ -45,5 +45,6 @@ HeatFrameRecipe.prototype.outputs = function (e, output) {
   if (!PneumaticcraftUtils.setIfValid(base, 'result', g)) {
     throw new Error(`Invalid output ${output}`)
   }
+
   e.custom(base)
 }

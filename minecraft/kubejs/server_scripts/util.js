@@ -6,37 +6,47 @@ let PneumaticcraftUtils = {}
 PneumaticcraftUtils.ITEM_REGEX = /^(([0-9]+)x )*([#]*)([a-z_]+:[a-z_]+)$/
 PneumaticcraftUtils.FLUID_REGEX = /^(([0-9]+)mb )([#]*)([a-z_]+:[a-z_]+)$/
 
-PneumaticcraftUtils.parseItemInput = (s) => {
-  if (typeof s !== 'string') {
-    return null
-  }
+PneumaticcraftUtils.parseStackedItemInput = (s) => {
+  if (typeof s !== 'string') return null
+
   const m = s.match(PneumaticcraftUtils.ITEM_REGEX)
-  if (m === null || m.length != 5) {
-    return null
-  }
-  let quantity = parseInt(m[2], 10)
-  quantity = isNaN(quantity) ? 1 : quantity
+  if (m === null || m.length != 5) return null
+
+  let output = {}
+
   const tag = m[3]
+  const id = m[4]
   if (tag !== '') {
-    return {
-      quantity: quantity,
-      tag: m[4],
-    }
+    output.tag = id
+  } else {
+    output.item = id
   }
-  return {
-    quantity: quantity,
-    item: m[4],
+
+  const quantity = parseInt(m[2], 10)
+  if (!isNaN(quantity)) {
+    output.type = 'pneumaticcraft:stacked_item'
+    output.count = quantity
   }
+
+  return output
+}
+
+PneumaticcraftUtils.parseItemInput = (s) => {
+  const g = PneumaticcraftUtils.parseStackedItemInput(s)
+  if (g === null) return null
+  if (g.count !== undefined) {
+    throw new Error(`Single item input cannot have a quantity: ${s}`)
+  }
+  return g
 }
 
 PneumaticcraftUtils.parseItemOutput = (s) => {
-  const g = PneumaticcraftUtils.parseItemInput(s)
-  if (g === null) {
-    return null
-  }
+  const g = PneumaticcraftUtils.parseStackedItemInput(s)
+  if (g === null) return null
   if (g.tag !== undefined) {
     throw new Error(`Output item cannot have a tag: ${s}`)
   }
+  delete g.type
   return g
 }
 

@@ -40,7 +40,7 @@ ServerEvents.recipes((e) => {
   //   200 mb diesel = 160 kerosene
   //   300 mb kerosene + 160 kerosene = 368 gasoline
   //   300 mb gasoline + 368 gasoline = 534.4 lpg
-  //   200 mb lpg + 534.4 lpg = 734.4
+  //   200 mb lpg + 534.4 lpg = 734.4 total
   // Fractional distillation overhauls
   e.remove({ id: 'pneumaticcraft:thermo_plant/kerosene' })
   new ThermoPlantRecipe(['100mb #forge:diesel'])
@@ -71,7 +71,7 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'pneumaticcraft:heat_frame_cooling/plastic' })
   new HeatFrameRecipe('1000mb pneumaticcraft:plastic')
     .bonusOutput(/*limit=*/ 1, /*multiplier=*/ 0.01)
-    .outputs(e, 'tfmg:plastic_sheet')
+    .outputs(e, '2x tfmg:plastic_sheet')
   e.recipes.create.cutting('3x pneumaticcraft:plastic', 'tfmg:plastic_sheet')
 
   // TODO overhaul reinf stone
@@ -93,9 +93,9 @@ ServerEvents.recipes((e) => {
       ]
     )
     .superheated()
-  new HeatFrameRecipe('1000mb kubejs:molten_silicon').outputs(
+  new HeatFrameRecipe('360mb kubejs:molten_silicon').outputs(
     e,
-    'refinedstorage:silicon'
+    '4x refinedstorage:silicon'
   )
 
   // Diamond sawblades to cut silicon into wafers
