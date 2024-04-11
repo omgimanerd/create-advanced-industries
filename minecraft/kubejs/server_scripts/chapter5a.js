@@ -72,10 +72,7 @@ ServerEvents.recipes((e) => {
   new HeatFrameRecipe('1000mb pneumaticcraft:plastic')
     .bonusOutput(/*limit=*/ 1, /*multiplier=*/ 0.01)
     .outputs(e, 'tfmg:plastic_sheet')
-  e.recipes.create.cutting(
-    Item.of('pneumaticcraft:plastic', 3),
-    'tfmg:plastic_sheet'
-  )
+  e.recipes.create.cutting('3x pneumaticcraft:plastic', 'tfmg:plastic_sheet')
 
   // TODO overhaul reinf stone
 
@@ -83,22 +80,16 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'refinedstorage:silicon' })
   e.recipes.create
     .mixing(
-      [
-        Fluid.of('kubejs:molten_silicon', 3 * ingotFluid),
-        Item.of('thermal:slag', 2),
-      ],
-      [Item.of('minecraft:quartz', 4), Item.of('tfmg:coal_coke_dust', 2)]
+      [Fluid.of('kubejs:molten_silicon', 3 * ingotFluid), '2x thermal:slag'],
+      ['4x minecraft:quartz', '2x tfmg:coal_coke_dust']
     )
     .superheated()
   e.recipes.create
     .mixing(
-      [
-        Fluid.of('kubejs:molten_silicon', 3 * ingotFluid),
-        Item.of('thermal:slag', 2),
-      ],
+      [Fluid.of('kubejs:molten_silicon', 3 * ingotFluid), '2x thermal:slag'],
       [
         Fluid.of('kubejs:molten_quartz', 3 * ingotFluid),
-        Item.of('tfmg:coal_coke_dust', 2),
+        '2x tfmg:coal_coke_dust',
       ]
     )
     .superheated()
@@ -124,7 +115,7 @@ ServerEvents.recipes((e) => {
     .deploy('#kubejs:diamond_sawblade')
     .fill('minecraft:water', 500)
     .loops(4)
-    .outputs(e, Item.of('kubejs:silicon_wafer', 4))
+    .outputs(e, '4x kubejs:silicon_wafer')
 
   // Transistor overhaul
   e.remove({ id: 'pneumaticcraft:pressure_chamber/transistor' })

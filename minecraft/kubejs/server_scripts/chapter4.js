@@ -99,7 +99,7 @@ ServerEvents.recipes((e) => {
         Fluid.of('kubejs:molten_cast_iron', ingotFluid),
         Item.of('thermal:slag').withChance(0.25),
       ],
-      [Fluid.of('kubejs:molten_iron', ingotFluid), Item.of('minecraft:coal', 2)]
+      [Fluid.of('kubejs:molten_iron', ingotFluid), '2x minecraft:coal']
     )
     .heated()
 
@@ -181,7 +181,7 @@ ServerEvents.recipes((e) => {
         Item.of('thermal:slag').withChance(0.5),
       ],
       [
-        Item.of('tfmg:coal_coke_dust', 2),
+        '2x tfmg:coal_coke_dust',
         Fluid.of('kubejs:molten_iron', 3 * ingotFluid),
         'tfmg:limesand',
       ]

@@ -19,7 +19,7 @@ ServerEvents.recipes((e) => {
   )
 
   // Automated dirt reward
-  e.recipes.create.mixing(Item.of('minecraft:dirt', 4), [
+  e.recipes.create.mixing('4x minecraft:dirt', [
     'thermal:compost',
     'thermal:slag',
     '#forge:sand',
@@ -28,10 +28,10 @@ ServerEvents.recipes((e) => {
   // Sand is millable from both gravel and sandstone
   e.remove({ id: 'create:milling/sandstone' })
   e.recipes.create.milling('minecraft:sand', 'minecraft:gravel')
-  e.recipes.create.milling(Item.of('minecraft:sand', 4), 'minecraft:sandstone')
+  e.recipes.create.milling('4x minecraft:sand', 'minecraft:sandstone')
 
   // Clay block automation, dirt comes from thermal recipe
-  e.recipes.create.mixing(Item.of('minecraft:clay', 2), [
+  e.recipes.create.mixing('2x minecraft:clay', [
     'minecraft:dirt',
     'minecraft:sand',
     Fluid.of('minecraft:water', 1000),
@@ -39,8 +39,8 @@ ServerEvents.recipes((e) => {
 
   // Clay block processing
   e.remove({ id: 'create:milling/clay' })
-  e.recipes.create.milling(Item.of('minecraft:clay_ball', 4), 'minecraft:clay')
-  e.recipes.create.cutting(Item.of('minecraft:clay_ball', 4), 'minecraft:clay')
+  e.recipes.create.milling('4x minecraft:clay_ball', 'minecraft:clay')
+  e.recipes.create.cutting('4x minecraft:clay_ball', 'minecraft:clay')
 
   // Clay block cutting into cast
   e.stonecutting('kubejs:clay_ingot_cast', 'minecraft:clay')
@@ -101,8 +101,8 @@ ServerEvents.recipes((e) => {
 
   // Renewable redstone automation
   e.recipes.create
-    .mixing(Item.of('minecraft:redstone', 8), [
-      Item.of('minecraft:cobblestone', 8),
+    .mixing('8x minecraft:redstone', [
+      '8x minecraft:cobblestone',
       'minecraft:red_dye',
       Fluid.of('starbunclemania:source_fluid', 800),
     ])

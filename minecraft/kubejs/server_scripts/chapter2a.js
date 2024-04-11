@@ -6,8 +6,8 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'minecraft:granite' })
   e.remove({ id: 'ars_nouveau:manipulation_essence_to_granite' })
   e.remove({ id: 'create:compacting/granite_from_flint' })
-  e.recipes.create.mixing(Item.of('minecraft:granite', 8), [
-    Item.of('minecraft:cobblestone', 8),
+  e.recipes.create.mixing('8x minecraft:granite', [
+    '8x minecraft:cobblestone',
     'minecraft:red_dye',
   ])
 
@@ -31,7 +31,7 @@ ServerEvents.recipes((e) => {
   // Cutting rubber block for higher rubber yield
   e.remove({ id: 'thermal:storage/cured_rubber_from_block' })
   e.recipes.create.cutting(
-    Item.of('thermal:cured_rubber', 8),
+    '8x thermal:cured_rubber',
     'thermal:cured_rubber_block'
   )
 

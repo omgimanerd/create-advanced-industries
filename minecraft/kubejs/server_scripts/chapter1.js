@@ -9,7 +9,7 @@ ServerEvents.recipes((e) => {
     'minecraft:cobblestone',
     'minecraft:flint',
   ]).id('kubejs:andesite_manual_only')
-  e.recipes.create.compacting(Item.of('minecraft:andesite', 2), [
+  e.recipes.create.compacting('2x minecraft:andesite', [
     'minecraft:cobblestone',
     'minecraft:flint',
   ])
@@ -21,7 +21,7 @@ ServerEvents.recipes((e) => {
   // Andesite alloy crafting
   e.remove({ id: 'create:crafting/materials/andesite_alloy_from_zinc' })
   e.remove({ type: 'create:mixing', output: 'create:andesite_alloy' })
-  e.recipes.create.mixing(Item.of('create:andesite_alloy', 2), [
+  e.recipes.create.mixing('2x create:andesite_alloy', [
     'minecraft:andesite',
     'minecraft:iron_nugget',
   ])
@@ -39,7 +39,7 @@ ServerEvents.recipes((e) => {
 
   // Cogwheel crafting
   e.remove({ type: 'create:deploying', output: 'create:cogwheel' })
-  e.recipes.create.deploying(Item.of('create:cogwheel', 8), [
+  e.recipes.create.deploying('8x create:cogwheel', [
     'create:shaft',
     '#forge:stripped_logs',
   ])

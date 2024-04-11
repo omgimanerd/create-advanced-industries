@@ -67,15 +67,12 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'minecraft:bone_meal_from_bone_block' })
   e.recipes.create.milling(
     [
-      Item.of('minecraft:bone_meal', 6),
+      '6x minecraft:bone_meal',
       Item.of('minecraft:bone_meal', 3).withChance(0.5),
     ],
     'minecraft:bone_block'
   )
-  e.recipes.create.crushing(
-    Item.of('minecraft:bone_meal', 9),
-    'minecraft:bone_block'
-  )
+  e.recipes.create.crushing('9x minecraft:bone_meal', 'minecraft:bone_block')
 
   // Compost block from compost
   redefineRecipe(

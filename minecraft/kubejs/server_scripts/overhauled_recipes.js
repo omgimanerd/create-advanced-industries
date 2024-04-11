@@ -202,7 +202,7 @@ ServerEvents.recipes((e) => {
   )
   e.recipes.remove({ id: 'create:mechanical_crafting/crushing_wheel' })
   e.recipes.create.mechanical_crafting(
-    Item.of('create:crushing_wheel', 2),
+    '2x create:crushing_wheel',
     [
       ' SSS ', //
       'SSPSS', //
@@ -235,13 +235,13 @@ ServerEvents.recipes((e) => {
     'create:cogwheel'
   )
   redefineMechanismRecipe('kubejs:andesite_mechanism')(
-    Item.of('create:chute', 4),
+    '4x create:chute',
     'create:iron_sheet',
     'minecraft:iron_ingot',
     'create:iron_sheet'
   )
   redefineMechanismRecipe('kubejs:precision_mechanism')(
-    Item.of('create:smart_chute', 4),
+    '4x create:smart_chute',
     'create:brass_sheet',
     'create:chute',
     'create:electron_tube'
@@ -258,7 +258,7 @@ ServerEvents.recipes((e) => {
     'create:fluid_pipe',
   ])
   redefineMechanismRecipe('kubejs:copper_mechanism')(
-    Item.of('create:smart_fluid_pipe', 2),
+    '2x create:smart_fluid_pipe',
     'create:filter',
     'create:fluid_pipe',
     'minecraft:redstone_torch'
@@ -269,7 +269,7 @@ ServerEvents.recipes((e) => {
     'create:iron_sheet',
   ])
   redefineMechanismRecipe('kubejs:copper_mechanism')(
-    Item.of('create:fluid_tank', 2),
+    '2x create:fluid_tank',
     'create:copper_sheet',
     'minecraft:barrel',
     'create:copper_sheet'
@@ -280,19 +280,19 @@ ServerEvents.recipes((e) => {
     P: 'create:rope_pulley',
   })
   redefineMechanismRecipe('kubejs:copper_mechanism')(
-    Item.of('create:item_drain', 2),
+    '2x create:item_drain',
     'minecraft:iron_bars',
     'create:copper_casing',
     'minecraft:air'
   )
   redefineMechanismRecipe('kubejs:copper_mechanism')(
-    Item.of('create:spout', 2),
+    '2x create:spout',
     'minecraft:air',
     'create:copper_casing',
     'thermal:cured_rubber'
   )
   redefineMechanismRecipe('kubejs:copper_mechanism')(
-    Item.of('create:portable_fluid_interface', 2),
+    '2x create:portable_fluid_interface',
     'create:chute',
     'create:copper_casing',
     'minecraft:air'
@@ -384,13 +384,13 @@ ServerEvents.recipes((e) => {
     'kubejs:wooden_hand'
   )
   redefineMechanismRecipe('kubejs:andesite_mechanism')(
-    Item.of('create:portable_storage_interface', 2),
+    '2x create:portable_storage_interface',
     'create:chute',
     'create:andesite_casing',
     'minecraft:air'
   )
   redefineRecipe(
-    Item.of('create:mechanical_harvester', 2),
+    '2x create:mechanical_harvester',
     [
       'AIA', //
       'MIM', //
@@ -404,7 +404,7 @@ ServerEvents.recipes((e) => {
     }
   )
   redefineRecipe(
-    Item.of('create:mechanical_plough', 2),
+    '2x create:mechanical_plough',
     [
       'III', //
       'MAM', //
@@ -424,7 +424,7 @@ ServerEvents.recipes((e) => {
     'create:crushing_wheel'
   )
   redefineMechanismRecipe('create:precision_mechanism')(
-    Item.of('create:mechanical_crafter', 2),
+    '2x create:mechanical_crafter',
     'create:electron_tube',
     'create:brass_casing',
     'minecraft:crafting_table'
@@ -704,7 +704,7 @@ ServerEvents.recipes((e) => {
   // TODO(pneumaticcraft:assembly_platform)
   // TODO(pneumaticcraft:charging_station)
   redefineRecipe(
-    Item.of('pneumaticcraft:heat_pipe', 6),
+    '6x pneumaticcraft:heat_pipe',
     [
       'LLL', //
       'CCC', //
