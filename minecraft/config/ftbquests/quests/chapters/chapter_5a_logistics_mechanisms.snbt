@@ -1,0 +1,134 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "chapter_5a_logistics_mechanisms"
+	group: "5B3547AEADCBC841"
+	icon: "kubejs:logistics_mechanism"
+	id: "1DB5E7F386D48E7A"
+	order_index: 5
+	quest_links: [ ]
+	quests: [
+		{
+			dependencies: ["11BA49A842F724F6"]
+			id: "5978BE35C75966ED"
+			tasks: [{
+				id: "4C552EE5CB2CC18E"
+				title: "Start"
+				type: "checkmark"
+			}]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			id: "3D27BD07DCC89201"
+			tasks: [{
+				id: "28EA7B628245E855"
+				item: "kubejs:logistics_mechanism"
+				type: "item"
+			}]
+			x: 18.0d
+			y: 0.0d
+		}
+		{
+			id: "6D912BAC546961CB"
+			tasks: [{
+				id: "77DD8CC5F0E44F5D"
+				item: "pneumaticcraft:plastic"
+				type: "item"
+			}]
+			x: 10.5d
+			y: -6.0d
+		}
+		{
+			id: "709C290FF8F10B6A"
+			tasks: [{
+				id: "568F90149E5404B3"
+				item: "tfmg:plastic_sheet"
+				type: "item"
+			}]
+			x: 8.0d
+			y: -7.0d
+		}
+		{
+			id: "5BDC36619B26699B"
+			tasks: [{
+				id: "65F5029284DCB6A3"
+				item: "pneumaticcraft:plastic_bucket"
+				type: "item"
+			}]
+			x: 5.5d
+			y: -8.0d
+		}
+		{
+			id: "59EFB832B91FFBA8"
+			tasks: [{
+				id: "14CFA1E1FB8D508B"
+				item: "pneumaticcraft:heat_frame"
+				type: "item"
+			}]
+			x: 3.0d
+			y: -9.0d
+		}
+		{
+			id: "6426BBE70FDA2515"
+			tasks: [{
+				id: "73B223A2FCC90E4D"
+				item: "pneumaticcraft:lpg_bucket"
+				type: "item"
+			}]
+			x: 3.5d
+			y: -7.5d
+		}
+		{
+			id: "230E21BE68901D81"
+			tasks: [{
+				id: "0A510FBFED03C374"
+				item: "pneumaticcraft:kerosene_bucket"
+				type: "item"
+			}]
+			x: 1.5d
+			y: -7.5d
+		}
+		{
+			id: "7A306159E94EA54C"
+			tasks: [{
+				id: "1731903B18832265"
+				item: "pneumaticcraft:diesel_bucket"
+				type: "item"
+			}]
+			x: 0.0d
+			y: -7.5d
+		}
+		{
+			id: "1B2CAA9D8CAB0F09"
+			tasks: [{
+				id: "640C37C158CCEC9C"
+				item: "pneumaticcraft:gasoline_bucket"
+				type: "item"
+			}]
+			x: 2.5d
+			y: -7.5d
+		}
+		{
+			id: "2DD46A2CE3AE0160"
+			tasks: [{
+				id: "1ED5D57DCEE4B5E3"
+				item: "pneumaticcraft:oil_bucket"
+				type: "item"
+			}]
+			x: -2.0d
+			y: -5.5d
+		}
+		{
+			id: "5F46DBF36BF850AF"
+			tasks: [{
+				id: "084297DC6062A152"
+				item: "pneumaticcraft:lubricant_bucket"
+				type: "item"
+			}]
+			x: 0.0d
+			y: -6.5d
+		}
+	]
+	title: "Chapter 5a: Logistics Mechanisms"
+}
