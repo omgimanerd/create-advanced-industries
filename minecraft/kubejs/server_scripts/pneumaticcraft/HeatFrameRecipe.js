@@ -46,5 +46,9 @@ HeatFrameRecipe.prototype.outputs = function (e, output) {
     throw new Error(`Invalid output ${output}`)
   }
 
+  if (PneumaticcraftUtils.LOG_DEBUG_OUTPUT) {
+    console.log(JSON.stringify(base))
+  }
+
   e.custom(base)
 }

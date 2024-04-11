@@ -102,5 +102,10 @@ ThermoPlantRecipe.prototype.outputs = function (e, outputs) {
     }
     throw new Error(`Output did not match a known format: ${output}`)
   }
+
+  if (PneumaticcraftUtils.LOG_DEBUG_OUTPUT) {
+    console.log(JSON.stringify(base))
+  }
+
   e.custom(base)
 }
