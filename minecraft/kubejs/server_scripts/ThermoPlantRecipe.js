@@ -23,13 +23,21 @@ ThermoPlantRecipe.prototype.pressure = function (pressure) {
   return this
 }
 
-ThermoPlantRecipe.prototype.minTemp = function (minTemp_) {
-  this.temperature_.min_temp = minTemp_
+ThermoPlantRecipe.prototype.temperature = function (min_temp, max_temp) {
+  this.temperature_ = {
+    min_temp: min_temp,
+    max_temp: max_temp,
+  }
   return this
 }
 
-ThermoPlantRecipe.prototype.maxTemp = function (maxTemp_) {
-  this.temperature_.max_temp = maxTemp_
+ThermoPlantRecipe.prototype.minTemp = function (min_temp) {
+  this.temperature_.min_temp = min_temp
+  return this
+}
+
+ThermoPlantRecipe.prototype.maxTemp = function (max_temp) {
+  this.temperature_.max_temp = max_temp
   return this
 }
 
@@ -39,7 +47,7 @@ ThermoPlantRecipe.prototype.outputs = function (e, outputs) {
   }
 
   // Fields are keys used in Pneumaticcraft's recipe JSON
-  const base = {
+  let base = {
     type: ThermoPlantRecipe.RECIPE_TYPE,
     exothermic: this.exothermic_,
   }
@@ -62,12 +70,12 @@ ThermoPlantRecipe.prototype.outputs = function (e, outputs) {
     if (typeof input !== 'string') {
       throw new Error(`Invalid input ${input}`)
     }
-    let m = PneumaticcraftUtils.parseItemInput(input)
-    if (PneumaticcraftUtils.setIfValid(base, 'item_input', m)) {
+    let g = PneumaticcraftUtils.parseItemInput(input)
+    if (PneumaticcraftUtils.setIfValid(base, 'item_input', g)) {
       continue
     }
-    m = PneumaticcraftUtils.parseFluidInput(input)
-    if (PneumaticcraftUtils.setIfValid(base, 'fluid_input', m)) {
+    g = PneumaticcraftUtils.parseFluidInput(input)
+    if (PneumaticcraftUtils.setIfValid(base, 'fluid_input', g)) {
       continue
     }
     throw new Error(`Input did not match a known format: ${input}`)
@@ -83,13 +91,13 @@ ThermoPlantRecipe.prototype.outputs = function (e, outputs) {
       throw new Error(`Invalid output ${output}`)
     }
     // If the output matched an item, parse it into the expected JSON format.
-    let m = PneumaticcraftUtils.parseItemOutput(output)
-    if (PneumaticcraftUtils.setIfValid(base, 'item_output', m)) {
+    let g = PneumaticcraftUtils.parseItemOutput(output)
+    if (PneumaticcraftUtils.setIfValid(base, 'item_output', g)) {
       continue
     }
     // If the output matched a fluid, parse it into the expected JSON format.
-    m = PneumaticcraftUtils.parseFluidOutput(output)
-    if (PneumaticcraftUtils.setIfValid(base, 'fluid_output', m)) {
+    g = PneumaticcraftUtils.parseFluidOutput(output)
+    if (PneumaticcraftUtils.setIfValid(base, 'fluid_output', g)) {
       continue
     }
     throw new Error(`Output did not match a known format: ${output}`)

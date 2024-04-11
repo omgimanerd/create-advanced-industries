@@ -3,8 +3,8 @@
 // Utilities for parsing inputs into the Pneumaticcraft custom recipe wrappers.
 let PneumaticcraftUtils = {}
 
-PneumaticcraftUtils.ITEM_REGEX = /^(([0-9]+)x )*([#]*)([a-z]+:[a-z]+)$/
-PneumaticcraftUtils.FLUID_REGEX = /^(([0-9]+)mb )([#]*)([a-z]+:[a-z]+)$/
+PneumaticcraftUtils.ITEM_REGEX = /^(([0-9]+)x )*([#]*)([a-z_]+:[a-z_]+)$/
+PneumaticcraftUtils.FLUID_REGEX = /^(([0-9]+)mb )([#]*)([a-z_]+:[a-z_]+)$/
 
 PneumaticcraftUtils.parseItemInput = (s) => {
   if (typeof s !== 'string') {

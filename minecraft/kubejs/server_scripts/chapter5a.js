@@ -69,22 +69,9 @@ ServerEvents.recipes((e) => {
 
   // Cool plastic in a heat frame
   e.remove({ id: 'pneumaticcraft:heat_frame_cooling/plastic' })
-  e.custom({
-    type: 'pneumaticcraft:heat_frame_cooling',
-    bonus_output: {
-      limit: 1,
-      multiplier: 0.01,
-    },
-    input: {
-      type: 'pneumaticcraft:fluid',
-      amount: 1000,
-      tag: 'pneumaticcraft:plastic',
-    },
-    max_temp: 273,
-    result: {
-      item: 'tfmg:plastic_sheet',
-    },
-  })
+  new HeatFrameRecipe('1000mb pneumaticcraft:plastic')
+    .bonusOutput(/*limit=*/ 1, /*multiplier=*/ 0.01)
+    .outputs(e, 'tfmg:plastic_sheet')
   e.recipes.create.cutting(
     Item.of('pneumaticcraft:plastic', 3),
     'tfmg:plastic_sheet'
@@ -115,18 +102,10 @@ ServerEvents.recipes((e) => {
       ]
     )
     .superheated()
-  e.custom({
-    type: 'pneumaticcraft:heat_frame_cooling',
-    input: {
-      type: 'pneumaticcraft:fluid',
-      amount: 1000,
-      tag: 'kubejs:molten_silicon',
-    },
-    max_temp: 273,
-    result: {
-      item: 'refinedstorage:silicon',
-    },
-  })
+  new HeatFrameRecipe('1000mb kubejs:molten_silicon').outputs(
+    e,
+    'refinedstorage:silicon'
+  )
 
   // Diamond sawblades to cut silicon into wafers
   e.shaped(
