@@ -112,7 +112,7 @@ ServerEvents.recipes((e) => {
     }
   )
   new SequencedAssembly('refinedstorage:silicon')
-    .deploy('#kubejs:diamond_sawblade')
+    .deploy('#kubejs:diamond_saw_blade')
     .fill('minecraft:water', 500)
     .loops(4)
     .outputs(e, '4x kubejs:silicon_wafer')

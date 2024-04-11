@@ -106,7 +106,8 @@ const randRange = (low, high) => {
 const redefineRecipe_ = (e) => {
   // Overrides shaped/shapeless recipes for a given output
   return (output, shape, keys) => {
-    e.remove({ output: output })
+    const id = output.replace(/^[0-9]+x /, '')
+    e.remove({ output: id })
     // 3-argument shaped recipe
     if (keys !== undefined) {
       // Remove keys that aren't present in the shape specification
@@ -133,7 +134,8 @@ const redefineMechanismRecipe_ = (e) => {
   // TOP, MID, BOT are the respective arguments
   return (mechanism) => {
     return (output, top, middle, bottom) => {
-      e.remove({ output: output })
+      const id = output.replace(/^[0-9]+x /, '')
+      e.remove({ output: id })
       return e.shaped(
         output,
         [
@@ -157,7 +159,8 @@ const redefineEnchantingRecipe_ = (e) => {
   return (output, inputs, reagent, source, keepReagentNbt) => {
     source = source === undefined ? 0 : source
     keepReagentNbt = keepReagentNbt === undefined ? true : false
-    e.remove({ output: output })
+    const id = output.replace(/^[0-9]+x /, '')
+    e.remove({ output: id })
     e.recipes.ars_nouveau.enchanting_apparatus(
       inputs,
       reagent,
