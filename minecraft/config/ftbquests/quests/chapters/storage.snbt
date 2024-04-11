@@ -1,0 +1,32 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "storage"
+	group: ""
+	icon: "minecraft:chest"
+	id: "17B71DF15BCA8C40"
+	order_index: 2
+	quest_links: [ ]
+	quests: [{
+		description: [
+			"Storage Lecterns from Ars Nouveau are one option for early game storage organization."
+			""
+			"They are gated by Chapter 3."
+		]
+		id: "70B780688DB73BEA"
+		rewards: [{
+			count: 2
+			id: "0E61FD597CCA560C"
+			item: "ars_nouveau:bookwyrm_charm"
+			type: "item"
+		}]
+		tasks: [{
+			id: "661AC8323127638C"
+			item: "ars_nouveau:storage_lectern"
+			type: "item"
+		}]
+		x: 0.0d
+		y: 0.0d
+	}]
+	title: "Storage"
+}
