@@ -56,6 +56,11 @@ ServerEvents.recipes((e) => {
 
   // Overhaul lubricant from diesel
   e.remove({ id: 'pneumaticcraft:thermo_plant/lubricant_from_biodiesel' })
+  e.remove({ id: 'pneumaticcraft:thermo_plant/lubricant_from_diesel' })
+  new FluidMixerRecipe(e, '250mb #forge:diesel', '250mb #forge:plantoil')
+    .time(100)
+    .pressure(2)
+    .outputs(['500mb pneumaticcraft:lubricant', 'createaddition:biomass'])
 
   // Plastic must come from petrochemical processing, nerf it a little bit
   e.remove({ id: 'pneumaticcraft:thermo_plant/plastic_from_biodiesel' })
