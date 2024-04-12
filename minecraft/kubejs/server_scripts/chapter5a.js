@@ -111,36 +111,36 @@ ServerEvents.recipes((e) => {
       S: 'thermal:saw_blade',
     }
   )
-  new SequencedAssembly('refinedstorage:silicon')
+  new SequencedAssembly(e, 'refinedstorage:silicon')
     .deploy('#kubejs:diamond_saw_blade')
     .fill('minecraft:water', 500)
     .loops(4)
-    .outputs(e, '4x kubejs:silicon_wafer')
+    .outputs('4x kubejs:silicon_wafer')
 
   // Transistor overhaul
   e.remove({ id: 'pneumaticcraft:pressure_chamber/transistor' })
-  new SequencedAssembly('kubejs:silicon_wafer')
+  new SequencedAssembly(e, 'kubejs:silicon_wafer')
     .deploy('minecraft:glass_pane')
     .deploy('minecraft:redstone_torch')
     .deploy('pneumaticcraft:plastic')
     .press()
-    .outputs(e, 'pneumaticcraft:transistor')
+    .outputs('pneumaticcraft:transistor')
 
   // Capacitor overhaul
-  new SequencedAssembly('thermal:silver_plate')
+  new SequencedAssembly(e, 'thermal:silver_plate')
     .deploy('pneumaticcraft:plastic')
     .deploy('thermal:silver_plate')
     .press()
-    .outputs(e, 'pneumaticcraft:capacitor')
+    .outputs('pneumaticcraft:capacitor')
 
   // Pneumatic cylinder overhaul
   e.remove({ id: 'pneumaticcraft:pneumatic_cylinder' })
-  new SequencedAssembly('pneumaticcraft:cannon_barrel')
+  new SequencedAssembly(e, 'pneumaticcraft:cannon_barrel')
     .deploy('tfmg:rebar')
     .press()
     .fill('pneumaticcraft:lubricant', 250)
     .press(2)
-    .outputs(e, 'pneumaticcraft:pneumatic_cylinder')
+    .outputs('pneumaticcraft:pneumatic_cylinder')
 
   // make gates with pneu assemblylatc
 
@@ -151,9 +151,9 @@ ServerEvents.recipes((e) => {
 
   // Hardened planks can only be crafted in a pressure chamber
 
-  new SequencedAssembly('create:precision_mechanism')
+  new SequencedAssembly(e, 'create:precision_mechanism')
     .transitional('kubejs:incomplete_logistics_mechanism')
     .deploy('pneumaticcraft:plastic')
     .deploy('pneumaticcraft:printed_circuit_board')
-    .outputs(e, 'kubejs:logistics_mechanism')
+    .outputs('kubejs:logistics_mechanism')
 })

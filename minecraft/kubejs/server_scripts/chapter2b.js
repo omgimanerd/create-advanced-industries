@@ -24,11 +24,11 @@ ServerEvents.recipes((e) => {
   ])
 
   // Source mechanism
-  new SequencedAssembly('kubejs:andesite_mechanism')
+  new SequencedAssembly(e, 'kubejs:andesite_mechanism')
     .transitional('kubejs:incomplete_source_mechanism')
     .deploy('ars_nouveau:source_gem')
     .press()
     .fill('starbunclemania:source_fluid', 100)
     .press()
-    .outputs(e, 'kubejs:source_mechanism')
+    .outputs('kubejs:source_mechanism')
 })

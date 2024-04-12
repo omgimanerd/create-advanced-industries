@@ -49,10 +49,10 @@ ServerEvents.recipes((e) => {
       M: 'kubejs:andesite_mechanism',
     }
   ).id('kubejs:copper_mechanism_manual_only')
-  new SequencedAssembly('kubejs:andesite_mechanism')
+  new SequencedAssembly(e, 'kubejs:andesite_mechanism')
     .transitional('kubejs:incomplete_copper_mechanism')
     .deploy('create:copper_sheet')
     .deploy('thermal:cured_rubber')
     .press()
-    .outputs(e, 'kubejs:copper_mechanism')
+    .outputs('kubejs:copper_mechanism')
 })

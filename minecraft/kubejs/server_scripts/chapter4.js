@@ -107,10 +107,10 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'create:industrial_iron_block_from_ingots_iron_stonecutting' })
   e.remove({ id: 'create:industrial_iron_block_from_iron_ingots_stonecutting' })
   e.remove({ id: 'createdeco:compacting/industrial_iron_ingot' })
-  new SequencedAssembly('tfmg:cast_iron_ingot')
+  new SequencedAssembly(e, 'tfmg:cast_iron_ingot')
     .transitional('kubejs:intermediate_industrial_iron_ingot')
     .press(3)
-    .outputs(e, 'createdeco:industrial_iron_ingot')
+    .outputs('createdeco:industrial_iron_ingot')
 
   // Obsidian overhaul for sturdy sheets
   e.remove({ output: 'minecraft:magma_block' })
@@ -133,12 +133,12 @@ ServerEvents.recipes((e) => {
 
   // Overhaul sturdy sheets to start from cast iron
   e.remove({ id: 'create:sequenced_assembly/sturdy_sheet' })
-  new SequencedAssembly('tfmg:cast_iron_ingot')
+  new SequencedAssembly(e, 'tfmg:cast_iron_ingot')
     .transitional('create:unprocessed_obsidian_sheet')
     .deploy('create:powdered_obsidian')
     .press(2)
     .loops(2)
-    .outputs(e, 'create:sturdy_sheet')
+    .outputs('create:sturdy_sheet')
 
   // Coke oven blocks
   redefineRecipe('tfmg:coke_oven', ['CCC', 'CFC', 'TTT'], {
@@ -201,21 +201,21 @@ ServerEvents.recipes((e) => {
   )
 
   // Recipes for reusable steel casts
-  new SequencedAssembly('tfmg:heavy_plate')
+  new SequencedAssembly(e, 'tfmg:heavy_plate')
     .transitional('kubejs:intermediate_steel_ingot_cast')
     .deploy('tfmg:steel_ingot')
     .press(3)
-    .outputs(e, 'kubejs:steel_ingot_cast')
-  new SequencedAssembly('tfmg:heavy_plate')
+    .outputs('kubejs:steel_ingot_cast')
+  new SequencedAssembly(e, 'tfmg:heavy_plate')
     .transitional('kubejs:intermediate_steel_gem_cast')
     .deploy('minecraft:diamond')
     .press(3)
-    .outputs(e, 'kubejs:steel_gem_cast')
-  new SequencedAssembly('tfmg:heavy_plate')
+    .outputs('kubejs:steel_gem_cast')
+  new SequencedAssembly(e, 'tfmg:heavy_plate')
     .transitional('kubejs:intermediate_steel_block_cast')
     .deploy('tfmg:steel_block')
     .press(3)
-    .outputs(e, 'kubejs:steel_block_cast')
+    .outputs('kubejs:steel_block_cast')
 
   // Recipe for screwdriver with rebar overhaul.
   e.remove({ id: 'tfmg:stonecutting/rebar' })
@@ -245,7 +245,7 @@ ServerEvents.recipes((e) => {
 
   // Steel mechanism overhaul
   e.remove({ id: 'tfmg:sequenced_assembly/steel_mechanism' })
-  new SequencedAssembly('create:precision_mechanism')
+  new SequencedAssembly(e, 'create:precision_mechanism')
     .transitional('tfmg:unfinished_steel_mechanism')
     .deploy('tfmg:heavy_plate')
     .deploy('create:sturdy_sheet')
@@ -253,5 +253,5 @@ ServerEvents.recipes((e) => {
     .deploy('tfmg:screw')
     .deploy('#kubejs:screwdriver')
     .loops(2)
-    .outputs(e, 'tfmg:steel_mechanism')
+    .outputs('tfmg:steel_mechanism')
 })
