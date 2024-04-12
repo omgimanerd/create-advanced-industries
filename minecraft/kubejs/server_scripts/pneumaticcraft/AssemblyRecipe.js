@@ -13,10 +13,9 @@ function AssemblyRecipe(e, input) {
 
 AssemblyRecipe.TYPE_LASER = 'pneumaticcraft:assembly_laser'
 AssemblyRecipe.TYPE_DRILL = 'pneumaticcraft:assembly_drill'
-AssemblyRecipe.PROGRAM_MAP = {
-  [AssemblyRecipe.TYPE_LASER]: 'laser',
-  [AssemblyRecipe.TYPE_DRILL]: 'drill',
-}
+AssemblyRecipe.PROGRAM_MAP = {}
+AssemblyRecipe.PROGRAM_MAP[AssemblyRecipe.TYPE_LASER] = 'laser'
+AssemblyRecipe.PROGRAM_MAP[AssemblyRecipe.TYPE_DRILL] = 'drill'
 
 AssemblyRecipe.prototype.type = function (type) {
   if (!(type in AssemblyRecipe.PROGRAM_MAP)) {
