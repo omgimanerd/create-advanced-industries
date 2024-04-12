@@ -34,19 +34,15 @@ AssemblyRecipe.prototype.outputs = function (output) {
   }
 
   // Parse the input into the valid JSON format. This recipe must have an input.
-  const itemInput = PneumaticcraftUtils.parseStackedItemInput(this.input_)
-  if (!PneumaticcraftUtils.setIfValid(base, 'input', itemInput)) {
+  const itemInput = Parser.parseStackedItemInput(this.input_)
+  if (!setIfValid(base, 'input', itemInput)) {
     throw new Error(`Invalid input ${itemInput}`)
   }
   // Parse the output into the valid JSON format. This recipe must have an
   // output.
-  const itemOutput = PneumaticcraftUtils.parseItemOutput(output)
-  if (!PneumaticcraftUtils.setIfValid(base, 'result', itemOutput)) {
+  const itemOutput = Parser.parseItemOutput(output)
+  if (!setIfValid(base, 'result', itemOutput)) {
     throw new Error(`Invalid output ${itemOutput}`)
-  }
-
-  if (PneumaticcraftUtils.LOG_DEBUG_OUTPUT) {
-    console.log(JSON.stringify(base))
   }
 
   return this.e_.custom(base)

@@ -33,12 +33,12 @@ FluidMixerRecipe.prototype.outputs = function (outputs) {
     base.pressure = this.pressure_
   }
 
-  const input1 = PneumaticcraftUtils.parseFluidInput(this.input1_)
-  if (!PneumaticcraftUtils.setIfValid(base, 'input1', input1)) {
+  const input1 = Parser.parseFluidInput(this.input1_)
+  if (!setIfValid(base, 'input1', input1)) {
     throw new Error(`Fluid input invalid: ${this.input1_}`)
   }
-  const input2 = PneumaticcraftUtils.parseFluidInput(this.input2_)
-  if (!PneumaticcraftUtils.setIfValid(base, 'input2', input2)) {
+  const input2 = Parser.parseFluidInput(this.input2_)
+  if (!setIfValid(base, 'input2', input2)) {
     throw new Error(`Fluid input invalid: ${this.input2_}`)
   }
 
@@ -51,20 +51,16 @@ FluidMixerRecipe.prototype.outputs = function (outputs) {
       throw new Error(`Invalid output ${output}`)
     }
     // If the output matched an item, parse it into the expected JSON format.
-    let g = PneumaticcraftUtils.parseItemOutput(output)
-    if (PneumaticcraftUtils.setIfValid(base, 'item_output', g)) {
+    let g = Parser.parseItemOutput(output)
+    if (setIfValid(base, 'item_output', g)) {
       continue
     }
     // If the output matched a fluid, parse it into the expected JSON format.
-    g = PneumaticcraftUtils.parseFluidOutput(output)
-    if (PneumaticcraftUtils.setIfValid(base, 'fluid_output', g)) {
+    g = Parser.parseFluidOutput(output)
+    if (setIfValid(base, 'fluid_output', g)) {
       continue
     }
     throw new Error(`Output did not match a known format: ${output}`)
-  }
-
-  if (PneumaticcraftUtils.LOG_DEBUG_OUTPUT) {
-    console.log(JSON.stringify(base))
   }
 
   return this.e_.custom(base)

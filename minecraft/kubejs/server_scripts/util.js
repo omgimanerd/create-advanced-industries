@@ -1,6 +1,11 @@
 // priority: 1000
 
-// Returns a random number in the range [low, high)
+/**
+ * Returns a random number in the range [low, high)
+ * @param {number} low
+ * @param {number=} high
+ * @returns {number}
+ */
 const randRange = (low, high) => {
   if (high === undefined) {
     high = low
@@ -78,4 +83,18 @@ const redefineEnchantingRecipe_ = (e) => {
       keepReagentNbt
     )
   }
+}
+
+/**
+ *
+ * @param {Object} o
+ * @param {string} key
+ * @param {Object} value
+ * @returns {boolean}
+ */
+const setIfValid = (o, key, value) => {
+  if (value === null) return false
+  if (o[key] !== undefined) throw new Error(`Key ${key} is already set on ${o}`)
+  o[key] = value
+  return true
 }

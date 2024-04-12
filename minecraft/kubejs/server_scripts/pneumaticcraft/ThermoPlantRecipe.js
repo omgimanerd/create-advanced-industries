@@ -66,13 +66,13 @@ ThermoPlantRecipe.prototype.outputs = function (outputs) {
   }
   for (const input of this.inputs_) {
     // If the input matched an item, parse it into the expected JSON format.
-    let g = PneumaticcraftUtils.parseItemInput(input)
-    if (PneumaticcraftUtils.setIfValid(base, 'item_input', g)) {
+    let g = Parser.parseItemInput(input)
+    if (setIfValid(base, 'item_input', g)) {
       continue
     }
     // If the input matched a fluid, parse it into the expected JSON format.
-    g = PneumaticcraftUtils.parseFluidInput(input)
-    if (PneumaticcraftUtils.setIfValid(base, 'fluid_input', g)) {
+    g = Parser.parseFluidInput(input)
+    if (setIfValid(base, 'fluid_input', g)) {
       continue
     }
     throw new Error(`Input did not match a known format: ${input}`)
@@ -83,20 +83,16 @@ ThermoPlantRecipe.prototype.outputs = function (outputs) {
   if (outputs.length > 2) throw new Error(`Too many outputs: ${outputs}`)
   for (const output of outputs) {
     // If the output matched an item, parse it into the expected JSON format.
-    let g = PneumaticcraftUtils.parseItemOutput(output)
-    if (PneumaticcraftUtils.setIfValid(base, 'item_output', g)) {
+    let g = Parser.parseItemOutput(output)
+    if (setIfValid(base, 'item_output', g)) {
       continue
     }
     // If the output matched a fluid, parse it into the expected JSON format.
-    g = PneumaticcraftUtils.parseFluidOutput(output)
-    if (PneumaticcraftUtils.setIfValid(base, 'fluid_output', g)) {
+    g = Parser.parseFluidOutput(output)
+    if (setIfValid(base, 'fluid_output', g)) {
       continue
     }
     throw new Error(`Output did not match a known format: ${output}`)
-  }
-
-  if (PneumaticcraftUtils.LOG_DEBUG_OUTPUT) {
-    console.log(JSON.stringify(base))
   }
 
   return this.e_.custom(base)

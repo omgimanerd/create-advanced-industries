@@ -27,20 +27,16 @@ PressureChamberRecipe.prototype.outputs = function (outputs) {
 
   this.inputs_ = Array.isArray(this.inputs_) ? this.inputs_ : [this.inputs_]
   for (const input of this.inputs_) {
-    const g = PneumaticcraftUtils.parseStackedItemInput(input)
+    const g = Parser.parseStackedItemInput(input)
     if (g === null) throw new Error(`Invalid input ${input}`)
     base.inputs.push(g)
   }
 
   outputs = Array.isArray(outputs) ? outputs : [outputs]
   for (const output of outputs) {
-    const g = PneumaticcraftUtils.parseItemOutput(output)
+    const g = Parser.parseItemOutput(output)
     if (g === null) throw new Error(`Invalid output ${output}`)
     base.results.push(g)
-  }
-
-  if (PneumaticcraftUtils.LOG_DEBUG_OUTPUT) {
-    console.log(JSON.stringify(base))
   }
 
   return this.e_.custom(base)

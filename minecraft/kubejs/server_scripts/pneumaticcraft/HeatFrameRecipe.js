@@ -39,17 +39,13 @@ HeatFrameRecipe.prototype.outputs = function (output) {
   }
 
   // There should be exactly one fluid input and one item output.
-  const fluidOutput = PneumaticcraftUtils.parseFluidInput(this.input_)
-  if (!PneumaticcraftUtils.setIfValid(base, 'input', fluidOutput)) {
+  const fluidOutput = Parser.parseFluidInput(this.input_)
+  if (!setIfValid(base, 'input', fluidOutput)) {
     throw new Error(`Invalid input ${this.input_}`)
   }
-  const itemOutput = PneumaticcraftUtils.parseItemOutput(output)
-  if (!PneumaticcraftUtils.setIfValid(base, 'result', itemOutput)) {
+  const itemOutput = Parser.parseItemOutput(output)
+  if (!setIfValid(base, 'result', itemOutput)) {
     throw new Error(`Invalid output ${output}`)
-  }
-
-  if (PneumaticcraftUtils.LOG_DEBUG_OUTPUT) {
-    console.log(JSON.stringify(base))
   }
 
   return this.e_.custom(base)
