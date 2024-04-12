@@ -17,20 +17,11 @@ ItemEvents.rightClicked('kubejs:diamond_sawblade', (e) => {
 })
 
 ServerEvents.recipes((e) => {
+  // const { createRolling } =
+  defineCreateAddonRecipes(e)
   const ingotFluid = global.MeltableItem.DEFAULT_INGOT_FLUID
 
-  // Basalt probabilistic crushing
-  e.recipes.create.crushing(
-    [
-      Item.of('minecraft:ancient_debris').withChance(0.005),
-      Item.of('minecraft:iron_nugget').withChance(randRange(0.01, 0.1)),
-      Item.of('create:copper_nugget').withChance(randRange(0.01, 0.1)),
-      Item.of('minecraft:gold_nugget').withChance(randRange(0.01, 0.1)),
-      Item.of('create:zinc_nugget').withChance(randRange(0.01, 0.1)),
-      Item.of('thermal:silver_nugget').withChance(randRange(0.01, 0.1)),
-    ],
-    'minecraft:basalt'
-  )
+  // Hardened planks can only be crafted in a pressure chamber
 
   // 1000mb crude oil =
   //   200 mb diesel = 160 kerosene
@@ -148,12 +139,77 @@ ServerEvents.recipes((e) => {
 
   // make gates with pneu assemblylatc
 
-  // netherite
-  //
-
   // red alloy + FE gen
 
-  // Hardened planks can only be crafted in a pressure chamber
+  // Overhaul the wire coils
+  e.remove({ id: 'createaddition:rolling/iron_plate' })
+  createRolling(
+    '2x createaddition:iron_wire',
+    'create_new_age:overcharged_iron_sheet'
+  )
+  e.remove({ id: 'createaddition:rolling/gold_plate' })
+  createRolling(
+    '2x createaddition:gold_wire',
+    'create_new_age:overcharged_golden_sheet'
+  )
+  createRolling(
+    '2x kubejs:overcharged_diamond_wire',
+    'create_new_age:overcharged_diamond'
+  )
+  e.remove({ id: /^create_new_age:cutting\/.*/ })
+  const wireCraftingShape = [
+    'WWW', //
+    'WSW', //
+    'WWW', //
+  ]
+  const defineWireOverhauls = (wire, coil) => {
+    e.shaped(coil, wireCraftingShape, {
+      W: wire,
+      S: 'createaddition:spool',
+    })
+    new SequencedAssembly(e, 'createaddition:spool')
+      .deploy(wire)
+      .loops(4)
+      .outputs(coil)
+  }
+  defineWireOverhauls(
+    'createaddition:copper_wire',
+    'create_new_age:copper_wire'
+  )
+  defineWireOverhauls(
+    'createaddition:iron_wire',
+    'create_new_age:overcharged_iron_wire'
+  )
+  defineWireOverhauls(
+    'createaddition:gold_wire',
+    'create_new_age:overcharged_golden_wire'
+  )
+  e.remove({ id: 'create_new_age:diamond_wire' })
+  defineWireOverhauls(
+    'kubejs:overcharged_diamond_wire',
+    'create_new_age:overcharged_diamond_wire'
+  )
+
+  // Magnetite block crafting recipe
+
+  // Basalt probabilistic crushing
+  e.recipes.create.crushing(
+    [
+      Item.of('minecraft:ancient_debris').withChance(0.005),
+      Item.of('minecraft:iron_nugget').withChance(randRange(0.01, 0.1)),
+      Item.of('create:copper_nugget').withChance(randRange(0.01, 0.1)),
+      Item.of('minecraft:gold_nugget').withChance(randRange(0.01, 0.1)),
+      Item.of('create:zinc_nugget').withChance(randRange(0.01, 0.1)),
+      Item.of('thermal:silver_nugget').withChance(randRange(0.01, 0.1)),
+    ],
+    'minecraft:basalt'
+  )
+
+  // Two types of stone production, one is useless, other produces ancient
+  // debris
+
+  // netherite
+  //
 
   new SequencedAssembly(e, 'create:precision_mechanism')
     .transitional('kubejs:incomplete_logistics_mechanism')

@@ -19,7 +19,7 @@ StartupEvents.registry('item', (e) => {
     .textureJson({
       layer0: getResourceLocation('thermal:saw_blade'),
     })
-    .color(0x45dcd4)
+    .color(0x75eae3)
     .displayName('Diamond Saw Blade')
     .fireResistant(true)
     .maxDamage(64)
@@ -29,7 +29,7 @@ StartupEvents.registry('item', (e) => {
     .textureJson({
       layer0: getResourceLocation('thermal:saw_blade'),
     })
-    .color(0x45dcd4)
+    .color(0x75eae3)
     .displayName('Unbreakable Diamond Saw Blade')
     .fireResistant(true)
     .glow(true)
@@ -62,4 +62,18 @@ StartupEvents.registry('item', (e) => {
   // )
   //   .texture(getResourceLocation('pneumaticcraft:pneumatic_cylinder'))
   //   .maxStackSize(16)
+
+  // Wire variants of Create: New Age charged items
+  e.create('kubejs:overcharged_iron_wire')
+    .texture(getResourceLocation('createaddition:iron_wire'))
+    .displayName('Overcharged Iron Wire')
+  e.create('kubejs:overcharged_golden_wire')
+    .texture(getResourceLocation('createaddition:gold_wire'))
+    .displayName('Overcharged Gold Wire')
+  e.create('kubejs:overcharged_diamond_wire')
+    .textureJson({
+      layer0: getResourceLocation('createaddition:iron_wire'),
+    })
+    .color(0, 0x75eae3)
+    .displayName('Overcharged Diamond Wire')
 })

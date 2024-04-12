@@ -9,6 +9,7 @@ global.removedRecipes = [
   { output: 'create:brass_hand' },
   { output: 'createaddition:electric_motor' },
   { output: 'createaddition:alternator' },
+  { output: 'createaddition:capacitor' },
   { output: /^createconnected:copycat_[a-z_]+/ },
   { output: /^pneumaticcraft:compressed_iron.*/ },
   { output: 'pneumaticcraft:ingot_iron_compressed' },

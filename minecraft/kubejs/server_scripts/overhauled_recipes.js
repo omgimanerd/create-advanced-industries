@@ -460,6 +460,17 @@ ServerEvents.recipes((e) => {
       C: 'create:andesite_casing',
     }
   )
+  e.replaceInput(
+    {
+      mod: 'createaddition',
+    },
+    'createaddition:capacitor',
+    'pneumaticcraft:capacitor'
+  )
+  redefineRecipe('createaddition:spool', ['P', 'S', 'P'], {
+    P: 'create:iron_sheet',
+    S: 'create:shaft',
+  })
   // TODO: overhaul tesla coil and intermediate items
 
   ////////////////////
@@ -512,18 +523,33 @@ ServerEvents.recipes((e) => {
     'create:turntable'
   )
 
-  //////////////////////////////////
-  // Create: Enchantment Industry //
-  //////////////////////////////////
-  redefineRecipe('create_enchantment_industry:disenchanter', ['S', 'D'], {
-    S: '#create:sandpaper',
-    D: 'create:item_drain',
-  })
-  redefineRecipe('create_enchantment_industry:printer', ['C', 'M', 'P'], {
-    C: 'create:copper_casing',
-    M: 'kubejs:copper_mechanism',
-    P: 'create:mechanical_press',
-  })
+  ////////////////////////
+  // Create Teleporters //
+  ////////////////////////
+
+  /////////////////////////////
+  // Create: Balanced Flight //
+  /////////////////////////////
+
+  ///////////////////////
+  // Create: Connected //
+  ///////////////////////
+
+  /////////////////////
+  // Create: New Age //
+  /////////////////////
+
+  // TODO(create_new_age:energiser_t1)
+  // TODO(create_new_age:energiser_t2)
+  // TODO(create_new_age:energiser_t3)
+  // TODO(create_new_age:electrical_connector)
+  // TODO(create_new_age:basic_motor)
+  // TODO(create_new_age:advanced_motor)
+  // TODO(create_new_age:reinforced_motor)
+  // TODO(create_new_age:basic_motor_extension)
+  // TODO(create_new_age:advanced_motor_extension)
+  // TODO(create_new_age:carbon_brushes)
+  // TODO(create_new_age:generator_coil)
 
   ///////////////////////////////////
   // Create: The Factory Must Grow //
@@ -604,6 +630,19 @@ ServerEvents.recipes((e) => {
     'tfmg:steel_ingot',
     'tfmg:heavy_plate'
   )
+
+  //////////////////////////////////
+  // Create: Enchantment Industry //
+  //////////////////////////////////
+  redefineRecipe('create_enchantment_industry:disenchanter', ['S', 'D'], {
+    S: '#create:sandpaper',
+    D: 'create:item_drain',
+  })
+  redefineRecipe('create_enchantment_industry:printer', ['C', 'M', 'P'], {
+    C: 'create:copper_casing',
+    M: 'kubejs:copper_mechanism',
+    P: 'create:mechanical_press',
+  })
 
   ////////////////////////////////
   // Create Mechanical Extruder //
@@ -754,9 +793,6 @@ ServerEvents.recipes((e) => {
       C: '#forge:chests/wooden',
     })
   )
-  // TODO(pneumaticcraft:capacitor)
-  // TODO(pneumaticcraft:logistics_core)
-  // TODO(pneumaticcraft:pneumatic_cylinder) requires lubricant
   redefineRecipe(
     'pneumaticcraft:pressure_gauge',
     [
@@ -766,7 +802,6 @@ ServerEvents.recipes((e) => {
     ],
     Object.assign({}, pneumaticcraftKeys, { Z: 'create:stressometer' })
   )
-  redefineRecipe
   // TODO(pneumaticcraft:transistor)
   // TODO(pneumaticcraft:turbine_blade)
 
