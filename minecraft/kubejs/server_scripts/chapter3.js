@@ -8,6 +8,7 @@ ServerEvents.compostableRecipes((e) => {
 })
 
 ServerEvents.recipes((e) => {
+  const create = defineCreateRecipes(e)
   const nuggetFluid = global.MeltableItem.DEFAULT_NUGGET_FLUID
   const ingotFluid = global.MeltableItem.DEFAULT_INGOT_FLUID
 
@@ -19,7 +20,7 @@ ServerEvents.recipes((e) => {
   )
 
   // Automated dirt reward
-  e.recipes.create.mixing('4x minecraft:dirt', [
+  create.mixing('4x minecraft:dirt', [
     'thermal:compost',
     'thermal:slag',
     '#forge:sand',
@@ -27,11 +28,11 @@ ServerEvents.recipes((e) => {
 
   // Sand is millable from both gravel and sandstone
   e.remove({ id: 'create:milling/sandstone' })
-  e.recipes.create.milling('minecraft:sand', 'minecraft:gravel')
-  e.recipes.create.milling('4x minecraft:sand', 'minecraft:sandstone')
+  create.milling('minecraft:sand', 'minecraft:gravel')
+  create.milling('4x minecraft:sand', 'minecraft:sandstone')
 
   // Clay block automation, dirt comes from thermal recipe
-  e.recipes.create.mixing('2x minecraft:clay', [
+  create.mixing('2x minecraft:clay', [
     'minecraft:dirt',
     'minecraft:sand',
     Fluid.of('minecraft:water', 1000),
@@ -39,8 +40,8 @@ ServerEvents.recipes((e) => {
 
   // Clay block processing
   e.remove({ id: 'create:milling/clay' })
-  e.recipes.create.milling('4x minecraft:clay_ball', 'minecraft:clay')
-  e.recipes.create.cutting('4x minecraft:clay_ball', 'minecraft:clay')
+  create.milling('4x minecraft:clay_ball', 'minecraft:clay')
+  create.cutting('4x minecraft:clay_ball', 'minecraft:clay')
 
   // Clay block cutting into cast
   e.stonecutting('kubejs:clay_ingot_cast', 'minecraft:clay')
@@ -59,7 +60,7 @@ ServerEvents.recipes((e) => {
   // Zinc overhaul
   e.remove({ id: 'create:crushing/tuff' })
   e.remove({ id: 'create:crushing/tuff_recycling' })
-  e.recipes.create
+  create
     .compacting(
       [
         Fluid.of('kubejs:molten_zinc', 3 * nuggetFluid),
@@ -70,7 +71,7 @@ ServerEvents.recipes((e) => {
     .heated()
 
   // Brass mixing
-  e.recipes.create
+  create
     .mixing(Fluid.of('kubejs:molten_brass', 2 * ingotFluid), [
       Fluid.of('kubejs:molten_copper', ingotFluid),
       Fluid.of('kubejs:molten_zinc', ingotFluid),
@@ -82,14 +83,14 @@ ServerEvents.recipes((e) => {
 
   // Nether quartz automation from soul sand, can be washed or melted for
   // different yields.
-  e.recipes.create.splashing(
+  create.splashing(
     [
       Item.of('minecraft:quartz').withChance(0.75),
       Item.of('minecraft:clay_ball').withChance(0.25),
     ],
     'minecraft:soul_sand'
   )
-  e.recipes.create
+  create
     .mixing(
       [
         Fluid.of('kubejs:molten_quartz', 2 * ingotFluid),
@@ -100,7 +101,7 @@ ServerEvents.recipes((e) => {
     .heated()
 
   // Renewable redstone automation
-  e.recipes.create
+  create
     .mixing('8x minecraft:redstone', [
       '8x minecraft:cobblestone',
       'minecraft:red_dye',
@@ -109,27 +110,28 @@ ServerEvents.recipes((e) => {
     .heated()
 
   // Rose quartz overhaul
-  e.recipes.create.filling('create:rose_quartz', [
+  create.filling('create:rose_quartz', [
     'minecraft:quartz',
     Fluid.of('kubejs:molten_redstone', ingotFluid * 4),
   ])
 
   // Polished rose quartz overhaul
-  e.recipes.create.mixing(
+  create.mixing(
     ['create:polished_rose_quartz', Item.of('minecraft:sand').withChance(0.9)],
     ['create:rose_quartz', 'minecraft:sand']
   )
 
   // Electron tube overhaul
   e.remove({ id: 'create:crafting/materials/electron_tube' })
-  e.recipes.create.deploying('create:electron_tube', [
+  create.deploying('create:electron_tube', [
     'create:iron_sheet',
     'create:polished_rose_quartz',
   ])
 
   // Precision mechanism
   e.remove({ output: 'create:precision_mechanism' })
-  new SequencedAssembly(e, 'kubejs:andesite_mechanism')
+  create
+    .SequencedAssembly('kubejs:andesite_mechanism')
     .transitional('create:incomplete_precision_mechanism')
     .deploy('create:electron_tube')
     .press()

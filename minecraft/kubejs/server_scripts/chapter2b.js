@@ -2,15 +2,17 @@
 // Recipe overhauls for Chapter 2B progression.
 
 ServerEvents.recipes((e) => {
+  const create = defineCreateRecipes(e)
+
   // Source fluid automation
-  e.recipes.create.compacting(
+  create.compacting(
     Fluid.of('starbunclemania:source_fluid', 100),
     'ars_nouveau:sourceberry_bush'
   )
 
   // Gold nugget washing automation
   e.remove({ id: 'create:splashing/sand' })
-  e.recipes.create.splashing(
+  create.splashing(
     ['minecraft:gold_nugget', Item.of('minecraft:clay_ball').withChance(0.25)],
     'minecraft:sand'
   )
@@ -18,13 +20,14 @@ ServerEvents.recipes((e) => {
   // Source gem crafting
   e.remove({ id: 'ars_nouveau:imbuement_amethyst' })
   e.remove({ id: 'ars_nouveau:imbuement_lapis' })
-  e.recipes.create.filling('ars_nouveau:source_gem', [
+  create.filling('ars_nouveau:source_gem', [
     Fluid.of('starbunclemania:source_fluid', 250),
     'minecraft:gold_nugget',
   ])
 
   // Source mechanism
-  new SequencedAssembly(e, 'kubejs:andesite_mechanism')
+  create
+    .SequencedAssembly('kubejs:andesite_mechanism')
     .transitional('kubejs:incomplete_source_mechanism')
     .deploy('ars_nouveau:source_gem')
     .press()

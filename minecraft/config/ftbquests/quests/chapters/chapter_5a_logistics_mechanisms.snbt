@@ -30,6 +30,7 @@
 			y: 0.0d
 		}
 		{
+			dependencies: ["709C290FF8F10B6A"]
 			id: "6D912BAC546961CB"
 			tasks: [{
 				id: "77DD8CC5F0E44F5D"
@@ -40,6 +41,10 @@
 			y: -6.0d
 		}
 		{
+			dependencies: [
+				"59EFB832B91FFBA8"
+				"5BDC36619B26699B"
+			]
 			id: "709C290FF8F10B6A"
 			tasks: [{
 				id: "568F90149E5404B3"
@@ -50,6 +55,7 @@
 			y: -7.0d
 		}
 		{
+			dependencies: ["6426BBE70FDA2515"]
 			id: "5BDC36619B26699B"
 			tasks: [{
 				id: "65F5029284DCB6A3"
@@ -60,16 +66,18 @@
 			y: -8.0d
 		}
 		{
+			dependencies: ["5BDC36619B26699B"]
 			id: "59EFB832B91FFBA8"
 			tasks: [{
 				id: "14CFA1E1FB8D508B"
 				item: "pneumaticcraft:heat_frame"
 				type: "item"
 			}]
-			x: 3.0d
-			y: -9.0d
+			x: 7.0d
+			y: -10.0d
 		}
 		{
+			dependencies: ["1B2CAA9D8CAB0F09"]
 			id: "6426BBE70FDA2515"
 			tasks: [{
 				id: "73B223A2FCC90E4D"
@@ -80,6 +88,7 @@
 			y: -7.5d
 		}
 		{
+			dependencies: ["7A306159E94EA54C"]
 			id: "230E21BE68901D81"
 			tasks: [{
 				id: "0A510FBFED03C374"
@@ -90,6 +99,10 @@
 			y: -7.5d
 		}
 		{
+			dependencies: [
+				"2DD46A2CE3AE0160"
+				"0D59F5CAF2852DC6"
+			]
 			id: "7A306159E94EA54C"
 			tasks: [{
 				id: "1731903B18832265"
@@ -100,6 +113,7 @@
 			y: -7.5d
 		}
 		{
+			dependencies: ["230E21BE68901D81"]
 			id: "1B2CAA9D8CAB0F09"
 			tasks: [{
 				id: "640C37C158CCEC9C"
@@ -110,24 +124,194 @@
 			y: -7.5d
 		}
 		{
+			dependencies: ["55624517D9B6A2CD"]
 			id: "2DD46A2CE3AE0160"
 			tasks: [{
 				id: "1ED5D57DCEE4B5E3"
 				item: "pneumaticcraft:oil_bucket"
 				type: "item"
 			}]
-			x: -2.0d
-			y: -5.5d
+			x: -1.5d
+			y: -6.5d
 		}
 		{
+			dependencies: ["7A306159E94EA54C"]
 			id: "5F46DBF36BF850AF"
 			tasks: [{
 				id: "084297DC6062A152"
 				item: "pneumaticcraft:lubricant_bucket"
 				type: "item"
 			}]
-			x: 0.0d
+			x: 1.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["5978BE35C75966ED"]
+			description: ["Powering a surface scanner with some rotational force will make it point towards the nearest oil deposit. Once you find its location, dig all the way down to bedrock to find it."]
+			id: "4A2841F0F4D70DF5"
+			tasks: [{
+				id: "302CC20FD577EB8C"
+				item: "tfmg:surface_scanner"
+				type: "item"
+			}]
+			x: -3.5d
+			y: -4.5d
+		}
+		{
+			dependencies: ["4A2841F0F4D70DF5"]
+			description: ["Oil!"]
+			icon: "tfmg:oil_deposit"
+			id: "51A09020CF735737"
+			rewards: [{
+				id: "235CDDC61066B517"
+				item: {
+					Count: 1b
+					id: "minecraft:white_banner"
+					tag: {
+						BlockEntityTag: {
+							Patterns: [
+								{
+									Color: 14
+									Pattern: "ss"
+								}
+								{
+									Color: 11
+									Pattern: "tr"
+								}
+							]
+							id: "minecraft:banner"
+						}
+						RepairCost: 0
+						display: {
+							Name: "{\"text\":\"Democracy Calls!\"}"
+						}
+					}
+				}
+				type: "item"
+			}]
+			tasks: [{
+				icon: "tfmg:oil_deposit"
+				id: "77BC3B44F3A71AB1"
+				observe_type: 0
+				timer: 0L
+				to_observe: "tfmg:oil_deposit"
+				type: "observation"
+			}]
+			title: "Find an Oil Deposit"
+			x: -3.5d
+			y: -6.0d
+		}
+		{
+			dependencies: ["51A09020CF735737"]
+			description: [
+				"Here are all the blocks you need to build a pumpjack."
+				""
+				"Once you prepare these, use the pumpjack ponder to figure out how to build one."
+			]
+			id: "55624517D9B6A2CD"
+			tasks: [
+				{
+					count: 64L
+					id: "2E072E5F5031242D"
+					item: { Count: 64b, id: "tfmg:industrial_pipe" }
+					type: "item"
+				}
+				{
+					id: "488C4E5E8E39BA5B"
+					item: "tfmg:pumpjack_base"
+					type: "item"
+				}
+				{
+					count: 3L
+					id: "02ADD3406FEF693B"
+					item: { Count: 3b, id: "tfmg:steel_truss" }
+					type: "item"
+				}
+				{
+					id: "663DB80E3BA6D02E"
+					item: "tfmg:pumpjack_hammer"
+					type: "item"
+				}
+				{
+					count: 5L
+					id: "4889ECF27463B632"
+					item: { Count: 5b, id: "tfmg:pumpjack_hammer_part" }
+					type: "item"
+				}
+				{
+					id: "62AEA35F6C24B6BA"
+					item: "tfmg:pumpjack_hammer_head"
+					type: "item"
+				}
+				{
+					id: "42913213144F52A1"
+					item: "tfmg:pumpjack_hammer_connector"
+					type: "item"
+				}
+				{
+					id: "07F40EF598C33870"
+					item: "tfmg:pumpjack_crank"
+					type: "item"
+				}
+				{
+					id: "1E77B3E4CC45B88B"
+					item: "tfmg:machine_input"
+					type: "item"
+				}
+			]
+			title: "Building a Pumpjack"
+			x: -2.5d
 			y: -6.5d
+		}
+		{
+			dependencies: ["2DD46A2CE3AE0160"]
+			id: "0D59F5CAF2852DC6"
+			tasks: [
+				{
+					id: "459284B3722767AD"
+					item: "pneumaticcraft:refinery"
+					type: "item"
+				}
+				{
+					id: "1138498E19811F95"
+					item: "pneumaticcraft:refinery_output"
+					type: "item"
+				}
+			]
+			title: "Refinery"
+			x: -1.0d
+			y: -8.0d
+		}
+		{
+			dependencies: ["5F46DBF36BF850AF"]
+			id: "67DC36BAC10B5C18"
+			tasks: [{
+				id: "4A5D7A1D36F69904"
+				item: "pneumaticcraft:pneumatic_cylinder"
+				type: "item"
+			}]
+			x: 2.5d
+			y: -4.5d
+		}
+		{
+			id: "64CB552C56CAFC95"
+			tasks: [{
+				id: "2FE4A09510F99B74"
+				item: "pneumaticcraft:capacitor"
+				type: "item"
+			}]
+			x: 7.0d
+			y: -2.0d
+		}
+		{
+			id: "7F388CDF039975F1"
+			tasks: [{
+				id: "2F491C1D53333FDE"
+				item: "pneumaticcraft:transistor"
+				type: "item"
+			}]
+			x: 7.0d
+			y: 0.0d
 		}
 	]
 	title: "Chapter 5a: Logistics Mechanisms"

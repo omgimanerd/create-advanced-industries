@@ -8,6 +8,8 @@ ServerEvents.tags('item', (e) => {
 // Contains all recipes from all mods that are overhauled, but not directly
 // related to the progression content.
 ServerEvents.recipes((e) => {
+  const create = defineCreateRecipes(e)
+
   // Generate utility functions from util.js
   const redefineRecipe = redefineRecipe_(e)
   const redefineMechanismRecipe = redefineMechanismRecipe_(e)
@@ -201,7 +203,7 @@ ServerEvents.recipes((e) => {
     '#forge:stone'
   )
   e.recipes.remove({ id: 'create:mechanical_crafting/crushing_wheel' })
-  e.recipes.create.mechanical_crafting(
+  create.mechanical_crafting(
     '2x create:crushing_wheel',
     [
       ' SSS ', //
@@ -477,7 +479,7 @@ ServerEvents.recipes((e) => {
   // Create Jetpack //
   ////////////////////
   e.remove({ id: 'create_jetpack:jetpack' })
-  e.recipes.create.mechanical_crafting(
+  create.mechanical_crafting(
     'create_jetpack:jetpack',
     [
       ' BHB ', //
@@ -495,7 +497,7 @@ ServerEvents.recipes((e) => {
     }
   )
   e.remove({ id: 'create_jetpack:netherite_jetpack' })
-  e.recipes.create.mechanical_crafting(
+  create.mechanical_crafting(
     'create_jetpack:netherite_jetpack',
     [
       ' SHS ', //
@@ -811,7 +813,7 @@ ServerEvents.recipes((e) => {
   // Refined Storage //
   /////////////////////
   e.remove({ output: 'refinedstorage:machine_casing' })
-  e.recipes.create.item_application('refinedstorage:machine_casing', [
+  create.item_application('refinedstorage:machine_casing', [
     'tfmg:steel_casing',
     'refinedstorage:quartz_enriched_iron',
   ])

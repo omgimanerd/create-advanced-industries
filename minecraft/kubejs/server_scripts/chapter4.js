@@ -18,21 +18,20 @@ ServerEvents.tags('item', (e) => {
 })
 
 ServerEvents.recipes((e) => {
+  const create = defineCreateRecipes(e)
   const redefineRecipe = redefineRecipe_(e)
   const ingotFluid = global.MeltableItem.DEFAULT_INGOT_FLUID
 
   // Eggs from dough
-  e.recipes.create.haunting('minecraft:egg', 'create:dough')
+  create.haunting('minecraft:egg', 'create:dough')
 
   // Lava generation should be cheaper
   e.remove({ id: 'create:mixing/lava_from_cobble' })
-  e.recipes.create
-    .mixing(Fluid.lava(250), '#minecraft:cobblestone')
-    .superheated()
+  create.mixing(Fluid.lava(250), '#minecraft:cobblestone').superheated()
 
   // Make the lava filling recipe cheaper
   e.remove({ id: 'create:filling/blaze_cake' })
-  e.recipes.create.filling('create:blaze_cake', [
+  create.filling('create:blaze_cake', [
     Fluid.of('minecraft:lava', 25),
     'create:blaze_cake_base',
   ])
@@ -67,15 +66,10 @@ ServerEvents.recipes((e) => {
   })
 
   // Bone blocks
-  e.recipes.create.compacting('minecraft:bone_block', [
-    Fluid.of('minecraft:milk', 1000),
-  ])
+  create.compacting('minecraft:bone_block', [Fluid.of('minecraft:milk', 1000)])
 
   // Lime automation to allow limesand creation
-  e.recipes.create.mixing('create:limestone', [
-    'minecraft:bone_block',
-    Fluid.water(1000),
-  ])
+  create.mixing('create:limestone', ['minecraft:bone_block', Fluid.water(1000)])
 
   // Charcoal transmutation to coal, with a discount for blocks
   e.recipes.ars_nouveau.enchanting_apparatus(
@@ -93,7 +87,7 @@ ServerEvents.recipes((e) => {
 
   // Overhaul cast iron
   e.remove({ id: 'tfmg:mixing/cast_iron_ingot' })
-  e.recipes.create
+  create
     .mixing(
       [
         Fluid.of('kubejs:molten_cast_iron', ingotFluid),
@@ -107,7 +101,8 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'create:industrial_iron_block_from_ingots_iron_stonecutting' })
   e.remove({ id: 'create:industrial_iron_block_from_iron_ingots_stonecutting' })
   e.remove({ id: 'createdeco:compacting/industrial_iron_ingot' })
-  new SequencedAssembly(e, 'tfmg:cast_iron_ingot')
+  create
+    .SequencedAssembly('tfmg:cast_iron_ingot')
     .transitional('kubejs:intermediate_industrial_iron_ingot')
     .press(3)
     .outputs('createdeco:industrial_iron_ingot')
@@ -115,7 +110,7 @@ ServerEvents.recipes((e) => {
   // Obsidian overhaul for sturdy sheets
   e.remove({ output: 'minecraft:magma_block' })
   e.remove({ id: 'thermal:machines/press/packing2x2/press_magma_packing' })
-  e.recipes.create.filling('minecraft:magma_block', [
+  create.filling('minecraft:magma_block', [
     '#forge:cobblestone',
     Fluid.lava(250),
   ])
@@ -124,7 +119,7 @@ ServerEvents.recipes((e) => {
     Item.of('create:powdered_obsidian').withChance(1),
     Item.of('create:powdered_obsidian').withChance(0.1),
   ])
-  e.recipes.create
+  create
     .crushing(
       Item.of('create:powdered_obsidian').withChance(0.5),
       'minecraft:obsidian'
@@ -133,7 +128,8 @@ ServerEvents.recipes((e) => {
 
   // Overhaul sturdy sheets to start from cast iron
   e.remove({ id: 'create:sequenced_assembly/sturdy_sheet' })
-  new SequencedAssembly(e, 'tfmg:cast_iron_ingot')
+  create
+    .SequencedAssembly('tfmg:cast_iron_ingot')
     .transitional('create:unprocessed_obsidian_sheet')
     .deploy('create:powdered_obsidian')
     .press(2)
@@ -174,7 +170,7 @@ ServerEvents.recipes((e) => {
   // Steel overhaul
   e.remove({ id: 'tfmg:casting/steel' })
   e.remove({ id: 'tfmg:industrial_blasting/steel' })
-  e.recipes.create
+  create
     .mixing(
       [
         Fluid.of('tfmg:molten_steel', 3 * ingotFluid),
@@ -201,17 +197,20 @@ ServerEvents.recipes((e) => {
   )
 
   // Recipes for reusable steel casts
-  new SequencedAssembly(e, 'tfmg:heavy_plate')
+  create
+    .SequencedAssembly('tfmg:heavy_plate')
     .transitional('kubejs:intermediate_steel_ingot_cast')
     .deploy('tfmg:steel_ingot')
     .press(3)
     .outputs('kubejs:steel_ingot_cast')
-  new SequencedAssembly(e, 'tfmg:heavy_plate')
+  create
+    .SequencedAssembly('tfmg:heavy_plate')
     .transitional('kubejs:intermediate_steel_gem_cast')
     .deploy('minecraft:diamond')
     .press(3)
     .outputs('kubejs:steel_gem_cast')
-  new SequencedAssembly(e, 'tfmg:heavy_plate')
+  create
+    .SequencedAssembly('tfmg:heavy_plate')
     .transitional('kubejs:intermediate_steel_block_cast')
     .deploy('tfmg:steel_block')
     .press(3)
@@ -245,7 +244,8 @@ ServerEvents.recipes((e) => {
 
   // Steel mechanism overhaul
   e.remove({ id: 'tfmg:sequenced_assembly/steel_mechanism' })
-  new SequencedAssembly(e, 'create:precision_mechanism')
+  create
+    .SequencedAssembly('create:precision_mechanism')
     .transitional('tfmg:unfinished_steel_mechanism')
     .deploy('tfmg:heavy_plate')
     .deploy('create:sturdy_sheet')

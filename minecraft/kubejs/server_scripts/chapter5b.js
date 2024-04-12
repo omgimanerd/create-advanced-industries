@@ -51,6 +51,7 @@ ServerEvents.compostableRecipes((e) => {
 })
 
 ServerEvents.recipes((e) => {
+  const create = defineCreateRecipes(e)
   const redefineRecipe = redefineRecipe_(e)
   // Automate emeralds
   // Strike emerald block with lightning to spawn a wandering trader
@@ -61,7 +62,7 @@ ServerEvents.recipes((e) => {
   // amethyst?
 
   // Catalyst for first moss block
-  e.recipes.create
+  create
     .item_application('minecraft:moss_block', [
       'minecraft:stone',
       'createaddition:biomass',
@@ -70,14 +71,14 @@ ServerEvents.recipes((e) => {
 
   // Bonemeal cannot be reverse crafted from bone blocks.
   e.remove({ id: 'minecraft:bone_meal_from_bone_block' })
-  e.recipes.create.milling(
+  create.milling(
     [
       '6x minecraft:bone_meal',
       Item.of('minecraft:bone_meal', 3).withChance(0.5),
     ],
     'minecraft:bone_block'
   )
-  e.recipes.create.crushing('9x minecraft:bone_meal', 'minecraft:bone_block')
+  create.crushing('9x minecraft:bone_meal', 'minecraft:bone_block')
 
   // Compost block from compost
   redefineRecipe(
@@ -96,7 +97,7 @@ ServerEvents.recipes((e) => {
 
   // Liquid fertilizer
   e.remove({ id: /^sliceanddice:mixing\/fertilizer.*/ })
-  e.recipes.create
+  create
     .mixing(Fluid.of('sliceanddice:fertilizer', 1000), [
       'farmersdelight:organic_compost',
       Fluid.water(1000),

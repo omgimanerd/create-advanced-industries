@@ -2,17 +2,19 @@
 // Recipe overhauls for Chapter 2A progression.
 
 ServerEvents.recipes((e) => {
+  const create = defineCreateRecipes(e)
+
   // Granite automation overhaul
   e.remove({ id: 'minecraft:granite' })
   e.remove({ id: 'ars_nouveau:manipulation_essence_to_granite' })
   e.remove({ id: 'create:compacting/granite_from_flint' })
-  e.recipes.create.mixing('8x minecraft:granite', [
+  create.mixing('8x minecraft:granite', [
     '8x minecraft:cobblestone',
     'minecraft:red_dye',
   ])
 
   // Red sand washing for copper
-  e.recipes.create.splashing(
+  create.splashing(
     ['create:copper_nugget', Item.of('minecraft:clay_ball').withChance(0.25)],
     'minecraft:red_sand'
   )
@@ -23,17 +25,14 @@ ServerEvents.recipes((e) => {
     F: '#minecraft:flowers',
     W: 'minecraft:water_bucket',
   })
-  e.recipes.create.compacting('thermal:rubber', [Fluid.of('thermal:latex', 50)])
+  create.compacting('thermal:rubber', [Fluid.of('thermal:latex', 50)])
 
   // Rubber smelting as block
   e.smelting('thermal:cured_rubber_block', 'thermal:rubber_block')
 
   // Cutting rubber block for higher rubber yield
   e.remove({ id: 'thermal:storage/cured_rubber_from_block' })
-  e.recipes.create.cutting(
-    '8x thermal:cured_rubber',
-    'thermal:cured_rubber_block'
-  )
+  create.cutting('8x thermal:cured_rubber', 'thermal:cured_rubber_block')
 
   // Copper mechanism
   e.shaped(
@@ -49,7 +48,8 @@ ServerEvents.recipes((e) => {
       M: 'kubejs:andesite_mechanism',
     }
   ).id('kubejs:copper_mechanism_manual_only')
-  new SequencedAssembly(e, 'kubejs:andesite_mechanism')
+  create
+    .SequencedAssembly('kubejs:andesite_mechanism')
     .transitional('kubejs:incomplete_copper_mechanism')
     .deploy('create:copper_sheet')
     .deploy('thermal:cured_rubber')

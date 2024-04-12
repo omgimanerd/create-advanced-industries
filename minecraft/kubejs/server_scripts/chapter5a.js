@@ -65,19 +65,19 @@ ServerEvents.recipes((e) => {
     .bonusOutput(/*limit=*/ 1, /*multiplier=*/ 0.01)
     .maxTemp(343) // 70C
     .outputs('2x tfmg:plastic_sheet')
-  e.recipes.create.cutting('3x pneumaticcraft:plastic', 'tfmg:plastic_sheet')
+  create.cutting('3x pneumaticcraft:plastic', 'tfmg:plastic_sheet')
 
   // TODO overhaul reinf stone
 
   // Silicon overhaul, must be crystallized in a heat frame
   e.remove({ id: 'refinedstorage:silicon' })
-  e.recipes.create
+  create
     .mixing(
       [Fluid.of('kubejs:molten_silicon', 3 * ingotFluid), '2x thermal:slag'],
       ['4x minecraft:quartz', '2x tfmg:coal_coke_dust']
     )
     .superheated()
-  e.recipes.create
+  create
     .mixing(
       [Fluid.of('kubejs:molten_silicon', 3 * ingotFluid), '2x thermal:slag'],
       [
@@ -103,7 +103,8 @@ ServerEvents.recipes((e) => {
       S: 'thermal:saw_blade',
     }
   )
-  new SequencedAssembly(e, 'refinedstorage:silicon')
+  create
+    .SequencedAssembly('refinedstorage:silicon')
     .deploy('#kubejs:diamond_saw_blade')
     .fill('minecraft:water', 500)
     .loops(4)
@@ -111,7 +112,8 @@ ServerEvents.recipes((e) => {
 
   // Transistor overhaul
   e.remove({ id: 'pneumaticcraft:pressure_chamber/transistor' })
-  new SequencedAssembly(e, 'kubejs:silicon_wafer')
+  create
+    .SequencedAssembly('kubejs:silicon_wafer')
     .deploy('minecraft:glass_pane')
     .deploy('minecraft:redstone_torch')
     .deploy('pneumaticcraft:plastic')
@@ -120,7 +122,8 @@ ServerEvents.recipes((e) => {
 
   // Capacitor overhaul
   e.remove({ id: 'pneumaticcraft:pressure_chamber/capacitor' })
-  new SequencedAssembly(e, 'thermal:silver_plate')
+  create
+    .SequencedAssembly('thermal:silver_plate')
     .deploy('pneumaticcraft:plastic')
     .deploy('thermal:silver_plate')
     .deploy('minecraft:redstone_torch')
@@ -129,7 +132,8 @@ ServerEvents.recipes((e) => {
 
   // Pneumatic cylinder overhaul
   e.remove({ id: 'pneumaticcraft:pneumatic_cylinder' })
-  new SequencedAssembly(e, 'pneumaticcraft:cannon_barrel')
+  create
+    .SequencedAssembly('pneumaticcraft:cannon_barrel')
     .deploy('tfmg:rebar')
     .press()
     .fill('pneumaticcraft:lubricant', 250)
@@ -166,7 +170,8 @@ ServerEvents.recipes((e) => {
       W: wire,
       S: 'createaddition:spool',
     })
-    new SequencedAssembly(e, 'createaddition:spool')
+    create
+      .SequencedAssembly('createaddition:spool')
       .deploy(wire)
       .loops(4)
       .outputs(coil)
@@ -197,7 +202,7 @@ ServerEvents.recipes((e) => {
   )
 
   // Basalt probabilistic crushing
-  e.recipes.create.crushing(
+  create.crushing(
     [
       Item.of('minecraft:ancient_debris').withChance(0.005),
       Item.of('minecraft:iron_nugget').withChance(randRange(0.01, 0.1)),
