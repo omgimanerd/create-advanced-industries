@@ -27,7 +27,7 @@ HeatFrameRecipe.prototype.maxTemp = function (max_temp) {
 }
 
 HeatFrameRecipe.prototype.outputs = function (output) {
-  let base = {
+  const base = {
     type: HeatFrameRecipe.RECIPE_TYPE,
     max_temp: this.max_temp_,
   }

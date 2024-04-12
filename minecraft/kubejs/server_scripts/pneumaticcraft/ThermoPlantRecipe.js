@@ -43,12 +43,9 @@ ThermoPlantRecipe.prototype.maxTemp = function (max_temp) {
 }
 
 ThermoPlantRecipe.prototype.outputs = function (outputs) {
-  if (outputs === undefined) {
-    throw new Error('No recipe outputs were specified')
-  }
-
+  if (outputs === undefined) throw new Error('No recipe outputs were specified')
   // Fields are keys used in Pneumaticcraft's recipe JSON
-  let base = {
+  const base = {
     type: ThermoPlantRecipe.RECIPE_TYPE,
     exothermic: this.exothermic_,
   }
@@ -68,13 +65,12 @@ ThermoPlantRecipe.prototype.outputs = function (outputs) {
     throw new Error(`Too many ingredients: ${this.inputs_}`)
   }
   for (const input of this.inputs_) {
-    if (typeof input !== 'string') {
-      throw new Error(`Invalid input ${input}`)
-    }
+    // If the input matched an item, parse it into the expected JSON format.
     let g = PneumaticcraftUtils.parseItemInput(input)
     if (PneumaticcraftUtils.setIfValid(base, 'item_input', g)) {
       continue
     }
+    // If the input matched a fluid, parse it into the expected JSON format.
     g = PneumaticcraftUtils.parseFluidInput(input)
     if (PneumaticcraftUtils.setIfValid(base, 'fluid_input', g)) {
       continue
@@ -84,13 +80,8 @@ ThermoPlantRecipe.prototype.outputs = function (outputs) {
 
   // Attempt to parse the outputs into the expected custom JSON format
   outputs = Array.isArray(outputs) ? outputs : [outputs]
-  if (outputs.length > 2) {
-    throw new Error(`Too many outputs: ${outputs}`)
-  }
+  if (outputs.length > 2) throw new Error(`Too many outputs: ${outputs}`)
   for (const output of outputs) {
-    if (typeof output !== 'string') {
-      throw new Error(`Invalid output ${output}`)
-    }
     // If the output matched an item, parse it into the expected JSON format.
     let g = PneumaticcraftUtils.parseItemOutput(output)
     if (PneumaticcraftUtils.setIfValid(base, 'item_output', g)) {

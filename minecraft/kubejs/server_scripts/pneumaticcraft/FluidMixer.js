@@ -25,7 +25,7 @@ FluidMixerRecipe.prototype.time = function (time) {
 }
 
 FluidMixerRecipe.prototype.outputs = function (outputs) {
-  let base = {
+  const base = {
     type: FluidMixerRecipe.RECIPE_TYPE,
     time: this.time_,
   }

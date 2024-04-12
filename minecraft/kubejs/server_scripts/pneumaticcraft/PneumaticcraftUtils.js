@@ -1,7 +1,7 @@
 // priority: 900
 
 // Utilities for parsing inputs into the Pneumaticcraft custom recipe wrappers.
-let PneumaticcraftUtils = {}
+const PneumaticcraftUtils = {}
 
 PneumaticcraftUtils.LOG_DEBUG_OUTPUT = false
 
@@ -14,7 +14,7 @@ PneumaticcraftUtils.parseStackedItemInput = (s) => {
   const m = s.match(PneumaticcraftUtils.ITEM_REGEX)
   if (m === null || m.length != 5) return null
 
-  let output = {}
+  const output = {}
 
   const tag = m[3]
   const id = m[4]
@@ -53,17 +53,14 @@ PneumaticcraftUtils.parseItemOutput = (s) => {
 }
 
 PneumaticcraftUtils.parseFluidInput = (s) => {
-  if (typeof s !== 'string') {
-    return null
-  }
+  if (typeof s !== 'string') return null
+
   const m = s.match(PneumaticcraftUtils.FLUID_REGEX)
-  if (m === null || m.length != 5) {
-    return null
-  }
-  let quantity = parseInt(m[2], 10)
-  if (isNaN(quantity)) {
-    return null
-  }
+  if (m === null || m.length != 5) return null
+
+  const quantity = parseInt(m[2], 10)
+  if (isNaN(quantity)) return null
+
   const tag = m[3]
   if (tag !== '') {
     return {
@@ -81,9 +78,7 @@ PneumaticcraftUtils.parseFluidInput = (s) => {
 
 PneumaticcraftUtils.parseFluidOutput = (s) => {
   const g = PneumaticcraftUtils.parseFluidInput(s)
-  if (g === null) {
-    return null
-  }
+  if (g === null) return null
   if (g.tag !== undefined) {
     throw new Error(`Output fluid cannot have a tag: ${s}`)
   }
@@ -93,12 +88,9 @@ PneumaticcraftUtils.parseFluidOutput = (s) => {
 // Attempts to set the given key to the given value on the custom recipe object
 // o. Returns true if successful, false if value is null.
 PneumaticcraftUtils.setIfValid = (o, key, value) => {
-  if (value === null) {
-    return false
-  }
-  if (o[key] !== undefined) {
-    throw new Error(`Key ${key} is already set on ${o}`)
-  }
+  if (value === null) return false
+  if (o[key] !== undefined) throw new Error(`Key ${key} is already set on ${o}`)
+
   o[key] = value
   return true
 }
