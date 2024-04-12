@@ -1,4 +1,4 @@
-// priority: 900
+// priority: 1000
 
 // JS prototype class to make registering mechanism sequenced assemblies
 // easier.

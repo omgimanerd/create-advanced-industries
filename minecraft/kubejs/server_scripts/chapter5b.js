@@ -9,6 +9,11 @@
 //   }
 // })
 
+// https://discord.com/channels/303440391124942858/1200079069316923392
+
+// Rclick
+// https://discord.com/channels/303440391124942858/1228365529136496681
+
 EntityEvents.death('minecraft:wandering_trader', (e) => {
   // console.log(e)
   // console.log(e.source)

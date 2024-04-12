@@ -17,8 +17,7 @@ ItemEvents.rightClicked('kubejs:diamond_sawblade', (e) => {
 })
 
 ServerEvents.recipes((e) => {
-  // const { createRolling } =
-  defineCreateAddonRecipes(e)
+  const create = defineCreateRecipes(e)
   const ingotFluid = global.MeltableItem.DEFAULT_INGOT_FLUID
 
   // Hardened planks can only be crafted in a pressure chamber
@@ -143,16 +142,16 @@ ServerEvents.recipes((e) => {
 
   // Overhaul the wire coils
   e.remove({ id: 'createaddition:rolling/iron_plate' })
-  createRolling(
+  create.rolling(
     '2x createaddition:iron_wire',
     'create_new_age:overcharged_iron_sheet'
   )
   e.remove({ id: 'createaddition:rolling/gold_plate' })
-  createRolling(
+  create.rolling(
     '2x createaddition:gold_wire',
     'create_new_age:overcharged_golden_sheet'
   )
-  createRolling(
+  create.rolling(
     '2x kubejs:overcharged_diamond_wire',
     'create_new_age:overcharged_diamond'
   )
@@ -191,6 +190,11 @@ ServerEvents.recipes((e) => {
   )
 
   // Magnetite block crafting recipe
+  create.energising(
+    'create_new_age:magnetite_block',
+    'minecraft:iron_block',
+    9000
+  )
 
   // Basalt probabilistic crushing
   e.recipes.create.crushing(
@@ -211,7 +215,8 @@ ServerEvents.recipes((e) => {
   // netherite
   //
 
-  new SequencedAssembly(e, 'create:precision_mechanism')
+  create
+    .SequencedAssembly('create:precision_mechanism')
     .transitional('kubejs:incomplete_logistics_mechanism')
     .deploy('pneumaticcraft:plastic')
     .deploy('pneumaticcraft:printed_circuit_board')

@@ -29,7 +29,6 @@ Parser.parseStackedItemInput = (s) => {
   if (m === null || m.length != 5) return null
 
   const output = {}
-
   const tag = m[3]
   const id = m[4]
   if (tag !== '') {

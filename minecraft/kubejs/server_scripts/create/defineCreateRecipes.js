@@ -1,25 +1,36 @@
 // priority: 1000
 
 const createRolling = (e, output, input) => {
-  if (typeof output !== 'string') throw new Error(`Invalid output ${output}`)
-  if (typeof input !== 'string') throw new Error(`Invalid input ${input}`)
   const base = {
     type: 'createaddition:rolling',
-    input: {},
-    result: {},
   }
-  if (input.startsWith('#')) {
-    base.input.tag = input.substring(1)
-  } else {
-    base.input.item = input
+  if (!setIfValid(base, 'input', Parser.parseItemInput(input))) {
+    throw new Error(`Invalid input ${input}`)
   }
-  // TODO refactor this into general utils
-  base.result = PneumaticcraftUtils.parseItemOutput(output)
-  if (base.result === null) throw new Error(`Invalid output ${output}`)
+  if (!setIfValid(base, 'output', Parser.parseItemOutput(output))) {
+    throw new Error(`Invalid output ${output}`)
+  }
   return e.custom(base)
 }
 
-// createEnergising = (e, output, input) => {}
+const createEnergising = (e, output, input, energyNeeded) => {
+  const base = {
+    type: 'create_new_age:energising',
+    // https://gitlab.com/antarcticgardens/create-new-age
+    // JSON recipe key changed in latest dev branch to 'energyNeeded' instead of
+    // 'energy_needed'
+    energy_needed: energyNeeded !== undefined ? energyNeeded : 1000,
+    ingredients: [],
+    results: [],
+  }
+  input = Parser.parseItemInput(input)
+  if (input === null) throw new Error(`Invalid input ${input}`)
+  base.ingredients.push(input)
+  output = Parser.parseItemOutput(output)
+  if (output === null) throw new Error(`Invalid output ${output}`)
+  base.results.push(output)
+  return e.custom(base)
+}
 
 const getPartialApplication = (e, fn) => {
   return function () {
@@ -31,8 +42,8 @@ const getPartialApplication = (e, fn) => {
   }
 }
 
-const defineCreateAddonRecipes = (e) => {
-  const recipes = {
+const defineCreateRecipes = (e) => {
+  return {
     compacting: e.recipes.create.compacting,
     crushing: e.recipes.create.crushing,
     cutting: e.recipes.create.cutting,
@@ -50,10 +61,12 @@ const defineCreateAddonRecipes = (e) => {
     splashing: e.recipes.create.splashing,
 
     // Helpers
+    SequencedAssembly: (input) => {
+      return new SequencedAssembly(e, input)
+    },
 
     // Addons
     rolling: getPartialApplication(e, createRolling),
+    energising: getPartialApplication(e, createEnergising),
   }
-
-  e.recipes.create = recipes
 }
