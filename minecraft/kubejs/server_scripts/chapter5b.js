@@ -28,7 +28,7 @@ EntityEvents.spawned((e) => {
       { x: 1, y: -1, z: 0 },
       { x: 1, y: -1, z: 1 },
     ]
-    for (let offset of surroundingBlocks) {
+    for (const offset of surroundingBlocks) {
       let block = entity.block.offset(offset.x, offset.y, offset.z)
       if (block == 'minecraft:emerald_block') {
         let trader = block.createEntity('minecraft:wandering_trader')

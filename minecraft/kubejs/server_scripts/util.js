@@ -21,7 +21,7 @@ const redefineRecipe_ = (e) => {
     if (keys !== undefined) {
       // Remove keys that aren't present in the shape specification
       const joined = shape.join('')
-      for (let key in keys) {
+      for (const key in keys) {
         if (!joined.includes(key)) {
           delete keys[key]
         }

@@ -87,7 +87,7 @@ ThermoPlantRecipe.prototype.outputs = function (outputs) {
   if (outputs.length > 2) {
     throw new Error(`Too many outputs: ${outputs}`)
   }
-  for (let output of outputs) {
+  for (const output of outputs) {
     if (typeof output !== 'string') {
       throw new Error(`Invalid output ${output}`)
     }

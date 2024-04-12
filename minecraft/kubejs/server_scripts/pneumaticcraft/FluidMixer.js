@@ -1,6 +1,6 @@
 // priority: 900
 
-// JS prototype class to make registering Pneumaticcraft Heat Frame Processing
+// JS prototype class to make registering Pneumaticcraft Fluid Mixer Processing
 // Recipes easier
 
 function FluidMixerRecipe(e, input1, input2) {
@@ -46,7 +46,7 @@ FluidMixerRecipe.prototype.outputs = function (outputs) {
   if (outputs.length > 2) {
     throw new Error(`Too many outputs: ${outputs}`)
   }
-  for (let output of outputs) {
+  for (const output of outputs) {
     if (typeof output !== 'string') {
       throw new Error(`Invalid output ${output}`)
     }

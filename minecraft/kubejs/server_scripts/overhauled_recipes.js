@@ -631,7 +631,7 @@ ServerEvents.recipes((e) => {
   // Replace all recipes that used reinforced bricks or stone and make them
   // use steel and heavy plates. Replace all recipes with logistics cores with
   // logistics mechanisms.
-  for (let [from, to] of Object.entries(pneumaticcraftMapping)) {
+  for (const [from, to] of Object.entries(pneumaticcraftMapping)) {
     e.replaceInput(
       {
         mod: 'pneumaticcraft',
