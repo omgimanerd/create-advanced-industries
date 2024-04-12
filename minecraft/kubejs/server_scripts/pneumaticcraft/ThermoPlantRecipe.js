@@ -3,7 +3,8 @@
 // JS prototype class to make registering Pneumaticcraft Thermopneumatic
 // Processing Recipes easier.
 
-function ThermoPlantRecipe(inputs) {
+function ThermoPlantRecipe(e, inputs) {
+  this.e_ = e
   this.inputs_ = inputs
 
   this.exothermic_ = false
@@ -41,7 +42,7 @@ ThermoPlantRecipe.prototype.maxTemp = function (max_temp) {
   return this
 }
 
-ThermoPlantRecipe.prototype.outputs = function (e, outputs) {
+ThermoPlantRecipe.prototype.outputs = function (outputs) {
   if (outputs === undefined) {
     throw new Error('No recipe outputs were specified')
   }
@@ -107,5 +108,5 @@ ThermoPlantRecipe.prototype.outputs = function (e, outputs) {
     console.log(JSON.stringify(base))
   }
 
-  e.custom(base)
+  return this.e_.custom(base)
 }

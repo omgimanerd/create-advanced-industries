@@ -3,7 +3,8 @@
 // JS prototype class to make registering Pneumaticcraft Heat Frame Processing
 // Recipes easier
 
-function HeatFrameRecipe(input) {
+function HeatFrameRecipe(e, input) {
+  this.e_ = e
   this.input_ = input
 
   this.bonus_output_ = {}
@@ -22,9 +23,10 @@ HeatFrameRecipe.prototype.bonusOutput = function (limit, multiplier) {
 
 HeatFrameRecipe.prototype.maxTemp = function (max_temp) {
   this.max_temp_ = max_temp
+  return this
 }
 
-HeatFrameRecipe.prototype.outputs = function (e, output) {
+HeatFrameRecipe.prototype.outputs = function (output) {
   let base = {
     type: HeatFrameRecipe.RECIPE_TYPE,
     max_temp: this.max_temp_,
@@ -50,5 +52,5 @@ HeatFrameRecipe.prototype.outputs = function (e, output) {
     console.log(JSON.stringify(base))
   }
 
-  e.custom(base)
+  return this.e_.custom(base)
 }

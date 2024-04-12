@@ -3,9 +3,6 @@
 
 ServerEvents.tags('fluid', (e) => {
   e.add('forge:crude_oil', 'tfmg:crude_oil_fluid')
-
-  // Required for heat frame cooling
-  e.add('kubejs:molten_silicon', 'kubejs:molten_silicon')
 })
 
 ItemEvents.rightClicked('kubejs:diamond_sawblade', (e) => {
@@ -35,48 +32,49 @@ ServerEvents.recipes((e) => {
     'minecraft:basalt'
   )
 
-  // Each of the petrochem processes has a chance to yield sulfur
   // 1000mb crude oil =
   //   200 mb diesel = 160 kerosene
   //   300 mb kerosene + 160 kerosene = 368 gasoline
   //   300 mb gasoline + 368 gasoline = 534.4 lpg
   //   200 mb lpg + 534.4 lpg = 734.4 total
-  // Fractional distillation overhauls
+  // Fractional distillation overhauls to yield bitumen and sulfur byproducts
   e.remove({ id: 'pneumaticcraft:thermo_plant/kerosene' })
-  new ThermoPlantRecipe(['100mb #forge:diesel'])
+  new ThermoPlantRecipe(e, ['100mb #forge:diesel'])
     .pressure(2)
-    .minTemp(573)
-    .outputs(e, ['80mb pneumaticcraft:kerosene', 'thermal:bitumen'])
+    .minTemp(573) // 300C
+    .outputs(['80mb pneumaticcraft:kerosene', 'thermal:bitumen'])
   e.remove({ id: 'pneumaticcraft:thermo_plant/gasoline' })
-  new ThermoPlantRecipe(['100mb #forge:kerosene'])
+  new ThermoPlantRecipe(e, ['100mb #forge:kerosene'])
     .pressure(2)
-    .minTemp(573)
-    .outputs(e, ['80mb pneumaticcraft:gasoline', 'thermal:sulfur'])
+    .minTemp(573) // 300C
+    .outputs(['80mb pneumaticcraft:gasoline', 'thermal:sulfur'])
   e.remove({ id: 'pneumaticcraft:thermo_plant/lpg' })
-  new ThermoPlantRecipe(['100mb #forge:gasoline'])
+  new ThermoPlantRecipe(e, ['100mb #forge:gasoline'])
     .pressure(2)
-    .minTemp(573)
-    .outputs(e, ['80mb pneumaticcraft:lpg', 'thermal:sulfur'])
+    .minTemp(573) // 300C
+    .outputs(['80mb pneumaticcraft:lpg', 'thermal:sulfur'])
 
   // Overhaul lubricant from diesel
+  e.remove({ id: 'pneumaticcraft:thermo_plant/lubricant_from_biodiesel' })
 
   // Plastic must come from petrochemical processing, nerf it a little bit
   e.remove({ id: 'pneumaticcraft:thermo_plant/plastic_from_biodiesel' })
   e.remove({ id: 'pneumaticcraft:thermo_plant/plastic_from_lpg' })
-  new ThermoPlantRecipe(['250mb #forge:lpg', 'minecraft:coal'])
-    .minTemp(373)
-    .outputs(e, ['250mb pneumaticcraft:plastic'])
+  new ThermoPlantRecipe(e, ['250mb #forge:lpg', 'minecraft:coal'])
+    .minTemp(373) // 300C
+    .outputs(['250mb pneumaticcraft:plastic'])
 
   // Cool plastic in a heat frame
   e.remove({ id: 'pneumaticcraft:heat_frame_cooling/plastic' })
-  new HeatFrameRecipe('1000mb pneumaticcraft:plastic')
+  new HeatFrameRecipe(e, '1000mb pneumaticcraft:plastic')
     .bonusOutput(/*limit=*/ 1, /*multiplier=*/ 0.01)
-    .outputs(e, '2x tfmg:plastic_sheet')
+    .maxTemp(343) // 70C
+    .outputs('2x tfmg:plastic_sheet')
   e.recipes.create.cutting('3x pneumaticcraft:plastic', 'tfmg:plastic_sheet')
 
   // TODO overhaul reinf stone
 
-  // Silicon overhaul
+  // Silicon overhaul, must be crystallized in a heat frame
   e.remove({ id: 'refinedstorage:silicon' })
   e.recipes.create
     .mixing(
@@ -93,10 +91,9 @@ ServerEvents.recipes((e) => {
       ]
     )
     .superheated()
-  new HeatFrameRecipe('360mb kubejs:molten_silicon').outputs(
-    e,
-    '4x refinedstorage:silicon'
-  )
+  new HeatFrameRecipe(e, '360mb kubejs:molten_silicon')
+    .maxTemp(223) // -50C
+    .outputs('4x refinedstorage:silicon')
 
   // Diamond sawblades to cut silicon into wafers
   e.shaped(
@@ -127,9 +124,11 @@ ServerEvents.recipes((e) => {
     .outputs('pneumaticcraft:transistor')
 
   // Capacitor overhaul
+  e.remove({ id: 'pneumaticcraft:pressure_chamber/capacitor' })
   new SequencedAssembly(e, 'thermal:silver_plate')
     .deploy('pneumaticcraft:plastic')
     .deploy('thermal:silver_plate')
+    .deploy('minecraft:redstone_torch')
     .press()
     .outputs('pneumaticcraft:capacitor')
 
