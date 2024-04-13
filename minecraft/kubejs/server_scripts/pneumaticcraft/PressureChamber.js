@@ -27,14 +27,15 @@ PressureChamber.prototype.outputs = function (outputs) {
 
   this.inputs_ = Array.isArray(this.inputs_) ? this.inputs_ : [this.inputs_]
   for (const input of this.inputs_) {
-    const g = Parser.parseStackedItemInput(input)
+    let g = Parser.parseStackedItemInput(input)
     if (g === null) throw new Error(`Invalid input ${input}`)
+    g.type = 'pneumaticcraft:stacked_item'
     base.inputs.push(g)
   }
 
   outputs = Array.isArray(outputs) ? outputs : [outputs]
   for (const output of outputs) {
-    const g = Parser.parseItemOutput(output)
+    let g = Parser.parseItemOutput(output)
     if (g === null) throw new Error(`Invalid output ${output}`)
     base.results.push(g)
   }

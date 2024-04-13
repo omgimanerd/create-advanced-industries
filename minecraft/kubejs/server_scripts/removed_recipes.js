@@ -13,6 +13,7 @@ global.removedRecipes = [
   { output: /^createconnected:copycat_[a-z_]+/ },
   { output: /^pneumaticcraft:compressed_iron.*/ },
   { output: 'pneumaticcraft:ingot_iron_compressed' },
+  { output: 'pneumaticcraft:pneumatic_dynamo' },
   { output: 'pneumaticcraft:wheat_flour' },
   { output: /^tfmg:[a-z_]+_concrete$/ },
   { output: /^tfmg:aluminum_.*/ },

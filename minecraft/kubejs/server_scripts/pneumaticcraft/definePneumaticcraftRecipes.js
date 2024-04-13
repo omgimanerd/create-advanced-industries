@@ -1,5 +1,10 @@
 // priority: 500
 
+/**
+ *
+ * @param {dev.latvian.mods.kubejs.recipe.RecipeEventsJS} e
+ * @returns
+ */
 const definePneumaticcraftRecipes = (e) => {
   return {
     // Helpers

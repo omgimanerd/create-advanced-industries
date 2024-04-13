@@ -22,6 +22,11 @@ ServerEvents.recipes((e) => {
   const ingotFluid = global.MeltableItem.DEFAULT_INGOT_FLUID
 
   // Hardened planks can only be crafted in a pressure chamber
+  e.remove({ id: 'tfmg:filling/hardened_wood_creosote' })
+  pneumaticcraft
+    .PressureChamber(['8x #minecraft:planks', '1x tfmg:creosote_bucket'])
+    .pressure(2)
+    .outputs('8x tfmg:hardened_planks')
 
   // Overhaul refinery recipe
 

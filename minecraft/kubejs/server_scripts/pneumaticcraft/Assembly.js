@@ -35,6 +35,7 @@ Assembly.prototype.outputs = function (output) {
 
   // Parse the input into the valid JSON format. This recipe must have an input.
   const itemInput = Parser.parseStackedItemInput(this.input_)
+  if (itemInput !== null) itemInput.type = 'pneumaticcraft:stacked_item'
   if (!setIfValid(base, 'input', itemInput)) {
     throw new Error(`Invalid input ${itemInput}`)
   }

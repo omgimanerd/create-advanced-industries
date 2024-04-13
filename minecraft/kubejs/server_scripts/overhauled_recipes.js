@@ -690,6 +690,8 @@ ServerEvents.recipes((e) => {
     S: 'tfmg:steel_ingot',
     H: 'tfmg:heavy_plate',
     M: 'tfmg:steel_mechanism',
+    C: 'tfmg:steel_casing',
+    D: 'tfmg:heavy_machinery_casing',
     A: 'pneumaticcraft:advanced_pressure_tube',
     T: 'pneumaticcraft:pressure_tube',
   }
@@ -698,7 +700,7 @@ ServerEvents.recipes((e) => {
     [
       'HHH', //
       'HCA', //
-      'SMS', //
+      'SDS', //
     ],
     Object.assign({}, pneumaticcraftKeys, {
       C: 'pneumaticcraft:air_compressor',
@@ -709,7 +711,7 @@ ServerEvents.recipes((e) => {
     [
       'HHH', //
       'HCA', //
-      'SMS', //
+      'SDS', //
     ],
     Object.assign({}, pneumaticcraftKeys, {
       C: 'pneumaticcraft:liquid_compressor',
@@ -732,10 +734,10 @@ ServerEvents.recipes((e) => {
     'pneumaticcraft:air_compressor',
     [
       'HHH', //
-      'HFT', //
+      'HCT', //
       'SMS', //
     ],
-    Object.assign({}, pneumaticcraftKeys, { F: 'minecraft:furnace' })
+    pneumaticcraftKeys
   )
   // TODO(pneumaticcraft:assembly_controller)
   // TODO(pneumaticcraft:assembly_drill)
@@ -759,12 +761,12 @@ ServerEvents.recipes((e) => {
   redefineRecipe(
     'pneumaticcraft:liquid_compressor',
     [
-      ' C ', //
+      ' A ', //
       'TFT', //
       'SMS', //
     ],
     Object.assign({}, pneumaticcraftKeys, {
-      C: 'pneumaticcraft:air_compressor',
+      A: 'pneumaticcraft:air_compressor',
       F: {
         item: 'pneumaticcraft:small_tank',
         count: 1,
@@ -795,6 +797,39 @@ ServerEvents.recipes((e) => {
       C: '#forge:chests/wooden',
     })
   )
+  redefineRecipe(
+    '8x pneumaticcraft:pressure_chamber_glass',
+    [
+      'HHH', //
+      'HGH', //
+      'HHH', //
+    ],
+    Object.assign({}, pneumaticcraftKeys, { G: '#forge:glass' })
+  )
+  redefineRecipe(
+    '8x pneumaticcraft:pressure_chamber_wall',
+    [
+      'HHH', //
+      'H H', //
+      'HHH', //
+    ],
+    pneumaticcraftKeys
+  )
+  redefineRecipe(
+    '8x pneumaticcraft:pressure_tube',
+    ['HGH'],
+    Object.assign({}, pneumaticcraftKeys, { G: '#forge:glass' })
+  )
+  redefineRecipe(
+    'pneumaticcraft:refinery',
+    [
+      'HHH', //
+      'FCF', //
+      'SMS', //
+    ],
+    Object.assign({}, pneumaticcraftKeys, { F: 'minecraft:furnace' })
+  )
+
   redefineRecipe(
     'pneumaticcraft:pressure_gauge',
     [
