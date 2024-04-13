@@ -40,19 +40,19 @@ ServerEvents.recipes((e) => {
   pneumaticcraft
     .ThermoPlant(['100mb #forge:diesel'])
     .pressure(2)
-    .minTemp(573) // 300C
+    .minTemp(300)
     .outputs(['80mb pneumaticcraft:kerosene', 'thermal:bitumen'])
   e.remove({ id: 'pneumaticcraft:thermo_plant/gasoline' })
   pneumaticcraft
     .ThermoPlant(['100mb #forge:kerosene'])
     .pressure(2)
-    .minTemp(573) // 300C
+    .minTemp(300)
     .outputs(['80mb pneumaticcraft:gasoline', 'thermal:sulfur'])
   e.remove({ id: 'pneumaticcraft:thermo_plant/lpg' })
   pneumaticcraft
     .ThermoPlant(['100mb #forge:gasoline'])
     .pressure(2)
-    .minTemp(573) // 300C
+    .minTemp(300)
     .outputs(['80mb pneumaticcraft:lpg', 'thermal:sulfur'])
 
   // Overhaul lubricant from diesel
@@ -69,7 +69,7 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'pneumaticcraft:thermo_plant/plastic_from_lpg' })
   pneumaticcraft
     .ThermoPlant(['250mb #forge:lpg', 'minecraft:coal'])
-    .minTemp(373) // 300C
+    .minTemp(100)
     .outputs(['250mb pneumaticcraft:plastic'])
 
   // Cool plastic in a heat frame
@@ -77,7 +77,7 @@ ServerEvents.recipes((e) => {
   pneumaticcraft
     .HeatFrame('1000mb pneumaticcraft:plastic')
     .bonusOutput(/*limit=*/ 1, /*multiplier=*/ 0.01)
-    .maxTemp(343) // 70C
+    .maxTemp(70)
     .outputs('2x tfmg:plastic_sheet')
   create.cutting('3x pneumaticcraft:plastic', 'tfmg:plastic_sheet')
 
@@ -102,7 +102,7 @@ ServerEvents.recipes((e) => {
     .superheated()
   pneumaticcraft
     .HeatFrame('360mb kubejs:molten_silicon')
-    .maxTemp(223) // -50C
+    .maxTemp(-50)
     .outputs('4x refinedstorage:silicon')
 
   // Diamond sawblades to cut silicon into wafers

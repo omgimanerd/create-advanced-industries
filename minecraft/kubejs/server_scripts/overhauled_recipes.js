@@ -806,6 +806,7 @@ ServerEvents.recipes((e) => {
     ],
     Object.assign({}, pneumaticcraftKeys, { G: '#forge:glass' })
   )
+  e.remove({ id: 'pneumaticcraft:pressure_chamber_valve' })
   redefineRecipe(
     '8x pneumaticcraft:pressure_chamber_wall',
     [
@@ -828,6 +829,18 @@ ServerEvents.recipes((e) => {
       'SMS', //
     ],
     Object.assign({}, pneumaticcraftKeys, { F: 'minecraft:furnace' })
+  )
+  redefineRecipe(
+    'pneumaticcraft:refinery_output',
+    [
+      'HHH', //
+      'GTG', //
+      'HHH',
+    ],
+    Object.assign({}, pneumaticcraftKeys, {
+      G: '#forge:glass',
+      T: 'pneumaticcraft:small_tank',
+    })
   )
 
   redefineRecipe(
