@@ -1,5 +1,6 @@
 // priority: 1000
 
+// Rolling recipe from Create Crafts & Additions
 const createRolling = (e, output, input) => {
   const base = {
     type: 'createaddition:rolling',
@@ -13,6 +14,7 @@ const createRolling = (e, output, input) => {
   return e.custom(base)
 }
 
+// Energiser recipes from Create: New Age
 const createEnergising = (e, output, input, energyNeeded) => {
   const base = {
     type: 'create_new_age:energising',
@@ -29,6 +31,35 @@ const createEnergising = (e, output, input, energyNeeded) => {
   output = Parser.parseItemOutput(output)
   if (output === null) throw new Error(`Invalid output ${output}`)
   base.results.push(output)
+  return e.custom(base)
+}
+
+// Mechanical extruder recipes from Create Mechanical Extruder
+const createExtruding = (e, output, inputs) => {
+  const base = {
+    type: 'create_mechanical_extruder:extruding',
+    ingredients: [],
+  }
+  if (!Array.isArray(inputs) || inputs.length != 2) {
+    throw new Error(`Two inputs are required: ${inputs}`)
+  }
+  for (const input of inputs) {
+    const itemInput = Parser.parseItemInput(input)
+    if (itemInput !== null) {
+      ingredients.append(itemInput)
+      continue
+    }
+    const fluidInput = Parser.parseFluidInput(input)
+    if (fluidInput !== null) {
+      ingredients.append(fluidInput)
+      continue
+    }
+    throw new Error(`Unknown input ${input}`)
+  }
+  const itemOutput = Parser.parseItemOutput(output)
+  if (!setIfValid(base, 'result', itemOutput)) {
+    throw new Error(`Invalid output ${output}`)
+  }
   return e.custom(base)
 }
 
@@ -56,5 +87,6 @@ const defineCreateRecipes = (e) => {
     // Addons
     rolling: getPartialApplication(e, createRolling),
     energising: getPartialApplication(e, createEnergising),
+    extruding: getPartialApplication(e, createExtruding),
   }
 }
