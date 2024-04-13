@@ -24,14 +24,16 @@ const redefineRecipe_ = (e) => {
     e.remove({ output: id })
     // 3-argument shaped recipe
     if (keys !== undefined) {
-      // Remove keys that aren't present in the shape specification
+      // Remove keys that aren't present in the shape specification, make a copy
+      // of the key arguments to prevent mutating the input JSON object.
       const joined = shape.join('')
-      for (const key in keys) {
+      let keyCopy = Object.assign({}, keys)
+      for (const key in keyCopy) {
         if (!joined.includes(key)) {
-          delete keys[key]
+          delete keyCopy[key]
         }
       }
-      return e.shaped(output, shape, keys)
+      return e.shaped(output, shape, keyCopy)
     } else {
       // 2-argument shapeless recipe
       return e.shapeless(output, shape)
