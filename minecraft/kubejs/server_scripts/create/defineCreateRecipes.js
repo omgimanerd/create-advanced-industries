@@ -32,16 +32,6 @@ const createEnergising = (e, output, input, energyNeeded) => {
   return e.custom(base)
 }
 
-const getPartialApplication = (e, fn) => {
-  return function () {
-    const args = [e]
-    for (const arg of arguments) {
-      args.push(arg)
-    }
-    return fn.apply(null, args)
-  }
-}
-
 const defineCreateRecipes = (e) => {
   return {
     compacting: e.recipes.create.compacting,
@@ -61,9 +51,7 @@ const defineCreateRecipes = (e) => {
     splashing: e.recipes.create.splashing,
 
     // Helpers
-    SequencedAssembly: (input) => {
-      return new SequencedAssembly(e, input)
-    },
+    SequencedAssembly: getConstructorWrapper(e, SequencedAssembly),
 
     // Addons
     rolling: getPartialApplication(e, createRolling),

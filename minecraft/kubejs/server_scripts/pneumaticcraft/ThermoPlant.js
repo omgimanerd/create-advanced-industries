@@ -3,7 +3,7 @@
 // JS prototype class to make registering Pneumaticcraft Thermopneumatic
 // Processing Recipes easier.
 
-function ThermoPlantRecipe(e, inputs) {
+function ThermoPlant(e, inputs) {
   this.e_ = e
   this.inputs_ = inputs
 
@@ -12,41 +12,54 @@ function ThermoPlantRecipe(e, inputs) {
   this.temperature_ = {}
 }
 
-ThermoPlantRecipe.RECIPE_TYPE = 'pneumaticcraft:thermo_plant'
+ThermoPlant.RECIPE_TYPE = 'pneumaticcraft:thermo_plant'
 
-ThermoPlantRecipe.prototype.exothermic = function (exothermic_) {
+ThermoPlant.prototype.exothermic = function (exothermic_) {
   this.exothermic = exothermic_
   return this
 }
 
-ThermoPlantRecipe.prototype.pressure = function (pressure) {
+ThermoPlant.prototype.pressure = function (pressure) {
   this.pressure_ = pressure
   return this
 }
 
-ThermoPlantRecipe.prototype.temperature = function (min_temp, max_temp) {
+/**
+ * @param {number} min_temp The min temperature in C
+ * @param {number} max_temp The min temperature in C
+ * @returns {ThermoPlant}
+ */
+ThermoPlant.prototype.temperature = function (min_temp, max_temp) {
   this.temperature_ = {
-    min_temp: min_temp,
-    max_temp: max_temp,
+    min_temp: min_temp + 273,
+    max_temp: max_temp + 273,
   }
   return this
 }
 
-ThermoPlantRecipe.prototype.minTemp = function (min_temp) {
-  this.temperature_.min_temp = min_temp
+/**
+ * @param {number} min_temp The min temperature in C
+ * @returns {ThermoPlant}
+ */
+ThermoPlant.prototype.minTemp = function (min_temp) {
+  this.temperature_.min_temp = min_temp + 273
   return this
 }
 
-ThermoPlantRecipe.prototype.maxTemp = function (max_temp) {
-  this.temperature_.max_temp = max_temp
+/**
+ * @param {number} max_temp The min temperature in C
+ * @returns {ThermoPlant}
+ */
+ThermoPlant.prototype.maxTemp = function (max_temp) {
+  this.temperature_.max_temp = max_temp + 273
   return this
 }
 
-ThermoPlantRecipe.prototype.outputs = function (outputs) {
+ThermoPlant.prototype.outputs = function (outputs) {
   if (outputs === undefined) throw new Error('No recipe outputs were specified')
   // Fields are keys used in Pneumaticcraft's recipe JSON
   const base = {
-    type: ThermoPlantRecipe.RECIPE_TYPE,
+    type: ThermoPlant.RECIPE_TYPE,
     exothermic: this.exothermic_,
   }
   if (

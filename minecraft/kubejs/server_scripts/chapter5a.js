@@ -18,9 +18,12 @@ ItemEvents.rightClicked('kubejs:diamond_sawblade', (e) => {
 
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
+  const pneumaticcraft = definePneumaticcraftRecipes(e)
   const ingotFluid = global.MeltableItem.DEFAULT_INGOT_FLUID
 
   // Hardened planks can only be crafted in a pressure chamber
+
+  // Overhaul refinery recipe
 
   // 1000mb crude oil =
   //   200 mb diesel = 160 kerosene
@@ -29,17 +32,20 @@ ServerEvents.recipes((e) => {
   //   200 mb lpg + 534.4 lpg = 734.4 total
   // Fractional distillation overhauls to yield bitumen and sulfur byproducts
   e.remove({ id: 'pneumaticcraft:thermo_plant/kerosene' })
-  new ThermoPlantRecipe(e, ['100mb #forge:diesel'])
+  pneumaticcraft
+    .ThermoPlant(['100mb #forge:diesel'])
     .pressure(2)
     .minTemp(573) // 300C
     .outputs(['80mb pneumaticcraft:kerosene', 'thermal:bitumen'])
   e.remove({ id: 'pneumaticcraft:thermo_plant/gasoline' })
-  new ThermoPlantRecipe(e, ['100mb #forge:kerosene'])
+  pneumaticcraft
+    .ThermoPlant(['100mb #forge:kerosene'])
     .pressure(2)
     .minTemp(573) // 300C
     .outputs(['80mb pneumaticcraft:gasoline', 'thermal:sulfur'])
   e.remove({ id: 'pneumaticcraft:thermo_plant/lpg' })
-  new ThermoPlantRecipe(e, ['100mb #forge:gasoline'])
+  pneumaticcraft
+    .ThermoPlant(['100mb #forge:gasoline'])
     .pressure(2)
     .minTemp(573) // 300C
     .outputs(['80mb pneumaticcraft:lpg', 'thermal:sulfur'])
@@ -47,7 +53,8 @@ ServerEvents.recipes((e) => {
   // Overhaul lubricant from diesel
   e.remove({ id: 'pneumaticcraft:thermo_plant/lubricant_from_biodiesel' })
   e.remove({ id: 'pneumaticcraft:thermo_plant/lubricant_from_diesel' })
-  new FluidMixerRecipe(e, '250mb #forge:diesel', '250mb #forge:plantoil')
+  pneumaticcraft
+    .FluidMixer('250mb #forge:diesel', '250mb #forge:plantoil')
     .time(100)
     .pressure(2)
     .outputs(['500mb pneumaticcraft:lubricant', 'createaddition:biomass'])
@@ -55,13 +62,15 @@ ServerEvents.recipes((e) => {
   // Plastic must come from petrochemical processing, nerf it a little bit
   e.remove({ id: 'pneumaticcraft:thermo_plant/plastic_from_biodiesel' })
   e.remove({ id: 'pneumaticcraft:thermo_plant/plastic_from_lpg' })
-  new ThermoPlantRecipe(e, ['250mb #forge:lpg', 'minecraft:coal'])
+  pneumaticcraft
+    .ThermoPlant(['250mb #forge:lpg', 'minecraft:coal'])
     .minTemp(373) // 300C
     .outputs(['250mb pneumaticcraft:plastic'])
 
   // Cool plastic in a heat frame
   e.remove({ id: 'pneumaticcraft:heat_frame_cooling/plastic' })
-  new HeatFrameRecipe(e, '1000mb pneumaticcraft:plastic')
+  pneumaticcraft
+    .HeatFrame('1000mb pneumaticcraft:plastic')
     .bonusOutput(/*limit=*/ 1, /*multiplier=*/ 0.01)
     .maxTemp(343) // 70C
     .outputs('2x tfmg:plastic_sheet')
@@ -86,7 +95,8 @@ ServerEvents.recipes((e) => {
       ]
     )
     .superheated()
-  new HeatFrameRecipe(e, '360mb kubejs:molten_silicon')
+  pneumaticcraft
+    .HeatFrame('360mb kubejs:molten_silicon')
     .maxTemp(223) // -50C
     .outputs('4x refinedstorage:silicon')
 

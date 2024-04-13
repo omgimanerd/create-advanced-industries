@@ -3,23 +3,23 @@
 // JS prototype class to make registering Pneumaticcraft Pressure Chamber
 // recipes easier.
 
-function PressureChamberRecipe(e, inputs) {
+function PressureChamber(e, inputs) {
   this.e_ = e
   this.inputs_ = inputs
 
   this.pressure_ = 1.0
 }
 
-PressureChamberRecipe.RECIPE_TYPE = 'pneumaticcraft:pressure_chamber'
+PressureChamber.RECIPE_TYPE = 'pneumaticcraft:pressure_chamber'
 
-PressureChamberRecipe.prototype.pressure = function (pressure) {
+PressureChamber.prototype.pressure = function (pressure) {
   this.pressure_ = pressure
   return this
 }
 
-PressureChamberRecipe.prototype.outputs = function (outputs) {
+PressureChamber.prototype.outputs = function (outputs) {
   let base = {
-    type: PressureChamberRecipe.RECIPE_TYPE,
+    type: PressureChamber.RECIPE_TYPE,
     pressure: this.pressure_,
     inputs: [],
     results: [],

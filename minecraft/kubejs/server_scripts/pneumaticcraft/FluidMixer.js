@@ -3,7 +3,7 @@
 // JS prototype class to make registering Pneumaticcraft Fluid Mixer Processing
 // Recipes easier
 
-function FluidMixerRecipe(e, input1, input2) {
+function FluidMixer(e, input1, input2) {
   this.e_ = e
   this.input1_ = input1
   this.input2_ = input2
@@ -12,21 +12,21 @@ function FluidMixerRecipe(e, input1, input2) {
   this.time_ = 40
 }
 
-FluidMixerRecipe.RECIPE_TYPE = 'pneumaticcraft:fluid_mixer'
+FluidMixer.RECIPE_TYPE = 'pneumaticcraft:fluid_mixer'
 
-FluidMixerRecipe.prototype.pressure = function (pressure) {
+FluidMixer.prototype.pressure = function (pressure) {
   this.pressure_ = pressure
   return this
 }
 
-FluidMixerRecipe.prototype.time = function (time) {
+FluidMixer.prototype.time = function (time) {
   this.time_ = time
   return this
 }
 
-FluidMixerRecipe.prototype.outputs = function (outputs) {
+FluidMixer.prototype.outputs = function (outputs) {
   const base = {
-    type: FluidMixerRecipe.RECIPE_TYPE,
+    type: FluidMixer.RECIPE_TYPE,
     time: this.time_,
   }
   if (this.pressure_ !== undefined) {
