@@ -85,6 +85,7 @@ ThermoPlant.prototype.outputs = function (outputs) {
     }
     // If the input matched a fluid, parse it into the expected JSON format.
     g = Parser.parseFluidInput(input)
+    if (g !== null) g.type = 'pneumaticcraft:fluid'
     if (setIfValid(base, 'fluid_input', g)) {
       continue
     }

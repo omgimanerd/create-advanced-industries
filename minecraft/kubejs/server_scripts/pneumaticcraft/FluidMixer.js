@@ -34,10 +34,12 @@ FluidMixer.prototype.outputs = function (outputs) {
   }
 
   const input1 = Parser.parseFluidInput(this.input1_)
+  if (input1 !== null) input1.type = 'pneumaticcraft:fluid'
   if (!setIfValid(base, 'input1', input1)) {
     throw new Error(`Fluid input invalid: ${this.input1_}`)
   }
   const input2 = Parser.parseFluidInput(this.input2_)
+  if (input2 !== null) input2.type = 'pneumaticcraft:fluid'
   if (!setIfValid(base, 'input2', input2)) {
     throw new Error(`Fluid input invalid: ${this.input2_}`)
   }

@@ -87,13 +87,11 @@ Parser.parseFluidInput = (s) => {
   const tag = m[3]
   if (tag !== '') {
     return {
-      type: 'pneumaticcraft:fluid',
       amount: quantity,
       tag: m[4],
     }
   }
   return {
-    type: 'pneumaticcraft:fluid',
     amount: quantity,
     fluid: m[4],
   }

@@ -43,8 +43,9 @@ HeatFrame.prototype.outputs = function (output) {
   }
 
   // There should be exactly one fluid input and one item output.
-  const fluidOutput = Parser.parseFluidInput(this.input_)
-  if (!setIfValid(base, 'input', fluidOutput)) {
+  const fluidInput = Parser.parseFluidInput(this.input_)
+  if (fluidInput !== null) fluidInput.type = 'pneumaticcraft:fluid'
+  if (!setIfValid(base, 'input', fluidInput)) {
     throw new Error(`Invalid input ${this.input_}`)
   }
   const itemOutput = Parser.parseItemOutput(output)
