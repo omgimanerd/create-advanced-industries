@@ -1,4 +1,4 @@
-// priority: 1000
+// priority: 900
 
 // Rolling recipe from Create Crafts & Additions
 const createRolling = (e, output, input) => {
@@ -35,7 +35,7 @@ const createEnergising = (e, output, input, energyNeeded) => {
 }
 
 // Mechanical extruder recipes from Create Mechanical Extruder
-const createExtruding = (e, output, inputs) => {
+const createExtruding = (e, output, inputs, catalyst) => {
   const base = {
     type: 'create_mechanical_extruder:extruding',
     ingredients: [],
@@ -44,14 +44,14 @@ const createExtruding = (e, output, inputs) => {
     throw new Error(`Two inputs are required: ${inputs}`)
   }
   for (const input of inputs) {
-    const itemInput = Parser.parseItemInput(input)
+    let itemInput = Parser.parseItemInput(input)
     if (itemInput !== null) {
-      ingredients.append(itemInput)
+      base.ingredients.push(itemInput)
       continue
     }
-    const fluidInput = Parser.parseFluidInput(input)
+    let fluidInput = Parser.parseFluidInput(input)
     if (fluidInput !== null) {
-      ingredients.append(fluidInput)
+      base.ingredients.push(fluidInput)
       continue
     }
     throw new Error(`Unknown input ${input}`)
@@ -60,6 +60,9 @@ const createExtruding = (e, output, inputs) => {
   if (!setIfValid(base, 'result', itemOutput)) {
     throw new Error(`Invalid output ${output}`)
   }
+  const catalystItem = Parser.parseItemInput(catalyst)
+  setIfValid(base, 'catalyst', catalystItem)
+
   return e.custom(base)
 }
 
