@@ -561,13 +561,7 @@ ServerEvents.recipes((e) => {
   ///////////////////////////////////
   // Create: The Factory Must Grow //
   ///////////////////////////////////
-  e.replaceInput(
-    {
-      mod: 'tfmg',
-    },
-    'tfmg:aluminum_ingot',
-    'tfmg:cast_iron_ingot'
-  )
+
   // Replace concrete stonecutting recipes with vanilla concrete
   e.forEachRecipe(
     {

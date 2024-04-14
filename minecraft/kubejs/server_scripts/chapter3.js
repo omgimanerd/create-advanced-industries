@@ -49,7 +49,6 @@ ServerEvents.recipes((e) => {
   e.stonecutting('kubejs:clay_block_cast', 'minecraft:clay')
 
   // Tuff recipe overhaul
-  e.remove({ id: 'ars_nouveau:manipulation_essence_to_tuff' })
   e.recipes.ars_nouveau.imbuement(
     'minecraft:cobblestone',
     'minecraft:tuff',

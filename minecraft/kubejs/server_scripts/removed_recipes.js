@@ -18,6 +18,7 @@ global.removedRecipes = [
   { output: 'pneumaticcraft:drill_bit_compressed_iron' },
   { output: 'pneumaticcraft:logistics_core' },
   { output: 'pneumaticcraft:wheat_flour' },
+  { output: /^tfmg:aluminum_[a-z_]+/ },
   { output: /^tfmg:[a-z_]+_concrete$/ },
   { output: /^tfmg:cast_iron_distillation.*/ },
   { output: /^tfmg:casting_.*/ },
@@ -37,6 +38,13 @@ ServerEvents.recipes((e) => {
   global.removedRecipes.forEach((r) => {
     e.remove(r)
   })
+
+  /////////////////
+  // Ars Nouveau //
+  /////////////////
+  e.remove({ id: /ars_nouveau:manipulation_essence_to_[a-z]+ite/ })
+  e.remove({ id: 'ars_nouveau:manipulation_essence_to_tuff' })
+  e.remove({ id: 'ars_nouveau:manipulation_essence_to_deepslate' })
 
   ////////////
   // Create //

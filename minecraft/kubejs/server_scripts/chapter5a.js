@@ -7,9 +7,6 @@ ServerEvents.tags('fluid', (e) => {
 
 ItemEvents.rightClicked('kubejs:diamond_sawblade', (e) => {
   if (!e.player.level.isClientSide() && !e.player.isCreative()) {
-    const $DamageSources = Java.loadClass(
-      'net.minecraft.world.damagesource.DamageSources'
-    )
     e.player.attack(new $DamageSources(e.level.registryAccess()).cactus(), 1)
     e.player.damageHeldItem()
     e.player.tell("Ouch, that's sharp!")
@@ -105,6 +102,11 @@ ServerEvents.recipes((e) => {
 
   // Sulfur byproduct can be crushed into sulfur dust.
   create.milling('thermal:sulfur_dust', 'thermal:sulfur')
+  // Worldgen sulfur can be crushed as well.
+  create.milling(
+    ['3x thermal:sulfur_dust', Item.of('thermal:sulfur_dust').withChance(0.5)],
+    'tfmg:sulfur'
+  )
 
   // Overhaul lubricant from diesel
   e.remove({ id: 'pneumaticcraft:thermo_plant/lubricant_from_biodiesel' })
