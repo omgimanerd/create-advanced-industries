@@ -26,8 +26,9 @@ Assembly.prototype.type = function (type) {
   return this
 }
 
-Assembly.prototype.outputs = function (output) {
+Assembly.prototype.outputs = function (outputs) {
   if (outputs === undefined) throw new Error('No recipe outputs were specified')
+  if (this.type_ === undefined) throw new Error('Recipe type unspecified')
   const base = {
     type: this.type_,
     program: this.program_,
@@ -41,7 +42,7 @@ Assembly.prototype.outputs = function (output) {
   }
   // Parse the output into the valid JSON format. This recipe must have an
   // output.
-  const itemOutput = Parser.parseItemOutput(output)
+  const itemOutput = Parser.parseItemOutput(outputs)
   if (!setIfValid(base, 'result', itemOutput)) {
     throw new Error(`Invalid output ${itemOutput}`)
   }
