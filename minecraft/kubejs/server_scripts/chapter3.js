@@ -82,6 +82,7 @@ ServerEvents.recipes((e) => {
 
   // Nether quartz automation from soul sand, can be washed or melted for
   // different yields.
+  e.remove({ id: /^create:crushing\/diorite.*/ })
   create.splashing(
     [
       Item.of('minecraft:quartz').withChance(0.75),
