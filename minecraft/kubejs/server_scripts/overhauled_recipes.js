@@ -169,10 +169,62 @@ ServerEvents.recipes((e) => {
     'pneumaticcraft:ingot_iron_compressed',
     'tfmg:steel_ingot'
   )
-  e.replaceInput(
-    { mod: 'compressedcreativity' },
-    'compressedcreativity:compressed_iron_casing',
-    'tfmg:steel_casing'
+  const compressedCreativityKeys = {
+    P: 'create:copper_sheet',
+    S: 'create:shaft',
+    H: 'tfmg:heavy_plate',
+    B: 'tfmg:steel_bars',
+    I: 'tfmg:steel_ingot',
+    M: 'tfmg:steel_mechanism',
+    T: 'pneumaticcraft:pressure_tube',
+  }
+  redefineRecipe(
+    'compressedcreativity:rotational_compressor',
+    [
+      'HTH', //
+      'SCP', //
+      'IMI', //
+    ],
+    Object.assign({}, compressedCreativityKeys, {
+      C: 'create:brass_casing',
+      P: 'create:propeller',
+    })
+  )
+  redefineRecipe(
+    'compressedcreativity:compressed_air_engine',
+    [
+      'PTP', //
+      'SCR', //
+      'IMI', //
+    ],
+    Object.assign({}, compressedCreativityKeys, {
+      C: 'create:copper_casing',
+      R: 'compressedcreativity:engine_rotor',
+    })
+  )
+  redefineRecipe(
+    'compressedcreativity:air_blower',
+    [
+      'PTP', //
+      'PCP', //
+      'IBI', //
+    ],
+    Object.assign({}, compressedCreativityKeys, {
+      C: 'create:copper_casing',
+      I: 'minecraft:copper_ingot',
+    })
+  )
+  redefineRecipe(
+    'compressedcreativity:industrial_air_blower',
+    [
+      'HRH', //
+      'HCH', //
+      'HBH', //
+    ],
+    Object.assign({}, compressedCreativityKeys, {
+      R: 'pneumaticcraft:reinforced_pressure_tube',
+      C: 'tfmg:steel_casing',
+    })
   )
 
   ////////////

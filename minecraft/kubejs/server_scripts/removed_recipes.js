@@ -6,6 +6,7 @@ global.hideJEI = false
 global.removedRecipes = [
   { output: /^ars_nouveau:[a-z]+_sourcelink/ },
   { output: 'compressedcreativity:compressed_iron_casing' },
+  { output: 'compressedcreativity:heater' },
   { output: 'create:brass_hand' },
   { output: 'createaddition:electric_motor' },
   { output: 'createaddition:alternator' },
