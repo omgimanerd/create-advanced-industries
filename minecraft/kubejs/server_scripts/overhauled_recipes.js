@@ -670,6 +670,8 @@ ServerEvents.recipes((e) => {
     'minecraft:polished_andesite': 'minecraft:andesite',
     'minecraft:polished_diorite': 'minecraft:diorite',
     'minecraft:polished_granite': 'minecraft:granite',
+    'create:polished_cut_scoria': 'create:scoria',
+    'create:polished_cut_scorchia': 'create:scorchia',
   }
   for (const water of equivalentWaterBlocks) {
     for (const lava of equivalentLavaBlocks) {
@@ -712,16 +714,10 @@ ServerEvents.recipes((e) => {
   // Pneumaticcraft registers its own recipe types to preserve the pressure in
   // input ingredients.
   e.forEachRecipe(
-    [
-      {
-        mod: 'pneumaticcraft',
-        type: 'pneumaticcraft:crafting_shaped_pressurizable',
-      },
-      {
-        mod: 'pneumaticcraft',
-        type: 'pneumaticcraft:crafting_shaped_no_mirror',
-      },
-    ],
+    {
+      mod: 'pneumaticcraft',
+      type: 'pneumaticcraft:crafting_shaped_pressurizable',
+    },
     (r) => {
       let hasMatch = false
       const parsedRecipe = JSON.parse(r.json)
@@ -747,13 +743,16 @@ ServerEvents.recipes((e) => {
   )
   // Common ingredients in Pneumaticcraft's shaped recipe overhauls
   const pneumaticcraftKeys = {
-    S: 'tfmg:steel_ingot',
-    H: 'tfmg:heavy_plate',
-    M: 'tfmg:steel_mechanism',
-    C: 'tfmg:steel_casing',
     D: 'tfmg:heavy_machinery_casing',
+    H: 'tfmg:heavy_plate',
+    C: 'tfmg:steel_casing',
+    S: 'tfmg:steel_ingot',
+    M: 'tfmg:steel_mechanism',
     A: 'pneumaticcraft:advanced_pressure_tube',
+    L: 'pneumaticcraft:plastic',
+    N: 'pneumaticcraft:pneumatic_cylinder',
     T: 'pneumaticcraft:pressure_tube',
+    P: 'pneumaticcraft:printed_circuit_board',
   }
   // The advanced compressors require custom registration in order to preserve
   // the nbt data in the ingredient compressor.
@@ -783,7 +782,15 @@ ServerEvents.recipes((e) => {
       C: 'pneumaticcraft:liquid_compressor',
     })
   )
-  // TODO (pneumaticcraft:advanced_pressure_tube)
+  e.remove({ id: 'pneumaticcraft:assembly/advanced_pressure_tube' })
+  pneumaticcraft
+    .ThermoPlant([
+      'pneumaticcraft:reinforced_pressure_tube',
+      '90mb tfmg:molten_steel',
+    ])
+    .minTemp(1371)
+    .pressure(9.5)
+    .outputs('pneumaticcraft:advanced_pressure_tube')
   redefineRecipe(
     'pneumaticcraft:air_cannon',
     [
@@ -805,13 +812,84 @@ ServerEvents.recipes((e) => {
     ],
     pneumaticcraftKeys
   )
-  // TODO(pneumaticcraft:assembly_controller)
-  // TODO(pneumaticcraft:assembly_drill)
-  // TODO(pneumaticcraft:assembly_io_unit_export)
-  // TODO(pneumaticcraft:assembly_io_unit_import)
-  // TODO(pneumaticcraft:assembly_laser)
-  // TODO(pneumaticcraft:assembly_platform)
-  // TODO(pneumaticcraft:charging_station)
+  redefineRecipe(
+    'pneumaticcraft:assembly_controller',
+    [
+      ' P ', //
+      'TPP', //
+      'HMH', //
+    ],
+    pneumaticcraftKeys
+  )
+  redefineRecipe(
+    'pneumaticcraft:assembly_drill',
+    [
+      'DNN', //
+      '  N', //
+      'HPH', //
+    ],
+    Object.assign({}, pneumaticcraftKeys, {
+      D: 'thermal:drill_head',
+    })
+  )
+  e.remove({ id: /^pneumaticcraft:assembly_io_unit_(im|ex)port$/ })
+  pneumaticcraft.shapedSpecial(
+    'pneumaticcraft:crafting_shaped_no_mirror',
+    'pneumaticcraft:assembly_io_unit_export',
+    [
+      'NNO', //
+      'N  ', //
+      'HPH', //
+    ],
+    Object.assign({}, pneumaticcraftKeys, {
+      O: 'minecraft:hopper',
+    })
+  )
+  pneumaticcraft.shapedSpecial(
+    'pneumaticcraft:crafting_shaped_no_mirror',
+    'pneumaticcraft:assembly_io_unit_import',
+    [
+      'ONN', //
+      '  N', //
+      'HPH', //
+    ],
+    Object.assign({}, pneumaticcraftKeys, {
+      O: 'minecraft:hopper',
+    })
+  )
+  redefineRecipe(
+    'pneumaticcraft:assembly_laser',
+    [
+      'QNN', //
+      '  N', //
+      'HPH',
+    ],
+    Object.assign({}, pneumaticcraftKeys, {
+      Q: 'create:polished_rose_quartz',
+    })
+  )
+  redefineRecipe(
+    'pneumaticcraft:assembly_platform',
+    [
+      'NDN', //
+      'LLL', //
+      'HPH', //
+    ],
+    Object.assign({}, pneumaticcraftKeys, {
+      D: 'create:depot',
+    })
+  )
+  redefineRecipe(
+    'pneumaticcraft:charging_station',
+    [
+      '   ', //
+      'TDT', //
+      'HPH', //
+    ],
+    Object.assign({}, pneumaticcraftKeys, {
+      D: 'create:depot',
+    })
+  )
   redefineRecipe(
     '6x pneumaticcraft:heat_pipe',
     [
@@ -889,7 +967,7 @@ ServerEvents.recipes((e) => {
     ['HGH'],
     Object.assign({}, pneumaticcraftKeys, { G: '#forge:glass' })
   )
-  // Refinery overhauls defined in Chapter 5a.
+  // Refinery overhauls defined in Chapter 5a
   e.remove({ id: 'pneumaticcraft:reinforced_stone_from_slab' })
   redefineRecipe(
     '4x pneumaticcraft:reinforced_stone',
@@ -914,10 +992,19 @@ ServerEvents.recipes((e) => {
     ],
     Object.assign({}, pneumaticcraftKeys, {
       O: 'pneumaticcraft:solar_cell',
-      P: 'pneumaticcraft:printed_circuit_board',
     })
   )
-  // TODO(pneumaticcraft:universal_sensor)
+  redefineRecipe(
+    'pneumaticcraft:universal_sensor',
+    [
+      ' S ', //
+      'LPL', //
+      'LTL', //
+    ],
+    Object.assign({}, pneumaticcraftKeys, {
+      S: 'pneumaticcraft:seismic_sensor',
+    })
+  )
   redefineRecipe(
     'pneumaticcraft:air_canister',
     [
@@ -927,7 +1014,6 @@ ServerEvents.recipes((e) => {
     ],
     pneumaticcraftKeys
   )
-  // TODO(pneumaticcraft:amadron_tablet)
   // Overhaul pneumatic armor to derive from netherite armor
   e.forEachRecipe(
     {
@@ -1000,6 +1086,18 @@ ServerEvents.recipes((e) => {
       .id(`kubejs:gun_ammo_filling_${idString.replace(/[^a-z_]/g, '_')}`)
   }
   redefineRecipe(
+    'pneumaticcraft:gps_tool',
+    [
+      ' R ', //
+      'LGL', //
+      'LPL', //
+    ],
+    Object.assign({}, pneumaticcraftKeys, {
+      R: 'minecraft:redstone_torch',
+      G: '#forge:glass_panes',
+    })
+  )
+  redefineRecipe(
     'pneumaticcraft:pressure_gauge',
     [
       ' H ', //
@@ -1015,8 +1113,6 @@ ServerEvents.recipes((e) => {
     .deploy('tfmg:heavy_plate')
     .cut(2000)
     .outputs('2x pneumaticcraft:turbine_blade')
-
-  // TODO(pneumaticcraft:turbine_blade)
 
   /////////////////////
   // Refined Storage //
