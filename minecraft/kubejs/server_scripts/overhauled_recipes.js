@@ -9,6 +9,7 @@ ServerEvents.tags('item', (e) => {
 // related to the progression content.
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
+  const pneumaticcraft = definePneumaticcraftRecipes(e)
 
   // Generate utility functions from util.js
   const redefineRecipe = redefineRecipe_(e)
@@ -30,6 +31,19 @@ ServerEvents.recipes((e) => {
       S: '#minecraft:planks',
     }
   )
+
+  ////////////////
+  // Apotheosis //
+  ////////////////
+  // TODO: add potion brewing for apotheosis potions, create/mixing
+  // e.forEachRecipe(
+  //   {
+  //     type: 'bre',
+  //   },
+  //   (r) => {
+  //     console.log(r)
+  //   }
+  // )
 
   //////////////
   // Ars Creo //
@@ -649,13 +663,36 @@ ServerEvents.recipes((e) => {
   ////////////////////////////////
   // Create Mechanical Extruder //
   ////////////////////////////////
-  redefineMechanismRecipe('kubejs:steel_mechanism')(
+  redefineMechanismRecipe('tfmg:steel_mechanism')(
     'create_mechanical_extruder:mechanical_extruder',
     'create:shaft',
     'create:mechanical_press',
     'create:andesite_casing'
   )
   e.remove({ mod: 'create_mechanical_extruder', output: 'minecraft:stone' })
+  // Cannot use tags here, recipe ends up not working, so we are manually
+  // creating all the recipe combinations for cobblegen.
+  const equivalentWaterBlocks = [
+    '1000mb minecraft:water',
+    'minecraft:packed_ice',
+    'create_connected:fan_splashing_catalyst',
+  ]
+  const equivalentLavaBlocks = [
+    '1000mb minecraft:lava',
+    'create_connected:fan_blasting_catalyst',
+  ]
+  const cobblegens = {
+    'minecraft:polished_andesite': 'minecraft:andesite',
+    'minecraft:polished_diorite': 'minecraft:diorite',
+    'minecraft:polished_granite': 'minecraft:granite',
+  }
+  for (const water of equivalentWaterBlocks) {
+    for (const lava of equivalentLavaBlocks) {
+      for (const [catalyst, output] of Object.entries(cobblegens)) {
+        create.extruding(output, [water, lava], catalyst)
+      }
+    }
+  }
 
   ///////////////////////////////////
   // Pneumaticcraft: Repressurized //
@@ -663,6 +700,7 @@ ServerEvents.recipes((e) => {
   const pneumaticcraftMapping = {
     '#forge:ingots/compressed_iron': 'tfmg:steel_ingot',
     'pneumaticcraft:compressed_iron_block': 'tfmg:steel_block',
+    'pneumaticcraft:ingot_iron_compressed': 'tfmg:steel_ingot',
     'pneumaticcraft:reinforced_brick_wall': 'tfmg:heavy_plate',
     'pneumaticcraft:reinforced_brick_slab': 'tfmg:steel_ingot',
     'pneumaticcraft:reinforced_stone_slab': 'tfmg:heavy_plate',
@@ -686,6 +724,38 @@ ServerEvents.recipes((e) => {
       to
     )
   }
+  // Pneumaticcraft registers its own recipe types to preserve the pressure in
+  // input ingredients.
+  e.forEachRecipe(
+    {
+      mod: 'pneumaticcraft',
+      type: 'pneumaticcraft:crafting_shaped_pressurizable',
+    },
+    (r) => {
+      let hasMatch = false
+      const parsedRecipe = JSON.parse(r.json)
+      for (const [key, item_json] of Object.entries(parsedRecipe.key)) {
+        if (item_json.tag === 'forge:ingots/compressed_iron') {
+          parsedRecipe.key[key] = { item: 'tfmg:steel_ingot' }
+          hasMatch = true
+        }
+      }
+      if (hasMatch) {
+        r.remove()
+        e.custom(parsedRecipe)
+      }
+    }
+  )
+  // Pneumaticraft manual
+  e.remove({ id: 'pneumaticcraft:patchouli_book_crafting' })
+  e.shapeless(
+    Item.of('patchouli:guide_book').withNBT({
+      'patchouli:book': 'pneumaticcraft:book',
+    }),
+    ['minecraft:book', 'pneumaticcraft:pressure_tube']
+  )
+
+  // Common ingredients in Pneumaticcraft's shaped recipe overhauls
   const pneumaticcraftKeys = {
     S: 'tfmg:steel_ingot',
     H: 'tfmg:heavy_plate',
@@ -695,7 +765,11 @@ ServerEvents.recipes((e) => {
     A: 'pneumaticcraft:advanced_pressure_tube',
     T: 'pneumaticcraft:pressure_tube',
   }
-  redefineRecipe(
+  // The advanced compressors require custom registration in order to preserve
+  // the nbt data in the ingredient compressor.
+  e.remove({ output: 'pneumaticcraft:advanced_air_compressor' })
+  pneumaticcraft.shapedSpecial(
+    'pneumaticcraft:compressor_upgrade_crafting',
     'pneumaticcraft:advanced_air_compressor',
     [
       'HHH', //
@@ -706,7 +780,9 @@ ServerEvents.recipes((e) => {
       C: 'pneumaticcraft:air_compressor',
     })
   )
-  redefineRecipe(
+  e.remove({ output: 'pneumaticcraft:advanced_liquid_compressor' })
+  pneumaticcraft.shapedSpecial(
+    'pneumaticcraft:compressor_upgrade_crafting',
     'pneumaticcraft:advanced_liquid_compressor',
     [
       'HHH', //
@@ -794,6 +870,7 @@ ServerEvents.recipes((e) => {
       ' H ', //
     ],
     Object.assign({}, pneumaticcraftKeys, {
+      M: 'kubejs:logistics_mechanism',
       C: '#forge:chests/wooden',
     })
   )
@@ -807,6 +884,7 @@ ServerEvents.recipes((e) => {
     Object.assign({}, pneumaticcraftKeys, { G: '#forge:glass' })
   )
   e.remove({ id: 'pneumaticcraft:pressure_chamber_valve' })
+  e.remove({ id: 'pneumaticcraft:assembly/pressure_chamber_valve' })
   redefineRecipe(
     '8x pneumaticcraft:pressure_chamber_wall',
     [
@@ -821,27 +899,116 @@ ServerEvents.recipes((e) => {
     ['HGH'],
     Object.assign({}, pneumaticcraftKeys, { G: '#forge:glass' })
   )
+  // Refinery overhauls defined in Chapter 5a.
+  e.remove({ id: 'pneumaticcraft:reinforced_stone_from_slab' })
   redefineRecipe(
-    'pneumaticcraft:refinery',
+    '4x pneumaticcraft:reinforced_stone',
     [
-      'HHH', //
-      'FCF', //
-      'SMS', //
+      'RSR', //
+      'SRS', //
+      'RSR', //
     ],
-    Object.assign({}, pneumaticcraftKeys, { F: 'minecraft:furnace' })
+    { R: 'tfmg:rebar', S: '#forge:stone' }
   )
+  // More expensive filling recipe compared to Thermopneumatic Processing Plant.
+  create.filling('pneumaticcraft:reinforced_pressure_tube', [
+    'pneumaticcraft:pressure_tube',
+    Fluid.of('pneumaticcraft:plastic', 250),
+  ])
   redefineRecipe(
-    'pneumaticcraft:refinery_output',
+    'pneumaticcraft:solar_compressor',
     [
-      'HHH', //
-      'GTG', //
-      'HHH',
+      'OOO', //
+      'PMP', //
+      'ADA', //
     ],
     Object.assign({}, pneumaticcraftKeys, {
-      G: '#forge:glass',
-      T: 'pneumaticcraft:small_tank',
+      O: 'pneumaticcraft:solar_cell',
+      P: 'pneumaticcraft:printed_circuit_board',
     })
   )
+  // TODO(pneumaticcraft:universal_sensor)
+  redefineRecipe(
+    'pneumaticcraft:air_canister',
+    [
+      ' T ', //
+      'H H', //
+      'HSH', //
+    ],
+    pneumaticcraftKeys
+  )
+  // TODO(pneumaticcraft:amadron_tablet)
+  // Overhaul pneumatic armor to derive from netherite armor
+  e.forEachRecipe(
+    {
+      mod: 'pneumaticcraft',
+      id: /pneumaticcraft:pneumatic_((boots)|(chestplate)|(helmet)|(leggings))/,
+    },
+    (r) => {
+      let hasMatch = false
+      const parsedRecipe = JSON.parse(r.json)
+      for (const [key, item_json] of Object.entries(parsedRecipe.key)) {
+        let { item } = item_json
+        // Attempt to remap any items in the pre-existing mapping
+        let replaced = pneumaticcraftMapping[item]
+        if (replaced !== null) {
+          parsedRecipe.key[key].item = replaced
+          continue
+        }
+        // Remap the compressed iron armor to netherite
+        replaced = item.replace(
+          'pneumaticcraft:compressed_iron_',
+          'minecraft:netherite_'
+        )
+        if (item !== replaced) {
+          parsedRecipe.key[key].item = replaced
+          continue
+        }
+      }
+      if (hasMatch) {
+        r.remove()
+        e.custom(parsedRecipe)
+      }
+    }
+  )
+  redefineRecipe('pneumaticcraft:transfer_gadget', [
+    'kubejs:logistics_mechanism',
+    'minecraft:hopper',
+  ])
+  // Bullet manufacturing might go in chapter 5b
+  e.remove({ id: 'pneumaticcraft:gun_ammo' })
+  create
+    .SequencedAssembly('tfmg:heavy_plate')
+    .press()
+    .deploy('minecraft:gunpowder')
+    .deploy('thermal:lead_nugget')
+    .deploy('create:copper_nugget')
+    .press()
+    .outputs('pneumaticcraft:gun_ammo')
+  // Generate filling potion recipes for each ammo type.
+  e.remove({ id: 'pneumaticcraft:gun_ammo_potion_crafting' })
+  const registeredPotions = new Set()
+  for (const id of Utils.getRegistryIds('potion')) {
+    let idString = new String(id.toString())
+    if (registeredPotions.has(idString)) continue
+    registeredPotions.add(idString)
+    let nbt = {
+      Potion: idString,
+    }
+    create
+      .filling(
+        Item.of('pneumaticcraft:gun_ammo').withNBT({
+          Damage: 0,
+          potion: {
+            id: 'minecraft:potion',
+            Count: 1,
+            tag: nbt,
+          },
+        }),
+        [Fluid.of('create:potion', 100).withNBT(nbt), 'pneumaticcraft:gun_ammo']
+      )
+      .id(`kubejs:gun_ammo_filling_${idString.replace(/[^a-z_]/g, '_')}`)
+  }
 
   redefineRecipe(
     'pneumaticcraft:pressure_gauge',
