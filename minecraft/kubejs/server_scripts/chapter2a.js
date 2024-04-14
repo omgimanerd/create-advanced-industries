@@ -6,7 +6,6 @@ ServerEvents.recipes((e) => {
 
   // Granite automation overhaul
   e.remove({ id: 'minecraft:granite' })
-  e.remove({ id: 'ars_nouveau:manipulation_essence_to_granite' })
   e.remove({ id: 'create:compacting/granite_from_flint' })
   create.mixing('8x minecraft:granite', [
     '8x minecraft:cobblestone',
