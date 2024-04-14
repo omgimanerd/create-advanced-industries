@@ -51,6 +51,9 @@ ServerEvents.compostableRecipes((e) => {
 })
 
 ServerEvents.recipes((e) => {
+  // niter from sawdust and pot ash?
+  // https://en.wikipedia.org/wiki/Potassium_nitrate
+
   const create = defineCreateRecipes(e)
   const redefineRecipe = redefineRecipe_(e)
   // Automate emeralds

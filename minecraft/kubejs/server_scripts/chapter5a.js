@@ -1,4 +1,4 @@
-// priority: 100
+// priority: 200
 // Recipe overhauls for Chapter 4C progression.
 
 ServerEvents.tags('fluid', (e) => {
@@ -21,14 +21,62 @@ ServerEvents.recipes((e) => {
   const pneumaticcraft = definePneumaticcraftRecipes(e)
   const ingotFluid = global.MeltableItem.DEFAULT_INGOT_FLUID
 
-  // Hardened planks can only be crafted in a pressure chamber
+  const redefineRecipe = redefineRecipe_(e)
+
+  // Hardened planks can only be crafted in a pressure chamber, which gates
+  // steel casings behind Pneumaticcraft.
   e.remove({ id: 'tfmg:filling/hardened_wood_creosote' })
   pneumaticcraft
     .PressureChamber(['8x #minecraft:planks', '1x tfmg:creosote_bucket'])
     .pressure(2)
-    .outputs('8x tfmg:hardened_planks')
+    .outputs(['8x tfmg:hardened_planks', 'minecraft:bucket'])
 
-  // Overhaul refinery recipe
+  // Overhaul Pneumaticcraft Refinery recipes
+  redefineRecipe(
+    'pneumaticcraft:refinery',
+    [
+      'HHH', //
+      'FCF', //
+      'SMS', //
+    ],
+    {
+      H: 'tfmg:heavy_plate',
+      F: 'minecraft:furnace',
+      C: 'tfmg:steel_casing',
+      S: 'tfmg:steel_ingot',
+      M: 'tfmg:steel_mechanism',
+    }
+  )
+  redefineRecipe(
+    'pneumaticcraft:refinery_output',
+    [
+      'HHH', //
+      'GTG', //
+      'HHH',
+    ],
+    {
+      H: 'tfmg:heavy_plate',
+      G: '#forge:glass',
+      T: 'pneumaticcraft:small_tank',
+    }
+  )
+
+  // Overhaul Thermopneumatic Processing Plant recipe
+  redefineRecipe(
+    'pneumaticcraft:thermopneumatic_processing_plant',
+    [
+      'HHH', //
+      'TCT', //
+      'SMS', //
+    ],
+    {
+      H: 'tfmg:heavy_plate',
+      T: 'pneumaticcraft:small_tank',
+      C: 'tfmg:steel_casing',
+      S: 'tfmg:steel_ingot',
+      M: 'tfmg:steel_mechanism',
+    }
+  )
 
   // 1000mb crude oil =
   //   200 mb diesel = 160 kerosene
@@ -54,6 +102,9 @@ ServerEvents.recipes((e) => {
     .pressure(2)
     .minTemp(300)
     .outputs(['80mb pneumaticcraft:lpg', 'thermal:sulfur'])
+
+  // Sulfur byproduct can be crushed into sulfur dust.
+  create.milling('thermal:sulfur_dust', 'thermal:sulfur')
 
   // Overhaul lubricant from diesel
   e.remove({ id: 'pneumaticcraft:thermo_plant/lubricant_from_biodiesel' })
@@ -81,9 +132,7 @@ ServerEvents.recipes((e) => {
     .outputs('2x tfmg:plastic_sheet')
   create.cutting('3x pneumaticcraft:plastic', 'tfmg:plastic_sheet')
 
-  // TODO overhaul reinf stone
-
-  // Silicon overhaul, must be crystallized in a heat frame
+  // Silicon overhaul, must be solidified in a heat frame
   e.remove({ id: 'refinedstorage:silicon' })
   create
     .mixing(
@@ -125,12 +174,19 @@ ServerEvents.recipes((e) => {
     .loops(4)
     .outputs('4x kubejs:silicon_wafer')
 
+  // Faster electron tube crafting
+  pneumaticcraft
+    .ThermoPlant(['minecraft:quartz', '270mb kubejs:molten_redstone'])
+    .pressure(7.5)
+    .minTemp(300)
+    .outputs('create:electron_tube')
+
   // Transistor overhaul
   e.remove({ id: 'pneumaticcraft:pressure_chamber/transistor' })
   create
-    .SequencedAssembly('kubejs:silicon_wafer')
+    .SequencedAssembly('create:electron_tube')
+    .deploy('kubejs:silicon_wafer')
     .deploy('minecraft:glass_pane')
-    .deploy('minecraft:redstone_torch')
     .deploy('pneumaticcraft:plastic')
     .press()
     .outputs('pneumaticcraft:transistor')
@@ -141,7 +197,6 @@ ServerEvents.recipes((e) => {
     .SequencedAssembly('thermal:silver_plate')
     .deploy('pneumaticcraft:plastic')
     .deploy('thermal:silver_plate')
-    .deploy('minecraft:redstone_torch')
     .press()
     .outputs('pneumaticcraft:capacitor')
 
@@ -150,10 +205,47 @@ ServerEvents.recipes((e) => {
   create
     .SequencedAssembly('pneumaticcraft:cannon_barrel')
     .deploy('tfmg:rebar')
-    .press()
     .fill('pneumaticcraft:lubricant', 250)
-    .press(2)
+    .press()
     .outputs('pneumaticcraft:pneumatic_cylinder')
+
+  // Empty PCB overhaul
+  e.remove({ id: 'pneumaticcraft:pressure_chamber/empty_pcb' })
+  create
+    .SequencedAssembly('pneumaticcraft:plastic')
+    .press()
+    .deploy('create:super_glue')
+    .deploy('create:copper_sheet')
+    .press()
+    .outputs('pneumaticcraft:empty_pcb')
+
+  // Empty PCBs get etched in an etching tank to become unassembled PCBs.
+  // Etching acid overhaul
+  create.mixing(Fluid.of('pneumaticcraft:etching_acid', 1000), [
+    Fluid.water(1000),
+    'thermal:sulfur_dust',
+    'create:copper_nugget',
+  ])
+
+  // Unassembled PCBs must be made in an etching tank.
+  e.remove({ id: 'pneumaticcraft:assembly/unassembled_pcb' })
+
+  // Failed PCBs can be crushed to be recycled.
+  e.remove({ id: 'pneumaticcraft:empty_pcb_from_failed_pcb' })
+  create.crushing(
+    ['pneumaticcraft:plastic', Item.of('create:copper_sheet').withChance(0.5)],
+    'pneumaticcraft:failed_pcb'
+  )
+
+  // PCB overhaul
+  e.remove({ id: 'pneumaticcraft:printed_circuit_board' })
+  create
+    .SequencedAssembly('pneumaticcraft:unassembled_pcb')
+    .deploy('pneumaticcraft:capacitor')
+    .deploy('pneumaticcraft:transistor')
+    .press()
+    .loops(4)
+    .outputs('pneumaticcraft:printed_circuit_board')
 
   // make gates with pneu assemblylatc
 
@@ -235,8 +327,10 @@ ServerEvents.recipes((e) => {
   // netherite
   //
 
+  // create_connected:control_chip
+
   create
-    .SequencedAssembly('create:precision_mechanism')
+    .SequencedAssembly('tfmg:steel_mechanism')
     .transitional('kubejs:incomplete_logistics_mechanism')
     .deploy('pneumaticcraft:plastic')
     .deploy('pneumaticcraft:printed_circuit_board')

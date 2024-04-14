@@ -12,14 +12,15 @@ global.removedRecipes = [
   { output: 'createaddition:capacitor' },
   { output: /^createconnected:copycat_[a-z_]+/ },
   { output: /^pneumaticcraft:compressed_iron.*/ },
-  { output: 'pneumaticcraft:ingot_iron_compressed' },
   { output: 'pneumaticcraft:pneumatic_dynamo' },
+  { output: 'pneumaticcraft:copper_nugget' },
+  { output: 'pneumaticcraft:ingot_iron_compressed' },
+  { output: 'pneumaticcraft:drill_bit_compressed_iron' },
+  { output: 'pneumaticcraft:logistics_core' },
   { output: 'pneumaticcraft:wheat_flour' },
   { output: /^tfmg:[a-z_]+_concrete$/ },
-  { output: /^tfmg:aluminum_.*/ },
   { output: /^tfmg:cast_iron_distillation.*/ },
   { output: /^tfmg:casting_.*/ },
-  { output: /^tfmg:.*bauxite.*/ },
   { output: /^tfmg:.*engine.*/ },
   { output: 'tfmg:lignite' },
   { output: 'tfmg:fireclay' },
@@ -47,12 +48,14 @@ ServerEvents.recipes((e) => {
   ///////////////////////////////////
   e.remove({ id: /^pneumaticcraft:[a-z_/]+compressed_iron_block$/ })
   e.remove({ id: /^pneumaticcraft:[a-z_/]+compressed_iron_ingot$/ })
+  e.remove({ id: 'pneumaticcraft:thermo_plant/compressed_iron_drill_bit' })
   e.remove({ id: /^pneumaticcraft:[a-z_/]+wheat_flour$/ })
 
   ////////////////////
   // Thermal Series //
   ////////////////////
   e.remove({ id: /^thermal:machines.*/ })
+  e.remove({ id: /^thermal:earth_charge\/[a-z_]+/ })
 
   // Can't remove pumpjack hammer holder recipe warning?
   // e.remove(/tfmg:mechanical_crafting\/pumpjack_hammer_holder.*/)

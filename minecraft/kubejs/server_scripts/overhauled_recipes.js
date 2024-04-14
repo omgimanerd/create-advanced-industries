@@ -35,15 +35,6 @@ ServerEvents.recipes((e) => {
   ////////////////
   // Apotheosis //
   ////////////////
-  // TODO: add potion brewing for apotheosis potions, create/mixing
-  // e.forEachRecipe(
-  //   {
-  //     type: 'bre',
-  //   },
-  //   (r) => {
-  //     console.log(r)
-  //   }
-  // )
 
   //////////////
   // Ars Creo //
@@ -727,10 +718,16 @@ ServerEvents.recipes((e) => {
   // Pneumaticcraft registers its own recipe types to preserve the pressure in
   // input ingredients.
   e.forEachRecipe(
-    {
-      mod: 'pneumaticcraft',
-      type: 'pneumaticcraft:crafting_shaped_pressurizable',
-    },
+    [
+      {
+        mod: 'pneumaticcraft',
+        type: 'pneumaticcraft:crafting_shaped_pressurizable',
+      },
+      {
+        mod: 'pneumaticcraft',
+        type: 'pneumaticcraft:crafting_shaped_no_mirror',
+      },
+    ],
     (r) => {
       let hasMatch = false
       const parsedRecipe = JSON.parse(r.json)
@@ -754,7 +751,6 @@ ServerEvents.recipes((e) => {
     }),
     ['minecraft:book', 'pneumaticcraft:pressure_tube']
   )
-
   // Common ingredients in Pneumaticcraft's shaped recipe overhauls
   const pneumaticcraftKeys = {
     S: 'tfmg:steel_ingot',
@@ -985,7 +981,7 @@ ServerEvents.recipes((e) => {
     .deploy('create:copper_nugget')
     .press()
     .outputs('pneumaticcraft:gun_ammo')
-  // Generate filling potion recipes for each ammo type.
+  // Generate potion filling recipes for pneumaticcraft's minigun ammo.
   e.remove({ id: 'pneumaticcraft:gun_ammo_potion_crafting' })
   const registeredPotions = new Set()
   for (const id of Utils.getRegistryIds('potion')) {
@@ -1009,7 +1005,6 @@ ServerEvents.recipes((e) => {
       )
       .id(`kubejs:gun_ammo_filling_${idString.replace(/[^a-z_]/g, '_')}`)
   }
-
   redefineRecipe(
     'pneumaticcraft:pressure_gauge',
     [
@@ -1019,10 +1014,15 @@ ServerEvents.recipes((e) => {
     ],
     Object.assign({}, pneumaticcraftKeys, { Z: 'create:stressometer' })
   )
-  // TODO(pneumaticcraft:transistor)
-  // TODO(pneumaticcraft:turbine_blade)
+  e.remove({ id: 'pneumaticcraft:pressure_chamber/turbine_blade' })
+  create
+    .SequencedAssembly('create:copper_sheet')
+    .deploy('tfmg:heavy_plate')
+    .deploy('tfmg:heavy_plate')
+    .cut(2000)
+    .outputs('2x pneumaticcraft:turbine_blade')
 
-  // todo overhaul all recipes to require steel + steel mechs
+  // TODO(pneumaticcraft:turbine_blade)
 
   /////////////////////
   // Refined Storage //
