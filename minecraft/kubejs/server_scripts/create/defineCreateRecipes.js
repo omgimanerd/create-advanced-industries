@@ -76,7 +76,13 @@ const defineCreateRecipes = (e) => {
     filling: e.recipes.create.filling,
     haunting: e.recipes.create.haunting,
     item_application: e.recipes.create.item_application,
-    mechanical_crafting: e.recipes.create.mechanical_crafting,
+    mechanical_crafting: (output, pattern, shape) => {
+      e.recipes.create.mechanical_crafting(
+        output,
+        pattern,
+        removeUnusedKeys(pattern, shape)
+      )
+    },
     milling: e.recipes.create.milling,
     mixing: e.recipes.create.mixing,
     pressing: e.recipes.create.pressing,
@@ -85,6 +91,9 @@ const defineCreateRecipes = (e) => {
     splashing: e.recipes.create.splashing,
 
     // Helpers
+    /**
+     * @returns {SequencedAssembly}
+     */
     SequencedAssembly: getConstructorWrapper(e, SequencedAssembly),
 
     // Addons

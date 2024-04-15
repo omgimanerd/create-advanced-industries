@@ -14,6 +14,28 @@ const randRange = (low, high) => {
   return Math.random() * (high - low) + low
 }
 
+/**
+ * For shaped recipes, the passed key object must only include keys used in the
+ * pattern. For ease of use, a shared key object is used for multiple recipe
+ * remappings, so this helper returns a copy of the key object with all the
+ * keys that are not present in the pattern removed.
+ * @param {string[]} pattern Crafting pattern
+ * @param {Object<string,string>} keys Item mapping for the crafting pattern.
+ */
+const removeUnusedKeys = (pattern, keys) => {
+  const chars = new Set()
+  for (const c of pattern.join('')) {
+    chars.add(c)
+  }
+  const newKeys = {}
+  for (const [key, value] of Object.entries(keys)) {
+    if (chars.has(key)) {
+      newKeys[key] = value
+    }
+  }
+  return newKeys
+}
+
 // Wrapper to define a utility function in the given RecipeEvent context that
 // wraps the shaped/shapeless recipe definitions to redefine a recipe for
 // a given item.
@@ -24,15 +46,7 @@ const redefineRecipe_ = (e) => {
     e.remove({ output: id })
     // 3-argument shaped recipe
     if (keys !== undefined) {
-      // Remove keys that aren't present in the shape specification, make a copy
-      // of the key arguments to prevent mutating the input JSON object.
-      const joined = shape.join('')
-      let keyCopy = Object.assign({}, keys)
-      for (const key in keyCopy) {
-        if (!joined.includes(key)) {
-          delete keyCopy[key]
-        }
-      }
+      const keyCopy = removeUnusedKeys(shape, keys)
       return e.shaped(output, shape, keyCopy)
     } else {
       // 2-argument shapeless recipe
