@@ -1,4 +1,5 @@
 {
+	autofocus_id: "5978BE35C75966ED"
 	default_hide_dependency_lines: false
 	default_quest_shape: ""
 	filename: "chapter_5a_logistics_mechanisms"
@@ -38,6 +39,7 @@
 				"60A20508A7E35CB9"
 				"5AD35DACB2A50EF1"
 				"5A6D0D76D241A75E"
+				"0C0173124EA22FAE"
 			]
 			id: "3D27BD07DCC89201"
 			size: 1.0d
@@ -169,7 +171,7 @@
 				item: "pneumaticcraft:lubricant_bucket"
 				type: "item"
 			}]
-			x: 6.0d
+			x: 8.0d
 			y: -4.0d
 		}
 		{
@@ -315,7 +317,7 @@
 				}
 			]
 			title: "Refinery"
-			x: 2.0d
+			x: 4.0d
 			y: -4.0d
 		}
 		{
@@ -340,13 +342,13 @@
 				item: "pneumaticcraft:capacitor"
 				type: "item"
 			}]
-			x: 38.0d
-			y: -10.0d
+			x: 36.0d
+			y: -8.0d
 		}
 		{
 			dependencies: [
 				"300B315823283E7E"
-				"56CD3F3E971462D4"
+				"71920B55BE892016"
 			]
 			id: "7F388CDF039975F1"
 			tasks: [{
@@ -354,7 +356,7 @@
 				item: "pneumaticcraft:transistor"
 				type: "item"
 			}]
-			x: 36.0d
+			x: 34.0d
 			y: -6.0d
 		}
 		{
@@ -466,7 +468,7 @@
 				item: "pneumaticcraft:manual_compressor"
 				type: "item"
 			}]
-			x: 3.0d
+			x: 4.0d
 			y: 2.0d
 		}
 		{
@@ -480,7 +482,7 @@
 				item: "pneumaticcraft:thermopneumatic_processing_plant"
 				type: "item"
 			}]
-			x: 4.0d
+			x: 6.0d
 			y: -4.0d
 		}
 		{
@@ -525,14 +527,17 @@
 			y: 6.0d
 		}
 		{
-			dependencies: ["20444E3074A0589D"]
+			dependencies: [
+				"20444E3074A0589D"
+				"4F5053EC6278DC86"
+			]
 			id: "52506B35EBD04BEF"
 			tasks: [{
 				id: "787807626EFD2205"
 				item: "minecraft:ancient_debris"
 				type: "item"
 			}]
-			x: 2.0d
+			x: 26.0d
 			y: 6.0d
 		}
 		{
@@ -547,8 +552,8 @@
 				item: "pneumaticcraft:printed_circuit_board"
 				type: "item"
 			}]
-			x: 28.0d
-			y: -8.0d
+			x: 26.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["012D0C32277CAEA4"]
@@ -558,8 +563,8 @@
 				item: "pneumaticcraft:unassembled_pcb"
 				type: "item"
 			}]
-			x: 26.0d
-			y: -8.0d
+			x: 24.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["23AD73CE6342324E"]
@@ -576,8 +581,8 @@
 				type: "item"
 			}]
 			title: "UV-Exposed Empty PCB"
-			x: 24.0d
-			y: -8.0d
+			x: 22.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["097A84D100994B26"]
@@ -587,8 +592,8 @@
 				item: "pneumaticcraft:empty_pcb"
 				type: "item"
 			}]
-			x: 22.0d
-			y: -8.0d
+			x: 20.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["3F6AC2F3372B28E3"]
@@ -605,6 +610,7 @@
 			dependencies: [
 				"300B315823283E7E"
 				"4F5053EC6278DC86"
+				"68FB63D0979FE43B"
 			]
 			id: "3F6AC2F3372B28E3"
 			tasks: [{
@@ -630,6 +636,7 @@
 			dependencies: [
 				"300B315823283E7E"
 				"4F5053EC6278DC86"
+				"68FB63D0979FE43B"
 			]
 			id: "4000234461168668"
 			tasks: [{
@@ -649,7 +656,7 @@
 				item: "kubejs:molten_silicon_bucket"
 				type: "item"
 			}]
-			x: 42.0d
+			x: 40.0d
 			y: 0.0d
 		}
 		{
@@ -663,7 +670,7 @@
 				item: "kubejs:silicon_wafer"
 				type: "item"
 			}]
-			x: 38.0d
+			x: 36.0d
 			y: 0.0d
 		}
 		{
@@ -674,7 +681,7 @@
 				item: "refinedstorage:silicon"
 				type: "item"
 			}]
-			x: 40.0d
+			x: 38.0d
 			y: 0.0d
 		}
 		{
@@ -735,13 +742,14 @@
 				}
 				type: "item"
 			}]
-			x: 39.0d
+			x: 37.0d
 			y: -2.0d
 		}
 		{
 			dependencies: [
 				"300B315823283E7E"
 				"4F5053EC6278DC86"
+				"68FB63D0979FE43B"
 			]
 			id: "09D7F859EC4C42E6"
 			optional: true
@@ -777,15 +785,18 @@
 			y: 0.0d
 		}
 		{
-			dependencies: ["4C5481815C938E67"]
+			dependencies: [
+				"4C5481815C938E67"
+				"68FB63D0979FE43B"
+			]
 			id: "097A84D100994B26"
 			tasks: [{
 				id: "694515FB00B52BEB"
 				item: "create_new_age:copper_circuit"
 				type: "item"
 			}]
-			x: 20.0d
-			y: -8.0d
+			x: 18.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["6D912BAC546961CB"]
@@ -795,8 +806,8 @@
 				item: "create_new_age:blank_circuit"
 				type: "item"
 			}]
-			x: 18.0d
-			y: -8.0d
+			x: 16.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["52506B35EBD04BEF"]
@@ -806,7 +817,7 @@
 				item: "minecraft:netherite_scrap"
 				type: "item"
 			}]
-			x: 4.0d
+			x: 28.0d
 			y: 6.0d
 		}
 		{
@@ -817,7 +828,7 @@
 				item: "minecraft:netherite_ingot"
 				type: "item"
 			}]
-			x: 6.0d
+			x: 30.0d
 			y: 6.0d
 		}
 		{
@@ -828,7 +839,7 @@
 				item: "thermal:netherite_nugget"
 				type: "item"
 			}]
-			x: 24.0d
+			x: 34.0d
 			y: 6.0d
 		}
 		{
@@ -843,9 +854,18 @@
 			y: 0.0d
 		}
 		{
-			dependencies: ["1C323E9E442D59D9"]
+			dependencies: [
+				"1C323E9E442D59D9"
+				"03EE97847AAECC37"
+			]
 			icon: "create_new_age:carbon_brushes"
 			id: "3DAFEBA27621ED6F"
+			rewards: [{
+				count: 8
+				id: "0D4BA84CB9E1800D"
+				item: "create_new_age:magnetite_block"
+				type: "item"
+			}]
 			tasks: [
 				{
 					id: "699B30A5DC8DADCC"
@@ -897,19 +917,133 @@
 				type: "checkmark"
 			}]
 			title: "Plastic Sheet"
-			x: 16.0d
+			x: 26.0d
+			y: -8.0d
+		}
+		{
+			dependencies: [
+				"6426BBE70FDA2515"
+				"3DAFEBA27621ED6F"
+			]
+			description: [
+				"Did you notice LPG is an &oincredibly&r powerful fuel source?"
+				""
+				"Considering how spinning a generator is incredibly stress-intensive, this might come in handy..."
+				""
+				"Here's a free boiler, you'll need it!"
+			]
+			id: "5DC9DA88CD955FCC"
+			rewards: [
+				{
+					count: 9
+					id: "64AEE237542EFB48"
+					item: "create:blaze_burner"
+					type: "item"
+				}
+				{
+					count: 72
+					id: "59AA5FBCD682CD42"
+					item: "create:fluid_tank"
+					type: "item"
+				}
+				{
+					count: 18
+					id: "5688FDF69859F005"
+					item: "create:steam_engine"
+					type: "item"
+				}
+			]
+			tasks: [{
+				id: "44FE3511BD97EDA1"
+				type: "checkmark"
+			}]
+			title: "A New Fuel Source?"
+			x: 10.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["3DAFEBA27621ED6F"]
+			id: "04B884DDB7CAE725"
+			tasks: [{
+				id: "7EB773A72E08FBEC"
+				item: "createaddition:modular_accumulator"
+				type: "item"
+			}]
+			x: 12.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["4C3E437A65D6858D"]
+			id: "03EE97847AAECC37"
+			tasks: [{
+				id: "005621599F365291"
+				item: "create_new_age:generator_coil"
+				type: "item"
+			}]
+			x: 10.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["657C26D7A19E343B"]
+			id: "4C3E437A65D6858D"
+			tasks: [{
+				id: "4A43BBEC146157D9"
+				item: "create_new_age:copper_wire"
+				type: "item"
+			}]
+			x: 10.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["5978BE35C75966ED"]
+			id: "657C26D7A19E343B"
+			tasks: [{
+				id: "4E56B3B506E8A09F"
+				item: "createaddition:spool"
+				type: "item"
+			}]
+			x: 4.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["68FB63D0979FE43B"]
+			id: "3D6DFC9B34BD25CC"
+			optional: true
+			tasks: [{
+				id: "599A0202C598EC71"
+				item: "create_new_age:redstone_magnet"
+				type: "item"
+			}]
+			x: 18.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["097A84D100994B26"]
+			description: [
+				"Take a look at the stonecutting recipes for the copper circuit."
+				""
+				"You can now do complex redstone logic if you want more fine-grained control of your factory components."
+			]
+			icon: "minecraft:stonecutter"
+			id: "5B70ACA2A3E76CAB"
+			optional: true
+			tasks: [{
+				id: "1D901C3C474350AE"
+				type: "checkmark"
+			}]
+			title: "Logic Gates"
+			x: 18.0d
 			y: -10.0d
 		}
 		{
-			dependencies: ["6D912BAC546961CB"]
-			id: "56CD3F3E971462D4"
+			id: "59F5A52EB3FE897E"
 			tasks: [{
-				id: "5A21C690B0CF5A9B"
-				type: "checkmark"
+				id: "3DE31DC3B6FB9428"
+				item: "thermal:silver_nugget"
+				type: "item"
 			}]
-			title: "Plastic Sheet"
-			x: 16.0d
-			y: -6.0d
+			x: 0.0d
+			y: 8.0d
 		}
 	]
 	title: "Chapter 5a: Logistics Mechanisms"
