@@ -19,7 +19,7 @@ StartupEvents.registry('item', (e) => {
     .textureJson({
       layer0: getResourceLocation('thermal:saw_blade'),
     })
-    .color(0x75eae3)
+    .color(0xaffffa)
     .displayName('Diamond Saw Blade')
     .fireResistant(true)
     .maxDamage(64)
@@ -29,7 +29,7 @@ StartupEvents.registry('item', (e) => {
     .textureJson({
       layer0: getResourceLocation('thermal:saw_blade'),
     })
-    .color(0x75eae3)
+    .color(0xaffffa)
     .displayName('Unbreakable Diamond Saw Blade')
     .fireResistant(true)
     .glow(true)
