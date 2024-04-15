@@ -157,6 +157,10 @@ ServerEvents.recipes((e) => {
     .outputs('4x refinedstorage:silicon')
 
   // Diamond sawblades to cut silicon into wafers
+  create.crushing(
+    Item.of('thermal:diamond_dust').withChance(0.8),
+    'minecraft:diamond'
+  )
   e.shaped(
     'kubejs:diamond_saw_blade',
     [
@@ -165,7 +169,7 @@ ServerEvents.recipes((e) => {
       'DDD', //
     ],
     {
-      D: 'createaddition:diamond_grit',
+      D: 'thermal:diamond_dust',
       S: 'thermal:saw_blade',
     }
   )
@@ -196,7 +200,8 @@ ServerEvents.recipes((e) => {
   // Capacitor overhaul
   e.remove({ id: 'pneumaticcraft:pressure_chamber/capacitor' })
   create
-    .SequencedAssembly('thermal:silver_plate')
+    .SequencedAssembly('kubejs:silicon_wafer')
+    .deploy('thermal:silver_plate')
     .deploy('pneumaticcraft:plastic')
     .deploy('thermal:silver_plate')
     .press()
@@ -249,10 +254,6 @@ ServerEvents.recipes((e) => {
     .loops(4)
     .outputs('pneumaticcraft:printed_circuit_board')
 
-  // make gates with pneu assemblylatc
-
-  // red alloy + FE gen
-
   // Overhaul the wire coils
   e.remove({ id: 'createaddition:rolling/iron_plate' })
   create.rolling(
@@ -303,14 +304,71 @@ ServerEvents.recipes((e) => {
     'create_new_age:overcharged_diamond_wire'
   )
 
+  // red alloy + FE gen
+
+  // Overhaul Create: New Age's magnetic blocks
   // Magnetite block crafting recipe
   create.energising(
     'create_new_age:magnetite_block',
     'minecraft:iron_block',
     9000
   )
+  redefineRecipe(
+    'create_new_age:redstone_magnet',
+    [
+      'RRR', //
+      'RMR', //
+      'RRR', //
+    ],
+    {
+      R: 'morered:red_alloy_ingot',
+      M: 'create_new_age:magnetite_block',
+    }
+  )
+  redefineRecipe(
+    'create_new_age:layered_magnet',
+    [
+      'IGI', //
+      'GMG', //
+      'IGI', //
+    ],
+    {
+      I: 'create_new_age:overcharged_iron_sheet',
+      G: 'create_new_age:overcharged_golden_sheet',
+      M: 'create_new_age:redstone_magnet',
+    }
+  )
+  redefineRecipe(
+    'create_new_age:fluxuated_magnetite',
+    [
+      'GDG', //
+      'DMG', //
+      'GDG', //
+    ],
+    {
+      G: 'create_new_age:overcharged_golden_sheet',
+      D: 'create_new_age:overcharged_diamond',
+      M: 'create_new_age:layered_magnet',
+    }
+  )
+  redefineRecipe(
+    'create_new_age:netherite_magnet',
+    [
+      'NDN', //
+      'DMD', //
+      'NDN', //
+    ],
+    {
+      N: 'minecraft:netherite_ingot',
+      D: 'create_new_age:overcharged_diamond',
+      M: 'create_new_age:fluxuated_magnetite',
+    }
+  )
 
-  // Basalt probabilistic crushing
+  // Probabilistic crushing recipe, only one yields ancient debris.
+  const diceRoll = Math.random() > 0.5
+  let probabilisticStone = 'create:scoria'
+  if (diceRoll) probabilisticStone = 'create:scorchia'
   create.crushing(
     [
       Item.of('minecraft:ancient_debris').withChance(0.005),
@@ -320,21 +378,51 @@ ServerEvents.recipes((e) => {
       Item.of('create:zinc_nugget').withChance(randRange(0.01, 0.1)),
       Item.of('thermal:silver_nugget').withChance(randRange(0.01, 0.1)),
     ],
-    'minecraft:basalt'
+    probabilisticStone
   )
-
-  // Two types of stone production, one is useless, other produces ancient
-  // debris
 
   // netherite
   //
 
   // create_connected:control_chip
 
+  // Overhaul Refined Storage processors
+  e.remove({ id: /^refinedstorage:[a-z_]+_processor/ })
+  create
+    .SequencedAssembly('kubejs:silicon_wafer')
+    .deploy('create:super_glue')
+    .deploy('morered:red_alloy_ingot')
+    .deploy('minecraft:iron_ingot')
+    .outputs('refinedstorage:raw_basic_processor')
+  pneumaticcraft
+    .Assembly('refinedstorage:raw_basic_processor')
+    .type('pneumaticcraft:assembly_laser')
+    .outputs('refinedstorage:basic_processor')
+  create
+    .SequencedAssembly('kubejs:silicon_wafer')
+    .deploy('create:super_glue')
+    .deploy('morered:red_alloy_ingot')
+    .deploy('minecraft:gold_ingot')
+  pneumaticcraft
+    .Assembly('refinedstorage:raw_improved_processor')
+    .type('pneumaticcraft:assembly_laser')
+    .outputs('refinedstorage:improved_processor')
+  create
+    .SequencedAssembly('kubejs:silicon_wafer')
+    .deploy('create:super_glue')
+    .deploy('morered:red_alloy_ingot')
+    .deploy('thermal:diamond_dust')
+  pneumaticcraft
+    .Assembly('refinedstorage:raw_advanced_processor')
+    .type('pneumaticcraft:assembly_laser')
+    .outputs('refinedstorage:advanced_processor')
+
   create
     .SequencedAssembly('tfmg:steel_mechanism')
     .transitional('kubejs:incomplete_logistics_mechanism')
     .deploy('pneumaticcraft:plastic')
     .deploy('pneumaticcraft:printed_circuit_board')
+    .deploy('refinedstorage:basic_processor')
+    .deploy('refinedstorage:improved_processor')
     .outputs('kubejs:logistics_mechanism')
 })

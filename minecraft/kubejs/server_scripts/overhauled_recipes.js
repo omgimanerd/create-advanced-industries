@@ -597,18 +597,107 @@ ServerEvents.recipes((e) => {
   /////////////////////
   // Create: New Age //
   /////////////////////
-
-  // TODO(create_new_age:energiser_t1)
-  // TODO(create_new_age:energiser_t2)
-  // TODO(create_new_age:energiser_t3)
-  // TODO(create_new_age:electrical_connector)
-  // TODO(create_new_age:basic_motor)
-  // TODO(create_new_age:advanced_motor)
-  // TODO(create_new_age:reinforced_motor)
+  const createNewAgeKeys = {
+    S: 'create:shaft',
+    E: 'create_new_age:electrical_connector',
+    L: 'minecraft:lightning_rod',
+    H: 'tfmg:heavy_plate',
+    C: 'tfmg:heavy_machinery_casing',
+    I: 'tfmg:steel_ingot',
+    M: 'tfmg:steel_mechanism',
+  }
+  redefineRecipe(
+    'create_new_age:energiser_t1',
+    [
+      'SES', //
+      'HCH', //
+      ' L ', //
+    ],
+    createNewAgeKeys
+  )
+  redefineRecipe(
+    'create_new_age:energiser_t2',
+    [
+      'STS', //
+      'HLH', //
+      ' L ', //
+    ],
+    Object.assign({}, createNewAgeKeys, {
+      S: 'create_new_age:overcharged_golden_sheet',
+      T: 'create_new_age:energiser_t1',
+    })
+  )
+  redefineRecipe(
+    'create_new_age:energiser_t3',
+    [
+      'OTO', //
+      'HBH', //
+      ' L ', //
+    ],
+    Object.assign({}, createNewAgeKeys, {
+      O: 'create_new_age:overcharged_diamond',
+      T: 'create_new_age:energiser_t2',
+      B: 'minecraft:copper_block',
+    })
+  )
+  e.remove({ output: 'create_new_age:electrical_connector' })
+  create
+    .SequencedAssembly('tfmg:heavy_plate')
+    .deploy('create:andesite_alloy')
+    .deploy('create_new_age:copper_wire')
+    .press()
+    .outputs('create_new_age:electrical_connector')
+  redefineRecipe(
+    'create_new_age:basic_motor',
+    [
+      'HBH', //
+      'MGS', //
+      'HBH', //
+    ],
+    Object.assign({}, createNewAgeKeys, {
+      B: 'create_new_age:magnetite_block',
+      G: 'create_new_age:generator_coil',
+    })
+  )
+  redefineRecipe(
+    'create_new_age:advanced_motor',
+    [
+      'HBH', //
+      'OMS', //
+      'HBH', //
+    ],
+    Object.assign({}, createNewAgeKeys, {
+      B: 'create_new_age:layered_magnet',
+      O: 'create_new_age:overcharged_iron',
+      M: 'create_new_age:basic_motor',
+    })
+  )
+  redefineRecipe(
+    'create_new_age:reinforced_motor',
+    [
+      'HBH', //
+      'OMS', //
+      'HBH', //
+    ],
+    Object.assign({}, createNewAgeKeys, {
+      B: 'create_new_age:netherite_magnet',
+      O: 'create_new_age:overcharged_diamond',
+      M: 'create_new_age:advanced_motor',
+    })
+  )
   // TODO(create_new_age:basic_motor_extension)
   // TODO(create_new_age:advanced_motor_extension)
   // TODO(create_new_age:carbon_brushes)
-  // TODO(create_new_age:generator_coil)
+
+  redefineRecipe(
+    'create_new_age:generator_coil',
+    [
+      'CCC', //
+      'C C', //
+      'CCC', //
+    ],
+    { C: 'create_new_age:copper_wire' }
+  )
 
   ///////////////////////////////////
   // Create: The Factory Must Grow //

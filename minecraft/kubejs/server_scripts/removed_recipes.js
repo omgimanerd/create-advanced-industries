@@ -11,7 +11,14 @@ global.removedRecipes = [
   { output: 'createaddition:electric_motor' },
   { output: 'createaddition:alternator' },
   { output: 'createaddition:capacitor' },
+  { output: 'createaddition:diamond_grit' },
   { output: /^createconnected:copycat_[a-z_]+/ },
+  { output: /^create_new_age:heat.*/ },
+  { output: /^create_new_age:[a-z_]*corium/ },
+  { output: /^create_new_age:reactor.*/ },
+  { output: 'create_new_age:nuclear_fuel' },
+  { output: /^create_new_age:.[a-z_]*solar_heating_plate/ },
+  { output: /^create_new_age:.*thorium.*/ },
   { output: /^pneumaticcraft:compressed_iron.*/ },
   { output: 'pneumaticcraft:pneumatic_dynamo' },
   { output: 'pneumaticcraft:copper_nugget' },
@@ -38,6 +45,14 @@ global.removedRecipes = [
 ServerEvents.recipes((e) => {
   global.removedRecipes.forEach((r) => {
     e.remove(r)
+
+    // Debug logging
+    // e.forEachRecipe(output, (r2) => {
+    //   const json = JSON.parse(r2.json)
+    //   console.log(json.result)
+    //   console.log(json)
+    //   console.log('================')
+    // })
   })
 
   /////////////////
