@@ -8,7 +8,7 @@ const createRolling = (e, output, input) => {
   if (!setIfValid(base, 'input', Parser.parseItemInput(input))) {
     throw new Error(`Invalid input ${input}`)
   }
-  if (!setIfValid(base, 'output', Parser.parseItemOutput(output))) {
+  if (!setIfValid(base, 'result', Parser.parseItemOutput(output))) {
     throw new Error(`Invalid output ${output}`)
   }
   return e.custom(base)
