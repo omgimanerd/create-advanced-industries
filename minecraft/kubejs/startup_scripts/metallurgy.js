@@ -1,4 +1,10 @@
-// priority: 0
+// priority: 800
+/**
+ * This file holds all the mappings for items that can be melted into a fluid
+ * and handles the necessary item and fluid registrations for all the item
+ * mappings. It is stored in global in order to be accessed on the server side
+ * so the relevant recipes can be registered as well.
+ */
 
 global.metallurgy = {}
 

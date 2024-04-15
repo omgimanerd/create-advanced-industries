@@ -8,7 +8,7 @@ StartupEvents.registry('item', (e) => {
 
   // Unbreakable screwdriver for crafting steel mechanisms
   e.create('kubejs:unbreakable_screwdriver')
-    .texture('tfmg:item/screwdriver')
+    .texture(getResourceLocation('tfmg:screwdriver'))
     .displayName('Unbreakable Screwdriver')
     .glow(true)
     .fireResistant(true)
@@ -37,7 +37,7 @@ StartupEvents.registry('item', (e) => {
     .tag('kubejs:diamond_saw_blade')
     .unstackable()
 
-  // Intermediate item for silicon wafers
+  // Silicon wafers produced from cutting silicon
   e.create('kubejs:silicon_wafer')
     .textureJson({
       layer0: getResourceLocation('refinedstorage:silicon'),
@@ -45,35 +45,33 @@ StartupEvents.registry('item', (e) => {
     .color(0, 0xaa9eac)
     .displayName('Silicon Wafer')
 
-  // // Intermediate item for transistors
-  // e.create('kubejs:intermediate_transistor', 'create:sequenced_assembly')
-  //   .texture(getResourceLocation('pneumaticcraft:transistor'))
-  //   .maxStackSize(16)
+  // Intermediate item for transistors
+  e.create('kubejs:intermediate_transistor', 'create:sequenced_assembly')
+    .texture(getResourceLocation('pneumaticcraft:transistor'))
+    .maxStackSize(16)
 
-  // // Intermediate item for capacitors
-  // e.create('kubejs:intermediate_capacitor', 'create:sequenced_assembly')
-  //   .texture(getResourceLocation('pneumaticcraft:capacitor'))
-  //   .maxStackSize(16)
+  // Intermediate item for capacitors
+  e.create('kubejs:intermediate_capacitor', 'create:sequenced_assembly')
+    .texture(getResourceLocation('pneumaticcraft:capacitor'))
+    .maxStackSize(16)
 
-  // // Intermediate item for pneumatic cylinders
-  // e.create(
-  //   'kubejs:intermediate_pneumatic_cylinder',
-  //   'create:sequenced_assembly'
-  // )
-  //   .texture(getResourceLocation('pneumaticcraft:pneumatic_cylinder'))
-  //   .maxStackSize(16)
+  // Intermediate item for pneumatic cylinders
+  e.create(
+    'kubejs:intermediate_pneumatic_cylinder',
+    'create:sequenced_assembly'
+  )
+    .texture(getResourceLocation('pneumaticcraft:pneumatic_cylinder'))
+    .maxStackSize(16)
 
-  // Wire variants of Create: New Age charged items
-  e.create('kubejs:overcharged_iron_wire')
-    .texture(getResourceLocation('createaddition:iron_wire'))
-    .displayName('Overcharged Iron Wire')
-  e.create('kubejs:overcharged_golden_wire')
-    .texture(getResourceLocation('createaddition:gold_wire'))
-    .displayName('Overcharged Gold Wire')
+  // Wire variant of Create: New Age charged items
   e.create('kubejs:overcharged_diamond_wire')
     .textureJson({
       layer0: getResourceLocation('createaddition:iron_wire'),
     })
     .color(0, 0x75eae3)
     .displayName('Overcharged Diamond Wire')
+
+  // Spool variants of Create: New Age charged items
+  registerItem('kubejs:overcharged_iron_spool')
+  registerItem('kubejs:overcharged_diamond_spool')
 })

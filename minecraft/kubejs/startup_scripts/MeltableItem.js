@@ -1,7 +1,8 @@
 // priority: 900
 
 // JS prototype class to store information about meltable items for
-// metallurgy item and recipe registrations.
+// metallurgy item and recipe registrations. Used by both startup_scripts and
+// server_scripts
 function MeltableItem(options) {
   this.nugget = options.nugget
   this.ingot = options.ingot ? options.ingot : options.gem
