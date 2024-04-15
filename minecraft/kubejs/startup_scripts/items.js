@@ -70,8 +70,4 @@ StartupEvents.registry('item', (e) => {
     })
     .color(0, 0x75eae3)
     .displayName('Overcharged Diamond Wire')
-
-  // Spool variants of Create: New Age charged items
-  registerItem('kubejs:overcharged_iron_spool')
-  registerItem('kubejs:overcharged_diamond_spool')
 })

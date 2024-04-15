@@ -206,6 +206,7 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'pneumaticcraft:pressure_chamber/transistor' })
   create
     .SequencedAssembly('create:electron_tube')
+    .transitional('kubejs:intermediate_transistor')
     .deploy('kubejs:silicon_wafer')
     .deploy('minecraft:glass_pane')
     .deploy('pneumaticcraft:plastic')
@@ -216,6 +217,7 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'pneumaticcraft:pressure_chamber/capacitor' })
   create
     .SequencedAssembly('kubejs:silicon_wafer')
+    .transitional('kubejs:intermediate_capacitor')
     .deploy('thermal:silver_plate')
     .deploy('pneumaticcraft:plastic')
     .deploy('thermal:silver_plate')
@@ -243,6 +245,8 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'create_new_age:deploying/copper_circuit' })
   create
     .SequencedAssembly('create_new_age:blank_circuit')
+    .deploy('morered:red_alloy_ingot')
+    .press()
     .deploy('create:super_glue')
     .deploy('create_new_age:copper_wire')
     .press()
@@ -295,22 +299,22 @@ ServerEvents.recipes((e) => {
     '2x kubejs:overcharged_diamond_wire',
     'create_new_age:overcharged_diamond'
   )
-  e.remove({ id: /^create_new_age:cutting\/.*/ })
   const wireCraftingShape = [
     'WWW', //
     'WSW', //
     'WWW', //
   ]
-  const defineWireOverhauls = (wire, coil) => {
-    e.shaped(coil, wireCraftingShape, {
+  const defineWireOverhauls = (wire, spool) => {
+    e.shaped(spool, wireCraftingShape, {
       W: wire,
       S: 'createaddition:spool',
     })
+    e.remove({ output: spool })
     create
       .SequencedAssembly('createaddition:spool')
       .deploy(wire)
       .loops(4)
-      .outputs(coil)
+      .outputs(spool)
   }
   defineWireOverhauls(
     'createaddition:copper_wire',

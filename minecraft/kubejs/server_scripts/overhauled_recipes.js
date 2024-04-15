@@ -519,18 +519,51 @@ ServerEvents.recipes((e) => {
       C: 'create:andesite_casing',
     }
   )
-  e.replaceInput(
+  e.remove({ output: 'createaddition:tesla_coil' })
+  create.mechanical_crafting(
+    'createaddition:tesla_coil',
+    [
+      'SSS', //
+      ' I ', //
+      'PMP', //
+      'BXB', //
+    ],
     {
-      mod: 'createaddition',
-    },
-    'createaddition:capacitor',
-    'pneumaticcraft:capacitor'
+      S: 'create_new_age:copper_wire',
+      I: 'tfmg:steel_ingot',
+      P: 'pneumaticcraft:capacitor',
+      M: 'create:precision_mechanism',
+      B: 'create:brass_sheet',
+      X: 'create:brass_casing',
+    }
   )
-  redefineRecipe('createaddition:spool', ['P', 'S', 'P'], {
-    P: 'create:iron_sheet',
+  e.remove({ output: 'createaddition:modular_accumulator' })
+  create.mechanical_crafting(
+    'createaddition:modular_accumulator',
+    [
+      'SSSSS', //
+      'SCCCS', //
+      'SPBPS', //
+      'SCCCS', //
+      'SSSSS', //
+    ],
+    {
+      S: 'create:brass_sheet',
+      C: 'create_new_age:copper_wire',
+      P: 'pneumaticcraft:capacitor',
+      B: 'create:brass_casing',
+    }
+  )
+  redefineMechanismRecipe('create:precision_mechanism')(
+    'createaddition:portable_energy_interface',
+    'create_new_age:copper_wire',
+    'create:brass_casing',
+    'minecraft:air'
+  )
+  redefineRecipe('createaddition:spool', ['H', 'S', 'H'], {
+    H: 'tfmg:heavy_plate',
     S: 'create:shaft',
   })
-  // TODO: overhaul tesla coil and intermediate items
 
   ////////////////////
   // Create Jetpack //
