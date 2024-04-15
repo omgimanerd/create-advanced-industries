@@ -685,10 +685,35 @@ ServerEvents.recipes((e) => {
       M: 'create_new_age:advanced_motor',
     })
   )
-  // TODO(create_new_age:basic_motor_extension)
-  // TODO(create_new_age:advanced_motor_extension)
-  // TODO(create_new_age:carbon_brushes)
-
+  redefineRecipe(
+    'create_new_age:basic_motor_extension',
+    [
+      'HHH', //
+      'BGO', //
+      'HHH', //
+    ],
+    {
+      H: 'tfmg:heavy_plate',
+      B: 'create_new_age:basic_motor',
+      G: 'create_new_age:generator_coil',
+      O: 'create_new_age:overcharged_iron_sheet',
+    }
+  )
+  e.remove({ id: 'create_new_age:advanced_motor_extension' })
+  create.mechanical_crafting(
+    'create_new_age:advanced_motor_extension',
+    [
+      'HHHHH', //
+      'BGGDD', //
+      'HHHHH', //
+    ],
+    {
+      H: 'tfmg:heavy_plate',
+      B: 'create_new_age:basic_motor_extension',
+      G: 'create_new_age:generator_coil',
+      D: 'create_new_age:overcharged_diamond',
+    }
+  )
   redefineRecipe(
     'create_new_age:generator_coil',
     [
@@ -697,6 +722,20 @@ ServerEvents.recipes((e) => {
       'CCC', //
     ],
     { C: 'create_new_age:copper_wire' }
+  )
+  e.remove({ id: 'create_new_age:shaped/carbon_brushes' })
+  create.mechanical_crafting(
+    'create_new_age:carbon_brushes',
+    [
+      'HHHHH', //
+      'HDDDH', //
+      'HDSDH', //
+      'HDDDH', //
+      'HMCMH', //
+    ],
+    Object.assign({}, createNewAgeKeys, {
+      D: 'tfmg:charcoal_dust',
+    })
   )
 
   ///////////////////////////////////
@@ -716,6 +755,22 @@ ServerEvents.recipes((e) => {
       if (item.search(/^tfmg:[a-z_]+_concrete/) >= 0) {
         r.replaceInput(item, item.replace('tfmg:', 'minecraft:'))
       }
+    }
+  )
+  redefineRecipe(
+    'tfmg:surface_scanner',
+    [
+      'HOH', //
+      'SCP', //
+      'HMH', //
+    ],
+    {
+      H: 'tfmg:heavy_plate',
+      O: 'minecraft:compass',
+      S: 'create:shaft',
+      C: 'tfmg:steel_casing',
+      P: 'create:copper_sheet',
+      M: 'tfmg:steel_mechanism',
     }
   )
 
