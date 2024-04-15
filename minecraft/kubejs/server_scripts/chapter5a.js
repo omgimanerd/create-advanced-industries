@@ -445,6 +445,7 @@ ServerEvents.recipes((e) => {
     .deploy('create:super_glue')
     .deploy('morered:red_alloy_ingot')
     .deploy('minecraft:gold_ingot')
+    .outputs('refinedstorage:raw_improved_processor')
   pneumaticcraft
     .Assembly('refinedstorage:raw_improved_processor')
     .type(Assembly.TYPE_LASER)
@@ -454,6 +455,7 @@ ServerEvents.recipes((e) => {
     .deploy('create:super_glue')
     .deploy('morered:red_alloy_ingot')
     .deploy('thermal:diamond_dust')
+    .outputs('refinedstorage:raw_advanced_processor')
   pneumaticcraft
     .Assembly('refinedstorage:raw_advanced_processor')
     .type(Assembly.TYPE_LASER)

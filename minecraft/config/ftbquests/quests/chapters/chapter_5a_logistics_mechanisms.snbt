@@ -40,26 +40,26 @@
 				"5A6D0D76D241A75E"
 			]
 			id: "3D27BD07DCC89201"
-			size: 2.0d
+			size: 1.0d
 			tasks: [{
 				id: "28EA7B628245E855"
 				item: "kubejs:logistics_mechanism"
 				type: "item"
 			}]
-			x: 14.5d
-			y: -4.5d
+			x: 34.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["709C290FF8F10B6A"]
 			id: "6D912BAC546961CB"
-			size: 1.5d
+			size: 1.0d
 			tasks: [{
 				id: "77DD8CC5F0E44F5D"
 				item: "pneumaticcraft:plastic"
 				type: "item"
 			}]
-			x: 8.5d
-			y: -6.0d
+			x: 16.0d
+			y: -8.0d
 		}
 		{
 			dependencies: [
@@ -72,8 +72,8 @@
 				item: "tfmg:plastic_sheet"
 				type: "item"
 			}]
-			x: 7.0d
-			y: -7.5d
+			x: 14.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["6426BBE70FDA2515"]
@@ -83,7 +83,7 @@
 				item: "pneumaticcraft:plastic_bucket"
 				type: "item"
 			}]
-			x: 5.5d
+			x: 12.0d
 			y: -8.0d
 		}
 		{
@@ -94,8 +94,8 @@
 				item: "pneumaticcraft:heat_frame"
 				type: "item"
 			}]
-			x: 7.0d
-			y: -10.0d
+			x: 13.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["1B2CAA9D8CAB0F09"]
@@ -105,8 +105,8 @@
 				item: "pneumaticcraft:lpg_bucket"
 				type: "item"
 			}]
-			x: 3.5d
-			y: -7.5d
+			x: 10.0d
+			y: -8.0d
 		}
 		{
 			dependencies: [
@@ -119,8 +119,8 @@
 				item: "pneumaticcraft:kerosene_bucket"
 				type: "item"
 			}]
-			x: 1.5d
-			y: -7.5d
+			x: 6.0d
+			y: -8.0d
 		}
 		{
 			dependencies: [
@@ -133,8 +133,8 @@
 				item: "pneumaticcraft:diesel_bucket"
 				type: "item"
 			}]
-			x: 0.0d
-			y: -7.5d
+			x: 4.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["230E21BE68901D81"]
@@ -144,8 +144,8 @@
 				item: "pneumaticcraft:gasoline_bucket"
 				type: "item"
 			}]
-			x: 2.5d
-			y: -7.5d
+			x: 8.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["55624517D9B6A2CD"]
@@ -155,8 +155,8 @@
 				item: "pneumaticcraft:oil_bucket"
 				type: "item"
 			}]
-			x: -1.5d
-			y: -6.5d
+			x: 2.0d
+			y: -8.0d
 		}
 		{
 			dependencies: [
@@ -169,11 +169,11 @@
 				item: "pneumaticcraft:lubricant_bucket"
 				type: "item"
 			}]
-			x: 0.0d
-			y: -13.0d
+			x: 6.0d
+			y: -4.0d
 		}
 		{
-			dependencies: ["5978BE35C75966ED"]
+			dependencies: ["2A592785D36BC8D3"]
 			description: ["Powering a surface scanner with some rotational force will make it point towards the nearest oil deposit. Once you find its location, dig all the way down to bedrock to find it."]
 			id: "4A2841F0F4D70DF5"
 			tasks: [{
@@ -181,8 +181,8 @@
 				item: "tfmg:surface_scanner"
 				type: "item"
 			}]
-			x: -3.5d
-			y: -4.5d
+			x: 0.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["4A2841F0F4D70DF5"]
@@ -225,7 +225,7 @@
 				type: "observation"
 			}]
 			title: "Find an Oil Deposit"
-			x: -3.5d
+			x: 0.0d
 			y: -6.0d
 		}
 		{
@@ -287,8 +287,8 @@
 				}
 			]
 			title: "Building a Pumpjack"
-			x: -2.5d
-			y: -6.5d
+			x: 0.0d
+			y: -8.0d
 		}
 		{
 			dependencies: [
@@ -315,8 +315,8 @@
 				}
 			]
 			title: "Refinery"
-			x: -0.5d
-			y: -5.0d
+			x: 2.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["5F46DBF36BF850AF"]
@@ -326,30 +326,36 @@
 				item: "pneumaticcraft:pneumatic_cylinder"
 				type: "item"
 			}]
-			x: 4.5d
-			y: -12.0d
+			x: 14.0d
+			y: -4.0d
 		}
 		{
-			dependencies: ["300B315823283E7E"]
+			dependencies: [
+				"300B315823283E7E"
+				"71920B55BE892016"
+			]
 			id: "64CB552C56CAFC95"
 			tasks: [{
 				id: "2FE4A09510F99B74"
 				item: "pneumaticcraft:capacitor"
 				type: "item"
 			}]
-			x: 21.0d
-			y: -9.5d
+			x: 38.0d
+			y: -10.0d
 		}
 		{
-			dependencies: ["300B315823283E7E"]
+			dependencies: [
+				"300B315823283E7E"
+				"56CD3F3E971462D4"
+			]
 			id: "7F388CDF039975F1"
 			tasks: [{
 				id: "2F491C1D53333FDE"
 				item: "pneumaticcraft:transistor"
 				type: "item"
 			}]
-			x: 17.0d
-			y: -7.0d
+			x: 36.0d
+			y: -6.0d
 		}
 		{
 			dependencies: [
@@ -380,8 +386,8 @@
 				item: "tfmg:creosote_bucket"
 				type: "item"
 			}]
-			x: 1.0d
-			y: -1.5d
+			x: 0.0d
+			y: -2.0d
 		}
 		{
 			dependencies: ["1A316BB40EBEF754"]
@@ -391,8 +397,8 @@
 				item: "tfmg:steel_casing"
 				type: "item"
 			}]
-			x: 3.5d
-			y: -2.0d
+			x: 6.0d
+			y: 0.0d
 		}
 		{
 			dependencies: ["5978BE35C75966ED"]
@@ -464,15 +470,18 @@
 			y: 2.0d
 		}
 		{
-			dependencies: ["7A306159E94EA54C"]
+			dependencies: [
+				"7A306159E94EA54C"
+				"2A592785D36BC8D3"
+			]
 			id: "646D6F79EF32D089"
 			tasks: [{
 				id: "426E3CB9F0A5AF9E"
 				item: "pneumaticcraft:thermopneumatic_processing_plant"
 				type: "item"
 			}]
-			x: 2.0d
-			y: -11.0d
+			x: 4.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["6396406F633DD07E"]
@@ -482,7 +491,7 @@
 				item: "create:scoria"
 				type: "item"
 			}]
-			x: 0.5d
+			x: 2.0d
 			y: 4.0d
 		}
 		{
@@ -493,7 +502,7 @@
 				item: "create:scorchia"
 				type: "item"
 			}]
-			x: -1.0d
+			x: 0.0d
 			y: 4.0d
 		}
 		{
@@ -513,7 +522,7 @@
 				type: "item"
 			}]
 			x: 0.0d
-			y: 5.5d
+			y: 6.0d
 		}
 		{
 			dependencies: ["20444E3074A0589D"]
@@ -523,8 +532,8 @@
 				item: "minecraft:ancient_debris"
 				type: "item"
 			}]
-			x: 0.5d
-			y: 7.0d
+			x: 2.0d
+			y: 6.0d
 		}
 		{
 			dependencies: [
@@ -538,8 +547,8 @@
 				item: "pneumaticcraft:printed_circuit_board"
 				type: "item"
 			}]
-			x: 15.0d
-			y: -2.0d
+			x: 28.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["012D0C32277CAEA4"]
@@ -549,8 +558,8 @@
 				item: "pneumaticcraft:unassembled_pcb"
 				type: "item"
 			}]
-			x: 13.5d
-			y: -3.0d
+			x: 26.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["23AD73CE6342324E"]
@@ -567,8 +576,8 @@
 				type: "item"
 			}]
 			title: "UV-Exposed Empty PCB"
-			x: 12.5d
-			y: -4.0d
+			x: 24.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["097A84D100994B26"]
@@ -578,8 +587,8 @@
 				item: "pneumaticcraft:empty_pcb"
 				type: "item"
 			}]
-			x: 11.5d
-			y: -5.0d
+			x: 22.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["3F6AC2F3372B28E3"]
@@ -589,8 +598,8 @@
 				item: "refinedstorage:basic_processor"
 				type: "item"
 			}]
-			x: 15.0d
-			y: -6.0d
+			x: 30.0d
+			y: -4.0d
 		}
 		{
 			dependencies: [
@@ -603,8 +612,8 @@
 				item: "refinedstorage:raw_basic_processor"
 				type: "item"
 			}]
-			x: 14.5d
-			y: -7.5d
+			x: 28.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["4000234461168668"]
@@ -614,8 +623,8 @@
 				item: "refinedstorage:improved_processor"
 				type: "item"
 			}]
-			x: 14.0d
-			y: -6.0d
+			x: 30.0d
+			y: -2.0d
 		}
 		{
 			dependencies: [
@@ -628,18 +637,20 @@
 				item: "refinedstorage:raw_improved_processor"
 				type: "item"
 			}]
-			x: 13.5d
-			y: -7.5d
+			x: 28.0d
+			y: -2.0d
 		}
 		{
+			dependencies: ["5978BE35C75966ED"]
+			hide_dependency_lines: true
 			id: "5AAAFF9CC002EB70"
 			tasks: [{
 				id: "303358B925207722"
 				item: "kubejs:molten_silicon_bucket"
 				type: "item"
 			}]
-			x: 13.5d
-			y: -14.0d
+			x: 42.0d
+			y: 0.0d
 		}
 		{
 			dependencies: [
@@ -652,8 +663,8 @@
 				item: "kubejs:silicon_wafer"
 				type: "item"
 			}]
-			x: 16.0d
-			y: -8.5d
+			x: 38.0d
+			y: 0.0d
 		}
 		{
 			dependencies: ["5AAAFF9CC002EB70"]
@@ -663,18 +674,17 @@
 				item: "refinedstorage:silicon"
 				type: "item"
 			}]
-			x: 15.0d
-			y: -11.0d
+			x: 40.0d
+			y: 0.0d
 		}
 		{
 			dependencies: [
 				"67DC36BAC10B5C18"
-				"6D912BAC546961CB"
 				"60A20508A7E35CB9"
 			]
 			icon: "pneumaticcraft:assembly_controller"
 			id: "4F5053EC6278DC86"
-			size: 1.5d
+			size: 1.0d
 			tasks: [
 				{
 					id: "2E59F8757F7A2A7D"
@@ -708,8 +718,8 @@
 				}
 			]
 			title: "Pneumatic Assembly"
-			x: 9.5d
-			y: -9.5d
+			x: 26.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["33C57686C54AE721"]
@@ -725,8 +735,8 @@
 				}
 				type: "item"
 			}]
-			x: 18.0d
-			y: -12.0d
+			x: 39.0d
+			y: -2.0d
 		}
 		{
 			dependencies: [
@@ -740,8 +750,8 @@
 				item: "refinedstorage:raw_advanced_processor"
 				type: "item"
 			}]
-			x: 12.5d
-			y: -7.5d
+			x: 28.0d
+			y: 0.0d
 		}
 		{
 			dependencies: ["09D7F859EC4C42E6"]
@@ -752,8 +762,8 @@
 				item: "refinedstorage:advanced_processor"
 				type: "item"
 			}]
-			x: 13.0d
-			y: -6.0d
+			x: 28.0d
+			y: 2.0d
 		}
 		{
 			dependencies: ["2A592785D36BC8D3"]
@@ -763,8 +773,8 @@
 				item: "tfmg:heavy_machinery_casing"
 				type: "item"
 			}]
-			x: 5.5d
-			y: -2.0d
+			x: 8.0d
+			y: 0.0d
 		}
 		{
 			dependencies: ["4C5481815C938E67"]
@@ -774,8 +784,8 @@
 				item: "create_new_age:copper_circuit"
 				type: "item"
 			}]
-			x: 10.0d
-			y: -4.0d
+			x: 20.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["6D912BAC546961CB"]
@@ -785,51 +795,56 @@
 				item: "create_new_age:blank_circuit"
 				type: "item"
 			}]
-			x: 8.0d
-			y: -4.0d
+			x: 18.0d
+			y: -8.0d
 		}
 		{
+			dependencies: ["52506B35EBD04BEF"]
 			id: "4630AEF58B2E670F"
 			tasks: [{
 				id: "288AE5DEA959A3EC"
 				item: "minecraft:netherite_scrap"
 				type: "item"
 			}]
-			x: 2.5d
-			y: 7.0d
+			x: 4.0d
+			y: 6.0d
 		}
 		{
+			dependencies: ["4630AEF58B2E670F"]
 			id: "0EBC7AF9C3657B63"
 			tasks: [{
 				id: "234D3207C9B92C52"
 				item: "minecraft:netherite_ingot"
 				type: "item"
 			}]
-			x: 4.5d
-			y: 7.0d
+			x: 6.0d
+			y: 6.0d
 		}
 		{
+			dependencies: ["0EBC7AF9C3657B63"]
 			id: "0C0173124EA22FAE"
 			tasks: [{
 				id: "62F651F2C3C70110"
 				item: "thermal:netherite_nugget"
 				type: "item"
 			}]
-			x: 6.5d
-			y: 7.0d
+			x: 24.0d
+			y: 6.0d
 		}
 		{
-			dependencies: ["1C323E9E442D59D9"]
+			dependencies: ["3DAFEBA27621ED6F"]
 			id: "4940E876A0E00E4E"
 			tasks: [{
 				id: "0CC804E2B239231B"
 				item: "create_new_age:energiser_t1"
 				type: "item"
 			}]
-			x: 6.5d
+			x: 12.0d
 			y: 0.0d
 		}
 		{
+			dependencies: ["1C323E9E442D59D9"]
+			icon: "create_new_age:carbon_brushes"
 			id: "3DAFEBA27621ED6F"
 			tasks: [
 				{
@@ -849,8 +864,52 @@
 				}
 			]
 			title: "Energy Generation"
-			x: 7.0d
-			y: -1.5d
+			x: 10.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["4940E876A0E00E4E"]
+			id: "33C680B20C535000"
+			tasks: [{
+				id: "22A29C9CF1FED61E"
+				item: "create_new_age:overcharged_iron"
+				type: "item"
+			}]
+			x: 14.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["33C680B20C535000"]
+			id: "68FB63D0979FE43B"
+			tasks: [{
+				id: "032C0DF8F169394C"
+				item: "morered:red_alloy_ingot"
+				type: "item"
+			}]
+			x: 18.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["6D912BAC546961CB"]
+			id: "71920B55BE892016"
+			tasks: [{
+				id: "05CF45EFD52F1821"
+				type: "checkmark"
+			}]
+			title: "Plastic Sheet"
+			x: 16.0d
+			y: -10.0d
+		}
+		{
+			dependencies: ["6D912BAC546961CB"]
+			id: "56CD3F3E971462D4"
+			tasks: [{
+				id: "5A21C690B0CF5A9B"
+				type: "checkmark"
+			}]
+			title: "Plastic Sheet"
+			x: 16.0d
+			y: -6.0d
 		}
 	]
 	title: "Chapter 5a: Logistics Mechanisms"
