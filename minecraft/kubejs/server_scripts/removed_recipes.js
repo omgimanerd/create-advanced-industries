@@ -25,6 +25,7 @@ global.removedRecipes = [
   { output: /^create_new_age:.*thorium.*/ },
   { output: /.*jumbo_smelting/ },
   { output: 'morered:soldering_table' },
+  { output: /^morered:.*stone_plate/ },
   { output: /^pneumaticcraft:compressed_iron.*/ },
   { output: 'pneumaticcraft:pneumatic_dynamo' },
   { output: 'pneumaticcraft:copper_nugget' },
