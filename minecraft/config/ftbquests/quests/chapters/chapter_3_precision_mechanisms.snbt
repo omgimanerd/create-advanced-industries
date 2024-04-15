@@ -498,18 +498,11 @@
 				item: "kubejs:clay_gem_cast"
 				type: "item"
 			}]
-			tasks: [
-				{
-					id: "70A1E028AFA44130"
-					item: "kubejs:clay_gem_cast"
-					type: "item"
-				}
-				{
-					id: "07F3484B900E9C6E"
-					item: "kubejs:molten_quartz_clay_cast"
-					type: "item"
-				}
-			]
+			tasks: [{
+				id: "07F3484B900E9C6E"
+				item: "kubejs:molten_quartz_clay_cast"
+				type: "item"
+			}]
 			x: 8.0d
 			y: -2.0d
 		}
