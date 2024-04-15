@@ -675,6 +675,19 @@
 			x: 18.0d
 			y: -8.0d
 		}
+		{
+			dependencies: ["32945248A0491741"]
+			description: ["Creosote Oil is a byproduct of coal coking. It'll be useful later, but it can also be burned for fuel."]
+			id: "366F518195117AF6"
+			optional: true
+			tasks: [{
+				id: "1A8207AA9C962E6F"
+				item: "tfmg:creosote_bucket"
+				type: "item"
+			}]
+			x: 8.0d
+			y: -10.0d
+		}
 	]
 	title: "Chapter 4: Steel Mechanisms"
 }
