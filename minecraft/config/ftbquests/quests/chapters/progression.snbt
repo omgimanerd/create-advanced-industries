@@ -85,11 +85,8 @@
 			y: 0.0d
 		}
 		{
-			dependencies: [
-				"45F67208743BAE3E"
-				"413CB04319D49CDB"
-			]
-			icon: "kubejs:plastic_mechanism"
+			dependencies: ["45F67208743BAE3E"]
+			icon: "kubejs:logistics_mechanism"
 			id: "11BA49A842F724F6"
 			tasks: [{
 				id: "28CFD4CE6924A0A5"
@@ -109,6 +106,16 @@
 			title: "Chapter 5b: Placeholder"
 			x: 10.0d
 			y: 1.5d
+		}
+		{
+			id: "12D9ACDA50B38FCA"
+			tasks: [{
+				id: "5850604709EA7ACC"
+				item: "createteleporters:quantum_mechanism"
+				type: "item"
+			}]
+			x: 12.5d
+			y: 0.0d
 		}
 	]
 	title: "Progression"

@@ -10,7 +10,21 @@
 	quests: [
 		{
 			dependencies: ["11BA49A842F724F6"]
+			description: [
+				"Chapter 5a unlocks Logistics Mechanisms, but you'll unlock a lot of other stuff along the way."
+				""
+				"The upper technology tree unlocks oil and petrochemical processing. This gives you access to a powerful source of fuel as well as plastics."
+				""
+				"The lower technology tree unlocks electricity generation, giving you access to circuitry and machinery."
+				""
+				"Both of these will go hand in hand to unlock advanced logistics."
+			]
 			id: "5978BE35C75966ED"
+			rewards: [{
+				id: "4C4AAB4D36A9D0E2"
+				item: "farmersdelight:vegetable_noodles"
+				type: "item"
+			}]
 			tasks: [{
 				id: "4C552EE5CB2CC18E"
 				title: "Start"
@@ -20,24 +34,31 @@
 			y: 0.0d
 		}
 		{
+			dependencies: [
+				"60A20508A7E35CB9"
+				"5AD35DACB2A50EF1"
+				"5A6D0D76D241A75E"
+			]
 			id: "3D27BD07DCC89201"
+			size: 2.0d
 			tasks: [{
 				id: "28EA7B628245E855"
 				item: "kubejs:logistics_mechanism"
 				type: "item"
 			}]
-			x: 18.0d
-			y: 0.0d
+			x: 14.5d
+			y: -4.5d
 		}
 		{
 			dependencies: ["709C290FF8F10B6A"]
 			id: "6D912BAC546961CB"
+			size: 1.5d
 			tasks: [{
 				id: "77DD8CC5F0E44F5D"
 				item: "pneumaticcraft:plastic"
 				type: "item"
 			}]
-			x: 10.5d
+			x: 8.5d
 			y: -6.0d
 		}
 		{
@@ -51,8 +72,8 @@
 				item: "tfmg:plastic_sheet"
 				type: "item"
 			}]
-			x: 8.0d
-			y: -7.0d
+			x: 7.0d
+			y: -7.5d
 		}
 		{
 			dependencies: ["6426BBE70FDA2515"]
@@ -88,7 +109,10 @@
 			y: -7.5d
 		}
 		{
-			dependencies: ["7A306159E94EA54C"]
+			dependencies: [
+				"7A306159E94EA54C"
+				"646D6F79EF32D089"
+			]
 			id: "230E21BE68901D81"
 			tasks: [{
 				id: "0A510FBFED03C374"
@@ -135,15 +159,18 @@
 			y: -6.5d
 		}
 		{
-			dependencies: ["7A306159E94EA54C"]
+			dependencies: [
+				"7A306159E94EA54C"
+				"646D6F79EF32D089"
+			]
 			id: "5F46DBF36BF850AF"
 			tasks: [{
 				id: "084297DC6062A152"
 				item: "pneumaticcraft:lubricant_bucket"
 				type: "item"
 			}]
-			x: 1.0d
-			y: -6.0d
+			x: 0.0d
+			y: -13.0d
 		}
 		{
 			dependencies: ["5978BE35C75966ED"]
@@ -264,8 +291,17 @@
 			y: -6.5d
 		}
 		{
-			dependencies: ["2DD46A2CE3AE0160"]
+			dependencies: [
+				"2DD46A2CE3AE0160"
+				"2A592785D36BC8D3"
+			]
 			id: "0D59F5CAF2852DC6"
+			rewards: [{
+				count: 3
+				id: "7100842D8D5734E7"
+				item: "pneumaticcraft:refinery_output"
+				type: "item"
+			}]
 			tasks: [
 				{
 					id: "459284B3722767AD"
@@ -279,8 +315,8 @@
 				}
 			]
 			title: "Refinery"
-			x: -1.0d
-			y: -8.0d
+			x: -0.5d
+			y: -5.0d
 		}
 		{
 			dependencies: ["5F46DBF36BF850AF"]
@@ -290,28 +326,531 @@
 				item: "pneumaticcraft:pneumatic_cylinder"
 				type: "item"
 			}]
-			x: 2.5d
-			y: -4.5d
+			x: 4.5d
+			y: -12.0d
 		}
 		{
+			dependencies: ["300B315823283E7E"]
 			id: "64CB552C56CAFC95"
 			tasks: [{
 				id: "2FE4A09510F99B74"
 				item: "pneumaticcraft:capacitor"
 				type: "item"
 			}]
-			x: 7.0d
-			y: -2.0d
+			x: 21.0d
+			y: -9.5d
 		}
 		{
+			dependencies: ["300B315823283E7E"]
 			id: "7F388CDF039975F1"
 			tasks: [{
 				id: "2F491C1D53333FDE"
 				item: "pneumaticcraft:transistor"
 				type: "item"
 			}]
-			x: 7.0d
+			x: 17.0d
+			y: -7.0d
+		}
+		{
+			dependencies: [
+				"127F63CD80455224"
+				"20B80014624E02DA"
+				"1DB3C79C5873426A"
+			]
+			description: [
+				"Hardened planks unlock steel casings, so you can now craft compressors."
+				""
+				"Overpressuring a pipe will blow it up!"
+			]
+			id: "1A316BB40EBEF754"
+			tasks: [{
+				id: "1158C3CFC6AABDAF"
+				item: "tfmg:hardened_planks"
+				type: "item"
+			}]
+			x: 4.0d
 			y: 0.0d
+		}
+		{
+			dependencies: ["366F518195117AF6"]
+			description: ["I hope you kept some of the Creosote Oil around."]
+			id: "1DB3C79C5873426A"
+			tasks: [{
+				id: "37FB004712B76CD4"
+				item: "tfmg:creosote_bucket"
+				type: "item"
+			}]
+			x: 1.0d
+			y: -1.5d
+		}
+		{
+			dependencies: ["1A316BB40EBEF754"]
+			id: "2A592785D36BC8D3"
+			tasks: [{
+				id: "5C8912650C5F4FB1"
+				item: "tfmg:steel_casing"
+				type: "item"
+			}]
+			x: 3.5d
+			y: -2.0d
+		}
+		{
+			dependencies: ["5978BE35C75966ED"]
+			description: [
+				"You'll need a pressure chamber for some of these crafting recipes."
+				""
+				"These are the minimal requirements to build the smallest possible one. Of course, you can also use pressure chamber glass for one of the sides to see into it."
+			]
+			id: "127F63CD80455224"
+			rewards: [{
+				count: 16
+				id: "652596F2C75CA590"
+				item: "pneumaticcraft:pressure_tube"
+				type: "item"
+			}]
+			tasks: [
+				{
+					count: 23L
+					id: "4BF0ED06DC4ACE98"
+					item: { Count: 22b, id: "pneumaticcraft:pressure_chamber_wall" }
+					type: "item"
+				}
+				{
+					count: 2L
+					id: "09CF5C4A04C752CA"
+					item: { Count: 2b, id: "pneumaticcraft:pressure_chamber_interface" }
+					type: "item"
+				}
+				{
+					id: "33449CF30698FCFA"
+					item: "pneumaticcraft:pressure_chamber_valve"
+					type: "item"
+				}
+			]
+			title: "Building a Pressure Chamber"
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["5978BE35C75966ED"]
+			description: [
+				"Among the other things unlocked by Steel Mechanisms, mechanical extruders might be one of the most useful. Mechanical extruders can also produce blocks with a catalyst that you can't normally get in a regular cobblegen."
+				""
+				"You can also use it to simplify some of your earlier automations."
+			]
+			id: "6396406F633DD07E"
+			tasks: [{
+				id: "3EC040708392BF5D"
+				item: "create_mechanical_extruder:mechanical_extruder"
+				type: "item"
+			}]
+			x: 0.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["127F63CD80455224"]
+			description: [
+				"Until you can craft steel casings with hardened planks, you'll need to manually pump some air into the pressure chamber for the first batch."
+				""
+				"Get cranking!"
+			]
+			id: "20B80014624E02DA"
+			tasks: [{
+				id: "00DA21C797BBD86B"
+				item: "pneumaticcraft:manual_compressor"
+				type: "item"
+			}]
+			x: 3.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["7A306159E94EA54C"]
+			id: "646D6F79EF32D089"
+			tasks: [{
+				id: "426E3CB9F0A5AF9E"
+				item: "pneumaticcraft:thermopneumatic_processing_plant"
+				type: "item"
+			}]
+			x: 2.0d
+			y: -11.0d
+		}
+		{
+			dependencies: ["6396406F633DD07E"]
+			id: "319DF7D661FBEEDE"
+			tasks: [{
+				id: "7209A4FED1624564"
+				item: "create:scoria"
+				type: "item"
+			}]
+			x: 0.5d
+			y: 4.0d
+		}
+		{
+			dependencies: ["6396406F633DD07E"]
+			id: "7F6F60D91CBB9CBA"
+			tasks: [{
+				id: "2ABC39439F1C3C73"
+				item: "create:scorchia"
+				type: "item"
+			}]
+			x: -1.0d
+			y: 4.0d
+		}
+		{
+			dependencies: [
+				"7F6F60D91CBB9CBA"
+				"319DF7D661FBEEDE"
+			]
+			description: [
+				"Scoria and Scorchia are both mineral rich stones formed from volcanic activity. Only one of them has a chance to yield a plethora of resources when crushed. Unfortunately, seismic instabilities change up which one it is on a regular basis. If only there were some way to automate this as well..."
+				""
+				"[The recipe yields change every time the game restarts!]"
+			]
+			id: "20444E3074A0589D"
+			tasks: [{
+				id: "752532383119C777"
+				item: "create:crushing_wheel"
+				type: "item"
+			}]
+			x: 0.0d
+			y: 5.5d
+		}
+		{
+			dependencies: ["20444E3074A0589D"]
+			id: "52506B35EBD04BEF"
+			tasks: [{
+				id: "787807626EFD2205"
+				item: "minecraft:ancient_debris"
+				type: "item"
+			}]
+			x: 0.5d
+			y: 7.0d
+		}
+		{
+			dependencies: [
+				"283654598316099F"
+				"7F388CDF039975F1"
+				"64CB552C56CAFC95"
+			]
+			id: "60A20508A7E35CB9"
+			tasks: [{
+				id: "40F8F215229C894E"
+				item: "pneumaticcraft:printed_circuit_board"
+				type: "item"
+			}]
+			x: 15.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["012D0C32277CAEA4"]
+			id: "283654598316099F"
+			tasks: [{
+				id: "5384F6D47014D77A"
+				item: "pneumaticcraft:unassembled_pcb"
+				type: "item"
+			}]
+			x: 13.5d
+			y: -3.0d
+		}
+		{
+			dependencies: ["23AD73CE6342324E"]
+			id: "012D0C32277CAEA4"
+			tasks: [{
+				id: "5AA1926C78CD6099"
+				item: {
+					Count: 1b
+					id: "pneumaticcraft:empty_pcb"
+					tag: {
+						"pneumaticcraft:uv_exposure": 100
+					}
+				}
+				type: "item"
+			}]
+			title: "UV-Exposed Empty PCB"
+			x: 12.5d
+			y: -4.0d
+		}
+		{
+			dependencies: ["097A84D100994B26"]
+			id: "23AD73CE6342324E"
+			tasks: [{
+				id: "3A949CCE4A45324E"
+				item: "pneumaticcraft:empty_pcb"
+				type: "item"
+			}]
+			x: 11.5d
+			y: -5.0d
+		}
+		{
+			dependencies: ["3F6AC2F3372B28E3"]
+			id: "5AD35DACB2A50EF1"
+			tasks: [{
+				id: "7A060253361ADDC6"
+				item: "refinedstorage:basic_processor"
+				type: "item"
+			}]
+			x: 15.0d
+			y: -6.0d
+		}
+		{
+			dependencies: [
+				"300B315823283E7E"
+				"4F5053EC6278DC86"
+			]
+			id: "3F6AC2F3372B28E3"
+			tasks: [{
+				id: "588A8EDBFFDCD729"
+				item: "refinedstorage:raw_basic_processor"
+				type: "item"
+			}]
+			x: 14.5d
+			y: -7.5d
+		}
+		{
+			dependencies: ["4000234461168668"]
+			id: "5A6D0D76D241A75E"
+			tasks: [{
+				id: "582148641DC7B8FF"
+				item: "refinedstorage:improved_processor"
+				type: "item"
+			}]
+			x: 14.0d
+			y: -6.0d
+		}
+		{
+			dependencies: [
+				"300B315823283E7E"
+				"4F5053EC6278DC86"
+			]
+			id: "4000234461168668"
+			tasks: [{
+				id: "4A41926815397360"
+				item: "refinedstorage:raw_improved_processor"
+				type: "item"
+			}]
+			x: 13.5d
+			y: -7.5d
+		}
+		{
+			id: "5AAAFF9CC002EB70"
+			tasks: [{
+				id: "303358B925207722"
+				item: "kubejs:molten_silicon_bucket"
+				type: "item"
+			}]
+			x: 13.5d
+			y: -14.0d
+		}
+		{
+			dependencies: [
+				"33C57686C54AE721"
+				"283EC864502356BE"
+			]
+			id: "300B315823283E7E"
+			tasks: [{
+				id: "72F73C393DE7A674"
+				item: "kubejs:silicon_wafer"
+				type: "item"
+			}]
+			x: 16.0d
+			y: -8.5d
+		}
+		{
+			dependencies: ["5AAAFF9CC002EB70"]
+			id: "33C57686C54AE721"
+			tasks: [{
+				id: "5361020FCDD8E836"
+				item: "refinedstorage:silicon"
+				type: "item"
+			}]
+			x: 15.0d
+			y: -11.0d
+		}
+		{
+			dependencies: [
+				"67DC36BAC10B5C18"
+				"6D912BAC546961CB"
+				"60A20508A7E35CB9"
+			]
+			icon: "pneumaticcraft:assembly_controller"
+			id: "4F5053EC6278DC86"
+			size: 1.5d
+			tasks: [
+				{
+					id: "2E59F8757F7A2A7D"
+					item: "pneumaticcraft:assembly_controller"
+					type: "item"
+				}
+				{
+					id: "0BD4EA71C187DEDD"
+					item: "pneumaticcraft:assembly_platform"
+					type: "item"
+				}
+				{
+					id: "15E69447AB03E55F"
+					item: "pneumaticcraft:assembly_io_unit_export"
+					type: "item"
+				}
+				{
+					id: "44C42A5D05724E16"
+					item: "pneumaticcraft:assembly_io_unit_import"
+					type: "item"
+				}
+				{
+					id: "1B8FF58FD70DED2E"
+					item: "pneumaticcraft:assembly_laser"
+					type: "item"
+				}
+				{
+					id: "02C8A5AE5EB8C1B1"
+					item: "pneumaticcraft:assembly_program_laser"
+					type: "item"
+				}
+			]
+			title: "Pneumatic Assembly"
+			x: 9.5d
+			y: -9.5d
+		}
+		{
+			dependencies: ["33C57686C54AE721"]
+			id: "283EC864502356BE"
+			tasks: [{
+				id: "5E3A62F33712CAF7"
+				item: {
+					Count: 1b
+					id: "kubejs:diamond_saw_blade"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: 18.0d
+			y: -12.0d
+		}
+		{
+			dependencies: [
+				"300B315823283E7E"
+				"4F5053EC6278DC86"
+			]
+			id: "09D7F859EC4C42E6"
+			optional: true
+			tasks: [{
+				id: "74E7CED17E77AD05"
+				item: "refinedstorage:raw_advanced_processor"
+				type: "item"
+			}]
+			x: 12.5d
+			y: -7.5d
+		}
+		{
+			dependencies: ["09D7F859EC4C42E6"]
+			id: "06A3BB4120EA86F8"
+			optional: true
+			tasks: [{
+				id: "0603DCAC3834699D"
+				item: "refinedstorage:advanced_processor"
+				type: "item"
+			}]
+			x: 13.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["2A592785D36BC8D3"]
+			id: "1C323E9E442D59D9"
+			tasks: [{
+				id: "1F7AC77F8CB391F7"
+				item: "tfmg:heavy_machinery_casing"
+				type: "item"
+			}]
+			x: 5.5d
+			y: -2.0d
+		}
+		{
+			dependencies: ["4C5481815C938E67"]
+			id: "097A84D100994B26"
+			tasks: [{
+				id: "694515FB00B52BEB"
+				item: "create_new_age:copper_circuit"
+				type: "item"
+			}]
+			x: 10.0d
+			y: -4.0d
+		}
+		{
+			dependencies: ["6D912BAC546961CB"]
+			id: "4C5481815C938E67"
+			tasks: [{
+				id: "5468D3ED615225EC"
+				item: "create_new_age:blank_circuit"
+				type: "item"
+			}]
+			x: 8.0d
+			y: -4.0d
+		}
+		{
+			id: "4630AEF58B2E670F"
+			tasks: [{
+				id: "288AE5DEA959A3EC"
+				item: "minecraft:netherite_scrap"
+				type: "item"
+			}]
+			x: 2.5d
+			y: 7.0d
+		}
+		{
+			id: "0EBC7AF9C3657B63"
+			tasks: [{
+				id: "234D3207C9B92C52"
+				item: "minecraft:netherite_ingot"
+				type: "item"
+			}]
+			x: 4.5d
+			y: 7.0d
+		}
+		{
+			id: "0C0173124EA22FAE"
+			tasks: [{
+				id: "62F651F2C3C70110"
+				item: "thermal:netherite_nugget"
+				type: "item"
+			}]
+			x: 6.5d
+			y: 7.0d
+		}
+		{
+			dependencies: ["1C323E9E442D59D9"]
+			id: "4940E876A0E00E4E"
+			tasks: [{
+				id: "0CC804E2B239231B"
+				item: "create_new_age:energiser_t1"
+				type: "item"
+			}]
+			x: 6.5d
+			y: 0.0d
+		}
+		{
+			id: "3DAFEBA27621ED6F"
+			tasks: [
+				{
+					id: "699B30A5DC8DADCC"
+					item: "create_new_age:carbon_brushes"
+					type: "item"
+				}
+				{
+					id: "035E8145830C158C"
+					item: "create_new_age:generator_coil"
+					type: "item"
+				}
+				{
+					id: "5744A4D641F1CB60"
+					item: "create_new_age:magnetite_block"
+					type: "item"
+				}
+			]
+			title: "Energy Generation"
+			x: 7.0d
+			y: -1.5d
 		}
 	]
 	title: "Chapter 5a: Logistics Mechanisms"

@@ -125,16 +125,23 @@ ServerEvents.recipes((e) => {
     .minTemp(100)
     .outputs(['250mb pneumaticcraft:plastic'])
 
-  // Cool plastic in a heat frame
+  // Cool plastic in a heat frame or TPP
   e.remove({ id: 'pneumaticcraft:heat_frame_cooling/plastic' })
   pneumaticcraft
     .HeatFrame('1000mb pneumaticcraft:plastic')
     .bonusOutput(/*limit=*/ 1, /*multiplier=*/ 0.01)
-    .maxTemp(70)
+    .maxTemp(50)
     .outputs('2x tfmg:plastic_sheet')
+  pneumaticcraft
+    .ThermoPlant('1000mb pneumaticcraft:plastic')
+    .maxTemp(0)
+    .pressure(-0.75)
+    .outputs('2x tfmg:plastic_sheet')
+
+  // Plastic sheets are cut from plastic
   create.cutting('3x pneumaticcraft:plastic', 'tfmg:plastic_sheet')
 
-  // Silicon overhaul, must be solidified in a heat frame
+  // Silicon overhaul, must be solidified in a heat frame or TPP
   e.remove({ id: 'refinedstorage:silicon' })
   create
     .mixing(
@@ -155,8 +162,14 @@ ServerEvents.recipes((e) => {
     .HeatFrame('360mb kubejs:molten_silicon')
     .maxTemp(-50)
     .outputs('4x refinedstorage:silicon')
+  pneumaticcraft
+    .ThermoPlant('360mb kubejs:molten_silicon')
+    .maxTemp(-100)
+    .pressure(-0.75)
+    .outputs('4x refinedstorage:silicon')
 
   // Diamond sawblades to cut silicon into wafers
+  // TODO: better diamond cutting and diamond automation in chapter 5b
   create.crushing(
     Item.of('thermal:diamond_dust').withChance(0.8),
     'minecraft:diamond'
@@ -173,6 +186,8 @@ ServerEvents.recipes((e) => {
       S: 'thermal:saw_blade',
     }
   )
+
+  // Silicon wafer cutting
   create
     .SequencedAssembly('refinedstorage:silicon')
     .deploy('#kubejs:diamond_saw_blade')
@@ -216,15 +231,26 @@ ServerEvents.recipes((e) => {
     .press()
     .outputs('pneumaticcraft:pneumatic_cylinder')
 
-  // Empty PCB overhaul
-  e.remove({ id: 'pneumaticcraft:pressure_chamber/empty_pcb' })
+  // Blank circuits
+  e.remove({ id: 'create_new_age:pressing/blank_circuit' })
   create
     .SequencedAssembly('pneumaticcraft:plastic')
     .press()
+    .cut()
+    .outputs('4x create_new_age:blank_circuit')
+
+  // Copper circuits
+  e.remove({ id: 'create_new_age:deploying/copper_circuit' })
+  create
+    .SequencedAssembly('create_new_age:blank_circuit')
     .deploy('create:super_glue')
-    .deploy('create:copper_sheet')
+    .deploy('create_new_age:copper_wire')
     .press()
-    .outputs('pneumaticcraft:empty_pcb')
+    .outputs('create_new_age:copper_circuit')
+
+  // Empty PCB overhaul
+  e.remove({ id: 'pneumaticcraft:pressure_chamber/empty_pcb' })
+  e.blasting('pneumaticcraft:empty_pcb', 'create_new_age:copper_circuit')
 
   // Empty PCBs get etched in an etching tank to become unassembled PCBs.
   // Etching acid overhaul
@@ -304,8 +330,6 @@ ServerEvents.recipes((e) => {
     'create_new_age:overcharged_diamond_wire'
   )
 
-  // red alloy + FE gen
-
   // Overhaul Create: New Age's magnetic blocks
   // Magnetite block crafting recipe
   create.energising(
@@ -381,10 +405,28 @@ ServerEvents.recipes((e) => {
     probabilisticStone
   )
 
-  // netherite
-  //
+  // Ancient Debris processing
+  e.remove({ id: /minecraft:netherite_scrap.*/ })
+  e.remove({ id: 'minecraft:netherite_ingot' })
+  pneumaticcraft
+    .Assembly('minecraft:ancient_debris')
+    .type(Assembly.TYPE_LASER)
+    .outputs('minecraft:netherite_scrap')
+  create
+    .compacting('minecraft:netherite_ingot', [
+      '2x minecraft:netherite_scrap',
+      '2x minecraft:gold_ingot',
+    ])
+    .superheated()
 
   // create_connected:control_chip
+
+  // Red alloy overhaul
+  e.remove({ id: 'morered:red_alloy_ingot_from_jumbo_smelting' })
+  create.filling('morered:red_alloy_ingot', [
+    'create_new_age:overcharged_iron',
+    Fluid.of('kubejs:molten_redstone', 360),
+  ])
 
   // Overhaul Refined Storage processors
   e.remove({ id: /^refinedstorage:[a-z_]+_processor/ })
@@ -396,7 +438,7 @@ ServerEvents.recipes((e) => {
     .outputs('refinedstorage:raw_basic_processor')
   pneumaticcraft
     .Assembly('refinedstorage:raw_basic_processor')
-    .type('pneumaticcraft:assembly_laser')
+    .type(Assembly.TYPE_LASER)
     .outputs('refinedstorage:basic_processor')
   create
     .SequencedAssembly('kubejs:silicon_wafer')
@@ -405,7 +447,7 @@ ServerEvents.recipes((e) => {
     .deploy('minecraft:gold_ingot')
   pneumaticcraft
     .Assembly('refinedstorage:raw_improved_processor')
-    .type('pneumaticcraft:assembly_laser')
+    .type(Assembly.TYPE_LASER)
     .outputs('refinedstorage:improved_processor')
   create
     .SequencedAssembly('kubejs:silicon_wafer')
@@ -414,15 +456,27 @@ ServerEvents.recipes((e) => {
     .deploy('thermal:diamond_dust')
   pneumaticcraft
     .Assembly('refinedstorage:raw_advanced_processor')
-    .type('pneumaticcraft:assembly_laser')
+    .type(Assembly.TYPE_LASER)
     .outputs('refinedstorage:advanced_processor')
 
-  create
-    .SequencedAssembly('tfmg:steel_mechanism')
-    .transitional('kubejs:incomplete_logistics_mechanism')
-    .deploy('pneumaticcraft:plastic')
-    .deploy('pneumaticcraft:printed_circuit_board')
-    .deploy('refinedstorage:basic_processor')
-    .deploy('refinedstorage:improved_processor')
-    .outputs('kubejs:logistics_mechanism')
+  // Mechanism assembly
+  create.mechanical_crafting(
+    'kubejs:logistics_mechanism',
+    [
+      'PPPPP', //
+      'PRNRP', //
+      'PBMIP', //
+      'PCCCP', //
+      'PPPPP', //
+    ],
+    {
+      M: 'tfmg:steel_mechanism',
+      P: 'pneumaticcraft:plastic',
+      C: 'pneumaticcraft:printed_circuit_board',
+      B: 'refinedstorage:basic_processor',
+      I: 'refinedstorage:improved_processor',
+      R: 'morered:red_alloy_ingot',
+      N: 'thermal:netherite_nugget',
+    }
+  )
 })
