@@ -1,6 +1,6 @@
-# Create Advanced Industries
-
-![Logo](minecraft/icon.png)
+<p align="center">
+  <img src="minecraft/icon.png" width="600" />
+</p>
 
 ## Preface
 
