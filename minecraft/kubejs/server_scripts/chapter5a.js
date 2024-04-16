@@ -168,6 +168,21 @@ ServerEvents.recipes((e) => {
     .pressure(-0.75)
     .outputs('4x refinedstorage:silicon')
 
+  // Continuing to process silicon with coal coke yields
+  pneumaticcraft
+    .ThermoPlant(['90mb kubejs:molten_silicon', 'tfmg:coal_coke_dust'])
+    .pressure(9.5)
+    .minTemp(1000)
+    .outputs('kubejs:graphite')
+
+  // Under high pressure, graphite turns into diamond dust
+  pneumaticcraft
+    .PressureChamber('9x kubejs:graphite')
+    .pressure(4.75)
+    .outputs('thermal:diamond_dust')
+
+  // TODO add a thermal recipe to recrystallize diamond dust
+
   // Diamond sawblades to cut silicon into wafers
   // TODO: better diamond cutting and diamond automation in chapter 5b
   create.crushing(

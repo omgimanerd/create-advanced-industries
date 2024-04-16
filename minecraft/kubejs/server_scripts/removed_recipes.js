@@ -1,4 +1,4 @@
-// priority: 500
+// priority: 800
 
 // Only matchers that should be fully removed from crafting and JEI should go
 // here. JEI.hideItems uses the matcher in key: output
@@ -85,7 +85,8 @@ ServerEvents.recipes((e) => {
   ////////////////////
   // Thermal Series //
   ////////////////////
-  e.remove({ id: /^thermal:machines.*/ })
+  // Only the crystallizer and pyrolyzer are whitelisted.
+  e.remove({ id: /^thermal:machines\/(?!crystallizer|pyrolyzer).*/ })
   e.remove({ id: /^thermal:earth_charge\/[a-z_]+/ })
 
   // Can't remove pumpjack hammer holder recipe warning?

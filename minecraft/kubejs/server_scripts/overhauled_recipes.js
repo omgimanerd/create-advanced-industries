@@ -767,7 +767,7 @@ ServerEvents.recipes((e) => {
       'HMCMH', //
     ],
     Object.assign({}, createNewAgeKeys, {
-      D: 'tfmg:charcoal_dust',
+      D: 'kubejs:graphite',
     })
   )
   // The copper circuit unlocked in chapter 5a can be stonecut into every logic

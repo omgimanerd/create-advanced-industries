@@ -70,4 +70,6 @@ StartupEvents.registry('item', (e) => {
     })
     .color(0, 0x75eae3)
     .displayName('Overcharged Diamond Wire')
+
+  registerItem('kubejs:graphite')
 })
