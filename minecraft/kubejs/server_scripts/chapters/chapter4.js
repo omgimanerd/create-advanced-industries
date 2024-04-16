@@ -52,15 +52,8 @@ ServerEvents.recipes((e) => {
   // 8 blaze cakes equal the ingredient cost for 1b
   // 3200t * 8 = 25600 t
   e.remove({ id: 'createaddition:liquid_burning/biofuel' })
-  e.custom({
-    type: 'createaddition:liquid_burning',
-    input: {
-      fluidTag: 'forge:biofuel',
-      amount: 1000,
-    },
-    burnTime: 25600, // 25600 ticks per bucket (equivalent to 8x blaze cake)
-    superheated: true,
-  })
+  // 25600 ticks per bucket (equivalent to 8x blaze cake) = 21.33 minutes
+  create.burnableFluid('#forge:biofuel', 25600, true)
 
   // Additional straw recipe from sugarcane
   create.rolling('createaddition:straw', 'minecraft:sugar_cane')

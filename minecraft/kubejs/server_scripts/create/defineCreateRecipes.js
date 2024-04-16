@@ -1,6 +1,12 @@
 // priority: 900
 
-// Rolling recipe from Create Crafts & Additions
+/**
+ * Rolling recipe from Create Crafts & Additions
+ * @param {Internal.RecipesEventJS} e
+ * @param {OutputItem_|string} output
+ * @param {InputItem_|string} input
+ * @return {Internal.RecipeJS}
+ */
 const createRolling = (e, output, input) => {
   const base = {
     type: 'createaddition:rolling',
@@ -13,10 +19,42 @@ const createRolling = (e, output, input) => {
   }
   return e
     .custom(base)
-    .id(`kubejs:custom_create_rolling_${getItemFromId(output)}`)
+    .id(`kubejs:custom_create_rolling_${getNameFromId(output)}`)
 }
 
-// Energiser recipes from Create: New Age
+/**
+ * Registers a burnable fluid for liquid blaze burners.
+ * @param {Internal.RecipesEventJS} e
+ * @param {Special.FluidTag} fluid
+ * @param {number} burnTime Fluid burn time in ticks
+ * @param {boolean=} superheated Whether or not the blaze burner will be
+ *   superheated, defaults to false
+ * @return {Internal.RecipeJS}
+ */
+const createBurnableFluid = (e, fluid, burnTime, superheated) => {
+  if (typeof fluid !== 'string') throw new Error(`Invalid input ${fluid}`)
+  superheated = !!superheated
+  return e
+    .custom({
+      type: 'createaddition:liquid_burning',
+      input: {
+        fluidTag: fluid.startsWith('#') ? fluid.substring(1) : fluid,
+        amount: 1000,
+      },
+      burnTime: burnTime,
+      superheated: superheated,
+    })
+    .id(`kubejs:custom_create_liquid_burning_${getNameFromId(fluid)}`)
+}
+
+/**
+ * Energiser recipes from Create: New Age
+ * @param {Internal.RecipesEventJS} e
+ * @param {OutputItem_|string} output
+ * @param {InputItem_|string} input
+ * @param {number} energyNeeded
+ * @returns {Internal.RecipeJS}
+ */
 const createEnergising = (e, output, input, energyNeeded) => {
   const base = {
     type: 'create_new_age:energising',
@@ -35,10 +73,20 @@ const createEnergising = (e, output, input, energyNeeded) => {
   base.results.push(itemOutput)
   return e
     .custom(base)
-    .id(`kubejs:custom_create_energising_${getItemFromId(output)}`)
+    .id(`kubejs:custom_create_energising_${getNameFromId(output)}`)
 }
 
-// Mechanical extruder recipes from Create Mechanical Extruder
+/**
+ * Mechanical extruder recipes from Create Mechanical Extruder
+ * @param {Internal.RecipesEventJS} e
+ * @param {OutputItem_|string} output
+ * @param {(InputItem_|Internal.InputFluid_|string)[]} inputs The input items
+ *   or fluids that must be on the sides of the extruder. Must have exactly two
+ *   elements
+ * @param {(Internal.Block|string)=} catalyst An optional catalyst block
+ *   underneath the extruder
+ * @return {Internal.RecipeJS}
+ */
 const createExtruding = (e, output, inputs, catalyst) => {
   const base = {
     type: 'create_mechanical_extruder:extruding',
@@ -75,6 +123,7 @@ const createExtruding = (e, output, inputs, catalyst) => {
  */
 const defineCreateRecipes = (e) => {
   return {
+    // Shorthand references to KubeJS Create functions
     compacting: e.recipes.create.compacting,
     crushing: e.recipes.create.crushing,
     cutting: e.recipes.create.cutting,
@@ -109,27 +158,40 @@ const defineCreateRecipes = (e) => {
     // Addons
     /**
      * @callback CreateRolling
-     * @param {string} input
-     * @param {string} output
+     * @param {OutputItem_|string} output
+     * @param {InputItem_|string} input
      * @return {Internal.RecipeJS}
      * @type {CreateRolling}
      */
     rolling: getPartialApplication(e, createRolling),
     /**
+     * @callback CreateBurnableFluid
+     * @param {Special.FluidTag} fluid
+     * @param {number} burnTime Fluid burn time in ticks
+     * @param {boolean=} superheated Whether or not the blaze burner will be
+     *   superheated, defaults to false
+     * @return {Internal.RecipeJS}
+     * @type {CreateBurnableFluid}
+     */
+    burnableFluid: getPartialApplication(e, createBurnableFluid),
+    /**
      * @callback CreateEnergising
-     * @param {string} input
-     * @param {string} output
+     * @param {OutputItem_|string} output
+     * @param {InputItem_|string} input
+     * @param {number} energyNeeded
      * @return {Internal.RecipeJS}
      * @type {CreateEnergising}
      */
     energising: getPartialApplication(e, createEnergising),
     /**
      * @callback CreateExtruding
-     * @param {string} output
-     * @param {string[]} inputs The input items or fluids that must be on the
-     *   sides of the extruder. Must have exactly two elements
-     * @param {string=} catalyst An optional catalyst block underneath the
-     *   extruder
+     * @param {OutputItem_|string} output
+     * @param {(InputItem_|Internal.InputFluid_|string)[]} inputs The input
+     *   items or fluids that must be on the sides of the extruder. Must have
+     *   exactly two elements
+     * @param {(Internal.Block|string)=} catalyst An optional catalyst block
+     *   underneath the extruder
+     * @return {Internal.RecipeJS}
      * @type {CreateExtruding}
      */
     extruding: getPartialApplication(e, createExtruding),

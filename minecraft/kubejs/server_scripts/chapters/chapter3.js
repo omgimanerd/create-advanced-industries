@@ -37,7 +37,7 @@ ServerEvents.recipes((e) => {
   create.mixing('2x minecraft:clay', [
     'minecraft:dirt',
     'minecraft:sand',
-    Fluid.of('minecraft:water', 1000),
+    Fluid.water(1000),
   ])
 
   // Clay block processing

@@ -3,6 +3,7 @@
 
 ServerEvents.tags('fluid', (e) => {
   e.add('forge:crude_oil', 'tfmg:crude_oil_fluid')
+  e.add('forge:lpg', 'pneumaticcraft:lpg')
 })
 
 ItemEvents.rightClicked('kubejs:diamond_sawblade', (e) => {
@@ -99,6 +100,13 @@ ServerEvents.recipes((e) => {
     .pressure(2)
     .minTemp(300)
     .outputs(['80mb pneumaticcraft:lpg', 'thermal:sulfur'])
+  // Overhaul burn times
+  e.remove({ id: 'createaddition:liquid_burning/diesel' })
+  e.remove({ id: 'createaddition:liquid_burning/gasoline' })
+  create.burnableFluid('#forge:diesel', 6000) // 5 minutes
+  create.burnableFluid('#forge:kerosene', 12000) // 10 minutes
+  create.burnableFluid('#forge:gasoline', 24000) // 20 minutes
+  create.burnableFluid('#forge:lpg', 24000, true) // 20 minutes
 
   // Sulfur byproduct can be crushed into sulfur dust.
   create.milling('thermal:sulfur_dust', 'thermal:sulfur')
@@ -225,7 +233,7 @@ ServerEvents.recipes((e) => {
   create
     .SequencedAssembly('refinedstorage:silicon')
     .deploy('#kubejs:diamond_saw_blade')
-    .fill('minecraft:water', 500)
+    .fill(Fluid.water(500))
     .loops(4)
     .outputs('4x kubejs:silicon_wafer')
 
