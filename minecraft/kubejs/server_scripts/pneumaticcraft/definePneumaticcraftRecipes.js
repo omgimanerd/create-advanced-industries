@@ -32,8 +32,7 @@ const shapedSpecial = (e, type, output, pattern, keys) => {
 }
 
 /**
- *
- * @param {dev.latvian.mods.kubejs.recipe.RecipeEventsJS} e
+ * @param {Internal.RecipesEventJS} e
  * @returns
  */
 const definePneumaticcraftRecipes = (e) => {

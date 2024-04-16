@@ -1,6 +1,6 @@
 // priority: 1000
 
-const getItemFromId = (s) => {
+const getNameFromId = (s) => {
   const parts = s.split(':')
   if (parts.length !== 2) throw new Error(`Invalid item ${s}`)
   return parts[1]
@@ -42,7 +42,7 @@ const removeUnusedKeys = (pattern, keys) => {
   return newKeys
 }
 
-// Wrapper to define a utility function in the given RecipeEvent context that
+// Wrapper to define a utility function in the given RecipesEventJS context that
 // wraps the shaped/shapeless recipe definitions to redefine a recipe for
 // a given item.
 const redefineRecipe_ = (e) => {
@@ -99,7 +99,7 @@ const redefineEnchantingRecipe_ = (e) => {
     e.remove({ output: id })
     e.recipes.ars_nouveau
       .enchanting_apparatus(inputs, reagent, output, source, keepReagentNbt)
-      .id(`kubejs:custom_ars_nouveau_enchanting_${getItemFromId(output)}`)
+      .id(`kubejs:custom_ars_nouveau_enchanting_${getNameFromId(output)}`)
   }
 }
 

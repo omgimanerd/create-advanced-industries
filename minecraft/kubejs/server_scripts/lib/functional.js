@@ -19,8 +19,8 @@ const getPartialApplication = (e, fn) => {
 
 /**
  * Returns a concrete instantiation of the given constructor with the
- * RecipeEvent context applied as the first argument.
- * @param {dev.latvian.mods.kubejs.recipe.RecipesEventJS} e
+ * RecipesEventJS context applied as the first argument.
+ * @param {Internal.RecipesEventJS} e
  * @param {Function} constructor
  * @returns {Function}
  */
