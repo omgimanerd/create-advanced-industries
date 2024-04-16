@@ -59,12 +59,6 @@ global.metallurgy.meltable_items = [
     fluidColor: 0x64747c,
   }),
   new MeltableItem({
-    ingot: 'tfmg:cast_iron_ingot',
-    block: 'tfmg:cast_iron_block',
-    fluid: 'kubejs:molten_cast_iron',
-    fluidColor: 0x363639,
-  }),
-  new MeltableItem({
     ingot: 'tfmg:steel_ingot',
     block: 'tfmg:steel_block',
     fluid: 'tfmg:molten_steel',
@@ -167,11 +161,6 @@ StartupEvents.registry('item', (e) => {
   registerBaseCasts('steel', 'gem')
   registerBaseCasts('steel', 'ingot')
   registerBaseCasts('steel', 'block')
-
-  // Intermediate item when cast iron is forged into industrial iron
-  e.create('kubejs:intermediate_industrial_iron_ingot')
-    .texture('createdeco:item/industrial_iron_ingot')
-    .maxStackSize(16)
 
   // Intermediate cast items created during the sequenced assembly recipes to
   // make the reuseable casts. NOT the same as the intermediate items when

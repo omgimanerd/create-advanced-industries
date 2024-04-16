@@ -869,11 +869,6 @@ ServerEvents.recipes((e) => {
       sheet: 'create:brass_sheet',
     },
     {
-      material: 'cast_iron',
-      ingot: 'createdeco:industrial_iron_ingot',
-      sheet: 'createdeco:industrial_iron_sheet',
-    },
-    {
       material: 'plastic',
       ingot: 'tfmg:plastic_sheet',
       sheet: 'pneumaticcraft:plastic',
@@ -1431,4 +1426,5 @@ ServerEvents.recipes((e) => {
     ],
     { I: 'minecraft:iron_ingot', S: 'create:shaft' }
   )
+  // TODO add overhauls for hardened, reinf, and integral components
 })

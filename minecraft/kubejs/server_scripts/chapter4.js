@@ -85,27 +85,8 @@ ServerEvents.recipes((e) => {
     1000
   )
 
-  // Overhaul cast iron
-  e.remove({ id: 'tfmg:mixing/cast_iron_ingot' })
-  create
-    .mixing(
-      [
-        Fluid.of('kubejs:molten_cast_iron', ingotFluid),
-        Item.of('thermal:slag').withChance(0.25),
-      ],
-      [Fluid.of('kubejs:molten_iron', ingotFluid), '2x minecraft:coal']
-    )
-    .heated()
-
-  // Industrial iron made from cast iron, decorative only
-  e.remove({ id: 'create:industrial_iron_block_from_ingots_iron_stonecutting' })
-  e.remove({ id: 'create:industrial_iron_block_from_iron_ingots_stonecutting' })
-  e.remove({ id: 'createdeco:compacting/industrial_iron_ingot' })
-  create
-    .SequencedAssembly('tfmg:cast_iron_ingot')
-    .transitional('kubejs:intermediate_industrial_iron_ingot')
-    .press(3)
-    .outputs('createdeco:industrial_iron_ingot')
+  // TODO use mech crafting for some recipes
+  // TODO revamp cast iron? maybe remove
 
   // Obsidian overhaul for sturdy sheets
   e.remove({ output: 'minecraft:magma_block' })
@@ -126,22 +107,33 @@ ServerEvents.recipes((e) => {
     )
     .processingTime(200)
 
-  // Overhaul sturdy sheets to start from cast iron
-  e.remove({ id: 'create:sequenced_assembly/sturdy_sheet' })
+  // Fireclay ball recipe
   create
-    .SequencedAssembly('tfmg:cast_iron_ingot')
-    .transitional('create:unprocessed_obsidian_sheet')
-    .deploy('create:powdered_obsidian')
-    .press(2)
-    .loops(2)
-    .outputs('create:sturdy_sheet')
+    .mixing('4x tfmg:fireclay_ball', [
+      '2x minecraft:clay_ball',
+      'create:cinder_flour',
+      'create:powdered_obsidian',
+    ])
+    .heated()
+
+  // Allow fireclay blocks to be crafted from fireclay
+  e.shaped('tfmg:fireclay', ['FF', 'FF'], {
+    F: 'tfmg:fireclay_ball',
+  })
 
   // Coke oven blocks
-  redefineRecipe('tfmg:coke_oven', ['CCC', 'CFC', 'TTT'], {
-    C: 'tfmg:cast_iron_ingot',
-    F: 'minecraft:furnace',
-    T: 'minecraft:terracotta',
-  })
+  redefineRecipe(
+    'tfmg:coke_oven',
+    [
+      'BBB', //
+      'BFB', //
+      'BBB',
+    ],
+    {
+      B: 'tfmg:fireproof_bricks',
+      F: 'minecraft:furnace',
+    }
+  )
 
   // Coke overhaul, this actually produces the fluid amount per tick, so the
   // total output is determined by multiplying by the processing time.
