@@ -237,10 +237,10 @@ ServerEvents.recipes((e) => {
     .loops(4)
     .outputs('4x kubejs:silicon_wafer')
 
-  // Faster electron tube crafting
+  // Faster and cheaper electron tube crafting
   pneumaticcraft
-    .ThermoPlant(['minecraft:quartz', '270mb kubejs:molten_redstone'])
-    .pressure(7.5)
+    .ThermoPlant(['minecraft:quartz', '180mb kubejs:molten_redstone'])
+    .pressure(8)
     .minTemp(300)
     .outputs('create:electron_tube')
 

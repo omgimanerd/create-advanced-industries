@@ -42,6 +42,15 @@ ThermoPlant.prototype.pressure = function (pressure) {
 }
 
 /**
+ * Some general temperature constraints:
+ *   Superheated blaze burner = 924C TPG
+ *   Heated blaze burner = 261C TPG
+ *   5 bar vortex tube = 490C => 465C TPG
+ *   10 bar vortex tube = 1113CC => 1056 TPG
+ *   15 bar vortex tube = 1741C => 1650C TPG
+ *   16 bar vortex tube = 1866C => 1769C TPG
+ *   17 bar vortex tube = 1990C => 1887C TPG
+ *
  * @param {number} min_temp The min temperature in C
  * @param {number} max_temp The min temperature in C
  * @returns {ThermoPlant}

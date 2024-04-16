@@ -789,6 +789,7 @@ ServerEvents.recipes((e) => {
     'create:powered_toggle_latch',
     'create:powered_latch',
     'createaddition:redstone_relay',
+    'create_connected:sequenced_pulse_generator',
     'morered:latch',
     'morered:pulse_gate',
     'morered:redwire_post_plate',
@@ -1060,7 +1061,7 @@ ServerEvents.recipes((e) => {
       'pneumaticcraft:reinforced_pressure_tube',
       '90mb tfmg:molten_steel',
     ])
-    .minTemp(1371)
+    .minTemp(900) // Requires 10bar pressure to reach or a superheated blaze
     .pressure(9.5)
     .outputs('pneumaticcraft:advanced_pressure_tube')
   redefineRecipe(
@@ -1250,7 +1251,8 @@ ServerEvents.recipes((e) => {
     ],
     { R: 'tfmg:rebar', S: '#forge:stone' }
   )
-  // More expensive filling recipe compared to Thermopneumatic Processing Plant.
+  // More expensive filling recipe compared to Thermopneumatic Processing Plant
+  // recipe defined by base Pneumaticcraft
   create.filling('pneumaticcraft:reinforced_pressure_tube', [
     'pneumaticcraft:pressure_tube',
     Fluid.of('pneumaticcraft:plastic', 250),
@@ -1415,6 +1417,11 @@ ServerEvents.recipes((e) => {
   ////////////////////
   // Thermal Series //
   ////////////////////
+  const thermalKeys = {
+    C: 'tfmg:heavy_machinery_casing',
+    P: 'pneumaticcraft:printed_circuit_board',
+    R: 'thermal:rf_coil',
+  }
   redefineRecipe(
     'thermal:saw_blade',
     [
@@ -1435,6 +1442,4 @@ ServerEvents.recipes((e) => {
     ],
     { I: 'minecraft:iron_ingot', S: 'create:shaft' }
   )
-  // TODO custom thermal machine recipes from steel
-  // TODO add overhauls for hardened, reinf, and integral components
 })
