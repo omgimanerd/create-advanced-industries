@@ -63,16 +63,7 @@ ServerEvents.recipes((e) => {
   })
 
   // Additional straw recipe from sugarcane
-  e.custom({
-    type: 'createaddition:rolling',
-    input: {
-      item: 'minecraft:sugar_cane',
-    },
-    result: {
-      item: 'createaddition:straw',
-      count: 1,
-    },
-  })
+  create.rolling('createaddition:straw', 'minecraft:sugar_cane')
 
   // Bone blocks
   create.compacting('minecraft:bone_block', [Fluid.of('minecraft:milk', 1000)])
@@ -83,18 +74,22 @@ ServerEvents.recipes((e) => {
     .heated()
 
   // Charcoal transmutation to coal, with a discount for blocks
-  e.recipes.ars_nouveau.enchanting_apparatus(
-    ['ars_nouveau:earth_essence', 'ars_nouveau:fire_essence'],
-    'minecraft:charcoal',
-    'minecraft:coal',
-    200
-  )
-  e.recipes.ars_nouveau.enchanting_apparatus(
-    ['ars_nouveau:earth_essence', 'ars_nouveau:fire_essence'],
-    'thermal:charcoal_block',
-    'minecraft:coal_block',
-    1000
-  )
+  e.recipes.ars_nouveau
+    .enchanting_apparatus(
+      ['ars_nouveau:earth_essence', 'ars_nouveau:fire_essence'],
+      'minecraft:charcoal',
+      'minecraft:coal',
+      200
+    )
+    .id('kubejs:custom_ars_nouveau_charcoal_transmutation')
+  e.recipes.ars_nouveau
+    .enchanting_apparatus(
+      ['ars_nouveau:earth_essence', 'ars_nouveau:fire_essence'],
+      'thermal:charcoal_block',
+      'minecraft:coal_block',
+      1000
+    )
+    .id('kubejs:custom_ars_nouveau_charcoal_block_transmutation')
 
   // Obsidian overhaul for sturdy sheets
   e.remove({ output: 'minecraft:magma_block' })
@@ -165,7 +160,7 @@ ServerEvents.recipes((e) => {
         amount: 1,
       },
     ],
-  })
+  }).id('kubejs:coal_coking')
 
   // Steel overhaul
   e.remove({ id: 'tfmg:casting/steel' })
@@ -218,16 +213,7 @@ ServerEvents.recipes((e) => {
 
   // Recipe for screwdriver with rebar overhaul.
   e.remove({ id: 'tfmg:stonecutting/rebar' })
-  e.custom({
-    type: 'createaddition:rolling',
-    input: {
-      item: 'tfmg:heavy_plate',
-    },
-    result: {
-      item: 'tfmg:rebar',
-      count: 2,
-    },
-  })
+  create.rolling('2x tfmg:rebar', 'tfmg:heavy_plate')
   redefineRecipe(
     'tfmg:screwdriver',
     [

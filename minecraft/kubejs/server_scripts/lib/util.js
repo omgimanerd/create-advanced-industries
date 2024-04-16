@@ -1,5 +1,11 @@
 // priority: 1000
 
+const getItemFromId = (s) => {
+  const parts = s.split(':')
+  if (parts.length !== 2) throw new Error(`Invalid item ${s}`)
+  return parts[1]
+}
+
 /**
  * Returns a random number in the range [low, high)
  * @param {number} low
@@ -91,13 +97,9 @@ const redefineEnchantingRecipe_ = (e) => {
     keepReagentNbt = keepReagentNbt === undefined ? true : false
     const id = output.replace(/^[0-9]+x /, '')
     e.remove({ output: id })
-    e.recipes.ars_nouveau.enchanting_apparatus(
-      inputs,
-      reagent,
-      output,
-      source,
-      keepReagentNbt
-    )
+    e.recipes.ars_nouveau
+      .enchanting_apparatus(inputs, reagent, output, source, keepReagentNbt)
+      .id(`kubejs:custom_ars_nouveau_enchanting_${getItemFromId(output)}`)
   }
 }
 

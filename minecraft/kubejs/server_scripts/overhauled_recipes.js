@@ -938,12 +938,13 @@ ServerEvents.recipes((e) => {
     'create:polished_cut_scoria': 'create:scoria',
     'create:polished_cut_scorchia': 'create:scorchia',
   }
-  for (const water of equivalentWaterBlocks) {
-    for (const lava of equivalentLavaBlocks) {
+  for (const lava of equivalentLavaBlocks) {
+    for (const water of equivalentWaterBlocks) {
       for (const [catalyst, output] of Object.entries(cobblegens)) {
         create.extruding(output, [water, lava], catalyst)
       }
     }
+    create.extruding('create:limestone', ['1000mb create:honey', lava])
   }
 
   ///////////////////////////////////

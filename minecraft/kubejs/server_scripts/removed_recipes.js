@@ -36,6 +36,7 @@ global.removedRecipes = [
   { output: 'pneumaticcraft:wheat_flour' },
   { output: /^tfmg:aluminum_[a-z_]+/ },
   { output: /^tfmg:[a-z_]+_concrete$/ },
+  { output: 'tfmg:blasting_mixture' },
   { output: 'tfmg:blast_furnace_output' },
   { output: /^tfmg:.*cast_iron.*/ },
   { output: /^tfmg:casting_.*/ },
@@ -91,5 +92,7 @@ ServerEvents.recipes((e) => {
 
   // Can't remove pumpjack hammer holder recipe warning?
   // e.remove(/tfmg:mechanical_crafting\/pumpjack_hammer_holder.*/)
+
+  // Suppresses colored concrete warnings in KubeJS logs.
   e.remove(/^tfmg:colored_concrete\/full_block\/[a-z_]+concrete/)
 })

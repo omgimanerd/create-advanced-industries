@@ -11,7 +11,9 @@ const createRolling = (e, output, input) => {
   if (!setIfValid(base, 'result', Parser.parseItemOutput(output))) {
     throw new Error(`Invalid output ${output}`)
   }
-  return e.custom(base)
+  return e
+    .custom(base)
+    .id(`kubejs:custom_create_rolling_${getItemFromId(output)}`)
 }
 
 // Energiser recipes from Create: New Age
@@ -28,10 +30,12 @@ const createEnergising = (e, output, input, energyNeeded) => {
   input = Parser.parseItemInput(input)
   if (input === null) throw new Error(`Invalid input ${input}`)
   base.ingredients.push(input)
-  output = Parser.parseItemOutput(output)
-  if (output === null) throw new Error(`Invalid output ${output}`)
-  base.results.push(output)
-  return e.custom(base)
+  const itemOutput = Parser.parseItemOutput(output)
+  if (itemOutput === null) throw new Error(`Invalid output ${output}`)
+  base.results.push(itemOutput)
+  return e
+    .custom(base)
+    .id(`kubejs:custom_create_energising_${getItemFromId(output)}`)
 }
 
 // Mechanical extruder recipes from Create Mechanical Extruder

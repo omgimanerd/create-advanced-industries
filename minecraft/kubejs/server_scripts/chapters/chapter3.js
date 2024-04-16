@@ -13,11 +13,13 @@ ServerEvents.recipes((e) => {
   const ingotFluid = global.MeltableItem.DEFAULT_INGOT_FLUID
 
   // Blaze burner crafting
-  e.recipes.ars_nouveau.enchanting_apparatus(
-    Array(8).fill('ars_nouveau:fire_essence'),
-    'create:empty_blaze_burner',
-    'create:blaze_burner'
-  )
+  e.recipes.ars_nouveau
+    .enchanting_apparatus(
+      Array(8).fill('ars_nouveau:fire_essence'),
+      'create:empty_blaze_burner',
+      'create:blaze_burner'
+    )
+    .id('kubejs:custom_ars_nouveau_enchanting_blaze_burner')
 
   // Automated dirt reward
   create.mixing('4x minecraft:dirt', [
@@ -49,12 +51,14 @@ ServerEvents.recipes((e) => {
   e.stonecutting('kubejs:clay_block_cast', 'minecraft:clay')
 
   // Tuff recipe overhaul
-  e.recipes.ars_nouveau.imbuement(
-    'minecraft:cobblestone',
-    'minecraft:tuff',
-    10,
-    Array(4).fill('ars_nouveau:manipulation_essence')
-  )
+  e.recipes.ars_nouveau
+    .imbuement(
+      'minecraft:cobblestone',
+      'minecraft:tuff',
+      10,
+      Array(4).fill('ars_nouveau:manipulation_essence')
+    )
+    .id('kubejs:custom_ars_nouveau_imbuement_tuff')
 
   // Zinc overhaul
   e.remove({ id: 'create:crushing/tuff' })
