@@ -294,6 +294,7 @@
 				item: "kubejs:andesite_mechanism"
 				type: "item"
 			}]
+			title: "Your First Andesite Mechanism"
 			x: 9.0d
 			y: 0.0d
 		}
@@ -305,7 +306,7 @@
 			description: [
 				"The rest of this quest chain is optional, but will guide you along in figuring out the basics of Create if you are new to the mod."
 				""
-				"The first machine you'll probably need to make is a mechanical press."
+				"The first machine you'll probably need to make is a Mechanical Press."
 				""
 				"This allows you to press iron ingots into sheets."
 			]
@@ -365,6 +366,7 @@
 			dependencies: ["6040F99EFE02BA77"]
 			description: ["Mechanical saws can cut down trees in a contraption, or automate stonecutting and other cutting recipes."]
 			id: "5AB240682413C076"
+			optional: true
 			rewards: [{
 				id: "2BED2F5B16195881"
 				type: "xp"
@@ -382,6 +384,7 @@
 			dependencies: ["6040F99EFE02BA77"]
 			description: ["Millstones grind down ingredients."]
 			id: "5A6A7E53AC3ACCB6"
+			optional: true
 			rewards: [{
 				id: "60ADBF4DE223B220"
 				type: "xp"
@@ -396,7 +399,15 @@
 			y: 0.5d
 		}
 		{
+			dependencies: ["6040F99EFE02BA77"]
+			description: ["Mechanical Mixers can automate shapeless crafts, but they have recipes of their own when placed on top of a basin."]
 			id: "33DF6C049377ADD9"
+			optional: true
+			rewards: [{
+				id: "2708A0764B631D25"
+				type: "xp"
+				xp: 100
+			}]
 			tasks: [{
 				id: "28CAC84B3F906A22"
 				item: "create:mechanical_mixer"
@@ -406,12 +417,14 @@
 			y: 3.0d
 		}
 		{
+			dependencies: ["6040F99EFE02BA77"]
 			description: [
 				"Encased Fans blow air to push entities around."
 				""
 				"More interestingly though, if you put the correct block in front of an encased fan, you can use it to smelt, smoke, or wash items."
 			]
 			id: "455A87B9F1074ECE"
+			optional: true
 			rewards: [{
 				id: "5365C64644ABBEFA"
 				type: "xp"
@@ -426,7 +439,19 @@
 			y: 1.5d
 		}
 		{
+			dependencies: ["6040F99EFE02BA77"]
+			description: [
+				"Deployers can interact with the world by right-clicking with the item they are given."
+				""
+				"Within Create, they are also used for sequenced assembly recipes."
+			]
 			id: "16711DEC7F2E2F9C"
+			optional: true
+			rewards: [{
+				id: "0AE1E7974937810B"
+				type: "xp"
+				xp: 100
+			}]
 			tasks: [{
 				id: "0A31297216F6627A"
 				item: "create:deployer"
@@ -488,7 +513,15 @@
 			y: 6.0d
 		}
 		{
+			dependencies: ["6040F99EFE02BA77"]
+			description: ["Mechanical drills break the block in front of them, and can also be used on contraptions."]
 			id: "7896F717519340A1"
+			optional: true
+			rewards: [{
+				id: "5D5DFDB17378B4F8"
+				type: "xp"
+				xp: 100
+			}]
 			tasks: [{
 				id: "25725030B1146C4D"
 				item: "create:mechanical_drill"
@@ -498,7 +531,15 @@
 			y: 5.5d
 		}
 		{
+			dependencies: ["6040F99EFE02BA77"]
+			description: ["Mechanical Harvesters harvest crops that they pass over in Create contraptions."]
 			id: "38CE3D4A21B9E086"
+			optional: true
+			rewards: [{
+				id: "0B2D751A823E4D68"
+				type: "xp"
+				xp: 100
+			}]
 			tasks: [{
 				id: "7F7D1B564F9A9806"
 				item: "create:mechanical_harvester"

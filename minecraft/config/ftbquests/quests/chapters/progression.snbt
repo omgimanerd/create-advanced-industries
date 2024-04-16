@@ -13,7 +13,7 @@
 			id: "2F39752E838CCB4F"
 			tasks: [{
 				id: "694815C7631AB847"
-				title: "OK"
+				title: "Start Chapter"
 				type: "checkmark"
 			}]
 			title: "Chapter 1: Andesite Mechanisms"
@@ -22,14 +22,15 @@
 		}
 		{
 			dependencies: [
-				"3DC530BB099B8934"
 				"2F39752E838CCB4F"
+				"33F8E4848D9165B2"
 			]
 			icon: "kubejs:copper_mechanism"
 			id: "413CB04319D49CDB"
 			tasks: [{
+				disable_toast: true
 				id: "3F9FB28E37E75E39"
-				title: "OK"
+				title: "Start Chapter"
 				type: "checkmark"
 			}]
 			title: "Chapter 2a: Copper Mechanisms"
@@ -38,14 +39,14 @@
 		}
 		{
 			dependencies: [
-				"3DC530BB099B8934"
 				"2F39752E838CCB4F"
+				"33F8E4848D9165B2"
 			]
 			icon: "kubejs:source_mechanism"
 			id: "5013E6F84B112682"
 			tasks: [{
 				id: "448E46E68A2F75A1"
-				title: "Acknowledge"
+				title: "Start Chapter"
 				type: "checkmark"
 			}]
 			title: "Chapter 2b: Source Mechanisms"
@@ -54,18 +55,18 @@
 		}
 		{
 			dependencies: [
-				"3DC530BB099B8934"
 				"2F39752E838CCB4F"
-				"56013D2B21D9B0EA"
 				"413CB04319D49CDB"
-				"0F84A2AB0AED373E"
 				"5013E6F84B112682"
+				"33F8E4848D9165B2"
+				"2D2665410D75CA15"
+				"39E20F0E25618A92"
 			]
 			icon: "create:precision_mechanism"
 			id: "556060C29831B165"
 			tasks: [{
 				id: "10588558ACAA84F3"
-				title: "Acknowledge"
+				title: "Start Chapter"
 				type: "checkmark"
 			}]
 			title: "Chapter 3: Precision Mechanisms"
@@ -73,23 +74,32 @@
 			y: 0.0d
 		}
 		{
-			dependencies: ["556060C29831B165"]
+			dependencies: [
+				"556060C29831B165"
+				"08663D81454F44E8"
+			]
+			icon: "tfmg:steel_mechanism"
 			id: "45F67208743BAE3E"
 			tasks: [{
-				id: "26408A22A3BB3920"
-				item: "tfmg:steel_mechanism"
-				type: "item"
+				id: "01D76B1CA439FFEC"
+				title: "Start Chapter"
+				type: "checkmark"
 			}]
 			title: "Chapter 4: Steel Mechanisms"
 			x: 7.5d
 			y: 0.0d
 		}
 		{
-			dependencies: ["45F67208743BAE3E"]
+			dependencies: [
+				"2061A7E481B97D93"
+				"45F67208743BAE3E"
+			]
 			icon: "kubejs:logistics_mechanism"
 			id: "11BA49A842F724F6"
 			tasks: [{
+				disable_toast: true
 				id: "28CFD4CE6924A0A5"
+				title: "Start Chapter"
 				type: "checkmark"
 			}]
 			title: "Chapter 5a: Logistics Mechanisms"
@@ -97,23 +107,36 @@
 			y: -1.5d
 		}
 		{
+			dependencies: [
+				"45F67208743BAE3E"
+				"2061A7E481B97D93"
+			]
+			icon: "kubejs:plastic_mechanism"
 			id: "6B75CD039419AEFC"
 			tasks: [{
-				id: "50CD5C40DCF675C9"
-				item: "kubejs:plastic_mechanism"
-				type: "item"
+				id: "5DD030314B22AAB3"
+				title: "Start Chapter"
+				type: "checkmark"
 			}]
-			title: "Chapter 5b: Placeholder"
+			title: "Chapter 5b: Crystalline Mechanisms"
 			x: 10.0d
 			y: 1.5d
 		}
 		{
+			dependencies: [
+				"11BA49A842F724F6"
+				"6B75CD039419AEFC"
+				"3D27BD07DCC89201"
+				"5E9CD0318E0403BD"
+			]
+			icon: "createteleporters:quantum_mechanism"
 			id: "12D9ACDA50B38FCA"
 			tasks: [{
-				id: "5850604709EA7ACC"
-				item: "createteleporters:quantum_mechanism"
-				type: "item"
+				id: "7488AE35BAEE8695"
+				title: "Start Chapter"
+				type: "checkmark"
 			}]
+			title: "Chapter 6: Quantum Mechanisms"
 			x: 12.5d
 			y: 0.0d
 		}

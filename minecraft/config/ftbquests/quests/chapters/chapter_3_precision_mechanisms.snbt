@@ -52,7 +52,7 @@
 			description: [
 				"Congratulations! You now have access to Brass Logistics!"
 				""
-				"There's a lot of powerful stuff you can do with it."
+				"There's a lot of powerful stuff you can do with it. The first thing you might want to take a look at are brass funnels and smart chutes, which unlock the ability to extract stacks of items and filter them."
 			]
 			id: "08663D81454F44E8"
 			rewards: [
@@ -75,6 +75,7 @@
 				item: "create:precision_mechanism"
 				type: "item"
 			}]
+			title: "Complete: Precision Mechanisms"
 			x: 10.0d
 			y: -4.0d
 		}

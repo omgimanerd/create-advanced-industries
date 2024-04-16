@@ -48,6 +48,7 @@
 				item: "kubejs:logistics_mechanism"
 				type: "item"
 			}]
+			title: "Complete: Logistics Mechanisms"
 			x: 34.0d
 			y: -4.0d
 		}

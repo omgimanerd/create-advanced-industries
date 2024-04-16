@@ -63,6 +63,7 @@
 				item: "kubejs:source_mechanism"
 				type: "item"
 			}]
+			title: "Complete: Source Mechanisms"
 			x: 5.0d
 			y: -5.0d
 		}

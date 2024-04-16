@@ -180,6 +180,7 @@
 				item: "kubejs:copper_mechanism"
 				type: "item"
 			}]
+			title: "Complete: Copper Mechanisms"
 			x: 7.5d
 			y: 2.5d
 		}

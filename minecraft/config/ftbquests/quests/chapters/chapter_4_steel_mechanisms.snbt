@@ -65,6 +65,7 @@
 				item: "tfmg:steel_mechanism"
 				type: "item"
 			}]
+			title: "Complete: Steel Mechanisms"
 			x: 18.0d
 			y: 0.0d
 		}

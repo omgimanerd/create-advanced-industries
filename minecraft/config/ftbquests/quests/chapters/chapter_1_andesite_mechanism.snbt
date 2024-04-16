@@ -382,6 +382,7 @@
 				item: "kubejs:andesite_mechanism"
 				type: "item"
 			}]
+			title: "Complete: Andesite Mechanisms"
 			x: 10.0d
 			y: -5.0d
 		}

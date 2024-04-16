@@ -1,0 +1,34 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "chapter_5b_crystalline_mechanisms"
+	group: "5B3547AEADCBC841"
+	id: "268775A317C41CF0"
+	order_index: 6
+	quest_links: [ ]
+	quests: [
+		{
+			dependencies: ["6B75CD039419AEFC"]
+			id: "6D72A451CEF56252"
+			tasks: [{
+				id: "540BC5695571F5F6"
+				title: "Start"
+				type: "checkmark"
+			}]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			id: "5E9CD0318E0403BD"
+			tasks: [{
+				id: "62E20D469B9A024E"
+				item: "kubejs:plastic_mechanism"
+				type: "item"
+			}]
+			title: "Complete: Crystalline Mechanisms"
+			x: 0.0d
+			y: 10.0d
+		}
+	]
+	title: "Chapter 5b: Crystalline Mechanisms"
+}
