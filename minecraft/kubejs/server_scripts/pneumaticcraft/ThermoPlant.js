@@ -1,8 +1,13 @@
 // priority: 900
 
-// JS prototype class to make registering Pneumaticcraft Thermopneumatic
-// Processing Recipes easier.
-
+/**
+ * JS prototype class to make registering Pneumaticcraft Thermopneumatic
+ * Processing recipes easier.
+ *
+ * @constructor
+ * @param {Internal.RecipesEventJS} e
+ * @param {(Internal.InputFluid_|InputItem_)[]} inputs
+ */
 function ThermoPlant(e, inputs) {
   this.e_ = e
   this.inputs_ = inputs
@@ -12,13 +17,25 @@ function ThermoPlant(e, inputs) {
   this.temperature_ = {}
 }
 
+/**
+ * @constant
+ * @private
+ */
 ThermoPlant.RECIPE_TYPE = 'pneumaticcraft:thermo_plant'
 
+/**
+ * @param {boolean} exothermic_
+ * @returns {ThermoPlant}
+ */
 ThermoPlant.prototype.exothermic = function (exothermic_) {
   this.exothermic = exothermic_
   return this
 }
 
+/**
+ * @param {number} pressure
+ * @returns {ThermoPlant}
+ */
 ThermoPlant.prototype.pressure = function (pressure) {
   this.pressure_ = pressure
   return this
@@ -55,6 +72,10 @@ ThermoPlant.prototype.maxTemp = function (max_temp) {
   return this
 }
 
+/**
+ * @param {(Internal.OutputFluid_|OutputItem_)[]} outputs
+ * @returns {Internal.RecipeJS}
+ */
 ThermoPlant.prototype.outputs = function (outputs) {
   if (outputs === undefined) throw new Error('No recipe outputs were specified')
   // Fields are keys used in Pneumaticcraft's recipe JSON

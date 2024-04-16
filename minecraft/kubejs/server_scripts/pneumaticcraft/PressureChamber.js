@@ -1,8 +1,13 @@
 // priority: 900
 
-// JS prototype class to make registering Pneumaticcraft Pressure Chamber
-// recipes easier.
-
+/**
+ * JS prototype class to make registering Pneumaticcraft Pressure Chamber
+ * recipes easier.
+ *
+ * @constructor
+ * @param {Internal.RecipesEventJS} e
+ * @param {InputItem_[]} inputs
+ */
 function PressureChamber(e, inputs) {
   this.e_ = e
   this.inputs_ = inputs
@@ -10,13 +15,25 @@ function PressureChamber(e, inputs) {
   this.pressure_ = 1.0
 }
 
+/**
+ * @constant {string}
+ * @private
+ */
 PressureChamber.RECIPE_TYPE = 'pneumaticcraft:pressure_chamber'
 
+/**
+ * @param {number} pressure
+ * @returns {PressureChamber}
+ */
 PressureChamber.prototype.pressure = function (pressure) {
   this.pressure_ = pressure
   return this
 }
 
+/**
+ * @param {OutputItem_[]} outputs
+ * @returns {Internal.RecipeJS}
+ */
 PressureChamber.prototype.outputs = function (outputs) {
   let base = {
     type: PressureChamber.RECIPE_TYPE,

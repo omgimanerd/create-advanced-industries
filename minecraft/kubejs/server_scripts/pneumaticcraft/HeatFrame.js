@@ -1,8 +1,13 @@
 // priority: 900
 
-// JS prototype class to make registering Pneumaticcraft Heat Frame Processing
-// Recipes easier
-
+/**
+ * JS prototype class to make registering Pneumaticcraft Heat Frame Processing
+ * recipes easier.
+ *
+ * @constructor
+ * @param {Internal.RecipesEventJS} e
+ * @param {InputItem_} input
+ */
 function HeatFrame(e, input) {
   this.e_ = e
   this.input_ = input
@@ -11,8 +16,17 @@ function HeatFrame(e, input) {
   this.max_temp_ = 273
 }
 
+/**
+ * @constant {string}
+ * @private
+ */
 HeatFrame.RECIPE_TYPE = 'pneumaticcraft:heat_frame_cooling'
 
+/**
+ * @param {number} limit
+ * @param {number} multiplier
+ * @returns {HeatFrame}
+ */
 HeatFrame.prototype.bonusOutput = function (limit, multiplier) {
   this.bonus_output_ = {
     limit: limit,
@@ -23,13 +37,17 @@ HeatFrame.prototype.bonusOutput = function (limit, multiplier) {
 
 /**
  * @param {number} max_temp The maximum temperature in C
- * @returns
+ * @returns {HeatFrame}
  */
 HeatFrame.prototype.maxTemp = function (max_temp) {
   this.max_temp_ = max_temp + 273
   return this
 }
 
+/**
+ * @param {(Internal.OutputFluid_|OutputItem_)[]} output
+ * @returns {Internal.RecipeJS}
+ */
 HeatFrame.prototype.outputs = function (output) {
   const base = {
     type: HeatFrame.RECIPE_TYPE,
