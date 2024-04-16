@@ -61,6 +61,7 @@ ServerEvents.recipes((e) => {
   // Kill wandering trader in 4 ways to get essences
   // Automate moss + growth => sprinkly bits
   // liquid fert can be augmented into crystal growth accelerator
+  // automate food, higher feed level = more production of something
 
   // amethyst?
 

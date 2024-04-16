@@ -182,6 +182,24 @@ ServerEvents.recipes((e) => {
     .outputs('thermal:diamond_dust')
 
   // TODO add a thermal recipe to recrystallize diamond dust
+  e.remove({ id: 'pneumaticcraft:pressure_chamber/coal_to_diamond' })
+  e.custom({
+    type: 'thermal:crystallizer',
+    ingredients: [
+      {
+        fluid: 'minecraft:water',
+        amount: 2000,
+      },
+      {
+        tag: 'forge:dusts/diamond',
+      },
+    ],
+    result: [
+      {
+        item: 'minecraft:diamond',
+      },
+    ],
+  })
 
   // Diamond sawblades to cut silicon into wafers
   // TODO: better diamond cutting and diamond automation in chapter 5b
@@ -356,6 +374,7 @@ ServerEvents.recipes((e) => {
     'minecraft:iron_block',
     9000
   )
+  // TODO make using mechanical crafting and coils
   redefineRecipe(
     'create_new_age:redstone_magnet',
     [

@@ -42,7 +42,7 @@
 				"0C0173124EA22FAE"
 			]
 			id: "3D27BD07DCC89201"
-			size: 1.0d
+			size: 2.0d
 			tasks: [{
 				id: "28EA7B628245E855"
 				item: "kubejs:logistics_mechanism"
@@ -335,6 +335,7 @@
 			dependencies: [
 				"300B315823283E7E"
 				"71920B55BE892016"
+				"33F1AFE2ADCD04DD"
 			]
 			id: "64CB552C56CAFC95"
 			tasks: [{
@@ -342,7 +343,7 @@
 				item: "pneumaticcraft:capacitor"
 				type: "item"
 			}]
-			x: 36.0d
+			x: 38.0d
 			y: -8.0d
 		}
 		{
@@ -356,7 +357,7 @@
 				item: "pneumaticcraft:transistor"
 				type: "item"
 			}]
-			x: 34.0d
+			x: 36.0d
 			y: -6.0d
 		}
 		{
@@ -603,7 +604,7 @@
 				item: "refinedstorage:basic_processor"
 				type: "item"
 			}]
-			x: 30.0d
+			x: 32.0d
 			y: -4.0d
 		}
 		{
@@ -618,7 +619,7 @@
 				item: "refinedstorage:raw_basic_processor"
 				type: "item"
 			}]
-			x: 28.0d
+			x: 30.0d
 			y: -4.0d
 		}
 		{
@@ -629,7 +630,7 @@
 				item: "refinedstorage:improved_processor"
 				type: "item"
 			}]
-			x: 30.0d
+			x: 32.0d
 			y: -2.0d
 		}
 		{
@@ -644,7 +645,7 @@
 				item: "refinedstorage:raw_improved_processor"
 				type: "item"
 			}]
-			x: 28.0d
+			x: 30.0d
 			y: -2.0d
 		}
 		{
@@ -656,7 +657,7 @@
 				item: "kubejs:molten_silicon_bucket"
 				type: "item"
 			}]
-			x: 40.0d
+			x: 42.0d
 			y: 0.0d
 		}
 		{
@@ -670,7 +671,7 @@
 				item: "kubejs:silicon_wafer"
 				type: "item"
 			}]
-			x: 36.0d
+			x: 38.0d
 			y: 0.0d
 		}
 		{
@@ -681,7 +682,7 @@
 				item: "refinedstorage:silicon"
 				type: "item"
 			}]
-			x: 38.0d
+			x: 40.0d
 			y: 0.0d
 		}
 		{
@@ -742,7 +743,7 @@
 				}
 				type: "item"
 			}]
-			x: 37.0d
+			x: 39.0d
 			y: -2.0d
 		}
 		{
@@ -758,7 +759,7 @@
 				item: "refinedstorage:raw_advanced_processor"
 				type: "item"
 			}]
-			x: 28.0d
+			x: 30.0d
 			y: 0.0d
 		}
 		{
@@ -771,7 +772,7 @@
 				type: "item"
 			}]
 			x: 28.0d
-			y: 2.0d
+			y: 1.0d
 		}
 		{
 			dependencies: ["2A592785D36BC8D3"]
@@ -857,6 +858,8 @@
 			dependencies: [
 				"1C323E9E442D59D9"
 				"03EE97847AAECC37"
+				"18F0E1C41C673266"
+				"646D6F79EF32D089"
 			]
 			icon: "create_new_age:carbon_brushes"
 			id: "3DAFEBA27621ED6F"
@@ -875,11 +878,6 @@
 				{
 					id: "035E8145830C158C"
 					item: "create_new_age:generator_coil"
-					type: "item"
-				}
-				{
-					id: "5744A4D641F1CB60"
-					item: "create_new_age:magnetite_block"
 					type: "item"
 				}
 			]
@@ -964,6 +962,13 @@
 		{
 			dependencies: ["3DAFEBA27621ED6F"]
 			id: "04B884DDB7CAE725"
+			optional: true
+			rewards: [{
+				count: 16
+				id: "14DB52B8D9ABEA52"
+				item: "createaddition:modular_accumulator"
+				type: "item"
+			}]
 			tasks: [{
 				id: "7EB773A72E08FBEC"
 				item: "createaddition:modular_accumulator"
@@ -1036,6 +1041,7 @@
 			y: -10.0d
 		}
 		{
+			dependencies: ["20444E3074A0589D"]
 			id: "59F5A52EB3FE897E"
 			tasks: [{
 				id: "3DE31DC3B6FB9428"
@@ -1044,6 +1050,113 @@
 			}]
 			x: 0.0d
 			y: 8.0d
+		}
+		{
+			dependencies: ["59F5A52EB3FE897E"]
+			id: "50A4DA6D74A81F26"
+			tasks: [{
+				id: "45EA6BE55E8DC66A"
+				item: "thermal:silver_ingot"
+				type: "item"
+			}]
+			x: 44.0d
+			y: 8.0d
+		}
+		{
+			dependencies: ["50A4DA6D74A81F26"]
+			id: "33F1AFE2ADCD04DD"
+			tasks: [{
+				id: "59CEE6A0CFA7D542"
+				item: "thermal:silver_plate"
+				type: "item"
+			}]
+			x: 44.0d
+			y: -8.0d
+		}
+		{
+			dependencies: ["3D6DFC9B34BD25CC"]
+			id: "64FE7CF44FB8BDD2"
+			optional: true
+			tasks: [{
+				id: "00342FEC6E04D7ED"
+				item: "create_new_age:layered_magnet"
+				type: "item"
+			}]
+			x: 20.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["64FE7CF44FB8BDD2"]
+			id: "4A3DDBE485C48C48"
+			optional: true
+			tasks: [{
+				id: "29168E358912C067"
+				item: "create_new_age:fluxuated_magnetite"
+				type: "item"
+			}]
+			x: 22.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["4A3DDBE485C48C48"]
+			id: "0CD114DA706471EE"
+			optional: true
+			tasks: [{
+				id: "5A6018541F80ABDA"
+				item: "create_new_age:netherite_magnet"
+				type: "item"
+			}]
+			x: 32.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["5AAAFF9CC002EB70"]
+			id: "4D56CF3158929A30"
+			tasks: [{
+				id: "61D200CCC883F73A"
+				item: "kubejs:graphite"
+				type: "item"
+			}]
+			x: 38.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["4D56CF3158929A30"]
+			id: "18F0E1C41C673266"
+			tasks: [{
+				id: "57366F6AEABAD966"
+				item: "kubejs:graphite"
+				type: "item"
+			}]
+			title: "Graphite 2"
+			x: 14.0d
+			y: 4.0d
+		}
+		{
+			dependencies: [
+				"09D7F859EC4C42E6"
+				"4D56CF3158929A30"
+			]
+			hide: true
+			id: "12339C11E04B52F1"
+			optional: true
+			tasks: [{
+				id: "64380FA3F39082CB"
+				item: "thermal:diamond_dust"
+				type: "item"
+			}]
+			x: 38.0d
+			y: 2.0d
+		}
+		{
+			id: "38BC369541D29C88"
+			tasks: [{
+				id: "165DEB0172E70612"
+				item: "minecraft:diamond"
+				type: "item"
+			}]
+			x: 36.0d
+			y: 2.0d
 		}
 	]
 	title: "Chapter 5a: Logistics Mechanisms"
