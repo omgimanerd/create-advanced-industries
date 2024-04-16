@@ -199,10 +199,10 @@ ServerEvents.recipes((e) => {
         item: 'minecraft:diamond',
       },
     ],
+    energy: 10000,
   })
 
   // Diamond sawblades to cut silicon into wafers
-  // TODO: better diamond cutting and diamond automation in chapter 5b
   create.crushing(
     Item.of('thermal:diamond_dust').withChance(0.8),
     'minecraft:diamond'
@@ -378,51 +378,63 @@ ServerEvents.recipes((e) => {
   redefineRecipe(
     'create_new_age:redstone_magnet',
     [
-      'RRR', //
-      'RMR', //
-      'RRR', //
+      'RRRRR', //
+      'RWWWR', //
+      'RWMWR', //
+      'RWWWR', //
+      'RRRRR', //
     ],
     {
       R: 'morered:red_alloy_ingot',
+      W: 'create_new_age:copper_wire',
       M: 'create_new_age:magnetite_block',
     }
   )
   redefineRecipe(
     'create_new_age:layered_magnet',
     [
-      'IGI', //
-      'GMG', //
-      'IGI', //
+      'GGGGG', //
+      'IWWWI', //
+      'GWMWG', //
+      'IWWWI', //
+      'GGGGG', //
     ],
     {
-      I: 'create_new_age:overcharged_iron_sheet',
       G: 'create_new_age:overcharged_golden_sheet',
+      I: 'create_new_age:overcharged_iron_sheet',
+      W: 'create_new_age:overcharged_iron_wire',
       M: 'create_new_age:redstone_magnet',
     }
   )
   redefineRecipe(
     'create_new_age:fluxuated_magnetite',
     [
-      'GDG', //
-      'DMG', //
-      'GDG', //
+      'GDGDG', //
+      'DWWWD', //
+      'GWMWG', //
+      'DWWWD', //
+      'GDGDG', //
     ],
     {
       G: 'create_new_age:overcharged_golden_sheet',
       D: 'create_new_age:overcharged_diamond',
+      W: 'create_new_age:overcharged_golden_wire',
       M: 'create_new_age:layered_magnet',
     }
   )
   redefineRecipe(
     'create_new_age:netherite_magnet',
     [
-      'NDN', //
-      'DMD', //
-      'NDN', //
+      'DNNND', //
+      'NWWWN', //
+      'NWMWN', //
+      'NWWWN', //
+      'DNNND', //
     ],
     {
-      N: 'minecraft:netherite_ingot',
+      N: 'minecraft:netherite_nugget',
       D: 'create_new_age:overcharged_diamond',
+      W: 'create_new_age:overcharged_diamond_wire',
       M: 'create_new_age:fluxuated_magnetite',
     }
   )
@@ -456,8 +468,6 @@ ServerEvents.recipes((e) => {
       '2x minecraft:gold_ingot',
     ])
     .superheated()
-
-  // create_connected:control_chip
 
   // Red alloy overhaul
   e.remove({ id: 'morered:red_alloy_ingot_from_jumbo_smelting' })
@@ -516,7 +526,7 @@ ServerEvents.recipes((e) => {
       B: 'refinedstorage:basic_processor',
       I: 'refinedstorage:improved_processor',
       R: 'morered:red_alloy_ingot',
-      N: 'thermal:netherite_nugget',
+      N: 'create_new_age:netherite_magnet',
     }
   )
 })

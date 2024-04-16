@@ -39,7 +39,7 @@
 				"60A20508A7E35CB9"
 				"5AD35DACB2A50EF1"
 				"5A6D0D76D241A75E"
-				"0C0173124EA22FAE"
+				"578CB2BBDDEC16F1"
 			]
 			id: "3D27BD07DCC89201"
 			size: 2.0d
@@ -100,7 +100,10 @@
 			y: -6.0d
 		}
 		{
-			dependencies: ["1B2CAA9D8CAB0F09"]
+			dependencies: [
+				"1B2CAA9D8CAB0F09"
+				"646D6F79EF32D089"
+			]
 			id: "6426BBE70FDA2515"
 			tasks: [{
 				id: "73B223A2FCC90E4D"
@@ -139,7 +142,10 @@
 			y: -8.0d
 		}
 		{
-			dependencies: ["230E21BE68901D81"]
+			dependencies: [
+				"230E21BE68901D81"
+				"646D6F79EF32D089"
+			]
 			id: "1B2CAA9D8CAB0F09"
 			tasks: [{
 				id: "640C37C158CCEC9C"
@@ -328,7 +334,7 @@
 				item: "pneumaticcraft:pneumatic_cylinder"
 				type: "item"
 			}]
-			x: 14.0d
+			x: 16.0d
 			y: -4.0d
 		}
 		{
@@ -473,10 +479,7 @@
 			y: 2.0d
 		}
 		{
-			dependencies: [
-				"7A306159E94EA54C"
-				"2A592785D36BC8D3"
-			]
+			dependencies: ["2A592785D36BC8D3"]
 			id: "646D6F79EF32D089"
 			tasks: [{
 				id: "426E3CB9F0A5AF9E"
@@ -525,7 +528,7 @@
 				type: "item"
 			}]
 			x: 0.0d
-			y: 6.0d
+			y: 8.0d
 		}
 		{
 			dependencies: [
@@ -539,7 +542,7 @@
 				type: "item"
 			}]
 			x: 26.0d
-			y: 6.0d
+			y: 8.0d
 		}
 		{
 			dependencies: [
@@ -771,8 +774,8 @@
 				item: "refinedstorage:advanced_processor"
 				type: "item"
 			}]
-			x: 28.0d
-			y: 1.0d
+			x: 30.0d
+			y: 2.0d
 		}
 		{
 			dependencies: ["2A592785D36BC8D3"]
@@ -818,7 +821,7 @@
 				item: "minecraft:netherite_scrap"
 				type: "item"
 			}]
-			x: 28.0d
+			x: 24.0d
 			y: 6.0d
 		}
 		{
@@ -829,7 +832,7 @@
 				item: "minecraft:netherite_ingot"
 				type: "item"
 			}]
-			x: 30.0d
+			x: 22.0d
 			y: 6.0d
 		}
 		{
@@ -840,7 +843,7 @@
 				item: "thermal:netherite_nugget"
 				type: "item"
 			}]
-			x: 34.0d
+			x: 20.0d
 			y: 6.0d
 		}
 		{
@@ -859,7 +862,6 @@
 				"1C323E9E442D59D9"
 				"03EE97847AAECC37"
 				"18F0E1C41C673266"
-				"646D6F79EF32D089"
 			]
 			icon: "create_new_age:carbon_brushes"
 			id: "3DAFEBA27621ED6F"
@@ -894,7 +896,7 @@
 				type: "item"
 			}]
 			x: 14.0d
-			y: 0.0d
+			y: 2.0d
 		}
 		{
 			dependencies: ["33C680B20C535000"]
@@ -905,11 +907,21 @@
 				type: "item"
 			}]
 			x: 18.0d
-			y: 0.0d
+			y: -2.0d
 		}
 		{
 			dependencies: ["6D912BAC546961CB"]
+			description: [
+				"Nothing to see here. This quest is only here to make the dependency lines look a little neater."
+				""
+				"Here, have a snack."
+			]
 			id: "71920B55BE892016"
+			rewards: [{
+				id: "55C4C74D71956D56"
+				item: "farmersdelight:barbecue_stick"
+				type: "item"
+			}]
 			tasks: [{
 				id: "05CF45EFD52F1821"
 				type: "checkmark"
@@ -1011,7 +1023,10 @@
 			y: 4.0d
 		}
 		{
-			dependencies: ["68FB63D0979FE43B"]
+			dependencies: [
+				"68FB63D0979FE43B"
+				"5E008EB3A9882615"
+			]
 			id: "3D6DFC9B34BD25CC"
 			optional: true
 			tasks: [{
@@ -1020,7 +1035,7 @@
 				type: "item"
 			}]
 			x: 18.0d
-			y: 2.0d
+			y: 0.0d
 		}
 		{
 			dependencies: ["097A84D100994B26"]
@@ -1049,7 +1064,7 @@
 				type: "item"
 			}]
 			x: 0.0d
-			y: 8.0d
+			y: 10.0d
 		}
 		{
 			dependencies: ["59F5A52EB3FE897E"]
@@ -1060,7 +1075,7 @@
 				type: "item"
 			}]
 			x: 44.0d
-			y: 8.0d
+			y: 10.0d
 		}
 		{
 			dependencies: ["50A4DA6D74A81F26"]
@@ -1074,7 +1089,11 @@
 			y: -8.0d
 		}
 		{
-			dependencies: ["3D6DFC9B34BD25CC"]
+			dependencies: [
+				"3D6DFC9B34BD25CC"
+				"3EC3A879FB4E6582"
+				"008FE236F8B7C4DB"
+			]
 			id: "64FE7CF44FB8BDD2"
 			optional: true
 			tasks: [{
@@ -1082,11 +1101,15 @@
 				item: "create_new_age:layered_magnet"
 				type: "item"
 			}]
-			x: 20.0d
+			x: 18.0d
 			y: 2.0d
 		}
 		{
-			dependencies: ["64FE7CF44FB8BDD2"]
+			dependencies: [
+				"64FE7CF44FB8BDD2"
+				"2A14AAF74FC41828"
+				"6F56D8745AD29295"
+			]
 			id: "4A3DDBE485C48C48"
 			optional: true
 			tasks: [{
@@ -1094,11 +1117,15 @@
 				item: "create_new_age:fluxuated_magnetite"
 				type: "item"
 			}]
-			x: 22.0d
-			y: 2.0d
+			x: 18.0d
+			y: 4.0d
 		}
 		{
-			dependencies: ["4A3DDBE485C48C48"]
+			dependencies: [
+				"4A3DDBE485C48C48"
+				"6F56D8745AD29295"
+				"0C0173124EA22FAE"
+			]
 			id: "0CD114DA706471EE"
 			optional: true
 			tasks: [{
@@ -1106,8 +1133,8 @@
 				item: "create_new_age:netherite_magnet"
 				type: "item"
 			}]
-			x: 32.0d
-			y: 2.0d
+			x: 18.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["5AAAFF9CC002EB70"]
@@ -1118,10 +1145,13 @@
 				type: "item"
 			}]
 			x: 38.0d
-			y: 4.0d
+			y: 7.0d
 		}
 		{
-			dependencies: ["4D56CF3158929A30"]
+			dependencies: [
+				"4D56CF3158929A30"
+				"646D6F79EF32D089"
+			]
 			id: "18F0E1C41C673266"
 			tasks: [{
 				id: "57366F6AEABAD966"
@@ -1129,8 +1159,8 @@
 				type: "item"
 			}]
 			title: "Graphite 2"
-			x: 14.0d
-			y: 4.0d
+			x: 8.0d
+			y: 7.0d
 		}
 		{
 			dependencies: [
@@ -1149,6 +1179,7 @@
 			y: 2.0d
 		}
 		{
+			dependencies: ["12339C11E04B52F1"]
 			id: "38BC369541D29C88"
 			tasks: [{
 				id: "165DEB0172E70612"
@@ -1156,6 +1187,85 @@
 				type: "item"
 			}]
 			x: 36.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["4940E876A0E00E4E"]
+			id: "008FE236F8B7C4DB"
+			tasks: [{
+				id: "347900C5ABFB8712"
+				item: "create_new_age:overcharged_gold"
+				type: "item"
+			}]
+			x: 14.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["4940E876A0E00E4E"]
+			id: "6F56D8745AD29295"
+			tasks: [{
+				id: "36999D426CEC3DF3"
+				item: "create_new_age:overcharged_diamond"
+				type: "item"
+			}]
+			x: 14.0d
+			y: 6.0d
+		}
+		{
+			dependencies: ["4C3E437A65D6858D"]
+			id: "5E008EB3A9882615"
+			tasks: [{
+				id: "29E5E732FB2A45D3"
+				item: "create_new_age:copper_wire"
+				type: "item"
+			}]
+			title: "Copper Wire 2"
+			x: 14.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["33C680B20C535000"]
+			id: "3EC3A879FB4E6582"
+			tasks: [{
+				id: "7C9139AC9951784D"
+				item: "create_new_age:overcharged_iron_wire"
+				type: "item"
+			}]
+			x: 16.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["008FE236F8B7C4DB"]
+			id: "2A14AAF74FC41828"
+			tasks: [{
+				id: "381D9628191F7BFD"
+				item: "create_new_age:overcharged_golden_wire"
+				type: "item"
+			}]
+			x: 16.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["6F56D8745AD29295"]
+			id: "1D6E467AC4F50005"
+			tasks: [{
+				id: "03DFBF267E35BDD7"
+				item: "create_new_age:overcharged_diamond_wire"
+				type: "item"
+			}]
+			x: 16.0d
+			y: 6.0d
+		}
+		{
+			dependencies: ["0CD114DA706471EE"]
+			id: "578CB2BBDDEC16F1"
+			tasks: [{
+				id: "78DEABD4F6860733"
+				item: "create_new_age:netherite_magnet"
+				type: "item"
+			}]
+			title: "Netherite Magnet 2"
+			x: 34.0d
 			y: 2.0d
 		}
 	]
