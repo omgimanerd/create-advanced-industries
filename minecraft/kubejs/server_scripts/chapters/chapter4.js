@@ -22,6 +22,15 @@ ServerEvents.recipes((e) => {
   const redefineRecipe = redefineRecipe_(e)
   const ingotFluid = global.MeltableItem.DEFAULT_INGOT_FLUID
 
+  // Dough must be made by combining it with eggs.
+  e.remove({ output: 'create:dough' })
+  e.shapeless('create:dough', [
+    'create:wheat_flour',
+    'create:wheat_flour',
+    'create:wheat_flour',
+    'minecraft:egg',
+  ])
+
   // Eggs from dough
   create.haunting('minecraft:egg', 'create:dough')
 
@@ -69,7 +78,9 @@ ServerEvents.recipes((e) => {
   create.compacting('minecraft:bone_block', [Fluid.of('minecraft:milk', 1000)])
 
   // Lime automation to allow limesand creation
-  create.mixing('create:limestone', ['minecraft:bone_block', Fluid.water(1000)])
+  create
+    .mixing('create:limestone', ['minecraft:bone_block', Fluid.water(1000)])
+    .heated()
 
   // Charcoal transmutation to coal, with a discount for blocks
   e.recipes.ars_nouveau.enchanting_apparatus(
@@ -84,9 +95,6 @@ ServerEvents.recipes((e) => {
     'minecraft:coal_block',
     1000
   )
-
-  // TODO use mech crafting for some recipes
-  // TODO revamp cast iron? maybe remove
 
   // Obsidian overhaul for sturdy sheets
   e.remove({ output: 'minecraft:magma_block' })

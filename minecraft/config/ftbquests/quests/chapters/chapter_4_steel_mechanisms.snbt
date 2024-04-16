@@ -70,7 +70,15 @@
 		}
 		{
 			dependencies: ["565A7C5F6646857A"]
+			description: ["Welcome to the Steel Age. This extremely versatile form of iron will be used for many different technologies going forward."]
 			id: "318C60A121F68C81"
+			rewards: [{
+				count: 16
+				id: "55AD7B2F758B49B5"
+				item: "tfmg:steel_ingot"
+				type: "item"
+			}]
+			size: 1.5d
 			tasks: [{
 				id: "314E4C658008473A"
 				item: "tfmg:steel_ingot"
@@ -97,6 +105,7 @@
 		}
 		{
 			dependencies: ["61A87B555F6F736C"]
+			description: ["Melt down the iron that you automated in Chapter 1."]
 			id: "1DB7690FA91A5285"
 			tasks: [{
 				id: "759770D41D42C989"
@@ -108,6 +117,7 @@
 		}
 		{
 			dependencies: ["32945248A0491741"]
+			description: ["Crush the coal coke into dust for smelting."]
 			id: "2C9F49CC3FB7A113"
 			tasks: [{
 				id: "536C87939CD70DE3"
@@ -119,6 +129,7 @@
 		}
 		{
 			dependencies: ["3426D798E4ECFC01"]
+			description: ["Limestone can then be ground up to get limesand, a necessary flux for steel smelting."]
 			id: "08046E96E707A76C"
 			tasks: [{
 				id: "53B42749C21B4E85"
@@ -130,6 +141,7 @@
 		}
 		{
 			dependencies: ["0E92C48953887C96"]
+			description: ["If you dissolve the bone blocks in water and let it precipitate out, you'll get limestone."]
 			id: "3426D798E4ECFC01"
 			tasks: [{
 				id: "487A87108850BB91"
@@ -141,6 +153,7 @@
 		}
 		{
 			dependencies: ["3F554592E7237AA6"]
+			description: ["Compact the milk to get bone blocks."]
 			id: "0E92C48953887C96"
 			tasks: [{
 				id: "532E0A0CC41F1BE0"
@@ -205,7 +218,11 @@
 				"06044A8D0AD15923"
 				"662CE9859BE0F913"
 			]
-			description: ["Blaze cakes can be fed into blaze burners with a deployer or a mechanical arm."]
+			description: [
+				"Fill the blaze cake base with lava to get a blaze cake."
+				""
+				"Blaze cakes can be fed into blaze burners with a deployer or a mechanical arm."
+			]
 			id: "10032B52BBCCF403"
 			tasks: [{
 				id: "4ADFE951272D2440"
@@ -246,6 +263,7 @@
 				"386370F5D73C8A51"
 				"5F120264857F4393"
 			]
+			description: ["With the necessary prerequisites, you can press together the ingredients to make a blaze cake base."]
 			id: "06044A8D0AD15923"
 			tasks: [{
 				id: "29728C49532F5436"
@@ -257,6 +275,7 @@
 		}
 		{
 			dependencies: ["49789F2A01DB4EB2"]
+			description: ["Crush or mill sugarcane to get sugar."]
 			id: "5F120264857F4393"
 			tasks: [{
 				id: "0E3C9F2CFF9631CB"
@@ -268,6 +287,7 @@
 		}
 		{
 			dependencies: ["51D735C846DF85D9"]
+			description: ["Cinder flour is a necessary ingredient no matter which superheating source you decide to use. Make sure you feed enough back into the netherrack cycle to keep it going."]
 			id: "386370F5D73C8A51"
 			tasks: [{
 				id: "62B87D6573B837F3"
@@ -279,6 +299,7 @@
 		}
 		{
 			dependencies: ["68104DF3A66FB0DC"]
+			description: ["Then haunt the dough to get an egg. You can cycle this to produce more dough from wheat."]
 			id: "746D63075D3BB1BE"
 			tasks: [{
 				id: "267E0DA42E9FFCE8"
@@ -294,7 +315,11 @@
 				"49789F2A01DB4EB2"
 			]
 			dependency_requirement: "one_completed"
-			description: ["Biomass can be made in a ton of different ways."]
+			description: [
+				"Biomass can be made in a ton of different ways."
+				""
+				"You should have a lot of extra stuff coming out of your farm that you can use here."
+			]
 			id: "3EF1F54AE35B9018"
 			tasks: [{
 				id: "786E9C11008DB798"
@@ -306,6 +331,7 @@
 		}
 		{
 			dependencies: ["05659E1DE2D77A38"]
+			description: ["You should start this process off with a little bit of lava until you can get a superheated burner to make more."]
 			id: "662CE9859BE0F913"
 			tasks: [{
 				id: "4C25E37E0CE76135"
@@ -317,10 +343,11 @@
 		}
 		{
 			dependencies: ["22762C01E26FB48B"]
+			description: ["Mix the flour together with an egg to get dough."]
 			id: "68104DF3A66FB0DC"
 			tasks: [{
 				id: "5804FF0C665F16A8"
-				item: "farmersdelight:wheat_dough"
+				item: "create:dough"
 				type: "item"
 			}]
 			x: 6.0d
@@ -328,6 +355,7 @@
 		}
 		{
 			dependencies: ["5004C4D4D6A40E1C"]
+			description: ["Mill the wheat into flour."]
 			id: "22762C01E26FB48B"
 			tasks: [{
 				id: "101C5B991B7ECFD3"
@@ -374,6 +402,7 @@
 		}
 		{
 			dependencies: ["662CE9859BE0F913"]
+			description: ["With a little bit more lava, you can make infinite netherrack. The netherrack cycle is closely tied to the lava cycle here, so make sure you don't run out."]
 			id: "51D735C846DF85D9"
 			tasks: [{
 				id: "0C9026A2C43651A6"
@@ -395,7 +424,7 @@
 				item: "tfmg:coal_coke"
 				type: "item"
 			}]
-			x: 10.0d
+			x: 12.0d
 			y: -8.0d
 		}
 		{
@@ -442,6 +471,7 @@
 		}
 		{
 			dependencies: ["3A708FE87956300D"]
+			description: ["Sturdy sheets can be made with a little more lava and some pressing."]
 			id: "56194FBB8BFDBC86"
 			tasks: [{
 				id: "6926345E78DD7BAE"
@@ -453,6 +483,7 @@
 		}
 		{
 			dependencies: ["27A1B10B3D3FD676"]
+			description: ["Cool down the magma blocks and you have automated obsidian."]
 			id: "5A4A984E4C6E0ADC"
 			tasks: [{
 				id: "4DE52C9A8596B777"
@@ -464,6 +495,7 @@
 		}
 		{
 			dependencies: ["662CE9859BE0F913"]
+			description: ["Pour lava onto stone to get magma blocks."]
 			id: "27A1B10B3D3FD676"
 			tasks: [{
 				id: "693EA265FDD5CB21"
@@ -475,6 +507,7 @@
 		}
 		{
 			dependencies: ["5A4A984E4C6E0ADC"]
+			description: ["Obsidian can be crushed into dust, but it seems that crushing wheels aren't strong enough for this. However, powerful magics can perform this task without any loss."]
 			id: "3A708FE87956300D"
 			tasks: [{
 				id: "289DDA3E205844A1"
@@ -486,6 +519,7 @@
 		}
 		{
 			dependencies: ["318C60A121F68C81"]
+			description: ["Screws are fabricated from steel."]
 			id: "0D49F7009518DEC8"
 			tasks: [{
 				id: "70F5B80D543D4B48"
@@ -497,6 +531,7 @@
 		}
 		{
 			dependencies: ["318C60A121F68C81"]
+			description: ["Steel is much harder than other metals, so it will take a little more effort to make plates."]
 			id: "79B63BFC11E77382"
 			tasks: [{
 				id: "5DC49B94BEC67F05"
@@ -529,6 +564,7 @@
 		}
 		{
 			dependencies: ["79B63BFC11E77382"]
+			description: ["Heavy plates (aka steel plates) can be rolled into rebar rods."]
 			id: "62D9B093C6D6B232"
 			tasks: [{
 				id: "096E5BE16880028A"
@@ -540,7 +576,7 @@
 		}
 		{
 			dependencies: ["61A87B555F6F736C"]
-			description: ["Sugar is required for both blaze cakes and biofuel."]
+			description: ["Sugarcane is required for both blaze cakes and biofuel."]
 			id: "49789F2A01DB4EB2"
 			tasks: [{
 				id: "2D5B274F7C1AF71A"
@@ -565,7 +601,7 @@
 				item: "tfmg:coke_oven"
 				type: "item"
 			}]
-			x: 10.0d
+			x: 12.0d
 			y: -4.0d
 		}
 		{
@@ -644,7 +680,7 @@
 				item: "tfmg:creosote_bucket"
 				type: "item"
 			}]
-			x: 10.0d
+			x: 12.0d
 			y: -10.0d
 		}
 		{
@@ -653,6 +689,7 @@
 				"3A708FE87956300D"
 				"386370F5D73C8A51"
 			]
+			description: ["Fireclay can be found naturally, but in case you haven't found any, you can make it yourself."]
 			id: "3319B6B48831867E"
 			tasks: [{
 				id: "5E82D3E9AE3C6EF5"
@@ -664,6 +701,7 @@
 		}
 		{
 			dependencies: ["3319B6B48831867E"]
+			description: ["Blast the fireclay into fireproof bricks."]
 			id: "303FE565FBAEB267"
 			tasks: [{
 				id: "1F0C0E6F95DB9272"
@@ -671,7 +709,7 @@
 				type: "item"
 			}]
 			x: 10.0d
-			y: 4.0d
+			y: -2.0d
 		}
 		{
 			dependencies: ["61A87B555F6F736C"]
@@ -687,13 +725,14 @@
 		}
 		{
 			dependencies: ["303FE565FBAEB267"]
+			description: ["Craft the fireproof bricks into its block form."]
 			id: "59A3E02573460A99"
 			tasks: [{
 				id: "50F8E7C295FF5B14"
 				item: "tfmg:fireproof_bricks"
 				type: "item"
 			}]
-			x: 10.0d
+			x: 12.0d
 			y: -2.0d
 		}
 		{
@@ -701,6 +740,20 @@
 			description: ["Sturdy sheets unlock train casings, which are a great way to move things around in the overworld. Totally optional, but might become useful later."]
 			id: "270B943E49104B85"
 			optional: true
+			rewards: [
+				{
+					count: 64
+					id: "3914EA8DE8B27410"
+					item: "create:track"
+					type: "item"
+				}
+				{
+					count: 2
+					id: "09DEEF4D0B972E84"
+					item: "create:track_station"
+					type: "item"
+				}
+			]
 			tasks: [{
 				id: "513F4598FF5E8CDE"
 				item: "create:railway_casing"
