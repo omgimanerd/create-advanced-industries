@@ -3,6 +3,7 @@
 	default_quest_shape: ""
 	filename: "chapter_5b_crystalline_mechanisms"
 	group: "5B3547AEADCBC841"
+	icon: "kubejs:plastic_mechanism"
 	id: "268775A317C41CF0"
 	order_index: 6
 	quest_links: [ ]

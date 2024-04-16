@@ -1,0 +1,19 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "chapter_6_quantum_mechanisms"
+	group: "5B3547AEADCBC841"
+	id: "67020B8E9395350E"
+	order_index: 7
+	quest_links: [ ]
+	quests: [{
+		id: "6F5FD46FAB622B86"
+		tasks: [{
+			id: "787FB98310119A51"
+			type: "checkmark"
+		}]
+		x: 0.0d
+		y: 0.0d
+	}]
+	title: "Chapter 6: Quantum Mechanisms"
+}
