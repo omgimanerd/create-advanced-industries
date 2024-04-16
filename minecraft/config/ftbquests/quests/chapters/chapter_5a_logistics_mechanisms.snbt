@@ -942,6 +942,7 @@
 				""
 				"Here's a free boiler, you'll need it!"
 			]
+			icon: "create:blaze_burner"
 			id: "5DC9DA88CD955FCC"
 			rewards: [
 				{

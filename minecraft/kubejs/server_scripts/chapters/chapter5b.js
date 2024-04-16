@@ -63,6 +63,7 @@ ServerEvents.recipes((e) => {
   // liquid fert can be augmented into crystal growth accelerator
   // automate food, higher feed level = more production of something
 
+  // TODO: better diamond cutting and diamond automation in chapter 5b
   // amethyst?
 
   // Catalyst for first moss block

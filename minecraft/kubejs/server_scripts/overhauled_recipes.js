@@ -1428,5 +1428,6 @@ ServerEvents.recipes((e) => {
     ],
     { I: 'minecraft:iron_ingot', S: 'create:shaft' }
   )
+  // TODO custom thermal machine recipes from steel
   // TODO add overhauls for hardened, reinf, and integral components
 })

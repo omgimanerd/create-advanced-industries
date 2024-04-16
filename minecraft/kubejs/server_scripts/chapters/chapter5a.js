@@ -181,8 +181,9 @@ ServerEvents.recipes((e) => {
     .pressure(4.75)
     .outputs('thermal:diamond_dust')
 
-  // TODO add a thermal recipe to recrystallize diamond dust
   e.remove({ id: 'pneumaticcraft:pressure_chamber/coal_to_diamond' })
+  // TODO add a thermal recipe to recrystallize diamond dust
+  // TODO thermal helper classes
   e.custom({
     type: 'thermal:crystallizer',
     ingredients: [
