@@ -66,6 +66,9 @@ const createExtruding = (e, output, inputs, catalyst) => {
   return e.custom(base)
 }
 
+/**
+ * @param {Internal.RecipesEventJS} e
+ */
 const defineCreateRecipes = (e) => {
   return {
     compacting: e.recipes.create.compacting,
@@ -92,13 +95,39 @@ const defineCreateRecipes = (e) => {
 
     // Helpers
     /**
+     * @callback CreateSeqencedAssembly
+     * @param {InputItem} input
      * @returns {SequencedAssembly}
+     * @type {CreateSeqencedAssembly}
      */
     SequencedAssembly: getConstructorWrapper(e, SequencedAssembly),
 
     // Addons
+    /**
+     * @callback CreateRolling
+     * @param {string} input
+     * @param {string} output
+     * @return {Internal.RecipeJS}
+     * @type {CreateRolling}
+     */
     rolling: getPartialApplication(e, createRolling),
+    /**
+     * @callback CreateEnergising
+     * @param {string} input
+     * @param {string} output
+     * @return {Internal.RecipeJS}
+     * @type {CreateEnergising}
+     */
     energising: getPartialApplication(e, createEnergising),
+    /**
+     * @callback CreateExtruding
+     * @param {string} output
+     * @param {string[]} inputs The input items or fluids that must be on the
+     *   sides of the extruder. Must have exactly two elements
+     * @param {string=} catalyst An optional catalyst block underneath the
+     *   extruder
+     * @type {CreateExtruding}
+     */
     extruding: getPartialApplication(e, createExtruding),
   }
 }

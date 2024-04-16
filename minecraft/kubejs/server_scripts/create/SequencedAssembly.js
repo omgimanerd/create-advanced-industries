@@ -1,15 +1,21 @@
 // priority: 1000
 
-// JS prototype class to make registering mechanism sequenced assemblies
-// easier.
-//
-// Example usage:
-// new SequencedAssembly('#minecraft:wooden_slabs')
-//   .transitional('custom:incomplete_andesite_mechanism')
-//   .deploy('create:andesite_alloy')
-//   .deploy('create:shaft')
-//   .deploy('create:cogwheel')
-//   .outputs(e, 'kubejs:andesite_mechanism')
+/**
+ * @constructor
+ * @description JS prototype class to make registering mechanism sequenced
+ * assemblies easier.
+ *
+ * Example usage:
+ * new SequencedAssembly('#minecraft:wooden_slabs')
+ *   .transitional('custom:incomplete_andesite_mechanism')
+ *   .deploy('create:andesite_alloy')
+ *   .deploy('create:shaft')
+ *   .deploy('create:cogwheel')
+ *   .outputs(e, 'kubejs:andesite_mechanism')
+ *
+ * @param {Internal.RecipesEventJS} e
+ * @param {InputItem_} input
+ */
 function SequencedAssembly(e, input) {
   this.e_ = e
   this.input_ = input
@@ -19,17 +25,32 @@ function SequencedAssembly(e, input) {
   this.steps_ = []
 }
 
-// If this is called, it must be called before any other methods to add steps.
+/**
+ * @param {InputItem} transitional
+ * @returns {SequencedAssembly}
+ */
 SequencedAssembly.prototype.transitional = function (transitional) {
+  if (this.steps_.length != 0) {
+    throw new Error('.transitional() must be called first!')
+  }
   this.transitional_ = transitional
   return this
 }
 
+/**
+ * @param {number} loops
+ * @returns {SequencedAssembly}
+ */
 SequencedAssembly.prototype.loops = function (loops) {
   this.loops_ = loops
   return this
 }
 
+/**
+ * @param {number} processingTime
+ * @param {number} repeats
+ * @returns {SequencedAssembly}
+ */
 SequencedAssembly.prototype.cut = function (processingTime, repeats) {
   if (repeats === undefined) repeats = 1
   const cuttingStep = this.e_.recipes.createCutting(
@@ -43,6 +64,10 @@ SequencedAssembly.prototype.cut = function (processingTime, repeats) {
   return this
 }
 
+/**
+ * @param {number} repeats
+ * @returns {SequencedAssembly}
+ */
 SequencedAssembly.prototype.press = function (repeats) {
   if (repeats === undefined) repeats = 1
   this.steps_ = this.steps_.concat(
@@ -53,6 +78,11 @@ SequencedAssembly.prototype.press = function (repeats) {
   return this
 }
 
+/**
+ * @param {string|Internal.InputFluid_} fluid
+ * @param {number=} qty_mb
+ * @returns {SequencedAssembly}
+ */
 SequencedAssembly.prototype.fill = function (fluid, qty_mb) {
   // 1-argument, Fluid object is provided.
   if (qty_mb === undefined) {
@@ -74,6 +104,11 @@ SequencedAssembly.prototype.fill = function (fluid, qty_mb) {
   return this
 }
 
+/**
+ * @param {InputItem_} item
+ * @param {boolean} [keepHeldItem=false]
+ * @returns {SequencedAssembly}
+ */
 SequencedAssembly.prototype.deploy = function (item, keepHeldItem) {
   const deployingStep = this.e_.recipes.createDeploying(this.transitional_, [
     this.transitional_,
@@ -86,6 +121,10 @@ SequencedAssembly.prototype.deploy = function (item, keepHeldItem) {
   return this
 }
 
+/**
+ * @param {OutputItem_} output
+ * @returns {Special.Recipes.SequencedAssemblyCreate}
+ */
 SequencedAssembly.prototype.outputs = function (output) {
   const outputArray = typeof output === 'string' ? [output] : output
   return this.e_.recipes.create
