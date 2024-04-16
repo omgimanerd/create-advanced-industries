@@ -43,8 +43,14 @@ global.removedRecipes = [
   { output: /^tfmg:.*engine.*/ },
   { output: 'tfmg:exhaust' },
   { output: 'tfmg:sulfur_dust' },
-  { output: '#thermal:dynamos' },
-  { output: '#thermal:machines' },
+  { output: /^thermal:machine_(?!crystallizer|pyrolyzer).*/ },
+  { output: /^thermal:dynamo_.*/ },
+  { output: 'thermal:tinker_bench' },
+  { output: 'thermal:charge_bench' },
+  { output: 'thermal:device_hive_extractor' },
+  { output: 'thermal:device_soil_infuser' },
+  { output: 'thermal:device_rock_gen' },
+  { output: 'thermal:device_xp_condenser' },
   { output: '#forge:coins' },
   { output: /^starbunclemania:star_[a-z_]+/ },
 ]
@@ -86,9 +92,11 @@ ServerEvents.recipes((e) => {
   ////////////////////
   // Thermal Series //
   ////////////////////
-  // Only the crystallizer and pyrolyzer are whitelisted.
+  // Only the crystallizer and pyrolyzer recipes are whitelisted.
   e.remove({ id: /^thermal:machines\/(?!crystallizer|pyrolyzer).*/ })
   e.remove({ id: /^thermal:earth_charge\/[a-z_]+/ })
+
+  // TODO remove all thermal recipes that aren't used
 
   // Can't remove pumpjack hammer holder recipe warning?
   // e.remove(/tfmg:mechanical_crafting\/pumpjack_hammer_holder.*/)
