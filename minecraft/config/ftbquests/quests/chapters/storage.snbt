@@ -7,26 +7,71 @@
 	id: "17B71DF15BCA8C40"
 	order_index: 2
 	quest_links: [ ]
-	quests: [{
-		description: [
-			"Storage Lecterns from Ars Nouveau are one option for early game storage organization."
-			""
-			"They are gated by Chapter 3."
-		]
-		id: "70B780688DB73BEA"
-		rewards: [{
-			count: 2
-			id: "0E61FD597CCA560C"
-			item: "ars_nouveau:bookwyrm_charm"
-			type: "item"
-		}]
-		tasks: [{
-			id: "661AC8323127638C"
-			item: "ars_nouveau:storage_lectern"
-			type: "item"
-		}]
-		x: 0.0d
-		y: 0.0d
-	}]
+	quests: [
+		{
+			description: [
+				"Storage Lecterns from Ars Nouveau are one option for early game storage organization."
+				""
+				"They are gated by Chapter 3."
+			]
+			id: "70B780688DB73BEA"
+			rewards: [{
+				count: 2
+				id: "0E61FD597CCA560C"
+				item: "ars_nouveau:bookwyrm_charm"
+				type: "item"
+			}]
+			tasks: [{
+				id: "661AC8323127638C"
+				item: "ars_nouveau:storage_lectern"
+				type: "item"
+			}]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			description: ["Functional Storage drawers are in this pack!"]
+			id: "0187FA4673644B91"
+			rewards: [
+				{
+					id: "7BB8A12C51D4D2D8"
+					item: "functionalstorage:configuration_tool"
+					type: "item"
+				}
+				{
+					count: 4
+					id: "46451B17166691AC"
+					item: "functionalstorage:iron_downgrade"
+					type: "item"
+				}
+				{
+					count: 4
+					id: "52607FFBD091329F"
+					item: "functionalstorage:copper_upgrade"
+					type: "item"
+				}
+				{
+					count: 4
+					id: "29CB06A93FEB8694"
+					item: "functionalstorage:void_upgrade"
+					type: "item"
+				}
+			]
+			tasks: [{
+				id: "1B522B5886E12F75"
+				item: {
+					Count: 1b
+					id: "ftbfiltersystem:smart_filter"
+					tag: {
+						"ftbfiltersystem:filter": "item_tag(functionalstorage:drawer)"
+					}
+				}
+				type: "item"
+			}]
+			title: "Functional Storage"
+			x: 0.0d
+			y: -2.0d
+		}
+	]
 	title: "Storage"
 }

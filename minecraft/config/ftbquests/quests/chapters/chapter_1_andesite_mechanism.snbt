@@ -361,7 +361,7 @@
 				"2FF85F7E00F74EE8"
 				"08E85F97B03195BF"
 			]
-			description: ["Now deploy all of these on an andesite alloy and you've got an andesite mechanism!"]
+			description: ["Now deploy all of these in the correct order on an andesite alloy and you've got an andesite mechanism!"]
 			id: "33F8E4848D9165B2"
 			rewards: [
 				{
@@ -387,6 +387,7 @@
 		}
 		{
 			dependencies: ["79839708653EABAC"]
+			description: ["Cut the planks into slabs."]
 			id: "4850DF538DD8B5D9"
 			tasks: [{
 				id: "451FE5A772714F7C"

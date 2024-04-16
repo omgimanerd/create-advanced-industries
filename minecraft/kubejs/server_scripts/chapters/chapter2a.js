@@ -18,12 +18,16 @@ ServerEvents.recipes((e) => {
     'minecraft:red_sand'
   )
 
-  // Rubber automation
+  // Rubber recipes for automation and manual bootstrapping
   e.remove({ output: 'thermal:rubber' })
   e.shaped('thermal:rubber', ['FFF', 'FWF', 'FFF'], {
     F: '#minecraft:flowers',
     W: 'minecraft:water_bucket',
-  })
+  }).id('kubejs:rubber_from_flowers_manual_only')
+  e.shaped('thermal:rubber', ['LLL', 'LWL', 'LLL'], {
+    L: '#minecraft:leaves',
+    W: 'minecraft:water_bucket',
+  }).id('kubejs:rubber_from_leaves_manual_only')
   create.compacting('thermal:rubber', [Fluid.of('thermal:latex', 50)])
 
   // Rubber smelting as block

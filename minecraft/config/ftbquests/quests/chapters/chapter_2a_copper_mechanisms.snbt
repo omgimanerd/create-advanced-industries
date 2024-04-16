@@ -112,7 +112,7 @@
 		}
 		{
 			dependencies: ["58368DE8C5423BBE"]
-			description: ["Make an arboreal extractor to get resin from jungle or rubberwood trees."]
+			description: ["Make an arboreal extractor to automatically extract resin from jungle or rubberwood trees."]
 			icon: "thermal:latex_bucket"
 			id: "0B61887101FB42F6"
 			rewards: [{

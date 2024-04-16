@@ -500,6 +500,12 @@ ServerEvents.recipes((e) => {
     'create:shaft',
     'create:brass_casing'
   )
+  // Andesite and brass tunnels and funnels
+  e.replaceInput(
+    { output: /^create:[a-z_]+unnel/ },
+    'minecraft:dried_kelp',
+    'thermal:cured_rubber'
+  )
 
   ///////////////////////////////
   // Create Crafts & Additions //

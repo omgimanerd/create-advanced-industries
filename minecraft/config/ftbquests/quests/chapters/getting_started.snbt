@@ -99,7 +99,7 @@
 			}]
 			title: "Logs"
 			x: 3.0d
-			y: -1.5d
+			y: -3.0d
 		}
 		{
 			dependencies: ["76EA7D462C854493"]
@@ -116,11 +116,16 @@
 				type: "item"
 			}]
 			x: 3.0d
-			y: 1.5d
+			y: 0.0d
 		}
 		{
-			dependencies: ["709E1E620074E3ED"]
+			dependencies: [
+				"709E1E620074E3ED"
+				"111E61BCFB1F0F9C"
+			]
 			description: [
+				"Craft Andesite Alloy with iron nuggets and andesite."
+				""
 				"Woohoo, your first Andesite Alloy! You're going to be automating this very soon!"
 				""
 				"Here's some more to help you on your way."
@@ -138,7 +143,7 @@
 				type: "item"
 			}]
 			x: 6.0d
-			y: 1.5d
+			y: 0.0d
 		}
 		{
 			dependencies: [
@@ -185,7 +190,7 @@
 				type: "item"
 			}]
 			x: 6.0d
-			y: -1.5d
+			y: -3.0d
 		}
 		{
 			dependencies: ["461B84C39BFB31C7"]
@@ -222,7 +227,7 @@
 				type: "item"
 			}]
 			x: 6.0d
-			y: -4.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["461B84C39BFB31C7"]
@@ -248,6 +253,12 @@
 					item: "create:stressometer"
 					type: "item"
 				}
+				{
+					count: 2
+					id: "5B805EC9061580A2"
+					item: "create:crafting_blueprint"
+					type: "item"
+				}
 			]
 			tasks: [{
 				icon: "create:shaft"
@@ -258,7 +269,7 @@
 				type: "observation"
 			}]
 			x: 9.0d
-			y: -1.5d
+			y: -3.0d
 		}
 		{
 			dependencies: [
@@ -268,9 +279,7 @@
 			description: [
 				"Andesite Mechanisms unlock the basics of Create, and are the subject of Chapter 1."
 				""
-				"Have you noticed that you can handcraft them?"
-				""
-				"They're quite expensive if you do so though, let's try and automate them in Chapter 1."
+				"They're quite expensive if you handcraft them, so let's try and automate them. The rest of the quests in this chapter are optional, but will help guide you through some of the basic Create machines. As always, remember to ponder them if you get stuck."
 			]
 			id: "327F51A143F583D4"
 			rewards: [{
@@ -279,13 +288,248 @@
 				item: "kubejs:andesite_mechanism"
 				type: "item"
 			}]
+			size: 2.0d
 			tasks: [{
 				id: "22F640220A84726B"
 				item: "kubejs:andesite_mechanism"
 				type: "item"
 			}]
 			x: 9.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"744F53A70A58C0B9"
+				"327F51A143F583D4"
+			]
+			description: [
+				"The rest of this quest chain is optional, but will guide you along in figuring out the basics of Create if you are new to the mod."
+				""
+				"The first machine you'll probably need to make is a mechanical press."
+				""
+				"This allows you to press iron ingots into sheets."
+			]
+			id: "6040F99EFE02BA77"
+			optional: true
+			rewards: [{
+				id: "36426E65BE86354C"
+				type: "xp"
+				xp: 100
+			}]
+			tasks: [{
+				id: "22CFAE83B5B86BF7"
+				item: "create:mechanical_press"
+				type: "item"
+			}]
+			x: 12.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"3CD18FA2BBA17E39"
+				"511CD0C93DDEB3F2"
+			]
+			description: [
+				"Right clicking a stripped log with a piece of andesite alloy will turn it into andesite casing."
+				""
+				"These casings are needed to craft most of Create's machines."
+			]
+			id: "744F53A70A58C0B9"
+			rewards: [{
+				count: 8
+				id: "39B187DA047B5954"
+				item: "create:andesite_casing"
+				type: "item"
+			}]
+			tasks: [{
+				id: "3171297F79E250B1"
+				item: "create:andesite_casing"
+				type: "item"
+			}]
+			x: 6.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["76EA7D462C854493"]
+			description: ["Mine some iron, just like vanilla Minecraft."]
+			id: "111E61BCFB1F0F9C"
+			tasks: [{
+				id: "714DEC9945319589"
+				item: "minecraft:iron_ingot"
+				type: "item"
+			}]
+			x: 3.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["6040F99EFE02BA77"]
+			description: ["Mechanical saws can cut down trees in a contraption, or automate stonecutting and other cutting recipes."]
+			id: "5AB240682413C076"
+			rewards: [{
+				id: "2BED2F5B16195881"
+				type: "xp"
+				xp: 100
+			}]
+			tasks: [{
+				id: "3D0534CEFC6639BF"
+				item: "create:mechanical_saw"
+				type: "item"
+			}]
+			x: 12.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["6040F99EFE02BA77"]
+			description: ["Millstones grind down ingredients."]
+			id: "5A6A7E53AC3ACCB6"
+			rewards: [{
+				id: "60ADBF4DE223B220"
+				type: "xp"
+				xp: 100
+			}]
+			tasks: [{
+				id: "724A423966D16F8A"
+				item: "create:millstone"
+				type: "item"
+			}]
+			x: 13.5d
+			y: 0.5d
+		}
+		{
+			id: "33DF6C049377ADD9"
+			tasks: [{
+				id: "28CAC84B3F906A22"
+				item: "create:mechanical_mixer"
+				type: "item"
+			}]
+			x: 15.0d
+			y: 3.0d
+		}
+		{
+			description: [
+				"Encased Fans blow air to push entities around."
+				""
+				"More interestingly though, if you put the correct block in front of an encased fan, you can use it to smelt, smoke, or wash items."
+			]
+			id: "455A87B9F1074ECE"
+			rewards: [{
+				id: "5365C64644ABBEFA"
+				type: "xp"
+				xp: 100
+			}]
+			tasks: [{
+				id: "4E077CB28C4691C8"
+				item: "create:encased_fan"
+				type: "item"
+			}]
+			x: 14.5d
 			y: 1.5d
+		}
+		{
+			id: "16711DEC7F2E2F9C"
+			tasks: [{
+				id: "0A31297216F6627A"
+				item: "create:deployer"
+				type: "item"
+			}]
+			x: 14.5d
+			y: 4.5d
+		}
+		{
+			dependencies: [
+				"743A7E18CC37972B"
+				"327F51A143F583D4"
+			]
+			description: [
+				"In the beginning, these are the first pieces of Create logistics you'll have access to."
+				""
+				"Items can be moved around and inserted/extracted from inventories with belts, funnels, and chutes. Ponder them to see the full range of ways they can be used."
+			]
+			id: "20C3862B1AC49C29"
+			rewards: [
+				{
+					count: 8
+					id: "142C7CD710794980"
+					item: "create:belt_connector"
+					type: "item"
+				}
+				{
+					count: 8
+					id: "6AC5A196567C0BF3"
+					item: "create:andesite_funnel"
+					type: "item"
+				}
+				{
+					count: 8
+					id: "08BFAE3148AEB4D2"
+					item: "create:chute"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					id: "54732DC0B68A8AD5"
+					item: "create:andesite_funnel"
+					type: "item"
+				}
+				{
+					id: "71985696CD88BDD3"
+					item: "create:chute"
+					type: "item"
+				}
+				{
+					id: "4603389A25490273"
+					item: "create:belt_connector"
+					type: "item"
+				}
+			]
+			title: "Create Logistics"
+			x: 9.0d
+			y: 6.0d
+		}
+		{
+			id: "7896F717519340A1"
+			tasks: [{
+				id: "25725030B1146C4D"
+				item: "create:mechanical_drill"
+				type: "item"
+			}]
+			x: 13.5d
+			y: 5.5d
+		}
+		{
+			id: "38CE3D4A21B9E086"
+			tasks: [{
+				id: "7F7D1B564F9A9806"
+				item: "create:mechanical_harvester"
+				type: "item"
+			}]
+			x: 12.0d
+			y: 6.0d
+		}
+		{
+			dependencies: ["111E61BCFB1F0F9C"]
+			description: [
+				"To get access to Create's logistics and conveyor belts, you need rubber."
+				""
+				"You'll automate this in chapter 2, but for now this can be handcrafted by surrounding a bucket of water with leaves or flowers."
+				""
+				"&lSmelt the rubber to get cured rubber.&r"
+			]
+			id: "743A7E18CC37972B"
+			rewards: [{
+				count: 8
+				id: "6E185DCC3941ECBB"
+				item: "thermal:rubber"
+				type: "item"
+			}]
+			tasks: [{
+				id: "4CB929C60BD3A0B1"
+				item: "thermal:rubber"
+				type: "item"
+			}]
+			x: 6.0d
+			y: 6.0d
 		}
 	]
 	title: "Getting Started"

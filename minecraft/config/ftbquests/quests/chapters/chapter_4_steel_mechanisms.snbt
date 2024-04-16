@@ -771,6 +771,25 @@
 			x: 16.0d
 			y: 2.0d
 		}
+		{
+			dependencies: ["3426D798E4ECFC01"]
+			description: [
+				"You can also generate limestone with honey and lava."
+				""
+				"I have no idea how this makes sense."
+			]
+			id: "36093FCF2B2D947C"
+			invisible: true
+			optional: true
+			tasks: [{
+				id: "297D4CB82F10DEA7"
+				item: "create:honey_bucket"
+				type: "item"
+			}]
+			title: "Forbidden Knowledge"
+			x: 6.0d
+			y: -10.0d
+		}
 	]
 	title: "Chapter 4: Steel Mechanisms"
 }
