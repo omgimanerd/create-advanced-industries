@@ -70,7 +70,11 @@
 		}
 		{
 			dependencies: ["565A7C5F6646857A"]
-			description: ["Welcome to the Steel Age. This extremely versatile form of iron will be used for many different technologies going forward."]
+			description: [
+				"Just like in chapter 3, pour the molten steel into a cast and cool it down."
+				""
+				"Welcome to the Steel Age. This extremely versatile form of iron will be used for many different technologies going forward."
+			]
 			id: "318C60A121F68C81"
 			rewards: [{
 				count: 16
@@ -93,6 +97,11 @@
 				"2C9F49CC3FB7A113"
 				"08046E96E707A76C"
 				"3C9F4B037437C8CD"
+			]
+			description: [
+				"With superheating at your disposal, melt together iron, coal coke, and limesand to produce molten steel."
+				""
+				"Don't ask how it's possible to hold molten steel in an iron bucket."
 			]
 			id: "565A7C5F6646857A"
 			tasks: [{
@@ -263,7 +272,7 @@
 				"386370F5D73C8A51"
 				"5F120264857F4393"
 			]
-			description: ["With the necessary prerequisites, you can press together the ingredients to make a blaze cake base."]
+			description: ["With the necessary prerequisites, you can press the ingredients together to make a blaze cake base."]
 			id: "06044A8D0AD15923"
 			tasks: [{
 				id: "29728C49532F5436"
