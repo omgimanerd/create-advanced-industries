@@ -785,7 +785,7 @@ ServerEvents.recipes((e) => {
     'morered:pulse_gate',
     'morered:redwire_post_plate',
     'morered:redwire_post_relay_plate',
-    'morered:hexideocrubrometer',
+    'morered:hexidecrubrometer',
     'morered:bundled_cable_relay_plate',
     'morered:diode',
     'morered:not_gate',
