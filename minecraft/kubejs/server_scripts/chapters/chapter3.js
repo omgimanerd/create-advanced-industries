@@ -74,6 +74,7 @@ ServerEvents.recipes((e) => {
     .heated()
 
   // Brass mixing
+  e.remove({ id: 'create:mixing/brass_ingot' })
   create
     .mixing(Fluid.of('kubejs:molten_brass', 2 * ingotFluid), [
       Fluid.of('kubejs:molten_copper', ingotFluid),
