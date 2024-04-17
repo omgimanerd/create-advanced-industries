@@ -1,12 +1,5 @@
 // priority: 0
 
-ItemEvents.tooltip((e) => {
-  e.add(
-    'kubejs:screwdriver_of_assblasting',
-    Text.green('An unbreakable screwdriver!')
-  )
-})
-
 ClientEvents.lang('en_us', (e) => {
   // The TFMG plastic sheet will be used as the primary liquid plastic output
   // and can be cut into the Pneumaticcraft plastic sheets.
