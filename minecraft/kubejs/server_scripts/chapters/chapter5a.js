@@ -103,10 +103,10 @@ ServerEvents.recipes((e) => {
   // Overhaul burn times
   e.remove({ id: 'createaddition:liquid_burning/diesel' })
   e.remove({ id: 'createaddition:liquid_burning/gasoline' })
-  create.burnableFluid('#forge:diesel', 6000) // 5 minutes
-  create.burnableFluid('#forge:kerosene', 12000) // 10 minutes
-  create.burnableFluid('#forge:gasoline', 24000) // 20 minutes
-  create.burnableFluid('#forge:lpg', 24000, true) // 20 minutes
+  create.burnableFluid('#forge:diesel', 4800) // 4 minutes
+  create.burnableFluid('#forge:kerosene', 9600) // 8 minutes
+  create.burnableFluid('#forge:gasoline', 19200) // 16 minutes
+  create.burnableFluid('#forge:lpg', 38400, true) // 32 minutes
 
   // Sulfur byproduct can be crushed into sulfur dust.
   create.milling('thermal:sulfur_dust', 'thermal:sulfur')
@@ -124,6 +124,15 @@ ServerEvents.recipes((e) => {
     .time(100)
     .pressure(2)
     .outputs(['500mb pneumaticcraft:lubricant', 'createaddition:biomass'])
+
+  // Pneumatic cylinder overhaul
+  e.remove({ id: 'pneumaticcraft:pneumatic_cylinder' })
+  create
+    .SequencedAssembly('pneumaticcraft:cannon_barrel')
+    .deploy('tfmg:rebar')
+    .fill('pneumaticcraft:lubricant', 250)
+    .press()
+    .outputs('pneumaticcraft:pneumatic_cylinder')
 
   // Plastic must come from petrochemical processing, nerf it a little bit
   e.remove({ id: 'pneumaticcraft:thermo_plant/plastic_from_biodiesel' })
@@ -148,6 +157,264 @@ ServerEvents.recipes((e) => {
 
   // Plastic sheets are cut from plastic
   create.cutting('3x pneumaticcraft:plastic', 'tfmg:plastic_sheet')
+
+  // Blank circuits
+  e.remove({ id: 'create_new_age:pressing/blank_circuit' })
+  create
+    .SequencedAssembly('pneumaticcraft:plastic')
+    .press()
+    .cut()
+    .outputs('4x create_new_age:blank_circuit')
+
+  // Copper circuits
+  e.remove({ id: 'create_new_age:deploying/copper_circuit' })
+  create
+    .SequencedAssembly('create_new_age:blank_circuit')
+    .deploy('morered:red_alloy_ingot')
+    .press()
+    .deploy('create:super_glue')
+    .deploy('create_new_age:copper_wire')
+    .press()
+    .outputs('create_new_age:copper_circuit')
+
+  // Empty PCB overhaul
+  e.remove({ id: 'pneumaticcraft:pressure_chamber/empty_pcb' })
+  e.blasting('pneumaticcraft:empty_pcb', 'create_new_age:copper_circuit')
+
+  // Empty PCBs get etched in an etching tank to become unassembled PCBs.
+  // Etching acid overhaul
+  create.mixing(Fluid.of('pneumaticcraft:etching_acid', 1000), [
+    Fluid.water(1000),
+    'thermal:sulfur_dust',
+    'create:copper_nugget',
+  ])
+
+  // Unassembled PCBs must be made in an etching tank.
+  e.remove({ id: 'pneumaticcraft:assembly/unassembled_pcb' })
+
+  // Failed PCBs can be crushed to be recycled.
+  e.remove({ id: 'pneumaticcraft:empty_pcb_from_failed_pcb' })
+  create.crushing(
+    ['pneumaticcraft:plastic', Item.of('create:copper_sheet').withChance(0.5)],
+    'pneumaticcraft:failed_pcb'
+  )
+
+  // PCB overhaul
+  e.remove({ id: 'pneumaticcraft:printed_circuit_board' })
+  create
+    .SequencedAssembly('pneumaticcraft:unassembled_pcb')
+    .deploy('pneumaticcraft:capacitor')
+    .deploy('pneumaticcraft:transistor')
+    .press()
+    .loops(4)
+    .outputs('pneumaticcraft:printed_circuit_board')
+
+  // Spool recipes for wire coils
+  e.remove({ id: 'createaddition:crafting/spool' })
+  e.shaped('createaddition:spool', ['H', 'S', 'H'], {
+    H: 'tfmg:heavy_plate',
+    S: 'create:shaft',
+  })
+  create
+    .SequencedAssembly('tfmg:heavy_plate')
+    .deploy('create:shaft')
+    .deploy('tfmg:heavy_plate')
+    .press()
+    .outputs('2x createaddition:spool')
+
+  // Overhaul the wire coils
+  e.remove({ id: 'createaddition:rolling/iron_plate' })
+  create.rolling(
+    '2x createaddition:iron_wire',
+    'create_new_age:overcharged_iron_sheet'
+  )
+  e.remove({ id: 'createaddition:rolling/gold_plate' })
+  create.rolling(
+    '2x createaddition:gold_wire',
+    'create_new_age:overcharged_golden_sheet'
+  )
+  create.rolling(
+    '2x kubejs:overcharged_diamond_wire',
+    'create_new_age:overcharged_diamond'
+  )
+  const wireCraftingShape = [
+    'WWW', //
+    'WSW', //
+    'WWW', //
+  ]
+  const defineWireOverhauls = (wire, spool) => {
+    e.shaped(spool, wireCraftingShape, {
+      W: wire,
+      S: 'createaddition:spool',
+    })
+    e.remove({ output: spool })
+    create
+      .SequencedAssembly('createaddition:spool')
+      .deploy(wire)
+      .loops(4)
+      .outputs(spool)
+  }
+  defineWireOverhauls(
+    'createaddition:copper_wire',
+    'create_new_age:copper_wire'
+  )
+  defineWireOverhauls(
+    'createaddition:iron_wire',
+    'create_new_age:overcharged_iron_wire'
+  )
+  defineWireOverhauls(
+    'createaddition:gold_wire',
+    'create_new_age:overcharged_golden_wire'
+  )
+  e.remove({ id: 'create_new_age:diamond_wire' })
+  defineWireOverhauls(
+    'kubejs:overcharged_diamond_wire',
+    'create_new_age:overcharged_diamond_wire'
+  )
+
+  // Generator coils
+  e.remove({ id: 'create_new_age:shaped/generator_coil' })
+  create.mechanical_crafting(
+    '16x create_new_age:generator_coil',
+    [
+      'CCCCCCC', //
+      'CMMMMMC', //
+      'CMCCCMC', //
+      'CMC CMC', //
+      'CMCCCMC', //
+      'CMMMMMC', //
+      'CCCCCCC', //
+    ],
+    { C: 'create_new_age:copper_wire', M: 'create_new_age:magnetite_block' }
+  )
+
+  // Red alloy overhaul
+  e.remove({ id: 'morered:red_alloy_ingot_from_jumbo_smelting' })
+  create.filling('morered:red_alloy_ingot', [
+    'create_new_age:overcharged_iron',
+    Fluid.of('kubejs:molten_redstone', 360),
+  ])
+
+  // Overhaul Create: New Age's magnetic blocks
+  // Magnetite block crafting recipe
+  create.energising(
+    'create_new_age:magnetite_block',
+    'minecraft:iron_block',
+    9000
+  )
+  redefineRecipe(
+    '8x create_new_age:redstone_magnet',
+    [
+      'RRRRR', //
+      'RWWWR', //
+      'RWMWR', //
+      'RWWWR', //
+      'RRRRR', //
+    ],
+    {
+      R: 'morered:red_alloy_ingot',
+      W: 'create_new_age:copper_wire',
+      M: 'create_new_age:magnetite_block',
+    }
+  )
+  redefineRecipe(
+    '8x create_new_age:layered_magnet',
+    [
+      'GGGGG', //
+      'IWWWI', //
+      'GWMWG', //
+      'IWWWI', //
+      'GGGGG', //
+    ],
+    {
+      G: 'create_new_age:overcharged_golden_sheet',
+      I: 'create_new_age:overcharged_iron_sheet',
+      W: 'create_new_age:overcharged_iron_wire',
+      M: 'create_new_age:redstone_magnet',
+    }
+  )
+  redefineRecipe(
+    '8x create_new_age:fluxuated_magnetite',
+    [
+      'GDGDG', //
+      'DWWWD', //
+      'GWMWG', //
+      'DWWWD', //
+      'GDGDG', //
+    ],
+    {
+      G: 'create_new_age:overcharged_golden_sheet',
+      D: 'create_new_age:overcharged_diamond',
+      W: 'create_new_age:overcharged_golden_wire',
+      M: 'create_new_age:layered_magnet',
+    }
+  )
+  redefineRecipe(
+    '8x create_new_age:netherite_magnet',
+    [
+      'DNNND', //
+      'NWWWN', //
+      'NWMWN', //
+      'NWWWN', //
+      'DNNND', //
+    ],
+    {
+      N: 'thermal:netherite_nugget',
+      D: 'create_new_age:overcharged_diamond',
+      W: 'create_new_age:overcharged_diamond_wire',
+      M: 'create_new_age:fluxuated_magnetite',
+    }
+  )
+
+  // Carbon brushes for electrical generation
+  e.remove({ id: 'create_new_age:shaped/carbon_brushes' })
+  create.mechanical_crafting(
+    'create_new_age:carbon_brushes',
+    [
+      'HHHHH', //
+      'HDDDH', //
+      'HDSDH', //
+      'HDDDH', //
+      'HMCMH', //
+    ],
+    {
+      H: 'tfmg:heavy_plate',
+      D: 'kubejs:graphite',
+      S: 'create:shaft',
+      M: 'tfmg:steel_mechanism',
+      C: 'tfmg:heavy_machinery_casing',
+    }
+  )
+
+  // Probabilistic crushing recipe, only one yields ancient debris.
+  const diceRoll = Math.random() > 0.5
+  let probabilisticStone = 'create:scoria'
+  if (diceRoll) probabilisticStone = 'create:scorchia'
+  create.crushing(
+    [
+      Item.of('minecraft:ancient_debris').withChance(0.005),
+      Item.of('minecraft:iron_nugget').withChance(randRange(0.01, 0.1)),
+      Item.of('create:copper_nugget').withChance(randRange(0.01, 0.1)),
+      Item.of('minecraft:gold_nugget').withChance(randRange(0.01, 0.1)),
+      Item.of('create:zinc_nugget').withChance(randRange(0.01, 0.1)),
+      Item.of('thermal:silver_nugget').withChance(randRange(0.01, 0.1)),
+    ],
+    probabilisticStone
+  )
+
+  // Ancient Debris processing
+  e.remove({ id: /minecraft:netherite_scrap.*/ })
+  e.remove({ id: 'minecraft:netherite_ingot' })
+  pneumaticcraft
+    .Assembly('minecraft:ancient_debris')
+    .type(Assembly.TYPE_LASER)
+    .outputs('minecraft:netherite_scrap')
+  create
+    .compacting('minecraft:netherite_ingot', [
+      '2x minecraft:netherite_scrap',
+      '2x minecraft:gold_ingot',
+    ])
+    .superheated()
 
   // Silicon overhaul, must be solidified in a heat frame or TPP
   e.remove({ id: 'refinedstorage:silicon' })
@@ -253,7 +520,7 @@ ServerEvents.recipes((e) => {
     .deploy('minecraft:glass_pane')
     .deploy('pneumaticcraft:plastic')
     .press()
-    .outputs('pneumaticcraft:transistor')
+    .outputs('4x pneumaticcraft:transistor')
 
   // Capacitor overhaul
   e.remove({ id: 'pneumaticcraft:pressure_chamber/capacitor' })
@@ -264,226 +531,7 @@ ServerEvents.recipes((e) => {
     .deploy('pneumaticcraft:plastic')
     .deploy('thermal:silver_plate')
     .press()
-    .outputs('pneumaticcraft:capacitor')
-
-  // Pneumatic cylinder overhaul
-  e.remove({ id: 'pneumaticcraft:pneumatic_cylinder' })
-  create
-    .SequencedAssembly('pneumaticcraft:cannon_barrel')
-    .deploy('tfmg:rebar')
-    .fill('pneumaticcraft:lubricant', 250)
-    .press()
-    .outputs('pneumaticcraft:pneumatic_cylinder')
-
-  // Blank circuits
-  e.remove({ id: 'create_new_age:pressing/blank_circuit' })
-  create
-    .SequencedAssembly('pneumaticcraft:plastic')
-    .press()
-    .cut()
-    .outputs('4x create_new_age:blank_circuit')
-
-  // Copper circuits
-  e.remove({ id: 'create_new_age:deploying/copper_circuit' })
-  create
-    .SequencedAssembly('create_new_age:blank_circuit')
-    .deploy('morered:red_alloy_ingot')
-    .press()
-    .deploy('create:super_glue')
-    .deploy('create_new_age:copper_wire')
-    .press()
-    .outputs('create_new_age:copper_circuit')
-
-  // Empty PCB overhaul
-  e.remove({ id: 'pneumaticcraft:pressure_chamber/empty_pcb' })
-  e.blasting('pneumaticcraft:empty_pcb', 'create_new_age:copper_circuit')
-
-  // Empty PCBs get etched in an etching tank to become unassembled PCBs.
-  // Etching acid overhaul
-  create.mixing(Fluid.of('pneumaticcraft:etching_acid', 1000), [
-    Fluid.water(1000),
-    'thermal:sulfur_dust',
-    'create:copper_nugget',
-  ])
-
-  // Unassembled PCBs must be made in an etching tank.
-  e.remove({ id: 'pneumaticcraft:assembly/unassembled_pcb' })
-
-  // Failed PCBs can be crushed to be recycled.
-  e.remove({ id: 'pneumaticcraft:empty_pcb_from_failed_pcb' })
-  create.crushing(
-    ['pneumaticcraft:plastic', Item.of('create:copper_sheet').withChance(0.5)],
-    'pneumaticcraft:failed_pcb'
-  )
-
-  // PCB overhaul
-  e.remove({ id: 'pneumaticcraft:printed_circuit_board' })
-  create
-    .SequencedAssembly('pneumaticcraft:unassembled_pcb')
-    .deploy('pneumaticcraft:capacitor')
-    .deploy('pneumaticcraft:transistor')
-    .press()
-    .loops(4)
-    .outputs('pneumaticcraft:printed_circuit_board')
-
-  // Overhaul the wire coils
-  e.remove({ id: 'createaddition:rolling/iron_plate' })
-  create.rolling(
-    '2x createaddition:iron_wire',
-    'create_new_age:overcharged_iron_sheet'
-  )
-  e.remove({ id: 'createaddition:rolling/gold_plate' })
-  create.rolling(
-    '2x createaddition:gold_wire',
-    'create_new_age:overcharged_golden_sheet'
-  )
-  create.rolling(
-    '2x kubejs:overcharged_diamond_wire',
-    'create_new_age:overcharged_diamond'
-  )
-  const wireCraftingShape = [
-    'WWW', //
-    'WSW', //
-    'WWW', //
-  ]
-  const defineWireOverhauls = (wire, spool) => {
-    e.shaped(spool, wireCraftingShape, {
-      W: wire,
-      S: 'createaddition:spool',
-    })
-    e.remove({ output: spool })
-    create
-      .SequencedAssembly('createaddition:spool')
-      .deploy(wire)
-      .loops(4)
-      .outputs(spool)
-  }
-  defineWireOverhauls(
-    'createaddition:copper_wire',
-    'create_new_age:copper_wire'
-  )
-  defineWireOverhauls(
-    'createaddition:iron_wire',
-    'create_new_age:overcharged_iron_wire'
-  )
-  defineWireOverhauls(
-    'createaddition:gold_wire',
-    'create_new_age:overcharged_golden_wire'
-  )
-  e.remove({ id: 'create_new_age:diamond_wire' })
-  defineWireOverhauls(
-    'kubejs:overcharged_diamond_wire',
-    'create_new_age:overcharged_diamond_wire'
-  )
-
-  // Overhaul Create: New Age's magnetic blocks
-  // Magnetite block crafting recipe
-  create.energising(
-    'create_new_age:magnetite_block',
-    'minecraft:iron_block',
-    9000
-  )
-  // TODO make using mechanical crafting and coils
-  redefineRecipe(
-    'create_new_age:redstone_magnet',
-    [
-      'RRRRR', //
-      'RWWWR', //
-      'RWMWR', //
-      'RWWWR', //
-      'RRRRR', //
-    ],
-    {
-      R: 'morered:red_alloy_ingot',
-      W: 'create_new_age:copper_wire',
-      M: 'create_new_age:magnetite_block',
-    }
-  )
-  redefineRecipe(
-    'create_new_age:layered_magnet',
-    [
-      'GGGGG', //
-      'IWWWI', //
-      'GWMWG', //
-      'IWWWI', //
-      'GGGGG', //
-    ],
-    {
-      G: 'create_new_age:overcharged_golden_sheet',
-      I: 'create_new_age:overcharged_iron_sheet',
-      W: 'create_new_age:overcharged_iron_wire',
-      M: 'create_new_age:redstone_magnet',
-    }
-  )
-  redefineRecipe(
-    'create_new_age:fluxuated_magnetite',
-    [
-      'GDGDG', //
-      'DWWWD', //
-      'GWMWG', //
-      'DWWWD', //
-      'GDGDG', //
-    ],
-    {
-      G: 'create_new_age:overcharged_golden_sheet',
-      D: 'create_new_age:overcharged_diamond',
-      W: 'create_new_age:overcharged_golden_wire',
-      M: 'create_new_age:layered_magnet',
-    }
-  )
-  redefineRecipe(
-    'create_new_age:netherite_magnet',
-    [
-      'DNNND', //
-      'NWWWN', //
-      'NWMWN', //
-      'NWWWN', //
-      'DNNND', //
-    ],
-    {
-      N: 'minecraft:netherite_nugget',
-      D: 'create_new_age:overcharged_diamond',
-      W: 'create_new_age:overcharged_diamond_wire',
-      M: 'create_new_age:fluxuated_magnetite',
-    }
-  )
-
-  // Probabilistic crushing recipe, only one yields ancient debris.
-  const diceRoll = Math.random() > 0.5
-  let probabilisticStone = 'create:scoria'
-  if (diceRoll) probabilisticStone = 'create:scorchia'
-  create.crushing(
-    [
-      Item.of('minecraft:ancient_debris').withChance(0.005),
-      Item.of('minecraft:iron_nugget').withChance(randRange(0.01, 0.1)),
-      Item.of('create:copper_nugget').withChance(randRange(0.01, 0.1)),
-      Item.of('minecraft:gold_nugget').withChance(randRange(0.01, 0.1)),
-      Item.of('create:zinc_nugget').withChance(randRange(0.01, 0.1)),
-      Item.of('thermal:silver_nugget').withChance(randRange(0.01, 0.1)),
-    ],
-    probabilisticStone
-  )
-
-  // Ancient Debris processing
-  e.remove({ id: /minecraft:netherite_scrap.*/ })
-  e.remove({ id: 'minecraft:netherite_ingot' })
-  pneumaticcraft
-    .Assembly('minecraft:ancient_debris')
-    .type(Assembly.TYPE_LASER)
-    .outputs('minecraft:netherite_scrap')
-  create
-    .compacting('minecraft:netherite_ingot', [
-      '2x minecraft:netherite_scrap',
-      '2x minecraft:gold_ingot',
-    ])
-    .superheated()
-
-  // Red alloy overhaul
-  e.remove({ id: 'morered:red_alloy_ingot_from_jumbo_smelting' })
-  create.filling('morered:red_alloy_ingot', [
-    'create_new_age:overcharged_iron',
-    Fluid.of('kubejs:molten_redstone', 360),
-  ])
+    .outputs('4x pneumaticcraft:capacitor')
 
   // Overhaul Refined Storage processors
   e.remove({ id: /^refinedstorage:[a-z_]+_processor/ })
