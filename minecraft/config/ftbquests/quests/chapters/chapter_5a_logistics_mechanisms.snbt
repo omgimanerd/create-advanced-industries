@@ -14,13 +14,18 @@
 			description: [
 				"Chapter 5a unlocks Logistics Mechanisms, but you'll unlock a lot of other stuff along the way."
 				""
-				"The upper technology tree unlocks oil and petrochemical processing. This gives you access to a powerful source of fuel as well as plastics."
+				"The upper technology tree unlocks oil and petrochemical processing. This gives you access to a powerful source of fuel as well as plastics. &lI highly recommend starting with this branch.&r"
 				""
-				"The lower technology tree unlocks electricity generation, giving you access to circuitry and machinery."
+				"The middle technology tree unlocks electricity generation, giving you access to circuitry and machinery."
 				""
-				"Both of these will go hand in hand to unlock advanced logistics."
+				"The lower technology tree unlocks some more ore processing utilities and provides a way for you to get netherite."
+				""
+				"All of these will go hand in hand to unlock advanced logistics."
+				""
+				"Note that as soon as you click the checkmark, several different quests in this chapter will unlock. There is more than one starting point, but you should probably start from this side."
 			]
 			id: "5978BE35C75966ED"
+			min_width: 400
 			rewards: [{
 				id: "4C4AAB4D36A9D0E2"
 				item: "farmersdelight:vegetable_noodles"
@@ -41,7 +46,18 @@
 				"5A6D0D76D241A75E"
 				"578CB2BBDDEC16F1"
 			]
+			description: [
+				"Logistics Mechanisms."
+				""
+				"What an insane sequence of automations. I hope you enjoyed playing this chapter as much as I enjoyed designing it!"
+			]
 			id: "3D27BD07DCC89201"
+			rewards: [{
+				count: 16
+				id: "33A5818D27186218"
+				item: "kubejs:logistics_mechanism"
+				type: "item"
+			}]
 			size: 2.0d
 			tasks: [{
 				id: "28EA7B628245E855"
@@ -54,20 +70,37 @@
 		}
 		{
 			dependencies: ["709C290FF8F10B6A"]
+			description: [
+				"Plastic sheets are cut from the solidified plastic."
+				""
+				"This is a major milestone! You should probably check out the other side of this chapter's progression."
+			]
 			id: "6D912BAC546961CB"
-			size: 1.0d
+			rewards: [{
+				count: 16
+				id: "1260693D4273CDDE"
+				item: "pneumaticcraft:plastic"
+				type: "item"
+			}]
+			shape: "gear"
+			size: 1.5d
 			tasks: [{
 				id: "77DD8CC5F0E44F5D"
 				item: "pneumaticcraft:plastic"
 				type: "item"
 			}]
 			x: 16.0d
-			y: -8.0d
+			y: -10.0d
 		}
 		{
 			dependencies: [
 				"59EFB832B91FFBA8"
 				"5BDC36619B26699B"
+			]
+			description: [
+				"You can solidify the molten plastic in a Heat Frame or Thermopneumatic Processing Plant."
+				""
+				"Look at the recipe requirements for each and decide which one you want to automate."
 			]
 			id: "709C290FF8F10B6A"
 			tasks: [{
@@ -76,10 +109,11 @@
 				type: "item"
 			}]
 			x: 14.0d
-			y: -8.0d
+			y: -10.0d
 		}
 		{
 			dependencies: ["6426BBE70FDA2515"]
+			description: ["Molten plastic is made in Thermopneumatic Processing Plant from LPG and Coal, both of which you should now have an abundance of."]
 			id: "5BDC36619B26699B"
 			tasks: [{
 				id: "65F5029284DCB6A3"
@@ -87,24 +121,27 @@
 				type: "item"
 			}]
 			x: 12.0d
-			y: -8.0d
+			y: -10.0d
 		}
 		{
 			dependencies: ["5BDC36619B26699B"]
+			description: ["Heat frames can be used to smelt or cool items. It can be used to solidify liquid plastic (and molten silicon as well). Look at using a vortex tube to create a temperature differential."]
 			id: "59EFB832B91FFBA8"
+			optional: true
 			tasks: [{
 				id: "14CFA1E1FB8D508B"
 				item: "pneumaticcraft:heat_frame"
 				type: "item"
 			}]
 			x: 13.0d
-			y: -6.0d
+			y: -8.0d
 		}
 		{
 			dependencies: [
 				"1B2CAA9D8CAB0F09"
 				"646D6F79EF32D089"
 			]
+			description: ["LPG is the final product of oil distillation. It is a powerful fuel source, and can be refined into molten plastic."]
 			id: "6426BBE70FDA2515"
 			tasks: [{
 				id: "73B223A2FCC90E4D"
@@ -112,13 +149,14 @@
 				type: "item"
 			}]
 			x: 10.0d
-			y: -8.0d
+			y: -10.0d
 		}
 		{
 			dependencies: [
 				"7A306159E94EA54C"
 				"646D6F79EF32D089"
 			]
+			description: ["Kerosene is the second product of oil distillation. It can be further processed into gasoline."]
 			id: "230E21BE68901D81"
 			tasks: [{
 				id: "0A510FBFED03C374"
@@ -126,13 +164,14 @@
 				type: "item"
 			}]
 			x: 6.0d
-			y: -8.0d
+			y: -10.0d
 		}
 		{
 			dependencies: [
 				"2DD46A2CE3AE0160"
 				"0D59F5CAF2852DC6"
 			]
+			description: ["Diesel is the first product of oil distillation. It can be processed in a Thermopneumatic Processing Plant and turned into kerosene."]
 			id: "7A306159E94EA54C"
 			tasks: [{
 				id: "1731903B18832265"
@@ -140,13 +179,14 @@
 				type: "item"
 			}]
 			x: 4.0d
-			y: -8.0d
+			y: -10.0d
 		}
 		{
 			dependencies: [
 				"230E21BE68901D81"
 				"646D6F79EF32D089"
 			]
+			description: ["Gasoline is the third product of oil distillation. It can be processed into LPG."]
 			id: "1B2CAA9D8CAB0F09"
 			tasks: [{
 				id: "640C37C158CCEC9C"
@@ -154,10 +194,16 @@
 				type: "item"
 			}]
 			x: 8.0d
-			y: -8.0d
+			y: -10.0d
 		}
 		{
 			dependencies: ["55624517D9B6A2CD"]
+			description: [
+				"Black gold. Oil is incredibly energy dense and is a cornerstone of human industrialization."
+				""
+				""
+				"\"A century ago, petroleum - what we call oil - was just an obscure commodity; today it is almost as vital to human existence as water.\" -James Buchan"
+			]
 			id: "2DD46A2CE3AE0160"
 			tasks: [{
 				id: "1ED5D57DCEE4B5E3"
@@ -165,13 +211,11 @@
 				type: "item"
 			}]
 			x: 2.0d
-			y: -8.0d
+			y: -10.0d
 		}
 		{
-			dependencies: [
-				"7A306159E94EA54C"
-				"646D6F79EF32D089"
-			]
+			dependencies: ["7A306159E94EA54C"]
+			description: ["Combining diesel with a seed oil produces lubricant."]
 			id: "5F46DBF36BF850AF"
 			tasks: [{
 				id: "084297DC6062A152"
@@ -235,7 +279,7 @@
 			}]
 			title: "Find an Oil Deposit"
 			x: 0.0d
-			y: -6.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["51A09020CF735737"]
@@ -245,6 +289,12 @@
 				"Once you prepare these, use the pumpjack ponder to figure out how to build one."
 			]
 			id: "55624517D9B6A2CD"
+			rewards: [{
+				count: 16
+				id: "54F6F056E4619D95"
+				item: "tfmg:steel_ingot"
+				type: "item"
+			}]
 			tasks: [
 				{
 					count: 64L
@@ -297,12 +347,19 @@
 			]
 			title: "Building a Pumpjack"
 			x: 0.0d
-			y: -8.0d
+			y: -10.0d
 		}
 		{
 			dependencies: [
 				"2DD46A2CE3AE0160"
 				"2A592785D36BC8D3"
+			]
+			description: [
+				"Once you've found oil, make yourself an oil refinery. It needs to be heated to refine crude oil."
+				""
+				"This can be done by lighting a fire underneath, using a blaze burner, or using Pneumaticcraft's heat sources."
+				""
+				"The more it is heated, the faster it works."
 			]
 			id: "0D59F5CAF2852DC6"
 			rewards: [{
@@ -329,6 +386,7 @@
 		}
 		{
 			dependencies: ["5F46DBF36BF850AF"]
+			description: ["Pneumatic cylinders are required for pneumatic assembly, and you should already have all the other ingredients."]
 			id: "67DC36BAC10B5C18"
 			tasks: [{
 				id: "4A5D7A1D36F69904"
@@ -344,6 +402,7 @@
 				"71920B55BE892016"
 				"33F1AFE2ADCD04DD"
 			]
+			description: ["Parallel plate capacitor manufacturing is surprisingly easy."]
 			id: "64CB552C56CAFC95"
 			tasks: [{
 				id: "2FE4A09510F99B74"
@@ -351,12 +410,18 @@
 				type: "item"
 			}]
 			x: 38.0d
-			y: -8.0d
+			y: -10.0d
 		}
 		{
 			dependencies: [
 				"300B315823283E7E"
 				"71920B55BE892016"
+			]
+			description: [
+				"The invention of the transistor defined the 20th century, and propelled humanity into the information age. So too will it propel your factory into the Logistics Age."
+				""
+				""
+				"\"Physics of the last century gave us television, radio, microwaves, ... the Internet, lasers, &ltransistors&r, computers - all of that from physics.\" -Michio Kaku"
 			]
 			id: "7F388CDF039975F1"
 			tasks: [{
@@ -365,7 +430,7 @@
 				type: "item"
 			}]
 			x: 36.0d
-			y: -6.0d
+			y: -8.0d
 		}
 		{
 			dependencies: [
@@ -374,6 +439,8 @@
 				"1DB3C79C5873426A"
 			]
 			description: [
+				"You can craft hardened planks in a pressure chamber."
+				""
 				"Hardened planks unlock steel casings, so you can now craft compressors."
 				""
 				"Overpressuring a pipe will blow it up!"
@@ -388,8 +455,12 @@
 			y: 0.0d
 		}
 		{
-			dependencies: ["366F518195117AF6"]
+			dependencies: [
+				"366F518195117AF6"
+				"5978BE35C75966ED"
+			]
 			description: ["I hope you kept some of the Creosote Oil around."]
+			hide_dependency_lines: true
 			id: "1DB3C79C5873426A"
 			tasks: [{
 				id: "37FB004712B76CD4"
@@ -401,6 +472,7 @@
 		}
 		{
 			dependencies: ["1A316BB40EBEF754"]
+			description: ["Deploy a steel ingot onto a hardened plank to get a steel casing."]
 			id: "2A592785D36BC8D3"
 			tasks: [{
 				id: "5C8912650C5F4FB1"
@@ -413,7 +485,7 @@
 		{
 			dependencies: ["5978BE35C75966ED"]
 			description: [
-				"You'll need a pressure chamber for some of these crafting recipes."
+				"The first thing you'll need is a pressure chamber, which is now possible thanks to steel."
 				""
 				"These are the minimal requirements to build the smallest possible one. Of course, you can also use pressure chamber glass for one of the sides to see into it."
 			]
@@ -483,7 +555,10 @@
 			dependencies: [
 				"2A592785D36BC8D3"
 				"65D46C4362255225"
+				"7A306159E94EA54C"
 			]
+			dependency_requirement: "one_completed"
+			description: ["The Thermopneumatic Processing Plant is an important machine that uses both heat and pressure to process things. It will be used for a lot of different things in this chapter."]
 			id: "646D6F79EF32D089"
 			tasks: [{
 				id: "426E3CB9F0A5AF9E"
@@ -495,6 +570,7 @@
 		}
 		{
 			dependencies: ["6396406F633DD07E"]
+			description: ["Scoria can be produced using polished scoria as the catalyst underneath a mechanical extruder."]
 			id: "319DF7D661FBEEDE"
 			tasks: [{
 				id: "7209A4FED1624564"
@@ -506,6 +582,7 @@
 		}
 		{
 			dependencies: ["6396406F633DD07E"]
+			description: ["Scorchia can be produced using polished scorchia as the catalyst underneath a mechanical extruder."]
 			id: "7F6F60D91CBB9CBA"
 			tasks: [{
 				id: "2ABC39439F1C3C73"
@@ -535,10 +612,8 @@
 			y: 8.0d
 		}
 		{
-			dependencies: [
-				"20444E3074A0589D"
-				"4F5053EC6278DC86"
-			]
+			dependencies: ["20444E3074A0589D"]
+			description: ["Ancient debris has an extremely small chance of being crushed from scoria/scorchia. This seems like something that would be good to horizontally scale."]
 			id: "52506B35EBD04BEF"
 			tasks: [{
 				id: "787807626EFD2205"
@@ -554,6 +629,11 @@
 				"7F388CDF039975F1"
 				"64CB552C56CAFC95"
 			]
+			description: [
+				"Finished PCBs require you to complete the technology on the right side of this chapter's progression tree."
+				""
+				"Stamping transistors and capacitors onto the unassembled PCB will produce a finished PCB."
+			]
 			id: "60A20508A7E35CB9"
 			tasks: [{
 				id: "40F8F215229C894E"
@@ -561,10 +641,14 @@
 				type: "item"
 			}]
 			x: 26.0d
-			y: -6.0d
+			y: -8.0d
 		}
 		{
-			dependencies: ["012D0C32277CAEA4"]
+			dependencies: [
+				"012D0C32277CAEA4"
+				"59A963F58BC7A631"
+			]
+			description: ["Put the empty PCB in an etching tank with etching acid. You can heat it to speed it up, but it will consume etching acid if you do."]
 			id: "283654598316099F"
 			tasks: [{
 				id: "5384F6D47014D77A"
@@ -572,10 +656,15 @@
 				type: "item"
 			}]
 			x: 24.0d
-			y: -6.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["23AD73CE6342324E"]
+			description: [
+				"Place the empty PCB in a UV-Light Box to expose it. The longer you expose it, the higher the success rate of the next step."
+				""
+				"This process is rather slow, but you'll need the finished PCBs to unlock speed upgrades."
+			]
 			id: "012D0C32277CAEA4"
 			tasks: [{
 				id: "5AA1926C78CD6099"
@@ -590,10 +679,11 @@
 			}]
 			title: "UV-Exposed Empty PCB"
 			x: 22.0d
-			y: -6.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["097A84D100994B26"]
+			description: ["The copper circuit can then be smelted or blasted into an empty PCB."]
 			id: "23AD73CE6342324E"
 			tasks: [{
 				id: "3A949CCE4A45324E"
@@ -601,25 +691,29 @@
 				type: "item"
 			}]
 			x: 20.0d
-			y: -6.0d
+			y: -8.0d
 		}
 		{
-			dependencies: ["3F6AC2F3372B28E3"]
+			dependencies: [
+				"3F6AC2F3372B28E3"
+				"4F5053EC6278DC86"
+			]
+			description: ["The raw processor must be finished with an assembly laser."]
 			id: "5AD35DACB2A50EF1"
 			tasks: [{
 				id: "7A060253361ADDC6"
 				item: "refinedstorage:basic_processor"
 				type: "item"
 			}]
-			x: 32.0d
+			x: 30.0d
 			y: -4.0d
 		}
 		{
 			dependencies: [
 				"300B315823283E7E"
-				"4F5053EC6278DC86"
 				"68FB63D0979FE43B"
 			]
+			description: ["Raw basic processors are a requirement for both Logistics Mechanisms and Refined Storage."]
 			id: "3F6AC2F3372B28E3"
 			tasks: [{
 				id: "588A8EDBFFDCD729"
@@ -627,10 +721,14 @@
 				type: "item"
 			}]
 			x: 30.0d
-			y: -4.0d
+			y: -2.0d
 		}
 		{
-			dependencies: ["4000234461168668"]
+			dependencies: [
+				"4000234461168668"
+				"4F5053EC6278DC86"
+			]
+			description: ["The raw processor must be finished with an assembly laser."]
 			id: "5A6D0D76D241A75E"
 			tasks: [{
 				id: "582148641DC7B8FF"
@@ -643,9 +741,9 @@
 		{
 			dependencies: [
 				"300B315823283E7E"
-				"4F5053EC6278DC86"
 				"68FB63D0979FE43B"
 			]
+			description: ["Raw improved processors are a requirement of Logistics Mechanisms and Refined Storage."]
 			id: "4000234461168668"
 			tasks: [{
 				id: "4A41926815397360"
@@ -653,10 +751,15 @@
 				type: "item"
 			}]
 			x: 30.0d
-			y: -2.0d
+			y: 0.0d
 		}
 		{
 			dependencies: ["5978BE35C75966ED"]
+			description: [
+				"This quest is unlocked as soon as you start this chapter."
+				""
+				"By superheating molten quartz with coal coke, you get silicon in its molten form."
+			]
 			hide_dependency_lines: true
 			id: "5AAAFF9CC002EB70"
 			tasks: [{
@@ -672,6 +775,7 @@
 				"33C57686C54AE721"
 				"283EC864502356BE"
 			]
+			description: ["Once you have the diamond tipped sawblade, cut the silicon into wafers for electronics manufacturing."]
 			id: "300B315823283E7E"
 			tasks: [{
 				id: "72F73C393DE7A674"
@@ -683,6 +787,7 @@
 		}
 		{
 			dependencies: ["5AAAFF9CC002EB70"]
+			description: ["Strangely enough, molten silicon cannot be casted, so you'll need to find another technology in this chapter to solidify it."]
 			id: "33C57686C54AE721"
 			tasks: [{
 				id: "5361020FCDD8E836"
@@ -697,9 +802,11 @@
 				"67DC36BAC10B5C18"
 				"60A20508A7E35CB9"
 			]
+			description: ["After you've unlocked PCBs, you can make an assembly platform. They require pressure to operate, and are necessary to manufacture processors."]
 			icon: "pneumaticcraft:assembly_controller"
 			id: "4F5053EC6278DC86"
-			size: 1.0d
+			shape: "gear"
+			size: 1.5d
 			tasks: [
 				{
 					id: "2E59F8757F7A2A7D"
@@ -738,6 +845,11 @@
 		}
 		{
 			dependencies: ["33C57686C54AE721"]
+			description: [
+				"Our regular mechanical saws don't have the precision to cut silicon, so we'll need diamond tipped saw blades."
+				""
+				"They take a lot of damage from this process. If only we could automate diamonds, or make the saw blade unbreakable somehow..."
+			]
 			id: "283EC864502356BE"
 			tasks: [{
 				id: "5E3A62F33712CAF7"
@@ -756,9 +868,9 @@
 		{
 			dependencies: [
 				"300B315823283E7E"
-				"4F5053EC6278DC86"
 				"68FB63D0979FE43B"
 			]
+			description: ["While not strictly necessary for this chapter, advanced processors might be useful to automate too."]
 			id: "09D7F859EC4C42E6"
 			optional: true
 			tasks: [{
@@ -767,10 +879,13 @@
 				type: "item"
 			}]
 			x: 30.0d
-			y: 0.0d
+			y: 2.0d
 		}
 		{
-			dependencies: ["09D7F859EC4C42E6"]
+			dependencies: [
+				"09D7F859EC4C42E6"
+				"4F5053EC6278DC86"
+			]
 			id: "06A3BB4120EA86F8"
 			optional: true
 			tasks: [{
@@ -778,11 +893,12 @@
 				item: "refinedstorage:advanced_processor"
 				type: "item"
 			}]
-			x: 30.0d
+			x: 28.0d
 			y: 2.0d
 		}
 		{
 			dependencies: ["2A592785D36BC8D3"]
+			description: ["Heavy machinery casings require a heavy plate to be deployed onto a steel casing, and are required for high pressure machines and electricity generation."]
 			id: "1C323E9E442D59D9"
 			tasks: [{
 				id: "1F7AC77F8CB391F7"
@@ -797,6 +913,7 @@
 				"4C5481815C938E67"
 				"68FB63D0979FE43B"
 			]
+			description: ["Apply red alloy ingots, glue, and copper wire to the blank circuit to make a copper circuit."]
 			id: "097A84D100994B26"
 			tasks: [{
 				id: "694515FB00B52BEB"
@@ -804,10 +921,15 @@
 				type: "item"
 			}]
 			x: 18.0d
-			y: -6.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["6D912BAC546961CB"]
+			description: [
+				"Plastic is one of the primary components of printed circuit boards, or PCBs for short."
+				""
+				"Stamp plastic sheets into blank circuits."
+			]
 			id: "4C5481815C938E67"
 			tasks: [{
 				id: "5468D3ED615225EC"
@@ -815,43 +937,53 @@
 				type: "item"
 			}]
 			x: 16.0d
-			y: -6.0d
+			y: -8.0d
 		}
 		{
-			dependencies: ["52506B35EBD04BEF"]
+			dependencies: [
+				"52506B35EBD04BEF"
+				"4F5053EC6278DC86"
+			]
+			description: ["Ancient debris is so hard it cannot be processed by normal means. The only way of breaking it down is using the assembly laser."]
 			id: "4630AEF58B2E670F"
 			tasks: [{
 				id: "288AE5DEA959A3EC"
 				item: "minecraft:netherite_scrap"
 				type: "item"
 			}]
-			x: 24.0d
+			x: 26.0d
 			y: 6.0d
 		}
 		{
 			dependencies: ["4630AEF58B2E670F"]
+			description: ["Netherite ingots are produced by compacting netherite scrap and gold ingots in a superheated basin."]
 			id: "0EBC7AF9C3657B63"
 			tasks: [{
 				id: "234D3207C9B92C52"
 				item: "minecraft:netherite_ingot"
 				type: "item"
 			}]
-			x: 22.0d
+			x: 24.0d
 			y: 6.0d
 		}
 		{
 			dependencies: ["0EBC7AF9C3657B63"]
+			description: ["Nuggets from ingots?"]
 			id: "0C0173124EA22FAE"
 			tasks: [{
 				id: "62F651F2C3C70110"
 				item: "thermal:netherite_nugget"
 				type: "item"
 			}]
-			x: 20.0d
+			x: 22.0d
 			y: 6.0d
 		}
 		{
-			dependencies: ["3DAFEBA27621ED6F"]
+			dependencies: [
+				"380CA240E042FBFA"
+				"3DAFEBA27621ED6F"
+			]
+			description: ["Once you build your first generator and get it spinning, you can now use the energy to charge items."]
 			id: "4940E876A0E00E4E"
 			tasks: [{
 				id: "0CC804E2B239231B"
@@ -867,6 +999,11 @@
 				"03EE97847AAECC37"
 				"18F0E1C41C673266"
 			]
+			description: [
+				"Carbon brushes and generator coils are required in order to make a generator. You should probably take a peek at the right side of this chapter to find out how to make graphite for the carbon brushes."
+				""
+				"Ponder the carbon brushes to learn how to build a generator."
+			]
 			icon: "create_new_age:carbon_brushes"
 			id: "3DAFEBA27621ED6F"
 			rewards: [{
@@ -875,6 +1012,7 @@
 				item: "create_new_age:magnetite_block"
 				type: "item"
 			}]
+			size: 1.5d
 			tasks: [
 				{
 					id: "699B30A5DC8DADCC"
@@ -893,6 +1031,7 @@
 		}
 		{
 			dependencies: ["4940E876A0E00E4E"]
+			description: ["Overcharged iron comes from energising iron ingots."]
 			id: "33C680B20C535000"
 			tasks: [{
 				id: "22A29C9CF1FED61E"
@@ -904,6 +1043,7 @@
 		}
 		{
 			dependencies: ["33C680B20C535000"]
+			description: ["Pouring molten redstone on an overcharged iron ingot yields red alloy ingot."]
 			id: "68FB63D0979FE43B"
 			tasks: [{
 				id: "032C0DF8F169394C"
@@ -932,7 +1072,7 @@
 			}]
 			title: "Plastic Sheet"
 			x: 26.0d
-			y: -8.0d
+			y: -10.0d
 		}
 		{
 			dependencies: [
@@ -978,6 +1118,7 @@
 		}
 		{
 			dependencies: ["3DAFEBA27621ED6F"]
+			description: ["The produced FE can be stored in an accumulator."]
 			id: "04B884DDB7CAE725"
 			optional: true
 			rewards: [{
@@ -996,6 +1137,11 @@
 		}
 		{
 			dependencies: ["4C3E437A65D6858D"]
+			description: [
+				"Generator coils are made from winding copper wire around magnets."
+				""
+				"While magnetite can be made by charging iron blocks, it is also found naturally, so you will need to mine some to start up this process."
+			]
 			id: "03EE97847AAECC37"
 			tasks: [{
 				id: "005621599F365291"
@@ -1007,6 +1153,11 @@
 		}
 		{
 			dependencies: ["657C26D7A19E343B"]
+			description: [
+				"Press and roll copper into copper wires and wind it around the spool to get copper wire."
+				""
+				"In addition to being a crafting ingredient, it can be used to transfer energy between electrical connectors."
+			]
 			id: "4C3E437A65D6858D"
 			tasks: [{
 				id: "4A43BBEC146157D9"
@@ -1018,6 +1169,7 @@
 		}
 		{
 			dependencies: ["5978BE35C75966ED"]
+			description: ["Empty spools can be made from heavy plates and shafts."]
 			id: "657C26D7A19E343B"
 			tasks: [{
 				id: "4E56B3B506E8A09F"
@@ -1030,10 +1182,10 @@
 		{
 			dependencies: [
 				"68FB63D0979FE43B"
-				"5E008EB3A9882615"
+				"4C3E437A65D6858D"
 			]
+			description: ["Redstone magnets are the first upgrade from magnetite."]
 			id: "3D6DFC9B34BD25CC"
-			optional: true
 			tasks: [{
 				id: "599A0202C598EC71"
 				item: "create_new_age:redstone_magnet"
@@ -1058,10 +1210,11 @@
 			}]
 			title: "Logic Gates"
 			x: 18.0d
-			y: -10.0d
+			y: -12.0d
 		}
 		{
 			dependencies: ["20444E3074A0589D"]
+			description: ["Among the recipe yields are silver nuggets."]
 			id: "59F5A52EB3FE897E"
 			tasks: [{
 				id: "3DE31DC3B6FB9428"
@@ -1073,6 +1226,7 @@
 		}
 		{
 			dependencies: ["59F5A52EB3FE897E"]
+			description: ["Ingots from nuggets?"]
 			id: "50A4DA6D74A81F26"
 			tasks: [{
 				id: "45EA6BE55E8DC66A"
@@ -1084,6 +1238,7 @@
 		}
 		{
 			dependencies: ["50A4DA6D74A81F26"]
+			description: ["Should be self-explanatory by now :)"]
 			id: "33F1AFE2ADCD04DD"
 			tasks: [{
 				id: "59CEE6A0CFA7D542"
@@ -1091,7 +1246,7 @@
 				type: "item"
 			}]
 			x: 44.0d
-			y: -8.0d
+			y: -10.0d
 		}
 		{
 			dependencies: [
@@ -1099,8 +1254,8 @@
 				"3EC3A879FB4E6582"
 				"008FE236F8B7C4DB"
 			]
+			description: ["Layered magnets are the next upgrade tier."]
 			id: "64FE7CF44FB8BDD2"
-			optional: true
 			tasks: [{
 				id: "00342FEC6E04D7ED"
 				item: "create_new_age:layered_magnet"
@@ -1115,8 +1270,8 @@
 				"2A14AAF74FC41828"
 				"6F56D8745AD29295"
 			]
+			description: ["Fluxuated magnetite is the next upgrade tier, but making the ingredients requires a fair amount of energy."]
 			id: "4A3DDBE485C48C48"
-			optional: true
 			tasks: [{
 				id: "29168E358912C067"
 				item: "create_new_age:fluxuated_magnetite"
@@ -1131,8 +1286,8 @@
 				"6F56D8745AD29295"
 				"0C0173124EA22FAE"
 			]
+			description: ["Netherite magnets are the final upgrade tier, you need to unlock netherite before you can craft these, but they are used in crafting Logistics Mechanisms."]
 			id: "0CD114DA706471EE"
-			optional: true
 			tasks: [{
 				id: "5A6018541F80ABDA"
 				item: "create_new_age:netherite_magnet"
@@ -1143,6 +1298,11 @@
 		}
 		{
 			dependencies: ["5AAAFF9CC002EB70"]
+			description: [
+				"You'll then need to process the molten silicon at high temperature and pressure with more coal coke. The silicon carbide should vaporize at a high enough temperature, leaving behind pure graphite."
+				""
+				"It might be a challenge heating it to the required temperature though."
+			]
 			id: "4D56CF3158929A30"
 			tasks: [{
 				id: "61D200CCC883F73A"
@@ -1163,7 +1323,7 @@
 				item: "kubejs:graphite"
 				type: "item"
 			}]
-			title: "Graphite 2"
+			title: "Graphite"
 			x: 8.0d
 			y: 7.0d
 		}
@@ -1171,8 +1331,9 @@
 			dependencies: [
 				"09D7F859EC4C42E6"
 				"4D56CF3158929A30"
+				"283EC864502356BE"
 			]
-			hide: true
+			description: ["What a coincidence! Diamond dust can be manufactured by compressing graphite at high pressure."]
 			id: "12339C11E04B52F1"
 			optional: true
 			tasks: [{
@@ -1185,17 +1346,27 @@
 		}
 		{
 			dependencies: ["12339C11E04B52F1"]
+			icon: "thermal:machine_crystallizer"
 			id: "38BC369541D29C88"
-			tasks: [{
-				id: "165DEB0172E70612"
-				item: "minecraft:diamond"
-				type: "item"
-			}]
+			tasks: [
+				{
+					id: "165DEB0172E70612"
+					item: "minecraft:diamond"
+					type: "item"
+				}
+				{
+					id: "26576C1E347BE853"
+					item: "thermal:machine_crystallizer"
+					type: "item"
+				}
+			]
+			title: "Recrystallizing Diamond Dust"
 			x: 36.0d
-			y: 2.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["4940E876A0E00E4E"]
+			description: ["Overcharged gold comes from energising gold ingots."]
 			id: "008FE236F8B7C4DB"
 			tasks: [{
 				id: "347900C5ABFB8712"
@@ -1207,6 +1378,7 @@
 		}
 		{
 			dependencies: ["4940E876A0E00E4E"]
+			description: ["Overcharged diamond comes from energising diamonds."]
 			id: "6F56D8745AD29295"
 			tasks: [{
 				id: "36999D426CEC3DF3"
@@ -1217,19 +1389,8 @@
 			y: 6.0d
 		}
 		{
-			dependencies: ["4C3E437A65D6858D"]
-			id: "5E008EB3A9882615"
-			tasks: [{
-				id: "29E5E732FB2A45D3"
-				item: "create_new_age:copper_wire"
-				type: "item"
-			}]
-			title: "Copper Wire 2"
-			x: 16.0d
-			y: 0.0d
-		}
-		{
 			dependencies: ["33C680B20C535000"]
+			description: ["Overcharged iron wire is produced very similarly to copper wire, and has a higher transfer rate."]
 			id: "3EC3A879FB4E6582"
 			tasks: [{
 				id: "7C9139AC9951784D"
@@ -1241,6 +1402,7 @@
 		}
 		{
 			dependencies: ["008FE236F8B7C4DB"]
+			description: ["Overcharged gold wire is produced very similarly to copper wire, and has a higher transfer rate than overcharged iron."]
 			id: "2A14AAF74FC41828"
 			tasks: [{
 				id: "381D9628191F7BFD"
@@ -1252,6 +1414,7 @@
 		}
 		{
 			dependencies: ["6F56D8745AD29295"]
+			description: ["Overcharged diamond wire is the highest tier of wire, and has the highest transfer rate."]
 			id: "1D6E467AC4F50005"
 			tasks: [{
 				id: "03DFBF267E35BDD7"
@@ -1263,18 +1426,24 @@
 		}
 		{
 			dependencies: ["0CD114DA706471EE"]
+			description: [
+				"This quest is just here to make the dependency lines look sane."
+				""
+				"Kind of a recurring theme in this chapter."
+			]
+			icon: "create_new_age:netherite_magnet"
 			id: "578CB2BBDDEC16F1"
 			tasks: [{
-				id: "78DEABD4F6860733"
-				item: "create_new_age:netherite_magnet"
-				type: "item"
+				id: "6AF3CAE7AE948A40"
+				type: "checkmark"
 			}]
-			title: "Netherite Magnet 2"
+			title: "Netherite Magnets"
 			x: 34.0d
-			y: 2.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["2A592785D36BC8D3"]
+			description: ["With steel casings unlocked, you can now make air compressors. All of Pneumaticcraft's machines are powered by air pressure, and air is moved around by pressure tubes. The first tier of machines and tubes can be crafted with steel."]
 			id: "65D46C4362255225"
 			tasks: [
 				{
@@ -1293,8 +1462,19 @@
 		}
 		{
 			dependencies: ["65D46C4362255225"]
+			description: [
+				"Advanced pressure tubes are required to make the high pressure compressors, but they require both high pressure and temperature to manufacture."
+				""
+				"This puzzle is left as an exercise to the reader. How can you get the pressure and temperature required to make one?"
+			]
 			id: "5714BEB6ED8A6AE0"
 			optional: true
+			rewards: [{
+				count: 16
+				id: "4EDF25470046DA2F"
+				item: "pneumaticcraft:advanced_pressure_tube"
+				type: "item"
+			}]
 			tasks: [{
 				id: "0E40D1B7BFB777A1"
 				item: "pneumaticcraft:advanced_pressure_tube"
@@ -1302,6 +1482,62 @@
 			}]
 			x: 12.0d
 			y: -2.0d
+		}
+		{
+			dependencies: ["6426BBE70FDA2515"]
+			description: ["Did you notice you've been getting a variety of byproducts from oil processing?"]
+			id: "7DA3BAF3482B048B"
+			tasks: [
+				{
+					id: "2B97CC3F332BBC5A"
+					item: "thermal:sulfur"
+					type: "item"
+				}
+				{
+					id: "652A99A237B29978"
+					item: "thermal:bitumen"
+					type: "item"
+				}
+			]
+			title: "Oil Processing Byproducts"
+			x: 13.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["172EDDB8B86F5DA2"]
+			description: ["Etching acid is made with copper sulfide and water."]
+			id: "59A963F58BC7A631"
+			tasks: [{
+				id: "01CEAE60DD32D75C"
+				item: "pneumaticcraft:etching_acid_bucket"
+				type: "item"
+			}]
+			x: 24.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["7DA3BAF3482B048B"]
+			description: ["Sulfur dust can be obtained by crushing or milling sulfur."]
+			id: "172EDDB8B86F5DA2"
+			tasks: [{
+				id: "2CC29E79502381F1"
+				item: "thermal:sulfur_dust"
+				type: "item"
+			}]
+			x: 22.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["4C3E437A65D6858D"]
+			description: ["Electrical connectors can be attached to machines and generators as input/output for energy."]
+			id: "380CA240E042FBFA"
+			tasks: [{
+				id: "692B6098E643F29C"
+				item: "create_new_age:electrical_connector"
+				type: "item"
+			}]
+			x: 12.0d
+			y: 2.0d
 		}
 	]
 	title: "Chapter 5a: Logistics Mechanisms"

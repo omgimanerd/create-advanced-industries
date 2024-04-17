@@ -566,10 +566,6 @@ ServerEvents.recipes((e) => {
     'create:brass_casing',
     'minecraft:air'
   )
-  redefineRecipe('createaddition:spool', ['H', 'S', 'H'], {
-    H: 'tfmg:heavy_plate',
-    S: 'create:shaft',
-  })
 
   ////////////////////
   // Create Jetpack //
@@ -754,29 +750,6 @@ ServerEvents.recipes((e) => {
       G: 'create_new_age:generator_coil',
       D: 'create_new_age:overcharged_diamond',
     }
-  )
-  redefineRecipe(
-    'create_new_age:generator_coil',
-    [
-      'CCC', //
-      'C C', //
-      'CCC', //
-    ],
-    { C: 'create_new_age:copper_wire' }
-  )
-  e.remove({ id: 'create_new_age:shaped/carbon_brushes' })
-  create.mechanical_crafting(
-    'create_new_age:carbon_brushes',
-    [
-      'HHHHH', //
-      'HDDDH', //
-      'HDSDH', //
-      'HDDDH', //
-      'HMCMH', //
-    ],
-    Object.assign({}, createNewAgeKeys, {
-      D: 'kubejs:graphite',
-    })
   )
   // The copper circuit unlocked in chapter 5a can be stonecut into every logic
   // gate or redstone component.
