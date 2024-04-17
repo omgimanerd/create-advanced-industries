@@ -1,6 +1,8 @@
 // priority: 100
 // Recipe overhauls for Chapter 4B progression.
 
+// Rclick
+// https://discord.com/channels/303440391124942858/1228365529136496681
 // BlockEvents.rightClicked('minecraft:stone', (e) => {
 //   const player = e.getPlayer()
 //   if (!player.level.isClientSide()) {
@@ -9,36 +11,71 @@
 //   }
 // })
 
+// entity feeding
 // https://discord.com/channels/303440391124942858/1200079069316923392
 
-// Rclick
-// https://discord.com/channels/303440391124942858/1228365529136496681
+// list features
+// https://discord.com/channels/303440391124942858/1229784826559729756
 
 EntityEvents.death('minecraft:wandering_trader', (e) => {
-  // console.log(e)
-  // console.log(e.source)
+  console.log(e.source)
+})
+
+LootJS.modifiers((e) => {
+  e.enableLogging()
+
+  e.addEntityLootModifier('minecraft:wandering_trader')
+    .matchDamageSource((source) => {
+      return source.anyType('lightningBolt')
+    })
+    .addLoot(
+      'kubejs:suffering_essence',
+      LootEntry.of('create:experience_nugget').when((c) => c.randomChance(0.5))
+    )
+
+  e.addEntityLootModifier('minecraft:wandering_trader')
+    .matchDamageSource((source) => {
+      return source.anyType('create.crush')
+    })
+    .addLoot(
+      'kubejs:torment_essence',
+      LootEntry.of('create:experience_nugget').when((c) => c.randomChance(0.5))
+    )
+
+  e.addEntityLootModifier('minecraft:wandering_trader')
+    .matchDamageSource((source) => {
+      return source.anyType('create.mechanical_saw')
+    })
+    .addLoot(
+      'kubejs:mutilation_essence',
+      LootEntry.of('create:experience_nugget').when((c) => c.randomChance(0.5))
+    )
+
+  e.addEntityLootModifier('minecraft:wandering_trader')
+    .matchDamageSource((source) => {
+      return source.anyType('pnc_minigun')
+    })
+    .addLoot(
+      'kubejs:debilitation_essence',
+      LootEntry.of('create:experience_nugget').when((c) => c.randomChance(0.5))
+    )
+
+  // Suffocation damage source 'inWall'
 })
 
 EntityEvents.spawned((e) => {
   let { entity, level } = e
   if (entity.type == 'ars_nouveau:an_lightning') {
-    const surroundingBlocks = [
-      { x: -1, y: -1, z: -1 },
-      { x: -1, y: -1, z: 0 },
-      { x: -1, y: -1, z: 1 },
-      { x: 0, y: -1, z: -1 },
-      { x: 0, y: -1, z: 0 },
-      { x: 0, y: -1, z: 1 },
-      { x: 1, y: -1, z: -1 },
-      { x: 1, y: -1, z: 0 },
-      { x: 1, y: -1, z: 1 },
-    ]
-    for (const offset of surroundingBlocks) {
-      let block = entity.block.offset(offset.x, offset.y, offset.z)
-      if (block == 'minecraft:emerald_block') {
-        let trader = block.createEntity('minecraft:wandering_trader')
-        trader.spawn()
-        level.destroyBlock(block.getPos(), false)
+    for (let offsetX = -1; offsetX <= 1; offsetX += 1) {
+      for (let offsetY = -1; offsetY <= 1; offsetY += 1) {
+        for (let offsetZ = -1; offsetZ <= 1; offsetZ += 1) {
+          let block = entity.block.offset(offsetX, offsetY, offsetZ)
+          if (block == 'minecraft:emerald_block') {
+            let trader = block.createEntity('minecraft:wandering_trader')
+            trader.spawn()
+            level.destroyBlock(block.getPos(), false)
+          }
+        }
       }
     }
   }
@@ -51,19 +88,54 @@ ServerEvents.compostableRecipes((e) => {
 })
 
 ServerEvents.recipes((e) => {
-  // niter from sawdust and pot ash?
-  // https://en.wikipedia.org/wiki/Potassium_nitrate
-
   const create = defineCreateRecipes(e)
+  const pneumaticcraft = definePneumaticcraftRecipes(e)
   const redefineRecipe = redefineRecipe_(e)
+
+  // Sawdust recipe
+  create.milling(
+    ['9x thermal:sawdust', Item.of('thermal:sawdust', 3).withChance(0.5)],
+    '#minecraft:logs'
+  )
+  create.crushing('9x thermal:sawdust', '#minecraft:logs')
+  e.recipes.ars_nouveau.crush('#minecraft:logs', [
+    Item.of('thermal:sawdust', 9).withChance(1),
+    Item.of('thermal:sawdust', 9).withChance(0.5),
+  ])
+
+  // Blasting recipe for sawdust to charcoal dust.
+  e.remove({ id: 'create:milling/charcoal' })
+  e.blasting('tfmg:charcoal_dust', 'thermal:sawdust')
+
+  // Potash/potassium nitrate, or nitrate dust.
+  // TODO(remove thermal niter / remove tfmg nitrate)
+  create
+    .mixing('2x thermal:niter_dust', [
+      Fluid.water(1000),
+      '2x tfmg:charcoal_dust',
+    ])
+    .heated()
+
+  // Overhaul all gunpowder recipes to only use powders
+  e.remove({ id: 'thermal:gunpowder_4' })
+  e.remove({ id: 'tfmg:mixing/gun_powder' })
+  e.shapeless(
+    '8x minecraft:gunpowder',
+    Array(6)
+      .fill('thermal:niter_dust')
+      .concat(['thermal:sulfur_dust', 'tfmg:charcoal_dust'])
+  )
+
   // Automate emeralds
   // Strike emerald block with lightning to spawn a wandering trader
   // Kill wandering trader in 4 ways to get essences
   // Automate moss + growth => sprinkly bits
   // liquid fert can be augmented into crystal growth accelerator
   // automate food, higher feed level = more production of something
+  // tree extractor ars trees?
 
   // TODO: better diamond cutting and diamond automation in chapter 5b
+
   // amethyst?
 
   // Catalyst for first moss block
@@ -109,5 +181,5 @@ ServerEvents.recipes((e) => {
     ])
     .heated()
 
-  // Require flower azaleas for stuff here
+  // Require flower azaleas for stuff here to incentivize moss farming
 })

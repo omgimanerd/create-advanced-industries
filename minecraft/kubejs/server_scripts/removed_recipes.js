@@ -42,6 +42,7 @@ global.removedRecipes = [
   { output: /^tfmg:casting_.*/ },
   { output: /^tfmg:.*engine.*/ },
   { output: 'tfmg:exhaust' },
+  { output: 'tfmg:nitrate_dust' },
   { output: 'tfmg:sulfur_dust' },
   { output: /^thermal:machine_(?!crystallizer|pyrolyzer).*/ },
   { output: /^thermal:dynamo_.*/ },
