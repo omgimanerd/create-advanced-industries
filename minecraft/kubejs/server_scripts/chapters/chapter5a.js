@@ -6,11 +6,14 @@ ServerEvents.tags('fluid', (e) => {
   e.add('forge:lpg', 'pneumaticcraft:lpg')
 })
 
-ItemEvents.rightClicked('kubejs:diamond_sawblade', (e) => {
-  if (!e.player.level.isClientSide() && !e.player.isCreative()) {
-    e.player.attack(new $DamageSources(e.level.registryAccess()).cactus(), 1)
-    e.player.damageHeldItem()
-    e.player.tell("Ouch, that's sharp!")
+ItemEvents.rightClicked((e) => {
+  const { item, player, level } = e
+  if (item.id == 'kubejs:diamond_saw_blade') {
+    if (!player.level.isClientSide() && !player.isCreative()) {
+      player.attack(new $DamageSources(level.registryAccess()).cactus(), 1)
+      player.damageHeldItem()
+      player.tell("Ouch, that's sharp!")
+    }
   }
 })
 

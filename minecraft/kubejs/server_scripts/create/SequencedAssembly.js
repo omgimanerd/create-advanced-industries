@@ -52,7 +52,7 @@ SequencedAssembly.prototype.loops = function (loops) {
  * @returns {SequencedAssembly}
  */
 SequencedAssembly.prototype.cut = function (processingTime, repeats) {
-  if (repeats === undefined) repeats = 1
+  repeats = repeats ?? 1
   const cuttingStep = this.e_.recipes.createCutting(
     this.transitional_,
     this.transitional_
@@ -69,7 +69,7 @@ SequencedAssembly.prototype.cut = function (processingTime, repeats) {
  * @returns {SequencedAssembly}
  */
 SequencedAssembly.prototype.press = function (repeats) {
-  if (repeats === undefined) repeats = 1
+  repeats = repeats ?? 1
   this.steps_ = this.steps_.concat(
     Array(repeats).fill(
       this.e_.recipes.createPressing(this.transitional_, this.transitional_)

@@ -93,8 +93,8 @@ const redefineMechanismRecipe_ = (e) => {
 const redefineEnchantingRecipe_ = (e) => {
   // Recipes using the Ars Nouveau enchanting apparatus.
   return (output, inputs, reagent, source, keepReagentNbt) => {
-    source = source === undefined ? 0 : source
-    keepReagentNbt = keepReagentNbt === undefined ? true : false
+    source = source ?? 0
+    keepReagentNbt = !!keepReagentNbt
     const id = output.replace(/^[0-9]+x /, '')
     e.remove({ output: id })
     e.recipes.ars_nouveau
