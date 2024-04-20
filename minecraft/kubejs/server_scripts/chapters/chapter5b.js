@@ -1,5 +1,5 @@
 // priority: 100
-// Recipe overhauls for Chapter 4B progression.
+// Recipe overhauls for Chapter 5B progression.
 
 // Rclick
 // https://discord.com/channels/303440391124942858/1228365529136496681
@@ -11,84 +11,125 @@
 //   }
 // })
 
-ItemEvents.entityInteracted((e) => {
-  /**
-   * @param {Internal.FoodProperties}
-   */
-  const computeAmethystGolemFeedResults = (foodProperties) => {
-    const { nutrition, saturationModifier } = foodProperties
-    const saturation = nutrition * saturationModifier
-
-    // if (foodProperties.effects) console.log(foodProperties.effects)
-
-    // DO NOT REMOVE THE PARENTHESES. RHINO JS EVALUATES THIS DIFFERENTLY
-    const tier = 4 * (JavaMath.E ** (nutrition / 4)) - 4 // prettier-ignore
-    const output = [
-      'minecraft:small_amethyst_bud',
-      'minecraft:medium_amethyst_bud',
-      'minecraft:large_amethyst_bud',
-      'minecraft:amethyst_cluster',
-    ][clamp(Math.round(tier / 25), 0, 3)]
-    let quantity = JavaMath.E ** (saturation / 8)
-    quantity = clamp(quantity + randRange(-1, 2), 0, 10)
-    const avg = (saturation + nutrition) / 2
-    // Feed cooldown in seconds
-    const feedCooldown = 7 - (JavaMath.E ** (avg / 8)) // prettier-ignore
-    return {
-      result: Item.of(output, quantity),
-      feedCooldown: feedCooldown * 20, // Feed cooldown in ticks
+/**
+ * Computes the loot and feeding cooldown from feeding food to an amethyst
+ * golem for the amethyst farming mechanic.
+ * @param {Internal.FoodProperties} foodProperties
+ */
+const computeAmethystGolemFeedResults = (
+  /** @type {Internal.FoodProperties} */ foodProperties
+) => {
+  const { nutrition, saturationModifier, effects } = foodProperties
+  const saturation = nutrition * saturationModifier
+  let hasHarmfulEffect = false
+  let maximumNonBeneficialCooldown = 0
+  let quantityMultiplier = 1
+  // Check the food for applied effects. Negative effects set the feeding
+  // cooldown to the duration of the negative effect.
+  for (const effect of effects) {
+    let mobEffectInstance = effect.getFirst()
+    let mobEffect = mobEffectInstance.getEffect()
+    let effectApplied = randRange(0, 1) < effect.getSecond()
+    if (!effectApplied) {
+      continue
+    }
+    if (!mobEffect.isBeneficial()) {
+      hasHarmfulEffect = true
+      maximumNonBeneficialCooldown = Math.max(
+        mobEffectInstance.getDuration(),
+        maximumNonBeneficialCooldown
+      )
+    } else {
+      quantityMultiplier *= 1.25
     }
   }
 
-  /**
-   *
-   * @param {Internal.ItemEntityInteractedEventJS} e
-   */
-  const handleAmethystFeedingMechanic = (e) => {
-    const { item, hand, target, level, player } = e
-    if (hand !== 'main_hand') return
-    if (target.type !== 'ars_nouveau:amethyst_golem') return
-    if (target.name.getString() !== 'Remy') return
-    if (!item.isEdible()) return
-    const currentTime = level.getTime()
-    const nextFeedableTime = target.persistentData.nextFeedableTime ?? 0
-    if (nextFeedableTime >= currentTime) return
+  // Uses a scaled exponential to compute the loot tier, where each tier
+  // represents a returned amethyst bud.
+  //
+  // DO NOT REMOVE THE PARENTHESES. RHINO JS EVALUATES THIS DIFFERENTLY
+  const tier = 4 * (JavaMath.E ** (nutrition / 4)) - 4 // prettier-ignore
+  // TODO tier has a chance to output lower tier buds
+  const outputItem = [
+    'minecraft:small_amethyst_bud',
+    'minecraft:medium_amethyst_bud',
+    'minecraft:large_amethyst_bud',
+    'minecraft:amethyst_cluster',
+  ][clamp(Math.round(tier / 25), 0, 3)]
+  let quantity = JavaMath.E ** (saturation / 8)
+  quantity = clamp(quantity * quantityMultiplier + randRange(-1, 2), 0, 20)
+  const avg = (saturation + nutrition) / 2
+  // Feed cooldown in ticks
+  let feedCooldown = (7 - (JavaMath.E ** (avg / 8))) * 20 // prettier-ignore
+  // If a harmful effect was applied, no feeding until it wears off.
+  if (hasHarmfulEffect) {
+    feedCooldown = maximumNonBeneficialCooldown
+  }
+  return {
+    result: Item.of(outputItem, quantity),
+    hasHarmfulEffect: hasHarmfulEffect,
+    feedCooldown: feedCooldown,
+  }
+}
 
-    target.playSound('entity.item.pickup', 0.3, 1)
-    target.playSound('entity.fox.bite', 0.8, 1)
-    player.addItem(item.getCraftingRemainingItem())
-    item.count--
-    const { x, y, z } = target
+/**
+ * Called within ItemEvents.entityInteracted handler to set the behavior when
+ * an amethyst golem is fed.
+ * @param {Internal.ItemEntityInteractedEventJS} e
+ */
+const handleAmethystFeedingMechanic = (
+  /** @type {Internal.ItemEntityInteractedEventJS} */ e
+) => {
+  const { item, hand, target, level, player, server } = e
+  // Check conditions to allow for feeding
+  if (hand !== 'main_hand') return
+  if (target.type !== 'ars_nouveau:amethyst_golem') return
+  if (target.name.getString() !== 'Remy') return
+  if (!item.isEdible()) return
+  const currentTime = level.getTime()
+  const nextFeedableTime = target.persistentData.nextFeedableTime ?? 0
+  if (nextFeedableTime >= currentTime) return
+
+  const { x, y, z } = target
+  // Compute the results and effects from feeding the specific food
+  const { result, hasHarmfulEffect, feedCooldown } =
+    computeAmethystGolemFeedResults(item.getFoodProperties(null), target)
+  item.count--
+  target.playSound('entity.item.pickup', /*volume=*/ 2, /*pitch=*/ 1)
+  target.playSound(item.getEatingSound(), /*volume=*/ 2, /*pitch=*/ 1)
+  level.getBlock(x, y, z).popItem(result)
+  // If the fed item returns a bowl or other item, return it to the player
+  player.addItem(item.getCraftingRemainingItem())
+  target.persistentData.nextFeedableTime = currentTime + feedCooldown
+  // Spawn the relevant particle effects
+  if (hasHarmfulEffect) {
+    repeat(server, feedCooldown, 10, () => {
+      spawnEffectParticles(level, target, 15, 0.4, [0.1, 0.5, 0, 1])
+    })
+  } else {
     level.spawnParticles(
-      'minecraft:poof',
+      'minecraft:heart',
       true,
       x,
-      y + 0.25,
+      y,
       z,
-      0.2,
-      0.2,
-      0.2,
-      20,
-      0.1
+      0.4,
+      0.4,
+      0.4,
+      10,
+      0.01
     )
-    const { result, feedCooldown } = computeAmethystGolemFeedResults(
-      item.getFoodProperties(null)
-    )
-    level.getBlock(x, y, z).popItem(result)
-    target.persistentData.nextFeedableTime = currentTime + feedCooldown
   }
+}
 
+ItemEvents.entityInteracted((e) => {
   // Feed an amethyst golem named Remy good food and it will drop amethyst
-  // clusters.
+  // buds/clusters.
   handleAmethystFeedingMechanic(e)
 })
 
 // list features
 // https://discord.com/channels/303440391124942858/1229784826559729756
-
-EntityEvents.death('minecraft:wandering_trader', (e) => {
-  // console.log(e.source)
-})
 
 // Kill wandering trader in 4 ways to get essences
 LootJS.modifiers((e) => {
@@ -133,44 +174,42 @@ LootJS.modifiers((e) => {
   // Suffocation damage source 'inWall'
 })
 
-// Strike emerald block with lightning to spawn a wandering trader
-EntityEvents.spawned((e) => {
-  let { entity, level, server } = e
-  // Search in a small square around a lightning strike for emerald blocks
-  if (entity.type == 'ars_nouveau:an_lightning') {
-    for (const [offsetX, offsetY, offsetZ] of getOffsetList({
-      minX: -1,
-      maxX: 1,
-      minY: -1,
-      maxX: 1,
-      minZ: -1,
-      maxZ: 1,
-    })) {
-      let block = entity.block.offset(offsetX, offsetY, offsetZ)
-      if (block == 'minecraft:emerald_block') {
-        let pos = block.getPos()
-        let trader = level.createEntity('minecraft:wandering_trader')
-        // Center the wandering trader on the block
-        trader.setPos(pos.x + 0.5, pos.y, pos.z + 0.5)
-        trader.spawn()
-        trader.setInvulnerable(true)
-        trader.setGlowing(true)
-        level.destroyBlock(pos, false)
-
-        entity.persistentData.spawnedTrader = true
-
-        server.scheduleInTicks(15, () => {
-          trader.extinguish()
-          trader.setInvulnerable(false)
-          trader.setGlowing(false)
-        })
-      }
+const handleLightningSpawnEvent = (
+  /** @type {Internal.EntitySpawnedEventJS} */ e
+) => {
+  let { entity, level } = e
+  if (entity.type !== 'ars_nouveau:an_lightning') return
+  for (const [offsetX, offsetY, offsetZ] of getOffsetList({
+    minX: -1,
+    maxX: 1,
+    minY: -1,
+    maxX: 1,
+    minZ: -1,
+    maxZ: 1,
+  })) {
+    let block = entity.block.offset(offsetX, offsetY, offsetZ)
+    if (block == 'minecraft:emerald_block') {
+      let pos = block.getPos()
+      let trader = level.createEntity('minecraft:wandering_trader')
+      // Center the wandering trader on the block
+      trader.setPos(pos.x + 0.5, pos.y, pos.z + 0.5)
+      trader.spawn()
+      level.destroyBlock(pos, false)
+      // If this lightning entity spawned a trader, it should not do damage to
+      // it. Set its persistentData so we can cancel the damage event.
+      entity.persistentData.spawnedTrader = true
     }
   }
+}
+
+EntityEvents.spawned((e) => {
+  // Strike emerald block with lightning to spawn a wandering trader
+  handleLightningSpawnEvent(e)
 })
 
 /**
  * The event itself is registered in startup_scripts/forgeEventRegistration.js
+ * The handler is defined here to allow server side reload.
  * @param {Internal.EntityStruckByLightningEvent} e
  */
 global.EntityStruckByLightningEventCallback = (e) => {
