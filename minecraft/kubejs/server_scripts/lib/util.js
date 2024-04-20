@@ -6,6 +6,29 @@ const getNameFromId = (s) => {
   return parts[1]
 }
 
+const getOffsetList = (o) => {
+  const minX = o.minX ?? 0
+  const maxX = o.maxX ?? minX + 1
+  const minY = o.minY ?? 0
+  const maxY = o.maxY ?? minY + 1
+  const minZ = o.minZ ?? 0
+  const maxZ = o.maxZ ?? minZ + 1
+
+  const offsetList = []
+  for (const x = minX; x <= maxX; x++) {
+    for (const y = minY; y <= maxY; y++) {
+      for (const z = minZ; z <= maxZ; z++) {
+        offsetList.push([x, y, z])
+      }
+    }
+  }
+  return offsetList
+}
+
+const clamp = (x, a, b) => {
+  return Math.max(a, Math.min(x, b))
+}
+
 /**
  * Returns a random number in the range [low, high)
  * @param {number} low

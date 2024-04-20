@@ -1577,4 +1577,9 @@ ServerEvents.recipes((e) => {
   )
 
   // TODO add quests and overhauls for toms simple storage and storage drawers
+
+  /////////////////////
+  // Refined Storage //
+  /////////////////////
+  // TODO add refined storage overhauls
 })
