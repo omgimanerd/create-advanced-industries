@@ -1,11 +1,25 @@
 // priority: 1000
 
+/**
+ * Splits a given ID by the colon delimiter to return the item name without
+ * the mod prefix.
+ *
+ * @param {string} s
+ * @returns {string}
+ */
 const getNameFromId = (s) => {
   const parts = s.split(':')
   if (parts.length !== 2) throw new Error(`Invalid item ${s}`)
   return parts[1]
 }
 
+/**
+ * Generates a list of 3-length arrays containing all the relative coordinates
+ * within the given relative coordinate offset object.
+ *
+ * @param {object} o An object with min/max X,Y,Z relative bounds specified.
+ * @returns {(number[])[]}
+ */
 const getOffsetList = (o) => {
   const minX = o.minX ?? 0
   const maxX = o.maxX ?? minX + 1
@@ -25,6 +39,14 @@ const getOffsetList = (o) => {
   return offsetList
 }
 
+/**
+ * Clamps the argument number to the two bounds, inclusive.
+ *
+ * @param {number} x The number to clamp
+ * @param {number} a The lower bound, inclusive
+ * @param {number} b The upper bound, inclusive
+ * @returns
+ */
 const clamp = (x, a, b) => {
   return Math.max(a, Math.min(x, b))
 }
