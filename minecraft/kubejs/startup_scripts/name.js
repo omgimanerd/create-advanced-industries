@@ -1,3 +1,3 @@
 // priority: 1000
 
-Platform.setModName('KubeJS', 'Create Advanced Industries')
+Platform.setModName('kubejs', 'Create Advanced Industries')
