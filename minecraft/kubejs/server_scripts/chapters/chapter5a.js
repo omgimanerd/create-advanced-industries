@@ -1,5 +1,5 @@
 // priority: 200
-// Recipe overhauls for Chapter 4C progression.
+// Recipe overhauls for Chapter 5A progression.
 
 ServerEvents.tags('fluid', (e) => {
   e.add('forge:crude_oil', 'tfmg:crude_oil_fluid')

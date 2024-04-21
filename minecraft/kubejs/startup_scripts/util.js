@@ -3,11 +3,11 @@
 global.cai = 'createadvancedindustries'
 
 const stripPrefix = (s) => {
-  return s.replace(/^#{0,1}[a-z]+:/, '')
+  return s.replace(/^#{0,1}[a-z_]+:/, '')
 }
 
 const checkPrefix = (s) => {
-  if (s.search(/^#{0,1}[#a-z]+:/) < 0) {
+  if (s.search(/^#{0,1}[a-z_]+:/) < 0) {
     throw new Error(`${s} does not have a mod prefix.`)
   }
 }

@@ -119,4 +119,11 @@ StartupEvents.registry('item', (e) => {
     .glow(true)
     .displayName('Mutilation Essence')
     .tooltip('Magical Essences created through merciless mutilation.')
+
+  // Custom amethyst golem charm to spawn a special golem named Remy.
+  e.create('kubejs:remy_spawner')
+    .texture(getResourceLocation('ars_nouveau:amethyst_golem_charm'))
+    .glow(true)
+    .displayName('Remy Spawner')
+    .tooltip(Text.green('Summons a epicure named Remy!'))
 })

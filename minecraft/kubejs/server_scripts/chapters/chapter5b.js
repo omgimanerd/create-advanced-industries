@@ -1,16 +1,6 @@
 // priority: 100
 // Recipe overhauls for Chapter 5B progression.
 
-// Rclick
-// https://discord.com/channels/303440391124942858/1228365529136496681
-// BlockEvents.rightClicked('minecraft:stone', (e) => {
-//   const player = e.getPlayer()
-//   if (!player.level.isClientSide()) {
-//     console.log(player)
-//     console.log(e.getBlock())
-//   }
-// })
-
 /**
  * Computes the loot and feeding cooldown from feeding food to an amethyst
  * golem for the amethyst farming mechanic.
@@ -81,23 +71,35 @@ const handleAmethystFeedingMechanic = (
   /** @type {Internal.ItemEntityInteractedEventJS} */ e
 ) => {
   const { item, hand, target, level, player, server } = e
-  // Check conditions to allow for feeding
   if (hand !== 'main_hand') return
   if (target.type !== 'ars_nouveau:amethyst_golem') return
-  if (target.name.getString() !== 'Remy') return
+  if (target.name.getString() !== 'Remy the Epicure') return
   if (!item.isEdible()) return
+
+  const { x, y, z } = target
+  // A manually named amethyst golem will be smited
+  if (!target.persistentData.legitimatelySpawned) {
+    let lightning = level
+      .getBlock(x, y, z)
+      .createEntity('minecraft:lightning_bolt')
+    lightning.spawn()
+    target.kill()
+    player.tell('Thou shalt not worship false idols!')
+    item.count--
+    return
+  }
+
   const currentTime = level.getTime()
   const nextFeedableTime = target.persistentData.nextFeedableTime ?? 0
   if (nextFeedableTime >= currentTime) return
 
-  const { x, y, z } = target
   // Compute the results and effects from feeding the specific food
   const { result, hasHarmfulEffect, feedCooldown } =
     computeAmethystGolemFeedResults(item.getFoodProperties(null), target)
   item.count--
   target.playSound('entity.item.pickup', /*volume=*/ 2, /*pitch=*/ 1)
   target.playSound(item.getEatingSound(), /*volume=*/ 2, /*pitch=*/ 1)
-  level.getBlock(x, y, z).popItem(result)
+  level.getBlock(x, y + 1, z).popItem(result)
   // If the fed item returns a bowl or other item, return it to the player
   player.addItem(item.getCraftingRemainingItem())
   target.persistentData.nextFeedableTime = currentTime + feedCooldown
@@ -122,10 +124,38 @@ const handleAmethystFeedingMechanic = (
   }
 }
 
+/**
+ * Called within ItemEvents.rightClicked to handle spawning Remy the Epicure.
+ * @param {Internal.ItemEntityInteractedEventJS} e
+ */
+const handleRemySpawning = (
+  /** @type {Internal.ItemEntityInteractedEventJS} */ e
+) => {
+  const { item, hand, target } = e
+  if (hand !== 'main_hand') return
+  if (item !== 'kubejs:remy_spawner') return
+  if (target.block === null) return
+
+  const { x, y, z } = target.block
+  const golem = target.block.createEntity('ars_nouveau:amethyst_golem')
+  // Center Remy on the block or he will fall through the block
+  golem.setPos(x + 0.5, y + 1, z + 0.5)
+  golem.setCustomName('Remy the Epicure')
+  golem.setCustomNameVisible(true)
+  golem.persistentData.legitimatelySpawned = true
+  golem.spawn()
+  item.count--
+}
+
 ItemEvents.entityInteracted((e) => {
   // Feed an amethyst golem named Remy good food and it will drop amethyst
   // buds/clusters.
   handleAmethystFeedingMechanic(e)
+})
+
+ItemEvents.rightClicked((e) => {
+  // Remy the Epicure can only be spawned from a special amethyst charm.
+  handleRemySpawning(e)
 })
 
 // list features
