@@ -2,6 +2,17 @@
 // Recipe overhauls for Chapter 3B progression.
 
 ServerEvents.compostableRecipes((e) => {
+  // Remove quark compressed recipe crates from composting
+  e.remove('quark:apple_crate')
+  e.remove('quark:beetroot_crate')
+  e.remove('quark:carrot_crate')
+  e.remove('quark:potato_crate')
+  e.remove('quark:cactus_block')
+  e.remove('quark:cocoa_beans_sack')
+  e.remove('quark:nether_wart_sack')
+  e.remove('quark:berry_sack')
+  e.remove('quark:glowberry_sack')
+
   // Add compostable magical stuff
   e.remove('ars_nouveau:sourceberry_bush')
   e.add('ars_nouveau:sourceberry_bush', 1)
