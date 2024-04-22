@@ -32,7 +32,7 @@ StartupEvents.registry('item', (e) => {
     })
     .color(0xaffffa)
     .displayName('Unbreakable Diamond Saw Blade')
-    .tooltip(Text.green("An unbreakable diamond saw blade. It's quite sharp"))
+    .tooltip(Text.green("An unbreakable diamond saw blade. It's quite sharp."))
     .fireResistant(true)
     .glow(true)
     .maxDamage(0)

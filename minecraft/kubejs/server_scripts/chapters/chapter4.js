@@ -221,6 +221,13 @@ ServerEvents.recipes((e) => {
     }
   )
 
+  // Unbreakable screwdriver, only easily accessible with Chapter 5b automation
+  e.recipes.ars_nouveau.enchanting_apparatus(
+    Array(8).fill(enchantedBook('minecraft:unbreaking', 8)),
+    'tfmg:screwdriver',
+    'kubejs:unbreakable_screwdriver'
+  )
+
   // Steel mechanism overhaul
   e.remove({ id: 'tfmg:sequenced_assembly/steel_mechanism' })
   create

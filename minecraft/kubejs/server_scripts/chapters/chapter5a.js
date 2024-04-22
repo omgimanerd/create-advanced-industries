@@ -460,7 +460,6 @@ ServerEvents.recipes((e) => {
     .outputs('thermal:diamond_dust')
 
   e.remove({ id: 'pneumaticcraft:pressure_chamber/coal_to_diamond' })
-  // TODO add a thermal recipe to recrystallize diamond dust
   // TODO thermal helper classes
   e.custom({
     type: 'thermal:crystallizer',
@@ -497,6 +496,11 @@ ServerEvents.recipes((e) => {
       D: 'thermal:diamond_dust',
       S: 'thermal:saw_blade',
     }
+  )
+  e.recipes.ars_nouveau.enchanting_apparatus(
+    Array(8).fill(enchantedBook('minecraft:unbreaking', 8)),
+    'kubejs:diamond_saw_blade',
+    'kubejs:unbreakable_diamond_saw_blade'
   )
 
   // Silicon wafer cutting

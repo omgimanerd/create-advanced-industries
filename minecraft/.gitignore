@@ -16,6 +16,7 @@ shaderpacks/
 texturepacks/
 
 .qmenu_opened.marker
+hotbar.nbt
 options.txt
 patchouli_data.json
 rhino.local.properties
