@@ -161,3 +161,28 @@ const setIfValid = (o, key, value) => {
   o[key] = value
   return true
 }
+
+/**
+ * @param {Internal.Potion} potionId
+ * @param {number} quantity
+ * @return {Internal.FluidStackJS}
+ */
+const potionFluid = (
+  /** @type {Internal.Potion} */ potionId,
+  /** @type {number} */ quantity
+) => {
+  return Fluid.of('create:potion', quantity).withNBT({ Potion: potionId })
+}
+
+/**
+ * @param {Internal.Enchantment_} enchantmentId
+ * @param {number} level
+ * @return {Internal.ItemStack}
+ */
+const enchantedBook = (enchantmentId, level) => {
+  return Item.of('minecraft:enchanted_book')
+    .withNBT({
+      StoredEnchantments: [{ id: enchantmentId, lvl: level }],
+    })
+    .weakNBT()
+}
