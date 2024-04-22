@@ -5,4 +5,9 @@ StartupEvents.registry('fluid', (e) => {
     .thinTexture(0xb062be)
     .bucketColor(0xb062be)
     .displayName('Crystal Growth Accelerator')
+
+  e.create('kubejs:blaze_milk')
+    .thickTexture(0xbe4d25)
+    .bucketColor(0xbe4d25)
+    .displayName('Blaze Milk')
 })
