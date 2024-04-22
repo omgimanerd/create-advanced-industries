@@ -1,6 +1,25 @@
 // priority: 100
 // Recipe overhauls for Chapter 5B progression.
 
+ServerEvents.tags('item', (e) => {
+  // Tag all enchantable foods for each reference later.
+  for (const food of Utils.getRegistryIds('item')) {
+    if (food === 'artifacts:eternal_steak') continue
+    if (Item.of(food).isEdible()) {
+      e.add('kubejs:enchantable_foods', food)
+    }
+  }
+})
+
+ItemEvents.foodEaten('#kubejs:enchantable_foods', (e) => {
+  const { item, player } = e
+  if (!item.enchanted) return
+  for (const [enchant, level] of Object.entries(item.enchantments)) {
+    // TODO add more boost if enchanted?
+    console.log(enchant, level)
+  }
+})
+
 /**
  * Computes the loot and feeding cooldown from feeding food to an amethyst
  * golem for the amethyst farming mechanic.
@@ -122,25 +141,6 @@ const handleAmethystFeedingMechanic = (
     )
   }
 }
-
-ServerEvents.tags('item', (e) => {
-  // Tag all enchantable foods for each reference later.
-  for (const food of Utils.getRegistryIds('item')) {
-    if (food === 'artifacts:eternal_steak') continue
-    if (Item.of(food).isEdible()) {
-      e.add('kubejs:enchantable_foods', food)
-    }
-  }
-})
-
-ItemEvents.foodEaten('#kubejs:enchantable_foods', (e) => {
-  const { item, player } = e
-  if (!item.enchanted) return
-  for (const [enchant, level] of Object.entries(item.enchantments)) {
-    // TODO add more boost if enchanted?
-    console.log(enchant, level)
-  }
-})
 
 /**
  * Called within ItemEvents.entityInteracted handler to set the behavior when
@@ -307,6 +307,9 @@ EntityEvents.spawned((e) => {
  */
 global.EntityStruckByLightningEventCallback = (e) => {
   const { entity, lightning } = e
+
+  // If a lightning struck an emerald block and spawned a wandering trader, it
+  // should not damage the newly spawned trader.
   if (
     entity.type === 'minecraft:wandering_trader' &&
     lightning.persistentData.spawnedTrader
@@ -367,8 +370,6 @@ ServerEvents.recipes((e) => {
   // Automate emeralds
 
   // Automate moss + growth => sprinkly bits
-  // liquid fert can be augmented into crystal growth accelerator
-  // tree extractor ars trees?
   //
   // Axes: Crystal refinement, enchanting, essence, potion, food, apotheosis,
 
@@ -469,8 +470,7 @@ ServerEvents.recipes((e) => {
     Fluid.of('sliceanddice:fertilizer', 1000),
   ])
 
-  // Glowstone and redstone automation from potion brewing is required
-
+  // Glowstone and redstone automation from potion brewing is encouraged
   // Gem dust automation
   create.filling('apotheosis:gem_dust', [
     'create:cinder_flour',
@@ -479,6 +479,67 @@ ServerEvents.recipes((e) => {
 
   // Require flower azaleas for stuff here to incentivize moss farming
 
-  // Liquid fertilizer requires some other stuff to become crystal growth
-  // accelerator.
+  // Remy spawner charm
+  e.recipes.ars_nouveau.enchanting_apparatus(
+    [
+      'farmersdelight:salmon_roll',
+      'farmersdelight:fried_rice',
+      'farmersdelight:squid_ink_pasta',
+      'farmersdelight:apple_pie_slice',
+      'farmersdelight:melon_juice',
+      'farmersdelight:hamburger',
+      'farmersdelight:roast_chicken',
+      'farmersdelight:stuffed_potato',
+    ],
+    'ars_nouveau:amethyst_golem_charm',
+    'kubejs:remy_spawner'
+  )
+
+  // Archwood Tree Sap Extraction
+  e.recipes.thermal.tree_extractor(
+    Fluid.of('kubejs:flourishing_archwood_sap', 50),
+    'ars_nouveau:green_archwood_log',
+    'ars_nouveau:green_archwood_leaves'
+  )
+  e.recipes.thermal.tree_extractor(
+    Fluid.of('kubejs:vexing_archwood_sap', 50),
+    'ars_nouveau:purple_archwood_log',
+    'ars_nouveau:purple_archwood_leaves'
+  )
+  e.recipes.thermal.tree_extractor(
+    Fluid.of('kubejs:blazing_archwood_sap', 50),
+    'ars_nouveau:red_archwood_log',
+    'ars_nouveau:red_archwood_leaves'
+  )
+  e.recipes.thermal.tree_extractor(
+    Fluid.of('kubejs:cascading_archwood_sap', 50),
+    'ars_nouveau:blue_archwood_log',
+    'ars_nouveau:blue_archwood_leaves'
+  )
+  e.recipes.thermal.tree_extractor(
+    Fluid.of('kubejs:flashing_archwood_sap', 50),
+    'ars_elemental:yellow_archwood_log',
+    'ars_elemental:yellow_archwood_leaves'
+  )
+
+  // Refinery for sap to source + byproduct essence
+
+  // Custom fertilizers for boosting the Arboreal Extractor
+  e.recipes.thermal.tree_extractor_boost(
+    'farmersdelight:organic_compost',
+    /*output=*/ 8,
+    /*cycles=*/ 16
+  )
+  // make the fertilizers depend on each other?
+
+  // Overhaul tree extractor boost to use ch5b advanced stuff
+  e.forEachRecipe({ type: 'thermal:tree_extractor_boost' }, (r) => {
+    const json = JSON.parse(r.json)
+    console.log(json)
+  })
+  // wtf is this?
+  e.forEachRecipe({ type: 'jumbofurnace:jumbo_smelting' }, (r) => {
+    const json = JSON.parse(r.json)
+    console.log(json)
+  })
 })
