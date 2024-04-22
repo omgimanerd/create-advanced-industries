@@ -454,33 +454,13 @@ ServerEvents.recipes((e) => {
     .outputs('kubejs:graphite')
 
   // Under high pressure, graphite turns into diamond dust
+  e.remove({ id: 'pneumaticcraft:pressure_chamber/coal_to_diamond' })
   pneumaticcraft
     .PressureChamber('9x kubejs:graphite')
     .pressure(4.75)
     .outputs('thermal:diamond_dust')
 
-  e.remove({ id: 'pneumaticcraft:pressure_chamber/coal_to_diamond' })
-  // TODO thermal helper classes
-  e.custom({
-    type: 'thermal:crystallizer',
-    ingredients: [
-      {
-        fluid: 'minecraft:water',
-        amount: 2000,
-      },
-      {
-        tag: 'forge:dusts/diamond',
-      },
-    ],
-    result: [
-      {
-        item: 'minecraft:diamond',
-      },
-    ],
-    energy: 10000,
-  })
-
-  // Diamond sawblades to cut silicon into wafers
+  // Diamond saw blades to cut silicon into wafers
   create.crushing(
     Item.of('thermal:diamond_dust').withChance(0.8),
     'minecraft:diamond'
@@ -497,11 +477,22 @@ ServerEvents.recipes((e) => {
       S: 'thermal:saw_blade',
     }
   )
+
+  // The unbreakable diamond saw blade is not easily accessible until chapter 5b
   e.recipes.ars_nouveau.enchanting_apparatus(
     Array(8).fill(enchantedBook('minecraft:unbreaking', 8)),
     'kubejs:diamond_saw_blade',
     'kubejs:unbreakable_diamond_saw_blade'
   )
+
+  // Diamond dust can be recrystallized into diamonds
+  e.remove({ id: 'thermal:machines/crystallizer/crystallizer_diamond' })
+  e.recipes.thermal
+    .crystallizer('minecraft:diamond', [
+      Fluid.water(2000),
+      'thermal:diamond_dust',
+    ])
+    .energy(10000)
 
   // Silicon wafer cutting
   create
