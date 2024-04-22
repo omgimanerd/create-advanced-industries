@@ -75,7 +75,6 @@ const handleAmethystFeedingMechanic = (
   if (target.type !== 'ars_nouveau:amethyst_golem') return
   if (target.name.getString() !== 'Remy the Epicure') return
   if (!item.isEdible()) return
-
   const { x, y, z } = target
   // A manually named amethyst golem will be smited
   if (!target.persistentData.legitimatelySpawned) {
@@ -88,7 +87,6 @@ const handleAmethystFeedingMechanic = (
     item.count--
     return
   }
-
   const currentTime = level.getTime()
   const nextFeedableTime = target.persistentData.nextFeedableTime ?? 0
   if (nextFeedableTime >= currentTime) return
@@ -97,12 +95,12 @@ const handleAmethystFeedingMechanic = (
   const { result, hasHarmfulEffect, feedCooldown } =
     computeAmethystGolemFeedResults(item.getFoodProperties(null), target)
   item.count--
+  target.persistentData.nextFeedableTime = currentTime + feedCooldown
   target.playSound('entity.item.pickup', /*volume=*/ 2, /*pitch=*/ 1)
   target.playSound(item.getEatingSound(), /*volume=*/ 2, /*pitch=*/ 1)
-  level.getBlock(x, y + 1, z).popItem(result)
+  target.block.popItemFromFace(result, 'up')
   // If the fed item returns a bowl or other item, return it to the player
   player.addItem(item.getCraftingRemainingItem())
-  target.persistentData.nextFeedableTime = currentTime + feedCooldown
   // Spawn the relevant particle effects
   if (hasHarmfulEffect) {
     repeat(server, feedCooldown, 10, () => {
@@ -123,6 +121,75 @@ const handleAmethystFeedingMechanic = (
     )
   }
 }
+
+ServerEvents.tags('item', (e) => {
+  // Tag all enchantable foods for each reference later.
+  for (const food of Utils.getRegistryIds('item')) {
+    if (food === 'artifacts:eternal_steak') continue
+    if (Item.of(food).isEdible()) {
+      e.add('kubejs:enchantable_foods', food)
+    }
+  }
+})
+
+ItemEvents.foodEaten('#kubejs:enchantable_foods', (e) => {
+  const { item, player } = e
+  if (!item.enchanted) return
+  for (const [enchant, level] of Object.entries(item.enchantments)) {
+    // TODO add more boost if enchanted?
+    console.log(enchant, level)
+  }
+})
+
+/**
+ * Called within ItemEvents.entityInteracted handler to set the behavior when
+ * a blaze is right clicked.
+ * @param {Internal.ItemEntityInteractedEventJS} e
+ */
+const handleBlazeMilkingMechanic = (
+  /** @type {Internal.ItemEntityInteractedEventJS} */ e
+) => {
+  const {
+    /** @type {Internal.InteractionHand} */ hand,
+    /** @type {Internal.ItemStack} */ item,
+    /** @type {Internal.Player} */ player,
+    /** @type {Internal.Entity} */ target,
+  } = e
+  if (hand !== 'main_hand') return
+  if (target.type !== 'minecraft:blaze') return
+  if (item.id !== 'minecraft:bucket' && item.id !== 'minecraft:lava_bucket') {
+    return
+  }
+
+  const remainingMilks = target.persistentData.remainingMilks ?? 0
+
+  // Feeding lava to the blaze.
+  // TODO enchantable lava?
+  if (item.id === 'minecraft:lava_bucket') {
+    item.count--
+    player.addItem(item.getCraftingRemainingItem())
+    target.persistentData.remainingMilks = 3
+  }
+
+  if (item.id === 'minecraft:bucket') {
+    if (remainingMilks === 0) {
+      target.playSound('entity.villager.ambient', 2, 2)
+      return
+    }
+    item.count--
+    player.addItem('kubejs:blaze_milk_bucket')
+    target.persistentData.remainingMilks--
+  }
+}
+
+ItemEvents.entityInteracted((e) => {
+  // Feed an amethyst golem named Remy good food and it will drop amethyst
+  // buds/clusters.
+  handleAmethystFeedingMechanic(e)
+
+  // Feed a blaze buckets of lava and it can be milked.
+  handleBlazeMilkingMechanic(e)
+})
 
 /**
  * Called within ItemEvents.rightClicked to handle spawning Remy the Epicure.
@@ -146,12 +213,6 @@ const handleRemySpawning = (
   golem.spawn()
   item.count--
 }
-
-ItemEvents.entityInteracted((e) => {
-  // Feed an amethyst golem named Remy good food and it will drop amethyst
-  // buds/clusters.
-  handleAmethystFeedingMechanic(e)
-})
 
 ItemEvents.rightClicked((e) => {
   // Remy the Epicure can only be spawned from a special amethyst charm.
@@ -264,11 +325,11 @@ ServerEvents.recipes((e) => {
   const redefineRecipe = redefineRecipe_(e)
 
   // Sawdust recipe
-  create.milling(
+  create.crushing(
     ['9x thermal:sawdust', Item.of('thermal:sawdust', 3).withChance(0.5)],
     '#minecraft:logs'
   )
-  create.crushing('9x thermal:sawdust', '#minecraft:logs')
+  create.milling('9x thermal:sawdust', '#minecraft:logs')
   e.recipes.ars_nouveau.crush('#minecraft:logs', [
     Item.of('thermal:sawdust', 9).withChance(1),
     Item.of('thermal:sawdust', 9).withChance(0.5),
@@ -279,7 +340,6 @@ ServerEvents.recipes((e) => {
   e.blasting('tfmg:charcoal_dust', 'thermal:sawdust')
 
   // Potash/potassium nitrate, or nitrate dust.
-  // TODO(remove thermal niter / remove tfmg nitrate)
   create
     .mixing('2x thermal:niter_dust', [
       Fluid.water(1000),
@@ -287,15 +347,20 @@ ServerEvents.recipes((e) => {
     ])
     .heated()
 
+  // Potion filling way to make sulfur
+  create.filling('thermal:sulfur_dust', [
+    'create:cinder_flour',
+    potionFluid('minecraft:swiftness', 25),
+  ])
+
   // Overhaul all gunpowder recipes to only use powders
   e.remove({ id: 'thermal:gunpowder_4' })
   e.remove({ id: 'tfmg:mixing/gun_powder' })
-  e.shapeless(
-    '8x minecraft:gunpowder',
-    Array(6)
-      .fill('thermal:niter_dust')
-      .concat(['thermal:sulfur_dust', 'tfmg:charcoal_dust'])
-  )
+  e.shapeless('8x minecraft:gunpowder', [
+    '6x thermal:niter_dust',
+    'thermal:sulfur_dust',
+    'tfmg:charcoal_dust',
+  ])
 
   // Automate emeralds
 
@@ -307,7 +372,47 @@ ServerEvents.recipes((e) => {
 
   // TODO: better diamond cutting and diamond automation in chapter 5b
 
-  // amethyst?
+  // Liquid experience standardization, it must be melted into liquid form.
+  e.remove({ id: 'compressedcreativity:mixing/memory_essence' })
+  e.remove({
+    id: 'create_enchantment_industry:disenchanting/experience_nugget',
+  })
+  e.remove({
+    id: 'create_enchantment_industry:disenchanting/experience_block',
+  })
+  create
+    .mixing(
+      Fluid.of('create_enchantment_industry:experience', 3),
+      'create:experience_nugget'
+    )
+    .superheated()
+  create
+    .mixing(
+      Fluid.of('create_enchantment_industry:experience', 27),
+      'create:experience_block'
+    )
+    .superheated()
+  // Cognitium is a 1:40 conversion
+  create.mixing(
+    [
+      Fluid.of('create_enchantment_industry:experience', 12),
+      'create_enchantment_industry:experience_rotor',
+    ],
+    [
+      Fluid.of('experienceobelisk:cognitium', 480),
+      'create_enchantment_industry:experience_rotor',
+    ]
+  )
+  create.mixing(
+    [
+      Fluid.of('experienceobelisk:cognitium', 480),
+      'create_enchantment_industry:experience_rotor',
+    ],
+    [
+      Fluid.of('create_enchantment_industry:experience', 12),
+      'create_enchantment_industry:experience_rotor',
+    ]
+  )
 
   // Catalyst for first moss block
   create
@@ -333,13 +438,14 @@ ServerEvents.recipes((e) => {
     'farmersdelight:organic_compost',
     [
       'CBC', //
-      'BDB', //
+      'NDN', //
       'CBC',
     ],
     {
       C: 'thermal:compost',
       B: 'minecraft:bone_meal',
       D: 'minecraft:dirt',
+      N: 'thermal:niter_dust',
     }
   )
 
@@ -351,6 +457,23 @@ ServerEvents.recipes((e) => {
       Fluid.water(1000),
     ])
     .heated()
+
+  // Crystal growth accelerator
+  create.mixing(Fluid.of('kubejs:crystal_growth_accelerator', 1000), [
+    'apotheosis:gem_dust',
+    'minecraft:redstone',
+    'minecraft:glowstone_dust',
+    'minecraft:gunpowder',
+    Fluid.of('sliceanddice:fertilizer', 1000),
+  ])
+
+  // Glowstone and redstone automation from potion brewing is required
+
+  // Gem dust automation
+  create.filling('apotheosis:gem_dust', [
+    'create:cinder_flour',
+    Fluid.of('create_enchantment_industry:experience', 9),
+  ])
 
   // Require flower azaleas for stuff here to incentivize moss farming
 
