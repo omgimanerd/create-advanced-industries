@@ -88,7 +88,8 @@ const handleAmethystFeedingMechanic = (
     return
   }
   const currentTime = level.getTime()
-  const nextFeedableTime = target.persistentData.nextFeedableTime ?? 0
+  let nextFeedableTime = target.persistentData.nextFeedableTime
+  nextFeedableTime = nextFeedableTime === undefined ? 0 : nextFeedableTime
   if (nextFeedableTime >= currentTime) return
 
   // Compute the results and effects from feeding the specific food
@@ -161,7 +162,8 @@ const handleBlazeMilkingMechanic = (
     return
   }
 
-  const remainingMilks = target.persistentData.remainingMilks ?? 0
+  let remainingMilks = target.persistentData.remainingMilks
+  remainingMilks = remainingMilks === undefined ? 0 : remainingMilks
 
   // Feeding lava to the blaze.
   // TODO enchantable lava?

@@ -67,5 +67,5 @@ ServerEvents.recipes((e) => {
     .deploy('#minecraft:wooden_slabs')
     .deploy('create:shaft')
     .deploy('create:cogwheel')
-    .outputs(e, 'kubejs:andesite_mechanism')
+    .outputs('kubejs:andesite_mechanism')
 })

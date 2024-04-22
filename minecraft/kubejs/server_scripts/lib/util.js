@@ -21,12 +21,12 @@ const getNameFromId = (s) => {
  * @returns {(number[])[]}
  */
 const getOffsetList = (o) => {
-  const minX = o.minX ?? 0
-  const maxX = o.maxX ?? minX + 1
-  const minY = o.minY ?? 0
-  const maxY = o.maxY ?? minY + 1
-  const minZ = o.minZ ?? 0
-  const maxZ = o.maxZ ?? minZ + 1
+  const minX = o.minX === undefined ? 0 : minX
+  const maxX = o.maxX === undefined ? minX + 1 : maxX
+  const minY = o.minY === undefined ? 0 : minY
+  const maxY = o.maxY === undefined ? minY + 1 : maxY
+  const minZ = o.minZ === undefined ? 0 : minZ
+  const maxZ = o.maxZ === undefined ? minZ + 1 : maxZ
 
   const offsetList = []
   for (const x = minX; x <= maxX; x++) {
@@ -138,7 +138,7 @@ const redefineMechanismRecipe_ = (e) => {
 const redefineEnchantingRecipe_ = (e) => {
   // Recipes using the Ars Nouveau enchanting apparatus.
   return (output, inputs, reagent, source, keepReagentNbt) => {
-    source = source ?? 0
+    source = source === undefined ? 0 : source
     keepReagentNbt = !!keepReagentNbt
     const id = output.replace(/^[0-9]+x /, '')
     e.remove({ output: id })

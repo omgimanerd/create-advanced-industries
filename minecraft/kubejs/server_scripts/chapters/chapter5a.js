@@ -132,6 +132,7 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'pneumaticcraft:pneumatic_cylinder' })
   create
     .SequencedAssembly('pneumaticcraft:cannon_barrel')
+    .transitional('kubejs:intermediate_pneumatic_cylinder')
     .deploy('tfmg:rebar')
     .fill('pneumaticcraft:lubricant', 250)
     .press()

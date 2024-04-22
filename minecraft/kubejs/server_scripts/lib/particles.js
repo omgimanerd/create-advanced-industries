@@ -11,9 +11,9 @@ const spawnEffectParticles = (
   /** @type {number} */ spread,
   /** @type {number[]} */ color
 ) => {
-  count = count ?? 1
-  spread = spread ?? 0.25
-  color = color ?? [0, 0, 0, 1]
+  count = count === undefined ? 1 : count
+  spread = spread === undefined ? 0.25 : spread
+  color = color === undefined ? [0, 0, 0, 1] : color
   if (color.length !== 4) throw new Error(`Invalid color array: ${color}`)
   const [r, g, b, e] = color
   if (!location.x || !location.y || !location.z) {
