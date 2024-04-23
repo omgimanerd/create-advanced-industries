@@ -318,6 +318,29 @@ global.EntityStruckByLightningEventCallback = (e) => {
   }
 }
 
+/**
+ * The handler itself is registered in
+ * startup_scripts/spoutHandlerRegistration.js
+ * It is defined here to allow for server side reload.
+ *
+ * @type {Internal.SpecialSpoutHandlerEvent$SpoutHandler}
+ * @returns {number}
+ */
+global.NetherWartSpoutHandlerCallback = (block, fluid, simulate) => {
+  // We do not need to check the block since the handler was registered on
+  // the block.
+  if (block.getProperties().getOrDefault('age', 3) == 3) return 0
+  if (fluid.id !== 'sliceanddice:fertilizer') return 0
+  if (fluid.amount < 250) return 0
+  if (!simulate) {
+    const level = block.getLevel()
+    for (let i = 0; i < 20; ++i) {
+      block.blockState.randomTick(level, block.pos, level.random)
+    }
+  }
+  return 250
+}
+
 ServerEvents.compostableRecipes((e) => {
   // Add compostable magical stuff
   e.remove('minecraft:flowering_azalea')
