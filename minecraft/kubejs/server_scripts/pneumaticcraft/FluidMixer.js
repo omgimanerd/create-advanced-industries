@@ -72,9 +72,6 @@ FluidMixer.prototype.outputs = function (outputs) {
     throw new Error(`Too many outputs: ${outputs}`)
   }
   for (const output of outputs) {
-    if (typeof output !== 'string') {
-      throw new Error(`Invalid output ${output}`)
-    }
     // If the output matched an item, parse it into the expected JSON format.
     let g = Parser.parseItemOutput(output)
     if (setIfValid(base, 'item_output', g)) {

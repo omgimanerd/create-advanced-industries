@@ -52,7 +52,7 @@ ThermoPlant.prototype.pressure = function (pressure) {
  *   17 bar vortex tube = 1990C => 1887C TPG
  *
  * @param {number} min_temp The min temperature in C
- * @param {number} max_temp The min temperature in C
+ * @param {number} max_temp The max temperature in C
  * @returns {ThermoPlant}
  */
 ThermoPlant.prototype.temperature = function (min_temp, max_temp) {
