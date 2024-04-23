@@ -5,7 +5,7 @@
 	#.
 	#.
 	#Whether allowing Deployers to perform Cutting Board Recipes
-	enableCuttingBoardDeploying = true
+	enableCuttingBoardDeploying = false
 	#.
 	#List of Block Entities that can be boosted when placed on Blaze Stove
 	boostingCookerList = ["farmersdelight:cooking_pot", "farmersdelight:skillet"]
