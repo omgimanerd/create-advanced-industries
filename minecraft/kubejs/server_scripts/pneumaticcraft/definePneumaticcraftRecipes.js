@@ -60,6 +60,11 @@ const definePneumaticcraftRecipes = (e) => {
      */
     PressureChamber: getConstructorWrapper(e, PressureChamber),
     /**
+     * @param {string} input
+     * @returns {Refinery}
+     */
+    Refinery: getConstructorWrapper(e, Refinery),
+    /**
      * @param {string|string[]} inputs
      * @returns {ThermoPlant}
      */

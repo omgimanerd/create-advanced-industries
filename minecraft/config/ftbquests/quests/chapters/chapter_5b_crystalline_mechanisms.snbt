@@ -29,7 +29,699 @@
 			}]
 			title: "Complete: Crystalline Mechanisms"
 			x: 0.0d
+			y: 12.0d
+		}
+		{
+			id: "2ECDD71CCB078106"
+			tasks: [{
+				id: "12A6D94311003ED6"
+				item: "kubejs:agony_essence"
+				type: "item"
+			}]
+			x: -2.5d
+			y: 7.5d
+		}
+		{
+			id: "6EF0C5120D698B83"
+			tasks: [{
+				id: "0397B7BAD63E19ED"
+				item: "kubejs:suffering_essence"
+				type: "item"
+			}]
+			x: -1.0d
+			y: 7.5d
+		}
+		{
+			id: "33FE12881BA0EEB5"
+			tasks: [{
+				id: "27114B36A742B585"
+				item: "kubejs:torment_essence"
+				type: "item"
+			}]
+			x: 0.5d
+			y: 7.5d
+		}
+		{
+			id: "0B95E137EF66A193"
+			tasks: [{
+				id: "302B784D67574D39"
+				item: "kubejs:debilitation_essence"
+				type: "item"
+			}]
+			x: 2.5d
+			y: 7.5d
+		}
+		{
+			id: "2AB4E2EBC67EF311"
+			tasks: [{
+				id: "13723831D648444F"
+				item: "kubejs:mutilation_essence"
+				type: "item"
+			}]
+			x: 4.5d
+			y: 7.5d
+		}
+		{
+			id: "4AFDE4261E9269E5"
+			tasks: [{
+				id: "3C0019032285C28E"
+				item: "apotheosis:gem_dust"
+				type: "item"
+			}]
+			x: -4.0d
+			y: 16.0d
+		}
+		{
+			id: "23DF9D3DE3EE6E7B"
+			tasks: [{
+				id: "577C0A2248A15F4C"
+				item: "minecraft:glowstone_dust"
+				type: "item"
+			}]
+			x: -2.0d
+			y: 16.0d
+		}
+		{
+			id: "5249CFE6916AD3A9"
+			tasks: [{
+				id: "4DE0F59F0AEE14B8"
+				item: "minecraft:redstone"
+				type: "item"
+			}]
+			x: 0.0d
+			y: 16.0d
+		}
+		{
+			id: "68E4F4BB308C95B6"
+			tasks: [{
+				id: "7B926BF052A49BBD"
+				item: "minecraft:gunpowder"
+				type: "item"
+			}]
+			x: 2.0d
+			y: 16.0d
+		}
+		{
+			id: "07FC434D4D5FD6C0"
+			tasks: [{
+				id: "62CB9997CF5AB515"
+				item: "thermal:niter_dust"
+				type: "item"
+			}]
+			x: 2.5d
+			y: 18.5d
+		}
+		{
+			id: "064C0A824A1B1E34"
+			tasks: [{
+				id: "7631DE2205D3487B"
+				item: "tfmg:charcoal_dust"
+				type: "item"
+			}]
+			x: 4.0d
+			y: 18.5d
+		}
+		{
+			id: "0B369F01B8698B1B"
+			tasks: [{
+				id: "33B1420823E54952"
+				item: "thermal:sulfur_dust"
+				type: "item"
+			}]
+			x: 5.5d
+			y: 18.5d
+		}
+		{
+			id: "6BAABF1B3A537837"
+			tasks: [{
+				id: "330838F36690F3E8"
+				item: "create:cinder_flour"
+				type: "item"
+			}]
+			x: 0.0d
+			y: 21.5d
+		}
+		{
+			id: "05ED3720FD924A0F"
+			tasks: [{
+				id: "7A3AC89687310E46"
+				item: "minecraft:amethyst_shard"
+				type: "item"
+			}]
+			x: -7.5d
+			y: 11.5d
+		}
+		{
+			id: "1DB5721E215862FC"
+			tasks: [{
+				id: "6933BF4A0D829CBA"
+				item: "thermal:sawdust"
+				type: "item"
+			}]
+			x: 4.0d
+			y: 21.5d
+		}
+		{
+			id: "18466D2CC4D667FD"
+			tasks: [{
+				id: "0D83AD2E7B181867"
+				item: "kubejs:crystal_growth_accelerator_bucket"
+				type: "item"
+			}]
+			x: -8.0d
+			y: 13.5d
+		}
+		{
+			id: "5EB25E223B212790"
+			tasks: [{
+				id: "24635C6B21D4F657"
+				item: "sliceanddice:fertilizer_bucket"
+				type: "item"
+			}]
+			x: -8.5d
+			y: 15.5d
+		}
+		{
+			id: "780A813B9F1530FF"
+			tasks: [{
+				id: "32D2484915F68D84"
+				item: "farmersdelight:organic_compost"
+				type: "item"
+			}]
+			x: -9.5d
+			y: 17.5d
+		}
+		{
+			id: "786AE6C112C83EBF"
+			tasks: [{
+				id: "640F3F634EE11D1B"
+				item: "minecraft:emerald_block"
+				type: "item"
+			}]
+			x: 0.0d
+			y: 4.0d
+		}
+		{
+			id: "362F5A94CAA3AAAD"
+			tasks: [{
+				id: "2F2A9B2775E52ABB"
+				item: "ars_nouveau:glyph_lightning"
+				type: "item"
+			}]
+			x: 1.5d
+			y: 4.0d
+		}
+		{
+			id: "084B381A4BBB7BFE"
+			tasks: [{
+				id: "066F7C4F8565E697"
+				item: "minecraft:heart_of_the_sea"
+				type: "item"
+			}]
+			x: 4.5d
+			y: 2.5d
+		}
+		{
+			id: "0FB26F7E9A99AE65"
+			tasks: [
+				{
+					id: "2F0F9E8348170C2C"
+					item: {
+						Count: 1b
+						id: "create:copper_diving_helmet"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "340F15EAFE375A4D"
+					item: {
+						Count: 1b
+						id: "create:copper_backtank"
+						tag: {
+							Air: 900
+						}
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 3.5d
+		}
+		{
+			id: "7F34979862617334"
+			tasks: [{
+				id: "16CE71BE95E226C1"
+				item: "minecraft:nether_wart"
+				type: "item"
+			}]
+			x: 12.0d
+			y: 12.5d
+		}
+		{
+			id: "57FF7014A4F93984"
+			tasks: [{
+				id: "23AAB96589CCCB8E"
+				item: "sliceanddice:sprinkler"
+				type: "item"
+			}]
+			x: -10.0d
+			y: 14.0d
+		}
+		{
+			id: "2FA97E14E8E844C3"
+			tasks: [{
+				id: "2D483F1E267AA49A"
+				item: {
+					Count: 1b
+					id: "minecraft:potion"
+					tag: {
+						Potion: "minecraft:awkward"
+					}
+				}
+				type: "item"
+			}]
+			x: 11.0d
+			y: 14.5d
+		}
+		{
+			id: "18999D25870E7B6F"
+			tasks: [{
+				id: "1B9F53793D1FE48D"
+				item: "minecraft:blaze_powder"
+				type: "item"
+			}]
+			x: 9.0d
+			y: 12.5d
+		}
+		{
+			id: "40CC93D0C0DA8A23"
+			tasks: [{
+				id: "1B8BA68B69221571"
+				item: "kubejs:blaze_milk_bucket"
+				type: "item"
+			}]
+			x: 10.0d
+			y: 11.0d
+		}
+		{
+			id: "19B720F8CDD8A9DA"
+			tasks: [{
+				id: "273CD4D2B4323E5C"
+				item: "ars_nouveau:amethyst_golem_charm"
+				type: "item"
+			}]
+			x: -8.5d
+			y: 7.5d
+		}
+		{
+			id: "1091855210EBEE88"
+			tasks: [{
+				id: "4CBB683BFACDAC6B"
+				item: "kubejs:remy_spawner"
+				type: "item"
+			}]
+			x: -7.5d
+			y: 8.5d
+		}
+		{
+			id: "2E0B1FEBCBCD0D66"
+			tasks: [
+				{
+					id: "05A4470A5B4F26D7"
+					item: "ars_nouveau:ritual_brazier"
+					type: "item"
+				}
+				{
+					id: "7B765A7A06C7ECC2"
+					item: "ars_nouveau:ritual_containment"
+					type: "item"
+				}
+				{
+					id: "0C0826AA9C7D0974"
+					item: "ars_nouveau:mob_jar"
+					type: "item"
+				}
+			]
+			x: 8.5d
+			y: 8.5d
+		}
+		{
+			icon: {
+				Count: 1b
+				id: "ars_nouveau:mob_jar"
+				tag: {
+					BlockEntityTag: {
+						Items: [ ]
+						entityTag: {
+							AbsorptionAmount: 0.0f
+							Air: 300s
+							ArmorDropChances: [
+								0.085f
+								0.085f
+								0.085f
+								0.085f
+							]
+							ArmorItems: [
+								{ }
+								{ }
+								{ }
+								{ }
+							]
+							Attributes: [
+								{
+									Base: 48.0d
+									Modifiers: [{
+										Amount: 0.02319718060900776d
+										Name: "Random spawn bonus"
+										Operation: 1
+										UUID: [I;
+											-883620283
+											-805813040
+											-2035370606
+											-184828730
+										]
+									}]
+									Name: "minecraft:generic.follow_range"
+								}
+								{
+									Base: 0.08d
+									Name: "forge:entity_gravity"
+								}
+								{
+									Base: 0.23000000417232513d
+									Name: "minecraft:generic.movement_speed"
+								}
+								{
+									Base: 0.0d
+									Name: "forge:step_height_addition"
+								}
+							]
+							BalmData: { }
+							Brain: {
+								memories: { }
+							}
+							CanPickUpLoot: 0b
+							CanUpdate: 1b
+							DeathTime: 0s
+							FallDistance: 0.0f
+							FallFlying: 0b
+							Fire: -1s
+							ForgeCaps: {
+								"curios:inventory": {
+									Curios: [ ]
+								}
+								"pneumaticcraft:hacking": { }
+							}
+							ForgeData: { }
+							HandDropChances: [
+								0.085f
+								0.085f
+							]
+							HandItems: [
+								{ }
+								{ }
+							]
+							Health: 20.0f
+							HurtByTimestamp: 0
+							HurtTime: 0s
+							Invulnerable: 0b
+							LeftHanded: 0b
+							Motion: [
+								0.0d
+								-0.0784000015258789d
+								0.0d
+							]
+							OnGround: 1b
+							PersistenceRequired: 0b
+							PortalCooldown: 0
+							Pos: [
+								43.5d
+								94.5d
+								-184.5d
+							]
+							Rotation: [
+								63.056717f
+								-1.5648358f
+							]
+							UUID: [I;
+								144567319
+								-1799271683
+								-1394936231
+								207780974
+							]
+							"forge:spawn_type": "SPAWN_EGG"
+							id: "minecraft:blaze"
+						}
+						id: "ars_nouveau:mob_jar"
+					}
+					entityId: "minecraft:blaze"
+				}
+			}
+			id: "7430C94A25FE9972"
+			tasks: [{
+				icon: {
+					Count: 1b
+					id: "ars_nouveau:mob_jar"
+					tag: {
+						BlockEntityTag: {
+							Items: [ ]
+							entityTag: {
+								AbsorptionAmount: 0.0f
+								Air: 300s
+								ArmorDropChances: [
+									0.085f
+									0.085f
+									0.085f
+									0.085f
+								]
+								ArmorItems: [
+									{ }
+									{ }
+									{ }
+									{ }
+								]
+								Attributes: [
+									{
+										Base: 48.0d
+										Modifiers: [{
+											Amount: 0.02319718060900776d
+											Name: "Random spawn bonus"
+											Operation: 1
+											UUID: [I;
+												-883620283
+												-805813040
+												-2035370606
+												-184828730
+											]
+										}]
+										Name: "minecraft:generic.follow_range"
+									}
+									{
+										Base: 0.08d
+										Name: "forge:entity_gravity"
+									}
+									{
+										Base: 0.23000000417232513d
+										Name: "minecraft:generic.movement_speed"
+									}
+									{
+										Base: 0.0d
+										Name: "forge:step_height_addition"
+									}
+								]
+								BalmData: { }
+								Brain: {
+									memories: { }
+								}
+								CanPickUpLoot: 0b
+								CanUpdate: 1b
+								DeathTime: 0s
+								FallDistance: 0.0f
+								FallFlying: 0b
+								Fire: -1s
+								ForgeCaps: {
+									"curios:inventory": {
+										Curios: [ ]
+									}
+									"pneumaticcraft:hacking": { }
+								}
+								ForgeData: { }
+								HandDropChances: [
+									0.085f
+									0.085f
+								]
+								HandItems: [
+									{ }
+									{ }
+								]
+								Health: 20.0f
+								HurtByTimestamp: 0
+								HurtTime: 0s
+								Invulnerable: 0b
+								LeftHanded: 0b
+								Motion: [
+									0.0d
+									-0.0784000015258789d
+									0.0d
+								]
+								OnGround: 1b
+								PersistenceRequired: 0b
+								PortalCooldown: 0
+								Pos: [
+									43.5d
+									94.5d
+									-184.5d
+								]
+								Rotation: [
+									63.056717f
+									-1.5648358f
+								]
+								UUID: [I;
+									144567319
+									-1799271683
+									-1394936231
+									207780974
+								]
+								"forge:spawn_type": "SPAWN_EGG"
+								id: "minecraft:blaze"
+							}
+							id: "ars_nouveau:mob_jar"
+						}
+						entityId: "minecraft:blaze"
+					}
+				}
+				id: "1ED95C2EA840D07B"
+				observe_type: 5
+				timer: 0L
+				to_observe: "minecraft:blaze"
+				type: "observation"
+			}]
+			title: "Catch a Blaze"
+			x: 8.0d
 			y: 10.0d
+		}
+		{
+			id: "4365A194C7485351"
+			tasks: [{
+				id: "673CBC95D143E8DB"
+				item: "ars_nouveau:blue_archwood_sapling"
+				type: "item"
+			}]
+			x: 18.5d
+			y: 19.5d
+		}
+		{
+			id: "54D861CC78AEBA7B"
+			tasks: [{
+				id: "6D0BD8C66EC775C3"
+				item: "ars_nouveau:red_archwood_sapling"
+				type: "item"
+			}]
+			x: 18.0d
+			y: 20.5d
+		}
+		{
+			id: "2B03408A0CBF83B4"
+			tasks: [{
+				id: "052096780A2F6FF1"
+				item: "ars_nouveau:green_archwood_sapling"
+				type: "item"
+			}]
+			x: 17.5d
+			y: 21.5d
+		}
+		{
+			id: "3D6B271C1246653C"
+			tasks: [{
+				id: "362FAA979E7714F5"
+				item: "ars_elemental:yellow_archwood_sapling"
+				type: "item"
+			}]
+			x: 17.0d
+			y: 22.5d
+		}
+		{
+			id: "07A1E7CF68BEF269"
+			tasks: [{
+				id: "512001816A1798A0"
+				item: "kubejs:flourishing_archwood_sap_bucket"
+				type: "item"
+			}]
+			x: 15.0d
+			y: 20.5d
+		}
+		{
+			id: "01FC22A5FB8B77CF"
+			tasks: [{
+				id: "26F093A4F35501E8"
+				item: "kubejs:blazing_archwood_sap_bucket"
+				type: "item"
+			}]
+			x: 15.5d
+			y: 19.5d
+		}
+		{
+			id: "0A050DEE89467675"
+			tasks: [{
+				id: "1B745B176B586DD5"
+				item: "kubejs:cascading_archwood_sap_bucket"
+				type: "item"
+			}]
+			x: 16.5d
+			y: 18.5d
+		}
+		{
+			id: "4237CC27AD794E7A"
+			tasks: [{
+				id: "674DD9736E81691A"
+				item: "kubejs:flashing_archwood_sap_bucket"
+				type: "item"
+			}]
+			x: 14.5d
+			y: 22.0d
+		}
+		{
+			id: "7B17FAFB35621BDA"
+			tasks: [{
+				id: "6793689DAF7C94FC"
+				item: "ars_nouveau:water_essence"
+				type: "item"
+			}]
+			x: 14.5d
+			y: 17.5d
+		}
+		{
+			id: "1C53E10A9C091F3A"
+			tasks: [{
+				id: "188C439CC6653B13"
+				item: "ars_nouveau:fire_essence"
+				type: "item"
+			}]
+			x: 13.5d
+			y: 18.5d
+		}
+		{
+			id: "78D959DB65034A0A"
+			tasks: [{
+				id: "08EC8272088DFFC8"
+				item: "ars_nouveau:earth_essence"
+				type: "item"
+			}]
+			x: 13.0d
+			y: 20.0d
+		}
+		{
+			id: "277C2053360DBCEC"
+			tasks: [{
+				id: "7F327FF4462956FD"
+				item: "ars_nouveau:air_essence"
+				type: "item"
+			}]
+			x: 12.5d
+			y: 21.0d
 		}
 	]
 	title: "Chapter 5b: Crystalline Mechanisms"

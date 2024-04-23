@@ -522,7 +522,133 @@ ServerEvents.recipes((e) => {
     'ars_elemental:yellow_archwood_leaves'
   )
 
-  // Refinery for sap to source + byproduct essence
+  // Archwood Tree Sap can be processed into essences
+  // Create mixing recipes have slight loss compared to Pneumaticcraft
+  create
+    .mixing(
+      [
+        Fluid.of('kubejs:liquid_earth_essence', 20),
+        Fluid.of('starbunclemania:source_fluid', 10),
+        Fluid.of('create_enchantment_industry:experience', 5),
+      ],
+      Fluid.of('kubejs:flourishing_archwood_sap', 50)
+    )
+    .heated()
+  pneumaticcraft
+    .Refinery('50mb kubejs:flourishing_archwood_sap')
+    .minTemp(100)
+    .outputs([
+      '25mb kubejs:liquid_earth_essence',
+      '15mb starbunclemania:source_fluid',
+      '10mb create_enchantment_industry:experience',
+    ])
+  create
+    .mixing(
+      [
+        Fluid.of('starbunclemania:source_fluid', 25),
+        Fluid.of('thermal:latex', 5),
+        Fluid.of('kubejs:crystal_growth_accelerator', 5),
+      ],
+      Fluid.of('kubejs:vexing_archwood_sap', 50)
+    )
+    .heated()
+  pneumaticcraft
+    .Refinery('50mb kubejs:vexing_archwood_sap')
+    .minTemp(100)
+    .outputs([
+      '30mb starbunclemania:source_fluid',
+      '10mb thermal:latex',
+      '10mb kubejs:crystal_growth_accelerator',
+    ])
+  create
+    .mixing(
+      [
+        Fluid.of('kubejs:liquid_fire_essence', 20),
+        Fluid.of('starbunclemania:source_fluid', 10),
+        Fluid.of('tfmg:crude_oil_fluid', 5),
+      ],
+      Fluid.of('kubejs:blazing_archwood_sap', 50)
+    )
+    .superheated()
+  pneumaticcraft
+    .Refinery('50mb kubejs:blazing_archwood_sap')
+    .minTemp(300)
+    .outputs([
+      '25mb kubejs:liquid_fire_essence',
+      '15mb starbunclemania:source_fluid',
+      '10mb tfmg:crude_oil_fluid',
+    ])
+  create
+    .mixing(
+      [
+        Fluid.of('kubejs:liquid_water_essence', 25),
+        Fluid.of('starbunclemania:source_fluid', 10),
+        Fluid.of('thermal:latex', 5),
+      ],
+      Fluid.of('kubejs:cascading_archwood_sap', 50)
+    )
+    .heated()
+  pneumaticcraft
+    .Refinery('50mb kubejs:cascading_archwood_sap')
+    .minTemp(100)
+    .outputs([
+      '25mb kubejs:liquid_water_essence',
+      '15mb starbunclemania:source_fluid',
+      '10mb thermal:latex',
+    ])
+  create
+    .mixing(
+      [
+        Fluid.of('kubejs:liquid_air_essence', 20),
+        Fluid.of('starbunclemania:source_fluid', 10),
+        Fluid.of('createaddition:bioethanol', 5),
+      ],
+      Fluid.of('kubejs:flashing_archwood_sap', 50)
+    )
+    .heated()
+  pneumaticcraft
+    .Refinery('50mb kubejs:flashing_archwood_sap')
+    .minTemp(100)
+    .outputs([
+      '25mb kubejs:liquid_air_essence',
+      '15mb starbunclemania:source_fluid',
+      '10mb createaddition:bioethanol',
+    ])
+
+  // Solidifying the liquid essence
+  // Create recipes have a slight loss compared to Pneumaticcraft
+  create.compacting(
+    'ars_nouveau:earth_essence',
+    Fluid.of('kubejs:liquid_earth_essence', 250)
+  )
+  pneumaticcraft
+    .HeatFrame('1000mb kubejs:liquid_earth_essence')
+    .maxTemp(0)
+    .outputs('10x ars_nouveau:earth_essence')
+  create.compacting(
+    'ars_nouveau:fire_essence',
+    Fluid.of('kubejs:liquid_fire_essence', 250)
+  )
+  pneumaticcraft
+    .HeatFrame('1000mb kubejs:liquid_fire_essence')
+    .maxTemp(100)
+    .outputs('10x ars_nouveau:fire_essence')
+  create.compacting(
+    'ars_nouveau:water_essence',
+    Fluid.of('kubejs:liquid_water_essence', 250)
+  )
+  pneumaticcraft
+    .HeatFrame('1000mb kubejs:liquid_water_essence')
+    .maxTemp(-50)
+    .outputs('10x ars_nouveau:water_essence')
+  create.compacting(
+    'ars_nouveau:air_essence',
+    Fluid.of('kubejs:liquid_air_essence', 250)
+  )
+  pneumaticcraft
+    .HeatFrame('1000mb kubejs:liquid_air_essence')
+    .maxTemp(50)
+    .outputs('10x ars_nouveau:air_essence')
 
   // Custom fertilizers for boosting the Arboreal Extractor
   e.recipes.thermal.tree_extractor_boost(
@@ -537,9 +663,6 @@ ServerEvents.recipes((e) => {
     const json = JSON.parse(r.json)
     console.log(json)
   })
-  // wtf is this?
-  e.forEachRecipe({ type: 'jumbofurnace:jumbo_smelting' }, (r) => {
-    const json = JSON.parse(r.json)
-    console.log(json)
-  })
+
+  // TODO farmers delight seq assembly overhaul, remove cck
 })

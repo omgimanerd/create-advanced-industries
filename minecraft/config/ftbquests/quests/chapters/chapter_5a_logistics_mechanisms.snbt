@@ -361,6 +361,7 @@
 				""
 				"The more it is heated, the faster it works."
 			]
+			icon: "pneumaticcraft:refinery"
 			id: "0D59F5CAF2852DC6"
 			rewards: [{
 				count: 3
@@ -886,6 +887,7 @@
 				"09D7F859EC4C42E6"
 				"4F5053EC6278DC86"
 			]
+			description: ["The raw processor must be finished with an assembly laser."]
 			id: "06A3BB4120EA86F8"
 			optional: true
 			tasks: [{
@@ -1003,6 +1005,9 @@
 				"Carbon brushes and generator coils are required in order to make a generator. You should probably take a peek at the right side of this chapter to find out how to make graphite for the carbon brushes."
 				""
 				"Ponder the carbon brushes to learn how to build a generator."
+				""
+				""
+				"\"Electricity is really just organized lightning.\" -George Carlin"
 			]
 			icon: "create_new_age:carbon_brushes"
 			id: "3DAFEBA27621ED6F"
@@ -1444,6 +1449,7 @@
 		{
 			dependencies: ["2A592785D36BC8D3"]
 			description: ["With steel casings unlocked, you can now make air compressors. All of Pneumaticcraft's machines are powered by air pressure, and air is moved around by pressure tubes. The first tier of machines and tubes can be crafted with steel."]
+			icon: "pneumaticcraft:air_compressor"
 			id: "65D46C4362255225"
 			tasks: [
 				{
@@ -1486,6 +1492,7 @@
 		{
 			dependencies: ["6426BBE70FDA2515"]
 			description: ["Did you notice you've been getting a variety of byproducts from oil processing?"]
+			icon: "thermal:sulfur"
 			id: "7DA3BAF3482B048B"
 			tasks: [
 				{
