@@ -4,7 +4,7 @@
 	ignore_rotation = false
 
 [basin_cooking]
-	enabled = true
+	enabled = false
 	replace_fluid_containers = true
 
 [sprinkler]
