@@ -112,26 +112,7 @@
 			y: -2.5d
 		}
 		{
-			dependencies: ["58368DE8C5423BBE"]
-			description: ["Make an arboreal extractor to automatically extract resin from jungle or rubberwood trees."]
-			icon: "thermal:latex_bucket"
-			id: "0B61887101FB42F6"
-			rewards: [{
-				count: 16
-				id: "6D1610871D3A3AA2"
-				item: "thermal:rubberwood_sapling"
-				type: "item"
-			}]
-			tasks: [{
-				id: "0B1920AB97CEA147"
-				item: "thermal:device_tree_extractor"
-				type: "item"
-			}]
-			x: 0.0d
-			y: 2.5d
-		}
-		{
-			dependencies: ["0B61887101FB42F6"]
+			dependencies: ["30D8DBD8701E60E8"]
 			description: ["Compacting the latex in a heated basin yields rubber."]
 			id: "75355ADF3D7F976A"
 			tasks: [{
@@ -139,7 +120,7 @@
 				item: "thermal:rubber"
 				type: "item"
 			}]
-			x: 2.5d
+			x: 5.0d
 			y: 2.5d
 		}
 		{
@@ -151,7 +132,7 @@
 				item: "thermal:cured_rubber"
 				type: "item"
 			}]
-			x: 5.0d
+			x: 7.5d
 			y: 2.5d
 		}
 		{
@@ -183,7 +164,7 @@
 			}]
 			title: "Complete: Copper Mechanisms"
 			x: 7.5d
-			y: 2.5d
+			y: 0.0d
 		}
 		{
 			dependencies: ["75355ADF3D7F976A"]
@@ -196,8 +177,40 @@
 				item: "thermal:cured_rubber_block"
 				type: "item"
 			}]
-			x: 2.5d
+			x: 5.0d
 			y: 0.0d
+		}
+		{
+			dependencies: ["58368DE8C5423BBE"]
+			description: ["Time for an upgrade to your tree farm. You can harvest the leaves from the grown trees with mechanical harvesters."]
+			icon: "create:mechanical_harvester"
+			id: "5022E4CA576CB54A"
+			tasks: [{
+				id: "69C0EC7C8A8E5A52"
+				item: {
+					Count: 1b
+					id: "ftbfiltersystem:smart_filter"
+					tag: {
+						"ftbfiltersystem:filter": "item_tag(minecraft:leaves)"
+					}
+				}
+				type: "item"
+			}]
+			title: "Leaves"
+			x: 0.0d
+			y: 2.5d
+		}
+		{
+			dependencies: ["5022E4CA576CB54A"]
+			description: ["Compacting the leaves in a basin with some water will yield latex."]
+			id: "30D8DBD8701E60E8"
+			tasks: [{
+				id: "0C65D99B36681523"
+				item: "thermal:latex_bucket"
+				type: "item"
+			}]
+			x: 2.5d
+			y: 2.5d
 		}
 	]
 	title: "Chapter 2a: Copper Mechanisms"

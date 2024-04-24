@@ -70,7 +70,7 @@ ServerEvents.recipes((e) => {
     'thermal:device_tree_extractor',
     [
       'PGP', //
-      'MBM', //
+      'NBN', //
       'PCP', //
     ],
     Object.assign({}, thermalDeviceKeys, {
