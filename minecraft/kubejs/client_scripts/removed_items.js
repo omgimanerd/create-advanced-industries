@@ -33,6 +33,8 @@ JEIEvents.hideItems((e) => {
   // e.hide('kubejs:incomplete_source_mechanism')
 })
 
+// TODO: group all automated brewing recipes into custom category
+
 JEIEvents.removeCategories((e) => {
   e.remove('thermal:bottler')
   e.remove('thermal:furnace')
