@@ -1,4 +1,5 @@
-// priority: 800
+// priority: 500
+// Recipe registrations for automated potion brewing with Create
 
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)

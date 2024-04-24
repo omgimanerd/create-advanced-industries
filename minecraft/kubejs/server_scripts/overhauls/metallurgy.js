@@ -1,4 +1,5 @@
-// priority: 100
+// priority: 500
+// Recipe registrations for metal casting and melting
 
 global.metallurgy = global.metallurgy === undefined ? {} : global.metallurgy
 

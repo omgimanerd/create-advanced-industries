@@ -1,4 +1,10 @@
-// priority: 100
+// priority: 500
+// Recipe overhauls for food related items
+
+ServerEvents.tags('item', (e) => {
+  // Allow Create wheat flour to be used in PneumaticCraft sourdough.
+  e.add('forge:dusts/flour', 'create:wheat_flour')
+})
 
 ServerEvents.recipes((e) => {
   // Consistency overhauls for foods in this modpack, used mostly in chapter 5b

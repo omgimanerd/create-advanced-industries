@@ -1,4 +1,4 @@
-// priority: 800
+// priority: 500
 
 // Only matchers that should be fully removed from crafting and JEI should go
 // here. JEI.hideItems uses the matcher in key: output
