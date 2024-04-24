@@ -36,6 +36,7 @@ JEIEvents.hideItems((e) => {
 JEIEvents.removeCategories((e) => {
   e.remove('thermal:bottler')
   e.remove('thermal:furnace')
+  e.remove('thermal:brewer')
   e.remove('jumbofurnace:jumbo_smelting')
   e.remove('jumbofurnace:jumbo_furnace_upgrade')
 
