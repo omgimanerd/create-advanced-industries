@@ -115,6 +115,7 @@ const handleAmethystFeedingMechanic = (
   const { result, hasHarmfulEffect, feedCooldown } =
     computeAmethystGolemFeedResults(item.getFoodProperties(null), target)
   item.count--
+  // TODO feed memory mechanic
   target.persistentData.nextFeedableTime = currentTime + feedCooldown
   target.playSound('entity.item.pickup', /*volume=*/ 2, /*pitch=*/ 1)
   target.playSound(item.getEatingSound(), /*volume=*/ 2, /*pitch=*/ 1)
@@ -392,13 +393,14 @@ ServerEvents.recipes((e) => {
 
   // Automate emeralds
 
-  // Automate moss + growth => sprinkly bits
+  // Automate moss + growth for mushrooms
   //
   // Axes: Crystal refinement, enchanting, essence, potion, food, apotheosis,
 
   // TODO: better diamond cutting and diamond automation in chapter 5b
 
   // Liquid experience standardization, it must be melted into liquid form.
+  e.remove({ id: 'compressedcreativity:thermo_plant/essence_to_nugget' })
   e.remove({ id: 'compressedcreativity:mixing/memory_essence' })
   e.remove({
     id: 'create_enchantment_industry:disenchanting/experience_nugget',
@@ -447,6 +449,19 @@ ServerEvents.recipes((e) => {
       'createaddition:biomass',
     ])
     .id('kubejs:moss_from_biomass_application')
+
+  // Seeding mushroom blocks from moss
+  // TODO make this a slow thing from block interaction
+  create
+    .item_application('minecraft:brown_mushroom_block', [
+      'minecraft:moss_block',
+      'minecraft:brown_mushroom',
+    ])
+    .id('kubejs:mushroom_seeding_from_moss')
+  create.item_application('minecraft:red_mushroom_block', [
+    'minecraft:moss_block',
+    'minecraft:red_mushroom',
+  ])
 
   // Bonemeal cannot be reverse crafted from bone blocks.
   e.remove({ id: 'minecraft:bone_meal_from_bone_block' })
@@ -505,7 +520,7 @@ ServerEvents.recipes((e) => {
   // Remy spawner charm
   e.recipes.ars_nouveau.enchanting_apparatus(
     [
-      'farmersdelight:salmon_roll',
+      'pneumaticcraft:salmon_tempura',
       'farmersdelight:fried_rice',
       'farmersdelight:squid_ink_pasta',
       'farmersdelight:apple_pie_slice',

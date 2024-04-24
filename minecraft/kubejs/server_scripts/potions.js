@@ -16,19 +16,17 @@ ServerEvents.recipes((e) => {
     })
   }
 
-  let number = 1
+  let recipeNumber = 1
 
   // Store all the unique potion IDs to generate splash and lingering potions
   let uniqueOutputs = {}
   for (const mix of $PotionBrewing.POTION_MIXES) {
     // Register all the potion brewing mixes as mixing recipes.
     let inputFluidString = new String(mix.from.key().location().toString())
-
     let inputItems = mix.ingredient.getItemIds()
     if (inputItems.size() !== 1) {
       throw new Error(`Invalid item ingredient ${inputItems}`)
     }
-
     let outputFluidString = new String(mix.to.key().location().toString())
     let outputId = outputFluidString.replace(/[^a-z_]/, '_')
 
@@ -38,12 +36,13 @@ ServerEvents.recipes((e) => {
         inputItems[0],
       ])
       .heated()
-      .id(`kubejs:create_potion_mixing_${number}_${outputId}`)
-    number += 1
+      .id(`kubejs:create_potion_mixing_${recipeNumber}_${outputId}`)
 
     // Store all the unique potion types
     uniqueOutputs[inputFluidString] = true
     uniqueOutputs[outputFluidString] = true
+
+    recipeNumber += 1
   }
 
   // Register splash and lingering version of each potion type
@@ -58,8 +57,8 @@ ServerEvents.recipes((e) => {
       create
         .mixing(parseFluid(potion, to), [parseFluid(potion, from), ingredient])
         .heated()
-        .id(`kubejs:create_potion_mixing_${number}_${potionId}_${suffix}`)
-      number += 1
+        .id(`kubejs:create_potion_mixing_${recipeNumber}_${potionId}_${suffix}`)
+      recipeNumber += 1
     }
   }
 })

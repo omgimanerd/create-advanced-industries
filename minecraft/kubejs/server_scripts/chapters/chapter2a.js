@@ -19,6 +19,7 @@ ServerEvents.recipes((e) => {
   )
 
   // Rubber recipes for automation and manual bootstrapping
+  // TODO remove arboreal extractor recipe, gate behind steel
   e.remove({ output: 'thermal:rubber' })
   e.shaped('thermal:rubber', ['FFF', 'FWF', 'FFF'], {
     F: '#minecraft:flowers',
