@@ -277,7 +277,7 @@ const handleLightningSpawnEvent = (
     minX: -1,
     maxX: 1,
     minY: -1,
-    maxX: 1,
+    maxY: 1,
     minZ: -1,
     maxZ: 1,
   })) {

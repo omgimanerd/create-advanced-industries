@@ -21,12 +21,12 @@ const getNameFromId = (s) => {
  * @returns {(number[])[]}
  */
 const getOffsetList = (o) => {
-  const minX = o.minX === undefined ? 0 : minX
-  const maxX = o.maxX === undefined ? minX + 1 : maxX
-  const minY = o.minY === undefined ? 0 : minY
-  const maxY = o.maxY === undefined ? minY + 1 : maxY
-  const minZ = o.minZ === undefined ? 0 : minZ
-  const maxZ = o.maxZ === undefined ? minZ + 1 : maxZ
+  const minX = o.minX === undefined ? 0 : o.minX
+  const maxX = o.maxX === undefined ? o.minX + 1 : o.maxX
+  const minY = o.minY === undefined ? 0 : o.minY
+  const maxY = o.maxY === undefined ? o.minY + 1 : o.maxY
+  const minZ = o.minZ === undefined ? 0 : o.minZ
+  const maxZ = o.maxZ === undefined ? o.minZ + 1 : o.maxZ
 
   const offsetList = []
   for (const x = minX; x <= maxX; x++) {
