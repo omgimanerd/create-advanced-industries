@@ -133,7 +133,7 @@
 				item: "pneumaticcraft:heat_frame"
 				type: "item"
 			}]
-			x: 13.0d
+			x: 14.0d
 			y: -8.0d
 		}
 		{
@@ -1017,6 +1017,7 @@
 				item: "create_new_age:magnetite_block"
 				type: "item"
 			}]
+			shape: "gear"
 			size: 1.5d
 			tasks: [
 				{
@@ -1351,20 +1352,14 @@
 		}
 		{
 			dependencies: ["12339C11E04B52F1"]
+			description: ["Using a Crystallizer, you can recrystallize the diamond dust back into diamonds."]
 			icon: "thermal:machine_crystallizer"
 			id: "38BC369541D29C88"
-			tasks: [
-				{
-					id: "165DEB0172E70612"
-					item: "minecraft:diamond"
-					type: "item"
-				}
-				{
-					id: "26576C1E347BE853"
-					item: "thermal:machine_crystallizer"
-					type: "item"
-				}
-			]
+			tasks: [{
+				id: "26576C1E347BE853"
+				item: "thermal:machine_crystallizer"
+				type: "item"
+			}]
 			title: "Recrystallizing Diamond Dust"
 			x: 36.0d
 			y: 4.0d
@@ -1474,7 +1469,6 @@
 				"This puzzle is left as an exercise to the reader. How can you get the pressure and temperature required to make one?"
 			]
 			id: "5714BEB6ED8A6AE0"
-			optional: true
 			rewards: [{
 				count: 16
 				id: "4EDF25470046DA2F"
@@ -1507,7 +1501,7 @@
 				}
 			]
 			title: "Oil Processing Byproducts"
-			x: 13.0d
+			x: 12.0d
 			y: -6.0d
 		}
 		{
@@ -1545,6 +1539,21 @@
 			}]
 			x: 12.0d
 			y: 2.0d
+		}
+		{
+			dependencies: ["7DA3BAF3482B048B"]
+			description: ["Bitumen can be pyrolyzed into coal coke as well."]
+			icon: "tfmg:coal_coke"
+			id: "17ED8F62082164AD"
+			optional: true
+			tasks: [{
+				id: "56048BB074C0DCB7"
+				item: "thermal:machine_pyrolyzer"
+				type: "item"
+			}]
+			title: "Pyrolyzing Bitumen"
+			x: 12.0d
+			y: -8.0d
 		}
 	]
 	title: "Chapter 5a: Logistics Mechanisms"

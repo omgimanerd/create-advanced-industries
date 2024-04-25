@@ -186,6 +186,8 @@
 			]
 			icon: "create:andesite_alloy"
 			id: "65F00346034419C5"
+			shape: "gear"
+			size: 1.5d
 			tasks: [
 				{
 					icon: "create:mechanical_mixer"

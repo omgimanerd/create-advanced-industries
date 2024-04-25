@@ -83,6 +83,7 @@
 				item: "tfmg:steel_ingot"
 				type: "item"
 			}]
+			shape: "gear"
 			size: 1.5d
 			tasks: [{
 				id: "314E4C658008473A"
@@ -206,6 +207,7 @@
 				item: "create:blaze_burner"
 				type: "item"
 			}]
+			shape: "gear"
 			size: 1.5d
 			tasks: [{
 				id: "5CF796AB1F19F1D3"
@@ -224,10 +226,7 @@
 			y: 0.0d
 		}
 		{
-			dependencies: [
-				"06044A8D0AD15923"
-				"662CE9859BE0F913"
-			]
+			dependencies: ["06044A8D0AD15923"]
 			description: [
 				"Fill the blaze cake base with lava to get a blaze cake."
 				""
@@ -304,7 +303,7 @@
 				item: "create:cinder_flour"
 				type: "item"
 			}]
-			x: 2.0d
+			x: 4.0d
 			y: 4.0d
 		}
 		{
@@ -349,7 +348,7 @@
 				type: "item"
 			}]
 			x: 0.0d
-			y: 8.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["22762C01E26FB48B"]
@@ -420,7 +419,7 @@
 				type: "item"
 			}]
 			x: 2.0d
-			y: 6.0d
+			y: 4.0d
 		}
 		{
 			dependencies: [
@@ -501,7 +500,7 @@
 				type: "item"
 			}]
 			x: 18.0d
-			y: 8.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["662CE9859BE0F913"]
@@ -513,7 +512,7 @@
 				type: "item"
 			}]
 			x: 10.0d
-			y: 8.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["5A4A984E4C6E0ADC"]
@@ -525,7 +524,7 @@
 				type: "item"
 			}]
 			x: 18.0d
-			y: 6.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["318C60A121F68C81"]
@@ -707,7 +706,7 @@
 				type: "item"
 			}]
 			x: 10.0d
-			y: 6.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["3319B6B48831867E"]

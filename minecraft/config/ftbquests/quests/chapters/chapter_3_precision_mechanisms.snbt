@@ -115,6 +115,8 @@
 				"You have a chance of getting back the clay cast here."
 			]
 			id: "35FEE70D2889724B"
+			shape: "gear"
+			size: 1.5d
 			tasks: [{
 				id: "75973D6BF57FB3FD"
 				item: "create:brass_ingot"
@@ -201,6 +203,7 @@
 		}
 		{
 			dependencies: ["71FAA310DA3D588D"]
+			description: ["Melt down the copper in a heated basin with a mixer."]
 			id: "3383144C6D0FBAD4"
 			tasks: [{
 				id: "45AA33A2D32A2A01"
@@ -416,6 +419,8 @@
 				"Did you end up casting the lead too?"
 				""
 				"Seems useless now though..."
+				""
+				"Maybe it'll come in handy later."
 			]
 			id: "6B79A03DFFD8B049"
 			invisible: true
@@ -471,18 +476,11 @@
 				item: "create:blaze_burner"
 				type: "item"
 			}]
-			tasks: [
-				{
-					dimension: "minecraft:the_nether"
-					id: "4F638D3E4FA1D61B"
-					type: "dimension"
-				}
-				{
-					id: "7012B1E80F4079CD"
-					item: "create:empty_blaze_burner"
-					type: "item"
-				}
-			]
+			tasks: [{
+				dimension: "minecraft:the_nether"
+				id: "4F638D3E4FA1D61B"
+				type: "dimension"
+			}]
 			x: -2.0d
 			y: 0.0d
 		}
@@ -507,6 +505,23 @@
 			}]
 			x: 8.0d
 			y: -2.0d
+		}
+		{
+			dependencies: ["75DF00BC8C5543BB"]
+			description: ["Incidentally, access to the nether unlocks access to the Mage's Spell Book, giving us access to tier 2 spells from Ars Nouveau."]
+			id: "03E657E184865D19"
+			rewards: [{
+				id: "066FC4D159E07613"
+				type: "xp"
+				xp: 100
+			}]
+			tasks: [{
+				id: "28C0A27F7B67F388"
+				item: "ars_nouveau:apprentice_spell_book"
+				type: "item"
+			}]
+			x: -4.0d
+			y: 0.0d
 		}
 	]
 	title: "Chapter 3: Precision Mechanisms"

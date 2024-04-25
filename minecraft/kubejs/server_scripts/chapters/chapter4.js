@@ -162,7 +162,7 @@ ServerEvents.recipes((e) => {
     .mixing(
       [
         Fluid.of('tfmg:molten_steel', 3 * ingotFluid),
-        Item.of('thermal:slag').withChance(0.5),
+        Item.of('thermal:slag', 2),
       ],
       [
         '2x tfmg:coal_coke_dust',

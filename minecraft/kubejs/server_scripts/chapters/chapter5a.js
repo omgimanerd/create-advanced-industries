@@ -119,6 +119,19 @@ ServerEvents.recipes((e) => {
     'tfmg:sulfur'
   )
 
+  // Overhaul pyrolyzer recipe for bitumen.
+  e.remove({ id: 'thermal:machines/pyrolyzer/pyrolyzer_bitumen' })
+  e.recipes.thermal
+    .pyrolyzer(
+      [
+        'tfmg:coal_coke',
+        Item.of('thermal:tar').withChance(0.5),
+        Fluid.of('pneumaticcraft:diesel', 50),
+      ],
+      'thermal:bitumen'
+    )
+    .energy(8000)
+
   // Overhaul lubricant from diesel
   e.remove({ id: 'pneumaticcraft:thermo_plant/lubricant_from_biodiesel' })
   e.remove({ id: 'pneumaticcraft:thermo_plant/lubricant_from_diesel' })
