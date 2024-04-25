@@ -113,7 +113,7 @@
 		}
 		{
 			dependencies: ["30D8DBD8701E60E8"]
-			description: ["Compacting the latex in a heated basin yields rubber."]
+			description: ["Compacting the latex in a basin yields rubber."]
 			id: "75355ADF3D7F976A"
 			tasks: [{
 				id: "1CD1AF136E48CAB9"
