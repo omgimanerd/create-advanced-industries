@@ -34,7 +34,6 @@ global.removedRecipes = [
   { output: 'pneumaticcraft:drill_bit_compressed_iron' },
   { output: 'pneumaticcraft:logistics_core' },
   { output: 'pneumaticcraft:wheat_flour' },
-  { output: 'quark:gunpowder_sack' },
   { output: 'refinedstorage:processor_binding' },
   { output: /^tfmg:aluminum_[a-z_]+/ },
   { output: /^tfmg:[a-z_]+_concrete$/ },
