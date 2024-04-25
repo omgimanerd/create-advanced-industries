@@ -73,5 +73,42 @@ ServerEvents.recipes((e) => {
     'refinedstorage:quartz_enriched_iron',
   ])
 
-  // TODO add quests and overhauls for toms simple storage and storage drawers
+  //////////////////////////////
+  // Tom's Simple Storage Mod //
+  //////////////////////////////
+  e.replaceInput(
+    {
+      mod: 'toms_storage',
+    },
+    'minecraft:comparator',
+    'create:precision_mechanism'
+  )
+  e.replaceInput(
+    {
+      mod: 'toms_storage',
+    },
+    '#minecraft:trapdoors',
+    'create:brass_ingot'
+  )
+  e.replaceInput(
+    {
+      mod: 'toms_storage',
+    },
+    'minecraft:quartz',
+    'create:electron_tube'
+  )
+  e.replaceInput(
+    {
+      id: 'toms_storage:inventory_cable_connector',
+    },
+    'minecraft:quartz',
+    'create:precision_mechanism'
+  )
+  // TODO gate behind quantum mechanism
+  e.remove({ id: 'toms_storage:adv_wireless_terminal' })
+  e.replaceInput(
+    { id: 'toms_storage:tag_item_filter' },
+    'minecraft:name_tag',
+    'create:attribute_filter'
+  )
 })

@@ -72,6 +72,45 @@
 			x: 0.0d
 			y: -2.0d
 		}
+		{
+			description: [
+				"Tom's Simple Storage Mod is available in this modpack."
+				""
+				"For balance purposes, cross-dimensional access with it has been disabled."
+				""
+				"It is gated behind the Precision Mechanism in Chapter 3."
+			]
+			icon: "toms_storage:ts.wireless_terminal"
+			id: "4F1D3EC9A627590C"
+			rewards: [
+				{
+					count: 16
+					id: "60F4785F3206CD6B"
+					item: "toms_storage:ts.inventory_cable"
+					type: "item"
+				}
+				{
+					count: 4
+					id: "0BCC6954B5786DE2"
+					item: "toms_storage:ts.inventory_connector"
+					type: "item"
+				}
+			]
+			tasks: [{
+				id: "0CB94F922DC20605"
+				item: {
+					Count: 1b
+					id: "ftbfiltersystem:smart_filter"
+					tag: {
+						"ftbfiltersystem:filter": "mod(toms_storage)"
+					}
+				}
+				type: "item"
+			}]
+			title: "Tom's Simple Storage Mod"
+			x: 2.0d
+			y: 0.0d
+		}
 	]
 	title: "Storage"
 }
