@@ -3,6 +3,7 @@
 
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
+  const pneumaticcraft = definePneumaticcraftRecipes(e)
 
   const redefineRecipe = redefineRecipe_(e)
 
@@ -67,11 +68,146 @@ ServerEvents.recipes((e) => {
   /////////////////////
   // Refined Storage //
   /////////////////////
+  const commonRefinedStorageKeys = {
+    Q: 'refinedstorage:quartz_enriched_iron',
+    B: 'refinedstorage:basic_processor',
+    G: 'refinedstorage:improved_processor',
+    M: 'kubejs:logistics_mechanism',
+    L: '#minecraft:glass',
+    R: 'minecraft:redstone',
+  }
+  e.replaceInput(
+    {
+      mod: 'refinedstorage',
+    },
+    'refinedstorage:silicon',
+    'kubejs:silicon_wafer'
+  )
+  redefineRecipe(
+    '2x refinedstorage:construction_core',
+    [
+      ' G ', //
+      'BMB', //
+      ' G ', //
+    ],
+    Object.assign({}, commonRefinedStorageKeys, {
+      G: 'minecraft:glowstone_dust',
+    })
+  )
+  redefineRecipe(
+    '2x refinedstorage:destruction_core',
+    [
+      ' E ', //
+      'BMB', //
+      ' E ', //
+    ],
+    Object.assign({}, commonRefinedStorageKeys, {
+      E: 'create:electron_tube',
+    })
+  )
+  e.remove({ id: 'refinedstorage:quartz_enriched_iron' })
+  pneumaticcraft
+    .ThermoPlant(['minecraft:iron_ingot', '90mb kubejs:molten_quartz'])
+    .pressure(8)
+    .minTemp(300)
+    .outputs('2x refinedstorage:quartz_enriched_iron')
+  e.replaceInput(
+    {
+      mod: 'refinedstorage',
+      id: /^refinedstorage:[0-9]+k(fluid_){0,1}_storage_part$/,
+    },
+    'minecraft:redstone',
+    'kubejs:logistics_mechanism'
+  )
+  redefineRecipe(
+    '2x refinedstorage:upgrade',
+    [
+      'QLQ', //
+      'GMG', //
+      'QLQ', //
+    ],
+    commonRefinedStorageKeys
+  )
+  redefineRecipe(
+    'refinedstorage:pattern',
+    [
+      'GRG', //
+      'RGR', //
+      'QMQ', //
+    ],
+    commonRefinedStorageKeys
+  )
   e.remove({ output: 'refinedstorage:machine_casing' })
   create.item_application('refinedstorage:machine_casing', [
     'tfmg:steel_casing',
     'refinedstorage:quartz_enriched_iron',
   ])
+  e.replaceInput(
+    [
+      {
+        id: 'refinedstorage:cable',
+      },
+      {
+        id: 'refinedstorage:interface',
+      },
+      {
+        id: 'refinedstorage:constructor',
+      },
+      {
+        id: 'refinedstorage:destructor',
+      },
+    ],
+    'minecraft:redstone',
+    'kubejs:logistics_mechanism'
+  )
+  e.replaceInput(
+    {
+      id: 'refinedstorage:controller',
+    },
+    'kubejs:silicon_wafer',
+    'kubejs:logistics_mechanism'
+  )
+  // TODO gate behind quantum mechanisms
+  e.remove({ id: 'refinedstorage:network_receiver' })
+  e.remove({ id: 'refinedstorage:wireless_transmitter' })
+
+  //////////////////
+  // ExtraStorage //
+  //////////////////
+  e.replaceInput(
+    {
+      id: /^extrastorage:part\/storagepart_[0-9]+k(_fluid){0,1}$/,
+    },
+    'minecraft:redstone',
+    'kubejs:logistics_mechanism'
+  )
+  e.remove({ id: 'extrastorage:raw_neural_processor' })
+  create
+    .SequencedAssembly('kubejs:silicon_wafer')
+    .deploy('create:super_glue')
+    .deploy('morered:red_alloy_ingot')
+    .deploy('minecraft:amethyst_shard')
+    .outputs('extrastorage:raw_neural_processor')
+  e.remove({ id: 'extrastorage:neural_processor' })
+  pneumaticcraft
+    .Assembly('extrastorage:raw_neural_processor')
+    .type(Assembly.TYPE_LASER)
+    .outputs('extrastorage:neural_processor')
+
+  ///////////////////////
+  // RSInfinityBooster //
+  ///////////////////////
+  // TODO gate behind quantum mechs
+  e.remove({ id: 'rsinfinitybooster:dimension_card' })
+
+  //////////////////
+  // RSRequestify //
+  //////////////////
+  e.replaceInput(
+    { id: 'rsrequestify:requester' },
+    'minecraft:redstone',
+    'kubejs:logistics_mechanism'
+  )
 
   //////////////////////////////
   // Tom's Simple Storage Mod //

@@ -26,7 +26,7 @@
 				item: "ars_nouveau:storage_lectern"
 				type: "item"
 			}]
-			x: 0.0d
+			x: -1.5d
 			y: 0.0d
 		}
 		{
@@ -108,8 +108,42 @@
 				type: "item"
 			}]
 			title: "Tom's Simple Storage Mod"
-			x: 2.0d
+			x: 1.5d
 			y: 0.0d
+		}
+		{
+			description: [
+				"Refined Storage is the digital storage mod used in this modpack."
+				""
+				"Sorry AE2 lovers."
+			]
+			id: "087B39758AFE3283"
+			rewards: [
+				{
+					count: 16
+					id: "3F5BB84B42468117"
+					item: "refinedstorage:cable"
+					type: "item"
+				}
+				{
+					id: "70F3A37BB325B224"
+					item: "refinedstorage:disk_drive"
+					type: "item"
+				}
+				{
+					id: "1A279753F7C0F160"
+					item: "refinedstorage:grid"
+					type: "item"
+				}
+			]
+			tasks: [{
+				id: "52464FBC78E86507"
+				item: "refinedstorage:controller"
+				type: "item"
+			}]
+			title: "Refined Storage"
+			x: 0.0d
+			y: 2.0d
 		}
 	]
 	title: "Storage"
