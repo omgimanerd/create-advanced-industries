@@ -512,19 +512,6 @@ ServerEvents.recipes((e) => {
     ])
     .id('kubejs:moss_from_biomass_application')
 
-  // Seeding mushroom blocks from moss
-  // TODO make this a slow thing from block interaction
-  create
-    .item_application('minecraft:brown_mushroom_block', [
-      'minecraft:moss_block',
-      'minecraft:brown_mushroom',
-    ])
-    .id('kubejs:mushroom_seeding_from_moss')
-  create.item_application('minecraft:red_mushroom_block', [
-    'minecraft:moss_block',
-    'minecraft:red_mushroom',
-  ])
-
   // Bonemeal cannot be reverse crafted from bone blocks.
   e.remove({ id: 'minecraft:bone_meal_from_bone_block' })
   create.milling(
