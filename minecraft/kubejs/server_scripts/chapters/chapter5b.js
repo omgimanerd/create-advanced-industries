@@ -82,8 +82,7 @@ const computeAmethystGolemFeedResults = (
 }
 
 /**
- * Called within ItemEvents.entityInteracted handler to set the behavior when
- * an amethyst golem is fed.
+ * Defines the behavior when Remy the Epicure is fed.
  * @param {Internal.ItemEntityInteractedEventJS} e
  */
 const handleAmethystFeedingMechanic = (
@@ -144,8 +143,7 @@ const handleAmethystFeedingMechanic = (
 }
 
 /**
- * Called within ItemEvents.entityInteracted handler to set the behavior when
- * a blaze is right clicked.
+ * Defines the behavior when a blaze is fed or milked.
  * @param {Internal.ItemEntityInteractedEventJS} e
  */
 const handleBlazeMilkingMechanic = (
@@ -195,20 +193,19 @@ ItemEvents.entityInteracted((e) => {
 })
 
 /**
- * Called within ItemEvents.rightClicked to handle spawning Remy the Epicure.
- * @param {Internal.ItemEntityInteractedEventJS} e
+ * Handles spawning Remy the Epicure.
+ * @param {Internal.BlockRightClickedEventJS} e
  */
 const handleRemySpawning = (
-  /** @type {Internal.ItemEntityInteractedEventJS} */ e
+  /** @type {Internal.BlockRightClickedEventJS} */ e
 ) => {
-  const { item, hand, target } = e
+  const { item, hand, block } = e
   if (hand !== 'main_hand') return
-  if (item !== 'kubejs:remy_spawner') return
-  if (target.block === null) return
+  if (item.id !== 'kubejs:remy_spawner') return
 
-  const { x, y, z } = target.block
-  const golem = target.block.createEntity('ars_nouveau:amethyst_golem')
-  // Center Remy on the block or he will fall through the block
+  const { x, y, z } = block
+  const golem = block.createEntity('ars_nouveau:amethyst_golem')
+  // Center Remy on the top of the block
   golem.setPos(x + 0.5, y + 1, z + 0.5)
   golem.setCustomName('Remy the Epicure')
   golem.setCustomNameVisible(true)
@@ -217,9 +214,74 @@ const handleRemySpawning = (
   item.count--
 }
 
-ItemEvents.rightClicked((e) => {
+/**
+ * Called within BlockEvents.rightClicked to handle mushroom growth from moss
+ * blocks.
+ * @param {Internal.BlockRightClickedEventJS} e
+ */
+const handleMushroomMossSeeding = (
+  /** @type {Internal.BlockRightClickedEventJS} */ e
+) => {
+  const { item, hand, block, level, server } = e
+  if (hand !== 'main_hand') return
+  if (
+    item.id !== 'minecraft:brown_mushroom' &&
+    item.id !== 'minecraft:red_mushroom'
+  ) {
+    return
+  }
+  if (block.id !== 'minecraft:moss_block') return
+  const newBlock = `${item.id}_block`
+
+  /**
+   * Recursive function to spread mushroom blocks to nearby moss blocks with
+   * a configurable decay and increasing delay.
+   * @param {Special.Block} block
+   * @param {number} probability
+   * @param {number} decayFactor
+   * @param {number} delay
+   */
+  const decayedSpread = (
+    /** @type {Internal.BlockContainerJS} */ block,
+    probability,
+    decayFactor,
+    delay
+  ) => {
+    if (block.id !== 'minecraft:moss_block') return
+    if (Math.random() > probability) return
+    const { x, y, z } = block
+    level.spawnParticles(
+      'minecraft:composter',
+      true,
+      x + 0.5,
+      y + 1,
+      z + 0.5,
+      0.3,
+      0.3,
+      0.3,
+      20,
+      0.3
+    )
+    block.set(newBlock)
+    server.scheduleInTicks(delay, (c) => {
+      const newProbability = probability * decayFactor
+      const newDelay = delay + randRange(10)
+      decayedSpread(block.north, newProbability, decayFactor, newDelay)
+      decayedSpread(block.south, newProbability, decayFactor, newDelay)
+      decayedSpread(block.east, newProbability, decayFactor, newDelay)
+      decayedSpread(block.west, newProbability, decayFactor, newDelay)
+      c.reschedule()
+    })
+  }
+  decayedSpread(block, 1, 0.5, randRange(10))
+}
+
+BlockEvents.rightClicked((e) => {
   // Remy the Epicure can only be spawned from a special amethyst charm.
   handleRemySpawning(e)
+
+  // Handle when a moss block is right clicked with a mushroom to seed more.
+  handleMushroomMossSeeding(e)
 })
 
 // list features
@@ -325,7 +387,7 @@ global.EntityStruckByLightningEventCallback = (e) => {
  * It is defined here to allow for server side reload.
  *
  * @type {Internal.SpecialSpoutHandlerEvent$SpoutHandler}
- * @returns {number}
+ * @returns {number} The amount of fluid used by the spout
  */
 global.NetherWartSpoutHandlerCallback = (block, fluid, simulate) => {
   // We do not need to check the block since the handler was registered on
