@@ -40,18 +40,6 @@ const getOffsetList = (o) => {
 }
 
 /**
- * Clamps the argument number to the two bounds, inclusive.
- *
- * @param {number} x The number to clamp
- * @param {number} a The lower bound, inclusive
- * @param {number} b The upper bound, inclusive
- * @returns
- */
-const clamp = (x, a, b) => {
-  return Math.max(a, Math.min(x, b))
-}
-
-/**
  * Returns a random number in the range [low, high)
  * @param {number} low
  * @param {number=} high

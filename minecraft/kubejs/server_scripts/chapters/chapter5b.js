@@ -26,13 +26,15 @@ ItemEvents.foodEaten('#kubejs:enchantable_foods', (e) => {
  * @param {Internal.FoodProperties} foodProperties
  */
 const computeAmethystGolemFeedResults = (
-  /** @type {Internal.FoodProperties} */ foodProperties
+  /** @type {Internal.FoodProperties} */ foodProperties,
+  /** @type {number} */ repeatedFoodPenalty
 ) => {
   const { nutrition, saturationModifier, effects } = foodProperties
   const saturation = nutrition * saturationModifier
   let hasHarmfulEffect = false
   let maximumNonBeneficialCooldown = 0
-  let quantityMultiplier = 1
+  let nutritionMultiplier = repeatedFoodPenalty
+  let saturationMultiplier = repeatedFoodPenalty
   // Check the food for applied effects. Negative effects set the feeding
   // cooldown to the duration of the negative effect.
   for (const effect of effects) {
@@ -49,33 +51,71 @@ const computeAmethystGolemFeedResults = (
         maximumNonBeneficialCooldown
       )
     } else {
-      quantityMultiplier *= 1.25
+      nutritionMultiplier *= 1.05
+      saturationMultiplier *= 1.05
     }
   }
 
-  // Uses a scaled exponential to compute the loot tier, where each tier
-  // represents a returned amethyst bud.
+  // Loot tiers will go from 0-4, with values from 0-1 yielding small amethyst
+  // clusters, values from 1-2 yielding medium + small amethyst clusters, etc.
+  // Higher loot tiers will always yield the crystal clusters below them.
   //
-  // DO NOT REMOVE THE PARENTHESES. RHINO JS EVALUATES THIS DIFFERENTLY
-  const tier = 4 * (JavaMath.E ** (nutrition / 4)) - 4 // prettier-ignore
-  // TODO tier has a chance to output lower tier buds
-  const outputItem = [
+  // As a benchmark, a food with 4 nutrition should correspond to loot tier
+  // 1, and a food with 14 nutrition (max) should correspond to loot tier
+  // 3.2. Solving for a system of equations y=ab^(x+d)+c gets us the solution
+  // a = 1
+  // b = (3.2/1) ^ (1/10) ~ 1.123349
+  // c = 0
+  // d = -4
+  //
+  // Only beneficial effects can raise the lootTier above 3.2
+  const lootExponential = exponential(1, 1.123349, 0, -4)
+  let lootTier = lootExponential(nutrition) * nutritionMultiplier
+
+  // The quantity of output for each tier is also correlated with the
+  // saturation of the food, but is also divided by (tier + 1), meaning higher
+  // tiers give less. A saturation 1 food corresponds to 1 output, and a
+  // saturation 11 food should be roughly 5 outputs.
+  // a = 1
+  // b = (5/1) ^ (1/10) ~ 1.174618
+  // c = 0
+  // d = -1
+  const quantityExponential = exponential(1, 1.174618, 0, -1)
+  const outputItems = [
     'minecraft:small_amethyst_bud',
     'minecraft:medium_amethyst_bud',
     'minecraft:large_amethyst_bud',
     'minecraft:amethyst_cluster',
-  ][clamp(Math.round(tier / 25), 0, 3)]
-  let quantity = JavaMath.E ** (saturation / 8)
-  quantity = clamp(quantity * quantityMultiplier + randRange(-1, 2), 0, 20)
-  const avg = (saturation + nutrition) / 2
+  ]
+  let results = []
+  for (let tier = 0; tier < 4; ++tier) {
+    if (lootTier <= tier) break
+    let probability = Math.min(lootTier - tier, 1)
+    if (probability < 1 && Math.random() > probability) break
+    let quantity = Math.round(
+      (quantityExponential(saturation) * saturationMultiplier) / (tier + 1)
+    )
+    results.push(Item.of(outputItems[tier], quantity))
+  }
+
+  // The feed cooldown is another exponential that goes down the better the
+  // food. The argument is the average of the saturation and nutrition, with
+  // both multiplers applied.
+  // a = 8
+  // b = 0.8
+  // c = 0
+  // d = -4
+  const cooldownExponential = exponential(8, 0.8, 0, -4)
+  const avg =
+    (saturation + nutrition) * 0.5 * nutritionMultiplier * saturationModifier
   // Feed cooldown in ticks
-  let feedCooldown = (7 - (JavaMath.E ** (avg / 8))) * 20 // prettier-ignore
+  let feedCooldown = cooldownExponential(avg) * 20 // prettier-ignore
   // If a harmful effect was applied, no feeding until it wears off.
   if (hasHarmfulEffect) {
     feedCooldown = maximumNonBeneficialCooldown
   }
   return {
-    result: Item.of(outputItem, quantity),
+    results: results,
     hasHarmfulEffect: hasHarmfulEffect,
     feedCooldown: feedCooldown,
   }
@@ -110,17 +150,44 @@ const handleAmethystFeedingMechanic = (
   nextFeedableTime = nextFeedableTime === undefined ? 0 : nextFeedableTime
   if (nextFeedableTime >= currentTime) return
 
+  // Record the item that was fed, Remy remembers the last 4 things he was fed.
+  const itemString = item.id.toString()
+  let lastFedItems = target.persistentData.lastFedItems
+  if (lastFedItems === undefined) {
+    lastFedItems = [itemString]
+  } else {
+    lastFedItems.push(itemString)
+    if (lastFedItems.size() > 4) {
+      lastFedItems.shift()
+    }
+  }
+  target.persistentData.lastFedItems = lastFedItems
+  let eatenBefore = {}
+  for (const /** @type {net.minecraft.nbt.StringTag} */ food of lastFedItems) {
+    // The nbt StringTag includes the enclosing double quotes.
+    let foodString = food.toString().replace('"', '')
+    eatenBefore[foodString] =
+      eatenBefore[foodString] === undefined ? 1 : eatenBefore[foodString] + 1
+  }
+  const penaltyExponent = eatenBefore[itemString] - 1
+
   // Compute the results and effects from feeding the specific food
-  const { result, hasHarmfulEffect, feedCooldown } =
-    computeAmethystGolemFeedResults(item.getFoodProperties(null), target)
+  let { results, hasHarmfulEffect, feedCooldown } =
+    computeAmethystGolemFeedResults(
+      item.getFoodProperties(null),
+      0.95 ** penaltyExponent
+    )
   item.count--
-  // TODO feed memory mechanic
   target.persistentData.nextFeedableTime = currentTime + feedCooldown
   target.playSound('entity.item.pickup', /*volume=*/ 2, /*pitch=*/ 1)
   target.playSound(item.getEatingSound(), /*volume=*/ 2, /*pitch=*/ 1)
-  target.block.popItemFromFace(result, 'up')
+  for (const result of results) {
+    target.block.popItemFromFace(result, 'up')
+  }
+
   // If the fed item returns a bowl or other item, return it to the player
   player.addItem(item.getCraftingRemainingItem())
+
   // Spawn the relevant particle effects
   if (hasHarmfulEffect) {
     repeat(server, feedCooldown, 10, () => {
@@ -455,8 +522,6 @@ ServerEvents.recipes((e) => {
 
   // Automate emeralds
 
-  // Automate moss + growth for mushrooms
-  //
   // Axes: Crystal refinement, enchanting, essence, potion, food, apotheosis,
 
   // TODO: better diamond cutting and diamond automation in chapter 5b
