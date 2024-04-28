@@ -393,8 +393,20 @@ LootJS.modifiers((e) => {
       'kubejs:debilitation_essence',
       LootEntry.of('create:experience_nugget').when((c) => c.randomChance(0.5))
     )
+    .addLoot(
+      LootEntry.of('create:experience_block').when((c) => {
+        c.matchDamageSource((source) => {
+          return source.anyType('pnc_minigun')
+        })
+      })
+    )
 
   // Suffocation damage source 'inWall'
+
+  // Make budding amethyst mineable with silk touch.
+  e.addBlockLootModifier('minecraft:budding_amethyst')
+    .matchMainHand(ItemFilter.hasEnchantment('minecraft:silk_touch'))
+    .addLoot(LootEntry.of('minecraft:budding_amethyst'))
 })
 
 const handleLightningSpawnEvent = (
@@ -449,26 +461,61 @@ global.EntityStruckByLightningEventCallback = (e) => {
 }
 
 /**
- * The handler itself is registered in
- * startup_scripts/spoutHandlerRegistration.js
- * It is defined here to allow for server side reload.
- *
+ * Handler defined in startup_scripts/spoutHandlerRegistration.js
+ * Defined here to allow for server side reload.
  * @type {Internal.SpecialSpoutHandlerEvent$SpoutHandler}
+ * @param {Internal.BlockContainerJS} block
+ * @param {Internal.FluidStackJS} fluid
+ * @param {boolean} simulate
  * @returns {number} The amount of fluid used by the spout
  */
 global.NetherWartSpoutHandlerCallback = (block, fluid, simulate) => {
-  // We do not need to check the block since the handler was registered on
-  // the block.
-  if (block.getProperties().getOrDefault('age', 3) == 3) return 0
+  const fluidConsumption = 250
+  const { properties } = block
+  const age = parseInt(properties.getOrDefault('age', 3), 10)
+  if (age == 3) return 0
   if (fluid.id !== 'sliceanddice:fertilizer') return 0
-  if (fluid.amount < 250) return 0
+  if (fluid.amount < fluidConsumption) return 0
   if (!simulate) {
-    const level = block.getLevel()
-    for (let i = 0; i < 20; ++i) {
-      block.blockState.randomTick(level, block.pos, level.random)
-    }
+    block.set(block.id, { age: new String(age + 1) })
   }
-  return 250
+  return fluidConsumption
+}
+
+/**
+ * Handler defined in startup_scripts/spoutHandlerRegistration.js
+ * Defined here to allow for server side reload
+ * @type {Internal.SpecialSpoutHandlerEvent$SpoutHandler}
+ * @param {Internal.BlockContainerJS} block
+ * @param {Internal.FluidStackJS} fluid
+ * @param {boolean} simulate
+ * @returns {number} The amount of fluid used by the spout
+ */
+global.BuddingAmethystSpoutHandlerCallback = (block, fluid, simulate) => {
+  const fluidConsumption = 500
+  if (fluid.id !== 'kubejs:crystal_growth_accelerator') return 0
+  if (fluid.amount < fluidConsumption) return 0
+  if (!simulate) {
+    const growthStates = {
+      'minecraft:small_amethyst_bud': 'minecraft:medium_amethyst_bud',
+      'minecraft:medium_amethyst_bud': 'minecraft:large_amethyst_bud',
+      'minecraft:large_amethyst_bud': 'minecraft:amethyst_cluster',
+    }
+    let growCandidates = []
+    for (const surroundingBlock of getSurroundingBlocks(block)) {
+      if (surroundingBlock.id in growthStates) {
+        growCandidates.push(surroundingBlock)
+      }
+    }
+    /** @type {Internal.BlockContainerJS} */
+    const candidate = choice(growCandidates)
+    // TODO this return 0 still plays the animation
+    if (candidate === null) return Math.floor(0)
+    candidate.set(growthStates[candidate.id], {
+      facing: candidate.properties.facing,
+    })
+  }
+  return fluidConsumption
 }
 
 ServerEvents.compostableRecipes((e) => {
@@ -622,11 +669,47 @@ ServerEvents.recipes((e) => {
     Fluid.of('sliceanddice:fertilizer', 1000),
   ])
 
+  // Amethyst bud growth. The most expensive is sequenced filling, then
+  // Thermal crystallization, then manual spouting.
+  create
+    .SequencedAssembly('minecraft:small_amethyst_bud')
+    .fill('kubejs:crystal_growth_accelerator', 100)
+    .loops(10)
+    .outputs('minecraft:medium_amethyst_bud')
+  create
+    .SequencedAssembly('minecraft:medium_amethyst_bud')
+    .fill('kubejs:crystal_growth_accelerator', 100)
+    .loops(10)
+    .outputs('minecraft:large_amethyst_bud')
+  create
+    .SequencedAssembly('minecraft:large_amethyst_bud')
+    .fill('kubejs:crystal_growth_accelerator', 100)
+    .loops(10)
+    .outputs('minecraft:amethyst_cluster')
+  e.recipes.thermal
+    .crystallizer('minecraft:medium_amethyst_bud', [
+      'minecraft:small_amethyst_bud',
+      Fluid.of('kubejs:crystal_growth_accelerator', 500),
+    ])
+    .energy(8000) // 20 RF/t = 20s
+  e.recipes.thermal
+    .crystallizer('minecraft:large_amethyst_bud', [
+      'minecraft:medium_amethyst_bud',
+      Fluid.of('kubejs:crystal_growth_accelerator', 500),
+    ])
+    .energy(8000) // 20 RF/t = 20s
+  e.recipes.thermal
+    .crystallizer('minecraft:amethyst_cluster', [
+      'minecraft:large_amethyst_bud',
+      Fluid.of('kubejs:crystal_growth_accelerator', 500),
+    ])
+    .energy(8000) // 20 RF/t = 20s
+
   // Glowstone and redstone automation from potion brewing is encouraged
   // Gem dust automation
   create.filling('apotheosis:gem_dust', [
     'create:cinder_flour',
-    Fluid.of('create_enchantment_industry:experience', 9),
+    Fluid.of('starbunclemania:source_fluid', 9),
   ])
 
   // Require flower azaleas for stuff here to incentivize moss farming

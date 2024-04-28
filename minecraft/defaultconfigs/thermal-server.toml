@@ -323,7 +323,7 @@
 	[Machines.Brewer]
 		#This sets the base power consumption (RF/t) for the Crystallizer.
 		#Range: 1 ~ 32000
-		"Base Power" = 5
+		"Base Power" = 20
 
 	[Machines.Crafter]
 		#This sets the base power consumption (RF/t) for the Sequential Fabricator.
