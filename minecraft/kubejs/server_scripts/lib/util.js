@@ -40,6 +40,66 @@ const getOffsetList = (o) => {
 }
 
 /**
+ * @param {Internal.BlockContainerJS} block
+ * @param {Internal.Direction|string} direction
+ */
+const getSameDirectionBlock = (block, direction) => {
+  switch (direction) {
+    case 'north':
+      return block.north
+    case 'south':
+      return block.south
+    case 'east':
+      return block.east
+    case 'west':
+      return block.west
+    case 'up':
+      return block.up
+    case 'down':
+      return block.down
+    default:
+      throw new Error(`Unknown direction ${direction}`)
+  }
+}
+
+/**
+ * @param {Internal.BlockContainerJS} block
+ * @param {Internal.Direction|string} direction
+ */
+const getOppositeDirectionBlock = (block, direction) => {
+  switch (direction) {
+    case 'north':
+      return block.south
+    case 'south':
+      return block.north
+    case 'east':
+      return block.west
+    case 'west':
+      return block.east
+    case 'up':
+      return block.down
+    case 'down':
+      return block.up
+    default:
+      throw new Error(`Unknown direction ${direction}`)
+  }
+}
+
+/**
+ * @param {Internal.BlockContainerJS} block
+ */
+const getSurroundingBlocks = (block) => {
+  return [
+    block.up,
+    block.down,
+    block.north,
+    block.south,
+    block.east,
+    block.west,
+  ]
+}
+
+/**
  * Returns a random number in the range [low, high)
  * @param {number} low
  * @param {number=} high
@@ -51,6 +111,20 @@ const randRange = (low, high) => {
     low = 0
   }
   return Math.random() * (high - low) + low
+}
+
+const randRangeInt = (low, high) => {
+  return Math.floor(randRange(low, high))
+}
+
+/**
+ * Returns a random element from the given array, or null if the array is empty.
+ * @param {any[]} l
+ * @returns {?any}
+ */
+const choice = (l) => {
+  if (l.length === 0) return null
+  return l[randRangeInt(0, l.length)]
 }
 
 /**
