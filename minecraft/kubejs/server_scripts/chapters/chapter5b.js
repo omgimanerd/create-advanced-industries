@@ -520,6 +520,22 @@ global.BuddingAmethystSpoutHandlerCallback = (block, fluid, simulate) => {
   return fluidConsumption
 }
 
+/**
+ * Handler defined in startup_scripts/blocks.js
+ * Defined here to allow for server side reload
+ * @type {Internal.BlockEntityCallback_}
+ * @param {Internal.BlockEntityJS} e
+ */
+global.PortalBlockTickingCallback = (e) => {
+  const { blockPos, level } = e
+  const entities = level.getEntitiesWithin(
+    AABB.ofBlocks(blockPos.offset(-1, -1, -1), blockPos.offset(1, 2, 1))
+  )
+  for (const entity of entities) {
+    if (entity.item !== null) continue
+  }
+}
+
 ServerEvents.compostableRecipes((e) => {
   // Add compostable magical stuff
   e.remove('minecraft:flowering_azalea')
