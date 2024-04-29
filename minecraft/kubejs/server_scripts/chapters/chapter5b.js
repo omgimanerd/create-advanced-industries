@@ -495,22 +495,24 @@ global.BuddingAmethystSpoutHandlerCallback = (block, fluid, simulate) => {
   const fluidConsumption = 500
   if (fluid.id !== 'kubejs:crystal_growth_accelerator') return 0
   if (fluid.amount < fluidConsumption) return 0
+  const growthStates = {
+    'minecraft:small_amethyst_bud': 'minecraft:medium_amethyst_bud',
+    'minecraft:medium_amethyst_bud': 'minecraft:large_amethyst_bud',
+    'minecraft:large_amethyst_bud': 'minecraft:amethyst_cluster',
+  }
+  let growCandidates = []
+  for (const surroundingBlock of getSurroundingBlocks(block)) {
+    if (surroundingBlock.id in growthStates) {
+      growCandidates.push(surroundingBlock)
+    }
+  }
+  /** @type {Internal.BlockContainerJS} */
+  const candidate = choice(growCandidates)
+  if (candidate === null) return 0
+  // All possible short circuit conditions need to be evaluated before here.
+  // The simulate check should only perform actual updates if necessary, but
+  // should not short circuit with a different result.
   if (!simulate) {
-    const growthStates = {
-      'minecraft:small_amethyst_bud': 'minecraft:medium_amethyst_bud',
-      'minecraft:medium_amethyst_bud': 'minecraft:large_amethyst_bud',
-      'minecraft:large_amethyst_bud': 'minecraft:amethyst_cluster',
-    }
-    let growCandidates = []
-    for (const surroundingBlock of getSurroundingBlocks(block)) {
-      if (surroundingBlock.id in growthStates) {
-        growCandidates.push(surroundingBlock)
-      }
-    }
-    /** @type {Internal.BlockContainerJS} */
-    const candidate = choice(growCandidates)
-    // TODO this return 0 still plays the animation
-    if (candidate === null) return Math.floor(0)
     candidate.set(growthStates[candidate.id], {
       facing: candidate.properties.facing,
     })
@@ -528,6 +530,26 @@ ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
   const pneumaticcraft = definePneumaticcraftRecipes(e)
   const redefineRecipe = redefineRecipe_(e)
+
+  // Rotten flesh can be smoked into leather
+  e.smoking('minecraft:leather', 'minecraft:rotten_flesh')
+
+  // Name tag recipe
+  e.shaped(
+    'minecraft:name_tag',
+    [
+      ' LS', //
+      'LPL', //
+      ' L ', //
+    ],
+    {
+      L: 'minecraft:leather',
+      S: 'minecraft:string',
+      P: 'minecraft:paper',
+    }
+  )
+
+  // Drop named pickaxes into a portal?
 
   // Sawdust recipe
   create.crushing(
@@ -894,10 +916,10 @@ ServerEvents.recipes((e) => {
   // make the fertilizers depend on each other?
 
   // Overhaul tree extractor boost to use ch5b advanced stuff
-  e.forEachRecipe({ type: 'thermal:tree_extractor_boost' }, (r) => {
-    const json = JSON.parse(r.json)
-    console.log(json)
-  })
+  // e.forEachRecipe({ type: 'thermal:tree_extractor_boost' }, (r) => {
+  //   const json = JSON.parse(r.json)
+  //   console.log(json)
+  // })
 
   // TODO farmers delight seq assembly overhaul, remove cck
 })
