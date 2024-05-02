@@ -11,7 +11,7 @@ BlockEvents.modification((e) => {
 StartupEvents.registry('block', (e) => {
   // Register a portal block to be used in Chapter 5b
   e.create('kubejs:portal_block').blockEntity((c) => {
-    c.serverTick(10, 0, (block_entity) => {
+    c.serverTick(20, 0, (block_entity) => {
       if (global.PortalBlockTickingCallback) {
         global.PortalBlockTickingCallback(block_entity)
       }
