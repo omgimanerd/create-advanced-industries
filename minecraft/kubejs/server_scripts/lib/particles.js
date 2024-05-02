@@ -5,10 +5,10 @@
  * @param {Internal.Level} level
  * @param {Internal.ParticleOptions_} particle
  * @param {number[]|{x: number, y: number, z: number}} pos
- * @param {number[]|{vx: number, vy: number, vz: number}} v
+ * @param {number|number[]|{vx: number, vy: number, vz: number}} v
  * @param {number} count
  * @param {number} speed
- * @param {?boolean} overrideLimiter
+ * @param {?boolean} [overrideLimiter=true]
  */
 const spawnParticles = (
   level,
@@ -24,19 +24,25 @@ const spawnParticles = (
   if (Array.isArray(pos) && pos.length === 3) {
     ;[x, y, z] = pos
   } else if (
-    pos.x === undefined ||
-    pos.y === undefined ||
-    pos.z === undefined
+    pos.x !== undefined &&
+    pos.y !== undefined &&
+    pos.z !== undefined
   ) {
-    ;({ x, y, z } = pos)
+    x = pos.x
+    y = pos.y
+    z = pos.z
   } else {
     throw new Error(`Unknown pos argument ${pos}`)
   }
   let vx, vy, vz
-  if (Array.isArray(v) && v.length === 3) {
+  if (typeof v === 'number') {
+    vx = vy = vz = v
+  } else if (Array.isArray(v) && v.length === 3) {
     ;[vx, vy, vz] = v
-  } else if (v.vx === undefined || v.vy === undefined || v.vz === undefined) {
-    ;({ vx, vy, vz } = v)
+  } else if (v.vx !== undefined && v.vy !== undefined && v.vz !== undefined) {
+    vx = v.vx
+    vy = v.vy
+    vz = v.vz
   } else {
     throw new Error(`Unknown v argument ${v}`)
   }
@@ -69,11 +75,13 @@ const spawnEffectParticles = (level, pos, count, spread, color) => {
   if (Array.isArray(pos) && pos.length == 3) {
     ;[x, y, z] = pos
   } else if (
-    pos.x === undefined ||
-    pos.y === undefined ||
-    pos.z === undefined
+    pos.x !== undefined &&
+    pos.y !== undefined &&
+    pos.z !== undefined
   ) {
-    ;({ x, y, z } = pos)
+    x = pos.x
+    y = pos.y
+    z = pos.z
   } else {
     throw new Error(`Unknown pos argument ${pos}`)
   }
@@ -81,12 +89,15 @@ const spawnEffectParticles = (level, pos, count, spread, color) => {
   if (Array.isArray(color) && color.length === 4) {
     ;[r, g, b, e] = color
   } else if (
-    color.r === undefined ||
-    color.g === undefined ||
-    color.b === undefined ||
-    color.e === undefined
+    color.r !== undefined &&
+    color.g !== undefined &&
+    color.b !== undefined &&
+    color.e !== undefined
   ) {
-    ;({ r, g, b, e } = color)
+    r = color.r
+    g = color.g
+    b = color.b
+    e = color.e
   } else {
     throw new Error(`Unknown color argument ${color}`)
   }
