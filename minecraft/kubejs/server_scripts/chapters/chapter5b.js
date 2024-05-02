@@ -427,7 +427,7 @@ const handleLightningSpawnEvent = (
       let pos = block.getPos()
       let trader = level.createEntity('minecraft:wandering_trader')
       // Center the wandering trader on the block
-      trader.setPos(pos.x + 0.5, pos.y, pos.z + 0.5)
+      trader.setPos(pos.offset(0.5, 0, 0.5))
       trader.spawn()
       level.destroyBlock(pos, false)
       // If this lightning entity spawned a trader, it should not do damage to
@@ -521,18 +521,56 @@ global.BuddingAmethystSpoutHandlerCallback = (block, fluid, simulate) => {
 }
 
 /**
+ *
+ * @param {Internal.ItemStack} item
+ */
+const checkPortalPickaxeSacrifice = (item) => {
+  if (item.id !== 'minecraft:iron_pickaxe') return false
+  if (item.isDamaged()) return false
+  const displayElement = item.getTagElement('display')
+  if (displayElement === null) return false
+  if (displayElement.get('Name') !== '{"text":"Laborer\'s Pickaxe"}')
+    return false
+  if (!item.hasEnchantment('minecraft:efficiency', 3)) return false
+  if (!item.hasEnchantment('minecraft:unbreaking', 3)) return false
+  return true
+}
+
+/**
  * Handler defined in startup_scripts/blocks.js
  * Defined here to allow for server side reload
  * @type {Internal.BlockEntityCallback_}
  * @param {Internal.BlockEntityJS} e
  */
 global.PortalBlockTickingCallback = (e) => {
-  const { blockPos, level } = e
+  const { block, blockPos, level } = e
   const entities = level.getEntitiesWithin(
     AABB.ofBlocks(blockPos.offset(-1, -1, -1), blockPos.offset(1, 2, 1))
   )
-  for (const entity of entities) {
-    if (entity.item !== null) continue
+  const pdata = block.entity.persistentData
+  for (const /** @type {Internal.Entity} */ entity of entities) {
+    if (entity.type === 'minecraft:wandering_trader') {
+      entity.remove('killed')
+      pdata.put(
+        'laborers_eaten',
+        Math.min(5, pdata.getInt('laborers_eaten') + 1)
+      )
+      spawnParticles(level, 'minecraft:enchant', entity, 0.15, 100, 0.1)
+      continue
+    }
+    const item = /** @type {net.minecraft.world.item.ItemStack} */ entity.item
+    if (item !== null) {
+      if (checkPortalPickaxeSacrifice(item)) {
+        entity.remove('discarded')
+        pdata.put(
+          'pickaxes_eaten',
+          Math.min(5, pdata.getInt('pickaxes_eaten') + 1)
+        )
+        spawnParticles(level, 'minecraft:enchant', entity, 0.15, 100, 0.1)
+      } else {
+        spawnParticles(level, 'minecraft:poof', entity, 0.1, 3, 0.01)
+      }
+    }
   }
 }
 
@@ -606,8 +644,6 @@ ServerEvents.recipes((e) => {
   ])
 
   // Automate emeralds
-
-  // Axes: Crystal refinement, enchanting, essence, potion, food, apotheosis,
 
   // TODO: better diamond cutting and diamond automation in chapter 5b
 
@@ -937,5 +973,5 @@ ServerEvents.recipes((e) => {
   //   console.log(json)
   // })
 
-  // TODO farmers delight seq assembly overhaul, remove cck
+  // TODO enchanting assembly mechanism of all things
 })

@@ -32,124 +32,142 @@
 			y: 12.0d
 		}
 		{
+			dependencies: ["2EEBA577A4E0E570"]
 			id: "2ECDD71CCB078106"
 			tasks: [{
 				id: "12A6D94311003ED6"
 				item: "kubejs:agony_essence"
 				type: "item"
 			}]
-			x: -2.5d
-			y: 7.5d
+			x: 2.5d
+			y: 6.0d
 		}
 		{
+			dependencies: ["2EEBA577A4E0E570"]
 			id: "6EF0C5120D698B83"
 			tasks: [{
 				id: "0397B7BAD63E19ED"
 				item: "kubejs:suffering_essence"
 				type: "item"
 			}]
-			x: -1.0d
-			y: 7.5d
+			x: 4.0d
+			y: 6.0d
 		}
 		{
+			dependencies: ["2EEBA577A4E0E570"]
 			id: "33FE12881BA0EEB5"
 			tasks: [{
 				id: "27114B36A742B585"
 				item: "kubejs:torment_essence"
 				type: "item"
 			}]
-			x: 0.5d
-			y: 7.5d
+			x: 5.5d
+			y: 6.0d
 		}
 		{
+			dependencies: ["2EEBA577A4E0E570"]
 			id: "0B95E137EF66A193"
 			tasks: [{
 				id: "302B784D67574D39"
 				item: "kubejs:debilitation_essence"
 				type: "item"
 			}]
-			x: 2.5d
-			y: 7.5d
+			x: 7.5d
+			y: 6.0d
 		}
 		{
+			dependencies: ["2EEBA577A4E0E570"]
 			id: "2AB4E2EBC67EF311"
 			tasks: [{
 				id: "13723831D648444F"
 				item: "kubejs:mutilation_essence"
 				type: "item"
 			}]
-			x: 4.5d
-			y: 7.5d
+			x: 9.5d
+			y: 6.0d
 		}
 		{
+			dependencies: ["6BAABF1B3A537837"]
 			id: "4AFDE4261E9269E5"
 			tasks: [{
 				id: "3C0019032285C28E"
 				item: "apotheosis:gem_dust"
 				type: "item"
 			}]
-			x: -4.0d
-			y: 16.0d
+			x: -11.5d
+			y: 17.0d
 		}
 		{
+			dependencies: ["6BAABF1B3A537837"]
 			id: "23DF9D3DE3EE6E7B"
 			tasks: [{
 				id: "577C0A2248A15F4C"
 				item: "minecraft:glowstone_dust"
 				type: "item"
 			}]
-			x: -2.0d
-			y: 16.0d
+			x: -9.5d
+			y: 17.0d
 		}
 		{
+			dependencies: ["6BAABF1B3A537837"]
 			id: "5249CFE6916AD3A9"
 			tasks: [{
 				id: "4DE0F59F0AEE14B8"
 				item: "minecraft:redstone"
 				type: "item"
 			}]
-			x: 0.0d
-			y: 16.0d
+			x: -7.5d
+			y: 17.0d
 		}
 		{
+			dependencies: [
+				"6BAABF1B3A537837"
+				"0B369F01B8698B1B"
+				"064C0A824A1B1E34"
+				"07FC434D4D5FD6C0"
+			]
+			dependency_requirement: "one_completed"
 			id: "68E4F4BB308C95B6"
 			tasks: [{
 				id: "7B926BF052A49BBD"
 				item: "minecraft:gunpowder"
 				type: "item"
 			}]
-			x: 2.0d
-			y: 16.0d
+			x: -5.5d
+			y: 17.0d
 		}
 		{
+			dependencies: ["064C0A824A1B1E34"]
 			id: "07FC434D4D5FD6C0"
 			tasks: [{
 				id: "62CB9997CF5AB515"
 				item: "thermal:niter_dust"
 				type: "item"
 			}]
-			x: 2.5d
+			x: -4.0d
 			y: 18.5d
 		}
 		{
+			dependencies: ["1DB5721E215862FC"]
 			id: "064C0A824A1B1E34"
 			tasks: [{
 				id: "7631DE2205D3487B"
 				item: "tfmg:charcoal_dust"
 				type: "item"
 			}]
-			x: 4.0d
-			y: 18.5d
+			x: -4.0d
+			y: 20.5d
 		}
 		{
+			dependencies: ["6BAABF1B3A537837"]
 			id: "0B369F01B8698B1B"
 			tasks: [{
 				id: "33B1420823E54952"
 				item: "thermal:sulfur_dust"
 				type: "item"
 			}]
-			x: 5.5d
-			y: 18.5d
+			x: -5.5d
+			y: 20.5d
 		}
 		{
 			id: "6BAABF1B3A537837"
@@ -158,18 +176,23 @@
 				item: "create:cinder_flour"
 				type: "item"
 			}]
-			x: 0.0d
-			y: 21.5d
+			x: -7.5d
+			y: 22.5d
 		}
 		{
+			dependencies: [
+				"1263DC3A9A0293AC"
+				"1091855210EBEE88"
+				"18466D2CC4D667FD"
+			]
 			id: "05ED3720FD924A0F"
 			tasks: [{
 				id: "7A3AC89687310E46"
 				item: "minecraft:amethyst_shard"
 				type: "item"
 			}]
-			x: -7.5d
-			y: 11.5d
+			x: -8.0d
+			y: 11.0d
 		}
 		{
 			id: "1DB5721E215862FC"
@@ -178,28 +201,30 @@
 				item: "thermal:sawdust"
 				type: "item"
 			}]
-			x: 4.0d
-			y: 21.5d
+			x: -3.5d
+			y: 22.5d
 		}
 		{
+			dependencies: ["5EB25E223B212790"]
 			id: "18466D2CC4D667FD"
 			tasks: [{
 				id: "0D83AD2E7B181867"
 				item: "kubejs:crystal_growth_accelerator_bucket"
 				type: "item"
 			}]
-			x: -8.0d
-			y: 13.5d
+			x: -11.5d
+			y: 12.0d
 		}
 		{
+			dependencies: ["780A813B9F1530FF"]
 			id: "5EB25E223B212790"
 			tasks: [{
 				id: "24635C6B21D4F657"
 				item: "sliceanddice:fertilizer_bucket"
 				type: "item"
 			}]
-			x: -8.5d
-			y: 15.5d
+			x: -12.0d
+			y: 14.0d
 		}
 		{
 			id: "780A813B9F1530FF"
@@ -208,8 +233,8 @@
 				item: "farmersdelight:organic_compost"
 				type: "item"
 			}]
-			x: -9.5d
-			y: 17.5d
+			x: -13.5d
+			y: 15.0d
 		}
 		{
 			id: "786AE6C112C83EBF"
@@ -218,31 +243,44 @@
 				item: "minecraft:emerald_block"
 				type: "item"
 			}]
-			x: 0.0d
-			y: 4.0d
+			x: 5.0d
+			y: 2.5d
 		}
 		{
+			dependencies: [
+				"62DFC14B3930061D"
+				"084B381A4BBB7BFE"
+			]
 			id: "362F5A94CAA3AAAD"
 			tasks: [{
 				id: "2F2A9B2775E52ABB"
 				item: "ars_nouveau:glyph_lightning"
 				type: "item"
 			}]
-			x: 1.5d
-			y: 4.0d
+			x: 6.5d
+			y: 2.5d
 		}
 		{
+			dependencies: ["0FB26F7E9A99AE65"]
 			id: "084B381A4BBB7BFE"
 			tasks: [{
 				id: "066F7C4F8565E697"
 				item: "minecraft:heart_of_the_sea"
 				type: "item"
 			}]
-			x: 4.5d
-			y: 2.5d
+			x: 8.0d
+			y: 2.0d
 		}
 		{
+			icon: {
+				Count: 1b
+				id: "create:copper_diving_helmet"
+				tag: {
+					Damage: 0
+				}
+			}
 			id: "0FB26F7E9A99AE65"
+			optional: true
 			tasks: [
 				{
 					id: "2F0F9E8348170C2C"
@@ -267,8 +305,8 @@
 					type: "item"
 				}
 			]
-			x: 6.0d
-			y: 3.5d
+			x: 11.0d
+			y: 2.0d
 		}
 		{
 			id: "7F34979862617334"
@@ -277,20 +315,25 @@
 				item: "minecraft:nether_wart"
 				type: "item"
 			}]
-			x: 12.0d
-			y: 12.5d
+			x: 7.5d
+			y: 18.5d
 		}
 		{
+			dependencies: ["5EB25E223B212790"]
 			id: "57FF7014A4F93984"
 			tasks: [{
 				id: "23AAB96589CCCB8E"
 				item: "sliceanddice:sprinkler"
 				type: "item"
 			}]
-			x: -10.0d
-			y: 14.0d
+			x: -13.5d
+			y: 12.5d
 		}
 		{
+			dependencies: [
+				"18999D25870E7B6F"
+				"7F34979862617334"
+			]
 			id: "2FA97E14E8E844C3"
 			tasks: [{
 				id: "2D483F1E267AA49A"
@@ -303,30 +346,33 @@
 				}
 				type: "item"
 			}]
-			x: 11.0d
-			y: 14.5d
+			x: 4.0d
+			y: 20.5d
 		}
 		{
+			dependencies: ["40CC93D0C0DA8A23"]
 			id: "18999D25870E7B6F"
 			tasks: [{
 				id: "1B9F53793D1FE48D"
 				item: "minecraft:blaze_powder"
 				type: "item"
 			}]
-			x: 9.0d
-			y: 12.5d
+			x: 4.0d
+			y: 18.5d
 		}
 		{
+			dependencies: ["7430C94A25FE9972"]
 			id: "40CC93D0C0DA8A23"
 			tasks: [{
 				id: "1B8BA68B69221571"
 				item: "kubejs:blaze_milk_bucket"
 				type: "item"
 			}]
-			x: 10.0d
-			y: 11.0d
+			x: 4.5d
+			y: 17.0d
 		}
 		{
+			dependencies: ["0BDDC77F3D42F976"]
 			id: "19B720F8CDD8A9DA"
 			tasks: [{
 				id: "273CD4D2B4323E5C"
@@ -337,6 +383,7 @@
 			y: 7.5d
 		}
 		{
+			dependencies: ["19B720F8CDD8A9DA"]
 			id: "1091855210EBEE88"
 			tasks: [{
 				id: "4CBB683BFACDAC6B"
@@ -347,6 +394,7 @@
 			y: 8.5d
 		}
 		{
+			icon: "ars_nouveau:ritual_containment"
 			id: "2E0B1FEBCBCD0D66"
 			tasks: [
 				{
@@ -365,10 +413,12 @@
 					type: "item"
 				}
 			]
+			title: "Containment Ritual"
 			x: 8.5d
-			y: 8.5d
+			y: 15.0d
 		}
 		{
+			dependencies: ["2E0B1FEBCBCD0D66"]
 			icon: {
 				Count: 1b
 				id: "ars_nouveau:mob_jar"
@@ -600,8 +650,8 @@
 				type: "observation"
 			}]
 			title: "Catch a Blaze"
-			x: 8.0d
-			y: 10.0d
+			x: 6.5d
+			y: 16.5d
 		}
 		{
 			id: "4365A194C7485351"
@@ -610,8 +660,8 @@
 				item: "ars_nouveau:blue_archwood_sapling"
 				type: "item"
 			}]
-			x: 18.5d
-			y: 19.5d
+			x: -1.0d
+			y: 1.0d
 		}
 		{
 			id: "54D861CC78AEBA7B"
@@ -620,8 +670,8 @@
 				item: "ars_nouveau:red_archwood_sapling"
 				type: "item"
 			}]
-			x: 18.0d
-			y: 20.5d
+			x: -3.0d
+			y: 4.0d
 		}
 		{
 			id: "2B03408A0CBF83B4"
@@ -630,8 +680,8 @@
 				item: "ars_nouveau:green_archwood_sapling"
 				type: "item"
 			}]
-			x: 17.5d
-			y: 21.5d
+			x: -1.5d
+			y: 2.5d
 		}
 		{
 			id: "3D6B271C1246653C"
@@ -640,88 +690,626 @@
 				item: "ars_elemental:yellow_archwood_sapling"
 				type: "item"
 			}]
-			x: 17.0d
-			y: 22.5d
+			x: -4.5d
+			y: 5.0d
 		}
 		{
+			dependencies: ["533741731F3D1475"]
 			id: "07A1E7CF68BEF269"
 			tasks: [{
 				id: "512001816A1798A0"
 				item: "kubejs:flourishing_archwood_sap_bucket"
 				type: "item"
 			}]
-			x: 15.0d
-			y: 20.5d
+			x: -5.5d
+			y: -0.5d
 		}
 		{
+			dependencies: ["533741731F3D1475"]
 			id: "01FC22A5FB8B77CF"
 			tasks: [{
 				id: "26F093A4F35501E8"
 				item: "kubejs:blazing_archwood_sap_bucket"
 				type: "item"
 			}]
-			x: 15.5d
-			y: 19.5d
+			x: -6.5d
+			y: 1.0d
 		}
 		{
+			dependencies: ["533741731F3D1475"]
 			id: "0A050DEE89467675"
 			tasks: [{
 				id: "1B745B176B586DD5"
 				item: "kubejs:cascading_archwood_sap_bucket"
 				type: "item"
 			}]
-			x: 16.5d
-			y: 18.5d
+			x: -5.0d
+			y: -1.5d
 		}
 		{
+			dependencies: ["533741731F3D1475"]
 			id: "4237CC27AD794E7A"
 			tasks: [{
 				id: "674DD9736E81691A"
 				item: "kubejs:flashing_archwood_sap_bucket"
 				type: "item"
 			}]
-			x: 14.5d
-			y: 22.0d
+			x: -7.0d
+			y: 2.0d
 		}
 		{
+			dependencies: ["0A050DEE89467675"]
 			id: "7B17FAFB35621BDA"
 			tasks: [{
 				id: "6793689DAF7C94FC"
 				item: "ars_nouveau:water_essence"
 				type: "item"
 			}]
-			x: 14.5d
-			y: 17.5d
+			x: -7.0d
+			y: -2.5d
 		}
 		{
+			dependencies: ["01FC22A5FB8B77CF"]
 			id: "1C53E10A9C091F3A"
 			tasks: [{
 				id: "188C439CC6653B13"
 				item: "ars_nouveau:fire_essence"
 				type: "item"
 			}]
-			x: 13.5d
-			y: 18.5d
+			x: -8.5d
+			y: 0.0d
 		}
 		{
+			dependencies: ["07A1E7CF68BEF269"]
 			id: "78D959DB65034A0A"
 			tasks: [{
 				id: "08EC8272088DFFC8"
 				item: "ars_nouveau:earth_essence"
 				type: "item"
 			}]
-			x: 13.0d
-			y: 20.0d
+			x: -7.5d
+			y: -1.0d
 		}
 		{
+			dependencies: ["4237CC27AD794E7A"]
 			id: "277C2053360DBCEC"
 			tasks: [{
 				id: "7F327FF4462956FD"
 				item: "ars_nouveau:air_essence"
 				type: "item"
 			}]
+			x: -9.0d
+			y: 1.0d
+		}
+		{
+			id: "3097C65F688551D2"
+			tasks: [{
+				id: "797529DF4BFD3476"
+				item: "create:experience_nugget"
+				type: "item"
+			}]
+			x: 14.5d
+			y: 10.5d
+		}
+		{
+			id: "1920DBFCC741E28B"
+			tasks: [{
+				id: "529C2C25E9FA74A2"
+				item: "minecraft:experience_bottle"
+				type: "item"
+			}]
 			x: 12.5d
+			y: 4.0d
+		}
+		{
+			id: "1B11C8D5E0409ADF"
+			tasks: [{
+				id: "7051D9897AA45C2C"
+				item: "ars_nouveau:wilden_tribute"
+				type: "item"
+			}]
+			x: 7.5d
+			y: 0.0d
+		}
+		{
+			dependencies: ["11B47CBBE677DE5A"]
+			id: "0BDDC77F3D42F976"
+			tasks: [{
+				id: "30436B2A865D4520"
+				item: "minecraft:budding_amethyst"
+				type: "item"
+			}]
+			x: -9.5d
+			y: 6.0d
+		}
+		{
+			dependencies: ["1091855210EBEE88"]
+			id: "6ED287BA9FAEA5E5"
+			tasks: [{
+				id: "68A17AD8D07F2170"
+				item: {
+					Count: 1b
+					ForgeCaps: {
+						Parent: { }
+					}
+					id: "create_central_kitchen:cooking_guide"
+				}
+				type: "item"
+			}]
+			x: -6.5d
+			y: 9.0d
+		}
+		{
+			dependencies: [
+				"508AE70DB0CD965E"
+				"1091855210EBEE88"
+				"18466D2CC4D667FD"
+			]
+			id: "1263DC3A9A0293AC"
+			tasks: [{
+				id: "315D85B01A70FF66"
+				item: "minecraft:amethyst_cluster"
+				type: "item"
+			}]
+			x: -9.0d
+			y: 10.0d
+		}
+		{
+			dependencies: [
+				"00979B2E901E446E"
+				"1091855210EBEE88"
+				"18466D2CC4D667FD"
+			]
+			id: "508AE70DB0CD965E"
+			tasks: [{
+				id: "1562758F4882AAD1"
+				item: "minecraft:large_amethyst_bud"
+				type: "item"
+			}]
+			x: -10.0d
+			y: 9.5d
+		}
+		{
+			dependencies: [
+				"42EA477F24B18C7E"
+				"1091855210EBEE88"
+				"18466D2CC4D667FD"
+			]
+			id: "00979B2E901E446E"
+			tasks: [{
+				id: "42BC43BD075699AD"
+				item: "minecraft:medium_amethyst_bud"
+				type: "item"
+			}]
+			x: -11.0d
+			y: 9.0d
+		}
+		{
+			dependencies: [
+				"1091855210EBEE88"
+				"18466D2CC4D667FD"
+			]
+			id: "42EA477F24B18C7E"
+			tasks: [{
+				id: "4211613C7CB6914F"
+				item: "minecraft:small_amethyst_bud"
+				type: "item"
+			}]
+			x: -12.0d
+			y: 8.5d
+		}
+		{
+			id: "6A15481CE98198FE"
+			tasks: [{
+				id: "36C48455E93D1464"
+				item: "ars_nouveau:magebloom"
+				type: "item"
+			}]
+			x: 2.0d
+			y: 17.5d
+		}
+		{
+			id: "06BBBB60DD9C2E3D"
+			tasks: [{
+				id: "6F86CD1A53B94642"
+				item: "ars_nouveau:sourceberry_bush"
+				type: "item"
+			}]
+			x: 2.5d
+			y: 21.5d
+		}
+		{
+			dependencies: [
+				"6A15481CE98198FE"
+				"2FA97E14E8E844C3"
+			]
+			id: "7DD208F0E2D5A50C"
+			tasks: [{
+				id: "68577282F8FEBFD7"
+				item: {
+					Count: 1b
+					id: "minecraft:potion"
+					tag: {
+						Potion: "ars_nouveau:spell_damage_potion_strong"
+					}
+				}
+				type: "item"
+			}]
+			title: "Potion of Spell Damage II"
+			x: 0.0d
+			y: 18.0d
+		}
+		{
+			dependencies: [
+				"06BBBB60DD9C2E3D"
+				"2FA97E14E8E844C3"
+			]
+			id: "68D4D5A14908BFC9"
+			tasks: [{
+				id: "6B4F1EC48866FC21"
+				item: {
+					Count: 1b
+					id: "minecraft:potion"
+					tag: {
+						Potion: "ars_nouveau:mana_regen_potion_strong"
+					}
+				}
+				type: "item"
+			}]
+			title: "Potion of Mana Regeneration II"
+			x: 0.0d
+			y: 19.5d
+		}
+		{
+			dependencies: [
+				"4365A194C7485351"
+				"2B03408A0CBF83B4"
+				"54D861CC78AEBA7B"
+				"3D6B271C1246653C"
+			]
+			id: "533741731F3D1475"
+			tasks: [{
+				id: "5B2BDCE8A23D435B"
+				item: "thermal:device_tree_extractor"
+				type: "item"
+			}]
+			x: -4.5d
+			y: 2.5d
+		}
+		{
+			id: "62DFC14B3930061D"
+			tasks: [{
+				id: "521D2D300F8B6BD8"
+				item: "ars_nouveau:archmage_spell_book"
+				type: "item"
+			}]
+			x: 6.5d
+			y: 0.5d
+		}
+		{
+			dependencies: [
+				"0E8066B87DBD28A9"
+				"637C9276FAAAEB25"
+			]
+			id: "3BA01B49D9277234"
+			tasks: [{
+				id: "5038E0370BB52006"
+				item: "minecraft:moss_block"
+				type: "item"
+			}]
+			x: 10.5d
+			y: 22.5d
+		}
+		{
+			id: "0E8066B87DBD28A9"
+			tasks: [{
+				id: "6AD4F0A4A37A4D08"
+				item: "createaddition:biomass"
+				type: "item"
+			}]
+			x: 10.5d
+			y: 25.0d
+		}
+		{
+			dependencies: [
+				"786AE6C112C83EBF"
+				"362F5A94CAA3AAAD"
+			]
+			icon: {
+				Count: 1b
+				id: "ftbquests:custom_icon"
+				tag: {
+					Icon: "ftbchunks:textures/faces/minecraft/wandering_trader.png"
+				}
+			}
+			id: "2EEBA577A4E0E570"
+			tasks: [{
+				icon: "minecraft:emerald"
+				id: "36E08E5CFCF70822"
+				observe_type: 5
+				timer: 0L
+				to_observe: "minecraft:wandering_trader"
+				type: "observation"
+			}]
+			title: "Spawn a Wandering Trader"
+			x: 5.5d
+			y: 4.0d
+		}
+		{
+			dependencies: ["3BA01B49D9277234"]
+			icon: "minecraft:red_mushroom"
+			id: "118FC07682A677B4"
+			tasks: [{
+				id: "3817E00D0A1068CF"
+				item: {
+					Count: 1b
+					id: "ftbfiltersystem:smart_filter"
+					tag: {
+						"ftbfiltersystem:filter": "or(item(minecraft:brown_mushroom_block)item(minecraft:red_mushroom_block))"
+					}
+				}
+				type: "item"
+			}]
+			title: "Mushroom Blocks"
+			x: 10.5d
 			y: 21.0d
+		}
+		{
+			dependencies: ["3BA01B49D9277234"]
+			id: "4D7BE1939A8BEA96"
+			tasks: [{
+				id: "6BDBDDC4C2377093"
+				item: "minecraft:bone_meal"
+				type: "item"
+			}]
+			x: 11.5d
+			y: 21.5d
+		}
+		{
+			id: "637C9276FAAAEB25"
+			tasks: [{
+				id: "2CF541904F8ED711"
+				item: "minecraft:stone"
+				type: "item"
+			}]
+			x: 11.5d
+			y: 24.5d
+		}
+		{
+			dependencies: [
+				"118FC07682A677B4"
+				"3BAAB3EEF31C2AF3"
+			]
+			id: "3DB77F119A23B60C"
+			tasks: [{
+				id: "2D8617E5E9A19E19"
+				item: "minecraft:fermented_spider_eye"
+				type: "item"
+			}]
+			x: 6.5d
+			y: 21.0d
+		}
+		{
+			dependencies: [
+				"2FA97E14E8E844C3"
+				"3DB77F119A23B60C"
+			]
+			id: "04D71DAE466BB918"
+			tasks: [{
+				id: "5FE60B7251AFC60C"
+				item: {
+					Count: 1b
+					id: "minecraft:potion"
+					tag: {
+						Potion: "minecraft:harming"
+					}
+				}
+				type: "item"
+			}]
+			x: 1.5d
+			y: 24.0d
+		}
+		{
+			id: "3BAAB3EEF31C2AF3"
+			tasks: [{
+				id: "3408A9E513232E0B"
+				item: "minecraft:cobweb"
+				type: "item"
+			}]
+			x: 9.0d
+			y: 19.5d
+		}
+		{
+			id: "11B47CBBE677DE5A"
+			tasks: [{
+				id: "11D28A1D272DA7E1"
+				item: {
+					Count: 1b
+					id: "ars_nouveau:dowsing_rod"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: -11.5d
+			y: 6.0d
+		}
+		{
+			dependencies: ["3097C65F688551D2"]
+			id: "12830BE9407D4D43"
+			tasks: [{
+				id: "4DAC4D253230C5D2"
+				item: {
+					Count: 1b
+					id: "minecraft:enchanted_book"
+					tag: {
+						StoredEnchantments: [{
+							id: "minecraft:silk_touch"
+							lvl: 1s
+						}]
+					}
+				}
+				type: "item"
+			}]
+			title: "Silk Touch"
+			x: 12.5d
+			y: 12.0d
+		}
+		{
+			dependencies: ["3097C65F688551D2"]
+			id: "33CA0C2F9BDF9EC2"
+			tasks: [{
+				id: "7B49960E575C0A1F"
+				item: "create_enchantment_industry:printer"
+				type: "item"
+			}]
+			x: 10.5d
+			y: 10.5d
+		}
+		{
+			dependencies: ["3BA01B49D9277234"]
+			id: "426703177D8740C7"
+			tasks: [{
+				id: "235B863D9C7345DF"
+				item: "minecraft:flowering_azalea"
+				type: "item"
+			}]
+			x: 8.5d
+			y: 22.0d
+		}
+		{
+			dependencies: ["33CA0C2F9BDF9EC2"]
+			id: "0E63CEC9F5AFC6CE"
+			tasks: [{
+				id: "77F0CB48DA957A7B"
+				item: "minecraft:name_tag"
+				type: "item"
+			}]
+			x: 8.5d
+			y: 11.0d
+		}
+		{
+			dependencies: ["3097C65F688551D2"]
+			id: "34B903E7593A7C8A"
+			tasks: [{
+				id: "0692758B86F07609"
+				item: {
+					Count: 1b
+					id: "minecraft:enchanted_book"
+					tag: {
+						StoredEnchantments: [{
+							id: "minecraft:efficiency"
+							lvl: 4s
+						}]
+					}
+				}
+				type: "item"
+			}]
+			title: "Efficiency Enchanting"
+			x: 12.5d
+			y: 13.0d
+		}
+		{
+			dependencies: [
+				"12830BE9407D4D43"
+				"34B903E7593A7C8A"
+			]
+			id: "51C7D6BA7F3C0776"
+			tasks: [{
+				id: "7691E8091E234DBE"
+				item: "create_enchantment_industry:enchanting_guide"
+				type: "item"
+			}]
+			x: 8.5d
+			y: 12.5d
+		}
+		{
+			dependencies: [
+				"51C7D6BA7F3C0776"
+				"0E63CEC9F5AFC6CE"
+			]
+			id: "1700320A6BEA9460"
+			tasks: [{
+				id: "3669E0B5BFC4A6A5"
+				item: {
+					Count: 1b
+					id: "minecraft:iron_pickaxe"
+					tag: {
+						Damage: 0
+						Enchantments: [
+							{
+								id: "minecraft:efficiency"
+								lvl: 3s
+							}
+							{
+								id: "minecraft:unbreaking"
+								lvl: 3s
+							}
+						]
+						display: {
+							Name: "{\"text\":\"Laborer's Pickaxe\"}"
+						}
+					}
+				}
+				type: "item"
+			}]
+			x: 6.0d
+			y: 12.0d
+		}
+		{
+			id: "36407A48939066C9"
+			tasks: [{
+				id: "319CF41F80BA0260"
+				item: "kubejs:portal_block"
+				type: "item"
+			}]
+			x: 3.5d
+			y: 11.0d
+		}
+		{
+			dependencies: ["1C53E10A9C091F3A"]
+			id: "4ACDAA19C89A9E53"
+			tasks: [{
+				id: "320F99DB6F2AE794"
+				item: "ars_elemental:lesser_fire_focus"
+				type: "item"
+			}]
+			x: -10.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["7B17FAFB35621BDA"]
+			id: "1F7C33EE24BB011C"
+			tasks: [{
+				id: "41FC514EB35CB5BE"
+				item: "ars_elemental:lesser_water_focus"
+				type: "item"
+			}]
+			x: -9.0d
+			y: -4.0d
+		}
+		{
+			dependencies: ["277C2053360DBCEC"]
+			id: "653A068E19991D20"
+			tasks: [{
+				id: "0EF27CE8B214B773"
+				item: "ars_elemental:lesser_air_focus"
+				type: "item"
+			}]
+			x: -10.5d
+			y: 0.5d
+		}
+		{
+			dependencies: ["78D959DB65034A0A"]
+			id: "0CE01D29A3754EBE"
+			tasks: [{
+				id: "5C823E64C713E328"
+				item: "ars_elemental:lesser_earth_focus"
+				type: "item"
+			}]
+			x: -9.0d
+			y: -2.0d
 		}
 	]
 	title: "Chapter 5b: Crystalline Mechanisms"

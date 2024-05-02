@@ -4,6 +4,7 @@
 	default_quest_shape: ""
 	filename: "chapter_6_quantum_mechanisms"
 	group: "5B3547AEADCBC841"
+	icon: "createteleporters:quantum_mechanism"
 	id: "67020B8E9395350E"
 	order_index: 7
 	quest_links: [ ]
