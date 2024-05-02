@@ -1,25 +1,95 @@
 // priority: 1000
 
 /**
- * @param {Internal.Level}
- * @param {BlockPos}
+ * Helper for calling Level.spawnParticles
+ * @param {Internal.Level} level
+ * @param {Internal.ParticleOptions_} particle
+ * @param {number[]|{x: number, y: number, z: number}} pos
+ * @param {number[]|{vx: number, vy: number, vz: number}} v
+ * @param {number} count
+ * @param {number} speed
+ * @param {?boolean} overrideLimiter
  */
-const spawnEffectParticles = (
-  /** @type {Internal.Level} */ level,
-  /** @type {BlockPos} */ location,
-  /** @type {number} */ count,
-  /** @type {number} */ spread,
-  /** @type {number[]} */ color
+const spawnParticles = (
+  level,
+  particle,
+  pos,
+  v,
+  count,
+  speed,
+  overrideLimiter
 ) => {
+  overrideLimiter = overrideLimiter === undefined ? true : overrideLimiter
+  let x, y, z
+  if (Array.isArray(pos) && pos.length === 3) {
+    ;[x, y, z] = pos
+  } else if (
+    pos.x === undefined ||
+    pos.y === undefined ||
+    pos.z === undefined
+  ) {
+    ;({ x, y, z } = pos)
+  } else {
+    throw new Error(`Unknown pos argument ${pos}`)
+  }
+  let vx, vy, vz
+  if (Array.isArray(v) && v.length === 3) {
+    ;[vx, vy, vz] = v
+  } else if (v.vx === undefined || v.vy === undefined || v.vz === undefined) {
+    ;({ vx, vy, vz } = v)
+  } else {
+    throw new Error(`Unknown v argument ${v}`)
+  }
+  level.spawnParticles(
+    particle,
+    overrideLimiter,
+    x,
+    y,
+    z,
+    vx,
+    vy,
+    vz,
+    count,
+    speed
+  )
+}
+
+/**
+ * @param {Internal.Level} level
+ * @param {BlockPos} pos
+ * @param {number} count
+ * @param {number} spread
+ * @param {number[]} color Color as array of RGBE values in [0, 1)
+ */
+const spawnEffectParticles = (level, pos, count, spread, color) => {
   count = count === undefined ? 1 : count
   spread = spread === undefined ? 0.25 : spread
   color = color === undefined ? [0, 0, 0, 1] : color
-  if (color.length !== 4) throw new Error(`Invalid color array: ${color}`)
-  const [r, g, b, e] = color
-  if (!location.x || !location.y || !location.z) {
-    throw new Error(`Invalid location ${location}`)
+  let x, y, z
+  if (Array.isArray(pos) && pos.length == 3) {
+    ;[x, y, z] = pos
+  } else if (
+    pos.x === undefined ||
+    pos.y === undefined ||
+    pos.z === undefined
+  ) {
+    ;({ x, y, z } = pos)
+  } else {
+    throw new Error(`Unknown pos argument ${pos}`)
   }
-  const { x, y, z } = location
+  let r, g, b, e
+  if (Array.isArray(color) && color.length === 4) {
+    ;[r, g, b, e] = color
+  } else if (
+    color.r === undefined ||
+    color.g === undefined ||
+    color.b === undefined ||
+    color.e === undefined
+  ) {
+    ;({ r, g, b, e } = color)
+  } else {
+    throw new Error(`Unknown color argument ${color}`)
+  }
   for (let i = 0; i < count; ++i) {
     level.spawnParticles(
       'minecraft:entity_effect',
