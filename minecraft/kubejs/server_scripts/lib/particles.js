@@ -1,11 +1,30 @@
 // priority: 1000
 
 /**
+ * @typedef {$Vec3|number[]|{x: number, y: number, z:number}} Vec3Like
+ */
+
+/**
+ * @param {Vec3Like} v
+ * @returns {number[]}
+ */
+const parseVec3Like = (v) => {
+  if (v.class === $Vec3) {
+    return [v.x(), v.y(), v.z()]
+  } else if (Array.isArray(v) && v.length === 3) {
+    return v
+  } else if (v.x !== undefined && v.y !== undefined && v.z !== undefined) {
+    return [v.x, v.y, v.z]
+  }
+  throw new Error(`Unknown Vec3 argument ${v}`)
+}
+
+/**
  * Helper for calling Level.spawnParticles
  * @param {Internal.Level} level
  * @param {Internal.ParticleOptions_} particle
- * @param {number[]|{x: number, y: number, z: number}} pos
- * @param {number|number[]|{vx: number, vy: number, vz: number}} v
+ * @param {Vec3Like} pos
+ * @param {number|Vec3Like} v
  * @param {number} count
  * @param {number} speed
  * @param {?boolean} [overrideLimiter=true]
@@ -20,31 +39,12 @@ const spawnParticles = (
   overrideLimiter
 ) => {
   overrideLimiter = overrideLimiter === undefined ? true : overrideLimiter
-  let x, y, z
-  if (Array.isArray(pos) && pos.length === 3) {
-    ;[x, y, z] = pos
-  } else if (
-    pos.x !== undefined &&
-    pos.y !== undefined &&
-    pos.z !== undefined
-  ) {
-    x = pos.x
-    y = pos.y
-    z = pos.z
-  } else {
-    throw new Error(`Unknown pos argument ${pos}`)
-  }
+  const [x, y, z] = parseVec3Like(pos)
   let vx, vy, vz
   if (typeof v === 'number') {
     vx = vy = vz = v
-  } else if (Array.isArray(v) && v.length === 3) {
-    ;[vx, vy, vz] = v
-  } else if (v.vx !== undefined && v.vy !== undefined && v.vz !== undefined) {
-    vx = v.vx
-    vy = v.vy
-    vz = v.vz
   } else {
-    throw new Error(`Unknown v argument ${v}`)
+    ;[vx, vy, vz] = parseVec3Like(v)
   }
   level.spawnParticles(
     particle,
@@ -71,20 +71,7 @@ const spawnEffectParticles = (level, pos, count, spread, color) => {
   count = count === undefined ? 1 : count
   spread = spread === undefined ? 0.25 : spread
   color = color === undefined ? [0, 0, 0, 1] : color
-  let x, y, z
-  if (Array.isArray(pos) && pos.length == 3) {
-    ;[x, y, z] = pos
-  } else if (
-    pos.x !== undefined &&
-    pos.y !== undefined &&
-    pos.z !== undefined
-  ) {
-    x = pos.x
-    y = pos.y
-    z = pos.z
-  } else {
-    throw new Error(`Unknown pos argument ${pos}`)
-  }
+  const [x, y, z] = parseVec3Like(pos)
   let r, g, b, e
   if (Array.isArray(color) && color.length === 4) {
     ;[r, g, b, e] = color

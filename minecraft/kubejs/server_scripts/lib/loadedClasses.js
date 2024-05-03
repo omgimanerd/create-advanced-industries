@@ -11,3 +11,5 @@ const $PotionBrewing = Java.loadClass(
 const $RegistryInfo = Java.loadClass(
   'dev.latvian.mods.kubejs.registry.RegistryInfo'
 )
+
+const $Vec3 = Java.loadClass('net.minecraft.world.phys.Vec3')
