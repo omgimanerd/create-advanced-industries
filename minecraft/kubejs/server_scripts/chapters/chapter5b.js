@@ -194,18 +194,7 @@ const handleAmethystFeedingMechanic = (
       spawnEffectParticles(level, target, 15, 0.4, [0.1, 0.5, 0, 1])
     })
   } else {
-    level.spawnParticles(
-      'minecraft:heart',
-      true,
-      x,
-      y,
-      z,
-      0.4,
-      0.4,
-      0.4,
-      10,
-      0.01
-    )
+    spawnParticles(level, 'minecraft:heart', target, 0.4, 10, 0.1)
   }
 }
 
@@ -316,15 +305,10 @@ const handleMushroomMossSeeding = (
   ) => {
     if (block.id !== 'minecraft:moss_block') return
     if (Math.random() > probability) return
-    const { x, y, z } = block
-    level.spawnParticles(
+    spawnParticles(
+      level,
       'minecraft:composter',
-      true,
-      x + 0.5,
-      y + 1,
-      z + 0.5,
-      0.3,
-      0.3,
+      block.pos.center.add(0, 0.5, 0),
       0.3,
       20,
       0.3
@@ -548,29 +532,76 @@ global.PortalBlockTickingCallback = (e) => {
     AABB.ofBlocks(blockPos.offset(-1, -1, -1), blockPos.offset(1, 2, 1))
   )
   const pdata = block.entity.persistentData
+
+  // Eat wandering traders and enchanted pickaxes, yielding hearthstones.
+  let laborersEaten = pdata.getInt('laborers_eaten')
+  let pickaxesEaten = pdata.getInt('pickaxes_eaten')
   for (const /** @type {Internal.Entity} */ entity of entities) {
     if (entity.type === 'minecraft:wandering_trader') {
       entity.remove('killed')
-      pdata.put(
-        'laborers_eaten',
-        Math.min(5, pdata.getInt('laborers_eaten') + 1)
-      )
+      laborersEaten = Math.min(5, laborersEaten + 1)
       spawnParticles(level, 'minecraft:enchant', entity, 0.15, 100, 0.1)
       continue
     }
-    const item = /** @type {net.minecraft.world.item.ItemStack} */ entity.item
+    let item = /** @type {net.minecraft.world.item.ItemStack} */ entity.item
     if (item !== null) {
       if (checkPortalPickaxeSacrifice(item)) {
         entity.remove('discarded')
-        pdata.put(
-          'pickaxes_eaten',
-          Math.min(5, pdata.getInt('pickaxes_eaten') + 1)
-        )
+        pickaxesEaten = Math.min(5, pickaxesEaten + 1)
         spawnParticles(level, 'minecraft:enchant', entity, 0.15, 100, 0.1)
       } else {
         spawnParticles(level, 'minecraft:poof', entity, 0.1, 3, 0.01)
       }
     }
+  }
+  // If the portal is satisfied, a hearthstone is spawned in 100 ticks
+  if (laborersEaten > 0 && pickaxesEaten > 0) {
+    laborersEaten--
+    pickaxesEaten--
+    level.server.scheduleInTicks(50, (c) => {
+      block.popItemFromFace('gag:hearthstone', 'up')
+    })
+  }
+  pdata.put('laborers_eaten', laborersEaten)
+  pdata.put('pickaxes_eaten', pickaxesEaten)
+
+  // Eat surrounding fluid source blocks to sustain the portal.
+  let surrounding = []
+  for (const b of [block.north, block.south, block.east, block.west]) {
+    if (b.id === 'starbunclemania:source_fluid_block') {
+      surrounding.push(b)
+    }
+  }
+  let nextEatTime = pdata.getInt('next_eat_time') // stored as tick count
+  const currentTime = level.server.getTickCount()
+  if (nextEatTime === 0) {
+    nextEatTime = currentTime + randRangeInt(400, 1000)
+    pdata.put('next_eat_time', nextEatTime)
+  } else if (currentTime >= nextEatTime && surrounding.length > 0) {
+    choice(surrounding).set('minecraft:air')
+    nextEatTime = currentTime + randRangeInt(400, 1000)
+    pdata.put('next_eat_time', nextEatTime)
+  }
+  // The portal becomes unstable if not surrounded by fluid source, and will
+  // break if the instability gets too high.
+  let instability = pdata.getInt('instability')
+  if (surrounding.length !== 4) {
+    instability += 4 - surrounding.length
+    spawnParticles(
+      level,
+      'minecraft:campfire_cosy_smoke',
+      blockPos.center.add(0, 1, 0),
+      0,
+      Math.ceil(instability / 4),
+      0.01
+    )
+  } else {
+    instability = 0
+  }
+  if (randRange(100) < instability) {
+    level.destroyBlock(block, false)
+  } else {
+    pdata.put('instability', instability)
   }
 }
 
@@ -602,8 +633,6 @@ ServerEvents.recipes((e) => {
       P: 'minecraft:paper',
     }
   )
-
-  // Drop named pickaxes into a portal?
 
   // Sawdust recipe
   create.crushing(
@@ -641,6 +670,15 @@ ServerEvents.recipes((e) => {
     '6x thermal:niter_dust',
     'thermal:sulfur_dust',
     'tfmg:charcoal_dust',
+  ])
+
+  // The four alchemical powders can be crafted into sacred salt.
+  e.remove({ id: 'gag:sacred_salt' })
+  e.shapeless('4x gag:sacred_salt', [
+    'apotheosis:gem_dust',
+    'minecraft:glowstone_dust',
+    'minecraft:redstone',
+    'minecraft:gunpowder',
   ])
 
   // Automate emeralds
@@ -742,6 +780,21 @@ ServerEvents.recipes((e) => {
     'minecraft:gunpowder',
     Fluid.of('sliceanddice:fertilizer', 1000),
   ])
+
+  // Dowsing rod
+  redefineRecipe(
+    'ars_nouveau:dowsing_rod',
+    [
+      ' G ', //
+      'GMG', //
+      'P P', //
+    ],
+    {
+      G: 'minecraft:gold_ingot',
+      M: 'kubejs:source_mechanism',
+      P: 'ars_nouveau:archwood_planks',
+    }
+  )
 
   // Amethyst bud growth. The most expensive is sequenced filling, then
   // Thermal crystallization, then manual spouting.
@@ -965,7 +1018,13 @@ ServerEvents.recipes((e) => {
     /*output=*/ 8,
     /*cycles=*/ 16
   )
-  // make the fertilizers depend on each other?
+
+  // Tree Fertilizer (maybe should go in create overhauls)
+  e.remove({ id: 'create:crafting/appliances/tree_fertilizer' })
+  create.filling('create:tree_fertilizer', [
+    'minecraft:bone_meal',
+    Fluid.of('sliceanddice:fertilizer', 250),
+  ])
 
   // Overhaul tree extractor boost to use ch5b advanced stuff
   // e.forEachRecipe({ type: 'thermal:tree_extractor_boost' }, (r) => {
