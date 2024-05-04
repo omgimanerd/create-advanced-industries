@@ -452,13 +452,13 @@ LootJS.modifiers((e) => {
       .matchDamageSource((c) => {
         return c.anyType(easyDamageSource)
       })
-      .addWeightedLoot([2, 3], Item.of(essence))
+      .addWeightedLoot([0, 2], Item.of(essence))
       .addWeightedLoot([1, 3], Item.of('create:experience_nugget'))
     e.addEntityLootModifier('minecraft:wandering_trader')
       .matchDamageSource((c) => {
         return c.anyType(hardDamageSource)
       })
-      .addWeightedLoot([6, 8], Item.of(essence))
+      .addWeightedLoot([4, 6], Item.of(essence))
       .addWeightedLoot([4, 6], [Item.of('create:experience_nugget')])
   }
 
@@ -474,7 +474,7 @@ LootJS.modifiers((e) => {
  * @param {Internal.BlockRightClickedEventJS} e
  */
 const handleOpenPortal = (e) => {
-  const { item, hand, block, level, server } = e
+  const { item, hand, block, level } = e
   if (hand !== 'main_hand') return
   if (item.id !== 'ars_nouveau:source_gem') return
   if (block.id !== 'minecraft:crying_obsidian') return
@@ -642,9 +642,14 @@ ServerEvents.recipes((e) => {
   const pneumaticcraft = definePneumaticcraftRecipes(e)
   const redefineRecipe = redefineRecipe_(e)
 
+  // Blaze milk to blaze powder
+  create
+    .mixing('2x minecraft:blaze_powder', Fluid.of('kubejs:blaze_milk', 250))
+    .heated()
+
   // Compost block from compost
   redefineRecipe(
-    'farmersdelight:organic_compost',
+    '8x farmersdelight:organic_compost',
     [
       'CBC', //
       'NDN', //
@@ -990,8 +995,26 @@ ServerEvents.recipes((e) => {
     Fluid.of('kubejs:vexing_archwood_sap', 500),
   ])
 
+  // TODO heart of the sea duping
+
+  // Custom recipe for the Archmage Spell book without nether stars.
+  e.remove({ id: 'ars_nouveau:archmage_spell_book_upgrade' })
+  e.recipes.ars_nouveau.enchanting_apparatus(
+    [
+      'ars_elemental:lesser_air_focus',
+      'ars_elemental:lesser_earth_focus',
+      'ars_elemental:lesser_fire_focus',
+      'ars_elemental:lesser_water_focus',
+      'ars_nouveau:wilden_tribute',
+    ],
+    'ars_nouveau:apprentice_spell_book',
+    'ars_nouveau:archmage_spell_book',
+    8000,
+    true
+  )
+
   // Wilden Tribute can be duped with Wandering Trader essences
-  e.remove({ id: 'ars_elemental:imbuement_mark_of_mastery' })
+  e.remove({ output: 'ars_elemental:mark_of_mastery' })
   e.recipes.ars_nouveau.enchanting_apparatus(
     [
       'ars_nouveau:earth_essence',
@@ -1080,7 +1103,8 @@ ServerEvents.recipes((e) => {
   )
 
   // Crying obsidian can be crafted with lots of source
-  new SequencedAssembly('minecraft:obsidian')
+  create
+    .SequencedAssembly('minecraft:obsidian')
     .fill(Fluid.of('starbunclemania:source_fluid', 1000))
     .loops(25)
     .outputs('minecraft:crying_obsidian')
@@ -1112,8 +1136,9 @@ ServerEvents.recipes((e) => {
     .SequencedAssembly('kubejs:incomplete_crystalline_mechanism')
     .deploy('ars_elemental:mark_of_mastery')
     .fill(potionFluid('ars_nouveau:spell_damage_potion_strong', 250))
-    .fill(potionFluid('ars_nouveau:mana_regen_potion_strong', 250))
+    .fill(potionFluid('ars_nouveau:mana_regen_potion_long', 250))
     .fill(potionFluid('minecraft:strong_harming', 250))
+    .fill(potionFluid('minecraft:strong_strength', 250))
     .fill(potionFluid('ars_elemental:shock_potion', 250))
     .outputs('kubejs:crystalline_mechanism')
 })

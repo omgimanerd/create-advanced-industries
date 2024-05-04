@@ -2,7 +2,7 @@
 
 // Only matchers that should be fully removed from crafting and JEI should go
 // here. JEI.hideItems uses the matcher in key: output
-global.hideJEI = false
+global.hideJEI = true
 global.removedRecipes = [
   { output: /^ars_nouveau:[a-z]+_sourcelink/ },
   { output: 'compressedcreativity:compressed_iron_casing' },
@@ -16,6 +16,8 @@ global.removedRecipes = [
   { output: 'createaddition:zinc_sheet' },
   { output: /^createaddition:[a-z_]+spool/ },
   { output: /^createconnected:copycat_[a-z_]+/ },
+  { output: /^createdeco:[a-z]+_coin$/ },
+  { output: /^createdeco:[a-z]+_coinstack$/ },
   { output: 'createdeco:netherite_nugget' },
   { output: /^create_new_age:heat.*/ },
   { output: /^create_new_age:[a-z_]*corium/ },
@@ -48,6 +50,7 @@ global.removedRecipes = [
   { output: 'thermal:apple_block' },
   { output: 'thermal:beetroot_block' },
   { output: 'thermal:carrot_block' },
+  { output: 'thermal:copper_nugget' },
   { output: 'thermal:potato_block' },
   { output: 'thermal:phytogro' },
   { output: /^thermal:machine_(?!crystallizer|pyrolyzer).*/ },

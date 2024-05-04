@@ -11,7 +11,20 @@
 	quests: [
 		{
 			dependencies: ["6B75CD039419AEFC"]
+			description: [
+				"Welcome to Chapter 5b."
+				""
+				"This is the magical automation chapter, with a lot of focus on strange and exciting crafting recipes. There are 6 branches to the chapter, and even though they are unlocked in counterclockwise order, you will find that the things they unlock will help with everything else."
+				""
+				"If you've already done Chapter 5a, you may find some things easier to do with the integration of technology."
+			]
 			id: "6D72A451CEF56252"
+			rewards: [{
+				count: 8
+				id: "722352DBE6FE5304"
+				item: "ars_nouveau:source_berry_pie"
+				type: "item"
+			}]
 			tasks: [{
 				id: "540BC5695571F5F6"
 				title: "Start"
@@ -29,7 +42,20 @@
 				"3848ED45B36CE954"
 				"5C04720821F787C6"
 			]
+			description: [
+				"This should be self explanatory by now. Crafting the Crystalline Mechanism is a two step process."
+				""
+				"First, you need to enchant a Source Mechanism with all the powerful new reagents you've automated."
+				""
+				"Then filling it with the right potions will solidify it to the final Crystalline Mechanism."
+			]
 			id: "5E9CD0318E0403BD"
+			rewards: [{
+				count: 16
+				id: "697D384B868A68D2"
+				item: "kubejs:crystalline_mechanism"
+				type: "item"
+			}]
 			tasks: [{
 				id: "62E20D469B9A024E"
 				item: "kubejs:crystalline_mechanism"
@@ -41,6 +67,11 @@
 		}
 		{
 			dependencies: ["2EEBA577A4E0E570"]
+			description: [
+				"Drowning a wandering trader will result in agony essences."
+				""
+				"Alternatively, setting them on fire will yield more drops. Dying in lava does not count!"
+			]
 			id: "2ECDD71CCB078106"
 			tasks: [{
 				id: "12A6D94311003ED6"
@@ -52,6 +83,11 @@
 		}
 		{
 			dependencies: ["2EEBA577A4E0E570"]
+			description: [
+				"Killing a wandering trader with lightning will drop suffering essence."
+				""
+				"For a more difficult automation, using a Tesla Coil will yield more drops!"
+			]
 			id: "6EF0C5120D698B83"
 			tasks: [{
 				id: "0397B7BAD63E19ED"
@@ -63,6 +99,11 @@
 		}
 		{
 			dependencies: ["2EEBA577A4E0E570"]
+			description: [
+				"For torment essence, drop a wandering trader into the Create crushing wheels."
+				""
+				"For a harder automation, if they are killed via suffociation in wall, you'll get more drops."
+			]
 			id: "33FE12881BA0EEB5"
 			tasks: [{
 				id: "27114B36A742B585"
@@ -74,6 +115,11 @@
 		}
 		{
 			dependencies: ["2EEBA577A4E0E570"]
+			description: [
+				"Splashing a wandering trader with Potions of Harming will yield debilitation essence."
+				""
+				"For a harder automation, you'll get more drops if they are killed with withering."
+			]
 			id: "0B95E137EF66A193"
 			tasks: [{
 				id: "302B784D67574D39"
@@ -85,6 +131,11 @@
 		}
 		{
 			dependencies: ["2EEBA577A4E0E570"]
+			description: [
+				"Dropping a wandering trader on top of Create's mechanical saws will yield mutilation essence when they meet their end."
+				""
+				"For a harder automation, blast them with Pneumaticcraft's sentry turret for more drops."
+			]
 			id: "2AB4E2EBC67EF311"
 			tasks: [{
 				id: "13723831D648444F"
@@ -96,6 +147,7 @@
 		}
 		{
 			dependencies: ["6BAABF1B3A537837"]
+			description: ["Spouting liquefied source onto cinder flour gets you gem dust."]
 			id: "4AFDE4261E9269E5"
 			tasks: [{
 				id: "3C0019032285C28E"
@@ -107,6 +159,7 @@
 		}
 		{
 			dependencies: ["6BAABF1B3A537837"]
+			description: ["Spouting a Potion of Night Vision onto cinder flour gets you glowstone."]
 			id: "23DF9D3DE3EE6E7B"
 			tasks: [{
 				id: "577C0A2248A15F4C"
@@ -118,6 +171,7 @@
 		}
 		{
 			dependencies: ["6BAABF1B3A537837"]
+			description: ["Spouting a Potion of Strength onto cinder flour gets you redstone."]
 			id: "5249CFE6916AD3A9"
 			tasks: [{
 				id: "4DE0F59F0AEE14B8"
@@ -135,6 +189,11 @@
 				"07FC434D4D5FD6C0"
 			]
 			dependency_requirement: "one_completed"
+			description: [
+				"Gunpowder is made by combining sulfur, charcoal dust, and potassium nitrate."
+				""
+				"Coincidentally, you could also make it by spouting a Potion of Harming onto cinder flour."
+			]
 			id: "68E4F4BB308C95B6"
 			tasks: [{
 				id: "7B926BF052A49BBD"
@@ -146,6 +205,7 @@
 		}
 		{
 			dependencies: ["064C0A824A1B1E34"]
+			description: ["Dissolving charcoal in water and heating the solution gets you potash, or potassium nitrate. This is a powerful precursor to most modern fertilizers, and a key ingredient in gunpowder."]
 			id: "07FC434D4D5FD6C0"
 			tasks: [{
 				id: "62CB9997CF5AB515"
@@ -157,6 +217,11 @@
 		}
 		{
 			dependencies: ["1DB5721E215862FC"]
+			description: [
+				"While you could totally just crush charcoal dust, you get almost 9x yield if you blast sawdust directly into charcoal dust."
+				""
+				"Unfortunately, it's too fine to be used as a fuel."
+			]
 			id: "064C0A824A1B1E34"
 			tasks: [{
 				id: "7631DE2205D3487B"
@@ -168,6 +233,11 @@
 		}
 		{
 			dependencies: ["6BAABF1B3A537837"]
+			description: [
+				"Sulfur dust can be made alchemically by spouting a Potion of Swiftness onto cinder flour."
+				""
+				"Didn't we just have a potion brewing chapter? This should be easy."
+			]
 			id: "0B369F01B8698B1B"
 			tasks: [{
 				id: "33B1420823E54952"
@@ -179,6 +249,7 @@
 		}
 		{
 			dependencies: ["5C04720821F787C6"]
+			description: ["You'll need LOTS of cinder flour for this branch of the chapter, but it since its renewable, this grants you access to the other automatable dusts."]
 			hide_dependency_lines: true
 			id: "6BAABF1B3A537837"
 			tasks: [{
@@ -195,6 +266,7 @@
 				"18466D2CC4D667FD"
 				"6ED287BA9FAEA5E5"
 			]
+			description: ["Once the amethyst cluster has matured, you can harvest it with Silk Touch and crush it, or harvest it with Fortune."]
 			id: "05ED3720FD924A0F"
 			tasks: [{
 				id: "7A3AC89687310E46"
@@ -206,6 +278,7 @@
 		}
 		{
 			dependencies: ["5C04720821F787C6"]
+			description: ["Crush wood to get sawdust. This isn't strictly necessary, but it's much more efficient to get charcoal dust this way."]
 			hide_dependency_lines: true
 			id: "1DB5721E215862FC"
 			tasks: [{
@@ -218,6 +291,7 @@
 		}
 		{
 			dependencies: ["5EB25E223B212790"]
+			description: ["Combining the alchemical powders with liquid fertilizer gets you crystal growth accelerator."]
 			id: "18466D2CC4D667FD"
 			tasks: [{
 				id: "0D83AD2E7B181867"
@@ -229,6 +303,7 @@
 		}
 		{
 			dependencies: ["780A813B9F1530FF"]
+			description: ["Dissolving the organic compost in water gets you liquid fertilizer."]
 			id: "5EB25E223B212790"
 			tasks: [{
 				id: "24635C6B21D4F657"
@@ -240,6 +315,7 @@
 		}
 		{
 			dependencies: ["77263BDEFD6943A3"]
+			description: ["Organic Compost can be turned into rich soil, or used to create liquid fertilizer."]
 			hide_dependency_lines: true
 			id: "780A813B9F1530FF"
 			tasks: [{
@@ -251,20 +327,11 @@
 			y: 32.0d
 		}
 		{
-			id: "786AE6C112C83EBF"
-			tasks: [{
-				id: "640F3F634EE11D1B"
-				item: "minecraft:emerald_block"
-				type: "item"
-			}]
-			x: 11.5d
-			y: 31.5d
-		}
-		{
 			dependencies: [
 				"62DFC14B3930061D"
 				"084B381A4BBB7BFE"
 			]
+			description: ["The glyph of lightning grants you the power of a Sith Lord, allowing you to blast whomst'ever you please with arcane magics."]
 			id: "362F5A94CAA3AAAD"
 			tasks: [{
 				id: "2F2A9B2775E52ABB"
@@ -275,7 +342,11 @@
 			y: 31.5d
 		}
 		{
-			dependencies: ["0FB26F7E9A99AE65"]
+			dependencies: [
+				"0FB26F7E9A99AE65"
+				"16F27A5ADC1090F1"
+			]
+			dependency_requirement: "one_completed"
 			id: "084B381A4BBB7BFE"
 			tasks: [{
 				id: "066F7C4F8565E697"
@@ -286,6 +357,9 @@
 			y: 30.5d
 		}
 		{
+			dependencies: ["63177B9DD16B8220"]
+			description: ["Since you need to do some underwater exploration, perhaps some diving gear might come in handy?"]
+			hide_dependency_lines: true
 			icon: {
 				Count: 1b
 				id: "create:copper_diving_helmet"
@@ -323,6 +397,13 @@
 			y: 28.0d
 		}
 		{
+			dependencies: ["6D72A451CEF56252"]
+			description: [
+				"Nether warts allow you to brew awkward potions, the basis of every other brewable potion."
+				""
+				"They seem quite difficult to farm, but you'll unlock a way to accelerate their growth later."
+			]
+			hide_dependency_lines: true
 			id: "7F34979862617334"
 			tasks: [{
 				id: "16CE71BE95E226C1"
@@ -334,6 +415,11 @@
 		}
 		{
 			dependencies: ["5EB25E223B212790"]
+			description: [
+				"Sprinklers apply a bonemealing effect in a 5x5 square up to 7 blocks below them if you pump liquid fertilizer into them. Being able to supercharge your farm will be immensely beneficial."
+				""
+				"Industrial fertilizers mark the start of the human population explosion, and are a major factor in the exponential growth of humanity."
+			]
 			id: "57FF7014A4F93984"
 			tasks: [{
 				id: "23AAB96589CCCB8E"
@@ -347,6 +433,11 @@
 			dependencies: [
 				"18999D25870E7B6F"
 				"7F34979862617334"
+			]
+			description: [
+				"With all this in mind, brew yourself an awkward potion."
+				""
+				"You can do this in an automated fashion with a heated mixer."
 			]
 			id: "2FA97E14E8E844C3"
 			tasks: [{
@@ -365,6 +456,7 @@
 		}
 		{
 			dependencies: ["40CC93D0C0DA8A23"]
+			description: ["Blaze powder can be used manually in a brewing stand, but you'll probably want to automate it to make potions of strength."]
 			id: "18999D25870E7B6F"
 			tasks: [{
 				id: "1B9F53793D1FE48D"
@@ -376,6 +468,7 @@
 		}
 		{
 			dependencies: ["7430C94A25FE9972"]
+			description: ["Evaporate the blaze milk in a heated mixer to get blaze powder."]
 			id: "40CC93D0C0DA8A23"
 			tasks: [{
 				id: "1B8BA68B69221571"
@@ -387,6 +480,11 @@
 		}
 		{
 			dependencies: ["0BDDC77F3D42F976"]
+			description: [
+				"Perform the Ritual of Awakening near Budding Amethyst to get an Amethyst Golem charm."
+				""
+				"Unfortunately, the unstable magics of this world have made it impossible for them to farm amethyst, so we'll need to find another way."
+			]
 			id: "19B720F8CDD8A9DA"
 			tasks: [{
 				id: "273CD4D2B4323E5C"
@@ -398,6 +496,11 @@
 		}
 		{
 			dependencies: ["19B720F8CDD8A9DA"]
+			description: [
+				"Luckily, you can get a special amethyst golem named Remy with the right enticements."
+				""
+				"Remy is an epicure, and loves to eat. Right click him to feed him something tasty. He'll reward you handsomely for feeding him good food."
+			]
 			id: "1091855210EBEE88"
 			tasks: [{
 				id: "4CBB683BFACDAC6B"
@@ -408,6 +511,9 @@
 			y: 21.0d
 		}
 		{
+			dependencies: ["6D72A451CEF56252"]
+			description: ["This is the first branch that's unlocked, focused on potion brewing and automation. While automated potion brewing won't need blaze powder, it's good to have some to get started. Luckily, there's a way to get lots of blaze powder."]
+			hide_dependency_lines: true
 			icon: "ars_nouveau:ritual_containment"
 			id: "2E0B1FEBCBCD0D66"
 			tasks: [
@@ -433,6 +539,15 @@
 		}
 		{
 			dependencies: ["2E0B1FEBCBCD0D66"]
+			description: [
+				"You could totally farm blaze rods with Ars Nouveau's drygmys here."
+				""
+				"Or ... if you can dispel on the containment jar, you can release the blaze and milk them."
+				""
+				"Right click the blaze with a bucket of lava to feed it, and then right click it with an empty bucket to get a bucket of blaze milk. Each bucket of lava yields 3 buckets of blaze milk."
+				""
+				"Here's a name tag to name your blaze so it won't despawn."
+			]
 			icon: {
 				Count: 1b
 				id: "ars_nouveau:mob_jar"
@@ -545,6 +660,11 @@
 				}
 			}
 			id: "7430C94A25FE9972"
+			rewards: [{
+				id: "58380286864F8013"
+				item: "minecraft:name_tag"
+				type: "item"
+			}]
 			tasks: [{
 				icon: {
 					Count: 1b
@@ -669,6 +789,7 @@
 		}
 		{
 			dependencies: ["7EF097AE728432C9"]
+			description: ["Grow a cascading archwood sapling into a tree. You can also get the other saplings by combining it with a manipulation essence."]
 			hide_dependency_lines: true
 			id: "4365A194C7485351"
 			tasks: [{
@@ -681,6 +802,7 @@
 		}
 		{
 			dependencies: ["7EF097AE728432C9"]
+			description: ["Grow a blazing archwood sapling into a tree. You can also get the other saplings by combining it with a manipulation essence."]
 			hide_dependency_lines: true
 			id: "54D861CC78AEBA7B"
 			tasks: [{
@@ -693,6 +815,7 @@
 		}
 		{
 			dependencies: ["7EF097AE728432C9"]
+			description: ["Grow a flourishing archwood sapling into a tree. You can also get the other saplings by combining it with a manipulation essence."]
 			hide_dependency_lines: true
 			id: "2B03408A0CBF83B4"
 			tasks: [{
@@ -705,6 +828,7 @@
 		}
 		{
 			dependencies: ["7EF097AE728432C9"]
+			description: ["Grow a flashing archwood sapling into a tree. You can also get the other saplings by combining it with a manipulation essence."]
 			hide_dependency_lines: true
 			id: "3D6B271C1246653C"
 			tasks: [{
@@ -728,6 +852,7 @@
 		}
 		{
 			dependencies: ["533741731F3D1475"]
+			description: ["You can heat archwood sap to refine it, breaking it down into liquid essence and some byproducts."]
 			id: "01FC22A5FB8B77CF"
 			tasks: [{
 				id: "26F093A4F35501E8"
@@ -750,6 +875,7 @@
 		}
 		{
 			dependencies: ["533741731F3D1475"]
+			description: ["You can heat archwood sap to refine it, breaking it down into liquid essence and some byproducts."]
 			id: "4237CC27AD794E7A"
 			tasks: [{
 				id: "674DD9736E81691A"
@@ -761,6 +887,7 @@
 		}
 		{
 			dependencies: ["0A050DEE89467675"]
+			description: ["The liquid elemental essence can be compacted or cooled back into the elemental essences."]
 			id: "7B17FAFB35621BDA"
 			tasks: [{
 				id: "6793689DAF7C94FC"
@@ -772,6 +899,7 @@
 		}
 		{
 			dependencies: ["01FC22A5FB8B77CF"]
+			description: ["The liquid elemental essence can be compacted or cooled back into the elemental essences."]
 			id: "1C53E10A9C091F3A"
 			tasks: [{
 				id: "188C439CC6653B13"
@@ -783,6 +911,7 @@
 		}
 		{
 			dependencies: ["07A1E7CF68BEF269"]
+			description: ["The liquid elemental essence can be compacted or cooled back into the elemental essences."]
 			id: "78D959DB65034A0A"
 			tasks: [{
 				id: "08EC8272088DFFC8"
@@ -794,6 +923,7 @@
 		}
 		{
 			dependencies: ["4237CC27AD794E7A"]
+			description: ["The liquid elemental essence can be compacted or cooled back into the elemental essences."]
 			id: "277C2053360DBCEC"
 			tasks: [{
 				id: "7F327FF4462956FD"
@@ -804,6 +934,15 @@
 			y: 30.0d
 		}
 		{
+			dependencies: ["51C3856ED291FFF8"]
+			description: [
+				"You've attracted the attention of the eldritch gods with all the magic you've been doing, and they demand sacrifice."
+				""
+				"All the experience you got from murdering wandering traders? It'll come in handy now. As a matter of fact you'll need a ton of liquid experience and liquid source for this section."
+				""
+				"Melt it down to get liquid experience."
+			]
+			hide_dependency_lines: true
 			id: "3097C65F688551D2"
 			tasks: [{
 				id: "797529DF4BFD3476"
@@ -815,10 +954,11 @@
 		}
 		{
 			dependencies: ["2EEBA577A4E0E570"]
+			description: ["The wandering traders will also drop experience nuggets when slain."]
 			id: "1920DBFCC741E28B"
 			tasks: [{
 				id: "529C2C25E9FA74A2"
-				item: "minecraft:experience_bottle"
+				item: "create:experience_nugget"
 				type: "item"
 			}]
 			x: 13.0d
@@ -826,6 +966,7 @@
 		}
 		{
 			dependencies: ["11B47CBBE677DE5A"]
+			description: ["Budding Amethyst can be harvested with Silk Touch enchanted tools."]
 			id: "0BDDC77F3D42F976"
 			tasks: [{
 				id: "30436B2A865D4520"
@@ -837,6 +978,16 @@
 		}
 		{
 			dependencies: ["1091855210EBEE88"]
+			description: [
+				"Time to chef it up! Using a cooking guide, many cooking pot and skillet recipes can be automated "
+				"over a blaze burner. Get creative with this! These are the rules for feeding Remy:"
+				""
+				"- Foods with higher nutrition will drop more mature amethyst shards."
+				""
+				"- Foods with higher saturation will increase the drops."
+				""
+				"- Remy will get tired of the same food and remembers the last five things he's eaten. Feeding him something he's eaten before will incur a small penalty on the drops."
+			]
 			id: "6ED287BA9FAEA5E5"
 			tasks: [{
 				id: "68A17AD8D07F2170"
@@ -858,6 +1009,7 @@
 				"18466D2CC4D667FD"
 				"6ED287BA9FAEA5E5"
 			]
+			description: ["Amethyst buds can be grown in several different ways but they all require crystal growth accelerator. See the Budding Amethyst ponder for more details."]
 			id: "1263DC3A9A0293AC"
 			tasks: [{
 				id: "315D85B01A70FF66"
@@ -873,6 +1025,7 @@
 				"18466D2CC4D667FD"
 				"6ED287BA9FAEA5E5"
 			]
+			description: ["Amethyst buds can be grown in several different ways but they all require crystal growth accelerator. See the Budding Amethyst ponder for more details."]
 			id: "508AE70DB0CD965E"
 			tasks: [{
 				id: "1562758F4882AAD1"
@@ -888,6 +1041,7 @@
 				"18466D2CC4D667FD"
 				"6ED287BA9FAEA5E5"
 			]
+			description: ["Amethyst buds can be grown in several different ways but they all require crystal growth accelerator. See the Budding Amethyst ponder for more details."]
 			id: "00979B2E901E446E"
 			tasks: [{
 				id: "42BC43BD075699AD"
@@ -902,6 +1056,7 @@
 				"18466D2CC4D667FD"
 				"6ED287BA9FAEA5E5"
 			]
+			description: ["Amethyst buds can be grown in several different ways but they all require crystal growth accelerator. See the Budding Amethyst ponder for more details."]
 			id: "42EA477F24B18C7E"
 			tasks: [{
 				id: "4211613C7CB6914F"
@@ -912,6 +1067,8 @@
 			y: 27.0d
 		}
 		{
+			dependencies: ["2FA97E14E8E844C3"]
+			description: ["Magebloom seeds can be crafted using the enchanting apparatus. Magebloom can be brewed into potions of spell damage."]
 			id: "6A15481CE98198FE"
 			tasks: [{
 				id: "36C48455E93D1464"
@@ -922,6 +1079,8 @@
 			y: 10.0d
 		}
 		{
+			dependencies: ["2FA97E14E8E844C3"]
+			description: ["Brewing sourceberries with awkward potions gets you a potion of mana regeneration."]
 			id: "06BBBB60DD9C2E3D"
 			tasks: [{
 				id: "6F86CD1A53B94642"
@@ -936,6 +1095,7 @@
 				"6A15481CE98198FE"
 				"2FA97E14E8E844C3"
 			]
+			description: ["To get a Potion of Spell Damage II, combine the preceding potion with glowstone."]
 			id: "7DD208F0E2D5A50C"
 			tasks: [{
 				id: "68577282F8FEBFD7"
@@ -957,6 +1117,7 @@
 				"06BBBB60DD9C2E3D"
 				"2FA97E14E8E844C3"
 			]
+			description: ["To get an Extended Potion of Mana Regeneration, combine the preceding potion with redstone dust."]
 			id: "68D4D5A14908BFC9"
 			tasks: [{
 				id: "6B4F1EC48866FC21"
@@ -964,12 +1125,12 @@
 					Count: 1b
 					id: "minecraft:potion"
 					tag: {
-						Potion: "ars_nouveau:mana_regen_potion_strong"
+						Potion: "ars_nouveau:mana_regen_potion_long"
 					}
 				}
 				type: "item"
 			}]
-			title: "Potion of Mana Regeneration II"
+			title: "Extended Potion of Mana Regeneration"
 			x: -2.0d
 			y: 12.0d
 		}
@@ -979,6 +1140,12 @@
 				"2B03408A0CBF83B4"
 				"54D861CC78AEBA7B"
 				"3D6B271C1246653C"
+				"37029E4226E582B0"
+			]
+			description: [
+				"Arboreal extractors were gated by Steel Mechanisms in Chapter 4, but with them unlocked, you can extract the sap from archwood trees."
+				""
+				"You can now also produce latex a lot easier by extracting it directly from a rubberwood or jungle tree."
 			]
 			id: "533741731F3D1475"
 			tasks: [{
@@ -991,7 +1158,13 @@
 		}
 		{
 			dependencies: ["172EF8672F4796D9"]
+			description: [
+				"Crafting the Archmage's spell book should be an easy feat."
+				""
+				"You're a wizard, Harry!"
+			]
 			id: "62DFC14B3930061D"
+			size: 2.0d
 			tasks: [{
 				id: "521D2D300F8B6BD8"
 				item: "ars_nouveau:archmage_spell_book"
@@ -1005,6 +1178,7 @@
 				"0E8066B87DBD28A9"
 				"637C9276FAAAEB25"
 			]
+			description: ["Right clicking a piece of stone with biomass will turn it into a moss block."]
 			id: "3BA01B49D9277234"
 			tasks: [{
 				id: "5038E0370BB52006"
@@ -1015,6 +1189,9 @@
 			y: 4.0d
 		}
 		{
+			dependencies: ["6D72A451CEF56252"]
+			description: ["Remember that biomass from Chapter 4? If you do this part right, you'll only need one piece of it."]
+			hide_dependency_lines: true
 			id: "0E8066B87DBD28A9"
 			tasks: [{
 				id: "6AD4F0A4A37A4D08"
@@ -1025,9 +1202,15 @@
 			y: 2.0d
 		}
 		{
-			dependencies: [
-				"786AE6C112C83EBF"
-				"362F5A94CAA3AAAD"
+			dependencies: ["362F5A94CAA3AAAD"]
+			description: [
+				"These little shits always spawn around you when its most inconvenient. They're always dying in inconvenient places, and their llama drop skeep clogging up your belts."
+				""
+				"No more. Now we're going to show them we mean business when we say 'No Soliciting!'"
+				""
+				"You're going to make an example out of them to show them what happens to trespassers."
+				""
+				"&lStrike an emerald block with lightning to spawn a wandering trader.&r"
 			]
 			icon: {
 				Count: 1b
@@ -1037,8 +1220,19 @@
 				}
 			}
 			id: "2EEBA577A4E0E570"
+			rewards: [{
+				id: "1CE8B1AE3F63C92C"
+				item: "gag:no_solicitors"
+				type: "item"
+			}]
 			tasks: [{
-				icon: "minecraft:emerald"
+				icon: {
+					Count: 1b
+					id: "ftbquests:custom_icon"
+					tag: {
+						Icon: "ftbchunks:textures/faces/minecraft/wandering_trader.png"
+					}
+				}
 				id: "36E08E5CFCF70822"
 				observe_type: 5
 				timer: 0L
@@ -1051,6 +1245,7 @@
 		}
 		{
 			dependencies: ["3BA01B49D9277234"]
+			description: ["Right clicking a moss block with a brown or red mushroom will convert the moss block into the respective mushroom block, with a chance for it to seed the adjacent blocks around it."]
 			icon: "minecraft:red_mushroom"
 			id: "118FC07682A677B4"
 			tasks: [{
@@ -1070,16 +1265,32 @@
 		}
 		{
 			dependencies: ["3BA01B49D9277234"]
+			description: [
+				"Now, while you could automate moss with just biomass, you can take advantage of a vanilla mechanic here."
+				""
+				"Right clicking a moss block with fertilizer will convert nearby blocks of stone into moss."
+				""
+				"All of the resulting moss can be composted back into more fertilizer!"
+			]
 			id: "4D7BE1939A8BEA96"
 			tasks: [{
 				id: "6BDBDDC4C2377093"
-				item: "minecraft:bone_meal"
+				item: {
+					Count: 1b
+					id: "ftbfiltersystem:smart_filter"
+					tag: {
+						"ftbfiltersystem:filter": "or(item(minecraft:bone_meal)item(thermal:compost))"
+					}
+				}
 				type: "item"
 			}]
 			x: 4.0d
 			y: 4.0d
 		}
 		{
+			dependencies: ["6D72A451CEF56252"]
+			description: ["You'll need a steady supply of stone. This should be easy by now."]
+			hide_dependency_lines: true
 			id: "637C9276FAAAEB25"
 			tasks: [{
 				id: "2CF541904F8ED711"
@@ -1093,6 +1304,14 @@
 			dependencies: [
 				"118FC07682A677B4"
 				"3BAAB3EEF31C2AF3"
+				"2FA97E14E8E844C3"
+			]
+			description: [
+				"With mushrooms and spider eyes, all you need is sugar, which hopefully you've automated from Chapter 4."
+				""
+				"Fermented spider eyes are now easy to acquire."
+				""
+				"You could total automate this a different way, the sky's the limit!"
 			]
 			id: "3DB77F119A23B60C"
 			tasks: [{
@@ -1104,6 +1323,13 @@
 			y: 10.0d
 		}
 		{
+			dependencies: ["6D72A451CEF56252"]
+			description: [
+				"Cobwebs are simple to automate from string and slimeballs, left as an exercise for the reader."
+				""
+				"Right clicking a cobweb with an Anima Essence from Ars Nouveau will spawn a spider."
+			]
+			hide_dependency_lines: true
 			id: "3BAAB3EEF31C2AF3"
 			tasks: [{
 				id: "3408A9E513232E0B"
@@ -1115,6 +1341,7 @@
 		}
 		{
 			dependencies: ["77263BDEFD6943A3"]
+			description: ["Many of the higher tier Ars Nouveau mechanics require amethyst. Craft a dowsing rod and find yourself an amethyst geode."]
 			hide_dependency_lines: true
 			id: "11B47CBBE677DE5A"
 			tasks: [{
@@ -1132,7 +1359,12 @@
 			y: 16.0d
 		}
 		{
-			dependencies: ["3097C65F688551D2"]
+			dependencies: ["33CA0C2F9BDF9EC2"]
+			description: [
+				"You can get these enchanted books in a multitude of ways."
+				""
+				"Ars Nouveau has basic enchanting through the enchantment apparatus that is accessible, but expensive. Once you have one book though, you can print more."
+			]
 			icon: {
 				Count: 1b
 				id: "minecraft:enchanted_book"
@@ -1160,21 +1392,27 @@
 			}]
 			title: "Unbreaking III"
 			x: 14.0d
-			y: 19.0d
+			y: 17.0d
 		}
 		{
 			dependencies: ["3097C65F688551D2"]
+			description: [
+				"The printer lets you duplicate enchanted books as well as regular books."
+				""
+				"Liquid experience is required to duplicate an enchanted book."
+			]
 			id: "33CA0C2F9BDF9EC2"
 			tasks: [{
 				id: "7B49960E575C0A1F"
 				item: "create_enchantment_industry:printer"
 				type: "item"
 			}]
-			x: 14.0d
-			y: 15.0d
+			x: 16.0d
+			y: 13.0d
 		}
 		{
 			dependencies: ["3BA01B49D9277234"]
+			description: ["TBD"]
 			id: "426703177D8740C7"
 			tasks: [{
 				id: "235B863D9C7345DF"
@@ -1186,6 +1424,7 @@
 		}
 		{
 			dependencies: ["33CA0C2F9BDF9EC2"]
+			description: ["Name tags are craftable, and can be used to automate naming an item with the printer."]
 			id: "0E63CEC9F5AFC6CE"
 			tasks: [{
 				id: "77F0CB48DA957A7B"
@@ -1196,7 +1435,12 @@
 			y: 15.0d
 		}
 		{
-			dependencies: ["3097C65F688551D2"]
+			dependencies: ["33CA0C2F9BDF9EC2"]
+			description: [
+				"You can get these enchanted books in a multitude of ways."
+				""
+				"Ars Nouveau has basic enchanting through the enchantment apparatus that is accessible, but expensive. Once you have one book though, you can print more."
+			]
 			id: "34B903E7593A7C8A"
 			tasks: [{
 				id: "0692758B86F07609"
@@ -1214,14 +1458,27 @@
 			}]
 			title: "Efficiency III"
 			x: 14.0d
-			y: 17.0d
+			y: 15.0d
 		}
 		{
 			dependencies: [
 				"12830BE9407D4D43"
 				"34B903E7593A7C8A"
 			]
+			description: [
+				"The enchanting guide lets you automate the arcane magic of enchanting using a blaze burner."
+				""
+				"... I'm sensing a theme here."
+				""
+				"Use the enchanting guide ponder to see how it works, you'll need enchanted books and lots of liquid experience."
+			]
 			id: "51C7D6BA7F3C0776"
+			rewards: [{
+				count: 16
+				id: "66E6C2268628DE6F"
+				item: "create:experience_nugget"
+				type: "item"
+			}]
 			tasks: [{
 				id: "7691E8091E234DBE"
 				item: "create_enchantment_industry:enchanting_guide"
@@ -1232,9 +1489,10 @@
 		}
 		{
 			dependencies: [
-				"51C7D6BA7F3C0776"
 				"0E63CEC9F5AFC6CE"
+				"51C7D6BA7F3C0776"
 			]
+			description: ["With all the previous steps, you can automate the creation of a &overy particular&r named pickaxe."]
 			id: "1700320A6BEA9460"
 			tasks: [{
 				id: "3669E0B5BFC4A6A5"
@@ -1264,7 +1522,17 @@
 			y: 17.0d
 		}
 		{
-			dependencies: ["1700320A6BEA9460"]
+			dependencies: [
+				"1700320A6BEA9460"
+				"10A42FA13E2BFE87"
+			]
+			description: [
+				"Right clicking a crying obsidian block with source gem will open a portal. While you can't travel through it, the right entities will be readily absorbed into it."
+				""
+				"The eldritch gods demand labor, but luckily it seems like we've automated a source of that too. Spawn &lwandering traders&r and drop &llaborer's pickaxes&r near the portal."
+				""
+				"The portal must be surrounded by liquefied source on all four sides to sustain it, and it will absorb one every now and then. If it is not, it will rapidly become unstable and close."
+			]
 			id: "36407A48939066C9"
 			tasks: [{
 				id: "319CF41F80BA0260"
@@ -1276,6 +1544,7 @@
 		}
 		{
 			dependencies: ["459E69D3CBE6C651"]
+			description: ["The elemental gems in turn, can be enchanted into a lesser elemental focus."]
 			id: "4ACDAA19C89A9E53"
 			tasks: [{
 				id: "320F99DB6F2AE794"
@@ -1287,6 +1556,7 @@
 		}
 		{
 			dependencies: ["2ABA41C161D6BF9E"]
+			description: ["The elemental gems in turn, can be enchanted into a lesser elemental focus."]
 			id: "1F7C33EE24BB011C"
 			tasks: [{
 				id: "41FC514EB35CB5BE"
@@ -1298,6 +1568,7 @@
 		}
 		{
 			dependencies: ["4F64436EEE47AA75"]
+			description: ["The elemental gems in turn, can be enchanted into a lesser elemental focus."]
 			id: "653A068E19991D20"
 			tasks: [{
 				id: "0EF27CE8B214B773"
@@ -1309,6 +1580,7 @@
 		}
 		{
 			dependencies: ["3EA90945A9F50CDE"]
+			description: ["The elemental gems in turn, can be enchanted into a lesser elemental focus."]
 			id: "0CE01D29A3754EBE"
 			tasks: [{
 				id: "5C823E64C713E328"
@@ -1325,6 +1597,11 @@
 				"4AFDE4261E9269E5"
 				"5249CFE6916AD3A9"
 			]
+			description: [
+				"Combining the four previous alchemical powders gets you Sacred Salt."
+				""
+				"It's good for temporarily keeping monsters away, but also a key ingredient in the Crystalline Mechanism."
+			]
 			hide: false
 			id: "69472ECD6121E4E5"
 			tasks: [{
@@ -1337,6 +1614,7 @@
 		}
 		{
 			dependencies: ["5EB25E223B212790"]
+			description: ["While not necessary for this chapter, tree fertilizers will force a sapling to grow no matter where it is. Might come in handy later."]
 			id: "23B178900BC7CE8B"
 			tasks: [{
 				id: "4012537CF8698F9B"
@@ -1348,6 +1626,11 @@
 		}
 		{
 			dependencies: ["36407A48939066C9"]
+			description: [
+				"Providing the portal with the right offerings, and the gods will give you treasure in return."
+				""
+				"For every laborer and pickaxe, the portal will spit out a hearthstone. Useful for teleporting back to spawn, but also a necessary ingredient in the Crystalline Mechanism."
+			]
 			id: "7A81899CE191F81A"
 			tasks: [{
 				id: "445732049E8F9246"
@@ -1365,6 +1648,7 @@
 		}
 		{
 			dependencies: ["7BF6A005D78E9FC7"]
+			description: ["The Wilden Tribute is your trophy for defeating the Wilden Chimera. With this, you can finally make the Archmage's Spellbook, unlocking tier 3 spells in Ars Nouveau."]
 			id: "172EF8672F4796D9"
 			tasks: [{
 				id: "3AFF8857849C319C"
@@ -1382,6 +1666,11 @@
 				"0B95E137EF66A193"
 				"6EF0C5120D698B83"
 			]
+			description: [
+				"By the power of the elements, you can fashion yourself a mark of mastery by enchanting a wilden tribute with the &m4&r8 elemental essences."
+				""
+				"Applying the wandering trader essences to the mark of mastery has a low chance of duplicating the wilden trbute."
+			]
 			id: "43C751FC04D70478"
 			tasks: [{
 				id: "0BF5D231581530AC"
@@ -1396,6 +1685,7 @@
 				"2FA97E14E8E844C3"
 				"3DB77F119A23B60C"
 			]
+			description: ["There are a few different ways to make a Potion of Harming II. Most will involve a fermented spider eye."]
 			id: "4858C6C8E6958632"
 			tasks: [{
 				id: "55B4682341C25AF5"
@@ -1417,6 +1707,7 @@
 				"2FA97E14E8E844C3"
 				"0389D8A16877CE14"
 			]
+			description: ["Brewing the flashpine together with the awkward potion gets you a Potion of Static Charge."]
 			id: "76554076F1FC2D9D"
 			tasks: [{
 				id: "7407C3A5B6C5EB1E"
@@ -1433,6 +1724,12 @@
 			y: 12.0d
 		}
 		{
+			dependencies: ["2FA97E14E8E844C3"]
+			description: [
+				"Occasionally, you might find fruits growing off the side of archwood trees. Flashpines are found on the side of flashing archwood trees, and can be grown on flashing archwood logs."
+				""
+				"Once you unlock the other side of this chapter, you can also magick your own if you can't find one."
+			]
 			id: "0389D8A16877CE14"
 			tasks: [{
 				id: "6F64D0F0BB38CA68"
@@ -1448,7 +1745,9 @@
 				"68D4D5A14908BFC9"
 				"4858C6C8E6958632"
 				"7DD208F0E2D5A50C"
+				"0DA6C86CA327615D"
 			]
+			description: ["With the five potions fully (or partially) automated, you can now move on to the next section."]
 			id: "5C04720821F787C6"
 			tasks: [{
 				disable_toast: true
@@ -1466,6 +1765,11 @@
 				"4ACDAA19C89A9E53"
 				"653A068E19991D20"
 			]
+			description: [
+				"Water. Earth. Fire. Air. Long ago, the four nations lived together in harmony. Then, everything changed when the Fire Nation attacked. Only the Avatar, master of all four elements, could ... wait a minute. That might be copyrighted. Oops."
+				""
+				"Onto the next section!"
+			]
 			id: "63177B9DD16B8220"
 			tasks: [{
 				disable_toast: true
@@ -1478,6 +1782,7 @@
 		}
 		{
 			dependencies: ["69472ECD6121E4E5"]
+			description: ["With Sacred Salt automated, you can now move on to the next section."]
 			id: "77263BDEFD6943A3"
 			tasks: [{
 				id: "182B7B484F28F597"
@@ -1489,6 +1794,7 @@
 		}
 		{
 			dependencies: ["05ED3720FD924A0F"]
+			description: ["With amethyst shards automated, you can now move on to the next section."]
 			id: "7EF097AE728432C9"
 			tasks: [{
 				id: "4E4317A9FA87552F"
@@ -1500,6 +1806,7 @@
 		}
 		{
 			dependencies: ["7A81899CE191F81A"]
+			description: ["With heartstones automated, you are ready to assemble the final Crystalline Mechanism!"]
 			id: "3848ED45B36CE954"
 			tasks: [{
 				id: "4A34005C9A4916F9"
@@ -1511,6 +1818,7 @@
 		}
 		{
 			dependencies: ["43C751FC04D70478"]
+			description: ["With the mark of mastery automated, you can now move on to the final section of this chapter."]
 			id: "51C3856ED291FFF8"
 			tasks: [{
 				id: "1C6BE99E64DF8A3C"
@@ -1521,6 +1829,13 @@
 			y: 21.0d
 		}
 		{
+			dependencies: ["63177B9DD16B8220"]
+			description: [
+				"Prepare for a tough battle! You can use the Tablet of Summon Wilden to perform a ritual that spawns wilden drops. Once you have all the wilden drops, amplify the ritual to spawn the Wilden Chimera."
+				""
+				"Defeating the Wilden Chimera will win you the Wilden Tribute."
+			]
+			hide_dependency_lines: true
 			id: "7BF6A005D78E9FC7"
 			tasks: [{
 				id: "3DDF1C7CCF926EDB"
@@ -1532,6 +1847,7 @@
 		}
 		{
 			dependencies: ["2EEBA577A4E0E570"]
+			description: ["You can probably automate this process with a spell turret. I hope you've also automated emeralds from the previous section of the chapter."]
 			id: "4FA9B5B2A86F46F6"
 			tasks: [{
 				id: "6AAA488D07F51903"
@@ -1543,7 +1859,13 @@
 		}
 		{
 			dependencies: ["12830BE9407D4D43"]
+			description: [
+				"Did you manage to work your way up to an Unbreaking VII book?"
+				""
+				"With enough of these, you might even be able to make something ... &ounbreakable.&r"
+			]
 			id: "4B227421760445CA"
+			optional: true
 			tasks: [{
 				id: "769B4D851196E75C"
 				item: {
@@ -1559,52 +1881,206 @@
 				type: "item"
 			}]
 			title: "Unbreaking VII"
-			x: 12.0d
+			x: 14.0d
 			y: 19.0d
 		}
 		{
 			dependencies: ["277C2053360DBCEC"]
+			description: ["Imbueing amethyst with the elemental essence gets you the corresponding elemental gem."]
 			id: "4F64436EEE47AA75"
 			tasks: [{
 				id: "7D54A59322F6DF85"
 				item: "kubejs:topaz"
 				type: "item"
 			}]
+			title: "Topaz: The Gem of Air"
 			x: -4.0d
 			y: 28.0d
 		}
 		{
 			dependencies: ["1C53E10A9C091F3A"]
+			description: ["Imbueing amethyst with the elemental essence gets you the corresponding elemental gem."]
 			id: "459E69D3CBE6C651"
 			tasks: [{
 				id: "69C88A3046BD5A26"
 				item: "thermal:ruby"
 				type: "item"
 			}]
+			title: "Ruby: The Gem of Fire"
 			x: -2.0d
 			y: 28.0d
 		}
 		{
 			dependencies: ["78D959DB65034A0A"]
+			description: ["Imbueing amethyst with the elemental essence gets you the corresponding elemental gem."]
 			id: "3EA90945A9F50CDE"
 			tasks: [{
 				id: "2EEAC0C6877C2879"
 				item: "minecraft:emerald"
 				type: "item"
 			}]
+			title: "Emerald: The Gem of Earth"
 			x: 2.0d
 			y: 28.0d
 		}
 		{
 			dependencies: ["7B17FAFB35621BDA"]
+			description: ["Imbueing amethyst with the elemental essence gets you the corresponding elemental gem."]
 			id: "2ABA41C161D6BF9E"
 			tasks: [{
 				id: "736BC95F39FC4BDF"
 				item: "minecraft:diamond"
 				type: "item"
 			}]
+			title: "Diamond: The Gem of Water"
 			x: 4.0d
 			y: 28.0d
+		}
+		{
+			dependencies: ["51C3856ED291FFF8"]
+			description: [
+				"A major part of this chapter is offering sacrifices to the eldritch gods, and you'll need a portal for them to accept offerings through."
+				""
+				"Crying obsidian can be obtained by pouring a LOT of source onto obsidian, if you haven't found any naturally."
+			]
+			hide_dependency_lines: true
+			id: "10A42FA13E2BFE87"
+			tasks: [{
+				id: "08CE6B2CAC572017"
+				item: "minecraft:crying_obsidian"
+				type: "item"
+			}]
+			x: 8.0d
+			y: 15.0d
+		}
+		{
+			dependencies: ["2FA97E14E8E844C3"]
+			description: [
+				"To get a Splash Potion of Strength, combine the preceding potion with gunpowder."
+				""
+				"Note that you don't really need the bottle form of the potion for the automation, only the quest completion."
+			]
+			id: "0DA6C86CA327615D"
+			tasks: [{
+				id: "3127DBA89C21CA6A"
+				item: {
+					Count: 1b
+					id: "minecraft:splash_potion"
+					tag: {
+						Potion: "minecraft:strength"
+					}
+				}
+				type: "item"
+			}]
+			x: 0.0d
+			y: 12.0d
+		}
+		{
+			dependencies: ["7EF097AE728432C9"]
+			description: ["Grow a vexing archwood sapling into a tree. You can also get the other saplings by combining it with a manipulation essence."]
+			hide_dependency_lines: true
+			id: "37029E4226E582B0"
+			optional: true
+			tasks: [{
+				id: "7D972BD07C1A5E18"
+				item: "ars_nouveau:purple_archwood_sapling"
+				type: "item"
+			}]
+			x: 0.0d
+			y: 38.0d
+		}
+		{
+			dependencies: ["533741731F3D1475"]
+			description: ["Vexing archwood sap is the only sap that doesn't produce an elemental essence. However, its primary refining product is liquefied source. It's up to you whether or not you choose to continue using it."]
+			id: "5C866601176B0F76"
+			optional: true
+			tasks: [{
+				id: "0A18D176563C51D5"
+				item: "kubejs:vexing_archwood_sap_bucket"
+				type: "item"
+			}]
+			x: 0.0d
+			y: 32.0d
+		}
+		{
+			dependencies: ["6A15481CE98198FE"]
+			description: [
+				"Magebloom fibers allow you to craft the magical armors from Ars Nouveau. The Ars Nouveau book should have plenty of details about them."
+				""
+				"They aren't necessary for this chapter, but are extremely cool to have, not to mention fashionable."
+			]
+			id: "2B0AE278EFA25BDC"
+			tasks: [{
+				id: "6AA1708B4EC2003E"
+				item: "ars_nouveau:magebloom_fiber"
+				type: "item"
+			}]
+			x: -4.0d
+			y: 8.0d
+		}
+		{
+			dependencies: ["63177B9DD16B8220"]
+			description: [
+				"Time to find some buried treasure!"
+				""
+				"Find yourself a dolphin and feed it some raw fish. The dolphin will lead you to an underwater loot chest. You can find a treasure map in there, or if you're lucky, a heart of the sea."
+			]
+			hide_dependency_lines: true
+			id: "16F27A5ADC1090F1"
+			tasks: [{
+				icon: {
+					Count: 1b
+					id: "ftbquests:custom_icon"
+					tag: {
+						Icon: "minecraft:textures/mob_effect/dolphins_grace.png"
+					}
+				}
+				id: "56FC45C1E5698AF5"
+				observe_type: 0
+				timer: 0L
+				to_observe: "minecraft:dolphin"
+				type: "observation"
+			}]
+			x: 19.5d
+			y: 28.5d
+		}
+		{
+			dependencies: ["4B227421760445CA"]
+			id: "0DBFA5FED47F56BE"
+			invisible: true
+			optional: true
+			rewards: [{
+				count: 64
+				id: "4FA73349D2B773BF"
+				item: "create:experience_nugget"
+				type: "item"
+			}]
+			tasks: [{
+				id: "3B85C4E49CC7B42D"
+				item: "kubejs:unbreakable_screwdriver"
+				type: "item"
+			}]
+			x: 12.0d
+			y: 19.0d
+		}
+		{
+			dependencies: ["4B227421760445CA"]
+			id: "151287E41879C60B"
+			invisible: true
+			optional: true
+			rewards: [{
+				count: 64
+				id: "39F68AF47217241D"
+				item: "create:experience_nugget"
+				type: "item"
+			}]
+			tasks: [{
+				id: "2750DA2E7FF523C1"
+				item: "kubejs:unbreakable_diamond_saw_blade"
+				type: "item"
+			}]
+			x: 14.0d
+			y: 21.0d
 		}
 	]
 	title: "Chapter 5b: Crystalline Mechanisms"
