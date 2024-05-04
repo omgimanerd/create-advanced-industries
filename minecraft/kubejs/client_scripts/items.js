@@ -11,13 +11,82 @@ ClientEvents.lang('en_us', (e) => {
   e.renameItem('createaddition:gold_wire', 'Overcharged Gold Wire')
 })
 
+/**
+ * @param {(string|string[])} t
+ */
+const parseTextFormat = (t) => {
+  let modifiers = {}
+  let component = Text.empty()
+  const parts = t.split(/(<\/{0,1}[a-z]+>)/)
+  for (const /** @type {string} */ part of parts) {
+    let openMatch = part.match(/^<([a-z]+)>$/)
+    let closeMatch = part.match(/^<\/([a-z]+)>$/)
+    if (openMatch !== null && openMatch.length === 2) {
+      let modifier = /** @type {string} */ openMatch[1]
+      if (modifiers[modifier]) {
+        console.warn(`Extra modifier ${modifier} in ${t}`)
+      }
+      modifiers[modifier] = true
+    } else if (closeMatch !== null && closeMatch.length == 2) {
+      let modifier = /** @type {string} */ closeMatch[1]
+      if (!modifiers[modifier]) {
+        console.warn(`Extra closing modifier ${modifier} in ${t}`)
+      }
+      delete modifiers[modifier]
+    } else {
+      let newComponent = Text.string(part)
+      for (const [modifier, _] of Object.entries(modifiers)) {
+        newComponent = newComponent[modifier]()
+      }
+      component = component.append(newComponent)
+    }
+  }
+  return component
+}
+
+/**
+ * @param {Internal.ItemTooltipEventJS} e
+ * @param {Internal.Ingredient_} item
+ * @param {string|string[]} baseText
+ * @param {(string|string[])?} unshiftText
+ * @param {(string|string[])?} shiftText
+ * @param {boolean?} clear
+ */
+const tooltipHelper = (e, item, baseText, shiftText, unshiftText, clear) => {
+  /**
+   * Internal helper
+   * @param {Internal.List<any>} text
+   * @param {}
+   */
+  const addText = (text, newText) => {
+    if (newText !== null && newText !== undefined) {
+      newText = Array.isArray(newText) ? newText : [newText]
+      for (const t of newText) {
+        text.add(text.size(), parseTextFormat(t))
+      }
+    }
+  }
+
+  e.addAdvanced(item, (_, __, text) => {
+    if (clear) {
+      text.clear()
+    }
+    addText(text, baseText)
+    if (e.shift) {
+      addText(text, shiftText)
+    } else {
+      addText(text, unshiftText)
+    }
+  })
+}
+
 ItemEvents.tooltip((e) => {
   e.add('kubejs:blaze_milk_bucket', 'Where did you even milk this from?')
+  const defaultUnshiftText = 'Hold [<green>SHIFT</green>] for more info'
 
   // Update tooltips for Tom's Simple Storage Mod with pack specific overrides.
   e.addAdvanced('toms_storage:ts.inventory_cable_connector', (_, __, text) => {
     const textSize = text.size()
-    console.log(text)
     if (e.shift && textSize > 1) {
       for (let i = textSize - 2; i >= 1; --i) {
         text.remove(i)
@@ -43,6 +112,58 @@ ItemEvents.tooltip((e) => {
       )
     }
   })
+
+  // Update tooltips for wandering trader essences.
+  tooltipHelper(
+    e,
+    'kubejs:agony_essence',
+    'Magical Essences created through the distillation of agony.',
+    [
+      '  Low drop rate: death by drowning', //
+      '  High drop rate: death by fire', //
+    ],
+    defaultUnshiftText
+  )
+  tooltipHelper(
+    e,
+    'kubejs:suffering_essence',
+    'Magical Essences created through the concentration of raw suffering.',
+    [
+      '  Low drop rate: death by lightning strike',
+      '  High drop rate: death by Tesla Coil electrocution',
+    ],
+    defaultUnshiftText
+  )
+  tooltipHelper(
+    e,
+    'kubejs:torment_essence',
+    'Magical Essences created through the application of torment.',
+    [
+      '  Low drop rate: death by crushing wheel',
+      '  High drop rate: death by suffocation',
+    ],
+    defaultUnshiftText
+  )
+  tooltipHelper(
+    e,
+    'kubejs:debilitation_essence',
+    'Magical Essences created through the refinement of debilitation.',
+    [
+      '  Low drop rate: death by potions of harming',
+      '  High drop rate: death by withering',
+    ],
+    defaultUnshiftText
+  )
+  tooltipHelper(
+    e,
+    'kubejs:mutilation_essence',
+    'Magical Essences created through merciless mutilation.',
+    [
+      '  Low drop rate: death by mechanical saw',
+      '  High drop rate: death by minigun',
+    ],
+    defaultUnshiftText
+  )
 })
 
 // const $IRecipeRegistration = Java.loadClass(

@@ -109,7 +109,6 @@ StartupEvents.registry('item', (e) => {
     .color(0, 0x75eae3)
     .glow(true)
     .displayName('Agony Essence')
-    .tooltip('Magical Essences created through the distillation of agony.')
   e.create('kubejs:suffering_essence')
     .textureJson({
       layer0: 'minecraft:block/dead_brain_coral',
@@ -117,9 +116,6 @@ StartupEvents.registry('item', (e) => {
     .color(0, 0xab87d2)
     .glow(true)
     .displayName('Suffering Essence')
-    .tooltip(
-      'Magical Essences created through the concentration of raw suffering.'
-    )
   e.create('kubejs:torment_essence')
     .textureJson({
       layer0: 'minecraft:block/dead_bubble_coral',
@@ -127,7 +123,6 @@ StartupEvents.registry('item', (e) => {
     .color(0, 0x69fa00)
     .glow(true)
     .displayName('Torment Essence')
-    .tooltip('Magical Essences created through the application of torment.')
   e.create('kubejs:debilitation_essence')
     .textureJson({
       layer0: 'minecraft:block/dead_fire_coral',
@@ -135,7 +130,6 @@ StartupEvents.registry('item', (e) => {
     .color(0, 0x696969)
     .glow(true)
     .displayName('Debilitation Essence')
-    .tooltip('Magical Essences created through the refinement of debilitation.')
   e.create('kubejs:mutilation_essence')
     .textureJson({
       layer0: 'minecraft:block/dead_horn_coral',
@@ -143,7 +137,6 @@ StartupEvents.registry('item', (e) => {
     .color(0, 0xa999bc)
     .glow(true)
     .displayName('Mutilation Essence')
-    .tooltip('Magical Essences created through merciless mutilation.')
 
   // Custom amethyst golem charm to spawn a special golem named Remy.
   e.create('kubejs:remy_spawner')
@@ -152,5 +145,6 @@ StartupEvents.registry('item', (e) => {
     .displayName('Remy Spawner')
     .tooltip(Text.green('Summons a epicure named Remy!'))
 
+  // Elemental air gem
   registerItem('kubejs:topaz')
 })
