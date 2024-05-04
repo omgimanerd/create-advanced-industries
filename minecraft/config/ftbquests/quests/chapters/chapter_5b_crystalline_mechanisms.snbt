@@ -224,7 +224,7 @@
 				item: "kubejs:crystal_growth_accelerator_bucket"
 				type: "item"
 			}]
-			x: -8.0d
+			x: -8.5d
 			y: 28.0d
 		}
 		{
@@ -235,7 +235,7 @@
 				item: "sliceanddice:fertilizer_bucket"
 				type: "item"
 			}]
-			x: -8.0d
+			x: -8.5d
 			y: 30.0d
 		}
 		{
@@ -247,7 +247,7 @@
 				item: "farmersdelight:organic_compost"
 				type: "item"
 			}]
-			x: -10.0d
+			x: -10.5d
 			y: 32.0d
 		}
 		{
@@ -340,7 +340,7 @@
 				item: "sliceanddice:sprinkler"
 				type: "item"
 			}]
-			x: -10.0d
+			x: -10.5d
 			y: 30.0d
 		}
 		{
@@ -393,7 +393,7 @@
 				item: "ars_nouveau:amethyst_golem_charm"
 				type: "item"
 			}]
-			x: -15.0d
+			x: -14.5d
 			y: 19.0d
 		}
 		{
@@ -404,7 +404,7 @@
 				item: "kubejs:remy_spawner"
 				type: "item"
 			}]
-			x: -14.0d
+			x: -13.5d
 			y: 21.0d
 		}
 		{
@@ -677,7 +677,7 @@
 				type: "item"
 			}]
 			x: 4.0d
-			y: 36.0d
+			y: 38.0d
 		}
 		{
 			dependencies: ["7EF097AE728432C9"]
@@ -689,7 +689,7 @@
 				type: "item"
 			}]
 			x: -2.0d
-			y: 36.0d
+			y: 38.0d
 		}
 		{
 			dependencies: ["7EF097AE728432C9"]
@@ -701,7 +701,7 @@
 				type: "item"
 			}]
 			x: 2.0d
-			y: 36.0d
+			y: 38.0d
 		}
 		{
 			dependencies: ["7EF097AE728432C9"]
@@ -713,7 +713,7 @@
 				type: "item"
 			}]
 			x: -4.0d
-			y: 36.0d
+			y: 38.0d
 		}
 		{
 			dependencies: ["533741731F3D1475"]
@@ -832,7 +832,7 @@
 				item: "minecraft:budding_amethyst"
 				type: "item"
 			}]
-			x: -14.0d
+			x: -13.5d
 			y: 17.0d
 		}
 		{
@@ -849,7 +849,7 @@
 				}
 				type: "item"
 			}]
-			x: -12.0d
+			x: -11.5d
 			y: 22.0d
 		}
 		{
@@ -987,7 +987,7 @@
 				type: "item"
 			}]
 			x: 0.0d
-			y: 34.0d
+			y: 36.0d
 		}
 		{
 			dependencies: ["172EF8672F4796D9"]
@@ -1128,7 +1128,7 @@
 				}
 				type: "item"
 			}]
-			x: -12.0d
+			x: -11.5d
 			y: 16.0d
 		}
 		{
@@ -1275,7 +1275,7 @@
 			y: 17.0d
 		}
 		{
-			dependencies: ["1C53E10A9C091F3A"]
+			dependencies: ["459E69D3CBE6C651"]
 			id: "4ACDAA19C89A9E53"
 			tasks: [{
 				id: "320F99DB6F2AE794"
@@ -1283,10 +1283,10 @@
 				type: "item"
 			}]
 			x: -2.0d
-			y: 28.0d
+			y: 26.0d
 		}
 		{
-			dependencies: ["7B17FAFB35621BDA"]
+			dependencies: ["2ABA41C161D6BF9E"]
 			id: "1F7C33EE24BB011C"
 			tasks: [{
 				id: "41FC514EB35CB5BE"
@@ -1294,10 +1294,10 @@
 				type: "item"
 			}]
 			x: 4.0d
-			y: 28.0d
+			y: 26.0d
 		}
 		{
-			dependencies: ["277C2053360DBCEC"]
+			dependencies: ["4F64436EEE47AA75"]
 			id: "653A068E19991D20"
 			tasks: [{
 				id: "0EF27CE8B214B773"
@@ -1305,10 +1305,10 @@
 				type: "item"
 			}]
 			x: -4.0d
-			y: 28.0d
+			y: 26.0d
 		}
 		{
-			dependencies: ["78D959DB65034A0A"]
+			dependencies: ["3EA90945A9F50CDE"]
 			id: "0CE01D29A3754EBE"
 			tasks: [{
 				id: "5C823E64C713E328"
@@ -1316,7 +1316,7 @@
 				type: "item"
 			}]
 			x: 2.0d
-			y: 28.0d
+			y: 26.0d
 		}
 		{
 			dependencies: [
@@ -1343,7 +1343,7 @@
 				item: "create:tree_fertilizer"
 				type: "item"
 			}]
-			x: -6.0d
+			x: -6.5d
 			y: 30.0d
 		}
 		{
@@ -1563,31 +1563,48 @@
 			y: 19.0d
 		}
 		{
-			id: "427F4DA6C817233D"
-			tasks: [
-				{
-					id: "5448B28ED68CA25D"
-					item: "kubejs:topaz"
-					type: "item"
-				}
-				{
-					id: "6FD511FCE0D2310B"
-					item: "thermal:ruby"
-					type: "item"
-				}
-				{
-					id: "79D3ABB7F732A5CB"
-					item: "minecraft:emerald"
-					type: "item"
-				}
-				{
-					id: "14DFFDEA7C60F45D"
-					item: "minecraft:diamond"
-					type: "item"
-				}
-			]
-			x: -6.0d
-			y: 21.0d
+			dependencies: ["277C2053360DBCEC"]
+			id: "4F64436EEE47AA75"
+			tasks: [{
+				id: "7D54A59322F6DF85"
+				item: "kubejs:topaz"
+				type: "item"
+			}]
+			x: -4.0d
+			y: 28.0d
+		}
+		{
+			dependencies: ["1C53E10A9C091F3A"]
+			id: "459E69D3CBE6C651"
+			tasks: [{
+				id: "69C88A3046BD5A26"
+				item: "thermal:ruby"
+				type: "item"
+			}]
+			x: -2.0d
+			y: 28.0d
+		}
+		{
+			dependencies: ["78D959DB65034A0A"]
+			id: "3EA90945A9F50CDE"
+			tasks: [{
+				id: "2EEAC0C6877C2879"
+				item: "minecraft:emerald"
+				type: "item"
+			}]
+			x: 2.0d
+			y: 28.0d
+		}
+		{
+			dependencies: ["7B17FAFB35621BDA"]
+			id: "2ABA41C161D6BF9E"
+			tasks: [{
+				id: "736BC95F39FC4BDF"
+				item: "minecraft:diamond"
+				type: "item"
+			}]
+			x: 4.0d
+			y: 28.0d
 		}
 	]
 	title: "Chapter 5b: Crystalline Mechanisms"

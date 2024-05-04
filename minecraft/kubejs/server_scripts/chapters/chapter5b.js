@@ -469,6 +469,21 @@ LootJS.modifiers((e) => {
 })
 
 /**
+ * Called within BlockEvents.rightClicked to handle opening a portal for
+ * getting hearthstones.
+ * @param {Internal.BlockRightClickedEventJS} e
+ */
+const handleOpenPortal = (e) => {
+  const { item, hand, block, level, server } = e
+  if (hand !== 'main_hand') return
+  if (item.id !== 'ars_nouveau:source_gem') return
+  if (block.id !== 'minecraft:crying_obsidian') return
+  block.spawnLightning(true)
+  block.set('kubejs:portal_block')
+  spawnParticles(level, 'minecraft:enchant', block.pos.center, 0.3, 100, 1)
+}
+
+/**
  *
  * @param {Internal.ItemStack} item
  */
@@ -592,6 +607,9 @@ BlockEvents.rightClicked((e) => {
 
   // Handle when a cobweb is right clicked with anima essence to spawn a spider.
   handleSpiderSpawningWithCobweb(e)
+
+  // Handle when obsidian is right clicked with a source gem to open a portal.
+  handleOpenPortal(e)
 })
 
 ServerEvents.tags('item', (e) => {
@@ -1060,6 +1078,15 @@ ServerEvents.recipes((e) => {
       P: 'minecraft:paper',
     }
   )
+
+  // Crying obsidian can be crafted with lots of source
+  new SequencedAssembly('minecraft:obsidian')
+    .fill(Fluid.of('starbunclemania:source_fluid', 1000))
+    .loops(25)
+    .outputs('minecraft:crying_obsidian')
+
+  // Remove the regular hearthstone crafting recipe.
+  e.remove({ id: 'gag:hearthstone' })
 
   // Crafting the Crystalline Mechanism
   e.recipes.ars_nouveau.enchanting_apparatus(
