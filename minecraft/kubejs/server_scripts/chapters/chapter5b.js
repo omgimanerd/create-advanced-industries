@@ -1012,6 +1012,28 @@ ServerEvents.recipes((e) => {
     .maxTemp(50)
     .outputs('10x ars_nouveau:air_essence')
 
+  // Archwood tree sap can be used to get the custom Ars fruits.
+  create.filling('ars_nouveau:mendosteen_pod', [
+    'minecraft:apple',
+    Fluid.of('kubejs:flourishing_archwood_sap', 1000),
+  ])
+  create.filling('ars_nouveau:bastion_pod', [
+    'minecraft:apple',
+    Fluid.of('kubejs:vexing_archwood_sap', 1000),
+  ])
+  create.filling('ars_nouveau:bombegranate_pod', [
+    'minecraft:apple',
+    Fluid.of('kubejs:blazing_archwood_sap', 1000),
+  ])
+  create.filling('ars_nouveau:frostaya_pod', [
+    'minecraft:apple',
+    Fluid.of('kubejs:cascading_archwood_sap', 1000),
+  ])
+  create.filling('ars_elemental:flashpine_pod', [
+    'minecraft:apple',
+    Fluid.of('kubejs:flashing_archwood_sap', 1000),
+  ])
+
   // Custom fertilizers for boosting the Arboreal Extractor
   e.recipes.thermal.tree_extractor_boost(
     'farmersdelight:organic_compost',
@@ -1027,10 +1049,65 @@ ServerEvents.recipes((e) => {
   ])
 
   // Overhaul tree extractor boost to use ch5b advanced stuff
-  // e.forEachRecipe({ type: 'thermal:tree_extractor_boost' }, (r) => {
-  //   const json = JSON.parse(r.json)
-  //   console.log(json)
-  // })
+  e.forEachRecipe({ type: 'thermal:tree_extractor_boost' }, (r) => {
+    const json = JSON.parse(r.json)
+    console.log(json)
+  })
 
-  // TODO enchanting assembly mechanism of all things
+  // Wilden Tribute can be duped with Wandering Trader essences
+  e.remove({ id: 'ars_elemental:imbuement_mark_of_mastery' })
+  e.recipes.ars_nouveau.enchanting_apparatus(
+    [
+      'ars_nouveau:earth_essence',
+      'ars_nouveau:fire_essence',
+      'ars_nouveau:water_essence',
+      'ars_nouveau:air_essence',
+      'ars_nouveau:abjuration_essence',
+      'ars_nouveau:conjuration_essence',
+      'ars_nouveau:manipulation_essence',
+      'ars_elemental:anima_essence',
+    ],
+    'ars_nouveau:wilden_tribute',
+    'ars_elemental:mark_of_mastery'
+  )
+  create
+    .SequencedAssembly('ars_elemental:mark_of_mastery')
+    .deploy('kubejs:agony_essence')
+    .deploy('kubejs:torment_essence')
+    .deploy('kubejs:suffering_essence')
+    .deploy('kubejs:mutilation_essence')
+    .deploy('kubejs:debilitation_essence')
+    .outputs([
+      Item.of('ars_nouveau:wilden_tribute', 1).withChance(0.85),
+      Item.of('ars_nouveau:wilden_tribute', 2).withChance(0.15),
+    ])
+
+  // Crafting the Crystalline Mechanism
+  e.recipes.ars_nouveau.enchanting_apparatus(
+    [
+      'ars_elemental:lesser_fire_focus',
+      'gag:sacred_salt',
+      'minecraft:amethyst_shard',
+      'ars_elemental:lesser_air_focus',
+      'minecraft:amethyst_shard',
+      'gag:hearthstone',
+      'ars_elemental:lesser_earth_focus',
+      'gag:hearthstone',
+      'minecraft:amethyst_shard',
+      'ars_elemental:lesser_water_focus',
+      'minecraft:amethyst_shard',
+      'gag:sacred_salt',
+    ],
+    'kubejs:source_mechanism',
+    'kubejs:incomplete_crystalline_mechanism',
+    8000
+  )
+  create
+    .SequencedAssembly('kubejs:incomplete_crystalline_mechanism')
+    .deploy('ars_elemental:mark_of_mastery')
+    .fill(potionFluid('ars_nouveau:spell_damage_potion_strong', 250))
+    .fill(potionFluid('ars_nouveau:mana_regen_potion_strong', 250))
+    .fill(potionFluid('minecraft:strong_harming', 250))
+    .fill(potionFluid('ars_elemental:shock_potion', 250))
+    .outputs('kubejs:crystalline_mechanism')
 })

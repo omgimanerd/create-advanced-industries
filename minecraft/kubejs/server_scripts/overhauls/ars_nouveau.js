@@ -134,6 +134,19 @@ ServerEvents.recipes((e) => {
     'minecraft:lectern',
     1000
   )
+  redefineRecipe(
+    'ars_nouveau:ritual_brazier',
+    [
+      ' M ', //
+      'GPG', //
+      ' G ', //
+    ],
+    {
+      M: 'kubejs:source_mechanism',
+      G: 'minecraft:gold_ingot',
+      P: 'ars_nouveau:arcane_pedestal',
+    }
+  )
 
   /////////////////////
   // Starbunclemania //

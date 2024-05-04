@@ -10,22 +10,23 @@ StartupEvents.registry('item', (e) => {
       'create:sequenced_assembly'
     )
   }
+  // Chapter 1: Andesite Mechanisms
   registerMechanism('kubejs:andesite_mechanism')
+  // Chapter 2a: Copper Mechanisms
   registerMechanism('kubejs:copper_mechanism')
+  // Chapter 2b: Source Mechanisms
   registerMechanism('kubejs:source_mechanism')
   // Precision mechanism defined by Create
   // Steel mechanism defined by TFMG
-
-  // Logistics Mechanism
+  // Chapter 5a: Logistics Mechanisms
   e.create('kubejs:logistics_mechanism')
     .texture(getResourceLocation('pneumaticcraft:logistics_core'))
     .displayName('Logistics Mechanism')
   e.create('kubejs:incomplete_logistics_mechanism', 'create:sequenced_assembly')
     .texture(getResourceLocation('pneumaticcraft:logistics_core'))
     .displayName('Incomplete Logistics Mechanism')
-
-  // TBD
-  registerMechanism('kubejs:plastic_mechanism')
+  // Chapter 5b: Crystalline Mechanism
+  registerItem('kubejs:crystalline_mechanism')
 
   // Wooden hand used for crafting deployers
   registerItem('kubejs:wooden_hand')
