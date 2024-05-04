@@ -2,12 +2,8 @@
 // Recipe overhauls for Ars Nouveau and its addons
 
 ServerEvents.recipes((e) => {
-  const create = defineCreateRecipes(e)
-  const pneumaticcraft = definePneumaticcraftRecipes(e)
-
   // Generate utility functions from util.js
   const redefineRecipe = redefineRecipe_(e)
-  const redefineMechanismRecipe = redefineMechanismRecipe_(e)
   const redefineEnchantingRecipe = redefineEnchantingRecipe_(e)
 
   //////////////

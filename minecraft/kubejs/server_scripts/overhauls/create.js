@@ -303,6 +303,12 @@ ServerEvents.recipes((e) => {
     'minecraft:dried_kelp',
     'thermal:cured_rubber'
   )
+  // Tree Fertilizer
+  e.remove({ id: 'create:crafting/appliances/tree_fertilizer' })
+  create.filling('create:tree_fertilizer', [
+    'minecraft:bone_meal',
+    Fluid.of('sliceanddice:fertilizer', 250),
+  ])
 
   ///////////////////////////////
   // Create Crafts & Additions //

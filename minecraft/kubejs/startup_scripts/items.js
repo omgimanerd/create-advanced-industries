@@ -26,7 +26,7 @@ StartupEvents.registry('item', (e) => {
     .texture(getResourceLocation('pneumaticcraft:logistics_core'))
     .displayName('Incomplete Logistics Mechanism')
   // Chapter 5b: Crystalline Mechanism
-  registerItem('kubejs:crystalline_mechanism')
+  registerMechanism('kubejs:crystalline_mechanism')
 
   // Wooden hand used for crafting deployers
   registerItem('kubejs:wooden_hand')
@@ -151,4 +151,6 @@ StartupEvents.registry('item', (e) => {
     .glow(true)
     .displayName('Remy Spawner')
     .tooltip(Text.green('Summons a epicure named Remy!'))
+
+  registerItem('kubejs:topaz')
 })

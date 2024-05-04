@@ -49,6 +49,7 @@ global.removedRecipes = [
   { output: 'thermal:beetroot_block' },
   { output: 'thermal:carrot_block' },
   { output: 'thermal:potato_block' },
+  { output: 'thermal:phytogro' },
   { output: /^thermal:machine_(?!crystallizer|pyrolyzer).*/ },
   { output: /^thermal:dynamo_.*/ },
   { output: 'thermal:tinker_bench' },
