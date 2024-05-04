@@ -29,27 +29,19 @@ global.NetherWartSpoutHandlerCallback = (block, fluid, simulate) => {
  * @param {Internal.ItemEntityInteractedEventJS} e
  */
 const handleBlazeMilkingMechanic = (e) => {
-  const {
-    /** @type {Internal.InteractionHand} */ hand,
-    /** @type {Internal.ItemStack} */ item,
-    /** @type {Internal.Player} */ player,
-    /** @type {Internal.Entity} */ target,
-  } = e
+  const { hand, item, player, target } = e
   if (hand !== 'main_hand') return
   if (target.type !== 'minecraft:blaze') return
   if (item.id !== 'minecraft:bucket' && item.id !== 'minecraft:lava_bucket') {
     return
   }
 
-  let remainingMilks = target.persistentData.remainingMilks
-  remainingMilks = remainingMilks === undefined ? 0 : remainingMilks
-
+  let remainingMilks = target.persistentData.getInt('remaining_milks')
   // Feeding lava to the blaze.
-  // TODO enchantable lava?
   if (item.id === 'minecraft:lava_bucket') {
     item.count--
     player.addItem(item.getCraftingRemainingItem())
-    target.persistentData.remainingMilks = 3
+    remainingMilks = 3
   }
 
   if (item.id === 'minecraft:bucket') {
@@ -59,8 +51,9 @@ const handleBlazeMilkingMechanic = (e) => {
     }
     item.count--
     player.addItem('kubejs:blaze_milk_bucket')
-    target.persistentData.remainingMilks--
+    remainingMilks--
   }
+  target.persistentData.putInt('remaining_milks', remainingMilks)
 }
 
 /**
@@ -119,13 +112,25 @@ const handleMushroomMossSeeding = (e) => {
 }
 
 /**
- *
+ * Called within BlockEvents.rightClicked to handle spawning spiders.
  * @param {Internal.BlockRightClickedEventJS} e
  */
-const handleSpiderSpawningWithCobweb = (e) => {}
+const handleSpiderSpawningWithCobweb = (e) => {
+  const { item, hand, block, level } = e
+  if (hand !== 'main_hand') return
+  if (item.id !== 'ars_elemental:anima_essence') return
+  if (block.id !== 'minecraft:cobweb') return
+
+  const spider = block.createEntity('minecraft:spider')
+  // Center the spider on the block
+  spider.setPos(block.pos.center)
+  spider.spawn()
+  level.destroyBlock(block, false)
+  item.count--
+}
 
 /**
- * Called within BlockEvents.rightClicked to handles spawning Remy the Epicure.
+ * Called within BlockEvents.rightClicked to handle spawning Remy the Epicure.
  * @param {Internal.BlockRightClickedEventJS} e
  */
 const handleRemySpawning = (e) => {
@@ -133,9 +138,9 @@ const handleRemySpawning = (e) => {
   if (hand !== 'main_hand') return
   if (item.id !== 'kubejs:remy_spawner') return
 
-  const { x, y, z } = block
   const golem = block.createEntity('ars_nouveau:amethyst_golem')
   // Center Remy on the top of the block
+  golem.setPos(block.pos.center.add(0, 1, 0))
   golem.setPos(x + 0.5, y + 1, z + 0.5)
   golem.setCustomName('Remy the Epicure')
   golem.setCustomNameVisible(true)
@@ -409,54 +414,53 @@ global.EntityStruckByLightningEventCallback = (e) => {
   }
 }
 
-// Kill wandering trader in 4 ways to get essences
 LootJS.modifiers((e) => {
-  // e.enableLogging()
-
-  e.addEntityLootModifier('minecraft:wandering_trader')
-    .matchDamageSource((source) => {
-      return source.anyType('lightningBolt')
-    })
-    .addLoot(
-      'kubejs:suffering_essence',
-      LootEntry.of('create:experience_nugget').when((c) => c.randomChance(0.5))
-    )
-
-  e.addEntityLootModifier('minecraft:wandering_trader')
-    .matchDamageSource((source) => {
-      return source.anyType('create.crush')
-    })
-    .addLoot(
-      'kubejs:torment_essence',
-      LootEntry.of('create:experience_nugget').when((c) => c.randomChance(0.5))
-    )
-
-  e.addEntityLootModifier('minecraft:wandering_trader')
-    .matchDamageSource((source) => {
-      return source.anyType('create.mechanical_saw')
-    })
-    .addLoot(
-      'kubejs:mutilation_essence',
-      LootEntry.of('create:experience_nugget').when((c) => c.randomChance(0.5))
-    )
-
-  e.addEntityLootModifier('minecraft:wandering_trader')
-    .matchDamageSource((source) => {
-      return source.anyType('pnc_minigun')
-    })
-    .addLoot(
-      'kubejs:debilitation_essence',
-      LootEntry.of('create:experience_nugget').when((c) => c.randomChance(0.5))
-    )
-    .addLoot(
-      LootEntry.of('create:experience_block').when((c) => {
-        c.matchDamageSource((source) => {
-          return source.anyType('pnc_minigun')
-        })
+  // Kill wandering trader in 5 ways to get essences
+  const wanderingTraderMapping = [
+    {
+      essence: 'kubejs:suffering_essence',
+      easyDamageSource: 'lightningBolt',
+      hardDamageSource: 'createaddition.barbed_wire', // secretly the tesla coil
+    },
+    {
+      essence: 'kubejs:torment_essence',
+      easyDamageSource: 'create.crush',
+      hardDamageSource: 'inWall',
+    },
+    {
+      essence: 'kubejs:mutilation_essence',
+      easyDamageSource: 'create.mechanical_saw',
+      hardDamageSource: 'pnc_minigun',
+    },
+    {
+      essence: 'kubejs:debilitation_essence',
+      hardDamageSource: 'indirectMagic',
+      easyDamageSource: 'wither',
+    },
+    {
+      essence: 'kubejs:agony_essence',
+      easyDamageSource: 'drown',
+      hardDamageSource: 'onFire',
+    },
+  ]
+  for (const {
+    essence,
+    easyDamageSource,
+    hardDamageSource,
+  } of wanderingTraderMapping) {
+    e.addEntityLootModifier('minecraft:wandering_trader')
+      .matchDamageSource((c) => {
+        return c.anyType(easyDamageSource)
       })
-    )
-
-  // Suffocation damage source 'inWall'
+      .addWeightedLoot([2, 3], Item.of(essence))
+      .addWeightedLoot([1, 3], Item.of('create:experience_nugget'))
+    e.addEntityLootModifier('minecraft:wandering_trader')
+      .matchDamageSource((c) => {
+        return c.anyType(hardDamageSource)
+      })
+      .addWeightedLoot([6, 8], Item.of(essence))
+      .addWeightedLoot([4, 6], [Item.of('create:experience_nugget')])
+  }
 
   // Make budding amethyst mineable with silk touch.
   e.addBlockLootModifier('minecraft:budding_amethyst')
@@ -585,6 +589,9 @@ BlockEvents.rightClicked((e) => {
 
   // Handle when a moss block is right clicked with a mushroom to seed more.
   handleMushroomMossSeeding(e)
+
+  // Handle when a cobweb is right clicked with anima essence to spawn a spider.
+  handleSpiderSpawningWithCobweb(e)
 })
 
 ServerEvents.tags('item', (e) => {
@@ -652,6 +659,20 @@ ServerEvents.recipes((e) => {
     'minecraft:bone_block'
   )
   create.crushing('9x minecraft:bone_meal', 'minecraft:bone_block')
+
+  // Cobweb crafting
+  e.shaped(
+    'minecraft:cobweb',
+    [
+      'SSS', //
+      'SLS', //
+      'SSS', //
+    ],
+    {
+      S: 'minecraft:string',
+      L: 'minecraft:slimeball',
+    }
+  )
 
   // Sawdust recipe
   create.crushing(
@@ -864,12 +885,6 @@ ServerEvents.recipes((e) => {
     /*output=*/ 8,
     /*cycles=*/ 16
   )
-
-  // Overhaul tree extractor boost to use ch5b advanced stuff
-  e.forEachRecipe({ type: 'thermal:tree_extractor_boost' }, (r) => {
-    const json = JSON.parse(r.json)
-    console.log(json)
-  })
 
   // Elemental essence from Archwood trees.
   for (let {
