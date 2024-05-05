@@ -8,6 +8,7 @@
 	quest_links: [ ]
 	quests: [
 		{
+			dependencies: ["76EA7D462C854493"]
 			description: [
 				"Building Gadgets are in this pack!"
 				""
@@ -48,6 +49,7 @@
 			y: 0.0d
 		}
 		{
+			dependencies: ["76EA7D462C854493"]
 			description: ["Building Wands are in this modpack as early game building QOL."]
 			id: "1403FC7592E32818"
 			tasks: [{
@@ -67,6 +69,7 @@
 			y: 0.0d
 		}
 		{
+			dependencies: ["76EA7D462C854493"]
 			description: ["Simply Magnets is in this modpack, the superior magnet mod in my humble opinion."]
 			id: "64E1AA2E7E85D8DF"
 			rewards: [{
@@ -88,6 +91,7 @@
 			y: 0.0d
 		}
 		{
+			dependencies: ["76EA7D462C854493"]
 			description: [
 				"Want to sleep without resetting your spawn point?"
 				""
@@ -116,6 +120,7 @@
 			y: 2.0d
 		}
 		{
+			dependencies: ["76EA7D462C854493"]
 			description: ["Need more inventory space? How about a Sophisticated Backpack?"]
 			id: "79B54F4808B55E13"
 			rewards: [
@@ -146,6 +151,7 @@
 			y: 2.0d
 		}
 		{
+			dependencies: ["76EA7D462C854493"]
 			description: ["Pocket Storage Units are good for storing lots of the same block."]
 			id: "6B8A6F359881D460"
 			rewards: [{

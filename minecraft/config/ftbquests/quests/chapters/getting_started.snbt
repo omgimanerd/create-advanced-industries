@@ -283,7 +283,7 @@
 			]
 			id: "327F51A143F583D4"
 			rewards: [{
-				count: 15
+				count: 8
 				id: "670BA254F927F34B"
 				item: "kubejs:andesite_mechanism"
 				type: "item"
@@ -461,14 +461,13 @@
 			y: 4.5d
 		}
 		{
-			dependencies: [
-				"743A7E18CC37972B"
-				"327F51A143F583D4"
-			]
+			dependencies: ["743A7E18CC37972B"]
 			description: [
 				"In the beginning, these are the first pieces of Create logistics you'll have access to."
 				""
-				"Items can be moved around and inserted/extracted from inventories with belts, funnels, and chutes. Ponder them to see the full range of ways they can be used."
+				"Items can be moved around and inserted/extracted from inventories with belts, funnels, and chutes."
+				""
+				"Ponder them to see the full range of ways they can be used."
 			]
 			id: "20C3862B1AC49C29"
 			rewards: [
@@ -509,8 +508,8 @@
 				}
 			]
 			title: "Create Logistics"
-			x: 9.0d
-			y: 6.0d
+			x: 9.5d
+			y: 7.0d
 		}
 		{
 			dependencies: ["6040F99EFE02BA77"]
@@ -549,11 +548,11 @@
 			y: 6.0d
 		}
 		{
-			dependencies: ["111E61BCFB1F0F9C"]
+			dependencies: ["6040F99EFE02BA77"]
 			description: [
 				"To get access to Create's logistics and conveyor belts, you need rubber."
 				""
-				"You'll automate this in chapter 2, but for now this can be handcrafted by surrounding a bucket of water with leaves or flowers."
+				"You'll automate this in chapter 2, but is still easily doable by hand with a basin and mechanical press."
 				""
 				"&lSmelt the rubber to get cured rubber.&r"
 			]
@@ -569,8 +568,51 @@
 				item: "thermal:rubber"
 				type: "item"
 			}]
-			x: 6.0d
-			y: 6.0d
+			x: 10.5d
+			y: 5.5d
+		}
+		{
+			dependencies: ["6040F99EFE02BA77"]
+			description: [
+				"Making a Create Contraption? The benefit of putting machines on contraptions is that they won't consume stress units, but they will run at a set speed."
+				""
+				"They are excellent for large scale farms of all sorts, but are capable of doing much more. Here's some goodies to help you on your way."
+			]
+			icon: "create:mechanical_bearing"
+			id: "0773214DEB80495F"
+			rewards: [
+				{
+					id: "609CBEAD7A76D634"
+					item: {
+						Count: 1b
+						id: "create:super_glue"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+				{
+					count: 4
+					id: "358F38BC0C437C08"
+					item: "create:portable_storage_interface"
+					type: "item"
+				}
+			]
+			tasks: [{
+				id: "2FFB57BE06E2DB78"
+				item: {
+					Count: 1b
+					id: "ftbfiltersystem:smart_filter"
+					tag: {
+						"ftbfiltersystem:filter": "or(item(create:mechanical_piston)item(create:sticky_mechanical_piston)item(create:gantry_carriage)item(create:mechanical_bearing)item(create:rope_pulley)item(create:cart_assembler))"
+					}
+				}
+				type: "item"
+			}]
+			title: "Create Contraptions"
+			x: 9.5d
+			y: 4.5d
 		}
 	]
 	title: "Getting Started"

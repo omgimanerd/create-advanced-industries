@@ -54,6 +54,7 @@
 				"04A647A73DBB98F5"
 				"41EA296A863B1FEC"
 			]
+			description: ["Mixing cobblestone and red dye yields granite."]
 			id: "7888616BBBCC35C6"
 			tasks: [{
 				id: "5A28BE2FFF898678"

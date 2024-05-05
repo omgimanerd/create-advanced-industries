@@ -92,17 +92,17 @@
 		}
 		{
 			dependencies: ["05DB2A211C1BB3C1"]
-			description: ["Crushing gravel again will yield flint."]
+			description: ["Rinsing gravel with water in a basin yields flint, with a chance to return the gravel."]
 			icon: "minecraft:flint"
 			id: "25EFBFAE28D15EF0"
 			tasks: [
 				{
-					icon: "create:millstone"
+					icon: "create:mechanical_mixer"
 					id: "6F08EA28A2BD03E9"
 					observe_type: 0
 					optional_task: true
 					timer: 0L
-					to_observe: "create:millstone"
+					to_observe: "create:mechanical_mixer"
 					type: "observation"
 				}
 				{
@@ -117,7 +117,7 @@
 		}
 		{
 			dependencies: ["05DB2A211C1BB3C1"]
-			description: ["Washing gravel with an encased fan will yield iron nuggets."]
+			description: ["Washing gravel with an encased fan will yield iron nuggets, also with a chance to get flint."]
 			icon: "minecraft:iron_nugget"
 			id: "74BAF01AA001DC2F"
 			tasks: [
@@ -407,6 +407,26 @@
 			title: "Any #minecraft:wooden_slabs"
 			x: 10.0d
 			y: 0.0d
+		}
+		{
+			dependencies: ["05DB2A211C1BB3C1"]
+			description: ["Locked drawers are good early game filtering tools before you have brass logistics."]
+			icon: "functionalstorage:oak_4"
+			id: "19AB88EFFCE07498"
+			optional: true
+			tasks: [{
+				id: "0C2A6342159FA53F"
+				item: {
+					Count: 1b
+					id: "ftbfiltersystem:smart_filter"
+					tag: {
+						"ftbfiltersystem:filter": "item_tag(functionalstorage:drawer)"
+					}
+				}
+				type: "item"
+			}]
+			x: -2.5d
+			y: -5.0d
 		}
 	]
 	title: "Chapter 1: Andesite Mechanisms"
