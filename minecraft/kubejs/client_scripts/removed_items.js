@@ -1,17 +1,5 @@
 // priority: 0
 
-// https://github.com/AlmostReliable/ponderjs/wiki
-Ponder.registry((e) => {
-  // e.create('minecraft:cobblestone').scene(
-  //   'test_scene',
-  //   'Example Scene',
-  //   (scene, util) => {
-  //     scene.showBasePlate()
-  //     scene.idle(10)
-  //   }
-  // )
-})
-
 JEIEvents.addItems((e) => {
   e.add('thermal:drill_head')
   e.add('thermal:saw_blade')
