@@ -20,6 +20,17 @@ ServerEvents.recipes((e) => {
     'minecraft:gravel'
   )
 
+  // Gravel rinsing to get flint
+  e.remove({ id: 'create:milling/gravel' })
+  create.mixing(
+    [
+      Item.of('minecraft:gravel').withChance(0.9),
+      Item.of('minecraft:flint').withChance(0.5),
+      Fluid.water(1000),
+    ],
+    ['minecraft:gravel', Fluid.water(1000)]
+  )
+
   // Andesite alloy crafting
   e.remove({ id: 'create:crafting/materials/andesite_alloy_from_zinc' })
   e.remove({ type: 'create:mixing', output: 'create:andesite_alloy' })
