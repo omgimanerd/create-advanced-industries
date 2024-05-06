@@ -519,7 +519,7 @@ global.PortalBlockTickingCallback = (e) => {
     if (entity.type === 'minecraft:wandering_trader') {
       entity.remove('killed')
       laborersEaten = Math.min(5, laborersEaten + 1)
-      spawnParticles(level, 'minecraft:enchant', entity, 0.15, 100, 0.1)
+      spawnParticles(level, 'minecraft:enchant', entity, 0.15, 75, 0.1)
       continue
     }
     let item = /** @type {net.minecraft.world.item.ItemStack} */ entity.item
@@ -527,7 +527,7 @@ global.PortalBlockTickingCallback = (e) => {
       if (checkPortalPickaxeSacrifice(item)) {
         entity.remove('discarded')
         pickaxesEaten = Math.min(5, pickaxesEaten + 1)
-        spawnParticles(level, 'minecraft:enchant', entity, 0.15, 100, 0.1)
+        spawnParticles(level, 'minecraft:enchant', entity, 0.15, 75, 0.1)
       } else {
         spawnParticles(level, 'minecraft:poof', entity, 0.1, 3, 0.01)
       }
@@ -554,13 +554,23 @@ global.PortalBlockTickingCallback = (e) => {
   let nextEatTime = pdata.getInt('next_eat_time') // stored as tick count
   const currentTime = level.server.getTickCount()
   if (nextEatTime === 0) {
-    nextEatTime = currentTime + randRangeInt(400, 1000)
-    pdata.put('next_eat_time', nextEatTime)
+    nextEatTime = currentTime + randRangeInt(200, 400)
   } else if (currentTime >= nextEatTime && surrounding.length > 0) {
-    choice(surrounding).set('minecraft:air')
-    nextEatTime = currentTime + randRangeInt(400, 1000)
-    pdata.put('next_eat_time', nextEatTime)
+    /** @type {Internal.BlockContainerJS} */
+    let eatLocation = choice(surrounding)
+    spawnParticles(
+      level,
+      'minecraft:enchant',
+      eatLocation.pos.center,
+      0.15,
+      75,
+      0.1
+    )
+    eatLocation.set('minecraft:air')
+    nextEatTime = currentTime + randRangeInt(200, 400)
   }
+  pdata.put('next_eat_time', nextEatTime)
+
   // The portal becomes unstable if not surrounded by fluid source, and will
   // break if the instability gets too high.
   let instability = pdata.getInt('instability')
@@ -579,6 +589,7 @@ global.PortalBlockTickingCallback = (e) => {
   }
   if (randRange(100) < instability) {
     level.destroyBlock(block, false)
+    block.createExplosion().causesFire(false).strength(1).explode()
   } else {
     pdata.put('instability', instability)
   }
