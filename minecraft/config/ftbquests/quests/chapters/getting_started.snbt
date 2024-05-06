@@ -201,6 +201,7 @@
 			]
 			id: "4103B7F4B1A13FA6"
 			invisible: true
+			optional: true
 			rewards: [
 				{
 					count: 8
@@ -280,6 +281,8 @@
 				"Andesite Mechanisms unlock the basics of Create, and are the subject of Chapter 1."
 				""
 				"They're quite expensive if you handcraft them, so let's try and automate them. The rest of the quests in this chapter are optional, but will help guide you through some of the basic Create machines. As always, remember to ponder them if you get stuck."
+				""
+				"&oGo to the Progression chapter to start.&r"
 			]
 			id: "327F51A143F583D4"
 			rewards: [{
@@ -470,6 +473,7 @@
 				"Ponder them to see the full range of ways they can be used."
 			]
 			id: "20C3862B1AC49C29"
+			optional: true
 			rewards: [
 				{
 					count: 8
@@ -552,11 +556,12 @@
 			description: [
 				"To get access to Create's logistics and conveyor belts, you need rubber."
 				""
-				"You'll automate this in chapter 2, but is still easily doable by hand with a basin and mechanical press."
+				"You'll automate this in chapter 2, but is still easily doable by hand with a basin and mechanical press. Compacting leaves and water in a basin will yield latex, which turns into rubber when compacted again."
 				""
 				"&lSmelt the rubber to get cured rubber.&r"
 			]
 			id: "743A7E18CC37972B"
+			optional: true
 			rewards: [{
 				count: 8
 				id: "6E185DCC3941ECBB"
@@ -580,6 +585,7 @@
 			]
 			icon: "create:mechanical_bearing"
 			id: "0773214DEB80495F"
+			optional: true
 			rewards: [
 				{
 					id: "609CBEAD7A76D634"

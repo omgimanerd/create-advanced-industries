@@ -9,6 +9,7 @@
 	quests: [
 		{
 			dependencies: ["327F51A143F583D4"]
+			description: ["As you may have noticed, the theme of this modpack is automation. Build large and build wide, and may your factories grow."]
 			icon: "kubejs:andesite_mechanism"
 			id: "2F39752E838CCB4F"
 			tasks: [{

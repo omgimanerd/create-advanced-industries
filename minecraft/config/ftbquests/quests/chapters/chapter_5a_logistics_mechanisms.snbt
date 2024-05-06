@@ -100,7 +100,7 @@
 			description: [
 				"You can solidify the molten plastic in a Heat Frame or Thermopneumatic Processing Plant."
 				""
-				"Look at the recipe requirements for each and decide which one you want to automate."
+				"Decide which one you want to automate."
 			]
 			id: "709C290FF8F10B6A"
 			tasks: [{
@@ -1210,6 +1210,20 @@
 			icon: "minecraft:stonecutter"
 			id: "5B70ACA2A3E76CAB"
 			optional: true
+			rewards: [
+				{
+					count: 16
+					id: "309C20E0A9703EE3"
+					item: "morered:red_alloy_wire"
+					type: "item"
+				}
+				{
+					count: 8
+					id: "1443E90A5171AA4E"
+					item: "create_new_age:copper_circuit"
+					type: "item"
+				}
+			]
 			tasks: [{
 				id: "1D901C3C474350AE"
 				type: "checkmark"
@@ -1355,6 +1369,7 @@
 			description: ["Using a Crystallizer, you can recrystallize the diamond dust back into diamonds."]
 			icon: "thermal:machine_crystallizer"
 			id: "38BC369541D29C88"
+			optional: true
 			tasks: [{
 				id: "26576C1E347BE853"
 				item: "thermal:machine_crystallizer"
@@ -1475,6 +1490,8 @@
 				item: "pneumaticcraft:advanced_pressure_tube"
 				type: "item"
 			}]
+			shape: "gear"
+			size: 1.5d
 			tasks: [{
 				id: "0E40D1B7BFB777A1"
 				item: "pneumaticcraft:advanced_pressure_tube"
@@ -1542,7 +1559,7 @@
 		}
 		{
 			dependencies: ["7DA3BAF3482B048B"]
-			description: ["Bitumen can be pyrolyzed into coal coke as well."]
+			description: ["Bitumen can be pyrolyzed into coal coke."]
 			icon: "tfmg:coal_coke"
 			id: "17ED8F62082164AD"
 			optional: true

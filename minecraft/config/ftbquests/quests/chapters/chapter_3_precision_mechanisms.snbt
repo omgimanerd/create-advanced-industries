@@ -424,6 +424,7 @@
 			]
 			id: "6B79A03DFFD8B049"
 			invisible: true
+			optional: true
 			rewards: [{
 				id: "31D00C9515A7AC0E"
 				type: "xp"
@@ -476,11 +477,18 @@
 				item: "create:blaze_burner"
 				type: "item"
 			}]
-			tasks: [{
-				dimension: "minecraft:the_nether"
-				id: "4F638D3E4FA1D61B"
-				type: "dimension"
-			}]
+			tasks: [
+				{
+					dimension: "minecraft:the_nether"
+					id: "4F638D3E4FA1D61B"
+					type: "dimension"
+				}
+				{
+					id: "0E92F6DACBADAC8B"
+					item: "create:empty_blaze_burner"
+					type: "item"
+				}
+			]
 			x: -2.0d
 			y: 0.0d
 		}
@@ -510,6 +518,7 @@
 			dependencies: ["75DF00BC8C5543BB"]
 			description: ["Incidentally, access to the nether unlocks access to the Mage's Spell Book, giving us access to tier 2 spells from Ars Nouveau."]
 			id: "03E657E184865D19"
+			optional: true
 			rewards: [{
 				id: "066FC4D159E07613"
 				type: "xp"

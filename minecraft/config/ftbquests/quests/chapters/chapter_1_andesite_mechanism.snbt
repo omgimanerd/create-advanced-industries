@@ -410,7 +410,7 @@
 		}
 		{
 			dependencies: ["05DB2A211C1BB3C1"]
-			description: ["Locked drawers are good early game filtering tools before you have brass logistics."]
+			description: ["Functional storage drawers are good early game filtering tools before you have brass logistics. Since they only accept a specific item, funnels will only insert matching items into them."]
 			icon: "functionalstorage:oak_4"
 			id: "19AB88EFFCE07498"
 			optional: true
@@ -423,8 +423,10 @@
 						"ftbfiltersystem:filter": "item_tag(functionalstorage:drawer)"
 					}
 				}
+				title: "Storage Drawer"
 				type: "item"
 			}]
+			title: "Functional Storage"
 			x: -2.5d
 			y: -5.0d
 		}

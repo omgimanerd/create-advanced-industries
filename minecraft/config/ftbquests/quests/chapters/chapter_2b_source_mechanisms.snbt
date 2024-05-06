@@ -28,7 +28,11 @@
 		}
 		{
 			dependencies: ["001AE1E4A8E1972E"]
-			description: ["Find yourself a sourceberry bush. You'll need to automate harvesting these."]
+			description: [
+				"Find yourself a sourceberry bush. They can be found naturally in Ars Nouveau's biomes."
+				""
+				"You'll need to automate harvesting these, which should be an easy thing to extend off your existing farms."
+			]
 			id: "2D631BA672D51409"
 			rewards: [
 				{
@@ -58,6 +62,19 @@
 				"7639F3BB40822434"
 			]
 			id: "39E20F0E25618A92"
+			rewards: [
+				{
+					count: 16
+					id: "6E95F1892CFE4550"
+					item: "kubejs:source_mechanism"
+					type: "item"
+				}
+				{
+					id: "35A9E7FABB9CC972"
+					type: "xp"
+					xp: 100
+				}
+			]
 			size: 2.0d
 			tasks: [{
 				id: "30DDACD9E1044275"
