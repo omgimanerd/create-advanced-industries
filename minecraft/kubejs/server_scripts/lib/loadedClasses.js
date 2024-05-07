@@ -13,3 +13,5 @@ const $RegistryInfo = Java.loadClass(
 )
 
 const $Vec3 = Java.loadClass('net.minecraft.world.phys.Vec3')
+
+const $Entity = Java.loadClass('net.minecraft.world.entity.Entity')

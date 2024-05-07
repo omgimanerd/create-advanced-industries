@@ -1,53 +1,57 @@
 // priority: 100
 
+/**
+ * Helper method for the Arcane Portal ponder
+ * @param {Internal.ExtendedSceneBuilder} scene
+ * @param {BlockPos} center
+ */
+const setupArcanePortalBlockScene = (scene, center) => {
+  // Set up all blocks in scene.
+  scene.world.setBlock(center, 'minecraft:crying_obsidian', true)
+  let fluidSpots = [
+    center.north(),
+    center.south(),
+    center.east(),
+    center.west(),
+  ]
+  for (let spot of fluidSpots) {
+    scene.world.setBlock(spot, 'starbunclemania:source_fluid_block', false)
+  }
+  let pumps = {
+    south: center.north().north(),
+    north: center.south().south(),
+    west: center.east().east(),
+    east: center.west().west(),
+  }
+  for (let [pumpDirection, pumpSpot] of Object.entries(pumps)) {
+    scene.world.setBlock(
+      pumpSpot,
+      Block.id('create:mechanical_pump').with('facing', pumpDirection),
+      false
+    )
+    scene.world.setKineticSpeed(pumpSpot, 24)
+  }
+  return {
+    fluidSpots: fluidSpots,
+    pumps: pumps,
+  }
+}
+
+/**
+ * Helper method for the Arcane Portal ponder
+ * @param {Internal.ExtendedSceneBuilder} scene
+ * @param {BlockPos} pos
+ */
+const spawnPortalConsumptionParticles = (scene, pos) => {
+  scene.particles
+    .simple(3, 'minecraft:enchant', pos)
+    .motion([0, -0.15, 0])
+    .scale(2.5)
+    .density(10)
+    .withinBlockSpace()
+}
+
 Ponder.registry((e) => {
-  /**
-   * @param {Internal.ExtendedSceneBuilder} scene
-   * @param {BlockPos} center
-   */
-  const setupArcanePortalBlockScene = (scene, center) => {
-    // Set up all blocks in scene.
-    scene.world.setBlock(center, 'minecraft:crying_obsidian', true)
-    let fluidSpots = [
-      center.north(),
-      center.south(),
-      center.east(),
-      center.west(),
-    ]
-    for (let spot of fluidSpots) {
-      scene.world.setBlock(spot, 'starbunclemania:source_fluid_block', false)
-    }
-    let pumps = {
-      south: center.north().north(),
-      north: center.south().south(),
-      west: center.east().east(),
-      east: center.west().west(),
-    }
-    for (let [pumpDirection, pumpSpot] of Object.entries(pumps)) {
-      scene.world.setBlock(
-        pumpSpot,
-        Block.id('create:mechanical_pump').with('facing', pumpDirection),
-        false
-      )
-      scene.world.setKineticSpeed(pumpSpot, 24)
-    }
-    return {
-      fluidSpots: fluidSpots,
-      pumps: pumps,
-    }
-  }
-  /**
-   * @param {Internal.ExtendedSceneBuilder} scene
-   * @param {BlockPos} pos
-   */
-  const spawnPortalConsumptionParticles = (scene, pos) => {
-    scene.particles
-      .simple(3, 'minecraft:enchant', pos)
-      .motion([0, -4, 0])
-      .scale(2.5)
-      .density(10)
-      .withinBlockSpace()
-  }
   // Ponder for Arcane Portal
   e.create('kubejs:portal_block')
     .scene('portal_block_open', 'Opening The Arcane Portal', (scene, util) => {
@@ -117,6 +121,8 @@ Ponder.registry((e) => {
       for (let [_, pumpSpot] of Object.entries(pumps)) {
         scene.world.setKineticSpeed(pumpSpot, 0)
       }
+      scene.world.setBlock(consumptionSpot, 'minecraft:air', true)
+      spawnPortalConsumptionParticles(scene, consumptionSpot)
       scene.text(
         40,
         "If you don't replace the liquid source, the portal will rapidly " +
@@ -124,8 +130,6 @@ Ponder.registry((e) => {
         consumptionSpot
       )
       scene.idleSeconds(1)
-      scene.world.setBlock(consumptionSpot, 'minecraft:air', true)
-      spawnPortalConsumptionParticles(scene, consumptionSpot)
       scene.particles
         .simple(80, 'minecraft:campfire_cosy_smoke', center.above())
         .delta([0.2, 0.2, 0.2])
@@ -143,30 +147,61 @@ Ponder.registry((e) => {
       // First segment before keyframe to show scene.
       scene.showBasePlate()
       setupArcanePortalBlockScene(scene, center)
+      scene.world.setBlock(center, 'kubejs:portal_block', false)
       scene.world.showSection(util.select.layer(1), Facing.DOWN)
-      // scene.idleSeconds(1)
+      scene.idleSeconds(1)
 
       // Wandering Traders being consumed.
       scene.addKeyframe()
-      const wanderingTrader = scene.world.createEntity(
+      let wanderingTrader = scene.world.createEntity(
         'minecraft:wandering_trader',
-        center.offset(0, 4, 0),
+        center.offset(0, 1, 0),
         (e) => {
-          e.lerpTo(2.5, 2, 2.5, -360, 0, 40, false)
+          e.setY(2)
         }
       )
-      // Todo implement falling physics handling
-      scene.idle(40)
-      scene.world.modifyEntity(wanderingTrader, (e) => {
-        e.setPos(2.5, 2, 2.5)
-      })
       scene.text(40, 'The portal will absorb wandering traders.', center)
-      scene.idle(40)
+      scene.idleSeconds(1)
       scene.world.removeEntity(wanderingTrader)
       spawnPortalConsumptionParticles(scene, center.above())
       scene.idleSeconds(2)
 
-      //
+      // Pickaxes being consumed
+      scene.addKeyframe()
+      let enchantedPickaxe = scene.world.createItemEntity(
+        [2.5, 2, 2.5],
+        [0, 0, 0],
+        Item.of('minecraft:iron_pickaxe')
+          .enchant('minecraft:efficiency', 3)
+          .enchant('minecraft:unbreaking', 3)
+          .withName("Laborer's Pickaxe")
+      )
+      scene.text(
+        40,
+        'The portal will also absorb correctly enchanted named pickaxes. The ' +
+          'quest book will guide you on how to make the appropriate sacrifice.',
+        center
+      )
+      scene.idleSeconds(2)
+      scene.world.removeEntity(enchantedPickaxe)
+      spawnPortalConsumptionParticles(scene, center.above())
+      scene.idleSeconds(2)
+
+      // Hearthstone reward
+      scene.addKeyframe()
+      scene.text(
+        40,
+        'With the right sacrifices, the eldritch gods will be appeased and ' +
+          'grant you a reward.',
+        center
+      )
+      scene.idleSeconds(1)
+      scene.world.createItemEntity(
+        [2.5, 2, 2.5],
+        [0, 0.4, 0.01],
+        'gag:hearthstone'
+      )
+      scene.idleSeconds(1)
     })
 
   // Ponder for remy

@@ -4,11 +4,9 @@
   "kubejs.ponder.portal_block_open.text_2": "Once you open the portal, it requires a constant supply of liquefied source to stay open.",
   "kubejs.ponder.portal_block_open.text_3": "The Arcane Portal will consume a random liquefied source block  every so often.",
   "kubejs.ponder.portal_block_open.text_4": "If you don\u0027t replace the liquid source, the portal will rapidly become unstable and collapse.",
-  "kubejs.ponder.portal_block_ponder.header": "The Arcane Portal",
-  "kubejs.ponder.portal_block_ponder.text_1": "Right click a crying obsidian block with a source gem to open an Arcane Portal.",
-  "kubejs.ponder.portal_block_ponder.text_2": "Once you open the portal, it requires a constant supply of liquefied source to stay open.",
-  "kubejs.ponder.portal_block_ponder.text_3": "The Arcane Portal will consume a random liquefied source block  every so often.",
-  "kubejs.ponder.portal_block_ponder.text_4": "If you don\u0027t replace the liquid source, the portal will rapidly become unstable and collapse.",
   "kubejs.ponder.portal_block_usage.header": "Using the Arcane Portal",
-  "kubejs.ponder.portal_block_usage.text_1": "The portal will absorb wandering traders."
+  "kubejs.ponder.portal_block_usage.text_1": "The portal will absorb wandering traders.",
+  "kubejs.ponder.portal_block_usage.text_2": "The portal will also absorb correctly enchanted named pickaxes. The quest book will guide you on how to make the appropriate sacrifice.",
+  "kubejs.ponder.portal_block_usage.text_3": "With the right sacrifices, the eldritch gods will be appeased and grant you a reward.",
+  "kubejs.ponder.portal_block_usage.text_4": "With the right sacrifices, the eldritch gods will be appeased and grant you a reward."
 }

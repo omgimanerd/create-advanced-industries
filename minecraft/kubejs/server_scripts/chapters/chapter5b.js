@@ -507,6 +507,19 @@ const checkPortalPickaxeSacrifice = (item) => {
  */
 global.PortalBlockTickingCallback = (e) => {
   const { block, blockPos, level } = e
+  /**
+   * @param {Internal.SoundEvent_} sound
+   * @param {number} volume
+   * @param {number} pitch
+   */
+  const playSound = (sound, volume, pitch) => {
+    block.getPlayersInRadius(3).forEach((p) => {
+      Utils.server.runCommandSilent(
+        `playsound ${sound} block ${p.displayName.string} ${block.x} ` +
+          `${block.y} ${block.z} ${volume} ${pitch}`
+      )
+    })
+  }
   const entities = level.getEntitiesWithin(
     AABB.ofBlocks(blockPos.offset(-1, -1, -1), blockPos.offset(1, 2, 1))
   )
@@ -515,17 +528,26 @@ global.PortalBlockTickingCallback = (e) => {
   // Eat wandering traders and enchanted pickaxes, yielding hearthstones.
   let laborersEaten = pdata.getInt('laborers_eaten')
   let pickaxesEaten = pdata.getInt('pickaxes_eaten')
-  for (const /** @type {Internal.Entity} */ entity of entities) {
+  for (const /** @type {$Entity} */ entity of entities) {
     if (entity.type === 'minecraft:wandering_trader') {
       entity.remove('killed')
+      playSound('minecraft:entity.enderman.teleport', 2, 1)
       laborersEaten = Math.min(5, laborersEaten + 1)
-      spawnParticles(level, 'minecraft:enchant', entity, 0.15, 75, 0.1)
+      spawnParticles(
+        level,
+        'minecraft:enchant',
+        entity.position().add(0, 2, 0),
+        0.15,
+        75,
+        0.1
+      )
       continue
     }
     let item = /** @type {net.minecraft.world.item.ItemStack} */ entity.item
     if (item !== null) {
       if (checkPortalPickaxeSacrifice(item)) {
         entity.remove('discarded')
+        playSound('minecraft:entity.enderman.teleport', 2, 1)
         pickaxesEaten = Math.min(5, pickaxesEaten + 1)
         spawnParticles(level, 'minecraft:enchant', entity, 0.15, 75, 0.1)
       } else {
@@ -537,7 +559,8 @@ global.PortalBlockTickingCallback = (e) => {
   if (laborersEaten > 0 && pickaxesEaten > 0) {
     laborersEaten--
     pickaxesEaten--
-    level.server.scheduleInTicks(50, (c) => {
+    level.server.scheduleInTicks(50, () => {
+      playSound('minecraft:block.amethyst_block.step', 2, 1)
       block.popItemFromFace('gag:hearthstone', 'up')
     })
   }
