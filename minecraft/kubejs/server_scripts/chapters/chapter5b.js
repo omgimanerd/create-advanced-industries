@@ -184,6 +184,13 @@ const computeAmethystGolemFeedResults = (
       saturationMultiplier *= 1.05
     }
   }
+  if (hasHarmfulEffect) {
+    return {
+      results: [],
+      hasHarmfulEffect: hasHarmfulEffect,
+      feedCooldown: maximumNonBeneficialCooldown,
+    }
+  }
 
   // Loot tiers will go from 0-4, with values from 0-1 yielding small amethyst
   // clusters, values from 1-2 yielding medium + small amethyst clusters, etc.
