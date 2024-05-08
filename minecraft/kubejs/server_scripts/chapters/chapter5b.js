@@ -825,6 +825,16 @@ ServerEvents.recipes((e) => {
     }
   )
 
+  // Budding amethyst alternative recipe
+  create
+    .SequencedAssembly('minecraft:amethyst_block')
+    .deploy('minecraft:small_amethyst_bud')
+    .deploy('minecraft:medium_amethyst_bud')
+    .deploy('minecraft:large_amethyst_bud')
+    .deploy('minecraft:amethyst_cluster')
+    .fill(Fluid.of('kubejs:crystal_growth_accelerator', 1000))
+    .outputs('minecraft:budding_amethyst')
+
   // Remy spawner charm
   e.recipes.ars_nouveau.enchanting_apparatus(
     [

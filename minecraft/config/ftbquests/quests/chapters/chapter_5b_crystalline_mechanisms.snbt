@@ -500,6 +500,8 @@
 				"Luckily, you can get a special amethyst golem named Remy with the right enticements."
 				""
 				"Remy is an epicure, and loves to eat. Right click him to feed him something tasty. He'll reward you handsomely for feeding him good food."
+				""
+				"Ponder the Remy Spawner to see how he works."
 			]
 			id: "1091855210EBEE88"
 			tasks: [{
@@ -1532,8 +1534,11 @@
 				"The eldritch gods demand labor, but luckily it seems like we've automated a source of that too. Spawn &lwandering traders&r and drop &llaborer's pickaxes&r near the portal."
 				""
 				"The portal must be surrounded by liquefied source on all four sides to sustain it, and it will absorb one every now and then. If it is not, it will rapidly become unstable and close."
+				""
+				"Ponder the Arcane Portal for a visual example."
 			]
 			id: "36407A48939066C9"
+			min_width: 250
 			tasks: [{
 				id: "319CF41F80BA0260"
 				item: "kubejs:portal_block"
