@@ -1247,7 +1247,11 @@
 		}
 		{
 			dependencies: ["3BA01B49D9277234"]
-			description: ["Right clicking a moss block with a brown or red mushroom will convert the moss block into the respective mushroom block, with a chance for it to seed the adjacent blocks around it."]
+			description: [
+				"Right clicking a moss block with a brown or red mushroom will convert the moss block into the respective mushroom block, with a chance for it to seed the adjacent blocks around it."
+				""
+				"Ponder a moss block to see how this works."
+			]
 			icon: "minecraft:red_mushroom"
 			id: "118FC07682A677B4"
 			tasks: [{
@@ -1414,7 +1418,7 @@
 		}
 		{
 			dependencies: ["3BA01B49D9277234"]
-			description: ["TBD"]
+			description: ["Flowering azaleas have a large amount of liquid source that can be drained out of them."]
 			id: "426703177D8740C7"
 			tasks: [{
 				id: "235B863D9C7345DF"
@@ -2086,6 +2090,17 @@
 			}]
 			x: 14.0d
 			y: 21.0d
+		}
+		{
+			dependencies: ["426703177D8740C7"]
+			id: "3BACAE194B50906E"
+			tasks: [{
+				id: "26FB3C3CEA1E5EC0"
+				item: "minecraft:azalea"
+				type: "item"
+			}]
+			x: 6.0d
+			y: 6.0d
 		}
 	]
 	title: "Chapter 5b: Crystalline Mechanisms"

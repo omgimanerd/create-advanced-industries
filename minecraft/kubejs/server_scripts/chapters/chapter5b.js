@@ -673,9 +673,11 @@ ItemEvents.foodEaten('#kubejs:enchantable_foods', (e) => {
 })
 
 ServerEvents.compostableRecipes((e) => {
-  // Add compostable magical stuff
+  // Edit compostable chances
   e.remove('minecraft:flowering_azalea')
+  e.remove('minecraft:azalea')
   e.add('minecraft:flowering_azalea', 1)
+  e.add('minecraft:azalea', 1)
 })
 
 ServerEvents.recipes((e) => {
@@ -711,7 +713,12 @@ ServerEvents.recipes((e) => {
       'createaddition:biomass',
     ])
     .id('kubejs:moss_from_biomass_application')
-  // Require flower azaleas for stuff here to incentivize moss farming
+
+  // Flowering Azaleas can be drained for a large amount of source.
+  create.emptying(
+    [Fluid.of('starbunclemania:source_fluid', 750), 'minecraft:azalea'],
+    'minecraft:flowering_azalea'
+  )
 
   // Bonemeal cannot be reverse crafted from bone blocks.
   e.remove({ id: 'minecraft:bone_meal_from_bone_block' })
