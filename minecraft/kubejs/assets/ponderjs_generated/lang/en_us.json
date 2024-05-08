@@ -1,4 +1,8 @@
 {
+  "kubejs.ponder.budding_amethyst_spouting.header": "Growing Amethyst Buds",
+  "kubejs.ponder.budding_amethyst_spouting.text_1": "In addition to the recipes shown in JEI, amethyst shards can also be grown using budding amethyst as a catalyst.",
+  "kubejs.ponder.budding_amethyst_spouting.text_2": "In this pack, budding amethyst does not naturally cause attached buds to grow, and require crystal growth accelerator to be spouted on them.",
+  "kubejs.ponder.budding_amethyst_spouting.text_3": "For every 500mb of crystal growth accelerator spouted, a random amethyst bud attached to the budding amethyst will advance one growth stage.",
   "kubejs.ponder.portal_block_open.header": "Opening The Arcane Portal",
   "kubejs.ponder.portal_block_open.text_1": "Right click a crying obsidian block with a source gem to open an Arcane Portal.",
   "kubejs.ponder.portal_block_open.text_2": "Once you open the portal, it requires a constant supply of liquefied source to stay open.",
