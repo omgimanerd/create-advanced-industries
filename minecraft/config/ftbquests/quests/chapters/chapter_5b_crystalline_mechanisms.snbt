@@ -1418,8 +1418,13 @@
 		}
 		{
 			dependencies: ["3BA01B49D9277234"]
-			description: ["Flowering azaleas have a large amount of liquid source that can be drained out of them."]
+			description: [
+				"Flowering azaleas have a large amount of liquid source that can be drained out of them."
+				""
+				"The resulting azalea can still be composted to continue the cycle."
+			]
 			id: "426703177D8740C7"
+			optional: true
 			tasks: [{
 				id: "235B863D9C7345DF"
 				item: "minecraft:flowering_azalea"
@@ -2090,17 +2095,6 @@
 			}]
 			x: 14.0d
 			y: 21.0d
-		}
-		{
-			dependencies: ["426703177D8740C7"]
-			id: "3BACAE194B50906E"
-			tasks: [{
-				id: "26FB3C3CEA1E5EC0"
-				item: "minecraft:azalea"
-				type: "item"
-			}]
-			x: 6.0d
-			y: 6.0d
 		}
 	]
 	title: "Chapter 5b: Crystalline Mechanisms"

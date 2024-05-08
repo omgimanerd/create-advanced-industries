@@ -176,7 +176,7 @@
 			description: [
 				"If we get some red stone, then all we need is a little bit of magic and heat to turn it into redstone!"
 				""
-				"Mix cobblestone, red dye, and liquefied source together to get redstone."
+				"Mix cobblestone, red dye, and liquefied source together in a heated basin to get redstone."
 			]
 			id: "2CD3C925392DD277"
 			tasks: [{
@@ -333,25 +333,18 @@
 			]
 			icon: "thermal:compost"
 			id: "360D9ADBFF3CDE8F"
-			optional: true
 			rewards: [{
 				count: 4
 				id: "2059BAC03626673F"
 				item: "thermal:device_composter"
 				type: "item"
 			}]
-			tasks: [
-				{
-					id: "1B447494399E1036"
-					type: "checkmark"
-				}
-				{
-					id: "0D499F456535526D"
-					item: "thermal:compost"
-					optional_task: true
-					type: "item"
-				}
-			]
+			tasks: [{
+				id: "0D499F456535526D"
+				item: "thermal:compost"
+				optional_task: true
+				type: "item"
+			}]
 			x: 1.0d
 			y: 4.0d
 		}

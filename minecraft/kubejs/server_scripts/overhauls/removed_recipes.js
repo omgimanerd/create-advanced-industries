@@ -1,5 +1,7 @@
 // priority: 500
 
+// TODO: do a pass on removed fluids
+
 // Only matchers that should be fully removed from crafting and JEI should go
 // here. JEI.hideItems uses the matcher in key: output
 global.hideJEI = true
@@ -15,9 +17,9 @@ global.removedRecipes = [
   { output: 'createaddition:diamond_grit' },
   { output: 'createaddition:zinc_sheet' },
   { output: /^createaddition:[a-z_]+spool/ },
-  { output: /^createconnected:copycat_[a-z_]+/ },
-  { output: /^createdeco:[a-z]+_coin$/ },
-  { output: /^createdeco:[a-z]+_coinstack$/ },
+  { output: /^create_connected:copycat_[a-z_]+$/ },
+  { output: /^createdeco:[a-z_]+_coin$/ },
+  { output: /^createdeco:[a-z_]+_coinstack$/ },
   { output: 'createdeco:netherite_nugget' },
   { output: /^create_new_age:heat.*/ },
   { output: /^create_new_age:[a-z_]*corium/ },
@@ -64,6 +66,10 @@ global.removedRecipes = [
   { output: /^thermal:diving_.*/ },
   { output: '#forge:coins' },
   { output: /^starbunclemania:star_[a-z_]+/ },
+  { output: 'starbunclemania:wyrm_degree' },
+  { output: 'starbunclemania:direction_scroll' },
+  { output: 'starbunclemania:fluid_scroll_allow' },
+  { output: 'starbunclemania:fluid_scroll_deny' },
 ]
 
 // Recipes that are removed for balance or duplication reasons.
