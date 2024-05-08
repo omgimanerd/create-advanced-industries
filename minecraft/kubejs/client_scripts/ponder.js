@@ -488,10 +488,7 @@ Ponder.registry((e) => {
       scene.idle(10)
 
       scene.text(40, 'Feeding can be automated with the deployer.', deployerPos)
-      scene.world.moveDeployer(deployerPos, 1, 25)
-      scene.idle(25)
-      setDeployerHeldItem(scene, deployerPos, 'minecraft:air')
-      scene.world.moveDeployer(deployerPos, -1, 25)
+      cycleDeployerMovement(scene, deployerPos)
       scene.particles
         .simple(5, 'minecraft:heart', center.above())
         .delta([0.25, 0.25, 0.25])
@@ -519,10 +516,7 @@ Ponder.registry((e) => {
         'Feeding higher quality foods will result in more drops.',
         deployerPos
       )
-      scene.world.moveDeployer(deployerPos, 1, 25)
-      scene.idle(25)
-      setDeployerHeldItem(scene, deployerPos, 'minecraft:air')
-      scene.world.moveDeployer(deployerPos, -1, 25)
+      cycleDeployerMovement(scene, deployerPos)
       scene.particles
         .simple(5, 'minecraft:heart', center.above())
         .delta([0.25, 0.25, 0.25])
@@ -559,10 +553,7 @@ Ponder.registry((e) => {
         'Remy will get tired of the same food over and over though.',
         deployerPos
       )
-      scene.world.moveDeployer(deployerPos, 1, 25)
-      scene.idle(25)
-      setDeployerHeldItem(scene, deployerPos, 'minecraft:air')
-      scene.world.moveDeployer(deployerPos, -1, 25)
+      cycleDeployerMovement(scene, deployerPos)
       scene.particles
         .simple(5, 'minecraft:heart', center.above())
         .delta([0.25, 0.25, 0.25])
@@ -592,10 +583,7 @@ Ponder.registry((e) => {
           'stomach',
         deployerPos
       )
-      scene.world.moveDeployer(deployerPos, 1, 25)
-      scene.idle(25)
-      setDeployerHeldItem(scene, deployerPos, 'minecraft:air')
-      scene.world.moveDeployer(deployerPos, -1, 25)
+      cycleDeployerMovement(scene, deployerPos)
       scene.particles
         .simple(200, 'minecraft:entity_effect', remyLocation)
         .color('#119900')
