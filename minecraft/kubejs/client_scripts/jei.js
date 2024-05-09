@@ -1,6 +1,7 @@
 // priority: 0
 
 const hiddenFluids = [
+  'pneumaticcraft:oil',
   'pneumaticcraft:memory_essence',
   'sophisticatedcore:xp_still',
   'thermal:creosote',

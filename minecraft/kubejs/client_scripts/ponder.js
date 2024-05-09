@@ -20,7 +20,7 @@ const spawnGrowthParticles = (scene, util, pos) => {
 /**
  * @param {Internal.ExtendedSceneBuilder} scene
  * @param {BlockPos} deployerPos
- * @param {ResourceLocation_?} id
+ * @param {Internal.ItemStack_?} id
  */
 const setDeployerHeldItem = (scene, deployerPos, id) => {
   scene.world.modifyBlockEntityNBT(deployerPos, (nbt) => {

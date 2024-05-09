@@ -54,7 +54,10 @@ global.removedRecipes = [
   { output: 'thermal:carrot_block' },
   { output: 'thermal:copper_nugget' },
   { output: 'thermal:potato_block' },
+  // TODO maybe use this?
   { output: 'thermal:phytogro' },
+  { output: 'thermal:phyto_grenade' },
+  { output: 'thermal:phyto_tnt' },
   { output: /^thermal:machine_(?!crystallizer|pyrolyzer).*/ },
   { output: /^thermal:dynamo_.*/ },
   { output: 'thermal:tinker_bench' },

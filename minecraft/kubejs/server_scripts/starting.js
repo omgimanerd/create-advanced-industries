@@ -7,3 +7,13 @@ PlayerEvents.loggedIn((e) => {
     e.player.give('ftbquests:book')
   }
 })
+
+// Temporary command for playtesting
+ServerEvents.customCommand('playtest', (e) => {
+  e.player.give(Item.of('minecraft:oak_log', 256))
+  e.player.give(Item.of('minecraft:copper_block', 32))
+  e.player.give(Item.of('minecraft:iron_block', 64))
+  e.player.give(Item.of('minecraft:gold_block', 32))
+  e.player.give(Item.of('minecraft:andesite', 128))
+  e.player.give(Item.of('ars_nouveau:sourceberry_bush'), 16)
+})

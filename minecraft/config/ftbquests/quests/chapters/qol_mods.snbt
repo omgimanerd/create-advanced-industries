@@ -87,6 +87,7 @@
 				}
 				type: "item"
 			}]
+			title: "Simply Magnets"
 			x: 2.0d
 			y: 0.0d
 		}
@@ -96,6 +97,8 @@
 				"Want to sleep without resetting your spawn point?"
 				""
 				"Or sleep to pass the day?"
+				""
+				"Comforts has got you covered."
 			]
 			id: "11336DA3B627B311"
 			rewards: [{
@@ -171,6 +174,45 @@
 			title: "Pocket Storage Unit"
 			x: 2.0d
 			y: 2.0d
+		}
+		{
+			dependencies: ["76EA7D462C854493"]
+			description: ["Create: Jetpack offers a reasonable level of early game flight by Chapter 4."]
+			id: "4A640EB0C86DAD36"
+			tasks: [{
+				id: "6D41D3D060AF5CE9"
+				item: {
+					Count: 1b
+					id: "create_jetpack:jetpack"
+					tag: {
+						Air: 900.0f
+					}
+				}
+				type: "item"
+			}]
+			x: -2.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["76EA7D462C854493"]
+			description: ["Create: Connected offers tons of different gearbox options to make your builds more compact or more complicated."]
+			icon: "create_connected:brass_gearbox"
+			id: "2A25A6DA0F27061C"
+			tasks: [{
+				id: "65F2559AB4960FDF"
+				item: {
+					Count: 1b
+					id: "ftbfiltersystem:smart_filter"
+					tag: {
+						"ftbfiltersystem:filter": "or(item(create_connected:encased_chain_cogwheel)item(create_connected:inverted_clutch)item(create_connected:inverted_gearshift)item(create_connected:parallel_gearbox)item(create_connected:vertical_parallel_gearbox)item(create_connected:six_way_gearbox)item(create_connected:vertical_six_way_gearbox)item(create_connected:brass_gearbox)item(create_connected:vertical_brass_gearbox)item(create_connected:overstress_clutch)item(create_connected:centrifugal_clutch)item(create_connected:freewheel_clutch)item(create_connected:brake)item(create_connected:empty_fan_catalyst))"
+					}
+				}
+				title: "Any item from Create: Connected"
+				type: "item"
+			}]
+			title: "Create: Connected"
+			x: 0.0d
+			y: 4.0d
 		}
 	]
 	title: "QOL Mods"
