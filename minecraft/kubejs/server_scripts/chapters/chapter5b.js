@@ -1120,27 +1120,6 @@ ServerEvents.recipes((e) => {
       'create:experience_block'
     )
     .superheated()
-  // Cognitium is a 1:40 conversion
-  create.mixing(
-    [
-      Fluid.of('create_enchantment_industry:experience', 12),
-      'create_enchantment_industry:experience_rotor',
-    ],
-    [
-      Fluid.of('experienceobelisk:cognitium', 480),
-      'create_enchantment_industry:experience_rotor',
-    ]
-  )
-  create.mixing(
-    [
-      Fluid.of('experienceobelisk:cognitium', 480),
-      'create_enchantment_industry:experience_rotor',
-    ],
-    [
-      Fluid.of('create_enchantment_industry:experience', 12),
-      'create_enchantment_industry:experience_rotor',
-    ]
-  )
 
   // Rotten flesh can be smoked into leather
   e.smoking('minecraft:leather', 'minecraft:rotten_flesh')

@@ -99,6 +99,17 @@ ServerEvents.recipes((e) => {
   e.remove({ output: '#forge:nuggets', type: 'create:splashing' })
 
   ///////////////////////////////////
+  // Create: The Factory Must Grow //
+  ///////////////////////////////////
+
+  // Can't remove pumpjack hammer holder recipe warning?
+  // e.remove(/tfmg:mechanical_crafting\/pumpjack_hammer_holder.*/)
+
+  // Suppresses colored concrete warnings in KubeJS logs.
+  e.remove(/^tfmg:colored_concrete\/full_block\/[a-z_]+concrete/)
+  e.remove({ id: 'tfmg:fractional_distillation/crude_oil' })
+
+  ///////////////////////////////////
   // PneumaticCraft: Repressurized //
   ///////////////////////////////////
   e.remove({ id: /^pneumaticcraft:[a-z_/]+compressed_iron_block$/ })
@@ -114,10 +125,4 @@ ServerEvents.recipes((e) => {
   e.remove({ id: /^thermal:earth_charge\/[a-z_]+/ })
 
   // TODO remove all thermal recipes that aren't used
-
-  // Can't remove pumpjack hammer holder recipe warning?
-  // e.remove(/tfmg:mechanical_crafting\/pumpjack_hammer_holder.*/)
-
-  // Suppresses colored concrete warnings in KubeJS logs.
-  e.remove(/^tfmg:colored_concrete\/full_block\/[a-z_]+concrete/)
 })

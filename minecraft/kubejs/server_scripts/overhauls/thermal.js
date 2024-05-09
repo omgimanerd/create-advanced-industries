@@ -192,4 +192,11 @@ ServerEvents.recipes((e) => {
       M: 'tfmg:steel_mechanism',
     }
   )
+
+  // Replace Thermal Creosote with TFMG Creosote
+  e.replaceOutput(
+    { mod: 'thermal' },
+    Fluid.of('thermal:creosote'),
+    Fluid.of('tfmg:creosote')
+  )
 })

@@ -14,6 +14,7 @@ ServerEvents.recipes((e) => {
   e.remove({ id: /^create_central_kitchen:sequenced_assembly.*/ })
   e.remove({ id: 'create_central_kitchen:crafting/tomato_sauce_from_bucket' })
   e.remove({ id: 'farmersdelight:cooking/tomato_sauce' })
+  e.remove({ id: 'create_central_kitchen:mixing/tomato_sauce' })
   create
     .compacting(
       Fluid.of('create_central_kitchen:tomato_sauce', 500),
