@@ -207,7 +207,7 @@
 						"ftbfiltersystem:filter": "or(item(create_connected:encased_chain_cogwheel)item(create_connected:inverted_clutch)item(create_connected:inverted_gearshift)item(create_connected:parallel_gearbox)item(create_connected:vertical_parallel_gearbox)item(create_connected:six_way_gearbox)item(create_connected:vertical_six_way_gearbox)item(create_connected:brass_gearbox)item(create_connected:vertical_brass_gearbox)item(create_connected:overstress_clutch)item(create_connected:centrifugal_clutch)item(create_connected:freewheel_clutch)item(create_connected:brake)item(create_connected:empty_fan_catalyst))"
 					}
 				}
-				title: "Any item from Create: Connected"
+				title: "Create: Connected"
 				type: "item"
 			}]
 			title: "Create: Connected"
