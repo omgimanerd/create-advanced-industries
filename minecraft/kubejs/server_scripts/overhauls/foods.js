@@ -73,10 +73,10 @@ ServerEvents.recipes((e) => {
   // Pneumaticcraft foods
   e.remove({ id: 'pneumaticcraft:thermo_plant/chips' })
   create
-    .mixing(
-      ['pneumaticcraft:chips', Fluid.of('createaddition:seed_oil', 100)],
-      ['minecraft:potato', Fluid.of('createaddition:seed_oil', 100)]
-    )
+    .mixing('pneumaticcraft:chips', [
+      'minecraft:potato',
+      Fluid.of('createaddition:seed_oil', 100),
+    ])
     .heated()
   e.remove({ id: 'pneumaticcraft:raw_salmon_tempura' })
   e.shapeless('pneumaticcraft:raw_salmon_tempura', [
@@ -89,15 +89,9 @@ ServerEvents.recipes((e) => {
   ])
   e.remove({ id: 'pneumaticcraft:thermo_plant/salmon_tempura' })
   create
-    .mixing(
-      [
-        'pneumaticcraft:salmon_tempura',
-        Fluid.of('createaddition:seed_oil', 100),
-      ],
-      [
-        'pneumaticcraft:raw_salmon_tempura',
-        Fluid.of('createaddition:seed_oil', 100),
-      ]
-    )
+    .mixing('pneumaticcraft:salmon_tempura', [
+      'pneumaticcraft:raw_salmon_tempura',
+      Fluid.of('createaddition:seed_oil', 100),
+    ])
     .heated()
 })
