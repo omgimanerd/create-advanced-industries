@@ -1,7 +1,5 @@
 // priority: 500
 
-// TODO: do a pass on removed fluids
-
 // Only matchers that should be fully removed from crafting and JEI should go
 // here. JEI.hideItems uses the matcher in key: output
 global.hideJEI = true

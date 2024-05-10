@@ -1,6 +1,8 @@
 // priority: 0
 
+// Duplicate fluids or ones removed by the modpack.
 const hiddenFluids = [
+  'cofh_core:potion',
   'pneumaticcraft:oil',
   'pneumaticcraft:memory_essence',
   'sophisticatedcore:xp_still',
@@ -41,9 +43,18 @@ JEIEvents.hideItems((e) => {
   })
 
   // Hide intermediate mechanism items.
-  // e.hide('kubejs:incomplete_andesite_mechanism')
-  // e.hide('kubejs:incomplete_copper_mechanism')
-  // e.hide('kubejs:incomplete_source_mechanism')
+  e.hide('kubejs:incomplete_andesite_mechanism')
+  e.hide('kubejs:incomplete_copper_mechanism')
+  e.hide('kubejs:incomplete_source_mechanism')
+})
+
+JEIEvents.addFluids((e) => {
+  e.add(
+    Fluid.of('create:potion').withNBT({
+      Bottle: 'REGULAR',
+      Potion: 'minecraft:awkward',
+    })
+  )
 })
 
 JEIEvents.hideFluids((e) => {
@@ -51,8 +62,6 @@ JEIEvents.hideFluids((e) => {
     e.hide(fluid)
   })
 })
-
-// TODO: group all automated brewing recipes into custom category
 
 JEIEvents.removeCategories((e) => {
   e.remove('thermal:bottler')
@@ -62,7 +71,5 @@ JEIEvents.removeCategories((e) => {
   e.remove('jumbofurnace:jumbo_furnace_upgrade')
 
   // DEBUG LOGGING ONLY
-  // for (const b of e.getCategoryIds()) {
-  //   console.log(b)
-  // }
+  // console.log(e.categoryIds)
 })
