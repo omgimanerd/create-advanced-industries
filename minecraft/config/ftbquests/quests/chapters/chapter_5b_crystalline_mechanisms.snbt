@@ -437,7 +437,7 @@
 			description: [
 				"With all this in mind, brew yourself an awkward potion."
 				""
-				"You can do this in an automated fashion with a heated mixer."
+				"You can do this in an automated fashion with a heated mixer. See the JEI entry for the Awkward Potion fluid for more information."
 			]
 			id: "2FA97E14E8E844C3"
 			tasks: [{
