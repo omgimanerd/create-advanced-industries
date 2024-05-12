@@ -108,9 +108,13 @@ SequencedAssembly.prototype.deploy = function (item, keepHeldItem) {
 }
 
 /**
+ * If this custom step is the first step in the sequence, the pre item will be
+ * whatever was given as this.input_. If this custom step is the last step in
+ * the sequence the post item is whatever will be passed as the output item.
  * @callback customSequencedAssemblyCallback
- * @param {InputItem_} pre
- * @param {OutputItem_[]} post
+ * @param {InputItem_|string} pre
+ * @param {OutputItem_[]|string} post
+ * @param {function} json Helper to convert ingredients to JSON objects.
  */
 /**
  * @param {string} preItemText
@@ -161,6 +165,80 @@ SequencedAssembly.prototype.getCustomTransitionalItem = function (
 /**
  * @private
  * @param {OutputItem_[]} output
+ * @returns {null}
+ */
+SequencedAssembly.prototype.outputCustomSequence = function (output) {
+  output = typeof output === 'string' ? [output] : output
+  if (this.input_ === this.transitional_) {
+    console.warn(
+      `Input item ${this.input_} is the same as the transitional item ` +
+        `${this.transitional_}`
+    )
+  }
+
+  /**
+   * @param {Internal.Ingredient} item
+   * @returns {object}
+   */
+  const json = (item) => JSON.parse(JsonIO.toString(item.toJson()))
+
+  const totalSteps = this.steps_.length * this.loops_
+  // Generate and define recipes for each of the steps in the sequence.
+  this.steps_.forEach((data, index) => {
+    for (let loop = 0; loop < this.loops_; ++loop) {
+      const preItemStep = index + loop * this.steps_.length
+      const postItemStep = preItemStep + 1
+      let preItem, postItem
+      // The first and last items in the sequence should be the input and output
+      // items respectively. Otherwise, we form an item with the relevant NBT
+      // data and lore for the input and outputs of the intermediate steps.
+      //
+      // Custom steps must respect the NBT of the pre and post items.
+      if (preItemStep === 0) {
+        preItem = this.input_
+      } else {
+        preItem = this.getCustomTransitionalItem(preItemStep, data.preItemText)
+      }
+      if (postItemStep === totalSteps) {
+        postItem = output
+      } else {
+        postItem = this.getCustomTransitionalItem(
+          postItemStep,
+          this.steps_[index + 1].preItemText
+        )
+      }
+      // Store the recipe in case we need to chain calls to it. Define the
+      // actual recipe with the intermediate items.
+      let r
+      switch (data.type) {
+        case 'cutting':
+          r = this.e_.recipes.create.cutting(postItem, preItem)
+          if (data.processingTime) r.processingTime(data.processingTime)
+          break
+        case 'pressing':
+          r = this.e_.recipes.create.pressing(postItem, preItem)
+          break
+        case 'filling':
+          r = this.e_.recipes.create.filling(postItem, [preItem, data.fluid])
+          break
+        case 'deploying':
+          r = this.e_.recipes.create.deploying(postItem, [preItem, data.item])
+          if (data.keepHeldItem) r.keepHeldItem()
+          break
+        case 'custom':
+          r = data.callback(preItem, postItem, json)
+          break
+        default:
+          throw new Error(`Unknown type ${data.type}`)
+      }
+    }
+  })
+  return null
+}
+
+/**
+ * @private
+ * @param {OutputItem_[]} output
  * @returns {Special.Recipes.SequencedAssemblyCreate}
  */
 SequencedAssembly.prototype.outputNativeCreate = function (output) {
@@ -203,74 +281,6 @@ SequencedAssembly.prototype.outputNativeCreate = function (output) {
     )
     .transitionalItem(this.transitional_)
     .loops(this.loops_)
-}
-
-/**
- * @private
- * @param {OutputItem_[]} output
- * @returns {null}
- */
-SequencedAssembly.prototype.outputCustomSequence = function (output) {
-  output = typeof output === 'string' ? [output] : output
-  if (this.input_ === this.transitional_) {
-    console.warn(
-      `Input item ${this.input_} is the same as the transitional item ` +
-        `${this.transitional_}`
-    )
-  }
-
-  const totalSteps = this.steps_.length * this.loops_
-  // Generate and define recipes for each of the steps in the sequence.
-  this.steps_.forEach((data, index) => {
-    for (let loop = 0; loop < this.loops_; ++loop) {
-      const preItemStep = index + loop * this.steps_.length
-      const postItemStep = preItemStep + 1
-      let preItem, postItem
-      // The first and last items in the sequence should be the input and output
-      // items respectively. Otherwise, we form an item with the relevant NBT
-      // data and lore for the input and outputs of the intermediate steps.
-      //
-      // Custom steps must respect the NBT of the pre and post items.
-      if (preItemStep === 0) {
-        preItem = Item.of(this.input_)
-      } else {
-        preItem = this.getCustomTransitionalItem(preItemStep, data.preItemText)
-      }
-      if (postItemStep === totalSteps) {
-        postItem = output
-      } else {
-        postItem = this.getCustomTransitionalItem(
-          postItemStep,
-          this.steps_[index + 1].preItemText
-        )
-      }
-      // Store the recipe in case we need to chain calls to it. Define the
-      // actual recipe with the intermediate items.
-      let r
-      switch (data.type) {
-        case 'cutting':
-          r = this.e_.recipes.create.cutting(postItem, preItem)
-          if (data.processingTime) r.processingTime(data.processingTime)
-          break
-        case 'pressing':
-          r = this.e_.recipes.create.pressing(postItem, preItem)
-          break
-        case 'filling':
-          r = this.e_.recipes.create.filling(postItem, [preItem, data.fluid])
-          break
-        case 'deploying':
-          r = this.e_.recipes.create.deploying(postItem, [preItem, data.item])
-          if (data.keepHeldItem) r.keepHeldItem()
-          break
-        case 'custom':
-          r = data.callback(preItem, postItem)
-          break
-        default:
-          throw new Error(`Unknown type ${data.type}`)
-      }
-    }
-  })
-  return null
 }
 
 /**

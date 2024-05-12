@@ -237,14 +237,12 @@ const potionFluid = (
 }
 
 /**
- * @param {Internal.Enchantment_} enchantmentId
+ * @param {Internal.Enchantment_} enchantment
  * @param {number} level
- * @return {Internal.ItemStack}
+ * @return {Internal.Ingredient}
  */
-const enchantedBook = (enchantmentId, level) => {
+const enchantedBook = (enchantment, level) => {
   return Item.of('minecraft:enchanted_book')
-    .withNBT({
-      StoredEnchantments: [{ id: enchantmentId, lvl: level }],
-    })
+    .enchant(enchantment, level)
     .weakNBT()
 }

@@ -23,6 +23,7 @@ Parser.FLUID_REGEX = /^(([0-9]+)mb )([#]*)([a-z_]+:[a-z_]+)$/
  * @returns {Object|null}
  */
 Parser.parseStackedItemInput = (s) => {
+  if (typeof s === 'object' && !Array.isArray(s) && s !== null) return s
   if (typeof s !== 'string') return null
 
   const m = s.match(Parser.ITEM_REGEX)
