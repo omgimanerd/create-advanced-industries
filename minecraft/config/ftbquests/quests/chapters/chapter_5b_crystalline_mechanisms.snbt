@@ -418,7 +418,7 @@
 			description: [
 				"Sprinklers apply a bonemealing effect in a 5x5 square up to 7 blocks below them if you pump liquid fertilizer into them. Being able to supercharge your farm will be immensely beneficial."
 				""
-				"Industrial fertilizers mark the start of the human population explosion, and are a major factor in the exponential growth of humanity."
+				"Industrial fertilizers marked the start of the human population explosion, and were a major factor in the exponential growth of humanity."
 			]
 			id: "57FF7014A4F93984"
 			tasks: [{
@@ -1145,9 +1145,11 @@
 				"37029E4226E582B0"
 			]
 			description: [
-				"Arboreal extractors were gated by Steel Mechanisms in Chapter 4, but with them unlocked, you can extract the sap from archwood trees."
+				"Arboreal Extractors are gated by Steel Mechanisms in Chapter 4, but with them unlocked, you can extract the sap from archwood trees."
 				""
 				"You can now also produce latex a lot easier by extracting it directly from a rubberwood or jungle tree."
+				""
+				"Organic composts and fertilizer can be used to boost the Arboreal Extractor."
 			]
 			id: "533741731F3D1475"
 			tasks: [{
@@ -1943,10 +1945,10 @@
 			id: "2ABA41C161D6BF9E"
 			tasks: [{
 				id: "736BC95F39FC4BDF"
-				item: "minecraft:diamond"
+				item: "minecraft:lapis_lazuli"
 				type: "item"
 			}]
-			title: "Diamond: The Gem of Water"
+			title: "Lapis Lazuli: The Gem of Water"
 			x: 4.0d
 			y: 28.0d
 		}
