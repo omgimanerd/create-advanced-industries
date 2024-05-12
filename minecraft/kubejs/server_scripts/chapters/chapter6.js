@@ -149,10 +149,13 @@ ServerEvents.recipes((e) => {
   // ender transmission end automation
 
   e.remove({ id: 'createteleporters:redstone_pearl_recipe' })
-  create.filling('createteleporters:redstone_pearl', [
-    'minecraft:ender_pearl',
-    Fluid.of('kubejs:molten_redstone', 180),
-  ])
+  create
+    .SequencedAssembly('minecraft:ender_pearl')
+    .fill('kubejs:molten_redstone', 180)
+    .custom('Next: Energize it with 40000 RF', (pre, post, json) => {
+      create.energising(post[0], json(pre))
+    })
+    .outputs('createteleporters:redstone_pearl')
 
   // enderium?
   // nether star
