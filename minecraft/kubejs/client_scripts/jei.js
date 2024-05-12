@@ -69,6 +69,13 @@ JEIAddedEvents.registerCategories((e) => {
   })
 })
 
+JEIAddedEvents.registerRecipes((e) => {
+  // e.register('createadvancedindustries:automated_brewing', [
+  //   'kubejs:create_potion_mixing_10_minecraft_awkward',
+  // ])
+  // e.register()
+})
+
 JEIEvents.removeCategories((e) => {
   e.remove('thermal:bottler')
   e.remove('thermal:furnace')

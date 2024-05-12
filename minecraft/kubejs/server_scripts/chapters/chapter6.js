@@ -61,10 +61,12 @@ const getTierGemDustCost = (tier) => {
   return 2 * index - 1
 }
 
-// Populated by ServerEvents.highPriorityData
+// Populated by ServerEvents.highPriorityData with all the apotheotic gems
+// available in the pack and their accessible tiers. Used in
+// ServerEvents.recipes to define automation recipes for combining the gems.
 let apotheoticGems = {}
 
-ServerEvents.highPriorityData((e) => {
+ServerEvents.highPriorityData(() => {
   let apotheosisGemData = global.readJsonFolderFromMod(
     'data',
     'apotheosis',
@@ -117,7 +119,7 @@ ServerEvents.highPriorityData((e) => {
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
 
-  // Define automated upgrade recipes for all the apotheotic gems.
+  // Define automatable upgrade recipes for all the apotheotic gems.
   for (let [gem, tiers] of Object.entries(apotheoticGems)) {
     for (let i = 0; i < tiers.length - 1; ++i) {
       let fromTier = tiers[i]
@@ -141,13 +143,7 @@ ServerEvents.recipes((e) => {
     }
   }
 
-  // apotheosis material automation
-
-  // smithing template netherite upgrade duping
-
-  // require going to end
-  // ender transmission end automation
-
+  // Redstone pearls
   e.remove({ id: 'createteleporters:redstone_pearl_recipe' })
   create
     .SequencedAssembly('minecraft:ender_pearl')
@@ -157,12 +153,23 @@ ServerEvents.recipes((e) => {
     })
     .outputs('createteleporters:redstone_pearl')
 
-  // enderium?
+  // apotheosis material automation
+
+  // require going to end
+  // end stone automation
+
+  // Liquid Hyper Experience condensing, gated behind draconic end shelfs
   // nether star
+  // defeat the warden
+  // sculk farming
+
+  // smithing template netherite upgrade duping
+
+  // ender transmission end automation
+  // enderium recipe from liquid hyper exp
 
   // neural processor
-
-  // Liquid Hyper Experience condensing
+  // chorus fruit farming
 
   // Register experience spouting recipes for Apotheosis custom enchanting
   e.forEachRecipe({ type: 'apotheosis:enchanting' }, (r) => {

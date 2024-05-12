@@ -699,6 +699,8 @@ Ponder.registry((e) => {
       scene.idleSeconds(1)
     }
   )
+
+  // TODO: ponder for enchanting table
 })
 
 /**
