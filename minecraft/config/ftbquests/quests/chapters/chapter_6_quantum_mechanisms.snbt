@@ -8,16 +8,101 @@
 	id: "67020B8E9395350E"
 	order_index: 7
 	quest_links: [ ]
-	quests: [{
-		dependencies: ["12D9ACDA50B38FCA"]
-		id: "34CBF7A7AD9BF9D8"
-		tasks: [{
-			id: "2C84E18B3D5B7212"
-			title: "Start"
-			type: "checkmark"
-		}]
-		x: 0.0d
-		y: 0.0d
-	}]
+	quests: [
+		{
+			dependencies: ["12D9ACDA50B38FCA"]
+			id: "34CBF7A7AD9BF9D8"
+			tasks: [{
+				id: "2C84E18B3D5B7212"
+				title: "Start"
+				type: "checkmark"
+			}]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			id: "75A7D7288DF25E12"
+			tasks: [
+				{
+					icon: {
+						Count: 1b
+						id: "ftbquests:custom_icon"
+						tag: {
+							Icon: "ftbchunks:textures/faces/minecraft/warden.png"
+						}
+					}
+					id: "02B389D758BBE8D4"
+					observe_type: 5
+					timer: 0L
+					to_observe: "minecraft:warden"
+					type: "observation"
+				}
+				{
+					id: "3C5FB599134C748A"
+					item: "apotheosis:warden_tendril"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -4.0d
+		}
+		{
+			id: "6FA6FE01DAE88F07"
+			tasks: [{
+				dimension: "minecraft:the_end"
+				icon: "minecraft:end_portal_frame"
+				id: "599E467B972577FF"
+				type: "dimension"
+			}]
+			x: -2.0d
+			y: -0.5d
+		}
+		{
+			id: "3E42BEA143D5E555"
+			tasks: [
+				{
+					icon: {
+						Count: 1b
+						id: "ftbquests:custom_icon"
+						tag: {
+							Icon: "ftbchunks:textures/faces/minecraft/wither_skeleton.png"
+						}
+					}
+					id: "2A94C663DB196911"
+					observe_type: 5
+					timer: 0L
+					to_observe: "minecraft:wither"
+					type: "observation"
+				}
+				{
+					id: "02840AA420B8DBA6"
+					item: "minecraft:nether_star"
+					type: "item"
+				}
+			]
+			x: 3.5d
+			y: -1.0d
+		}
+		{
+			id: "008F1DC4AE49F8BA"
+			tasks: [{
+				id: "37320555DFA86C97"
+				item: "createteleporters:quantum_mechanism"
+				type: "item"
+			}]
+			x: 9.5d
+			y: 1.0d
+		}
+		{
+			id: "31B4B5168C7CD7D9"
+			tasks: [{
+				id: "336A5FE969DA8BE8"
+				item: "createteleporters:quantum_fluid_bucket"
+				type: "item"
+			}]
+			x: 3.5d
+			y: 2.5d
+		}
+	]
 	title: "Chapter 6: Quantum Mechanisms"
 }

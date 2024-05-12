@@ -214,6 +214,18 @@
 			x: 0.0d
 			y: 4.0d
 		}
+		{
+			dependencies: ["76EA7D462C854493"]
+			description: ["Creative Flight is available after Chapter 6, but it doesn't come for free in this pack!"]
+			id: "25489D0F726E761C"
+			tasks: [{
+				id: "51D173EFDA6E3429"
+				item: "balancedflight:ascended_flight_ring"
+				type: "item"
+			}]
+			x: 2.0d
+			y: 4.0d
+		}
 	]
 	title: "QOL Mods"
 }

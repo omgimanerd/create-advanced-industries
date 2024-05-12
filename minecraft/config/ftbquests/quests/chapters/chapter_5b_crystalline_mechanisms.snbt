@@ -1253,6 +1253,8 @@
 				"Right clicking a moss block with a brown or red mushroom will convert the moss block into the respective mushroom block, with a chance for it to seed the adjacent blocks around it."
 				""
 				"Ponder a moss block to see how this works."
+				""
+				"Alternatively, you could grow a mushroom with bonemeal and harvest it."
 			]
 			icon: "minecraft:red_mushroom"
 			id: "118FC07682A677B4"
@@ -1319,7 +1321,7 @@
 				""
 				"Fermented spider eyes are now easy to acquire."
 				""
-				"You could total automate this a different way, the sky's the limit!"
+				"You could totally automate this a different way, the sky's the limit!"
 			]
 			id: "3DB77F119A23B60C"
 			tasks: [{
