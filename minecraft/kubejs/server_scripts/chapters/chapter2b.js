@@ -27,8 +27,10 @@ ServerEvents.recipes((e) => {
 
   // Source mechanism
   create
-    .SequencedAssembly('kubejs:andesite_mechanism')
-    .transitional('kubejs:incomplete_source_mechanism')
+    .SequencedAssembly(
+      'kubejs:andesite_mechanism',
+      'kubejs:incomplete_source_mechanism'
+    )
     .deploy('ars_nouveau:source_gem')
     .press()
     .fill('starbunclemania:source_fluid', 100)

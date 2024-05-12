@@ -144,8 +144,10 @@ ServerEvents.recipes((e) => {
   // Pneumatic cylinder overhaul
   e.remove({ id: 'pneumaticcraft:pneumatic_cylinder' })
   create
-    .SequencedAssembly('pneumaticcraft:cannon_barrel')
-    .transitional('kubejs:intermediate_pneumatic_cylinder')
+    .SequencedAssembly(
+      'pneumaticcraft:cannon_barrel',
+      'kubejs:intermediate_pneumatic_cylinder'
+    )
     .deploy('tfmg:rebar')
     .fill('pneumaticcraft:lubricant', 250)
     .press()
@@ -526,8 +528,7 @@ ServerEvents.recipes((e) => {
   // Transistor overhaul
   e.remove({ id: 'pneumaticcraft:pressure_chamber/transistor' })
   create
-    .SequencedAssembly('create:electron_tube')
-    .transitional('kubejs:intermediate_transistor')
+    .SequencedAssembly('create:electron_tube', 'kubejs:intermediate_transistor')
     .deploy('kubejs:silicon_wafer')
     .deploy('minecraft:glass_pane')
     .deploy('pneumaticcraft:plastic')
@@ -537,8 +538,7 @@ ServerEvents.recipes((e) => {
   // Capacitor overhaul
   e.remove({ id: 'pneumaticcraft:pressure_chamber/capacitor' })
   create
-    .SequencedAssembly('kubejs:silicon_wafer')
-    .transitional('kubejs:intermediate_capacitor')
+    .SequencedAssembly('kubejs:silicon_wafer', 'kubejs:intermediate_capacitor')
     .deploy('thermal:silver_plate')
     .deploy('pneumaticcraft:plastic')
     .deploy('thermal:silver_plate')

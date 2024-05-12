@@ -58,7 +58,7 @@ const getTierUpgradeMaterialCost = (tier) => {
  */
 const getTierGemDustCost = (tier) => {
   const index = tierOrder.indexOf(tier)
-  return 2 * index + 1
+  return 2 * index - 1
 }
 
 // Populated by ServerEvents.highPriorityData
@@ -117,6 +117,7 @@ ServerEvents.highPriorityData((e) => {
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
 
+  // Define automated upgrade recipes for all the apotheotic gems.
   for (let [gem, tiers] of Object.entries(apotheoticGems)) {
     for (let i = 0; i < tiers.length - 1; ++i) {
       let fromTier = tiers[i]
@@ -126,17 +127,57 @@ ServerEvents.recipes((e) => {
       let gemDustCost = getTierGemDustCost(toTier)
       let validMaterials = getTierUpgradeMaterialCost(toTier)
 
+      let tierIndex = tierOrder.indexOf(toTier)
+
       for (let material of validMaterials) {
-        create.compacting(toGem, [
+        let recipe = create.compacting(toGem, [
           material,
           Item.of('apotheosis:gem_dust', gemDustCost),
           fromGem,
         ])
+        if (tierIndex >= 4) recipe.superheated()
+        else if (tierIndex >= 2) recipe.heated()
       }
     }
   }
 
+  // apotheosis material automation
+
+  // smithing template netherite upgrade duping
+
   // require going to end
   // ender transmission end automation
+
+  e.remove({ id: 'createteleporters:redstone_pearl_recipe' })
+  create.filling('createteleporters:redstone_pearl', [
+    'minecraft:ender_pearl',
+    Fluid.of('kubejs:molten_redstone', 180),
+  ])
+
+  // input item
+  //   deploy ( step 0 )
+  // input item progress 1
+  //   crush (step 1)
+  // input item progress 1
+  //   press (step 2)
+  // output item
+
+  new SequencedAssembly(
+    e,
+    'create:electron_tube',
+    'kubejs:intermediate_transistor'
+  )
+    .custom('Next: Mix in a mixer', (pre, post) => {
+      create.mixing(post, pre)
+    })
+    .deploy('minecraft:glass_pane')
+    .press()
+    .fill(Fluid.water(200))
+    .outputs('4x pneumaticcraft:transistor')
+
   // enderium?
+  // nether star
+
+  // neural processor
+  //
 })

@@ -404,7 +404,7 @@ ServerEvents.recipes((e) => {
       H: 'create:shaft',
       S: 'createdeco:netherite_sheet',
       M: 'tfmg:steel_mechanism',
-      P: 'kubejs:plastic_mechanism',
+      P: 'create:netherite_backtank',
       C: 'create:smart_chute',
       J: 'create_jetpack:jetpack',
     }

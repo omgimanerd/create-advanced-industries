@@ -66,8 +66,10 @@ ServerEvents.recipes((e) => {
     }
   ).id('kubejs:andesite_mechanism_manual_only')
   create
-    .SequencedAssembly('create:andesite_alloy')
-    .transitional('kubejs:incomplete_andesite_mechanism')
+    .SequencedAssembly(
+      'create:andesite_alloy',
+      'kubejs:incomplete_andesite_mechanism'
+    )
     .deploy('#minecraft:wooden_slabs')
     .deploy('create:shaft')
     .deploy('create:cogwheel')

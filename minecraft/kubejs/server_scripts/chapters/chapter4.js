@@ -186,20 +186,23 @@ ServerEvents.recipes((e) => {
 
   // Recipes for reusable steel casts
   create
-    .SequencedAssembly('tfmg:heavy_plate')
-    .transitional('kubejs:intermediate_steel_ingot_cast')
+    .SequencedAssembly(
+      'tfmg:heavy_plate',
+      'kubejs:intermediate_steel_ingot_cast'
+    )
     .deploy('tfmg:steel_ingot')
     .press(3)
     .outputs('kubejs:steel_ingot_cast')
   create
-    .SequencedAssembly('tfmg:heavy_plate')
-    .transitional('kubejs:intermediate_steel_gem_cast')
+    .SequencedAssembly('tfmg:heavy_plate', 'kubejs:intermediate_steel_gem_cast')
     .deploy('minecraft:diamond')
     .press(3)
     .outputs('kubejs:steel_gem_cast')
   create
-    .SequencedAssembly('tfmg:heavy_plate')
-    .transitional('kubejs:intermediate_steel_block_cast')
+    .SequencedAssembly(
+      'tfmg:heavy_plate',
+      'kubejs:intermediate_steel_block_cast'
+    )
     .deploy('tfmg:steel_block')
     .press(3)
     .outputs('kubejs:steel_block_cast')
@@ -231,8 +234,10 @@ ServerEvents.recipes((e) => {
   // Steel mechanism overhaul
   e.remove({ id: 'tfmg:sequenced_assembly/steel_mechanism' })
   create
-    .SequencedAssembly('create:precision_mechanism')
-    .transitional('tfmg:unfinished_steel_mechanism')
+    .SequencedAssembly(
+      'create:precision_mechanism',
+      'tfmg:unfinished_steel_mechanism'
+    )
     .deploy('tfmg:heavy_plate')
     .deploy('create:sturdy_sheet')
     .press()

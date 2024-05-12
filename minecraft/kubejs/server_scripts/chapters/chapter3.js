@@ -147,8 +147,10 @@ ServerEvents.recipes((e) => {
   // Precision mechanism
   e.remove({ output: 'create:precision_mechanism' })
   create
-    .SequencedAssembly('kubejs:andesite_mechanism')
-    .transitional('create:incomplete_precision_mechanism')
+    .SequencedAssembly(
+      'kubejs:andesite_mechanism',
+      'create:incomplete_precision_mechanism'
+    )
     .deploy('create:electron_tube')
     .press()
     .deploy('create:brass_sheet')

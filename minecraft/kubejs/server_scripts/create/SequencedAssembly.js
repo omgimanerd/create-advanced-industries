@@ -2,39 +2,28 @@
 
 /**
  * @constructor
- * @description JS prototype class to make registering mechanism sequenced
- * assemblies easier.
+ * @description JS prototype class to make registering Create sequenced assembly
+ * recipes easier.
  *
  * Example usage:
- * new SequencedAssembly('#minecraft:wooden_slabs')
- *   .transitional('custom:incomplete_andesite_mechanism')
+ * new SequencedAssembly(e, 'minecraft:wooden_slabs')
  *   .deploy('create:andesite_alloy')
  *   .deploy('create:shaft')
- *   .deploy('create:cogwheel')
- *   .outputs(e, 'kubejs:andesite_mechanism')
+ *   .press(2)
+ *   .outputs('kubejs:andesite_mechanism')
  *
  * @param {Internal.RecipesEventJS} e
  * @param {InputItem_} input
+ * @param {InputItem_} transitional
  */
-function SequencedAssembly(e, input) {
+function SequencedAssembly(e, input, transitional) {
   this.e_ = e
   this.input_ = input
-  this.transitional_ = input
+  this.transitional_ = transitional ? transitional : input
 
   this.loops_ = 1
   this.steps_ = []
-}
-
-/**
- * @param {InputItem} transitional
- * @returns {SequencedAssembly}
- */
-SequencedAssembly.prototype.transitional = function (transitional) {
-  if (this.steps_.length != 0) {
-    throw new Error('.transitional() must be called first!')
-  }
-  this.transitional_ = transitional
-  return this
+  this.hasCustomSteps_ = false
 }
 
 /**
@@ -47,20 +36,19 @@ SequencedAssembly.prototype.loops = function (loops) {
 }
 
 /**
- * @param {number} processingTime
  * @param {number} repeats
+ * @param {number} processingTime
  * @returns {SequencedAssembly}
  */
-SequencedAssembly.prototype.cut = function (processingTime, repeats) {
+SequencedAssembly.prototype.cut = function (repeats, processingTime) {
   repeats = repeats === undefined ? 1 : repeats
-  const cuttingStep = this.e_.recipes.createCutting(
-    this.transitional_,
-    this.transitional_
+  this.steps_ = this.steps_.concat(
+    Array(repeats).fill({
+      type: 'cutting',
+      preItemText: 'Next: Cut on a Mechanical Saw',
+      processingTime: processingTime,
+    })
   )
-  if (processingTime !== undefined) {
-    cuttingStep.processingTime(processingTime)
-  }
-  this.steps_ = this.steps_.concat(Array(repeats).fill(cuttingStep))
   return this
 }
 
@@ -71,64 +59,210 @@ SequencedAssembly.prototype.cut = function (processingTime, repeats) {
 SequencedAssembly.prototype.press = function (repeats) {
   repeats = repeats === undefined ? 1 : repeats
   this.steps_ = this.steps_.concat(
-    Array(repeats).fill(
-      this.e_.recipes.createPressing(this.transitional_, this.transitional_)
-    )
+    Array(repeats).fill({
+      type: 'pressing',
+      preItemText: 'Next: Press with a Mechanical Press',
+    })
   )
   return this
 }
 
 /**
- * @param {string|Internal.InputFluid_} fluid
- * @param {number=} qty_mb
+ * @param {Internal.InputFluid_|string} fluid
+ * @param {number?} qty_mb
  * @returns {SequencedAssembly}
  */
 SequencedAssembly.prototype.fill = function (fluid, qty_mb) {
   // 1-argument, Fluid object is provided.
-  if (qty_mb === undefined) {
-    this.steps_.push(
-      this.e_.recipes.createFilling(this.transitional_, [
-        this.transitional_,
-        fluid,
-      ])
-    )
-  } else {
-    // 2-argument, fluid id + quantity in mb
-    this.steps_.push(
-      this.e_.recipes.createFilling(this.transitional_, [
-        this.transitional_,
-        Fluid.of(fluid, qty_mb),
-      ])
-    )
-  }
+  // 2-argument, fluid should be a string and qty_mb should be provided.
+  /**
+   * @type {Internal.FluidStackJS}
+   */
+  const f = qty_mb === undefined ? fluid : Fluid.of(fluid, qty_mb)
+  let id = f.id
+  qty_mb = f.amount
+  this.steps_.push({
+    type: 'filling',
+    preItemText: `Next: Fill with ${qty_mb}mb ${id}`,
+    fluid: f,
+  })
   return this
 }
 
 /**
- * @param {InputItem_} item
- * @param {boolean} [keepHeldItem=false]
+ * @param {InputItem_|string} item
+ * @param {boolean?} keepHeldItem
  * @returns {SequencedAssembly}
  */
 SequencedAssembly.prototype.deploy = function (item, keepHeldItem) {
-  const deployingStep = this.e_.recipes.createDeploying(this.transitional_, [
-    this.transitional_,
-    item,
-  ])
-  if (keepHeldItem) {
-    deployingStep.keepHeldItem()
-  }
-  this.steps_.push(deployingStep)
+  this.steps_.push({
+    type: 'deploying',
+    preItemText: `Next: Deploy ${item.id}`,
+    item: item,
+    keepHeldItem: !!keepHeldItem,
+  })
   return this
 }
 
 /**
- * @param {OutputItem_} output
+ * @callback customSequencedAssemblyCallback
+ * @param {InputItem_} pre
+ * @param {OutputItem_[]} post
+ */
+/**
+ * @param {string} preItemText
+ * @param {customSequencedAssemblyCallback} prePostItemHandler
+ * @returns {SequencedAssembly}
+ */
+SequencedAssembly.prototype.custom = function (
+  preItemText,
+  prePostItemHandler
+) {
+  this.hasCustomSteps_ = true
+  this.steps_.push({
+    type: 'custom',
+    preItemText: preItemText,
+    callback: prePostItemHandler,
+  })
+  return this
+}
+
+/**
+ * @private
+ * @param {number} stepNumber
+ * @param {string} loreText
+ * @returns {Internal.Ingredient}
+ */
+SequencedAssembly.prototype.getCustomTransitionalItem = function (
+  stepNumber,
+  loreText
+) {
+  const totalSteps = this.steps_.length * this.loops_
+  const progress = stepNumber / totalSteps
+  return Item.of(this.transitional_, {
+    SequencedAssembly: {
+      Progress: progress,
+      Step: stepNumber,
+    },
+  })
+    .withLore([
+      Text.empty(),
+      Text.gray('Recipe Sequence').italic(false),
+      Text.darkGray(`Progress: ${stepNumber}/${totalSteps}`).italic(false),
+      Text.aqua(loreText).italic(false),
+      Text.empty(),
+    ])
+    .weakNBT()
+}
+
+/**
+ * @private
+ * @param {OutputItem_[]} output
  * @returns {Special.Recipes.SequencedAssemblyCreate}
  */
-SequencedAssembly.prototype.outputs = function (output) {
-  const outputArray = typeof output === 'string' ? [output] : output
+SequencedAssembly.prototype.outputNativeCreate = function (output) {
   return this.e_.recipes.create
-    .sequenced_assembly(outputArray, this.input_, this.steps_)
+    .sequenced_assembly(
+      output,
+      this.input_,
+      this.steps_.map((data) => {
+        switch (data.type) {
+          case 'cutting':
+            const cuttingStep = this.e_.recipes.createCutting(
+              this.transitional_,
+              this.transitional_
+            )
+            if (data.processingTime !== undefined) {
+              cuttingStep.processingTime(data.processingTime)
+            }
+            return cuttingStep
+          case 'pressing':
+            return this.e_.recipes.createPressing(
+              this.transitional_,
+              this.transitional_
+            )
+          case 'filling':
+            return this.e_.recipes.createFilling(this.transitional_, [
+              this.transitional_,
+              data.fluid,
+            ])
+          case 'deploying':
+            const deployingStep = this.e_.recipes.createDeploying(
+              this.transitional_,
+              [this.transitional_, data.item]
+            )
+            if (data.keepHeldItem) deployingStep.keepHeldItem()
+            return deployingStep
+          default:
+            throw new Error(`Unknown assembly step ${data}`)
+        }
+      })
+    )
     .transitionalItem(this.transitional_)
     .loops(this.loops_)
+}
+
+/**
+ * @private
+ * @param {OutputItem_[]} output
+ * @returns {null}
+ */
+SequencedAssembly.prototype.outputCustomSequence = function (output) {
+  output = typeof output === 'string' ? [output] : output
+
+  const totalSteps = this.steps_.length * this.loops_
+  this.steps_.forEach((data, index) => {
+    for (let loop = 0; loop < this.loops_; ++loop) {
+      const preItemStep = index + loop * this.steps_.length
+      const postItemStep = preItemStep + 1
+      let preItem, postItem
+      if (preItemStep === 0) {
+        preItem = Item.of(this.input_)
+      } else {
+        preItem = this.getCustomTransitionalItem(preItemStep, data.preItemText)
+      }
+      if (postItemStep === totalSteps) {
+        postItem = output
+      } else {
+        postItem = this.getCustomTransitionalItem(
+          postItemStep,
+          this.steps_[index + 1].preItemText
+        )
+      }
+      let r
+      switch (data.type) {
+        case 'cutting':
+          r = this.e_.recipes.create.cutting(postItem, preItem)
+          if (data.processingTime) r.processingTime(data.processingTime)
+          break
+        case 'pressing':
+          r = this.e_.recipes.create.pressing(postItem, preItem)
+          break
+        case 'filling':
+          r = this.e_.recipes.create.filling(postItem, [preItem, data.fluid])
+          break
+        case 'deploying':
+          r = this.e_.recipes.create.deploying(postItem, [preItem, data.item])
+          if (data.keepHeldItem) r.keepHeldItem()
+          break
+        case 'custom':
+          r = data.callback(preItem, postItem)
+          break
+        default:
+          throw new Error(`Unknown type ${data.type}`)
+      }
+    }
+  })
+  return null
+}
+
+/**
+ * @param {OutputItem_[]} output
+ * @returns {Special.Recipes.SequencedAssemblyCreate?}
+ */
+SequencedAssembly.prototype.outputs = function (output) {
+  if (this.hasCustomSteps_) {
+    return this.outputCustomSequence(output)
+  }
+  return this.outputNativeCreate(output)
 }

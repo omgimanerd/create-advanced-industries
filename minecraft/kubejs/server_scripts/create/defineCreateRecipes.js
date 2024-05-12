@@ -65,9 +65,9 @@ const createEnergising = (e, output, input, energyNeeded) => {
     ingredients: [],
     results: [],
   }
-  input = Parser.parseItemInput(input)
-  if (input === null) throw new Error(`Invalid input ${input}`)
-  base.ingredients.push(input)
+  const parsedInput = Parser.parseItemInput(input)
+  if (parsedInput === null) throw new Error(`Invalid input ${input}`)
+  base.ingredients.push(parsedInput)
   const itemOutput = Parser.parseItemOutput(output)
   if (itemOutput === null) throw new Error(`Invalid output ${output}`)
   base.results.push(itemOutput)
