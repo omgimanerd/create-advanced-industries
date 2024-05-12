@@ -1,6 +1,43 @@
 // priority: 1000
 
 /**
+ * Returns a random number in the range [low, high)
+ * @param {number} low
+ * @param {number=} high
+ * @returns {number}
+ */
+const randRange = (low, high) => {
+  if (high === undefined) {
+    high = low
+    low = 0
+  }
+  return Math.random() * (high - low) + low
+}
+
+/**
+ * @param {number} low
+ * @param {number=} high
+ * @returns {number}
+ */
+const randRangeInt = (low, high) => {
+  return Math.floor(randRange(low, high))
+}
+
+/**
+ * Rounds a number x to the nearest base.
+ *
+ * roundToNearest(66, 100) => 100
+ * roundToNearest(73, 25) => 75
+ *
+ * @param {number} x
+ * @param {number} base
+ * @returns {number}
+ */
+const roundToNearest = (x, base) => {
+  return Math.round(x / base) * base
+}
+
+/**
  * Clamps the argument number to the two bounds, inclusive.
  *
  * @param {number} x The number to clamp
