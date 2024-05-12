@@ -63,6 +63,12 @@ JEIEvents.hideFluids((e) => {
   })
 })
 
+JEIAddedEvents.registerCategories((e) => {
+  e.custom('createadvancedindustries:automated_brewing', (category) => {
+    category.title('Automated Brewing')
+  })
+})
+
 JEIEvents.removeCategories((e) => {
   e.remove('thermal:bottler')
   e.remove('thermal:furnace')

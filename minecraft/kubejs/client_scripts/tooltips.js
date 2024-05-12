@@ -12,39 +12,6 @@ ClientEvents.lang('en_us', (e) => {
 })
 
 /**
- * @param {(string|string[])} t
- */
-const parseTextFormat = (t) => {
-  let modifiers = {}
-  let component = Text.empty()
-  const parts = t.split(/(<\/{0,1}[a-z]+>)/)
-  for (const /** @type {string} */ part of parts) {
-    let openMatch = part.match(/^<([a-z]+)>$/)
-    let closeMatch = part.match(/^<\/([a-z]+)>$/)
-    if (openMatch !== null && openMatch.length === 2) {
-      let modifier = /** @type {string} */ openMatch[1]
-      if (modifiers[modifier]) {
-        console.warn(`Extra modifier ${modifier} in ${t}`)
-      }
-      modifiers[modifier] = true
-    } else if (closeMatch !== null && closeMatch.length == 2) {
-      let modifier = /** @type {string} */ closeMatch[1]
-      if (!modifiers[modifier]) {
-        console.warn(`Extra closing modifier ${modifier} in ${t}`)
-      }
-      delete modifiers[modifier]
-    } else {
-      let newComponent = Text.string(part)
-      for (const [modifier, _] of Object.entries(modifiers)) {
-        newComponent = newComponent[modifier]()
-      }
-      component = component.append(newComponent)
-    }
-  }
-  return component
-}
-
-/**
  * @param {Internal.ItemTooltipEventJS} e
  * @param {Internal.Ingredient_} item
  * @param {string|string[]} baseText
@@ -62,7 +29,7 @@ const tooltipHelper = (e, item, baseText, shiftText, unshiftText, clear) => {
     if (newText !== null && newText !== undefined) {
       newText = Array.isArray(newText) ? newText : [newText]
       for (const t of newText) {
-        text.add(text.size(), parseTextFormat(t))
+        text.add(text.size(), global.parseTextFormat(t))
       }
     }
   }
@@ -164,6 +131,13 @@ ItemEvents.tooltip((e) => {
     ],
     defaultUnshiftText
   )
+
+  // Neat utility to display NBT in the tooltip
+  e.addAdvanced(Ingredient.all, (item, advanced, text) => {
+    if (item.nbt && e.alt) {
+      text.add(Text.of('NBT: ').append(Text.prettyPrintNbt(item.nbt)))
+    }
+  })
 })
 
 // const $IRecipeRegistration = Java.loadClass(
