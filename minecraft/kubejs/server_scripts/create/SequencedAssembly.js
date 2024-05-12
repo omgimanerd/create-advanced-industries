@@ -209,13 +209,25 @@ SequencedAssembly.prototype.outputNativeCreate = function (output) {
  */
 SequencedAssembly.prototype.outputCustomSequence = function (output) {
   output = typeof output === 'string' ? [output] : output
+  if (this.input_ === this.transitional_) {
+    console.warn(
+      `Input item ${this.input_} is the same as the transitional item ` +
+        `${this.transitional_}`
+    )
+  }
 
   const totalSteps = this.steps_.length * this.loops_
+  // Generate and define recipes for each of the steps in the sequence.
   this.steps_.forEach((data, index) => {
     for (let loop = 0; loop < this.loops_; ++loop) {
       const preItemStep = index + loop * this.steps_.length
       const postItemStep = preItemStep + 1
       let preItem, postItem
+      // The first and last items in the sequence should be the input and output
+      // items respectively. Otherwise, we form an item with the relevant NBT
+      // data and lore for the input and outputs of the intermediate steps.
+      //
+      // Custom steps must respect the NBT of the pre and post items.
       if (preItemStep === 0) {
         preItem = Item.of(this.input_)
       } else {
@@ -229,6 +241,8 @@ SequencedAssembly.prototype.outputCustomSequence = function (output) {
           this.steps_[index + 1].preItemText
         )
       }
+      // Store the recipe in case we need to chain calls to it. Define the
+      // actual recipe with the intermediate items.
       let r
       switch (data.type) {
         case 'cutting':
