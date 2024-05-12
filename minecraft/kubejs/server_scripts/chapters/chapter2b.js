@@ -10,6 +10,14 @@ ServerEvents.recipes((e) => {
     'ars_nouveau:sourceberry_bush'
   )
 
+  // Source fluid to source conversion should be 1:1
+  e.remove({ type: 'starbunclemania:fluid_sourcelink' })
+  e.custom({
+    type: 'starbunclemania:fluid_sourcelink',
+    fluid: 'starbunclemania:source_fluid',
+    mb_to_source_ratio: 1,
+  })
+
   // Gold nugget washing automation
   e.remove({ id: 'create:splashing/sand' })
   create.splashing(
