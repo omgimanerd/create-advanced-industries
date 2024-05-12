@@ -153,7 +153,7 @@ ServerEvents.recipes((e) => {
     .SequencedAssembly('minecraft:ender_pearl')
     .fill('kubejs:molten_redstone', 180)
     .custom('Next: Energize it with 40000 RF', (pre, post, json) => {
-      create.energising(post[0], json(pre))
+      create.energising(post[0], json(pre), 40000)
     })
     .outputs('createteleporters:redstone_pearl')
 
@@ -161,5 +161,46 @@ ServerEvents.recipes((e) => {
   // nether star
 
   // neural processor
-  //
+
+  // Liquid Hyper Experience condensing
+
+  // Register experience spouting recipes for Apotheosis custom enchanting
+  e.forEachRecipe({ type: 'apotheosis:enchanting' }, (r) => {
+    const recipe = JSON.parse(r.json)
+    const levels = recipe.requirements.eterna * 2
+    const xp = levelToXp(levels)
+    let hyperXp = Math.ceil(xp / 10)
+    const inputItem = Item.of(recipe.input.item)
+    // Honey bottle enchanting is extremely inefficient
+    if (recipe.input.item === 'minecraft:honey_bottle') return
+    let outputCount = recipe.result.count || 1
+    let outputItem = Item.of(recipe.result.item, outputCount)
+
+    // Fluid quantities greater than 1000 can't be spouted.
+    if (xp <= 1000) {
+      create.filling(outputItem, [
+        inputItem,
+        Fluid.of(
+          'create_enchantment_industry:experience',
+          roundToNearest(xp, 5)
+        ),
+      ])
+    }
+    // Hyper XP is a 10:1 conversion to allow for higher experience levels.
+    if (hyperXp > 1000) {
+      hyperXp = Math.ceil(hyperXp / outputCount)
+      if (hyperXp > 1000 || outputCount === 1) {
+        console.warn(`TODO ${inputItem}`)
+        return
+      }
+      outputItem = Item.of(recipe.result.item)
+    }
+    create.filling(outputItem, [
+      inputItem,
+      Fluid.of(
+        'create_enchantment_industry:hyper_experience',
+        roundToNearest(hyperXp, 5)
+      ),
+    ])
+  })
 })
