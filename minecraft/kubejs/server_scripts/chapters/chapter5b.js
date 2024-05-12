@@ -1100,13 +1100,14 @@ ServerEvents.recipes((e) => {
     ])
 
   // Liquid experience standardization, it must be melted into liquid form.
+  // Liquid experience is 1:1 with XP points
   e.remove({ id: 'compressedcreativity:thermo_plant/essence_to_nugget' })
   e.remove({ id: 'compressedcreativity:mixing/memory_essence' })
   e.remove({
-    id: 'create_enchantment_industry:disenchanting/experience_nugget',
+    id: /^create_enchantment_industry:disenchanting\/experience_.*$/,
   })
   e.remove({
-    id: 'create_enchantment_industry:disenchanting/experience_block',
+    id: /^create_enchantment_industry:compacting\/experience_block_.*$/,
   })
   create
     .mixing(
