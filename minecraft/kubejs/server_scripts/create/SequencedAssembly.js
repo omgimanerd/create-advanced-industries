@@ -169,18 +169,14 @@ SequencedAssembly.prototype.getCustomTransitionalItem = function (
  */
 SequencedAssembly.prototype.outputCustomSequence = function (output) {
   output = typeof output === 'string' ? [output] : output
-  if (this.input_ === this.transitional_) {
-    console.warn(
-      `Input item ${this.input_} is the same as the transitional item ` +
-        `${this.transitional_}`
-    )
-  }
 
   /**
+   * Helper method that's passed to the custom callback to convert Ingredients
+   * to JSON for custom recipes.
    * @param {Internal.Ingredient} item
    * @returns {object}
    */
-  const json = (item) => JSON.parse(JsonIO.toString(item.toJson()))
+  const json = (item) => JSON.parse(item.toJson())
 
   const totalSteps = this.steps_.length * this.loops_
   // Generate and define recipes for each of the steps in the sequence.
