@@ -1,5 +1,7 @@
 // priority: 1000
 
+/** @author {omgimanerd} */
+
 /**
  * @constructor
  * @description JS prototype class to make registering Create sequenced assembly
@@ -95,9 +97,10 @@ SequencedAssembly.prototype.fill = function (fluid, qty_mb) {
  * @returns {SequencedAssembly}
  */
 SequencedAssembly.prototype.deploy = function (item, keepHeldItem) {
+  const label = typeof item === 'string' ? item : item.id
   this.steps_.push({
     type: 'deploying',
-    preItemText: `Next: Deploy ${item.id}`,
+    preItemText: `Next: Deploy ${label}`,
     item: item,
     keepHeldItem: !!keepHeldItem,
   })

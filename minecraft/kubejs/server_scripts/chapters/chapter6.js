@@ -154,27 +154,6 @@ ServerEvents.recipes((e) => {
     Fluid.of('kubejs:molten_redstone', 180),
   ])
 
-  // input item
-  //   deploy ( step 0 )
-  // input item progress 1
-  //   crush (step 1)
-  // input item progress 1
-  //   press (step 2)
-  // output item
-
-  new SequencedAssembly(
-    e,
-    'create:electron_tube',
-    'kubejs:intermediate_transistor'
-  )
-    .custom('Next: Mix in a mixer', (pre, post) => {
-      create.mixing(post, pre)
-    })
-    .deploy('minecraft:glass_pane')
-    .press()
-    .fill(Fluid.water(200))
-    .outputs('4x pneumaticcraft:transistor')
-
   // enderium?
   // nether star
 
