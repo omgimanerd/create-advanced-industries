@@ -1,6 +1,6 @@
 // priority: 1000
 
-/** @author {omgimanerd} */
+/** @author omgimanerd alvin@omgimanerd.tech */
 
 /**
  * @constructor
