@@ -2,7 +2,6 @@
 
 StartupEvents.registry('item', (e) => {
   const registerItem = registerItem_(e)
-
   const registerMechanism = (name) => {
     registerItem(name)
     registerItem(
@@ -10,6 +9,7 @@ StartupEvents.registry('item', (e) => {
       'create:sequenced_assembly'
     )
   }
+
   // Chapter 1: Andesite Mechanisms
   registerMechanism('kubejs:andesite_mechanism')
   // Chapter 2a: Copper Mechanisms
@@ -147,4 +147,8 @@ StartupEvents.registry('item', (e) => {
 
   // Elemental air gem
   registerItem('kubejs:topaz')
+
+  // Hyper XP condenser
+  registerItem('kubejs:xp_condenser').glow(true)
+  registerItem('kubejs:inert_xp_condenser')
 })
