@@ -15,8 +15,8 @@
  *   .outputs('kubejs:andesite_mechanism')
  *
  * @param {Internal.RecipesEventJS} e
- * @param {InputItem_} input
- * @param {InputItem_} transitional
+ * @param {Internal.ItemStack_} input
+ * @param {Internal.ItemStack_} transitional
  */
 function SequencedAssembly(e, input, transitional) {
   this.e_ = e
@@ -70,7 +70,7 @@ SequencedAssembly.prototype.press = function (repeats) {
 }
 
 /**
- * @param {Internal.InputFluid_|string} fluid
+ * @param {Internal.FluidStackJS_|string} fluid
  * @param {number?} qty_mb
  * @returns {SequencedAssembly}
  */
@@ -92,7 +92,7 @@ SequencedAssembly.prototype.fill = function (fluid, qty_mb) {
 }
 
 /**
- * @param {InputItem_|string} item
+ * @param {Internal.ItemStack_|string} item
  * @param {boolean?} keepHeldItem
  * @returns {SequencedAssembly}
  */
@@ -112,7 +112,7 @@ SequencedAssembly.prototype.deploy = function (item, keepHeldItem) {
  * whatever was given as this.input_. If this custom step is the last step in
  * the sequence the post item is whatever will be passed as the output item.
  * @callback customSequencedAssemblyCallback
- * @param {InputItem_|string} pre
+ * @param {Internal.ItemStack_|string} pre
  * @param {OutputItem_[]|string} post
  * @param {function} json Helper to convert ingredients to JSON objects.
  */

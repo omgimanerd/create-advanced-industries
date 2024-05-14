@@ -148,10 +148,10 @@ const defineCreateRecipes = (e) => {
 
     // Helpers
     /**
-     * @callback CreateSeqencedAssembly
-     * @param {InputItem} input
+     * @callback CreateSequencedAssembly
+     * @param {Internal.ItemStack_} input
      * @returns {SequencedAssembly}
-     * @type {CreateSeqencedAssembly}
+     * @type {CreateSequencedAssembly}
      */
     SequencedAssembly: getConstructorWrapper(e, SequencedAssembly),
 
