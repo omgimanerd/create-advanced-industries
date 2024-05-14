@@ -27,6 +27,7 @@ StartupEvents.registry('item', (e) => {
     .displayName('Incomplete Logistics Mechanism')
   // Chapter 5b: Crystalline Mechanism
   registerMechanism('kubejs:crystalline_mechanism')
+  // Quantum mechanisms defined by Create: Teleporters
 
   // Wooden hand used for crafting deployers
   registerItem('kubejs:wooden_hand')
@@ -151,4 +152,5 @@ StartupEvents.registry('item', (e) => {
   // Hyper XP condenser
   registerItem('kubejs:xp_condenser').glow(true)
   registerItem('kubejs:inert_xp_condenser')
+  registerItem('kubejs:incomplete_xp_condenser')
 })
