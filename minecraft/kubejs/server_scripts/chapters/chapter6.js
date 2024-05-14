@@ -116,8 +116,56 @@ ServerEvents.highPriorityData(() => {
   }
 })
 
+/**
+ * @param {Internal.RecipesEventJS} e
+ * @param {OutputItem_|string} output
+ * @param {InputItem_|string} input
+ * @param {number[]} eternaRange
+ * @param {number[]} quantaRange
+ * @param {number[]} arcanaRange
+ * @returns {Internal.RecipeJS}
+ */
+const createEnchantingRecipe = (
+  e,
+  output,
+  input,
+  eternaRange,
+  quantaRange,
+  arcanaRange
+) => {
+  const base = {
+    type: 'apotheosis:enchanting',
+    requirements: {},
+    max_requirements: {},
+  }
+  if (!setIfValid(base, 'input', Parser.parseStackedItemInput(input))) {
+    throw new Error(`Invalid input ${input}`)
+  }
+  if (!setIfValid(base, 'result', Parser.parseItemOutput(output))) {
+    throw new Error(`Invalid output ${output}`)
+  }
+  if (!Array.isArray(eternaRange) && eternaRange.length !== 2) {
+    throw new Error(`Invalid eterna ${eternaRange}`)
+  }
+  base.requirements.eterna = eternaRange[0]
+  base.max_requirements.eterna = eternaRange[1]
+  if (!Array.isArray(quantaRange) && quantaRange.length !== 2) {
+    throw new Error(`Invalid quanta ${quantaRange}`)
+  }
+  base.requirements.quanta = quantaRange[0]
+  base.max_requirements.quanta = quantaRange[1]
+  if (!Array.isArray(arcanaRange) && arcanaRange.length !== 2) {
+    throw new Error(`Invalid arcana ${arcanaRange}`)
+  }
+  base.requirements.arcana = arcanaRange[0]
+  base.max_requirements.arcana = arcanaRange[1]
+  return e.custom(base)
+}
+
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
+  const pneumaticcraft = definePneumaticcraftRecipes(e)
+  const enchanting = getPartialApplication(e, createEnchantingRecipe)
 
   // Define automatable upgrade recipes for all the apotheotic gems.
   for (let [gem, tiers] of Object.entries(apotheoticGems)) {
@@ -153,61 +201,103 @@ ServerEvents.recipes((e) => {
     })
     .outputs('createteleporters:redstone_pearl')
 
-  // apotheosis material automation
+  // Apotheosis material automation
+  create
+    .SequencedAssembly('tfmg:steel_mechanism')
+    .fill('create_enchantment_industry:experience', 16)
+    .cut(2, 40)
+    .custom('Next: Crush with Crushing Wheels', (pre, post) => {
+      create.crushing(post, pre)
+    })
+    .outputs([
+      'apotheosis:common_material',
+      Item.of('apotheosis:common_material').withChance(0.25),
+    ])
+  // timeworn fabric
+  create
+    .SequencedAssembly('kubejs:crystalline_mechanism')
+    .fill('create_enchantment_industry:experience', 64)
+    .cut(2, 40)
+    .custom('Next: Crush with Crushing Wheels', (pre, post) => {
+      create.crushing(post, pre)
+    })
+    .outputs([
+      'apotheosis:rare_material',
+      Item.of('apotheosis:rare_material').withChance(0.25),
+    ])
+  // arcane sands
+  // mythic pearl
+  // Artifact Shards
+  create
+    .SequencedAssembly('farmersdelight:pasta_with_meatballs')
+    .fill('create_enchantment_industry:experience', 512)
+    .custom('Next: Compact in a superheated basin', (pre, post) => {
+      create.compacting(post, pre).superheated()
+    })
+    .outputs('apotheotic_additions:artifact_material')
+  // core of the family
+  // galactic core
 
   // require going to end
   // end stone automation
 
-  // Liquid Hyper Experience condensing, gated behind draconic end shelfs
+  // Liquid Hyper Experience condensing, gated behind a level 100 enchant
+  e.remove({ id: 'create_enchantment_industry:mixing/hyper_experience' })
+  create
+    .SequencedAssembly('kubejs:inert_xp_condenser')
+    .fill('create_enchantment_industry:experience', 1000)
+    .outputs('kubejs:xp_condenser')
+
+  create.emptying(
+    [
+      Fluid.of('create_enchantment_industry:hyper_experience', 100),
+      'kubejs:inert_xp_condenser',
+    ],
+    'kubejs:xp_condenser'
+  )
+
+  enchanting(
+    'artifacts:eternal_steak',
+    'minecraft:cooked_beef',
+    [50, -1],
+    [60, -1],
+    [60, -1]
+  )
+
   // nether star
   // defeat the warden
-  // sculk farming
+  // sculk farming to make enderium
+  // enderium recipe from liquid hyper exp
 
   // smithing template netherite upgrade duping
 
   // ender transmission end automation
-  // enderium recipe from liquid hyper exp
 
   // neural processor
   // chorus fruit farming
+  // drop ascended coins into a well?
 
   // Register experience spouting recipes for Apotheosis custom enchanting
   e.forEachRecipe({ type: 'apotheosis:enchanting' }, (r) => {
     const recipe = JSON.parse(r.json)
     const levels = recipe.requirements.eterna * 2
-    const xp = levelToXp(levels)
-    let hyperXp = Math.ceil(xp / 10)
-    const inputItem = Item.of(recipe.input.item)
-    // Honey bottle enchanting is extremely inefficient
+    // The eterna requirement is the minimum level you must be to perform the
+    // enchantment, and the enchantment costs 3 levels of XP, not the entire XP
+    // bar.
+    const xpCost = levelToXp(levels) - levelToXp(levels - 3)
+    // Hyper XP is a 10:1 conversion to allow for higher experience levels.
+    let hyperXp = roundToNearest(xpCost / 10, 5)
+    // Honey bottle enchanting is extremely inefficient, disabled to avoid
+    // cluttering JEI
     if (recipe.input.item === 'minecraft:honey_bottle') return
     let outputCount = recipe.result.count || 1
-    let outputItem = Item.of(recipe.result.item, outputCount)
-
-    // Fluid quantities greater than 1000 can't be spouted.
-    if (xp <= 1000) {
-      create.filling(outputItem, [
-        inputItem,
-        Fluid.of(
-          'create_enchantment_industry:experience',
-          roundToNearest(xp, 5)
-        ),
+    pneumaticcraft
+      .ThermoPlant([
+        recipe.input.item,
+        `${hyperXp}mb create_enchantment_industry:hyper_experience`,
       ])
-    }
-    // Hyper XP is a 10:1 conversion to allow for higher experience levels.
-    if (hyperXp > 1000) {
-      hyperXp = Math.ceil(hyperXp / outputCount)
-      if (hyperXp > 1000 || outputCount === 1) {
-        console.warn(`TODO ${inputItem}`)
-        return
-      }
-      outputItem = Item.of(recipe.result.item)
-    }
-    create.filling(outputItem, [
-      inputItem,
-      Fluid.of(
-        'create_enchantment_industry:hyper_experience',
-        roundToNearest(hyperXp, 5)
-      ),
-    ])
+      .pressure(9.5)
+      .minTemp(1300)
+      .outputs(`${outputCount}x ${recipe.result.item}`)
   })
 })
