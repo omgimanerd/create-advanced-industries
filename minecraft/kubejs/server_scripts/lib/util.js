@@ -131,9 +131,13 @@ const removeUnusedKeys = (pattern, keys) => {
   return newKeys
 }
 
-// Wrapper to define a utility function in the given RecipesEventJS context that
-// wraps the shaped/shapeless recipe definitions to redefine a recipe for
-// a given item.
+/**
+ * Wrapper to define a utility function in the given RecipesEventJS context that
+ * wraps the shaped/shapeless recipe definitions to redefine a recipe for
+ * a given item.
+ * @param {Internal.RecipesEventJS} e
+ * @returns
+ */
 const redefineRecipe_ = (e) => {
   // Overrides shaped/shapeless recipes for a given output
   return (output, shape, keys) => {
@@ -227,30 +231,4 @@ const enchantedBook = (enchantment, level) => {
   return Item.of('minecraft:enchanted_book')
     .enchant(enchantment, level)
     .weakNBT()
-}
-
-/**
- * https://minecraft.fandom.com/wiki/Experience#Leveling_up
- * @param {number} level
- * @returns {number}
- */
-const levelToXp = (level) => {
-  if (level <= 15) {
-    return (level ** 2) + (6 * level) // prettier-ignore
-  }
-  if (level <= 30) {
-    return 2.5 * (level ** 2) - (40.5 * level) + 360 // prettier-ignore
-  }
-  return 4.5 * (level ** 2) - (162.5 * level) + 2220 // prettier-ignore
-}
-
-/**
- *
- * @param {number} xp
- * @returns {number}
- */
-const xpToLevel = (xp) => {
-  if (xp <= 352) return Math.sqrt(xp + 9) - 3
-  if (xp <= 1507) return 8.1 + Math.sqrt(0.4 * (total - 195.975))
-  return 18.055 + Math.sqrt(0.222 * (total - 752.986))
 }
