@@ -1,6 +1,6 @@
 // priority: 1000
 
-global.cai = 'createadvancedindustries'
+global.cai = 'kubejs'
 
 /**
  * @param {string} s
