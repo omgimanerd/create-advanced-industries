@@ -1,0 +1,67 @@
+// priority: 100
+
+/**
+ * Right click event handler for the XP crystal.
+ * @param {Internal.ItemClickedEventJS}
+ */
+ItemEvents.rightClicked('kubejs:xp_crystal', (e) => {
+  const { player, item } = e
+  if (player.isFake()) return
+
+  const crystalCapacity = global.customXpCrystalCapacity(item)
+  const crystalXp = global.customXpCrystalContents(item)
+  // The numerical level of the player
+  const playerLevel = player.xpLevel
+  // The total XP points required to be at the level threshold
+  const xpAtCurrentLevel = global.levelToXp(playerLevel)
+  // The extra XP points the player has past the level threshold
+  const xpPastCurrentLevel = player.xp
+  // Is the player exactly at the level threshold?
+  const isExactlyAtLevel = player.xp === 0
+
+  if (e.player.shiftKeyDown) {
+    // On right click action, if the player is crouching, take out 1 level or
+    // fill them the rest of the way to the next level.
+    if (crystalXp <= 0) return
+    const xpNeededToLevel = player.xpNeededForNextLevel - xpPastCurrentLevel
+    const xpExtracted = Math.min(xpNeededToLevel, crystalXp)
+    if (xpExtracted < xpNeededToLevel) {
+      // Crystal does not have enough xp to level the player. Add whatever is
+      // left in the crystal, prone to floating point error.
+      //
+      // player.setXp takes a argument representing the TOTAL experience
+      player.addXP(xpExtracted)
+    } else {
+      // Crystal has enough to level up the player. Set the lholevel directly to
+      // avoid floating point error.
+      player.setXpLevel(playerLevel + 1) // also sets the level progress to 0
+    }
+    item.setNbt({ Xp: crystalXp - xpExtracted })
+  } else {
+    // Otherwise, deposit 1 level or the player's current level progress.
+    if (playerLevel === 0 && xpPastCurrentLevel == 0) return
+    let playerXpToDeposit
+    if (isExactlyAtLevel) {
+      playerXpToDeposit = global.xpToNextLevel(playerLevel - 1)
+    } else {
+      playerXpToDeposit = xpPastCurrentLevel
+    }
+    const remainingSpace = crystalCapacity - crystalXp
+    const xpDeposited = Math.min(playerXpToDeposit, remainingSpace)
+    if (xpDeposited < playerXpToDeposit) {
+      // Crystal does not have enough space for the XP. Subtract whatever
+      // capacity is left, prone to floating point error.
+      //
+      // player.setXp takes a argument representing the TOTAL experience
+      player.setXp(xpAtCurrentLevel + xpPastCurrentLevel - xpDeposited)
+    } else {
+      // Crystal has enough space for the XP
+      if (isExactlyAtLevel) {
+        player.setXpLevel(playerLevel - 1)
+      } else {
+        player.setXpLevel(playerLevel)
+      }
+    }
+    item.setNbt({ Xp: crystalXp + xpDeposited })
+  }
+})
