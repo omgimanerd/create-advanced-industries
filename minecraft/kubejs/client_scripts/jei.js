@@ -49,6 +49,7 @@ JEIEvents.hideItems((e) => {
 })
 
 JEIEvents.addFluids((e) => {
+  // Add the Create awkward potion so custom brewing recipes can be looked up.
   e.add(
     Fluid.of('create:potion').withNBT({
       Bottle: 'REGULAR',
@@ -74,6 +75,11 @@ JEIAddedEvents.registerRecipes((e) => {
   //   'kubejs:create_potion_mixing_10_minecraft_awkward',
   // ])
   // e.register()
+
+  e.data.jeiHelpers.allRecipeTypes.forEach((type) => {
+    console.log(type)
+  })
+  e.data.
 })
 
 JEIEvents.removeCategories((e) => {
@@ -86,3 +92,63 @@ JEIEvents.removeCategories((e) => {
   // DEBUG LOGGING ONLY
   // console.log(e.categoryIds)
 })
+
+// const $IRecipeRegistration = Java.loadClass(
+//   'mezz.jei.api.registration.IRecipeRegistration'
+// )
+// const $EnchantmentHelper = Java.loadClass(
+//   'net.minecraft.world.item.enchantment.EnchantmentHelper'
+// )
+// const $EnchantmentCategory = Java.loadClass(
+//   'net.minecraft.world.item.enchantment.EnchantmentCategory'
+// )
+
+// function getPrivateField(obj, field) {
+//   let classField = obj.class.getDeclaredField(field)
+//   classField.setAccessible(true)
+//   return classField.get(obj)
+// }
+
+// JEIEvents.information((event) => {
+//   /** @type {Internal.IRecipeRegistration} */
+//   let registration = getPrivateField(event, 'registration') // This is a hack to grab registration
+//   let allItems = registration.ingredientManager.allItemStacks
+//   let vanillaRecipeFactory = registration.vanillaRecipeFactory
+//   let anvilRecipeType = registration.jeiHelpers.getRecipeType('anvil').get()
+//   let enchantCategoryFood = $EnchantmentCategory.valueOf('food')
+//   /** @type {Internal.ItemStack[]} */
+//   let enchantableFood = allItems
+//     .stream()
+//     .filter((stack) => enchantCategoryFood.canEnchant(stack.item))
+//     .toArray()
+//   /** @type {Internal.Enchantment} */
+//   let nutriEnchant = Utils.getRegistry('enchantment').getValue(
+//     'kubejs:nutrient_infusion'
+//   )
+//   let recipes = Utils.newList()
+//   enchantableFood.forEach((stack) => {
+//     let books = Utils.newList()
+//     let enchantedFoods = Utils.newList()
+//     for (
+//       let index = nutriEnchant.minLevel;
+//       index <= nutriEnchant.maxLevel;
+//       index++
+//     ) {
+//       let currentBook = Item.of('minecraft:enchanted_book').enchant(
+//         'kubejs:nutrient_infusion',
+//         index
+//       )
+//       let newItem = stack.copy()
+//       books.add(currentBook)
+//       let bookEnchantments = $EnchantmentHelper.getEnchantments(currentBook)
+//       $EnchantmentHelper.setEnchantments(bookEnchantments, newItem)
+//       enchantedFoods.add(newItem)
+//     }
+//     recipes.add(
+//       vanillaRecipeFactory[
+//         'createAnvilRecipe(net.minecraft.world.item.ItemStack,java.util.List,java.util.List)'
+//       ](stack, books, enchantedFoods)
+//     )
+//   })
+//   registration.addRecipes(anvilRecipeType, recipes)
+// })

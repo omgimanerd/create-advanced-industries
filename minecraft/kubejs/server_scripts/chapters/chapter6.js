@@ -162,6 +162,39 @@ const createEnchantingRecipe = (
   return e.custom(base)
 }
 
+/**
+ * @type {Internal.CapabilityFluid$FluidIOItemStack}
+ */
+global.customXpCrystalOnFill = (itemStack, resource, simulate) => {
+  const capacity = global.customXpCrystalCapacity(itemStack)
+  const xp = global.customXpCrystalContents(itemStack)
+  const remainingXp = capacity - xp
+  const fillAmount = Math.min(remainingXp, resource.amount)
+  if (!simulate) {
+    itemStack.nbt.putInt('Xp', xp + fillAmount)
+  }
+  return fillAmount
+}
+
+/**
+ * @type {Internal.CapabilityFluid$FluidIOBlockEntity}
+ */
+global.customXpCrystalOnDrain = (blockEntity, resource, simulate) => {
+  // console.log(container, resource)
+  const xp = global.customXpCrystalContents(itemStack)
+
+  if (!simulate) {
+  }
+  return resource.amount
+}
+
+global.customXpCrystalColor = (itemstack, tintIndex) => {
+  const capacity = global.customXpCrystalCapacity(itemstack)
+  const xp = global.customXpCrystalContents(itemstack)
+  // console.log(Math.round((xp / capacity) * 4))
+  return tintIndex == Math.round((xp / capacity) * 4) ? 1 : -1
+}
+
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
   const pneumaticcraft = definePneumaticcraftRecipes(e)
@@ -236,17 +269,27 @@ ServerEvents.recipes((e) => {
     })
     .outputs('apotheotic_additions:artifact_material')
   // core of the family
-  // galactic core
+  // Galactic Core
+  const filledXpCrystal = Item.of('thermal:xp_crystal')
+    .withNBT({ Xp: 10000 })
+    .weakNBT()
+  const filledXpCrystalJson = JSON.parse(filledXpCrystal.toJson())
+  delete filledXpCrystalJson.count
+  create.energising(
+    'apotheotic_additions:esoteric_material',
+    filledXpCrystalJson,
+    1000000
+  )
 
   // require going to end
   // end stone automation
 
   // Liquid Hyper Experience condensing, gated behind a level 100 enchant
-  e.remove({ id: 'create_enchantment_industry:mixing/hyper_experience' })
-  create
-    .SequencedAssembly('kubejs:inert_xp_condenser')
-    .fill('create_enchantment_industry:experience', 1000)
-    .outputs('kubejs:xp_condenser')
+  // e.remove({ id: 'create_enchantment_industry:mixing/hyper_experience' })
+  // create
+  //   .SequencedAssembly('kubejs:inert_xp_condenser')
+  //   .fill('create_enchantment_industry:experience', 1000)
+  //   .outputs('kubejs:xp_condenser')
 
   create.emptying(
     [
@@ -284,7 +327,7 @@ ServerEvents.recipes((e) => {
     // The eterna requirement is the minimum level you must be to perform the
     // enchantment, and the enchantment costs 3 levels of XP, not the entire XP
     // bar.
-    const xpCost = levelToXp(levels) - levelToXp(levels - 3)
+    const xpCost = global.levelToXp(levels) - global.levelToXp(levels - 3)
     // Hyper XP is a 10:1 conversion to allow for higher experience levels.
     let hyperXp = roundToNearest(xpCost / 10, 5)
     // Honey bottle enchanting is extremely inefficient, disabled to avoid
