@@ -1,5 +1,9 @@
 // priority: 100
 
+const $HoldingEnchantment = Java.loadClass(
+  'cofh.core.common.enchantment.HoldingEnchantment'
+)
+
 /**
  * https://minecraft.fandom.com/wiki/Experience#Leveling_up
  * @param {number} level
@@ -46,6 +50,11 @@ global.customXpCrystalContents = (itemStack) => {
   if (itemStack.nbt === null) return 0
   return itemStack.nbt.getInt('Xp') ?? 0
 }
+
+StartupEvents.postInit(() => {
+  // Allow the item to take the holding enchantment
+  $HoldingEnchantment.addValidItem('kubejs:xp_crystal')
+})
 
 StartupEvents.registry('item', (e) => {
   e.create('kubejs:xp_crystal')

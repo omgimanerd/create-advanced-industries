@@ -19,7 +19,7 @@ ItemEvents.rightClicked('kubejs:xp_crystal', (e) => {
   // Is the player exactly at the level threshold?
   const isExactlyAtLevel = player.xp === 0
 
-  if (e.player.shiftKeyDown) {
+  if (player.shiftKeyDown) {
     // On right click action, if the player is crouching, take out 1 level or
     // fill them the rest of the way to the next level.
     if (crystalXp <= 0) return
@@ -32,7 +32,7 @@ ItemEvents.rightClicked('kubejs:xp_crystal', (e) => {
       // player.setXp takes a argument representing the TOTAL experience
       player.addXP(xpExtracted)
     } else {
-      // Crystal has enough to level up the player. Set the lholevel directly to
+      // Crystal has enough to level up the player. Set the level directly to
       // avoid floating point error.
       player.setXpLevel(playerLevel + 1) // also sets the level progress to 0
     }
