@@ -1,5 +1,9 @@
 // priority: 100
 
+/**
+ * @param {number} x
+ * @returns {string}
+ */
 const formatXp = (x) => {
   if (x < 1000) return x.toString()
   const t = x % 1000 === 0 ? `${x / 1000}.00` : `${x / 1000}0`

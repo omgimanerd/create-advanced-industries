@@ -119,12 +119,14 @@ StartupEvents.registry('item', (e) => {
           }
           return 0
         })
-        .onDrain((container, resource, simulate) => {
-          if (global.customXpCrystalOnDrain) {
-            return global.customXpCrystalOnDrain(container, resource, simulate)
-          }
-          return 0
-        })
+      // .onDrain((container, resource, simulate) => {
+      //   resource.setAmount(20)
+      //   return 20
+      //   if (global.customXpCrystalOnDrain) {
+      //     return global.customXpCrystalOnDrain(container, resource, simulate)
+      //   }
+      //   return 0
+      // })
     )
 })
 
