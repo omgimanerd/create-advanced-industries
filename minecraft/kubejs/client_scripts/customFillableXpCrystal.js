@@ -2,8 +2,8 @@
 
 const formatXp = (x) => {
   if (x < 1000) return x.toString()
-  const t = (x / 1000).toString()
-  return `${t.substring(0, t.length - 1)}k`
+  const t = x % 1000 === 0 ? `${x / 1000}.00` : `${x / 1000}0`
+  return t.substring(0, t.indexOf('.') + 3) + 'k'
 }
 
 ItemEvents.tooltip((e) => {
