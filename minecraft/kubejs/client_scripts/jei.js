@@ -28,7 +28,7 @@ JEIEvents.addItems((e) => {
 })
 
 JEIEvents.hideItems((e) => {
-  // Defined in server_scripts/removed_recipes.js
+  // Defined in startup_scripts/removed_recipes.js
   if (global.hideJEI) {
     global.removedRecipes.forEach((r) => {
       if (r.output) {
