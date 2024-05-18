@@ -9,7 +9,9 @@ global.customXpCrystalOnFill = (itemStack, resource, simulate) => {
   const remainingXp = capacity - xp
   const fillAmount = Math.min(remainingXp, resource.amount)
   if (!simulate) {
-    itemStack.setNbt({ Xp: xp + fillAmount })
+    if (!itemStack.nbt) itemStack.setNbt({ Xp: 0 })
+    // Use putInt specifically so that the resulting data type is an int.
+    itemStack.nbt.putInt('Xp', xp + fillAmount)
   }
   return fillAmount
 }
@@ -22,7 +24,8 @@ global.customXpCrystalOnDrain = (itemStack, resource, simulate) => {
   const xp = global.getXpCrystalContents(itemStack)
   const drainAmount = Math.min(xp, resource.amount)
   if (!simulate) {
-    itemStack.setNbt({ Xp: xp - drainAmount })
+    if (!itemStack.nbt) itemStack.setNbt({ Xp: 0 })
+    itemStack.nbt.putInt('Xp', xp - drainAmount)
   }
   return drainAmount
 }
@@ -63,7 +66,8 @@ ItemEvents.rightClicked('kubejs:xp_crystal', (e) => {
       // avoid floating point error.
       player.setXpLevel(playerLevel + 1) // also sets the level progress to 0
     }
-    item.setNbt({ Xp: crystalXp - xpExtracted })
+    if (!item.nbt) item.setNbt({ Xp: 0 })
+    item.nbt.putInt('Xp', crystalXp - xpExtracted)
   } else {
     // Otherwise, deposit 1 level or the player's current level progress.
     if (playerLevel === 0 && xpPastCurrentLevel == 0) return
@@ -89,6 +93,7 @@ ItemEvents.rightClicked('kubejs:xp_crystal', (e) => {
         player.setXpLevel(playerLevel)
       }
     }
-    item.setNbt({ Xp: crystalXp + xpDeposited })
+    if (!item.nbt) item.setNbt({ Xp: 0 })
+    item.nbt.putInt('Xp', crystalXp + xpDeposited)
   }
 })
