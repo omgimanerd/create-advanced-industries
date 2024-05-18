@@ -4,14 +4,14 @@
  * @param {string} s
  * @returns {string}
  */
-const stripPrefix = (s) => {
+const stripModPrefix = (s) => {
   return s.replace(/^#{0,1}[a-z_]+:/, '')
 }
 
 /**
  * @param {string} s
  */
-const checkPrefix = (s) => {
+const checkModPrefix = (s) => {
   if (s.search(/^#{0,1}[a-z_]+:/) < 0) {
     throw new Error(`${s} does not have a mod prefix.`)
   }
@@ -22,7 +22,7 @@ const checkPrefix = (s) => {
  * @returns {string}
  */
 const getDisplayName = (name) => {
-  return stripPrefix(name)
+  return stripModPrefix(name)
     .split('_')
     .map((c) => c[0].toUpperCase() + c.substring(1))
     .join(' ')
@@ -32,8 +32,8 @@ const getDisplayName = (name) => {
  * @param {string} name
  * @returns {string}
  */
-const getResourceLocation = (name) => {
-  checkPrefix(name)
+const getTextureLocation = (name) => {
+  checkModPrefix(name)
   return name.replace(':', ':item/')
 }
 
@@ -52,10 +52,10 @@ const registerItem_ = (e) => {
    * @type {RegisterItemWrapperCallback}
    */
   return (name, type) => {
-    checkPrefix(name)
+    checkModPrefix(name)
     const item = type === undefined ? e.create(name) : e.create(name, type)
     return item
-      .texture(getResourceLocation(name))
+      .texture(getTextureLocation(name))
       .displayName(getDisplayName(name))
   }
 }

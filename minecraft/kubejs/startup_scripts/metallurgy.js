@@ -147,7 +147,7 @@ StartupEvents.registry('item', (e) => {
     e.create(`kubejs:${type}_${shape}_cast`)
       .textureJson({
         layer0: `kubejs:item/blank_cast`,
-        layer1: getResourceLocation(negativeShape),
+        layer1: getTextureLocation(negativeShape),
       })
       .color(0, baseColor)
       .color(1, MeltableItem.NEGATIVE_CAST_COLOR)

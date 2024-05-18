@@ -33,11 +33,11 @@ function MeltableItem(options) {
 
   // Names of the items that result from having the molten liquids poured into
   // them.
-  const strippedName = stripPrefix(this.fluid)
-  this.castedClayCastItem = `kubejs:${strippedName}_clay_cast`
-  this.castedSteelCastItem = `kubejs:${strippedName}_steel_cast`
-  this.castedClayBlockCastItem = `kubejs:${strippedName}_block_clay_cast`
-  this.castedSteelBlockCastItem = `kubejs:${strippedName}_steel_block_cast`
+  const fluidName = stripModPrefix(this.fluid)
+  this.castedClayCastItem = `kubejs:${fluidName}_clay_cast`
+  this.castedSteelCastItem = `kubejs:${fluidName}_steel_cast`
+  this.castedClayBlockCastItem = `kubejs:${fluidName}_block_clay_cast`
+  this.castedSteelBlockCastItem = `kubejs:${fluidName}_steel_block_cast`
 }
 
 // Units of mb
@@ -70,7 +70,7 @@ MeltableItem.prototype.registerFluid = function (e) {
 //
 // Must be called in startup_scripts/
 MeltableItem.prototype.registerCastedItems = function (e) {
-  const ingotNegativeTexture = getResourceLocation(this.ingot)
+  const ingotNegativeTexture = getTextureLocation(this.ingot)
   const fluidDisplayName = getDisplayName(this.fluid)
 
   if (!this.noGemCastingRecipe) {
@@ -214,5 +214,3 @@ MeltableItem.prototype.registerWashedCastRecipes = function (e) {
   )
   return this
 }
-
-global.MeltableItem = MeltableItem

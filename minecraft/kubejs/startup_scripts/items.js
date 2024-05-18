@@ -5,7 +5,7 @@ StartupEvents.registry('item', (e) => {
   const registerMechanism = (name) => {
     registerItem(name)
     registerItem(
-      `kubejs:incomplete_${stripPrefix(name)}`,
+      `kubejs:incomplete_${stripModPrefix(name)}`,
       'create:sequenced_assembly'
     )
   }
@@ -20,10 +20,10 @@ StartupEvents.registry('item', (e) => {
   // Steel mechanism defined by TFMG
   // Chapter 5a: Logistics Mechanisms
   e.create('kubejs:logistics_mechanism')
-    .texture(getResourceLocation('pneumaticcraft:logistics_core'))
+    .texture(getTextureLocation('pneumaticcraft:logistics_core'))
     .displayName('Logistics Mechanism')
   e.create('kubejs:incomplete_logistics_mechanism', 'create:sequenced_assembly')
-    .texture(getResourceLocation('pneumaticcraft:logistics_core'))
+    .texture(getTextureLocation('pneumaticcraft:logistics_core'))
     .displayName('Incomplete Logistics Mechanism')
   // Chapter 5b: Crystalline Mechanism
   registerMechanism('kubejs:crystalline_mechanism')
@@ -34,7 +34,7 @@ StartupEvents.registry('item', (e) => {
 
   // Unbreakable screwdriver for crafting steel mechanisms
   e.create('kubejs:unbreakable_screwdriver')
-    .texture(getResourceLocation('tfmg:screwdriver'))
+    .texture(getTextureLocation('tfmg:screwdriver'))
     .displayName('Unbreakable Screwdriver')
     .tooltip(Text.green('An unbreakable screwdriver!'))
     .glow(true)
@@ -44,7 +44,7 @@ StartupEvents.registry('item', (e) => {
   // Diamond sawblades for silicon cutting
   e.create('kubejs:diamond_saw_blade')
     .textureJson({
-      layer0: getResourceLocation('thermal:saw_blade'),
+      layer0: getTextureLocation('thermal:saw_blade'),
     })
     .color(0xaffffa)
     .displayName('Diamond Saw Blade')
@@ -54,7 +54,7 @@ StartupEvents.registry('item', (e) => {
     .unstackable()
   e.create('kubejs:unbreakable_diamond_saw_blade')
     .textureJson({
-      layer0: getResourceLocation('thermal:saw_blade'),
+      layer0: getTextureLocation('thermal:saw_blade'),
     })
     .color(0xaffffa)
     .displayName('Unbreakable Diamond Saw Blade')
@@ -68,19 +68,19 @@ StartupEvents.registry('item', (e) => {
   // Silicon wafers produced from cutting silicon
   e.create('kubejs:silicon_wafer')
     .textureJson({
-      layer0: getResourceLocation('refinedstorage:silicon'),
+      layer0: getTextureLocation('refinedstorage:silicon'),
     })
     .color(0, 0xaa9eac)
     .displayName('Silicon Wafer')
 
   // Intermediate item for transistors
   e.create('kubejs:intermediate_transistor', 'create:sequenced_assembly')
-    .texture(getResourceLocation('pneumaticcraft:transistor'))
+    .texture(getTextureLocation('pneumaticcraft:transistor'))
     .maxStackSize(16)
 
   // Intermediate item for capacitors
   e.create('kubejs:intermediate_capacitor', 'create:sequenced_assembly')
-    .texture(getResourceLocation('pneumaticcraft:capacitor'))
+    .texture(getTextureLocation('pneumaticcraft:capacitor'))
     .maxStackSize(16)
 
   // Intermediate item for pneumatic cylinders
@@ -88,13 +88,13 @@ StartupEvents.registry('item', (e) => {
     'kubejs:intermediate_pneumatic_cylinder',
     'create:sequenced_assembly'
   )
-    .texture(getResourceLocation('pneumaticcraft:pneumatic_cylinder'))
+    .texture(getTextureLocation('pneumaticcraft:pneumatic_cylinder'))
     .maxStackSize(16)
 
   // Wire variant of Create: New Age charged items
   e.create('kubejs:overcharged_diamond_wire')
     .textureJson({
-      layer0: getResourceLocation('createaddition:iron_wire'),
+      layer0: getTextureLocation('createaddition:iron_wire'),
     })
     .color(0, 0x75eae3)
     .displayName('Overcharged Diamond Wire')
@@ -141,7 +141,7 @@ StartupEvents.registry('item', (e) => {
 
   // Custom amethyst golem charm to spawn a special golem named Remy.
   e.create('kubejs:remy_spawner')
-    .texture(getResourceLocation('ars_nouveau:amethyst_golem_charm'))
+    .texture(getTextureLocation('ars_nouveau:amethyst_golem_charm'))
     .glow(true)
     .displayName('Remy Spawner')
     .tooltip(Text.green('Summons a epicure named Remy!'))
