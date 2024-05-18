@@ -19,7 +19,7 @@ const createRolling = (e, output, input) => {
   }
   return e
     .custom(base)
-    .id(`kubejs:custom_create_rolling_${getNameFromId(output)}`)
+    .id(`kubejs:custom_create_rolling_${stripOutputPrefix(output)}`)
 }
 
 /**
@@ -44,7 +44,7 @@ const createBurnableFluid = (e, fluid, burnTime, superheated) => {
       burnTime: burnTime,
       superheated: superheated,
     })
-    .id(`kubejs:custom_create_liquid_burning_${getNameFromId(fluid)}`)
+    .id(`kubejs:custom_create_liquid_burning_${stripOutputPrefix(fluid)}`)
 }
 
 /**
@@ -73,7 +73,7 @@ const createEnergising = (e, output, input, energyNeeded) => {
   base.results.push(itemOutput)
   return e
     .custom(base)
-    .id(`kubejs:custom_create_energising_${getNameFromId(output)}`)
+    .id(`kubejs:custom_create_energising_${stripOutputPrefix(output)}`)
 }
 
 /**

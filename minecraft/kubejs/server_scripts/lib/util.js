@@ -1,15 +1,13 @@
 // priority: 1000
 
 /**
- * Splits a given ID by the colon delimiter to return the item name without
- * the mod prefix.
- *
  * @param {string} s
  * @returns {string}
  */
-const getNameFromId = (s) => {
+const stripOutputPrefix = (s) => {
   const parts = s.split(':')
-  if (parts.length !== 2) throw new Error(`Invalid item ${s}`)
+  if (parts.length !== 2)
+    throw new Error(`Input ${s} did not have a mod prefix`)
   return parts[1]
 }
 
@@ -192,7 +190,7 @@ const redefineEnchantingRecipe_ = (e) => {
     e.remove({ output: id })
     e.recipes.ars_nouveau
       .enchanting_apparatus(inputs, reagent, output, source, keepReagentNbt)
-      .id(`kubejs:custom_ars_nouveau_enchanting_${getNameFromId(output)}`)
+      .id(`kubejs:custom_ars_nouveau_enchanting_${stripOutputPrefix(output)}`)
   }
 }
 
