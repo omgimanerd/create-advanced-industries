@@ -79,7 +79,6 @@ JEIAddedEvents.registerRecipes((e) => {
   e.data.jeiHelpers.allRecipeTypes.forEach((type) => {
     console.log(type)
   })
-  e.data.
 })
 
 JEIEvents.removeCategories((e) => {

@@ -9,22 +9,22 @@ global.customXpCrystalOnFill = (itemStack, resource, simulate) => {
   const remainingXp = capacity - xp
   const fillAmount = Math.min(remainingXp, resource.amount)
   if (!simulate) {
-    itemStack.nbt.putInt('Xp', xp + fillAmount)
+    itemStack.setNbt({ Xp: xp + fillAmount })
   }
   return fillAmount
 }
 
 /**
- * @type {Internal.CapabilityFluid$FluidIOBlockEntity}
+ * @type {Internal.CapabilityFluid$FluidIOItemStack}
  */
-global.customXpCrystalOnDrain = (blockEntity, resource, simulate) => {
-  // console.log(container, resource)
-
-  const xp = global.customXpCrystalContents(itemStack)
-
+global.customXpCrystalOnDrain = (itemStack, resource, simulate) => {
+  if (resource.amount === 0) return 0
+  const xp = global.getXpCrystalContents(itemStack)
+  const drainAmount = Math.min(xp, resource.amount)
   if (!simulate) {
+    itemStack.setNbt({ Xp: xp - drainAmount })
   }
-  return resource.amount
+  return drainAmount
 }
 
 /**
