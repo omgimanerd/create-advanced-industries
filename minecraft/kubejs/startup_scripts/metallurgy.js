@@ -129,8 +129,8 @@ StartupEvents.registry('item', (e) => {
   // materials will be poured into.
   const negatives = {
     ingot: 'minecraft:iron_ingot',
-    gem: `${global.cai}:gem_cast_negative`,
-    block: `${global.cai}:block_cast_negative`,
+    gem: `kubejs:gem_cast_negative`,
+    block: `kubejs:block_cast_negative`,
   }
   const registerBaseCasts = (type, shape) => {
     if (type !== 'clay' && type !== 'steel') {
@@ -146,7 +146,7 @@ StartupEvents.registry('item', (e) => {
     }
     e.create(`kubejs:${type}_${shape}_cast`)
       .textureJson({
-        layer0: `${global.cai}:item/blank_cast`,
+        layer0: `kubejs:item/blank_cast`,
         layer1: getResourceLocation(negativeShape),
       })
       .color(0, baseColor)
@@ -167,7 +167,7 @@ StartupEvents.registry('item', (e) => {
   // metal is casted INTO the steel casts.
   e.create('kubejs:intermediate_steel_ingot_cast')
     .textureJson({
-      layer0: `${global.cai}:item/blank_cast`,
+      layer0: `kubejs:item/blank_cast`,
       layer1: 'minecraft:item/iron_ingot',
     })
     .color(0, MeltableItem.STEEL_CAST_COLOR)
@@ -175,16 +175,16 @@ StartupEvents.registry('item', (e) => {
     .maxStackSize(16)
   e.create('kubejs:intermediate_steel_gem_cast')
     .textureJson({
-      layer0: `${global.cai}:item/blank_cast`,
-      layer1: `${global.cai}:item/gem_cast_negative`,
+      layer0: `kubejs:item/blank_cast`,
+      layer1: `kubejs:item/gem_cast_negative`,
     })
     .color(0, MeltableItem.STEEL_CAST_COLOR)
     .color(1, MeltableItem.NEGATIVE_CAST_COLOR)
     .maxStackSize(16)
   e.create('kubejs:intermediate_steel_block_cast')
     .textureJson({
-      layer0: `${global.cai}:item/blank_cast`,
-      layer1: `${global.cai}:item/block_cast_negative`,
+      layer0: `kubejs:item/blank_cast`,
+      layer1: `kubejs:item/block_cast_negative`,
     })
     .color(0, MeltableItem.STEEL_CAST_COLOR)
     .color(1, MeltableItem.NEGATIVE_CAST_COLOR)

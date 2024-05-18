@@ -47,7 +47,7 @@ MeltableItem.DEFAULT_BLOCK_RATIO = 9
 
 MeltableItem.CLAY_CAST_RETURN_CHANCE = 0.25
 
-MeltableItem.BASE_CAST_TEXTURE = `${global.cai}:item/blank_cast`
+MeltableItem.BASE_CAST_TEXTURE = `kubejs:item/blank_cast`
 
 MeltableItem.CLAY_CAST_COLOR = 0xabb5d0
 MeltableItem.STEEL_CAST_COLOR = 0x43454b
@@ -96,7 +96,7 @@ MeltableItem.prototype.registerCastedItems = function (e) {
   e.create(this.castedClayBlockCastItem)
     .textureJson({
       layer0: MeltableItem.BASE_CAST_TEXTURE,
-      layer1: `${global.cai}:item/block_cast_negative`,
+      layer1: `kubejs:item/block_cast_negative`,
     })
     .color(0, MeltableItem.CLAY_CAST_COLOR)
     .color(1, this.fluidColor)
@@ -105,7 +105,7 @@ MeltableItem.prototype.registerCastedItems = function (e) {
   e.create(this.castedSteelBlockCastItem)
     .textureJson({
       layer0: MeltableItem.BASE_CAST_TEXTURE,
-      layer1: `${global.cai}:item/block_cast_negative`,
+      layer1: `kubejs:item/block_cast_negative`,
     })
     .color(0, MeltableItem.STEEL_CAST_COLOR)
     .color(1, this.fluidColor)

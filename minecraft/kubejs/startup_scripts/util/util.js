@@ -1,7 +1,5 @@
 // priority: 1000
 
-global.cai = 'kubejs'
-
 /**
  * @param {string} s
  * @returns {string}
@@ -36,7 +34,7 @@ const getDisplayName = (name) => {
  */
 const getResourceLocation = (name) => {
   checkPrefix(name)
-  return name.replace(/^kubejs:/, `${global.cai}:`).replace(':', ':item/')
+  return name.replace(':', ':item/')
 }
 
 /**
