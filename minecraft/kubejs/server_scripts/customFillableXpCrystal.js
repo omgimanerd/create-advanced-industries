@@ -1,6 +1,33 @@
 // priority: 100
 
 /**
+ * @type {Internal.CapabilityFluid$FluidIOItemStack}
+ */
+global.customXpCrystalOnFill = (itemStack, resource, simulate) => {
+  const capacity = global.customXpCrystalCapacity(itemStack)
+  const xp = global.customXpCrystalContents(itemStack)
+  const remainingXp = capacity - xp
+  const fillAmount = Math.min(remainingXp, resource.amount)
+  if (!simulate) {
+    itemStack.nbt.putInt('Xp', xp + fillAmount)
+  }
+  return fillAmount
+}
+
+/**
+ * @type {Internal.CapabilityFluid$FluidIOBlockEntity}
+ */
+global.customXpCrystalOnDrain = (blockEntity, resource, simulate) => {
+  // console.log(container, resource)
+
+  const xp = global.customXpCrystalContents(itemStack)
+
+  if (!simulate) {
+  }
+  return resource.amount
+}
+
+/**
  * Right click event handler for the XP crystal.
  * @param {Internal.ItemClickedEventJS}
  */

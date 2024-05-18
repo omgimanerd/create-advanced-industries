@@ -53,6 +53,7 @@ Parser.parseStackedItemInput = (s) => {
 Parser.parseItemInput = (s) => {
   const g = Parser.parseStackedItemInput(s)
   if (g === null) return null
+  if (g.count === 1) delete g.count
   if (g.count !== undefined) {
     throw new Error(`Single item input cannot have a quantity: ${s}`)
   }
