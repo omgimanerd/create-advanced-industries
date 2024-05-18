@@ -1,5 +1,7 @@
 // priority: 1000
 
+const $Vec3 = Java.loadClass('net.minecraft.world.phys.Vec3')
+
 /**
  * @typedef {$Vec3|number[]|{x: number, y: number, z:number}} Vec3Like
  */

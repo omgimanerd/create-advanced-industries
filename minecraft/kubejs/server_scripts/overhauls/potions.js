@@ -1,6 +1,10 @@
 // priority: 500
 // Recipe registrations for automated potion brewing with Create
 
+const $PotionBrewing = Java.loadClass(
+  'net.minecraft.world.item.alchemy.PotionBrewing'
+)
+
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
 
@@ -37,6 +41,9 @@ ServerEvents.recipes((e) => {
         inputItems[0],
       ])
       .heated()
+      // The resulting recipe id prefix is important because the JEI client
+      // script relies on this to move all the recipes to the automated brewing
+      // recipe category.
       .id(`kubejs:create_potion_mixing_${recipeNumber}_${outputId}`)
 
     // Store all the unique potion types

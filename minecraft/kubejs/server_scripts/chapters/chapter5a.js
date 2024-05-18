@@ -1,6 +1,10 @@
 // priority: 200
 // Recipe overhauls for Chapter 5A progression.
 
+const $DamageSources = Java.loadClass(
+  'net.minecraft.world.damagesource.DamageSources'
+)
+
 ServerEvents.tags('fluid', (e) => {
   e.add('forge:crude_oil', 'tfmg:crude_oil_fluid')
   e.add('forge:lpg', 'pneumaticcraft:lpg')

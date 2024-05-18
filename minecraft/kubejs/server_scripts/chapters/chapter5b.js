@@ -535,7 +535,7 @@ global.PortalBlockTickingCallback = (e) => {
   // Eat wandering traders and enchanted pickaxes, yielding hearthstones.
   let laborersEaten = pdata.getInt('laborers_eaten')
   let pickaxesEaten = pdata.getInt('pickaxes_eaten')
-  for (const /** @type {$Entity} */ entity of entities) {
+  for (const /** @type {Internal.Entity} */ entity of entities) {
     if (entity.type === 'minecraft:wandering_trader') {
       entity.remove('killed')
       playSound('minecraft:entity.enderman.teleport', 2, 1)
