@@ -201,6 +201,27 @@ ServerEvents.recipes((e) => {
     })
     .outputs('createteleporters:redstone_pearl')
 
+  // Custom XP Crystal
+  e.replaceOutput(
+    { id: 'thermal:tools/xp_crystal' },
+    'thermal:xp_crystal',
+    'kubejs:xp_crystal'
+  )
+  create.filling('minecraft:experience_bottle', [
+    Fluid.of('create_enchantment_industry:experience', 10),
+    'minecraft:glass_bottle',
+  ])
+  create.filling('create_enchantment_industry:hyper_experience_bottle', [
+    Fluid.of('create_enchantment_industry:hyper_experience', 10),
+    'minecraft:glass_bottle',
+  ])
+  create
+    .SequencedAssembly('minecraft:experience_bottle')
+    .deploy('minecraft:emerald')
+    .deploy('minecraft:lapis_lazuli')
+    .fill('create_enchantment_industry:experience', 100)
+    .outputs('kubejs:xp_crystal')
+
   // Apotheosis material automation
   create
     .SequencedAssembly('tfmg:steel_mechanism')
@@ -226,7 +247,7 @@ ServerEvents.recipes((e) => {
       Item.of('apotheosis:rare_material').withChance(0.25),
     ])
   // arcane sands
-  // mythic pearl
+  // mythic pearl, from ender pearls
   // Artifact Shards
   create
     .SequencedAssembly('farmersdelight:pasta_with_meatballs')

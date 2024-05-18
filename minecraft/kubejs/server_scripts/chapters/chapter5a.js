@@ -321,7 +321,8 @@ ServerEvents.recipes((e) => {
     'minecraft:iron_block',
     9000
   )
-  redefineRecipe(
+  e.remove({ id: 'create_new_age:shaped/redstone_magnet' })
+  create.mechanical_crafting(
     '8x create_new_age:redstone_magnet',
     [
       'RRRRR', //
@@ -336,7 +337,8 @@ ServerEvents.recipes((e) => {
       M: 'create_new_age:magnetite_block',
     }
   )
-  redefineRecipe(
+  e.remove({ id: 'create_new_age:shaped/layered_magnet' })
+  create.mechanical_crafting(
     '8x create_new_age:layered_magnet',
     [
       'GGGGG', //
@@ -352,7 +354,8 @@ ServerEvents.recipes((e) => {
       M: 'create_new_age:redstone_magnet',
     }
   )
-  redefineRecipe(
+  e.remove({ id: 'create_new_age:shaped/fluxuated_magnetite' })
+  create.mechanical_crafting(
     '8x create_new_age:fluxuated_magnetite',
     [
       'GDGDG', //
@@ -368,7 +371,8 @@ ServerEvents.recipes((e) => {
       M: 'create_new_age:layered_magnet',
     }
   )
-  redefineRecipe(
+  e.remove({ id: 'create_new_age:shaped/netherite_magnet' })
+  create.mechanical_crafting(
     '8x create_new_age:netherite_magnet',
     [
       'DNNND', //
