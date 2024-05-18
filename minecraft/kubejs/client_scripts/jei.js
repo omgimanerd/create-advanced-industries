@@ -64,32 +64,40 @@ JEIEvents.hideFluids((e) => {
   })
 })
 
-JEIAddedEvents.registerCategories((e) => {
-  e.custom('createadvancedindustries:automated_brewing', (category) => {
-    category.title('Automated Brewing')
-  })
-})
-
-JEIAddedEvents.registerRecipes((e) => {
-  // e.register('createadvancedindustries:automated_brewing', [
-  //   'kubejs:create_potion_mixing_10_minecraft_awkward',
-  // ])
-  // e.register()
-
-  e.data.jeiHelpers.allRecipeTypes.forEach((type) => {
-    console.log(type)
-  })
-})
-
 JEIEvents.removeCategories((e) => {
   e.remove('thermal:bottler')
   e.remove('thermal:furnace')
   e.remove('thermal:brewer')
   e.remove('jumbofurnace:jumbo_smelting')
   e.remove('jumbofurnace:jumbo_furnace_upgrade')
+})
 
-  // DEBUG LOGGING ONLY
-  // console.log(e.categoryIds)
+JEIAddedEvents.onRuntimeAvailable((e) => {
+  const $RecipeType = Java.loadClass('mezz.jei.api.recipe.RecipeType')
+  const $BasinRecipe = Java.loadClass(
+    'com.simibubi.create.content.processing.basin.BasinRecipe'
+  )
+  const basinRecipeType = $RecipeType.create('create', 'mixing', $BasinRecipe)
+  const automatedBrewing = $RecipeType.create(
+    'create',
+    'automatic_brewing',
+    $BasinRecipe
+  )
+
+  // Move all custom potion brewing recipes from the Create mixer category to
+  // Create automated brewing.
+  const recipeManager = e.data.getRecipeManager()
+  const customBrewingRecipes = Utils.newList()
+  recipeManager
+    .createRecipeLookup(basinRecipeType)
+    .get()
+    .forEach((recipe) => {
+      if (recipe.getId().toString().startsWith('kubejs:create_potion_mixing')) {
+        customBrewingRecipes.add(recipe)
+      }
+    })
+  recipeManager.hideRecipes(basinRecipeType, customBrewingRecipes)
+  recipeManager.addRecipes(automatedBrewing, customBrewingRecipes)
 })
 
 // const $IRecipeRegistration = Java.loadClass(
