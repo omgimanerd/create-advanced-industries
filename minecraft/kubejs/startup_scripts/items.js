@@ -152,5 +152,5 @@ StartupEvents.registry('item', (e) => {
   // Hyper XP condenser
   registerItem('kubejs:xp_condenser').glow(true)
   registerItem('kubejs:inert_xp_condenser')
-  registerItem('kubejs:incomplete_xp_condenser')
+  registerItem('kubejs:incomplete_xp_condenser', 'create:sequenced_assembly')
 })

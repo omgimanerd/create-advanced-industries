@@ -43,8 +43,8 @@
 					type: "item"
 				}
 			]
-			x: 4.0d
-			y: -4.0d
+			x: 10.5d
+			y: -3.0d
 		}
 		{
 			id: "6FA6FE01DAE88F07"
@@ -81,7 +81,7 @@
 				}
 			]
 			x: 3.5d
-			y: -1.0d
+			y: -2.5d
 		}
 		{
 			id: "008F1DC4AE49F8BA"
@@ -90,7 +90,7 @@
 				item: "createteleporters:quantum_mechanism"
 				type: "item"
 			}]
-			x: 9.5d
+			x: 17.0d
 			y: 1.0d
 		}
 		{
@@ -102,6 +102,109 @@
 			}]
 			x: 3.5d
 			y: 2.5d
+		}
+		{
+			id: "0989437884928BAA"
+			tasks: [{
+				id: "0EDFBDA38662C642"
+				item: "apotheosis:common_material"
+				type: "item"
+			}]
+			x: 0.5d
+			y: -6.0d
+		}
+		{
+			id: "4B0765401750DB82"
+			tasks: [{
+				id: "79E7C4CCC6E706D4"
+				item: "apotheosis:uncommon_material"
+				type: "item"
+			}]
+			x: 2.0d
+			y: -6.0d
+		}
+		{
+			id: "76DD6A9D58E92677"
+			tasks: [{
+				id: "4A84810427FCBD30"
+				item: "apotheosis:rare_material"
+				type: "item"
+			}]
+			x: 3.5d
+			y: -6.0d
+		}
+		{
+			id: "1B102819B32F8719"
+			tasks: [{
+				id: "48A78F1569C82831"
+				item: "apotheosis:epic_material"
+				type: "item"
+			}]
+			x: 5.0d
+			y: -6.0d
+		}
+		{
+			id: "4A1C020108E53C54"
+			tasks: [{
+				id: "273F543F7DC7E5CC"
+				item: "apotheosis:mythic_material"
+				type: "item"
+			}]
+			x: 6.5d
+			y: -6.0d
+		}
+		{
+			id: "05DFED6BDF97F45E"
+			tasks: [{
+				id: "21BB102583C34887"
+				item: "apotheotic_additions:artifact_material"
+				type: "item"
+			}]
+			x: 9.5d
+			y: -6.0d
+		}
+		{
+			id: "65E397F67AEE8BCD"
+			tasks: [{
+				id: "002181C96688B053"
+				item: "apotheosis:ancient_material"
+				type: "item"
+			}]
+			x: 8.0d
+			y: -6.0d
+		}
+		{
+			id: "24C3A23FB363E65E"
+			tasks: [{
+				id: "50F26360FF2287F0"
+				item: "apotheotic_additions:heirloom_material"
+				type: "item"
+			}]
+			x: 11.0d
+			y: -6.0d
+		}
+		{
+			id: "30446B095114BCB2"
+			tasks: [{
+				id: "4AD0B45C48B79965"
+				item: "apotheotic_additions:esoteric_material"
+				type: "item"
+			}]
+			x: 12.5d
+			y: -6.0d
+		}
+		{
+			id: "7F0A4231CA344359"
+			tasks: [{
+				icon: "minecraft:dragon_head"
+				id: "66392C17DE8048DE"
+				observe_type: 5
+				timer: 0L
+				to_observe: "minecraft:ender_dragon"
+				type: "observation"
+			}]
+			x: 7.0d
+			y: -2.5d
 		}
 	]
 	title: "Chapter 6: Quantum Mechanisms"

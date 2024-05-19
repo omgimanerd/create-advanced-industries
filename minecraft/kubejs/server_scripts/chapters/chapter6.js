@@ -207,14 +207,6 @@ ServerEvents.recipes((e) => {
     'thermal:xp_crystal',
     'kubejs:xp_crystal'
   )
-  create.filling('minecraft:experience_bottle', [
-    Fluid.of('create_enchantment_industry:experience', 10),
-    'minecraft:glass_bottle',
-  ])
-  create.filling('create_enchantment_industry:hyper_experience_bottle', [
-    Fluid.of('create_enchantment_industry:hyper_experience', 10),
-    'minecraft:glass_bottle',
-  ])
   create
     .SequencedAssembly('minecraft:experience_bottle')
     .deploy('minecraft:emerald')
@@ -222,8 +214,10 @@ ServerEvents.recipes((e) => {
     .fill('create_enchantment_industry:experience', 100)
     .outputs('kubejs:xp_crystal')
 
+  // Remove tier salvaging recipes
+  e.remove({ id: /^apotheotic_additions:salvaging\/[a-z]+_to_[a-z]+$/ })
   // Apotheosis material automation
-  create
+  create // Common Material: Mysterious Scrap Metal
     .SequencedAssembly('tfmg:steel_mechanism')
     .fill('create_enchantment_industry:experience', 16)
     .cut(2, 40)
@@ -234,11 +228,12 @@ ServerEvents.recipes((e) => {
       'apotheosis:common_material',
       Item.of('apotheosis:common_material').withChance(0.25),
     ])
-  // timeworn fabric
-  create
+  // Uncommon Material: Timeworn Fabric
+  create // Rare Material: Luminous Crystal Shard
     .SequencedAssembly('kubejs:crystalline_mechanism')
     .fill('create_enchantment_industry:experience', 64)
     .cut(2, 40)
+    .deploy('thermal:lumium_ingot')
     .custom('Next: Crush with Crushing Wheels', (pre, post) => {
       create.crushing(post, pre)
     })
@@ -246,22 +241,33 @@ ServerEvents.recipes((e) => {
       'apotheosis:rare_material',
       Item.of('apotheosis:rare_material').withChance(0.25),
     ])
-  // arcane sands
-  // mythic pearl, from ender pearls
-  // Artifact Shards
-  create
+  create // Epic Material: Arcane Sands
+    .SequencedAssembly('tfmg:limesand')
+    .fill('starbunclemania:source_fluid', 1000)
+    .fill('createteleporters:quantum_fluid', 1000)
+    .outputs([
+      'apotheosis:ancient_material',
+      Item.of('apotheosis:ancient_material').withChance(0.25),
+    ])
+  create // Mythic Material: Godforged Pearl
+    .SequencedAssembly('minecraft:ender_pearl')
+    .fill('minecraft:honey', 1000)
+    .outputs('apotheotic_additions:mythic_material')
+  // Ancient Material: rainbow thingy
+  create // Artifact Material: Artifact Shards
     .SequencedAssembly('farmersdelight:pasta_with_meatballs')
     .fill('create_enchantment_industry:experience', 512)
     .custom('Next: Compact in a superheated basin', (pre, post) => {
       create.compacting(post, pre).superheated()
     })
     .outputs('apotheotic_additions:artifact_material')
-  // core of the family
-  // Galactic Core (Esoteric)
+  // Heirloom Material: Core of the Family
   const filledXpCrystal = Item.of('kubejs:xp_crystal')
-    .withNBT({ Xp: 10000 })
+    .enchant('cofh_core:holding', 3)
+    .withNBT({ Xp: 25000 })
     .weakNBT()
   create.energising(
+    // Esoteric Material: Galactic Core
     'apotheotic_additions:esoteric_material',
     JSON.parse(filledXpCrystal.toJson()),
     1000000
@@ -279,9 +285,16 @@ ServerEvents.recipes((e) => {
     [80, -1],
     [80, -1]
   )
+  // Hyper Experience condensing requires an inert XP condenser
   create
-    .SequencedAssembly('kubejs:inert_xp_condenser')
+    .SequencedAssembly(
+      'kubejs:inert_xp_condenser',
+      'kubejs:incomplete_xp_condenser'
+    )
     .fill('create_enchantment_industry:experience', 1000)
+    .custom('Next: Compact in a superheated basin', (pre, post) => {
+      create.compacting(post, pre).superheated()
+    })
     .outputs('kubejs:xp_condenser')
 
   create.emptying(
@@ -292,6 +305,7 @@ ServerEvents.recipes((e) => {
     'kubejs:xp_condenser'
   )
 
+  // Provide a way to get Eternal Steak with a level 100 enchant
   enchanting(
     'artifacts:eternal_steak',
     'minecraft:cooked_beef',
