@@ -214,3 +214,6 @@ MeltableItem.prototype.registerWashedCastRecipes = function (e) {
   )
   return this
 }
+
+// Export the class to the global namespace for use on the server side.
+global.MeltableItem = MeltableItem
