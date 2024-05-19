@@ -57,6 +57,21 @@ StartupEvents.postInit(() => {
 })
 
 StartupEvents.registry('item', (e) => {
+  let capability = CapabilityBuilder.FLUID.customItemStack()
+    .acceptFluid('create_enchantment_industry:experience')
+    .getCapacity(global.customXpCrystalCapacity)
+    .onFill((container, resource, simulate) => {
+      if (global.customXpCrystalOnFill) {
+        return global.customXpCrystalOnFill(container, resource, simulate)
+      }
+      return 0
+    })
+  //   .onDrain((container, resource, simulate) => {
+  //     if (global.customXpCrystalOnDrain) {
+  //       return global.customXpCrystalOnDrain(container, resource, simulate)
+  //     }
+  //     return 0
+  //   })
   e.create('kubejs:xp_crystal')
     // Model JSON directly copied from COFH Core's GitHub
     .modelJson({
@@ -109,25 +124,7 @@ StartupEvents.registry('item', (e) => {
     })
     .barColor(() => Color.GREEN)
     // Forge capabilities to allow the item crystal to be filled with CEI exp.
-    .attachCapability(
-      CapabilityBuilder.FLUID.customItemStack()
-        .acceptFluid('create_enchantment_industry:experience')
-        .getCapacity(global.customXpCrystalCapacity)
-        .onFill((container, resource, simulate) => {
-          if (global.customXpCrystalOnFill) {
-            return global.customXpCrystalOnFill(container, resource, simulate)
-          }
-          return 0
-        })
-      // .onDrain((container, resource, simulate) => {
-      //   resource.setAmount(20)
-      //   return 20
-      //   if (global.customXpCrystalOnDrain) {
-      //     return global.customXpCrystalOnDrain(container, resource, simulate)
-      //   }
-      //   return 0
-      // })
-    )
+    .attachCapability(capability)
 })
 
 ItemEvents.modelProperties((e) => {

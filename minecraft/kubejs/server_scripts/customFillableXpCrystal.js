@@ -3,11 +3,11 @@
 /**
  * @type {Internal.CapabilityFluid$FluidIOItemStack}
  */
-global.customXpCrystalOnFill = (itemStack, resource, simulate) => {
+global.customXpCrystalOnFill = (itemStack, fluidStack, simulate) => {
   const capacity = global.customXpCrystalCapacity(itemStack)
   const xp = global.customXpCrystalContents(itemStack)
   const remainingXp = capacity - xp
-  const fillAmount = Math.min(remainingXp, resource.amount)
+  const fillAmount = Math.min(remainingXp, fluidStack.amount)
   if (!simulate) {
     if (!itemStack.nbt) itemStack.setNbt({ Xp: 0 })
     // Use putInt specifically so that the resulting data type is an int.
