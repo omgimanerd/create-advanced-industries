@@ -67,6 +67,7 @@ global.removedRecipes = [
   { output: 'thermal:device_rock_gen' },
   { output: 'thermal:device_xp_condenser' },
   { output: /^thermal:diving_.*/ },
+  { output: 'thermal:xp_crystal' },
   { output: '#forge:coins' },
   { output: /^starbunclemania:star_[a-z_]+/ },
   { output: 'starbunclemania:wyrm_degree' },

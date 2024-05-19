@@ -66,6 +66,7 @@ StartupEvents.registry('item', (e) => {
       }
       return 0
     })
+  // Drain handler causes a crash.
   //   .onDrain((container, resource, simulate) => {
   //     if (global.customXpCrystalOnDrain) {
   //       return global.customXpCrystalOnDrain(container, resource, simulate)

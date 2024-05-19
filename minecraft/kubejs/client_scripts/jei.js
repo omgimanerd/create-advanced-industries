@@ -27,6 +27,7 @@ const hiddenFluids = [
 JEIEvents.addItems((e) => {
   e.add('thermal:drill_head')
   e.add('thermal:saw_blade')
+  e.add('apotheosis:ancient_material')
 })
 
 JEIEvents.hideItems((e) => {
