@@ -266,17 +266,17 @@ Ponder.registry((e) => {
           'Arcane Portal.',
         [2, 2, 2]
       )
-      scene.idleSeconds(1)
       scene
         .showControls(40, [2, 1, 2], 'up')
         .rightClick()
         .withItem('ars_nouveau:source_gem')
+      scene.idleSeconds(1)
       scene.world.replaceBlocks(
         util.select.position([2, 1, 2]),
         'kubejs:portal_block',
         true
       )
-      scene.world.createEntity('lightning_bolt', [2, 2, 2], (e) => {})
+      scene.world.createEntity('lightning_bolt', [2, 2, 2])
       scene.idleSeconds(3)
 
       // Supplying the portal with source.
@@ -701,6 +701,7 @@ Ponder.registry((e) => {
   )
 
   // TODO: ponder for enchanting table
+  // TODO: ponder for infested stone expulsion
 })
 
 /**

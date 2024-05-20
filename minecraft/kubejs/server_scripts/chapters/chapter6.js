@@ -162,6 +162,33 @@ const createEnchantingRecipe = (
   return e.custom(base)
 }
 
+/**
+ * Event handler for expelling the silver from infested stone to generate end
+ * stone.
+ */
+BlockEvents.rightClicked('minecraft:infested_stone', (e) => {
+  const { item, hand, block, level } = e
+  if (hand !== 'main_hand') return
+  if (item.id !== 'apotheosis:vial_of_expulsion') return
+
+  // Each usage will spawn a silverfish.
+  const silverfish = block.createEntity('minecraft:silverfish')
+  silverfish.setPos(block.pos.center.add(0, 1, 0))
+  silverfish.spawn()
+
+  spawnParticles(level, 'block', block.pos.center, [0.5, 0.5, 0.5], 35, 0.01)
+  // There is a 25% chance of converting the block to end stone.
+  if (Math.random() < 0.25) {
+    block.set('minecraft:end_stone')
+
+    // Upon a successful conversion, there is a 2% chance the vial of expulsion
+    // will be consumed.
+    if (Math.random() < 0.02) {
+      item.count--
+    }
+  }
+})
+
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
   const pneumaticcraft = definePneumaticcraftRecipes(e)
@@ -229,6 +256,28 @@ ServerEvents.recipes((e) => {
       Item.of('apotheosis:common_material').withChance(0.25),
     ])
   // Uncommon Material: Timeworn Fabric
+  e.remove({ id: 'apotheotic_additions:stonecutting/timeworn_fabric' })
+  e.remove({ id: 'apotheotic_additions:stonecutting/timeworn_fancy' })
+  create
+    .deploying('apotheotic_additions:timeworn_fancy', [
+      'minecraft:green_wool',
+      'gag:time_sand_pouch',
+    ])
+    .keepHeldItem()
+  create
+    .deploying('apotheotic_additions:timeworn_fabric', [
+      'apotheotic_additions:timeworn_fancy',
+      'gag:time_sand_pouch',
+    ])
+    .keepHeldItem()
+  create.cutting(
+    '4x apotheosis:uncommon_material',
+    'apotheotic_additions:timeworn_fabric'
+  )
+  create.cutting(
+    '4x apotheosis:uncommon_material',
+    'apotheotic_additions:timeworn_fancy'
+  )
   create // Rare Material: Luminous Crystal Shard
     .SequencedAssembly('kubejs:crystalline_mechanism')
     .fill('create_enchantment_industry:experience', 64)
@@ -246,22 +295,40 @@ ServerEvents.recipes((e) => {
     .fill('starbunclemania:source_fluid', 1000)
     .fill('createteleporters:quantum_fluid', 1000)
     .outputs([
-      'apotheosis:ancient_material',
-      Item.of('apotheosis:ancient_material').withChance(0.25),
+      'apotheosis:epic_material',
+      Item.of('apotheosis:epic_material').withChance(0.25),
     ])
   create // Mythic Material: Godforged Pearl
     .SequencedAssembly('minecraft:ender_pearl')
-    .fill('minecraft:honey', 1000)
-    .outputs('apotheotic_additions:mythic_material')
-  // Ancient Material: rainbow thingy
+    .fill('create:honey', 1000)
+    .outputs('apotheosis:mythic_material')
+  e.recipes.thermal.centrifuge('minecraft:stone', 'minecraft:oak_log')
+  create // Ancient Material: rainbow thingy
+    .SequencedAssembly('minecraft:totem_of_undying')
+    .custom('', (pre, post) => {
+      e.recipes.thermal.centrifuge(post, pre)
+    })
+    .press(2)
+    .outputs('apotheosis:ancient_material')
   create // Artifact Material: Artifact Shards
     .SequencedAssembly('farmersdelight:pasta_with_meatballs')
-    .fill('create_enchantment_industry:experience', 512)
-    .custom('Next: Compact in a superheated basin', (pre, post) => {
-      create.compacting(post, pre).superheated()
+    .custom('', (pre, post) => {
+      create
+        .mixing(post, [pre, Fluid.of('pneumaticcraft:lpg', 250)])
+        .superheated()
+    })
+    .custom('Next: Blast with high heat', (pre, post) => {
+      e.blasting(post, pre)
+    })
+    .custom('Next: Haunt with Soul Fire', (pre, post) => {
+      create.haunting(post[0], pre)
     })
     .outputs('apotheotic_additions:artifact_material')
   // Heirloom Material: Core of the Family
+  create.mixing('apotheotic_additions:heirloom_material', [
+    'quark:diamond_heart',
+    Fluid.of('thermal:ender', 250),
+  ])
   const filledXpCrystal = Item.of('kubejs:xp_crystal')
     .enchant('cofh_core:holding', 3)
     .withNBT({ Xp: 25000 })
@@ -274,7 +341,10 @@ ServerEvents.recipes((e) => {
   )
 
   // require going to end
-  // end stone automation
+  // End stone automation
+  // exp the silver fish from the infested stone
+  // vial of searing expulsion
+  create.haunting('minecraft:end_stone', 'minecraft:infested_stone')
 
   // Liquid Hyper Experience condensing, gated behind a level 100 enchant
   e.remove({ id: 'create_enchantment_industry:mixing/hyper_experience' })

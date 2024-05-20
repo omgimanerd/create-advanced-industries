@@ -58,7 +58,7 @@ global.removedRecipes = [
   { output: 'thermal:phytogro' },
   { output: 'thermal:phyto_grenade' },
   { output: 'thermal:phyto_tnt' },
-  { output: /^thermal:machine_(?!crystallizer|pyrolyzer).*/ },
+  { output: /^thermal:machine_(?!crystallizer|pyrolyzer|centrifuge).*/ },
   { output: /^thermal:dynamo_.*/ },
   { output: 'thermal:tinker_bench' },
   { output: 'thermal:charge_bench' },
