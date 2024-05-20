@@ -17,9 +17,7 @@ const createRolling = (e, output, input) => {
   if (!setIfValid(base, 'result', Parser.parseItemOutput(output))) {
     throw new Error(`Invalid output ${output}`)
   }
-  return e
-    .custom(base)
-    .id(`kubejs:custom_create_rolling_${stripOutputPrefix(output)}`)
+  return e.custom(base)
 }
 
 /**
@@ -34,17 +32,15 @@ const createRolling = (e, output, input) => {
 const createBurnableFluid = (e, fluid, burnTime, superheated) => {
   if (typeof fluid !== 'string') throw new Error(`Invalid input ${fluid}`)
   superheated = !!superheated
-  return e
-    .custom({
-      type: 'createaddition:liquid_burning',
-      input: {
-        fluidTag: fluid.startsWith('#') ? fluid.substring(1) : fluid,
-        amount: 1000,
-      },
-      burnTime: burnTime,
-      superheated: superheated,
-    })
-    .id(`kubejs:custom_create_liquid_burning_${stripOutputPrefix(fluid)}`)
+  return e.custom({
+    type: 'createaddition:liquid_burning',
+    input: {
+      fluidTag: fluid.startsWith('#') ? fluid.substring(1) : fluid,
+      amount: 1000,
+    },
+    burnTime: burnTime,
+    superheated: superheated,
+  })
 }
 
 /**
@@ -71,9 +67,7 @@ const createEnergising = (e, output, input, energyNeeded) => {
   const itemOutput = Parser.parseItemOutput(output)
   if (itemOutput === null) throw new Error(`Invalid output ${output}`)
   base.results.push(itemOutput)
-  return e
-    .custom(base)
-    .id(`kubejs:custom_create_energising_${stripOutputPrefix(output)}`)
+  return e.custom(base)
 }
 
 /**
