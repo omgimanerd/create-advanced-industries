@@ -24,18 +24,15 @@ global.NetherWartSpoutHandlerCallback = (block, fluid, simulate) => {
 }
 
 /**
- * Called within ItemEvents.entityInteracted to handle feeding and milking a
- * blaze.
- * @param {Internal.ItemEntityInteractedEventJS} e
+ * Callback handler for feeding and milking a blaze.
  */
-const handleBlazeMilkingMechanic = (e) => {
+ItemEvents.entityInteracted((e) => {
   const { hand, item, player, target } = e
   if (hand !== 'main_hand') return
   if (target.type !== 'minecraft:blaze') return
   if (item.id !== 'minecraft:bucket' && item.id !== 'minecraft:lava_bucket') {
     return
   }
-
   let remainingMilks = target.persistentData.getInt('remaining_milks')
   // Feeding lava to the blaze.
   if (item.id === 'minecraft:lava_bucket') {
@@ -54,14 +51,12 @@ const handleBlazeMilkingMechanic = (e) => {
     remainingMilks--
   }
   target.persistentData.putInt('remaining_milks', remainingMilks)
-}
+})
 
 /**
- * Called within BlockEvents.rightClicked to handle mushroom growth from moss
- * blocks.
- * @param {Internal.BlockRightClickedEventJS} e
+ * Event handler for mushroom growth from moss blocks.
  */
-const handleMushroomMossSeeding = (e) => {
+BlockEvents.rightClicked('minecraft:moss_block', (e) => {
   const { item, hand, block, level, server } = e
   if (hand !== 'main_hand') return
   if (
@@ -70,7 +65,6 @@ const handleMushroomMossSeeding = (e) => {
   ) {
     return
   }
-  if (block.id !== 'minecraft:moss_block') return
   const newBlock = `${item.id}_block`
 
   /**
@@ -109,31 +103,27 @@ const handleMushroomMossSeeding = (e) => {
     })
   }
   decayedSpread(block, 1, 0.5, randRange(10))
-}
+})
 
 /**
- * Called within BlockEvents.rightClicked to handle spawning spiders.
- * @param {Internal.BlockRightClickedEventJS} e
+ * Event handler to handle spawning spiders with Anima Essence.
  */
-const handleSpiderSpawningWithCobweb = (e) => {
+BlockEvents.rightClicked('minecraft:cobweb', (e) => {
   const { item, hand, block, level } = e
   if (hand !== 'main_hand') return
   if (item.id !== 'ars_elemental:anima_essence') return
-  if (block.id !== 'minecraft:cobweb') return
-
   const spider = block.createEntity('minecraft:spider')
   // Center the spider on the block
   spider.setPos(block.pos.center)
   spider.spawn()
   level.destroyBlock(block, false)
   item.count--
-}
+})
 
 /**
- * Called within BlockEvents.rightClicked to handle spawning Remy the Epicure.
- * @param {Internal.BlockRightClickedEventJS} e
+ * Event handler to handle spawning Remy the Epicure
  */
-const handleRemySpawning = (e) => {
+BlockEvents.rightClicked((e) => {
   const { item, hand, block } = e
   if (hand !== 'main_hand') return
   if (item.id !== 'kubejs:remy_spawner') return
@@ -141,13 +131,12 @@ const handleRemySpawning = (e) => {
   const golem = block.createEntity('ars_nouveau:amethyst_golem')
   // Center Remy on the top of the block
   golem.setPos(block.pos.center.add(0, 1, 0))
-  golem.setPos(x + 0.5, y + 1, z + 0.5)
   golem.setCustomName('Remy the Epicure')
   golem.setCustomNameVisible(true)
   golem.persistentData.legitimatelySpawned = true
   golem.spawn()
   item.count--
-}
+})
 
 /**
  * Computes the loot and feeding cooldown from feeding food to an amethyst
@@ -258,11 +247,9 @@ const computeAmethystGolemFeedResults = (
 }
 
 /**
- * Called within ItemEvents.entityInteracted to defines the behavior when Remy
- * the Epicure is fed.
- * @param {Internal.ItemEntityInteractedEventJS} e
+ * Event handler for feeding Remy the Epicure.
  */
-const handleAmethystFeedingMechanic = (e) => {
+ItemEvents.entityInteracted((e) => {
   const { item, hand, target, level, player, server } = e
   if (hand !== 'main_hand') return
   if (target.type !== 'ars_nouveau:amethyst_golem') return
@@ -331,7 +318,7 @@ const handleAmethystFeedingMechanic = (e) => {
   } else {
     spawnParticles(level, 'minecraft:heart', target, 0.4, 10, 0.1)
   }
-}
+})
 
 /**
  * Handler defined in startup_scripts/spoutHandlerRegistration.js
@@ -370,16 +357,14 @@ global.BuddingAmethystSpoutHandlerCallback = (block, fluid, simulate) => {
   }
   return fluidConsumption
 }
+
 /**
  * Called within EntityEvents.spawned to handle the spawning of a wandering
  * trader when lightning strikes and emerald block.
  * @param {Internal.EntitySpawnedEventJS} e
  */
-const handleLightningSpawnEvent = (
-  /** @type {Internal.EntitySpawnedEventJS} */ e
-) => {
+EntityEvents.spawned('ars_nouveau:an_lightning', (e) => {
   let { entity, level } = e
-  if (entity.type !== 'ars_nouveau:an_lightning') return
   for (const [offsetX, offsetY, offsetZ] of getOffsetList({
     minX: -1,
     maxX: 1,
@@ -401,7 +386,7 @@ const handleLightningSpawnEvent = (
       entity.persistentData.spawnedTrader = true
     }
   }
-}
+})
 
 /**
  * The event itself is registered in startup_scripts/forgeEventRegistration.js
@@ -476,19 +461,17 @@ LootJS.modifiers((e) => {
 })
 
 /**
- * Called within BlockEvents.rightClicked to handle opening a portal for
- * getting hearthstones.
+ * Handles opening the Arcane Portal for hearthstone automation.
  * @param {Internal.BlockRightClickedEventJS} e
  */
-const handleOpenPortal = (e) => {
+BlockEvents.rightClicked('minecraft:crying_obsidian', (e) => {
   const { item, hand, block, level } = e
   if (hand !== 'main_hand') return
   if (item.id !== 'ars_nouveau:source_gem') return
-  if (block.id !== 'minecraft:crying_obsidian') return
   block.spawnLightning(true)
   block.set('kubejs:portal_block')
   spawnParticles(level, 'minecraft:enchant', block.pos.center, 0.3, 100, 1)
-}
+})
 
 /**
  *
@@ -625,32 +608,13 @@ global.PortalBlockTickingCallback = (e) => {
   }
 }
 
-EntityEvents.spawned((e) => {
-  // Strike emerald block with lightning to spawn a wandering trader
-  handleLightningSpawnEvent(e)
-})
-
-ItemEvents.entityInteracted((e) => {
-  // Feed an amethyst golem named Remy good food and it will drop amethyst
-  // buds/clusters.
-  handleAmethystFeedingMechanic(e)
-
-  // Feed a blaze buckets of lava and it can be milked.
-  handleBlazeMilkingMechanic(e)
-})
-
-BlockEvents.rightClicked((e) => {
-  // Remy the Epicure can only be spawned from a special amethyst charm.
-  handleRemySpawning(e)
-
-  // Handle when a moss block is right clicked with a mushroom to seed more.
-  handleMushroomMossSeeding(e)
-
-  // Handle when a cobweb is right clicked with anima essence to spawn a spider.
-  handleSpiderSpawningWithCobweb(e)
-
-  // Handle when obsidian is right clicked with a source gem to open a portal.
-  handleOpenPortal(e)
+ItemEvents.foodEaten('#kubejs:enchantable_foods', (e) => {
+  const { item, player } = e
+  if (!item.enchanted) return
+  for (const [enchant, level] of Object.entries(item.enchantments)) {
+    // TODO add more boost if enchanted?
+    console.log(enchant, level)
+  }
 })
 
 ServerEvents.tags('item', (e) => {
@@ -660,15 +624,6 @@ ServerEvents.tags('item', (e) => {
     if (Item.of(food).isEdible()) {
       e.add('kubejs:enchantable_foods', food)
     }
-  }
-})
-
-ItemEvents.foodEaten('#kubejs:enchantable_foods', (e) => {
-  const { item, player } = e
-  if (!item.enchanted) return
-  for (const [enchant, level] of Object.entries(item.enchantments)) {
-    // TODO add more boost if enchanted?
-    console.log(enchant, level)
   }
 })
 
