@@ -218,6 +218,40 @@ ServerEvents.recipes((e) => {
     }
   }
 
+  // Thermal alloy recipes
+  create
+    .mixing(
+      [
+        Fluid.of('thermal:redstone', 500),
+        potionFluid('quark:resilience', 500),
+        Item.of('apotheosis:vial_of_extraction').withChance(0.75),
+      ],
+      [
+        Fluid.of('kubejs:molten_redstone', 1000),
+        'apotheosis:vial_of_extraction',
+      ]
+    )
+    .superheated()
+  create
+    .mixing(Fluid.of('kubejs:molten_redstone', 1000), [
+      Fluid.of('thermal:redstone', 500),
+      potionFluid('quark:resilience', 500),
+      'minecraft:glowstone',
+    ])
+    .superheated()
+  create
+    .SequencedAssembly('minecraft:glowstone_dust')
+    .custom('', (pre, post) => {
+      create.crushing(post, pre)
+    })
+    .custom('Next: Energize with 8000 RF', (pre, post, json) => {
+      create.energising(json(post), json(pre), 8000)
+    })
+    .custom('Next: Melt in a heated basin', (pre, post) => {
+      create.mixing(post, pre).heated()
+    })
+    .outputs(Fluid.of('thermal:glowstone', 250))
+
   // Redstone pearls
   e.remove({ id: 'createteleporters:redstone_pearl_recipe' })
   create
@@ -302,7 +336,6 @@ ServerEvents.recipes((e) => {
     .SequencedAssembly('minecraft:ender_pearl')
     .fill('create:honey', 1000)
     .outputs('apotheosis:mythic_material')
-  e.recipes.thermal.centrifuge('minecraft:stone', 'minecraft:oak_log')
   create // Ancient Material: rainbow thingy
     .SequencedAssembly('minecraft:totem_of_undying')
     .custom('', (pre, post) => {
