@@ -24,6 +24,11 @@ ServerEvents.recipes((e) => {
     }
   )
 
+  // todo check mods create misc and things
+  // create armory
+  // create sweets and treats
+  // create molten metals
+
   ////////////
   // Create //
   ////////////
