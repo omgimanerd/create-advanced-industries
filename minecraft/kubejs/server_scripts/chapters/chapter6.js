@@ -257,9 +257,7 @@ ServerEvents.recipes((e) => {
   create
     .SequencedAssembly('minecraft:ender_pearl')
     .fill('kubejs:molten_redstone', 180)
-    .custom('Next: Energize it with 40000 RF', (pre, post, json) => {
-      create.energising(post[0], json(pre), 40000)
-    })
+    .energize(40000)
     .outputs('createteleporters:redstone_pearl')
 
   // Custom XP Crystal

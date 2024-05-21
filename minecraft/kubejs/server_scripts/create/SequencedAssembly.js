@@ -108,6 +108,67 @@ SequencedAssembly.prototype.deploy = function (item, keepHeldItem) {
 }
 
 /**
+ * @param {number} energyNeeded
+ * @returns {SequencedAssembly}
+ */
+SequencedAssembly.prototype.energize = function (energyNeeded) {
+  if (!Platform.isLoaded('create_new_age')) {
+    throw new Error('Create: New Age is not loaded!')
+  }
+  this.steps_.push({
+    type: 'energising',
+    energyNeeded: energyNeeded,
+    preItemText: `Next: Energize with ${energyNeeded}RF`,
+  })
+  return this
+}
+
+/**
+ * Internal helper to actually generate the energising recipes for recipe
+ * definition. Must not be called during SequencedAssembly construction since
+ * hasCustomSteps_ will not be known.
+ *
+ * @param {Internal.Ingredient|string} input
+ * @param {Internal.ItemStack_|string} output
+ * @param {number} energyNeeded
+ * @returns
+ */
+SequencedAssembly.prototype.createEnergizingRecipe = function (
+  input,
+  output,
+  energyNeeded
+) {
+  const base = {
+    type: 'create_new_age:energising',
+    // https://gitlab.com/antarcticgardens/create-new-age
+    // JSON recipe key changed in latest dev branch to 'energyNeeded' instead of
+    // 'energy_needed'
+    energy_needed: energyNeeded !== undefined ? energyNeeded : 1000,
+    ingredients: [],
+    results: [],
+  }
+  if (typeof input === 'string') input = InputItem.of(input)
+  let inputJson = JSON.parse(input.toJson())
+  if (inputJson.ingredient !== undefined) {
+    inputJson = Object.assign(inputJson, inputJson.ingredient)
+    delete inputJson.ingredient
+  }
+  base.ingredients.push(inputJson)
+
+  if (typeof output === 'string') {
+    const o = OutputItem.of(output)
+    output = {
+      item: o.item.id,
+      count: o.count,
+    }
+  } else {
+    output = JSON.parse(output.toJson())
+  }
+  base.results.push(output)
+  return this.e_.custom(base)
+}
+
+/**
  * If this custom step is the first step in the sequence, the pre item will be
  * whatever was given as this.input_. If this custom step is the last step in
  * the sequence the post item is whatever will be passed as the output item.
@@ -221,6 +282,9 @@ SequencedAssembly.prototype.outputCustomSequence = function (output) {
           r = this.e_.recipes.create.deploying(postItem, [preItem, data.item])
           if (data.keepHeldItem) r.keepHeldItem()
           break
+        case 'energising':
+          r = this.createEnergizingRecipe(preItem, postItem, data.energyNeeded)
+          break
         case 'custom':
           r = data.callback(preItem, postItem, json)
           break
@@ -270,6 +334,12 @@ SequencedAssembly.prototype.outputNativeCreate = function (output) {
             )
             if (data.keepHeldItem) deployingStep.keepHeldItem()
             return deployingStep
+          case 'energising':
+            return this.createEnergizingRecipe(
+              this.transitional_,
+              this.transitional_,
+              data.energyNeeded
+            )
           default:
             throw new Error(`Unknown assembly step ${data}`)
         }
