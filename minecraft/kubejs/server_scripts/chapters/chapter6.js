@@ -245,7 +245,7 @@ ServerEvents.recipes((e) => {
       create.crushing(post, pre)
     })
     .custom('Next: Energize with 8000 RF', (pre, post, json) => {
-      create.energising(json(post), json(pre), 8000)
+      create.energizing(json(post), json(pre), 8000)
     })
     .custom('Next: Melt in a heated basin', (pre, post) => {
       create.mixing(post, pre).heated()
@@ -364,7 +364,7 @@ ServerEvents.recipes((e) => {
     .enchant('cofh_core:holding', 3)
     .withNBT({ Xp: 25000 })
     .weakNBT()
-  create.energising(
+  create.energizing(
     // Esoteric Material: Galactic Core
     'apotheotic_additions:esoteric_material',
     JSON.parse(filledXpCrystal.toJson()),

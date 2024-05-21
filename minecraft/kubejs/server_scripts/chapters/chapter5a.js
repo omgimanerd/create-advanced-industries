@@ -320,7 +320,7 @@ ServerEvents.recipes((e) => {
 
   // Overhaul Create: New Age's magnetic blocks
   // Magnetite block crafting recipe
-  create.energising(
+  create.energizing(
     'create_new_age:magnetite_block',
     'minecraft:iron_block',
     9000

@@ -51,7 +51,7 @@ const createBurnableFluid = (e, fluid, burnTime, superheated) => {
  * @param {number} energyNeeded
  * @returns {Internal.RecipeJS}
  */
-const createEnergising = (e, output, input, energyNeeded) => {
+const createEnergizing = (e, output, input, energyNeeded) => {
   const base = {
     type: 'create_new_age:energising',
     // https://gitlab.com/antarcticgardens/create-new-age
@@ -176,7 +176,7 @@ const defineCreateRecipes = (e) => {
      * @return {Internal.RecipeJS}
      * @type {CreateEnergising}
      */
-    energising: getPartialApplication(e, createEnergising),
+    energizing: getPartialApplication(e, createEnergizing),
     /**
      * @callback CreateExtruding
      * @param {OutputItem_|string} output
