@@ -9,3 +9,20 @@ ForgeEvents.onEvent(
     }
   }
 )
+
+ForgeEvents.onEvent('net.minecraftforge.event.level.NoteBlockEvent', (e) => {
+  // Callback defined in server_scripts
+  if (global.NoteBlockEvent) {
+    global.NoteBlockEvent(e)
+  }
+})
+
+ForgeEvents.onEvent(
+  'net.minecraftforge.event.level.NoteBlockEvent$Play',
+  (e) => {
+    // Callback defined in server_scripts
+    if (global.NoteBlockEvent$Play) {
+      global.NoteBlockEvent$Play(e)
+    }
+  }
+)
