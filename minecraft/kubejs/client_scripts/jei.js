@@ -5,6 +5,8 @@ const $RecipeType = Java.loadClass('mezz.jei.api.recipe.RecipeType')
 // Duplicate fluids or ones removed by the modpack.
 const hiddenFluids = [
   'cofh_core:potion',
+  'createarmory:molten_brass',
+  'create_things_and_misc:diluted_bonemeal',
   'pneumaticcraft:oil',
   'pneumaticcraft:memory_essence',
   'sophisticatedcore:xp_still',

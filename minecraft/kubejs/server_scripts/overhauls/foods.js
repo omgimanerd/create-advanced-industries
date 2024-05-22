@@ -11,6 +11,7 @@ ServerEvents.recipes((e) => {
 
   const create = defineCreateRecipes(e)
 
+  // Create Central Kitchen + Farmer's Delight
   e.remove({ id: /^create_central_kitchen:sequenced_assembly.*/ })
   e.remove({ id: 'create_central_kitchen:crafting/tomato_sauce_from_bucket' })
   e.remove({ id: 'farmersdelight:cooking/tomato_sauce' })
@@ -69,6 +70,20 @@ ServerEvents.recipes((e) => {
     .deploy('#forge:cooked_beef')
     .fill(Fluid.of('minecraft:milk', 250))
     .outputs('farmersdelight:stuffed_potato')
+
+  // Create: Sweets and Treats
+  e.remove({ id: 'create:filling/gunpowdercake' })
+  create
+    .SequencedAssembly('create:dough')
+    .deploy('minecraft:gunpowder')
+    .fill(Fluid.of('minecraft:milk', 250))
+    .custom('Next: Cook to perfection!', (pre, post) => {
+      e.smoking(post[0], pre)
+    })
+    .outputs('createsweetsandtreets:gunpowder_cake')
+
+  e.remove({ id: 'createsweetsandtreets:brass_cake_pan_craft' })
+  create.pressing('createsweetsandtreets:brass_cake_pan', 'create:brass_sheet')
 
   // Pneumaticcraft foods
   e.remove({ id: 'pneumaticcraft:thermo_plant/chips' })

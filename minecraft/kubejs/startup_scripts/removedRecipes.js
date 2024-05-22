@@ -27,6 +27,7 @@ global.removedRecipes = [
   { output: 'create_new_age:nuclear_fuel' },
   { output: /^create_new_age:.[a-z_]*solar_heating_plate/ },
   { output: /^create_new_age:.*thorium.*/ },
+  { output: 'create_things_and_misc:sprinkler' },
   { output: 'farmersdelight:wheat_dough' },
   { output: /.*jumbo_smelting/ },
   { output: 'morered:soldering_table' },

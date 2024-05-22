@@ -26,8 +26,6 @@ ServerEvents.recipes((e) => {
 
   // todo check mods create misc and things
   // create armory
-  // create sweets and treats
-  // create molten metals
 
   ////////////
   // Create //
@@ -314,6 +312,45 @@ ServerEvents.recipes((e) => {
     'minecraft:bone_meal',
     Fluid.of('sliceanddice:fertilizer', 250),
   ])
+
+  ///////////////////
+  // Create Armory //
+  ///////////////////
+  e.replaceInput(
+    { id: 'createarmory:barrel_part_recipe' },
+    'create:andesite_alloy',
+    'tfmg:steel_ingot'
+  )
+  e.remove({ id: 'createarmory:nine_mm_recipe' })
+  create
+    .SequencedAssembly(
+      'createarmory:nine_mm_casing',
+      'createarmory:unfinished_nine_mm'
+    )
+    .deploy('minecraft:gunpowder')
+    .deploy('create:copper_nugget')
+    .press()
+    .outputs('createarmory:nine_mm')
+  e.remove({ id: 'createarmory:fifty_cal_recipe' })
+  create
+    .SequencedAssembly(
+      'createarmory:fifty_cal_casing',
+      'createarmory:unfinished_fifty_cal_casing'
+    )
+    .deploy('minecraft:gunpowder')
+    .deploy('create:copper_nugget')
+    .press()
+    .outputs('createarmory:fifty_cal')
+  e.remove({ id: 'createarmory:five_five_six_recipe' })
+  create
+    .SequencedAssembly(
+      'createarmory:five_five_six_casing',
+      'createarmory:unfinished_five_five_six_casing'
+    )
+    .deploy('minecraft:gunpowder')
+    .deploy('create:copper_nugget')
+    .press()
+    .outputs('createarmory:five_five_six')
 
   ///////////////////////////////
   // Create Crafts & Additions //
