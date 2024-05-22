@@ -78,6 +78,7 @@ Parser.parseItemOutput = (s) => {
  * @returns {Object|null}
  */
 Parser.parseFluidInput = (s) => {
+  if (typeof s === 'object' && !Array.isArray(s) && s !== null) return s
   if (typeof s !== 'string') return null
 
   const m = s.match(Parser.FLUID_REGEX)
