@@ -364,8 +364,8 @@ ServerEvents.recipes((e) => {
     .enchant('cofh_core:holding', 3)
     .withNBT({ Xp: 25000 })
     .weakNBT()
+  // Esoteric Material: Galactic Core
   create.energizing(
-    // Esoteric Material: Galactic Core
     'apotheotic_additions:esoteric_material',
     JSON.parse(filledXpCrystal.toJson()),
     1000000

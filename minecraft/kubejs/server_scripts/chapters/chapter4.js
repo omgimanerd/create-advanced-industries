@@ -185,27 +185,24 @@ ServerEvents.recipes((e) => {
   )
 
   // Recipes for reusable steel casts
+  e.shaped(
+    'kubejs:steel_ingot_cast',
+    [
+      'S S', //
+      'SSS', //
+    ],
+    {
+      S: 'tfmg:steel_ingot',
+    }
+  )
   create
-    .SequencedAssembly(
-      'tfmg:heavy_plate',
-      'kubejs:intermediate_steel_ingot_cast'
-    )
+    .SequencedAssembly('tfmg:heavy_plate')
     .deploy('tfmg:steel_ingot')
     .press(3)
-    .outputs('kubejs:steel_ingot_cast')
-  create
-    .SequencedAssembly('tfmg:heavy_plate', 'kubejs:intermediate_steel_gem_cast')
-    .deploy('minecraft:diamond')
-    .press(3)
-    .outputs('kubejs:steel_gem_cast')
-  create
-    .SequencedAssembly(
-      'tfmg:heavy_plate',
-      'kubejs:intermediate_steel_block_cast'
-    )
-    .deploy('tfmg:steel_block')
-    .press(3)
-    .outputs('kubejs:steel_block_cast')
+    .outputs([
+      'kubejs:steel_ingot_cast',
+      Item.of('tfmg:steel_ingot').withChance(0.25),
+    ])
 
   // Recipe for screwdriver with rebar overhaul.
   e.remove({ id: 'tfmg:stonecutting/rebar' })

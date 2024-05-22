@@ -8,105 +8,106 @@
 
 global.metallurgy = {}
 
+// The colors must be kept synchronized with the list in
+// generate_fluid_textures.py
 global.metallurgy.meltable_items = [
   new MeltableItem({
     nugget: 'minecraft:iron_nugget',
     ingot: 'minecraft:iron_ingot',
     block: 'minecraft:iron_block',
     fluid: 'kubejs:molten_iron',
-    fluidColor: 0x790a0a,
+    bucketColor: 0x5a0303,
   }),
   new MeltableItem({
     nugget: 'create:copper_nugget',
     ingot: 'minecraft:copper_ingot',
     block: 'minecraft:copper_block',
     fluid: 'kubejs:molten_copper',
-    fluidColor: 0xa33b1f,
+    bucketColor: 0xa33b1f,
   }),
   new MeltableItem({
     nugget: 'minecraft:gold_nugget',
     ingot: 'minecraft:gold_ingot',
     block: 'minecraft:gold_block',
     fluid: 'kubejs:molten_gold',
-    fluidColor: 0xf3d000,
+    bucketColor: 0xecd129,
   }),
   new MeltableItem({
     nugget: 'create:zinc_nugget',
     ingot: 'create:zinc_ingot',
     block: 'create:zinc_block',
     fluid: 'kubejs:molten_zinc',
-    fluidColor: 0xaebda8,
+    bucketColor: 0xaebda8,
   }),
   new MeltableItem({
     nugget: 'create:brass_nugget',
     ingot: 'create:brass_ingot',
     block: 'create:brass_block',
     fluid: 'kubejs:molten_brass',
-    fluidColor: 0xf8ca67,
+    bucketColor: 0xd19c39,
   }),
   new MeltableItem({
     nugget: 'thermal:lead_nugget',
     ingot: 'thermal:lead_ingot',
     block: 'thermal:lead_block',
     fluid: 'kubejs:molten_lead',
-    fluidColor: 0x262653,
+    bucketColor: 0x262653,
   }),
   new MeltableItem({
     nugget: 'thermal:silver_nugget',
     ingot: 'thermal:silver_ingot',
     block: 'thermal:silver_block',
     fluid: 'kubejs:molten_silver',
-    fluidColor: 0x64747c,
+    bucketColor: 0xa8b8bf,
   }),
   new MeltableItem({
     ingot: 'tfmg:steel_ingot',
     block: 'tfmg:steel_block',
     fluid: 'tfmg:molten_steel',
     noRegisterFluid: true,
-    fluidColor: 0xffed56,
+    fluidTextureLocation: 'tfmg:fluid/molten_steel_still',
     requiresSuperheating: true,
   }),
   new MeltableItem({
-    gem: 'quark:clear_shard',
-    block: '#forge:glass',
-    blockCastingOutput: 'minecraft:glass',
+    ingot: 'quark:clear_shard',
+    block: 'minecraft:glass',
     blockRatio: 4,
     fluid: 'kubejs:molten_glass',
-    fluidColor: 0xcee7e6,
-    noGemCastingRecipe: true,
+    bucketColor: 0xcee7e6,
+    noIngotCastingRecipe: true,
   }),
   new MeltableItem({
-    gem: 'minecraft:quartz',
+    ingot: 'minecraft:quartz',
     block: 'minecraft:quartz_block',
     blockRatio: 4,
     fluid: 'kubejs:molten_quartz',
-    fluidColor: 0xd6c0bf,
+    bucketColor: 0x9e9999,
   }),
   new MeltableItem({
-    gem: 'minecraft:diamond',
+    ingot: 'minecraft:diamond',
     block: 'minecraft:diamond_block',
     fluid: 'kubejs:molten_diamond',
-    fluidColor: 0x25ebec,
     requiresSuperheating: true,
+    bucketColor: 0x1ec2c3,
   }),
   new MeltableItem({
-    gem: 'minecraft:emerald',
+    ingot: 'minecraft:emerald',
     block: 'minecraft:emerald_block',
     fluid: 'kubejs:molten_emerald',
-    fluidColor: 0x2cc879,
     requiresSuperheating: true,
+    bucketColor: 0x16bd6e,
   }),
   new MeltableItem({
-    gem: 'minecraft:lapis_lazuli',
+    ingot: 'minecraft:lapis_lazuli',
     block: 'minecraft:lapis_block',
     fluid: 'kubejs:molten_lapis',
-    fluidColor: 0x2c5cc8,
+    bucketColor: 0x2c5cc8,
   }),
   new MeltableItem({
-    gem: 'minecraft:redstone',
+    ingot: 'minecraft:redstone',
     block: 'minecraft:redstone_block',
     fluid: 'kubejs:molten_redstone',
-    fluidColor: 0xc82c2c,
+    bucketColor: 0x871515,
   }),
 ]
 
@@ -116,79 +117,21 @@ StartupEvents.registry('fluid', (e) => {
     i.registerFluid(e)
   })
 
-  // Molten Silicon has a custom fluid type and cannot be casted
+  // Molten Silicon cannot be casted
   e.create('kubejs:molten_silicon')
     .thickTexture(0x6e6074)
     .bucketColor(0x6e6074)
     .displayName('Molten Silicon')
 })
 
-// Register all metallurgy related items.
-StartupEvents.registry('item', (e) => {
-  // Helper method to dynamically create textures for the base casts that molten
-  // materials will be poured into.
-  const negatives = {
-    ingot: 'minecraft:iron_ingot',
-    gem: `kubejs:gem_cast_negative`,
-    block: `kubejs:block_cast_negative`,
-  }
-  const registerBaseCasts = (type, shape) => {
-    if (type !== 'clay' && type !== 'steel') {
-      throw Error(`Invalid type ${type} specified.`)
-    }
-    const baseColor =
-      type === 'clay'
-        ? MeltableItem.CLAY_CAST_COLOR
-        : MeltableItem.STEEL_CAST_COLOR
-    const negativeShape = negatives[shape]
-    if (negativeShape === undefined) {
-      throw Error(`Invalid shape ${shape} specified.`)
-    }
-    e.create(`kubejs:${type}_${shape}_cast`)
-      .textureJson({
-        layer0: `kubejs:item/blank_cast`,
-        layer1: getTextureLocation(negativeShape),
-      })
-      .color(0, baseColor)
-      .color(1, MeltableItem.NEGATIVE_CAST_COLOR)
-      .maxStackSize(16)
-  }
-  // Breakable clay casts for early metallurgy
-  registerBaseCasts('clay', 'gem')
-  registerBaseCasts('clay', 'ingot')
-  registerBaseCasts('clay', 'block')
-  // Reuseable steel casts for metallurgy
-  registerBaseCasts('steel', 'gem')
-  registerBaseCasts('steel', 'ingot')
-  registerBaseCasts('steel', 'block')
-
-  // Intermediate cast items created during the sequenced assembly recipes to
-  // make the reuseable casts. NOT the same as the intermediate items when
-  // metal is casted INTO the steel casts.
-  e.create('kubejs:intermediate_steel_ingot_cast')
-    .textureJson({
-      layer0: `kubejs:item/blank_cast`,
-      layer1: 'minecraft:item/iron_ingot',
-    })
-    .color(0, MeltableItem.STEEL_CAST_COLOR)
-    .color(1, MeltableItem.NEGATIVE_CAST_COLOR)
-    .maxStackSize(16)
-  e.create('kubejs:intermediate_steel_gem_cast')
-    .textureJson({
-      layer0: `kubejs:item/blank_cast`,
-      layer1: `kubejs:item/gem_cast_negative`,
-    })
-    .color(0, MeltableItem.STEEL_CAST_COLOR)
-    .color(1, MeltableItem.NEGATIVE_CAST_COLOR)
-    .maxStackSize(16)
-  e.create('kubejs:intermediate_steel_block_cast')
-    .textureJson({
-      layer0: `kubejs:item/blank_cast`,
-      layer1: `kubejs:item/block_cast_negative`,
-    })
-    .color(0, MeltableItem.STEEL_CAST_COLOR)
-    .color(1, MeltableItem.NEGATIVE_CAST_COLOR)
-    .maxStackSize(16)
+StartupEvents.registry('block', (e) => {
+  registerBaseIngotCast(e, 'kubejs:unfired_ingot_cast', 'minecraft:block/clay')
+  registerBaseIngotCast(
+    e,
+    'kubejs:ceramic_ingot_cast',
+    'minecraft:block/terracotta'
+  )
+  registerBaseIngotCast(e, 'kubejs:steel_ingot_cast', 'kubejs:block/steel')
 
   // Register casting recipes for the meltable items into both the clay and
   // steel casts.

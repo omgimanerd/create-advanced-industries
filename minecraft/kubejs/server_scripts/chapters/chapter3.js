@@ -56,10 +56,19 @@ ServerEvents.recipes((e) => {
   create.milling('4x minecraft:clay_ball', 'minecraft:clay')
   create.cutting('4x minecraft:clay_ball', 'minecraft:clay')
 
-  // Clay block cutting into cast
-  e.stonecutting('kubejs:clay_ingot_cast', 'minecraft:clay')
-  e.stonecutting('kubejs:clay_gem_cast', 'minecraft:clay')
-  e.stonecutting('kubejs:clay_block_cast', 'minecraft:clay')
+  // Unfired clay casts
+  e.shaped(
+    'kubejs:unfired_ingot_cast',
+    [
+      'C C', //
+      'CCC', //
+    ],
+    {
+      C: 'minecraft:clay_ball',
+    }
+  )
+  e.stonecutting('kubejs:unfired_ingot_cast', 'minecraft:clay')
+  e.blasting('kubejs:ceramic_ingot_cast', 'kubejs:unfired_ingot_cast')
 
   // Tuff recipe overhaul
   e.recipes.ars_nouveau
