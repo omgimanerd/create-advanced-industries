@@ -650,20 +650,12 @@
 			description: ["With steel unlocked, you can now make reusable casts for all your metallurgy needs."]
 			id: "319612B4B3D441C1"
 			optional: true
-			rewards: [
-				{
-					count: 16
-					id: "77B44FDC63DCC18E"
-					item: "kubejs:steel_gem_cast"
-					type: "item"
-				}
-				{
-					count: 16
-					id: "25033B91F31F44D2"
-					item: "kubejs:steel_ingot_cast"
-					type: "item"
-				}
-			]
+			rewards: [{
+				count: 16
+				id: "25033B91F31F44D2"
+				item: "kubejs:steel_ingot_cast"
+				type: "item"
+			}]
 			tasks: [{
 				id: "2B6FB6CF481C817D"
 				item: {

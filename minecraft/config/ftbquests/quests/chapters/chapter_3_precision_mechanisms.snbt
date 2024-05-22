@@ -134,7 +134,7 @@
 			id: "4A50DE1D6F439D92"
 			tasks: [{
 				id: "739E59579E632A00"
-				item: "kubejs:molten_brass_clay_cast"
+				item: "kubejs:ceramic_ingot_cast_molten_brass"
 				type: "item"
 			}]
 			x: 10.0d
@@ -265,7 +265,7 @@
 			id: "30DEFE72650445CE"
 			tasks: [{
 				id: "241015E19BE6C321"
-				item: "kubejs:clay_ingot_cast"
+				item: "kubejs:unfired_ingot_cast"
 				type: "item"
 			}]
 			x: 8.0d
@@ -496,12 +496,12 @@
 			rewards: [{
 				count: 16
 				id: "271264FD6A0CDA69"
-				item: "kubejs:clay_gem_cast"
+				item: "kubejs:ceramic_ingot_cast"
 				type: "item"
 			}]
 			tasks: [{
 				id: "07F3484B900E9C6E"
-				item: "kubejs:molten_quartz_clay_cast"
+				item: "kubejs:ceramic_ingot_cast_molten_quartz"
 				type: "item"
 			}]
 			x: 8.0d
