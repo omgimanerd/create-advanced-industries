@@ -26,6 +26,13 @@ ServerEvents.recipes((e) => {
   ////////////
   e.remove({ output: '#forge:nuggets', type: 'create:splashing' })
 
+  ////////////////////////////
+  // Create Misc and Things //
+  ////////////////////////////
+
+  // Can't suppress other recipe warnings.
+  e.remove({ id: 'create:filling/chocolate_bagutte' })
+
   ///////////////////////////////////
   // Create: The Factory Must Grow //
   ///////////////////////////////////
