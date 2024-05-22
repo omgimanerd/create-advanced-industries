@@ -18,6 +18,7 @@ const registerCast = (e, id, displayName, modelJson) => {
     .notSolid()
     .requiresTool(true)
     .tagBlock('minecraft:mineable/pickaxe')
+    .tagBlock('create:wrench_pickup')
     .item((item) => {
       item.modelJson(modelJson).maxStackSize(8)
     })

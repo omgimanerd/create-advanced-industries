@@ -11,10 +11,6 @@ ItemEvents.rightClicked('kubejs:unbreakable_screwdriver', (e) => {
 ServerEvents.tags('item', (e) => {
   e.add('kubejs:screwdriver', 'tfmg:screwdriver')
   e.add('kubejs:screwdriver', 'kubejs:unbreakable_screwdriver')
-
-  e.add('kubejs:steel_casts', 'kubejs:steel_ingot_cast')
-  e.add('kubejs:steel_casts', 'kubejs:steel_gem_cast')
-  e.add('kubejs:steel_casts', 'kubejs:steel_block_cast')
 })
 
 ServerEvents.recipes((e) => {
