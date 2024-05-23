@@ -94,7 +94,7 @@ BlockEvents.rightClicked('minecraft:moss_block', (e) => {
     block.set(newBlock)
     server.scheduleInTicks(delay, (c) => {
       const newProbability = probability * decayFactor
-      const newDelay = delay + randRange(10)
+      const newDelay = delay + global.randRange(10)
       decayedSpread(block.north, newProbability, decayFactor, newDelay)
       decayedSpread(block.south, newProbability, decayFactor, newDelay)
       decayedSpread(block.east, newProbability, decayFactor, newDelay)
@@ -102,7 +102,7 @@ BlockEvents.rightClicked('minecraft:moss_block', (e) => {
       c.reschedule()
     })
   }
-  decayedSpread(block, 1, 0.5, randRange(10))
+  decayedSpread(block, 1, 0.5, global.randRange(10))
 })
 
 /**
@@ -158,7 +158,7 @@ const computeAmethystGolemFeedResults = (
   for (const effect of effects) {
     let mobEffectInstance = effect.getFirst()
     let mobEffect = mobEffectInstance.getEffect()
-    let effectApplied = randRange(0, 1) < effect.getSecond()
+    let effectApplied = global.randRange(0, 1) < effect.getSecond()
     if (!effectApplied) {
       continue
     }
@@ -194,7 +194,7 @@ const computeAmethystGolemFeedResults = (
   // d = -4
   //
   // Only beneficial effects can raise the lootTier above 3.2
-  const lootExponential = exponential(1, 1.123349, 0, -4)
+  const lootExponential = global.exponential(1, 1.123349, 0, -4)
   let lootTier = lootExponential(nutrition) * nutritionMultiplier
 
   // The quantity of output for each tier is also correlated with the
@@ -205,7 +205,7 @@ const computeAmethystGolemFeedResults = (
   // b = (5/1) ^ (1/10) ~ 1.174618
   // c = 0
   // d = -1
-  const quantityExponential = exponential(1, 1.174618, 0, -1)
+  const quantityExponential = global.exponential(1, 1.174618, 0, -1)
   const outputItems = [
     'minecraft:small_amethyst_bud',
     'minecraft:medium_amethyst_bud',
@@ -230,7 +230,7 @@ const computeAmethystGolemFeedResults = (
   // b = 0.8
   // c = 0
   // d = -4
-  const cooldownExponential = exponential(8, 0.8, 0, -4)
+  const cooldownExponential = global.exponential(8, 0.8, 0, -4)
   const avg =
     (saturation + nutrition) * 0.5 * nutritionMultiplier * saturationModifier
   // Feed cooldown in ticks
@@ -560,7 +560,7 @@ global.PortalBlockTickingCallback = (e) => {
   let nextEatTime = pdata.getInt('next_eat_time') // stored as tick count
   const currentTime = level.server.getTickCount()
   if (nextEatTime === 0) {
-    nextEatTime = currentTime + randRangeInt(200, 400)
+    nextEatTime = currentTime + global.randRangeInt(200, 400)
   } else if (currentTime >= nextEatTime && surrounding.length > 0) {
     /** @type {Internal.BlockContainerJS} */
     let eatLocation = choice(surrounding)
@@ -573,7 +573,7 @@ global.PortalBlockTickingCallback = (e) => {
       0.1
     )
     eatLocation.set('minecraft:air')
-    nextEatTime = currentTime + randRangeInt(200, 400)
+    nextEatTime = currentTime + global.randRangeInt(200, 400)
   }
   pdata.put('next_eat_time', nextEatTime)
 
@@ -593,7 +593,7 @@ global.PortalBlockTickingCallback = (e) => {
   } else {
     instability = 0
   }
-  if (randRange(100) < instability) {
+  if (global.randRange(100) < instability) {
     level.destroyBlock(block, false)
     block.createExplosion().causesFire(false).strength(1).explode()
   } else {

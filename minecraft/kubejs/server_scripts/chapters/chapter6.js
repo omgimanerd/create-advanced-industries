@@ -437,7 +437,7 @@ ServerEvents.recipes((e) => {
     // bar.
     const xpCost = global.levelToXp(levels) - global.levelToXp(levels - 3)
     // Hyper XP is a 10:1 conversion to allow for higher experience levels.
-    let hyperXp = roundToNearest(xpCost / 10, 5)
+    let hyperXp = global.roundToNearest(xpCost / 10, 5)
     // Honey bottle enchanting is extremely inefficient, disabled to avoid
     // cluttering JEI
     if (recipe.input.item === 'minecraft:honey_bottle') return

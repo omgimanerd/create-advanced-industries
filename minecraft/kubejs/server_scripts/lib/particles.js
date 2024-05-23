@@ -94,9 +94,9 @@ const spawnEffectParticles = (level, pos, count, spread, color) => {
     level.spawnParticles(
       'minecraft:entity_effect',
       true, // overrideLimiter
-      x + randRange(-spread, spread), // x position
+      x + global.randRange(-spread, spread), // x position
       y, // y position
-      z + randRange(-spread, spread), //  z position
+      z + global.randRange(-spread, spread), //  z position
       r, // vx, used as r channel, values in [0, 1)
       g, // vy, used as g channel, values in [0, 1)
       b, // vz, used as b channel, values in [0, 1)
@@ -122,9 +122,9 @@ const spawnNoteParticles = (level, pos, count, spread, pitch) => {
     level.spawnParticles(
       'minecraft:note',
       true, // overrideLimiter
-      x + randRange(-spread, spread), // x position
-      y + randRange(-spread, spread), // y position
-      z + randRange(-spread, spread), // z position
+      x + global.randRange(-spread, spread), // x position
+      y + global.randRange(-spread, spread), // y position
+      z + global.randRange(-spread, spread), // z position
       pitch / 24, // vx, used as pitch when count is 0
       0, // vy, unused
       0, // vz, unused

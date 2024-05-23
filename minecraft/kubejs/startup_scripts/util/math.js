@@ -6,7 +6,7 @@
  * @param {number=} high
  * @returns {number}
  */
-const randRange = (low, high) => {
+global.randRange = (low, high) => {
   if (high === undefined) {
     high = low
     low = 0
@@ -19,8 +19,8 @@ const randRange = (low, high) => {
  * @param {number=} high
  * @returns {number}
  */
-const randRangeInt = (low, high) => {
-  return Math.floor(randRange(low, high))
+global.randRangeInt = (low, high) => {
+  return Math.floor(global.randRange(low, high))
 }
 
 /**
@@ -33,7 +33,7 @@ const randRangeInt = (low, high) => {
  * @param {number} base
  * @returns {number}
  */
-const roundToNearest = (x, base) => {
+global.roundToNearest = (x, base) => {
   return Math.round(x / base) * base
 }
 
@@ -45,7 +45,7 @@ const roundToNearest = (x, base) => {
  * @param {number} b The upper bound, inclusive
  * @returns {number}
  */
-const clamp = (x, a, b) => {
+global.clamp = (x, a, b) => {
   return Math.max(a, Math.min(x, b))
 }
 
@@ -59,7 +59,7 @@ const clamp = (x, a, b) => {
  * @param {number} d Constant x-offset
  * @returns {function(number)}
  */
-const exponential = (a, b, c, d) => {
+global.exponential = (a, b, c, d) => {
   return (x) => {
     return a * (b ** (x + d)) + c // prettier-ignore
   }

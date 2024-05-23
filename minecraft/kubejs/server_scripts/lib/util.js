@@ -97,7 +97,7 @@ const getSurroundingBlocks = (block) => {
  */
 const choice = (l) => {
   if (l.length === 0) return null
-  return l[randRangeInt(0, l.length)]
+  return l[global.randRangeInt(0, l.length)]
 }
 
 /**
