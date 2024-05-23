@@ -365,15 +365,8 @@ global.BuddingAmethystSpoutHandlerCallback = (block, fluid, simulate) => {
  */
 EntityEvents.spawned('ars_nouveau:an_lightning', (e) => {
   let { entity, level } = e
-  for (const [offsetX, offsetY, offsetZ] of getOffsetList({
-    minX: -1,
-    maxX: 1,
-    minY: -1,
-    maxY: 1,
-    minZ: -1,
-    maxZ: 1,
-  })) {
-    let block = entity.block.offset(offsetX, offsetY, offsetZ)
+  for (const vec of getOffsetList(AABB.of(-1, -1, -1, 1, 1, 1))) {
+    let block = entity.block.offset(vec.x, vec.y, vec.z)
     if (block == 'minecraft:emerald_block') {
       let pos = block.getPos()
       let trader = level.createEntity('minecraft:wandering_trader')

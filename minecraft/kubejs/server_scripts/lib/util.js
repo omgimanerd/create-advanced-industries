@@ -15,22 +15,15 @@ const stripOutputPrefix = (s) => {
  * Generates a list of 3-length arrays containing all the relative coordinates
  * within the given relative coordinate offset object.
  *
- * @param {object} o An object with min/max X,Y,Z relative bounds specified.
- * @returns {(number[])[]}
+ * @param {Internal.AABB} aabb
+ * @returns {Vec3i[]}
  */
-const getOffsetList = (o) => {
-  const minX = o.minX === undefined ? 0 : o.minX
-  const maxX = o.maxX === undefined ? o.minX + 1 : o.maxX
-  const minY = o.minY === undefined ? 0 : o.minY
-  const maxY = o.maxY === undefined ? o.minY + 1 : o.maxY
-  const minZ = o.minZ === undefined ? 0 : o.minZ
-  const maxZ = o.maxZ === undefined ? o.minZ + 1 : o.maxZ
-
+const getOffsetList = (aabb) => {
   const offsetList = []
-  for (const x = minX; x <= maxX; x++) {
-    for (const y = minY; y <= maxY; y++) {
-      for (const z = minZ; z <= maxZ; z++) {
-        offsetList.push([x, y, z])
+  for (const x = aabb.minX; x <= aabb.maxX; x++) {
+    for (const y = aabb.minY; y <= aabb.maxY; y++) {
+      for (const z = aabb.minZ; z <= aabb.maxZ; z++) {
+        offsetList.push(new Vec3i(x, y, z))
       }
     }
   }
