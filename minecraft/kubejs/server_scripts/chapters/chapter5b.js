@@ -339,7 +339,7 @@ global.BuddingAmethystSpoutHandlerCallback = (block, fluid, simulate) => {
     'minecraft:large_amethyst_bud': 'minecraft:amethyst_cluster',
   }
   let growCandidates = []
-  for (const surroundingBlock of getSurroundingBlocks(block)) {
+  for (const surroundingBlock of global.getSurroundingBlocks(block)) {
     if (surroundingBlock.id in growthStates) {
       growCandidates.push(surroundingBlock)
     }
@@ -365,7 +365,7 @@ global.BuddingAmethystSpoutHandlerCallback = (block, fluid, simulate) => {
  */
 EntityEvents.spawned('ars_nouveau:an_lightning', (e) => {
   let { entity, level } = e
-  for (const vec of getOffsetList(AABB.of(-1, -1, -1, 1, 1, 1))) {
+  for (const vec of global.getOffsetList(AABB.of(-1, -1, -1, 1, 1, 1))) {
     let block = entity.block.offset(vec.x, vec.y, vec.z)
     if (block == 'minecraft:emerald_block') {
       let pos = block.getPos()
