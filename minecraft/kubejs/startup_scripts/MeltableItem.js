@@ -22,10 +22,6 @@ function MeltableItem(options) {
     : MeltableItem.DEFAULT_BLOCK_RATIO
   this.requiresSuperheating = options.requiresSuperheating
 
-  // Names of the casts that the molten liquids will be poured into.
-  this.ceramicIngotCast = 'kubejs:ceramic_ingot_cast'
-  this.steelIngotCast = 'kubejs:steel_ingot_cast'
-
   // Names of the items that result from having the molten liquids poured into
   // them.
   this.fluidName = stripModPrefix(this.fluid)
@@ -39,7 +35,9 @@ MeltableItem.DEFAULT_NUGGET_FLUID = 10
 MeltableItem.DEFAULT_INGOT_FLUID = 90
 MeltableItem.DEFAULT_BLOCK_RATIO = 9
 
+MeltableItem.CERAMIC_INGOT_CAST = 'kubejs:ceramic_ingot_cast'
 MeltableItem.CERAMIC_CAST_RETURN_CHANCE = 0.25
+MeltableItem.STEEL_INGOT_CAST = 'kubejs:steel_ingot_cast'
 
 /**
  * Registers the fluid for the MeltableItem if necessary.
@@ -67,22 +65,20 @@ MeltableItem.prototype.registerCastedItems = function (e) {
   const fluidTextureLocation = this.fluidTextureLocation
     ? this.fluidTextureLocation
     : `kubejs:fluid/${this.fluidName}_still`
-  if (!this.noIngotCastingRecipe) {
-    registerFilledIngotCast(
-      e,
-      this.ceramicMoltenIngotCast,
-      `Ceramic Ingot Cast (${this.fluidDisplayName})`,
-      'minecraft:block/terracotta',
-      fluidTextureLocation
-    )
-    registerFilledIngotCast(
-      e,
-      this.steelMoltenIngotCast,
-      `Steel Ingot Cast (${this.fluidDisplayName})`,
-      'kubejs:block/steel',
-      fluidTextureLocation
-    )
-  }
+  registerFilledIngotCast(
+    e,
+    this.ceramicMoltenIngotCast,
+    `Ceramic Ingot Cast (${this.fluidDisplayName})`,
+    'minecraft:block/terracotta',
+    fluidTextureLocation
+  )
+  registerFilledIngotCast(
+    e,
+    this.steelMoltenIngotCast,
+    `Steel Ingot Cast (${this.fluidDisplayName})`,
+    'kubejs:block/steel',
+    fluidTextureLocation
+  )
 }
 
 /**
@@ -140,11 +136,11 @@ MeltableItem.prototype.registerCastingRecipes = function (e) {
   if (!this.noIngotCastingRecipe) {
     e.recipes.create.filling(this.ceramicMoltenIngotCast, [
       Fluid.of(this.fluid, MeltableItem.DEFAULT_INGOT_FLUID),
-      this.ceramicIngotCast,
+      MeltableItem.CERAMIC_INGOT_CAST,
     ])
     e.recipes.create.filling(this.steelMoltenIngotCast, [
       Fluid.of(this.fluid, MeltableItem.DEFAULT_INGOT_FLUID),
-      this.steelIngotCast,
+      MeltableItem.STEEL_INGOT_CAST,
     ])
   }
   return this
@@ -158,14 +154,14 @@ MeltableItem.prototype.registerWashedCastRecipes = function (e) {
     e.recipes.create.splashing(
       [
         this.ingot,
-        Item.of(this.ceramicIngotCast).withChance(
+        Item.of(MeltableItem.CERAMIC_INGOT_CAST).withChance(
           MeltableItem.CERAMIC_CAST_RETURN_CHANCE
         ),
       ],
       this.ceramicMoltenIngotCast
     )
     e.recipes.create.splashing(
-      [this.ingot, this.steelIngotCast],
+      [this.ingot, MeltableItem.STEEL_INGOT_CAST],
       this.steelMoltenIngotCast
     )
   }

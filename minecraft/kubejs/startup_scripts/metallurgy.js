@@ -125,13 +125,14 @@ StartupEvents.registry('fluid', (e) => {
 })
 
 StartupEvents.registry('block', (e) => {
+  // Unfilled casts that molten metals will be poured into.
   registerBaseIngotCast(e, 'kubejs:unfired_ingot_cast', 'minecraft:block/clay')
   registerBaseIngotCast(
     e,
-    'kubejs:ceramic_ingot_cast',
+    MeltableItem.CERAMIC_INGOT_CAST,
     'minecraft:block/terracotta'
   )
-  registerBaseIngotCast(e, 'kubejs:steel_ingot_cast', 'kubejs:block/steel')
+  registerBaseIngotCast(e, MeltableItem.STEEL_INGOT_CAST, 'kubejs:block/steel')
 
   // Register casting recipes for the meltable items into both the clay and
   // steel casts.
