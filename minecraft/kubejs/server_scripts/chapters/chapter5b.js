@@ -345,7 +345,7 @@ global.BuddingAmethystSpoutHandlerCallback = (block, fluid, simulate) => {
     }
   }
   /** @type {Internal.BlockContainerJS} */
-  const candidate = choice(growCandidates)
+  const candidate = global.choice(growCandidates)
   if (candidate === null) return 0
   // All possible short circuit conditions need to be evaluated before here.
   // The simulate check should only perform actual updates if necessary, but
@@ -563,7 +563,7 @@ global.PortalBlockTickingCallback = (e) => {
     nextEatTime = currentTime + global.randRangeInt(200, 400)
   } else if (currentTime >= nextEatTime && surrounding.length > 0) {
     /** @type {Internal.BlockContainerJS} */
-    let eatLocation = choice(surrounding)
+    let eatLocation = global.choice(surrounding)
     spawnParticles(
       level,
       'minecraft:enchant',

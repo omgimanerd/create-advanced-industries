@@ -24,6 +24,16 @@ global.randRangeInt = (low, high) => {
 }
 
 /**
+ * Returns a random element from the given array, or null if the array is empty.
+ * @param {any[]} l
+ * @returns {?any}
+ */
+global.choice = (l) => {
+  if (l.length === 0) return null
+  return l[global.randRangeInt(0, l.length)]
+}
+
+/**
  * Rounds a number x to the nearest base.
  *
  * roundToNearest(66, 100) => 100

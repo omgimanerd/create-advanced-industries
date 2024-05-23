@@ -91,16 +91,6 @@ const getSurroundingBlocks = (block) => {
 }
 
 /**
- * Returns a random element from the given array, or null if the array is empty.
- * @param {any[]} l
- * @returns {?any}
- */
-const choice = (l) => {
-  if (l.length === 0) return null
-  return l[global.randRangeInt(0, l.length)]
-}
-
-/**
  * For shaped recipes, the passed key object must only include keys used in the
  * pattern. For ease of use, a shared key object is used for multiple recipe
  * remappings, so this helper returns a copy of the key object with all the
