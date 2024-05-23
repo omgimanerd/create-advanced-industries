@@ -1,7 +1,5 @@
 // priority: 1000
 
-// Utility methods for functional programming
-
 /**
  * @param {dev.latvian.mods.kubejs.recipe.RecipesEventJS} e
  * @param {Function} fn

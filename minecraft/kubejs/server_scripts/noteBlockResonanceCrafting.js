@@ -134,6 +134,7 @@ global.RegisterNoteBlockResonanceCraft = (input, output, notes, underBlock) => {
 }
 
 /**
+ * Forge event handler register in startup_scripts
  * @param {Internal.NoteBlockEvent} e
  */
 global.NoteBlockEvent = (e) => {
