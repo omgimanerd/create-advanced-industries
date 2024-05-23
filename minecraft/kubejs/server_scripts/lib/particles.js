@@ -118,7 +118,6 @@ const spawnNoteParticles = (level, pos, count, spread, pitch) => {
   spread = spread === undefined ? 0.25 : spread
   pitch = pitch === undefined ? 0 : pitch
   const [x, y, z] = parseVec3Like(pos)
-  console.log(pitch, typeof pitch)
   for (let i = 0; i < count; ++i) {
     level.spawnParticles(
       'minecraft:note',
