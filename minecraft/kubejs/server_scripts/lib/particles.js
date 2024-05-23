@@ -24,7 +24,7 @@ const parseVec3Like = (v) => {
 /**
  * Helper for calling Level.spawnParticles
  * @param {Internal.Level} level
- * @param {Internal.ParticleOptions_} particle
+ * @param {Internal.ParticleOptions_} particl0
  * @param {Vec3Like} pos
  * @param {number|Vec3Like} v
  * @param {number} count
@@ -64,7 +64,7 @@ const spawnParticles = (
 
 /**
  * @param {Internal.Level} level
- * @param {BlockPos} pos
+ * @param {Vec3Like} pos
  * @param {number} count
  * @param {number} spread
  * @param {number[]} color Color as array of RGBE values in [0, 1)
@@ -102,6 +102,35 @@ const spawnEffectParticles = (level, pos, count, spread, color) => {
       b, // vz, used as b channel, values in [0, 1)
       0, // count, must be 0 for 'minecraft:entity_effect'
       e // speed, used as intensity, multiplied into r, g, b
+    )
+  }
+}
+
+/**
+ * @param {Internal.Level} level
+ * @param {Vec3Like} pos
+ * @param {number} count
+ * @param {number} spread
+ * @param {number} pitch
+ */
+const spawnNoteParticles = (level, pos, count, spread, pitch) => {
+  count = count === undefined ? 1 : count
+  spread = spread === undefined ? 0.25 : spread
+  pitch = pitch === undefined ? 0 : pitch
+  const [x, y, z] = parseVec3Like(pos)
+  console.log(pitch, typeof pitch)
+  for (let i = 0; i < count; ++i) {
+    level.spawnParticles(
+      'minecraft:note',
+      true, // overrideLimiter
+      x + randRange(-spread, spread), // x position
+      y + randRange(-spread, spread), // y position
+      z + randRange(-spread, spread), // z position
+      pitch / 24, // vx, used as pitch when count is 0
+      0, // vy, unused
+      0, // vz, unused
+      0, // count, must be 0 for pitch argument
+      1 // speed, must be 1 for pitch argument to work
     )
   }
 }
