@@ -1,12 +1,6 @@
 // priority: 100
 // Recipe overhauls for Chapter 6 progression.
 
-global.RegisterNoteBlockResonanceCraft(
-  'minecraft:oak_log',
-  'minecraft:white_wool',
-  ['C4']
-)
-
 /**
  * @param {string} id
  * @param {string} rarity
