@@ -1,13 +1,11 @@
 // priority: 100
 // Recipe overhauls for Chapter 6 progression.
 
-/**
- * @param {string} jsonFilename
- * @returns {string}
- */
-const getGemId = (jsonFilename) => {
-  return jsonFilename.replace('gems/', '').replace(/\.json$/, '')
-}
+global.RegisterNoteBlockResonanceCraft(
+  'minecraft:oak_log',
+  'minecraft:white_wool',
+  ['C4']
+)
 
 /**
  * @param {string} id
@@ -84,7 +82,8 @@ ServerEvents.highPriorityData(() => {
   )
 
   for (const [k, v] of Object.entries(mergedJson)) {
-    let gemId = getGemId(k)
+    // Parse the gem ID from the filename
+    let gemId = k.replace('gems/', '').replace(/\.json$/, '')
     // Skip the gem if it is not loaded by the modpack.
     let allModsLoaded = true
     if (v.conditions) {

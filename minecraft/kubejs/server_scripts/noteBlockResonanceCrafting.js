@@ -1,4 +1,5 @@
 // priority: 1000
+// Self contained script to enable the note block resonance crafting mechanic
 
 let $CompoundTag = Java.loadClass('net.minecraft.nbt.CompoundTag')
 let $ItemStack = Java.loadClass('net.minecraft.world.item.ItemStack')
@@ -64,8 +65,8 @@ global.NoteBlockResonanceCrafts = {
    * Example object format, keyed by vanilla note id to craft:
    * {
    *   24: {
-   *     "ItemStack as CompoundTag": {
-   *       result: "ItemStack as CompoundTag",
+   *     [ItemStack as CompoundTag]: {
+   *       result: [ItemStack as CompoundTag],
    *       underBlock: "block.id|undefined"
    *     }
    *   }
@@ -82,11 +83,11 @@ global.NoteBlockResonanceCrafts = {
 global.RegisterNoteBlockResonanceCraft = (input, output, notes, underBlock) => {
   input = typeof input === 'string' ? Item.of(input) : input
   output = typeof output === 'string' ? Item.of(output) : output
-  if (input.class !== $ItemStack) {
+  if (input === null || input.class !== $ItemStack) {
     console.error(`Cannot process input ${input} for resonance craft!`)
     return
   }
-  if (output.class !== $ItemStack) {
+  if (output === null || output.class !== $ItemStack) {
     console.error(`Cannot process output ${output} for resonance craft!`)
     return
   }
@@ -134,7 +135,9 @@ global.RegisterNoteBlockResonanceCraft = (input, output, notes, underBlock) => {
 }
 
 /**
- * Forge event handler register in startup_scripts
+ * Event handler for when a note block is played to enable resonance crafting.
+ * The handler itself is registered in startup_scripts
+ *
  * @param {Internal.NoteBlockEvent} e
  */
 global.NoteBlockEvent = (e) => {
@@ -183,7 +186,7 @@ global.NoteBlockEvent = (e) => {
       level,
       p.getCenter().add(0, 0.5, 0),
       5,
-      0.3,
+      0.2,
       vanillaNoteId
     )
   }
