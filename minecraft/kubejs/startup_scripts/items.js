@@ -149,6 +149,9 @@ StartupEvents.registry('item', (e) => {
   // Elemental air gem
   registerItem('kubejs:topaz')
 
+  // Resonant ender pearl for melting to resonant ender
+  registerItem('kubejs:resonant_ender_pearl')
+
   // Hyper XP condenser
   registerItem('kubejs:xp_condenser').glow(true)
   registerItem('kubejs:inert_xp_condenser')

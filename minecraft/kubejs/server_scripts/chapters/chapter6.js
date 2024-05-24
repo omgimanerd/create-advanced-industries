@@ -211,7 +211,7 @@ ServerEvents.recipes((e) => {
     }
   }
 
-  // Thermal alloy recipes
+  // Thermal molten fluid components
   create
     .mixing(
       [
@@ -226,10 +226,10 @@ ServerEvents.recipes((e) => {
     )
     .superheated()
   create
-    .mixing(Fluid.of('kubejs:molten_redstone', 1000), [
+    .mixing(Fluid.of('kubejs:molten_redstone', 10), [
       Fluid.of('thermal:redstone', 500),
       potionFluid('quark:resilience', 500),
-      'minecraft:glowstone',
+      'minecraft:glowstone_dust',
     ])
     .superheated()
   create
@@ -244,6 +244,34 @@ ServerEvents.recipes((e) => {
       create.mixing(post, pre).heated()
     })
     .outputs(Fluid.of('thermal:glowstone', 250))
+  global.RegisterNoteBlockResonanceCraft(
+    'minecraft:ender_pearl',
+    'kubejs:resonant_ender_pearl',
+    ['E4', 'D4', 'C4', 'G4']
+  )
+  create
+    .compacting(Fluid.of('thermal:ender', 250), 'kubejs:resonant_ender_pearl')
+    .superheated()
+
+  // Thermal alloys dusts
+  e.remove({ id: 'thermal:lumium_dust_4' })
+  create.mixing('4x thermal:lumium_dust', [
+    '3x thermal:tin_dust',
+    'thermal:silver_dust',
+    Fluid.of('thermal:glowstone', 500),
+  ])
+  e.remove({ id: 'thermal:signalum_dust_4' })
+  create.mixing('4x thermal:signalum_dust', [
+    '3x copper:dust',
+    'thermal:silver_dust',
+    Fluid.of('thermal:redstone', 1000),
+  ])
+  e.remove({ id: 'thermal:enderium_dust_2' })
+  create.mixing('4x thermal:enderium_dust', [
+    '3x thermal:lead_dust',
+    'thermal:diamond_dust',
+    Fluid.of('thermal:ender', 500),
+  ])
 
   // Redstone pearls
   e.remove({ id: 'createteleporters:redstone_pearl_recipe' })
@@ -259,6 +287,7 @@ ServerEvents.recipes((e) => {
     'thermal:xp_crystal',
     'kubejs:xp_crystal'
   )
+  e.replaceInput({ mod: 'thermal' }, 'thermal:xp_crystal', 'kubejs:xp_crystal')
   create
     .SequencedAssembly('minecraft:experience_bottle')
     .deploy('minecraft:emerald')
