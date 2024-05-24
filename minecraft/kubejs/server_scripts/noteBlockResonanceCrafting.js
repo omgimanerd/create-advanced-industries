@@ -177,9 +177,7 @@ global.NoteBlockEvent = (e) => {
     }
 
     // Successful match, replace the item on the pedestal
-    nbt.merge({
-      itemStack: craftingResult.result,
-    })
+    nbt.put('itemStack', craftingResult.result)
     block.setEntityData(nbt)
     block.getEntity().updateBlock()
     spawnNoteParticles(
