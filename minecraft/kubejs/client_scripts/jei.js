@@ -98,8 +98,6 @@ JEIEvents.removeCategories((e) => {
 // })
 
 JEIAddedEvents.registerRecipes((e) => {
-  console.log('called')
-
   const { ingredientManager, jeiHelpers, vanillaRecipeFactory } = e.data
   /**
    * @param {Internal.ItemStack} itemStack

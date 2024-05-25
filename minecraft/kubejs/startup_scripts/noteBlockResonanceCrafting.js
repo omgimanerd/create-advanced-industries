@@ -260,9 +260,16 @@ ForgeEvents.onEvent('net.minecraftforge.event.level.NoteBlockEvent', (e) => {
   global.NoteBlockEventHandler(e)
 })
 
-// Recipe registrations
-global.RegisterResonanceCraftingRecipe(
-  'minecraft:ender_pearl',
-  'kubejs:resonant_ender_pearl',
-  ['E4', 'D4', 'C4', 'G4']
-)
+// Recipe registrations must happen here.
+StartupEvents.postInit(() => {
+  global.RegisterResonanceCraftingRecipe(
+    'minecraft:ender_pearl',
+    'kubejs:resonant_ender_pearl',
+    ['E4', 'D4', 'C4', 'G4']
+  )
+  global.RegisterResonanceCraftingRecipe(
+    'minecraft:honey_bottle',
+    'minecraft:ghast_tear',
+    ['F#4']
+  )
+})

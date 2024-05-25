@@ -1,32 +1,48 @@
 // priority: 100
 
-// JEIAddedEvents.registerCategories((e) => {
-//   const guiHelper = e.data.jeiHelpers.guiHelper
-//   e.custom('kubejs:resonance_crafting', (category) => {
-//     category
-//       .title('Resonance Crafting')
-//       .background(guiHelper.createBlankDrawable(100, 50))
-//       .icon(guiHelper.createDrawableItemStack(Item.of('minecraft:note_block')))
-//       .isRecipeHandled((recipe) => {
-//         return recipe?.type === 'kubejs:resonance_crafting'
-//       })
-//       .handleLookup((builder, recipe, focuses) => {
-//         builder.addSlot('input', 20, 20).addItemStack(Item.of(recipe.input))
-//         builder.addSlot('output', 60, 20).addItemStack(Item.of(recipe.output))
-//       })
-//       .setDrawHandler(
-//         (recipe, recipeSlotsView, guiGraphics, mouseX, mouseY) => {}
-//       )
-//   })
-// })
+JEIAddedEvents.registerCategories((e) => {
+  const guiHelper = e.data.jeiHelpers.guiHelper
+  const Integer = Java.loadClass('java.lang.Integer')
+  e.custom(global.RESONANCE_CRAFTING, (category) => {
+    category
+      .title('Resonance Crafting')
+      .background(guiHelper.createBlankDrawable(140, 50))
+      .icon(guiHelper.createDrawableItemStack(Item.of('minecraft:note_block')))
+      .isRecipeHandled(() => true) // Only appropriate recipes are added?
+      .handleLookup((builder, recipe) => {
+        const data = recipe.data
+        builder.addSlot('input', 20, 10).addItemStack(data.input)
+        builder.addSlot('output', 100, 10).addItemStack(data.output)
+      })
+      .setDrawHandler(
+        (recipe, recipeSlotsView, guiGraphics, mouseX, mouseY) => {
+          const sequence = recipe.data.sequence
+          console.log(Object.keys(guiGraphics))
 
-// JEIAddedEvents.registerRecipes((e) => {
-//   console.log(global.ResonanceCraftingRecipesJEI)
+          const drawCenteredString = guiGraphics.class.declaredMethods.filter(
+            (method) => method.name.includes('m_280137_')
+          )[0]
 
-//   if (!global.ResonanceCraftingRecipesJEI) return
-//   console.log(global.ResonanceCraftingRecipesJEI)
-//   for (const data of global.ResonanceCraftingRecipesJEI) {
-//     console.log(data)
-//     e.custom('kubejs:resonance_crafting').add(data)
-//   }
-// })
+          // What the fuck
+          for (let i = 0; i < sequence.length; ++i) {
+            drawCenteredString.invoke(guiGraphics, [
+              Client.font,
+              new String('test'),
+              Integer.valueOf('20'),
+              Integer.valueOf('20'),
+              Integer.valueOf('1'),
+            ])
+          }
+          guiGraphics.renderItem('ars_nouveau:arcane_pedestal', 20, 30, 0)
+        }
+      )
+  })
+})
+
+JEIAddedEvents.registerRecipes((e) => {
+  if (!global.ResonanceCraftingRecipesJEI) return
+  const r = e.custom(global.RESONANCE_CRAFTING)
+  for (const data of global.ResonanceCraftingRecipesJEI) {
+    r.add(data)
+  }
+})
