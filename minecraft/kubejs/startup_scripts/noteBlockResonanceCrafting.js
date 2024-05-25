@@ -1,5 +1,4 @@
-// priority: 1000
-// Self contained script to enable the note block resonance crafting mechanic
+// priority: 999
 
 let $CompoundTag = Java.loadClass('net.minecraft.nbt.CompoundTag')
 let $ItemStack = Java.loadClass('net.minecraft.world.item.ItemStack')
@@ -136,7 +135,7 @@ global.RegisterNoteBlockResonanceCraft = (input, output, notes, underBlock) => {
 
 /**
  * Event handler for when a note block is played to enable resonance crafting.
- * The handler itself is registered in startup_scripts
+ * Handler registered here to allow for easy reloading
  *
  * @param {Internal.NoteBlockEvent} e
  */
@@ -153,7 +152,7 @@ global.NoteBlockEvent = (e) => {
 
   // Search the surrounding pedestals for matching items in the resonance
   // crafts.
-  for (const vec of global.getOffsetList(AABB.of(-2, 0, -2, 2, 1, 2))) {
+  for (let vec of global.getOffsetList(AABB.of(-2, 0, -2, 2, 1, 2))) {
     let p = pos.offset(vec)
     let block = level.getBlock(p)
     let blockId = block.getId()
@@ -163,6 +162,7 @@ global.NoteBlockEvent = (e) => {
     ) {
       continue
     }
+
     let nbt = block.getEntityData()
     let itemStackCompoundTag = nbt.itemStack
     let craftingResult = resonanceCrafts[itemStackCompoundTag]
@@ -180,12 +180,28 @@ global.NoteBlockEvent = (e) => {
     nbt.put('itemStack', craftingResult.result)
     block.setEntityData(nbt)
     block.getEntity().updateBlock()
-    spawnNoteParticles(
-      level,
-      p.getCenter().add(0, 0.5, 0),
-      5,
-      0.2,
-      vanillaNoteId
-    )
+    let particlePos = p.getCenter().add(0, 1, 0)
+    let count = 5
+    let spread = -0.25
+    for (let i = 0; i < count; ++i) {
+      level.spawnParticles(
+        'minecraft:note',
+        true, // overrideLimiter
+        particlePos.x() + global.randRange(-spread, spread), // x position
+        particlePos.y() + global.randRange(-spread, spread), // y position
+        particlePos.z() + global.randRange(-spread, spread), // z position
+        vanillaNoteId / 24, // vx, used as pitch when count is 0
+        0, // vy, unused
+        0, // vz, unused
+        0, // count, must be 0 for pitch argument
+        1 // speed, must be 1 for pitch argument to work
+      )
+    }
   }
 }
+
+ForgeEvents.onEvent('net.minecraftforge.event.level.NoteBlockEvent', (e) => {
+  if (global.NoteBlockEvent) {
+    global.NoteBlockEvent(e)
+  }
+})
