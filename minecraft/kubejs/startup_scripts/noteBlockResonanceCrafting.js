@@ -3,6 +3,8 @@
 let $CompoundTag = Java.loadClass('net.minecraft.nbt.CompoundTag')
 let $ItemStack = Java.loadClass('net.minecraft.world.item.ItemStack')
 
+global.RESONANCE_CRAFTING = 'kubejs:resonance_crafting'
+
 global.Notes = [
   'F#3', // 0
   'G3', // 1
@@ -59,27 +61,57 @@ global.NoteToId = {
   'F#5': 24,
 }
 
-global.NoteBlockResonanceCrafts = {
-  /**
-   * Example object format, keyed by vanilla note id to craft:
-   * {
-   *   24: {
-   *     [ItemStack as CompoundTag]: {
-   *       result: [ItemStack as CompoundTag],
-   *       underBlock: "block.id|undefined"
-   *     }
-   *   }
-   * }
-   */
-}
+/**
+ * @typedef {Object} NoteBlockResonanceRecipeResult
+ * @property {Internal.ItemStack_} result
+ * @property {Internal.Block=} underBlock
+ *
+ * @typedef {Object.<Internal.ItemStack_, NoteBlockResonanceRecipeStep>}
+ *   NoteBlockResonanceRecipeStep
+ *
+ * Example object format, keyed by vanilla note id to craft:
+ * {
+ *   24: {
+ *     [ItemStack as CompoundTag]: {
+ *       result: [ItemStack as CompoundTag],
+ *       underBlock: "block.id|undefined"
+ *     }
+ *   }
+ * }
+ *
+ * @type {Object.<number, NoteBlockResonanceRecipeStep>}
+ */
+global.ResonanceCraftingRecipes = {}
 
 /**
+ * Example object format stored in this array.
+ * {
+ *   type: 'kubejs:resonance_crafting',
+ *   input: 'minecraft:stone',
+ *   output: 'minecraft:ender_pearl',
+ *   sequence: ['C4', 'E4', 'G4', 'D4'],
+ *   hideSequence: false
+ * }
+ *
+ * @typedef {Object} NoteBlockResonanceRecipeDataJEI
+ * @property {string} type
+ * @property {Internal.ItemStack_} input
+ * @property {Internal.ItemStack_} output
+ * @property {string[]} sequence
+ * @property {boolean=} hideSequence
+ *
+ * @type {NoteBlockResonanceRecipeDataJEI[]}
+ */
+global.ResonanceCraftingRecipesJEI = []
+
+/**
+ * This should be the API used to register Resonance Crafting recipes.
  * @param {InputItem_} input
  * @param {OutputItem_} output
  * @param {string[]} notes
- * @param {Internal.Block} underBlock
+ * @param {{underBlock:Internal.Block, hideSequence:boolean}} options
  */
-global.RegisterNoteBlockResonanceCraft = (input, output, notes, underBlock) => {
+global.RegisterResonanceCraftingRecipe = (input, output, notes, options) => {
   input = typeof input === 'string' ? Item.of(input) : input
   output = typeof output === 'string' ? Item.of(output) : output
   if (input === null || input.class !== $ItemStack) {
@@ -91,15 +123,23 @@ global.RegisterNoteBlockResonanceCraft = (input, output, notes, underBlock) => {
     return
   }
 
+  options = options === undefined ? {} : options
+
   /**
    * Helper to generate the transitional items.
    * @param {number} step
    * @returns {Internal.ItemStack}
    */
   let transitionalItem = (step) => {
-    return input.withNBT({
-      ResonanceCraftProgress: step,
-    })
+    return input
+      .withNBT({
+        ResonanceCraftProgress: step,
+      })
+      .withLore([
+        Text.aqua('Play the right note to resonate with this item...').italic(
+          false
+        ),
+      ])
   }
 
   for (let i = 0; i < notes.length; ++i) {
@@ -123,32 +163,48 @@ global.RegisterNoteBlockResonanceCraft = (input, output, notes, underBlock) => {
       transitionalItem(i + 1).save(outputTag)
     }
     // Create the recipe registration if it doesn't exist.
-    if (global.NoteBlockResonanceCrafts[vanillaNoteId] === undefined) {
-      global.NoteBlockResonanceCrafts[vanillaNoteId] = {}
+    if (global.ResonanceCraftingRecipes[vanillaNoteId] === undefined) {
+      global.ResonanceCraftingRecipes[vanillaNoteId] = {}
     }
-    global.NoteBlockResonanceCrafts[vanillaNoteId][inputTag] = {
+    global.ResonanceCraftingRecipes[vanillaNoteId][inputTag] = {
       result: outputTag,
-      underBlock: underBlock,
+      underBlock: options?.underBlock,
     }
   }
+
+  global.ResonanceCraftingRecipesJEI.push({
+    type: global.RESONANCE_CRAFTING,
+    input: input,
+    output: output,
+    sequence: notes,
+    hideSequence: !!options.hideSequence,
+  })
 }
 
 /**
  * Event handler for when a note block is played to enable resonance crafting.
- * Handler registered here to allow for easy reloading
+ * Handler registered here to allow for easy reloading.
  *
  * @param {Internal.NoteBlockEvent} e
  */
-global.NoteBlockEvent = (e) => {
+global.NoteBlockEventHandler = (e) => {
   if (e.level.isClientSide()) return
   const { level, pos, vanillaNoteId } = e
 
-  // First check if there are any resonance crafts for this note.
-  const resonanceCrafts = global.NoteBlockResonanceCrafts[vanillaNoteId]
+  // First check if there are any resonance crafts for this note
+  const resonanceCrafts = global.ResonanceCraftingRecipes[vanillaNoteId]
   if (resonanceCrafts === undefined) return
 
   // Store the block underneath the note block
-  const underBlock = level.getBlock(pos)
+  const underBlock = level.getBlock(pos.below())
+
+  /**
+   * Generates the random spread for the note particles.
+   * @returns {number}
+   */
+  const randomSpread = () => {
+    return (Math.random() * 2 * 0.4) - 0.2 // prettier-ignore
+  }
 
   // Search the surrounding pedestals for matching items in the resonance
   // crafts.
@@ -168,10 +224,11 @@ global.NoteBlockEvent = (e) => {
     let craftingResult = resonanceCrafts[itemStackCompoundTag]
     // No crafting recipe matching this particular item
     if (craftingResult === undefined) continue
+
     // The block underneath the note block does not match
     if (
-      craftingResult.underBlock !== undefined &&
-      craftingResult.underBlock !== underBlock
+      craftingResult.underBlock &&
+      craftingResult.underBlock !== underBlock.getId()
     ) {
       continue
     }
@@ -180,16 +237,15 @@ global.NoteBlockEvent = (e) => {
     nbt.put('itemStack', craftingResult.result)
     block.setEntityData(nbt)
     block.getEntity().updateBlock()
-    let particlePos = p.getCenter().add(0, 1, 0)
-    let count = 5
-    let spread = -0.25
+    let particlePos = p.getCenter().add(0, 0.3, 0)
+    let count = 10
     for (let i = 0; i < count; ++i) {
       level.spawnParticles(
         'minecraft:note',
         true, // overrideLimiter
-        particlePos.x() + global.randRange(-spread, spread), // x position
-        particlePos.y() + global.randRange(-spread, spread), // y position
-        particlePos.z() + global.randRange(-spread, spread), // z position
+        particlePos.x() + randomSpread(), // x position
+        particlePos.y() + randomSpread(), // y position
+        particlePos.z() + randomSpread(), // z position
         vanillaNoteId / 24, // vx, used as pitch when count is 0
         0, // vy, unused
         0, // vz, unused
@@ -201,7 +257,12 @@ global.NoteBlockEvent = (e) => {
 }
 
 ForgeEvents.onEvent('net.minecraftforge.event.level.NoteBlockEvent', (e) => {
-  if (global.NoteBlockEvent) {
-    global.NoteBlockEvent(e)
-  }
+  global.NoteBlockEventHandler(e)
 })
+
+// Recipe registrations
+global.RegisterResonanceCraftingRecipe(
+  'minecraft:ender_pearl',
+  'kubejs:resonant_ender_pearl',
+  ['E4', 'D4', 'C4', 'G4']
+)

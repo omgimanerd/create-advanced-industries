@@ -77,27 +77,29 @@ JEIEvents.removeCategories((e) => {
   e.remove('jumbofurnace:jumbo_furnace_upgrade')
 })
 
-JEIAddedEvents.registerCategories((e) => {
-  const jeiHelper = e.data.jeiHelpers
-  const guiHelper = jeiHelper.guiHelper
-  const nutrientInfusionRecipeType = $RecipeType.create(
-    'kubejs',
-    'nutrient_infusion',
-    jeiHelper.getRecipeType('anvil').get().getRecipeClass()
-  )
-  // Register a custom category for Nutrient Infusion enchantment
-  // TODO: does not work!
-  e.register(nutrientInfusionRecipeType, (category) => {
-    category
-      .title('Nutrient Infusion')
-      .icon(
-        guiHelper.createDrawableItemStack('minecraft:enchanted_golden_apple')
-      )
-      .isRecipeHandled(() => true)
-  })
-})
+// JEIAddedEvents.registerCategories((e) => {
+// const jeiHelper = e.data.jeiHelpers
+// const guiHelper = jeiHelper.guiHelper
+// const nutrientInfusionRecipeType = $RecipeType.create(
+//   'kubejs',
+//   'nutrient_infusion',
+//   jeiHelper.getRecipeType('anvil').get().getRecipeClass()
+// )
+// Register a custom category for Nutrient Infusion enchantment
+// TODO: does not work!
+// e.register(nutrientInfusionRecipeType, (category) => {
+//   category
+//     .title('Nutrient Infusion')
+//     .icon(
+//       guiHelper.createDrawableItemStack('minecraft:enchanted_golden_apple')
+//     )
+//     .isRecipeHandled(() => true)
+// })
+// })
 
 JEIAddedEvents.registerRecipes((e) => {
+  console.log('called')
+
   const { ingredientManager, jeiHelpers, vanillaRecipeFactory } = e.data
   /**
    * @param {Internal.ItemStack} itemStack

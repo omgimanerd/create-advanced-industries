@@ -244,11 +244,6 @@ ServerEvents.recipes((e) => {
       create.mixing(post, pre).heated()
     })
     .outputs(Fluid.of('thermal:glowstone', 250))
-  global.RegisterNoteBlockResonanceCraft(
-    'minecraft:ender_pearl',
-    'kubejs:resonant_ender_pearl',
-    ['E4', 'D4', 'C4', 'G4']
-  )
   create
     .compacting(Fluid.of('thermal:ender', 250), 'kubejs:resonant_ender_pearl')
     .superheated()
@@ -262,7 +257,7 @@ ServerEvents.recipes((e) => {
   ])
   e.remove({ id: 'thermal:signalum_dust_4' })
   create.mixing('4x thermal:signalum_dust', [
-    '3x copper:dust',
+    '3x thermal:copper_dust',
     'thermal:silver_dust',
     Fluid.of('thermal:redstone', 1000),
   ])

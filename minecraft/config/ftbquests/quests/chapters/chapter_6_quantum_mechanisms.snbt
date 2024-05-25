@@ -80,8 +80,8 @@
 					type: "item"
 				}
 			]
-			x: 7.0d
-			y: -3.0d
+			x: 10.5d
+			y: -1.0d
 		}
 		{
 			id: "008F1DC4AE49F8BA"
@@ -243,6 +243,26 @@
 			}]
 			x: 6.5d
 			y: -0.5d
+		}
+		{
+			id: "509B4F9E047728B6"
+			tasks: [{
+				id: "45DEB4EA69ED76CB"
+				item: "minecraft:dragon_breath"
+				type: "item"
+			}]
+			x: 6.0d
+			y: -4.0d
+		}
+		{
+			id: "16B375C5FB372B05"
+			tasks: [{
+				id: "02D6EC5D025BC752"
+				item: "apotheosis:infused_breath"
+				type: "item"
+			}]
+			x: 7.5d
+			y: -4.0d
 		}
 	]
 	title: "Chapter 6: Quantum Mechanisms"
