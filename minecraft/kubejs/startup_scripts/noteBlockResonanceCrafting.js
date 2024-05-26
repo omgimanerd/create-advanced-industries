@@ -287,7 +287,7 @@ global.NoteBlockEventHandler = (e) => {
         vanillaNoteId / 24, // vx, used as pitch when count is 0
         0, // vy, unused
         0, // vz, unused
-        0, // count, must be 0 for pitch argument
+        0, // count, must be 0 for pitch argument to work
         1 // speed, must be 1 for pitch argument to work
       )
     }
