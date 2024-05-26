@@ -5,7 +5,7 @@ let $ItemStack = Java.loadClass('net.minecraft.world.item.ItemStack')
 
 global.RESONANCE_CRAFTING = 'kubejs:resonance_crafting'
 
-global.Notes = [
+global.NOTES = [
   'F#3', // 0
   'G3', // 1
   'G#3', // 2
@@ -33,7 +33,7 @@ global.Notes = [
   'F#5', // 24
 ]
 
-global.NoteToId = {
+global.NOTE_TO_ID = {
   'F#3': 0,
   G3: 1,
   'G#3': 2,
@@ -61,25 +61,42 @@ global.NoteToId = {
   'F#5': 24,
 }
 
+global.NOTE_TO_COLOR = {
+  'F#3': Color.rgba(119, 210, 5, 0), // #77D700
+  G3: Color.rgba(149, 192, 0, 0), // #95C000
+  'G#3': Color.rgba(178, 165, 0, 0), // #B2A500
+  A3: Color.rgba(204, 134, 0, 0), // #CC8600
+  'A#3': Color.rgba(226, 101, 0, 0), // #E26500
+  B3: Color.rgba(243, 65, 0, 0), // #F34100
+  C4: Color.rgba(252, 30, 0, 0), // #FC1E00
+  'C#4': Color.rgba(254, 0, 15, 0), // #FE000F
+  D4: Color.rgba(247, 0, 51, 0), // #F70033,
+  'D#4': Color.rgba(232, 0, 90, 0), // #E8005A
+  E4: Color.rgba(207, 0, 131, 0), // #CF0083,
+  F4: Color.rgba(174, 0, 169, 0), // #AE00A9,
+  'F#4': Color.rgba(134, 0, 204, 0), // #8600CC
+  G4: Color.rgba(91, 0, 231, 0), // #5B00E7
+  'G#4': Color.rgba(45, 0, 249, 0), // #2D00F9,
+  A4: Color.rgba(2, 10, 254, 0), // #020AFE
+  'A#4': Color.rgba(0, 55, 246, 0), // #0037F6
+  B4: Color.rgba(0, 104, 224, 0), // #0068E0
+  C5: Color.rgba(0, 154, 188, 0), // #009ABC
+  'C#5': Color.rgba(0, 198, 141, 0), // #00C68D
+  D5: Color.rgba(0, 233, 88, 0), // #00E958
+  'D#5': Color.rgba(0, 252, 33, 0), // #00FC21
+  E5: Color.rgba(31, 252, 0, 0), // #1FFC00
+  F5: Color.rgba(89, 232, 0, 0), // #59E800
+  'F#5': Color.rgba(148, 193, 0, 0), // #94C100
+  '?': Color.rgba(255, 255, 255, 0), // Special case
+}
+
 /**
- * @typedef {Object} NoteBlockResonanceRecipeResult
- * @property {Internal.ItemStack_} result
- * @property {Internal.Block=} underBlock
- *
- * @typedef {Object.<Internal.ItemStack_, NoteBlockResonanceRecipeStep>}
- *   NoteBlockResonanceRecipeStep
- *
- * Example object format, keyed by vanilla note id to craft:
+ * Example object format, keyed by instrument and vanilla note id:
  * {
- *   24: {
- *     [ItemStack as CompoundTag]: {
- *       result: [ItemStack as CompoundTag],
- *       underBlock: "block.id|undefined"
- *     }
+ *   'harp:24': {
+ *     [ItemStack as CompoundTag]: [ItemStack as CompoundTag],
  *   }
  * }
- *
- * @type {Object.<number, NoteBlockResonanceRecipeStep>}
  */
 global.ResonanceCraftingRecipes = {}
 
@@ -89,7 +106,13 @@ global.ResonanceCraftingRecipes = {}
  *   type: 'kubejs:resonance_crafting',
  *   input: 'minecraft:stone',
  *   output: 'minecraft:ender_pearl',
- *   sequence: ['C4', 'E4', 'G4', 'D4'],
+ *   sequence: [{
+ *     note: 'C4',
+ *     instrument: 'harp',
+ *   }, {
+ *     note: 'D5',
+ *     instrument: 'bell',
+ *   }],
  *   hideSequence: false
  * }
  *
@@ -97,7 +120,7 @@ global.ResonanceCraftingRecipes = {}
  * @property {string} type
  * @property {Internal.ItemStack_} input
  * @property {Internal.ItemStack_} output
- * @property {string[]} sequence
+ * @property {{note:string, instrument:Internal.Instrument}[]} sequence
  * @property {boolean=} hideSequence
  *
  * @type {NoteBlockResonanceRecipeDataJEI[]}
@@ -105,13 +128,18 @@ global.ResonanceCraftingRecipes = {}
 global.ResonanceCraftingRecipesJEI = []
 
 /**
- * This should be the API used to register Resonance Crafting recipes.
+ * This is the method used to register Resonance Crafting recipes.
  * @param {InputItem_} input
  * @param {OutputItem_} output
- * @param {string[]} notes
- * @param {{underBlock:Internal.Block, hideSequence:boolean}} options
+ * @param {(string|{note:string, instrument:Internal.Instrument})[]} notes
+ * @param {boolean} hideSequence
  */
-global.RegisterResonanceCraftingRecipe = (input, output, notes, options) => {
+global.RegisterResonanceCraftingRecipe = (
+  input,
+  output,
+  notes,
+  hideSequence
+) => {
   input = typeof input === 'string' ? Item.of(input) : input
   output = typeof output === 'string' ? Item.of(output) : output
   if (input === null || input.class !== $ItemStack) {
@@ -122,8 +150,6 @@ global.RegisterResonanceCraftingRecipe = (input, output, notes, options) => {
     console.error(`Cannot process output ${output} for resonance craft!`)
     return
   }
-
-  options = options === undefined ? {} : options
 
   /**
    * Helper to generate the transitional items.
@@ -142,12 +168,30 @@ global.RegisterResonanceCraftingRecipe = (input, output, notes, options) => {
       ])
   }
 
+  // Register each individual note played as a recipe step
   for (let i = 0; i < notes.length; ++i) {
-    let vanillaNoteId = global.NoteToId[notes[i]]
-    if (vanillaNoteId === undefined) {
-      console.error(`Unknown note ID ${notes[i]}`)
+    // Input parsing, can accept an object or string
+    let note = notes[i]
+    let noteIsObj = typeof note === 'object'
+    let noteStr = noteIsObj ? note.note : note
+    if (noteStr === undefined) {
+      console.error(`Unknown note sequence ${notes}`)
       return
     }
+    let instrument = noteIsObj ? note.instrument : 'harp'
+    if (instrument === undefined || !(instrument in global.INSTRUMENTS)) {
+      console.error(`Unknown note sequence ${notes}`)
+      return
+    }
+
+    // Generate the recipe key from the instrument and note
+    let vanillaNoteId = global.NOTE_TO_ID[noteStr]
+    if (vanillaNoteId === undefined) {
+      console.error(`Unknown note ID ${note}`)
+      return
+    }
+    let recipeKey = `${instrument}:${vanillaNoteId}`
+
     let inputTag = new $CompoundTag()
     let outputTag = new $CompoundTag()
     // If this is the first step of the recipe, use the input item.
@@ -162,22 +206,20 @@ global.RegisterResonanceCraftingRecipe = (input, output, notes, options) => {
     } else {
       transitionalItem(i + 1).save(outputTag)
     }
-    // Create the recipe registration if it doesn't exist.
-    if (global.ResonanceCraftingRecipes[vanillaNoteId] === undefined) {
-      global.ResonanceCraftingRecipes[vanillaNoteId] = {}
+    // Create the recipe registration dict if it doesn't exist.
+    if (global.ResonanceCraftingRecipes[recipeKey] === undefined) {
+      global.ResonanceCraftingRecipes[recipeKey] = {}
     }
-    global.ResonanceCraftingRecipes[vanillaNoteId][inputTag] = {
-      result: outputTag,
-      underBlock: options?.underBlock,
-    }
+    global.ResonanceCraftingRecipes[recipeKey][inputTag] = outputTag
   }
 
+  // Make the recipe data available to JEI.
   global.ResonanceCraftingRecipesJEI.push({
     type: global.RESONANCE_CRAFTING,
     input: input,
     output: output,
     sequence: notes,
-    hideSequence: !!options.hideSequence,
+    hideSequence: !!hideSequence,
   })
 }
 
@@ -191,12 +233,16 @@ global.NoteBlockEventHandler = (e) => {
   if (e.level.isClientSide()) return
   const { level, pos, vanillaNoteId } = e
 
-  // First check if there are any resonance crafts for this note
-  const resonanceCrafts = global.ResonanceCraftingRecipes[vanillaNoteId]
+  // First check if there are any resonance crafts for this note and instrument
+  const noteBlock = level.getBlock(pos)
+  const instrument = noteBlock?.properties?.instrument
+  if (instrument === undefined) {
+    console.error('Unable to find note block instrument!')
+    return
+  }
+  const recipeKey = `${instrument}:${vanillaNoteId}`
+  const resonanceCrafts = global.ResonanceCraftingRecipes[recipeKey]
   if (resonanceCrafts === undefined) return
-
-  // Store the block underneath the note block
-  const underBlock = level.getBlock(pos.below())
 
   /**
    * Generates the random spread for the note particles.
@@ -225,16 +271,8 @@ global.NoteBlockEventHandler = (e) => {
     // No crafting recipe matching this particular item
     if (craftingResult === undefined) continue
 
-    // The block underneath the note block does not match
-    if (
-      craftingResult.underBlock &&
-      craftingResult.underBlock !== underBlock.getId()
-    ) {
-      continue
-    }
-
     // Successful match, replace the item on the pedestal
-    nbt.put('itemStack', craftingResult.result)
+    nbt.put('itemStack', craftingResult)
     block.setEntityData(nbt)
     block.getEntity().updateBlock()
     let particlePos = p.getCenter().add(0, 0.3, 0)
@@ -262,6 +300,58 @@ ForgeEvents.onEvent('net.minecraftforge.event.level.NoteBlockEvent', (e) => {
 
 // Recipe registrations must happen here.
 StartupEvents.postInit(() => {
+  /**
+   * Internal helper to get all items for a list of item ids or tags.
+   * @param {string[]} tags
+   * @returns {Internal.List<Internal.ItemStack_>}
+   */
+  let getAllItemStacks = (tags) => {
+    const itemStacks = Utils.newList()
+    for (const tag of tags) {
+      Ingredient.of(tag).itemIds.forEach((id) => {
+        itemStacks.add(Item.of(id))
+      })
+    }
+    return itemStacks
+  }
+
+  // Mapping of all note block instruments and the block required to play them
+  // This can only be populated after the item registry is available.
+  global.INSTRUMENTS = {
+    bass: getAllItemStacks([
+      '#minecraft:logs',
+      '#minecraft:planks',
+      '#minecraft:wooden_slabs',
+    ]),
+    snare: getAllItemStacks(['#minecraft:sand', 'minecraft:gravel']),
+    hat: getAllItemStacks([
+      'minecraft:glass',
+      'minecraft:sea_lantern',
+      'minecraft:beacon',
+    ]),
+    basedrum: getAllItemStacks([
+      '#minecraft:base_stone_overworld',
+      'minecraft:netherrack',
+      '#minecraft:nylium',
+      'minecraft:obsidian',
+      'minecraft:quartz_block',
+      '#forge:sandstone',
+    ]),
+    bell: [Item.of('minecraft:gold_block')],
+    flute: [Item.of('minecraft:clay')],
+    chime: [Item.of('minecraft:packed_ice')],
+    guitar: getAllItemStacks(['#minecraft:wool']),
+    xylophone: [Item.of('minecraft:bone_block')],
+    iron_xylophone: [Item.of('minecraft:iron_block')],
+    cow_bell: [Item.of('minecraft:soul_sand')],
+    didgeridoo: [Item.of('minecraft:pumpkin')],
+    bit: [Item.of('minecraft:emerald_block')],
+    banjo: [Item.of('minecraft:hay_block')],
+    harp: [Item.getEmpty()],
+  }
+
+  // Recipes must be registered here to work properly in JEI. For local testing,
+  // they can still be registered in server_scripts.
   global.RegisterResonanceCraftingRecipe(
     'minecraft:ender_pearl',
     'kubejs:resonant_ender_pearl',
@@ -270,6 +360,21 @@ StartupEvents.postInit(() => {
   global.RegisterResonanceCraftingRecipe(
     'minecraft:honey_bottle',
     'minecraft:ghast_tear',
-    ['F#4']
+    [
+      { note: 'E4', instrument: 'bell' },
+      { note: 'C4', instrument: 'bell' },
+      { note: 'D4', instrument: 'bell' },
+      { note: 'G3', instrument: 'bell' },
+    ]
+  )
+  global.RegisterResonanceCraftingRecipe(
+    'minecraft:skeleton_skull',
+    'minecraft:wither_skeleton_skull',
+    [
+      { note: 'D4', instrument: 'xylophone' },
+      { note: 'D4', instrument: 'xylophone' },
+      { note: 'D5', instrument: 'xylophone' },
+      { note: 'A4', instrument: 'xylophone' },
+    ]
   )
 })
