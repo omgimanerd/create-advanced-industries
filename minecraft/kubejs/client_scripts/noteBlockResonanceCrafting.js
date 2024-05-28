@@ -27,8 +27,8 @@ JEIAddedEvents.registerCategories((e) => {
   }
 
   const line1Y = 5
-  const line2Y = 25
-  const line3Y = 45
+  const line2Y = 23
+  const line3Y = 41
   const sequenceXStart = 30
 
   const guiHelper = e.data.jeiHelpers.guiHelper
