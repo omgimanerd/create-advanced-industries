@@ -49,7 +49,7 @@ SequencedAssembly.prototype.cut = function (repeats, processingTime) {
   this.steps_ = this.steps_.concat(
     Array(repeats).fill({
       type: 'cutting',
-      preItemText: 'Next: Cut on a Mechanical Saw',
+      preItemText: Text.of('Next: Cut on a Mechanical Saw'),
       processingTime: processingTime,
     })
   )
@@ -65,7 +65,7 @@ SequencedAssembly.prototype.press = function (repeats) {
   this.steps_ = this.steps_.concat(
     Array(repeats).fill({
       type: 'pressing',
-      preItemText: 'Next: Press with a Mechanical Press',
+      preItemText: Text.of('Next: Press with a Mechanical Press'),
     })
   )
   return this
@@ -85,13 +85,12 @@ SequencedAssembly.prototype.fill = function (fluid, qty_mb, fluidTextLabel) {
    */
   const f =
     qty_mb === undefined || qty_mb === null ? fluid : Fluid.of(fluid, qty_mb)
-  const fluidName = f.getFluidStack().getName().getString()
   qty_mb = f.amount
   this.steps_.push({
     type: 'filling',
-    preItemText: `Next: Fill with ${qty_mb}mb ${
-      fluidTextLabel === undefined ? fluidName : fluidTextLabel
-    }`,
+    preItemText: Text.of(`Next: Fill with ${qty_mb}mb `).append(
+      f.getFluidStack().getName()
+    ),
     fluid: f,
   })
   return this
@@ -102,11 +101,19 @@ SequencedAssembly.prototype.fill = function (fluid, qty_mb, fluidTextLabel) {
  * @param {boolean?} keepHeldItem
  * @returns {SequencedAssembly}
  */
-SequencedAssembly.prototype.deploy = function (item, keepHeldItem) {
-  const label = typeof item === 'string' ? item : item.id
+SequencedAssembly.prototype.deploy = function (
+  item,
+  keepHeldItem,
+  itemTextLabel
+) {
+  const itemStack = typeof item === 'string' ? Item.of(item) : item
+  const label =
+    itemTextLabel === undefined
+      ? itemStack.getHoverName()
+      : Text.of(itemTextLabel)
   this.steps_.push({
     type: 'deploying',
-    preItemText: `Next: Deploy ${label}`,
+    preItemText: Text.of(`Next: Deploy `).append(label),
     item: item,
     keepHeldItem: !!keepHeldItem,
   })
@@ -123,7 +130,7 @@ SequencedAssembly.prototype.energize = function (energyNeeded) {
   }
   this.steps_.push({
     type: 'energising',
-    preItemText: `Next: Energize with ${energyNeeded}RF`,
+    preItemText: Text.of(`Next: Energize with ${energyNeeded}RF`),
     energyNeeded: energyNeeded,
   })
   return this
@@ -184,7 +191,7 @@ SequencedAssembly.prototype.createEnergizingRecipe = function (
  * @param {function} json Helper to convert ingredients to JSON objects.
  */
 /**
- * @param {string} preItemText
+ * @param {Internal.MutableComponent} preItemText
  * @param {customSequencedAssemblyCallback} prePostItemHandler
  * @returns {SequencedAssembly}
  */
@@ -195,7 +202,8 @@ SequencedAssembly.prototype.custom = function (
   this.hasCustomSteps_ = true
   this.steps_.push({
     type: 'custom',
-    preItemText: preItemText,
+    preItemText:
+      typeof preItemText === 'string' ? Text.of(preItemText) : preItemText,
     callback: prePostItemHandler,
   })
   return this
@@ -204,7 +212,7 @@ SequencedAssembly.prototype.custom = function (
 /**
  * @private
  * @param {number} stepNumber
- * @param {string} loreText
+ * @param {Internal.MutableComponent} loreText
  * @returns {Internal.Ingredient}
  */
 SequencedAssembly.prototype.getCustomTransitionalItem = function (
@@ -223,7 +231,7 @@ SequencedAssembly.prototype.getCustomTransitionalItem = function (
       Text.empty(),
       Text.gray('Recipe Sequence').italic(false),
       Text.darkGray(`Progress: ${stepNumber}/${totalSteps}`).italic(false),
-      Text.aqua(loreText).italic(false),
+      loreText.aqua().italic(false),
       Text.empty(),
     ])
     .weakNBT()
