@@ -156,8 +156,8 @@ const createEnchantingRecipe = (
 }
 
 /**
- * Event handler for expelling the silver from infested stone to generate end
- * stone.
+ * Event handler for expelling the silverfish from infested stone to generate
+ * end stone.
  */
 BlockEvents.rightClicked('minecraft:infested_stone', (e) => {
   const { item, hand, block, level } = e
@@ -180,6 +180,15 @@ BlockEvents.rightClicked('minecraft:infested_stone', (e) => {
       item.count--
     }
   }
+})
+
+LootJS.modifiers((e) => {
+  // Add fishing loot modifier to rivers and beaches to get nautilus shells.
+  e.addLootTypeModifier(LootType.FISHING)
+    .anyBiome('minecraft:beach', 'minecraft:river', 'minecraft:frozen_river')
+    .addLoot(
+      LootEntry.of('minecraft:nautilus_shell').when((c) => c.randomChance(0.25))
+    )
 })
 
 ServerEvents.recipes((e) => {
@@ -418,6 +427,8 @@ ServerEvents.recipes((e) => {
     Fluid.of('create_enchantment_industry:experience', 25),
   ])
 
+  create.crushing('tfmg:limesand', 'minecraft:nautilus_shell')
+
   // require going to end
   // End stone automation
   // exp the silver fish from the infested stone
@@ -460,7 +471,15 @@ ServerEvents.recipes((e) => {
     [60, -1]
   )
 
-  // nether star
+  // Nether Star automation
+  // Skeleton skulls can be automated with resonance crafting
+  create
+    .SequencedAssembly('minecraft:skeleton_skull')
+    .fill('create_enchantment_industry:ink', 100)
+    .fill(potionFluid('apotheosis:strong_wither', 100))
+    .energize(40000)
+    .outputs('minecraft:wither_skeleton_skull')
+
   // defeat the warden
   // sculk farming to make enderium
   // enderium recipe from liquid hyper exp

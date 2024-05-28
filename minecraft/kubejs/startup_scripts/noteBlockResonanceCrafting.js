@@ -305,7 +305,7 @@ StartupEvents.postInit(() => {
    * @param {string[]} tags
    * @returns {Internal.List<Internal.ItemStack_>}
    */
-  let getAllItemStacks = (tags) => {
+  const getAllItemStacks = (tags) => {
     const itemStacks = Utils.newList()
     for (const tag of tags) {
       Ingredient.of(tag).itemIds.forEach((id) => {
@@ -352,11 +352,24 @@ StartupEvents.postInit(() => {
 
   // Recipes must be registered here to work properly in JEI. For local testing,
   // they can still be registered in server_scripts.
+
+  // Recipes used in Chapter 6
   global.RegisterResonanceCraftingRecipe(
     'minecraft:ender_pearl',
     'kubejs:resonant_ender_pearl',
     ['E4', 'D4', 'C4', 'G4']
   )
+  global.RegisterResonanceCraftingRecipe(
+    'minecraft:bone',
+    'minecraft:skeleton_skull',
+    [
+      { note: 'D4', instrument: 'xylophone' },
+      { note: 'D4', instrument: 'xylophone' },
+      { note: 'D5', instrument: 'xylophone' },
+      { note: 'A4', instrument: 'xylophone' },
+    ]
+  )
+
   global.RegisterResonanceCraftingRecipe(
     'minecraft:honey_bottle',
     'minecraft:ghast_tear',
@@ -365,16 +378,6 @@ StartupEvents.postInit(() => {
       { note: 'C4', instrument: 'bell' },
       { note: 'D4', instrument: 'bell' },
       { note: 'G3', instrument: 'bell' },
-    ]
-  )
-  global.RegisterResonanceCraftingRecipe(
-    'minecraft:skeleton_skull',
-    'minecraft:wither_skeleton_skull',
-    [
-      { note: 'D4', instrument: 'xylophone' },
-      { note: 'D4', instrument: 'xylophone' },
-      { note: 'D5', instrument: 'xylophone' },
-      { note: 'A4', instrument: 'xylophone' },
     ]
   )
 })
