@@ -19,14 +19,10 @@ StartupEvents.registry('item', (e) => {
   // Precision mechanism defined by Create
   // Steel mechanism defined by TFMG
   // Chapter 5a: Logistics Mechanisms
-  e.create('kubejs:logistics_mechanism')
-    .texture(getTextureLocation('pneumaticcraft:logistics_core'))
-    .displayName('Logistics Mechanism')
-  e.create('kubejs:incomplete_logistics_mechanism', 'create:sequenced_assembly')
-    .texture(getTextureLocation('pneumaticcraft:logistics_core'))
-    .displayName('Incomplete Logistics Mechanism')
+  registerMechanism('kubejs:logistics_mechanism')
   // Chapter 5b: Crystalline Mechanism
   registerMechanism('kubejs:crystalline_mechanism')
+  // Vibrational Mechanisms defined by Create: Misc and Things
   // Quantum mechanisms defined by Create: Teleporters
 
   // Wooden hand used for crafting deployers

@@ -65,6 +65,8 @@ JEIEvents.hideItems((e) => {
   e.hide('kubejs:incomplete_andesite_mechanism')
   e.hide('kubejs:incomplete_copper_mechanism')
   e.hide('kubejs:incomplete_source_mechanism')
+  e.hide('kubejs:incomplete_logistics_mechanism')
+  e.hide('kubejs:incomplete_crystalline_mechanism')
 })
 
 JEIEvents.addFluids((e) => {
