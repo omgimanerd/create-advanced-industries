@@ -156,4 +156,12 @@ StartupEvents.registry('item', (e) => {
   registerItem('kubejs:xp_condenser').glow(true)
   registerItem('kubejs:inert_xp_condenser')
   registerItem('kubejs:incomplete_xp_condenser', 'create:sequenced_assembly')
+
+  // Fish chum
+  e.create('kubejs:fish_chum')
+    .texture(getTextureLocation('farmersdelight:cod_slice'))
+    .displayName('Fish Chum')
+    .food((food) => {
+      food.hunger(1).saturation(1).effect('minecraft:hunger', 30, 0, 1)
+    })
 })

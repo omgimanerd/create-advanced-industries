@@ -751,7 +751,7 @@ ServerEvents.recipes((e) => {
   e.remove({ id: /^sliceanddice:mixing\/fertilizer.*/ })
   create
     .mixing(Fluid.of('sliceanddice:fertilizer', 1000), [
-      'farmersdelight:organic_compost',
+      '4x farmersdelight:organic_compost',
       Fluid.water(1000),
     ])
     .heated()
@@ -918,6 +918,7 @@ ServerEvents.recipes((e) => {
   // Elemental essence from Archwood trees.
   for (let {
     element,
+    gem,
     essence,
     essence_fluid,
     archwood,
@@ -963,6 +964,14 @@ ServerEvents.recipes((e) => {
       .HeatFrame(`1000mb ${essence_fluid}`)
       .maxTemp(0)
       .outputs(`10x ${essence}`)
+
+    // The liquid essence can be crystallized directly into the elemental gem.
+    e.recipes.thermal
+      .crystallizer(gem, [
+        Fluid.of(essence_fluid, 1000),
+        'minecraft:amethyst_shard',
+      ])
+      .energy(8000)
 
     // Archwood tree sap can be used to get the Ars fruits
     create.filling(archwood_fruit, [

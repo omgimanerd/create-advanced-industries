@@ -186,6 +186,7 @@ ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
   const pneumaticcraft = definePneumaticcraftRecipes(e)
   const enchanting = getPartialApplication(e, createEnchantingRecipe)
+  const redefineRecipe = redefineRecipe_(e)
 
   // Define automatable upgrade recipes for all the apotheotic gems.
   for (let [gem, tiers] of Object.entries(apotheoticGems)) {
@@ -388,11 +389,39 @@ ServerEvents.recipes((e) => {
     1000000
   )
 
+  // Fish chum
+  create.crushing(
+    [
+      'kubejs:fish_chum',
+      Item.of('kubejs:fish_chum').withChance(0.5),
+      Item.of('kubejs:fish_chum').withChance(0.1),
+      'minecraft:bone_meal',
+    ],
+    '#minecraft:fishes'
+  )
+  create
+    .mixing(Fluid.of('sliceanddice:fertilizer', 1000), [
+      '4x kubejs:fish_chum',
+      '4x minecraft:bone_meal',
+      Fluid.water(1000),
+    ])
+    .heated()
+  redefineRecipe('4x thermal:aquachow', [
+    'kubejs:fish_chum',
+    'kubejs:fish_chum',
+    'kubejs:fish_chum',
+    'minecraft:slime_ball',
+  ])
+  e.remove({ id: 'thermal:deep_aquachow_4' })
+  create.filling('thermal:deep_aquachow', [
+    'thermal:aquachow',
+    Fluid.of('create_enchantment_industry:experience', 25),
+  ])
+
   // require going to end
   // End stone automation
   // exp the silver fish from the infested stone
   // vial of searing expulsion
-  create.haunting('minecraft:end_stone', 'minecraft:infested_stone')
 
   // Liquid Hyper Experience condensing, gated behind a level 100 enchant
   e.remove({ id: 'create_enchantment_industry:mixing/hyper_experience' })
@@ -414,7 +443,6 @@ ServerEvents.recipes((e) => {
       create.compacting(post, pre).superheated()
     })
     .outputs('kubejs:xp_condenser')
-
   create.emptying(
     [
       Fluid.of('create_enchantment_industry:hyper_experience', 100),
