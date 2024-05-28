@@ -2,6 +2,8 @@
 
 /** @author omgimanerd alvin@omgimanerd.tech */
 
+let $UUID = Java.loadClass('java.util.UUID')
+
 /**
  * @constructor
  * @description JS prototype class to make registering Create sequenced assembly
@@ -71,10 +73,11 @@ SequencedAssembly.prototype.press = function (repeats) {
 
 /**
  * @param {Internal.FluidStackJS_|string} fluid
- * @param {number?} qty_mb
+ * @param {number=} qty_mb
+ * @param {string=} fluidTextLabel Text used for the fluid in the item lore
  * @returns {SequencedAssembly}
  */
-SequencedAssembly.prototype.fill = function (fluid, qty_mb) {
+SequencedAssembly.prototype.fill = function (fluid, qty_mb, fluidTextLabel) {
   // 1-argument, Fluid object is provided.
   // 2-argument, fluid should be a string and qty_mb should be provided.
   /**
@@ -85,7 +88,9 @@ SequencedAssembly.prototype.fill = function (fluid, qty_mb) {
   qty_mb = f.amount
   this.steps_.push({
     type: 'filling',
-    preItemText: `Next: Fill with ${qty_mb}mb ${id}`,
+    preItemText: `Next: Fill with ${qty_mb}mb ${
+      fluidTextLabel === undefined ? id : fluidTextLabel
+    }`,
     fluid: f,
   })
   return this
@@ -117,8 +122,8 @@ SequencedAssembly.prototype.energize = function (energyNeeded) {
   }
   this.steps_.push({
     type: 'energising',
-    energyNeeded: energyNeeded,
     preItemText: `Next: Energize with ${energyNeeded}RF`,
+    energyNeeded: energyNeeded,
   })
   return this
 }
@@ -243,8 +248,9 @@ SequencedAssembly.prototype.outputCustomSequence = function (output) {
   // Generate and define recipes for each of the steps in the sequence.
   this.steps_.forEach((data, index) => {
     for (let loop = 0; loop < this.loops_; ++loop) {
-      const preItemStep = index + loop * this.steps_.length
-      const postItemStep = preItemStep + 1
+      let preItemStep = loop * this.steps_.length + index
+      let postItemStep = preItemStep + 1
+      let hideInJEI = loop > 0
       let preItem, postItem
       // The first and last items in the sequence should be the input and output
       // items respectively. Otherwise, we form an item with the relevant NBT
@@ -261,9 +267,10 @@ SequencedAssembly.prototype.outputCustomSequence = function (output) {
       } else {
         postItem = this.getCustomTransitionalItem(
           postItemStep,
-          this.steps_[index + 1].preItemText
+          this.steps_[(index + 1) % this.steps_.length].preItemText
         )
       }
+
       // Store the recipe in case we need to chain calls to it. Define the
       // actual recipe with the intermediate items.
       let r
@@ -291,6 +298,7 @@ SequencedAssembly.prototype.outputCustomSequence = function (output) {
         default:
           throw new Error(`Unknown type ${data.type}`)
       }
+      if (hideInJEI) r.id(`kubejs:${$UUID.randomUUID()}_hidejei`)
     }
   })
   return null
