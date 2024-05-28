@@ -83,13 +83,14 @@ SequencedAssembly.prototype.fill = function (fluid, qty_mb, fluidTextLabel) {
   /**
    * @type {Internal.FluidStackJS}
    */
-  const f = qty_mb === undefined ? fluid : Fluid.of(fluid, qty_mb)
-  let id = f.id
+  const f =
+    qty_mb === undefined || qty_mb === null ? fluid : Fluid.of(fluid, qty_mb)
+  const fluidName = f.getFluidStack().getName().getString()
   qty_mb = f.amount
   this.steps_.push({
     type: 'filling',
     preItemText: `Next: Fill with ${qty_mb}mb ${
-      fluidTextLabel === undefined ? id : fluidTextLabel
+      fluidTextLabel === undefined ? fluidName : fluidTextLabel
     }`,
     fluid: f,
   })
@@ -264,6 +265,7 @@ SequencedAssembly.prototype.outputCustomSequence = function (output) {
       }
       if (postItemStep === totalSteps) {
         postItem = output
+        hideInJEI = false
       } else {
         postItem = this.getCustomTransitionalItem(
           postItemStep,
