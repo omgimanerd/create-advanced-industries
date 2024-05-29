@@ -160,4 +160,11 @@ StartupEvents.registry('item', (e) => {
     .food((food) => {
       food.hunger(1).saturation(1).effect('minecraft:hunger', 30, 0, 1)
     })
+
+  // Treasure net
+  e.create('kubejs:treasure_net')
+    .texture(getTextureLocation('thermal:junk_net'))
+    .displayName('Treasure Net')
+    .glow(true)
+    .unstackable()
 })

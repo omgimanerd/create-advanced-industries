@@ -182,15 +182,6 @@ BlockEvents.rightClicked('minecraft:infested_stone', (e) => {
   }
 })
 
-LootJS.modifiers((e) => {
-  // Add fishing loot modifier to rivers and beaches to get nautilus shells.
-  e.addLootTypeModifier(LootType.FISHING)
-    .anyBiome('minecraft:beach', 'minecraft:river', 'minecraft:frozen_river')
-    .addLoot(
-      LootEntry.of('minecraft:nautilus_shell').when((c) => c.randomChance(0.25))
-    )
-})
-
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
   const pneumaticcraft = definePneumaticcraftRecipes(e)
@@ -300,8 +291,25 @@ ServerEvents.recipes((e) => {
     .fill('create_enchantment_industry:experience', 100)
     .outputs('kubejs:xp_crystal')
 
-  // Remove tier salvaging recipes
+  // Remove tier salvaging recipes and recycling recipes so apotheotic materials
+  // are only available through the automation recipes below.
   e.remove({ id: /^apotheotic_additions:salvaging\/[a-z]+_to_[a-z]+$/ })
+  e.forEachRecipe(
+    [
+      { mod: 'apotheosis', type: 'create:crushing' },
+      { mod: 'apotheotic_additions', type: 'create:crushing' },
+    ],
+    (r) => {
+      const json = JSON.parse(r.json)
+      if (
+        json.ingredients.length === 1 &&
+        json.ingredients[0].type === 'apotheosis:affix_item'
+      ) {
+        const rarity = json.ingredients[0].rarity
+        r.replaceOutput(`${rarity}_material`, 'create:experience_block')
+      }
+    }
+  )
   // Apotheosis material automation
   create // Common Material: Mysterious Scrap Metal
     .SequencedAssembly('tfmg:steel_mechanism')
@@ -398,6 +406,48 @@ ServerEvents.recipes((e) => {
     1000000
   )
 
+  // The Treasure Net is gated by a level 60 enchant
+  enchanting(
+    'kubejs:treasure_net',
+    'thermal:junk_net',
+    [30, -1],
+    [40, -1],
+    [40, -1]
+  )
+  e.recipes.thermal.fisher_boost(
+    'kubejs:treasure_net',
+    1,
+    0,
+    'kubejs:gameplay/fishing/treasure'
+  )
+
+  // Overhauled Aquatic Entangler outputs
+  e.remove({ type: 'thermal:fisher_boost' })
+  e.recipes.thermal.fisher_boost(
+    'thermal:aquachow',
+    1,
+    0.5,
+    'kubejs:gameplay/fishing/aqua_chow'
+  )
+  e.recipes.thermal.fisher_boost(
+    'thermal:deep_aquachow',
+    1,
+    0.5,
+    'kubejs:gameplay/fishing/benthic_aqua_chow'
+  )
+  e.recipes.thermal.fisher_boost(
+    'thermal:junk_net',
+    1,
+    0,
+    'kubejs:gameplay/fishing/junk_net'
+  )
+  e.recipes.thermal.fisher_boost(
+    'kubejs:treasure_net',
+    1,
+    0.05,
+    'kubejs:gameplay/fishing/treasure_net'
+  )
+
   // Fish chum
   create.crushing(
     [
@@ -424,9 +474,10 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'thermal:deep_aquachow_4' })
   create.filling('thermal:deep_aquachow', [
     'thermal:aquachow',
-    Fluid.of('create_enchantment_industry:experience', 25),
+    Fluid.of('create_enchantment_industry:experience', 250),
   ])
 
+  // Nautilus shells can also be crushed into limestone dust.
   create.crushing('tfmg:limesand', 'minecraft:nautilus_shell')
 
   // require going to end
