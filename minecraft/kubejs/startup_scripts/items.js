@@ -164,6 +164,12 @@ StartupEvents.registry('item', (e) => {
   // Treasure net
   e.create('kubejs:treasure_net')
     .texture(getTextureLocation('thermal:junk_net'))
+    .tooltip(
+      Text.empty()
+        .append(Text.of('Use in the ').gold())
+        .append(Text.of('Aquatic Entangler').yellow().italic())
+        .append(Text.of(' to catch treasure.').gold())
+    )
     .displayName('Treasure Net')
     .glow(true)
     .unstackable()
