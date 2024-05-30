@@ -422,33 +422,8 @@ ServerEvents.recipes((e) => {
   )
 
   // Overhauled Aquatic Entangler outputs
-  e.remove({ type: 'thermal:fisher_boost' })
-  e.recipes.thermal.fisher_boost(
-    'thermal:aquachow',
-    1,
-    0.5,
-    'kubejs:gameplay/fishing/aqua_chow'
-  )
-  e.recipes.thermal.fisher_boost(
-    'thermal:deep_aquachow',
-    1,
-    0.5,
-    'kubejs:gameplay/fishing/benthic_aqua_chow'
-  )
-  e.recipes.thermal.fisher_boost(
-    'thermal:junk_net',
-    1,
-    0,
-    'kubejs:gameplay/fishing/junk_net'
-  )
-  e.recipes.thermal.fisher_boost(
-    'kubejs:treasure_net',
-    1,
-    0.05,
-    'kubejs:gameplay/fishing/treasure_net'
-  )
-
-  // Fish chum
+  global.RegisterAquaticEntanglerRecipeOverhauls(e)
+  // Fish chum cycling
   create.crushing(
     [
       'kubejs:fish_chum',
