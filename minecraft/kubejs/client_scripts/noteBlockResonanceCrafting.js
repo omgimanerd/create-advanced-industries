@@ -30,24 +30,31 @@ JEIAddedEvents.registerCategories((e) => {
   const line2Y = 23
   const line3Y = 41
   const sequenceXStart = 30
+  const outputItemX = 140
 
   const guiHelper = e.data.jeiHelpers.guiHelper
   e.custom(global.RESONANCE_CRAFTING, (category) => {
     category
       .title('Resonance Crafting')
-      .background(guiHelper.createBlankDrawable(140, 70))
-      .icon(guiHelper.createDrawableItemStack(Item.of('minecraft:note_block')))
+      .background(guiHelper.createBlankDrawable(160, 60))
+      .icon(guiHelper.createDrawableItemStack('minecraft:note_block'))
       .isRecipeHandled(() => true) // Only appropriate recipes are added?
       .handleLookup((builder, recipe) => {
         const data = recipe.data
         const sequence = data.sequence
-        builder.addSlot('input', 5, line1Y).addItemStack(data.input)
-        builder.addSlot('output', 115, line1Y).addItemStack(data.output)
+        builder
+          .addSlot('input', 5, line1Y)
+          .addItemStack(data.input)
+          .setBackground(guiHelper.getSlotDrawable(), -1, -1)
+        builder
+          .addSlot('output', outputItemX, line1Y)
+          .addItemStack(data.output)
+          .setBackground(guiHelper.getSlotDrawable(), -1, -1)
         builder
           .addSlot('input', 5, line2Y)
           .addItemStack('ars_nouveau:arcane_pedestal')
         builder
-          .addSlot('input', 115, line2Y)
+          .addSlot('input', outputItemX, line2Y)
           .addItemStack('ars_nouveau:arcane_pedestal')
         builder
           .addInvisibleIngredients('input')
