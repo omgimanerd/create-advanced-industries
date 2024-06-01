@@ -2,7 +2,10 @@
   "type": "minecraft:fishing",
   "pools": [
     {
-      "rolls": [2, 5],
+      "rolls": {
+        "min": 2,
+        "max": 5
+      },
       "bonus_rolls": 0,
       "entries": [
         {
