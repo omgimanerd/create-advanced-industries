@@ -1,7 +1,7 @@
 // priority: 0
 
 ;(() => {
-  let customRecipeType = null
+  let aquaticEntanglerRecipeType = null
 
   JEIAddedEvents.registerCategories((e) => {
     const guiHelper = e.data.jeiHelpers.guiHelper
@@ -12,7 +12,7 @@
 
     e.custom('thermal:device_fisher', (category) => {
       // Ugly hack to store the custom recipe category.
-      customRecipeType = category.recipeType
+      aquaticEntanglerRecipeType = category.recipeType
       category
         .title('Aquatic Entangler')
         .background(guiHelper.createBlankDrawable(160, 60))
@@ -172,8 +172,13 @@
   })
 
   JEIAddedEvents.registerRecipeCatalysts((e) => {
-    if (customRecipeType !== null) {
-      e.data.addRecipeCatalyst('thermal:device_fisher', customRecipeType)
+    if (aquaticEntanglerRecipeType !== null) {
+      e.data.addRecipeCatalyst(
+        'thermal:device_fisher',
+        aquaticEntanglerRecipeType
+      )
+    } else {
+      console.warning('Did not store thermal:fisher recipe type!')
     }
   })
 })()
