@@ -21,6 +21,13 @@
 			y: 0.0d
 		}
 		{
+			icon: {
+				Count: 1b
+				id: "ftbquests:custom_icon"
+				tag: {
+					Icon: "ftbchunks:textures/faces/minecraft/warden.png"
+				}
+			}
 			id: "75A7D7288DF25E12"
 			tasks: [
 				{
@@ -43,6 +50,7 @@
 					type: "item"
 				}
 			]
+			title: "Defeat the Warden"
 			x: 11.0d
 			y: -3.5d
 		}
@@ -58,6 +66,14 @@
 			y: -0.5d
 		}
 		{
+			dependencies: ["33C97AA4A311E69E"]
+			icon: {
+				Count: 1b
+				id: "ftbquests:custom_icon"
+				tag: {
+					Icon: "ftbchunks:textures/faces/minecraft/wither_skeleton.png"
+				}
+			}
 			id: "3E42BEA143D5E555"
 			tasks: [
 				{
@@ -80,6 +96,7 @@
 					type: "item"
 				}
 			]
+			title: "Defeat the Wither"
 			x: 10.5d
 			y: -1.0d
 		}
@@ -90,8 +107,8 @@
 				item: "createteleporters:quantum_mechanism"
 				type: "item"
 			}]
-			x: 17.0d
-			y: 1.0d
+			x: 26.5d
+			y: 0.0d
 		}
 		{
 			id: "31B4B5168C7CD7D9"
@@ -100,8 +117,8 @@
 				item: "createteleporters:quantum_fluid_bucket"
 				type: "item"
 			}]
-			x: 4.0d
-			y: 6.0d
+			x: -1.0d
+			y: 8.5d
 		}
 		{
 			id: "0989437884928BAA"
@@ -211,8 +228,9 @@
 				to_observe: "minecraft:ender_dragon"
 				type: "observation"
 			}]
+			title: "Defeat the Ender Dragon"
 			x: 4.0d
-			y: -3.0d
+			y: -4.0d
 		}
 		{
 			id: "6DC625AE49A9B01A"
@@ -222,7 +240,7 @@
 				type: "item"
 			}]
 			x: 2.5d
-			y: -1.0d
+			y: -2.0d
 		}
 		{
 			id: "4798028C47F41935"
@@ -231,18 +249,19 @@
 				item: "minecraft:experience_bottle"
 				type: "item"
 			}]
-			x: 4.5d
-			y: -0.5d
+			x: 5.0d
+			y: -1.0d
 		}
 		{
+			dependencies: ["57F92618AAF3CAD1"]
 			id: "72812DB3D0C75B7D"
 			tasks: [{
 				id: "15B9E185876EA094"
 				item: "create_enchantment_industry:hyper_experience_bottle"
 				type: "item"
 			}]
-			x: 6.5d
-			y: -0.5d
+			x: 8.0d
+			y: -1.0d
 		}
 		{
 			id: "509B4F9E047728B6"
@@ -263,6 +282,119 @@
 			}]
 			x: 7.5d
 			y: -4.0d
+		}
+		{
+			dependencies: ["4798028C47F41935"]
+			id: "57F92618AAF3CAD1"
+			tasks: [{
+				id: "0CFB6FC1C0BAD7E7"
+				item: "kubejs:xp_condenser"
+				type: "item"
+			}]
+			x: 6.5d
+			y: -1.0d
+		}
+		{
+			dependencies: [
+				"6DD93F52A87B6B32"
+				"3E44FFF4BA96011E"
+			]
+			id: "3F43A33616FC68DB"
+			tasks: [{
+				id: "08B10E8D1AABDC10"
+				item: "minecraft:end_stone"
+				type: "item"
+			}]
+			x: 2.5d
+			y: 4.0d
+		}
+		{
+			id: "6DD93F52A87B6B32"
+			tasks: [{
+				id: "65279C634CE68D69"
+				item: "minecraft:infested_stone"
+				type: "item"
+			}]
+			x: 1.0d
+			y: 4.5d
+		}
+		{
+			id: "3E44FFF4BA96011E"
+			tasks: [{
+				id: "0893719755706541"
+				item: "apotheosis:vial_of_expulsion"
+				type: "item"
+			}]
+			x: 1.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["4953FDEB278D7D6D"]
+			id: "33C97AA4A311E69E"
+			tasks: [{
+				id: "36A2F5F8042A0CD9"
+				item: "minecraft:wither_skeleton_skull"
+				type: "item"
+			}]
+			x: 10.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["10ED9E8F35405C5B"]
+			id: "4953FDEB278D7D6D"
+			tasks: [{
+				id: "2F2B98D0A39D8CE4"
+				item: "minecraft:skeleton_skull"
+				type: "item"
+			}]
+			x: 9.5d
+			y: 2.0d
+		}
+		{
+			dependencies: [
+				"2FDA2B5BEB8A1870"
+				"7392D59B8CCAA871"
+			]
+			id: "10ED9E8F35405C5B"
+			tasks: [{
+				id: "66A6E2403AA4FB7B"
+				item: "minecraft:bone"
+				type: "item"
+			}]
+			x: 9.0d
+			y: 3.0d
+		}
+		{
+			id: "2FDA2B5BEB8A1870"
+			tasks: [{
+				id: "62D08A6447E4C939"
+				item: "thermal:device_fisher"
+				type: "item"
+			}]
+			x: 6.5d
+			y: 3.5d
+		}
+		{
+			dependencies: ["2FDA2B5BEB8A1870"]
+			id: "482F9D1480AA9724"
+			tasks: [{
+				id: "50179B1A903FDF22"
+				item: "thermal:aquachow"
+				type: "item"
+			}]
+			x: 6.5d
+			y: 5.0d
+		}
+		{
+			dependencies: ["482F9D1480AA9724"]
+			id: "7392D59B8CCAA871"
+			tasks: [{
+				id: "40F70A5AC79DE240"
+				item: "thermal:deep_aquachow"
+				type: "item"
+			}]
+			x: 8.0d
+			y: 4.5d
 		}
 	]
 	title: "Chapter 6: Quantum Mechanisms"
