@@ -2,7 +2,7 @@
 // Global data for overhauling the Thermal Aquatic Entangler, defined here
 // to be made available in both server_scripts and client_scripts.
 
-global.LootTableToJson = (s) => {
+global.LootTableToJsonPath = (s) => {
   return s.replace(':', '/data/kubejs/loot_tables/') + '.json'
 }
 
