@@ -20,5 +20,6 @@ hotbar.nbt
 options.txt
 patchouli_data.json
 rhino.local.properties
+server-pack*.zip
 usercache.json
 usernamecache.json
