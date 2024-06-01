@@ -10,13 +10,13 @@ const Parser = {}
  *   3x minecraft:oak_log
  *   4x #minecraft:logs
  */
-Parser.ITEM_REGEX = /^(([0-9]+)x )*([#]*)([a-z_]+:[a-z_]+)$/
+Parser.ITEM_REGEX = /^(([0-9]+)x ){0,1}(#{0,1})([a-z_]+:[a-z_]+)$/
 /**
  * Example valid inputs:
  *   100mb #forge:gasoline
  *   200mb pneumaticcraft:plastic
  */
-Parser.FLUID_REGEX = /^(([0-9]+)mb )([#]*)([a-z_]+:[a-z_]+)$/
+Parser.FLUID_REGEX = /^(([0-9]+)mb )(#{0,1})([a-z_]+:[a-z_]+)$/
 
 /**
  * @param {String} s
