@@ -1,8 +1,17 @@
 {
-  "kubejs.ponder.budding_amethyst_spouting.header": "Growing Amethyst Buds",
+  "kubejs.ponder.budding_amethyst_spouting.header": "Budding Amethyst",
   "kubejs.ponder.budding_amethyst_spouting.text_1": "In addition to the recipes shown in JEI, amethyst shards can also be grown using budding amethyst as a catalyst.",
   "kubejs.ponder.budding_amethyst_spouting.text_2": "In this pack, budding amethyst does not naturally cause attached buds to grow, and require crystal growth accelerator to be spouted on them.",
   "kubejs.ponder.budding_amethyst_spouting.text_3": "For every 500mb of crystal growth accelerator spouted, a random amethyst bud attached to the budding amethyst will advance one growth stage.",
+  "kubejs.ponder.enchanting_table_overhaul.header": "Enchanting Table",
+  "kubejs.ponder.enchanting_table_overhaul.text_1": "Enchanting is completely overhauled by Apotheosis in this pack.",
+  "kubejs.ponder.enchanting_table_overhaul.text_2": "Blocks placed around the enchanting table affect four attributes called Eterna, Quanta, Arcana, and Rectification. Refer to the Chronicle of Shadows for details about what they do.",
+  "kubejs.ponder.enchanting_table_overhaul.text_3": "Your vanilla enchanting setup gives you an Eterna level of 15, unlocking access to level 30 enchantments. The maximum enchanting power of any setup is twice the Eterna level.",
+  "kubejs.ponder.enchanting_table_overhaul.text_4": "Apotheosis adds advanced bookshelves that let you modify the enchanting attributes in almost any way you desire, leading to extremely powerful enchantments.",
+  "kubejs.ponder.enchanting_table_overhaul.text_5": "For example, here is a setup with 30 Eterna, unlocking level 60 enchantments.",
+  "kubejs.ponder.enchanting_table_overhaul.text_6": "Each tier of advanced bookshelves is gated by the previous tier.",
+  "kubejs.ponder.enchanting_table_overhaul.text_7": "This is an example setup for level 90 enchantments.",
+  "kubejs.ponder.enchanting_table_overhaul.text_8": "Experiment with different setups! There\u0027s no single best way to do it!",
   "kubejs.ponder.moss_block_seeding.header": "Moss Blocks and You",
   "kubejs.ponder.moss_block_seeding.text_1": "If you can\u0027t find a moss block, you can turn a stone block into one by right clicking it with biomass.",
   "kubejs.ponder.moss_block_seeding.text_2": "Right clicking a moss block with a fertilizer will cause it to spread to all nearby stone blocks.",
@@ -24,6 +33,6 @@
   "kubejs.ponder.remy_the_epicure.text_4": "Feeding higher quality foods will result in more drops.",
   "kubejs.ponder.remy_the_epicure.text_5": "Remy will get tired of the same food over and over though.",
   "kubejs.ponder.remy_the_epicure.text_6": "There is a small cooldown every time you feed Remy.",
-  "kubejs.ponder.remy_the_epicure.text_7": "Be careful not to feed Remy anything that\u0027ll give him an upset stomach",
+  "kubejs.ponder.remy_the_epicure.text_7": "Be careful not to feed Remy anything that\u0027ll give him an upset stomach.",
   "kubejs.ponder.remy_the_epicure.text_8": "You won\u0027t be able to feed Remy until the effect wears off."
 }
