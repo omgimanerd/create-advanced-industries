@@ -7,11 +7,11 @@ Ponder.registry((e) => {
     'Remy The Epicure',
     (scene, util) => {
       scene.showBasePlate()
-      let center = new BlockPos(2, 1, 2)
+      const center = new BlockPos(2, 1, 2)
 
       // Scene setup
       scene.world.setBlock(center, 'create:white_seat', false)
-      let deployerPos = new BlockPos(2, 2, 4)
+      const deployerPos = new BlockPos(2, 2, 4)
       scene.world.setBlock(
         deployerPos,
         Block.id('create:deployer')
@@ -35,7 +35,7 @@ Ponder.registry((e) => {
       scene.idleSeconds(1)
 
       // Spawning Remy
-      let remyLocation = center.getCenter().add(0, -0.2, 0)
+      const remyLocation = center.getCenter().add(0, -0.2, 0)
       scene.addKeyframe()
       scene
         .showControls(40, center.above(1), 'down')
@@ -65,7 +65,7 @@ Ponder.registry((e) => {
         .simple(5, 'minecraft:heart', center.above())
         .delta([0.25, 0.25, 0.25])
         .density(2)
-      let buds = []
+      const buds = []
       buds.push(
         scene.world.createItemEntity(
           remyLocation,
@@ -82,7 +82,7 @@ Ponder.registry((e) => {
       buds.forEach((b) => scene.world.removeEntity(b))
 
       // Automation
-      let slice = util.select.fromTo(0, 0, 4, 4, 2, 4)
+      const slice = util.select.fromTo(0, 0, 4, 4, 2, 4)
       scene.addKeyframe()
       scene.world.showSection(slice, Facing.NORTH)
       scene.world.setKineticSpeed(slice, 24)

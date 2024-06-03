@@ -19,8 +19,8 @@ Ponder.registry((e) => {
     'Moss Blocks and You',
     (scene, util) => {
       scene.showBasePlate()
-      let center = new BlockPos(2, 1, 2)
-      let deployerPos = center.above(2)
+      const center = new BlockPos(2, 1, 2)
+      const deployerPos = center.above(2)
 
       // Scene setup
       scene.world.setBlock(
@@ -84,7 +84,7 @@ Ponder.registry((e) => {
       scene.idleSeconds(1)
       cycleDeployerMovement(scene, deployerPos)
       spawnGrowthParticles(scene, util, center)
-      let newBlocks = [
+      const newBlocks = [
         [util.select.fromTo(1, 1, 1, 3, 1, 3), 'minecraft:moss_block'],
         [util.select.fromTo(0, 1, 1, 0, 1, 2), 'minecraft:moss_block'],
         [[4, 1, 1], 'minecraft:moss_block'],
@@ -96,7 +96,7 @@ Ponder.registry((e) => {
         [[1, 2, 4], 'minecraft:flowering_azalea'],
       ]
       newBlocks.forEach((data) => {
-        let [selection, block] = data
+        const [selection, block] = data
         scene.world.setBlocks(selection, block, true)
         if (Array.isArray(selection)) {
           spawnGrowthParticles(scene, util, selection)
@@ -145,14 +145,14 @@ Ponder.registry((e) => {
       setDeployerHeldItem(scene, deployerPos, 'minecraft:red_mushroom')
       scene.idleSeconds(1)
       cycleDeployerMovement(scene, deployerPos)
-      let mushroomGrowth = [
+      const mushroomGrowth = [
         [center, 10],
         [center.west(), 8],
         [center.west().north(), 1],
         [center.west().south(), 3],
       ]
       mushroomGrowth.forEach((data) => {
-        let [blockPos, delay] = data
+        const [blockPos, delay] = data
         scene.world.setBlocks(blockPos, 'minecraft:red_mushroom_block', true)
         spawnGrowthParticles(scene, util, blockPos)
         scene.idle(delay)

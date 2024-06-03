@@ -6,11 +6,11 @@ Ponder.registry((e) => {
     'Budding Amethyst',
     (scene, util) => {
       scene.showBasePlate()
-      let center = new BlockPos(2, 1, 2)
+      const center = new BlockPos(2, 1, 2)
 
       // Scene setup
       scene.world.setBlock(center, 'minecraft:budding_amethyst', false)
-      let spoutPos = center.above(2)
+      const spoutPos = center.above(2)
       scene.world.setBlock(spoutPos, 'create:spout', false)
       scene.world.modifyBlockEntityNBT(spoutPos, (nbt) => {
         nbt.Tanks = [
@@ -103,7 +103,4 @@ Ponder.registry((e) => {
       scene.idleSeconds(1)
     }
   )
-
-  // TODO: ponder for enchanting table
-  // TODO: ponder for infested stone expulsion
 })

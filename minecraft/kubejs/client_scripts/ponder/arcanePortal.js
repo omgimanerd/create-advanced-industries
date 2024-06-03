@@ -9,22 +9,22 @@ Ponder.registry((e) => {
   const setupArcanePortalBlockScene = (scene, center) => {
     // Set up all blocks in scene.
     scene.world.setBlock(center, 'minecraft:crying_obsidian', true)
-    let fluidSpots = [
+    const fluidSpots = [
       center.north(),
       center.south(),
       center.east(),
       center.west(),
     ]
-    for (let spot of fluidSpots) {
+    for (const spot of fluidSpots) {
       scene.world.setBlock(spot, 'starbunclemania:source_fluid_block', false)
     }
-    let pumps = {
+    const pumps = {
       south: center.north().north(),
       north: center.south().south(),
       west: center.east().east(),
       east: center.west().west(),
     }
-    for (let [pumpDirection, pumpSpot] of Object.entries(pumps)) {
+    for (const [pumpDirection, pumpSpot] of Object.entries(pumps)) {
       scene.world.setBlock(
         pumpSpot,
         Block.id('create:mechanical_pump').with('facing', pumpDirection),
@@ -52,13 +52,14 @@ Ponder.registry((e) => {
       .withinBlockSpace()
   }
 
+  const center = new BlockPos(2, 1, 2)
+
   e.create('kubejs:portal_block')
     .scene('portal_block_open', 'Opening The Arcane Portal', (scene, util) => {
       scene.showBasePlate()
-      let center = new BlockPos(2, 1, 2)
 
       // First segment before keyframe to show scene.
-      let { pumps } = setupArcanePortalBlockScene(scene, center)
+      const { pumps } = setupArcanePortalBlockScene(scene, center)
       scene.world.showSection(center, Facing.DOWN)
       scene.idleSeconds(1)
 
@@ -95,7 +96,7 @@ Ponder.registry((e) => {
       scene.idleSeconds(3)
 
       // Source being consumed.
-      let consumptionSpot = center.west()
+      const consumptionSpot = center.west()
       scene.addKeyframe()
       scene.text(
         40,
@@ -117,7 +118,7 @@ Ponder.registry((e) => {
 
       // Instability and portal collapse
       scene.addKeyframe()
-      for (let [_, pumpSpot] of Object.entries(pumps)) {
+      for (const [_, pumpSpot] of Object.entries(pumps)) {
         scene.world.setKineticSpeed(pumpSpot, 0)
       }
       scene.world.setBlock(consumptionSpot, 'minecraft:air', true)
@@ -141,8 +142,6 @@ Ponder.registry((e) => {
       scene.idleSeconds(1)
     })
     .scene('portal_block_usage', 'Using the Arcane Portal', (scene, util) => {
-      let center = new BlockPos(2, 1, 2)
-
       // First segment before keyframe to show scene.
       scene.showBasePlate()
       setupArcanePortalBlockScene(scene, center)
@@ -152,7 +151,7 @@ Ponder.registry((e) => {
 
       // Wandering Traders being consumed.
       scene.addKeyframe()
-      let wanderingTrader = scene.world.createEntity(
+      const wanderingTrader = scene.world.createEntity(
         'minecraft:wandering_trader',
         center.offset(0, 1, 0),
         (e) => {
@@ -167,7 +166,7 @@ Ponder.registry((e) => {
 
       // Pickaxes being consumed
       scene.addKeyframe()
-      let enchantedPickaxe = scene.world.createItemEntity(
+      const enchantedPickaxe = scene.world.createItemEntity(
         [2.5, 2, 2.5],
         [0, 0, 0],
         Item.of('minecraft:iron_pickaxe')
