@@ -657,6 +657,7 @@
 				type: "item"
 			}]
 			tasks: [{
+				icon: "kubejs:steel_ingot_cast"
 				id: "2B6FB6CF481C817D"
 				item: {
 					Count: 1b
