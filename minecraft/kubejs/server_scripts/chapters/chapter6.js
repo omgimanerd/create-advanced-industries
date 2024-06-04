@@ -301,6 +301,44 @@ ServerEvents.recipes((e) => {
   // Nautilus shells can also be crushed into limestone dust.
   create.crushing('tfmg:limesand', 'minecraft:nautilus_shell')
 
+  // Totem of undying automation, defaults to same setup as mod
+  create.cutting('kubejs:totem_body_casing', 'create:brass_sheet')
+  create
+    .SequencedAssembly(
+      'kubejs:totem_body_casing',
+      'kubejs:incomplete_totem_body'
+    )
+    .fill(potionFluid('minecraft:long_fire_resistance', 250))
+    .fill(potionFluid('minecraft:strong_regeneration', 250))
+    .deploy('create:brass_sheet')
+    .outputs('kubejs:totem_body')
+  create.cutting('kubejs:totem_head_casing', 'create:brass_sheet')
+  create
+    .SequencedAssembly(
+      'kubejs:totem_head_casing',
+      'kubejs:incomplete_totem_head'
+    )
+    .deploy('minecraft:end_crystal')
+    .deploy('create:brass_sheet')
+    .energize(50000)
+    .outputs('kubejs:totem_head')
+  create.mechanical_crafting(
+    'kubejs:inactive_totem',
+    [
+      'EHE', //
+      ' B ', //
+    ],
+    {
+      E: 'minecraft:emerald',
+      H: 'kubejs:totem_head',
+      B: 'kubejs:totem_body',
+    }
+  )
+  create.filling('minecraft:totem_of_undying', [
+    'kubejs:inactive_totem',
+    Fluid.of('create_enchantment_industry:experience', 1000),
+  ])
+
   // require going to end
   // End stone automation
   // exp the silver fish from the infested stone

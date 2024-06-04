@@ -176,10 +176,7 @@ StartupEvents.registry('item', (e) => {
 
   // Totem of Undying Parts
   registerItem('kubejs:totem_body_casing')
-  registerItem(
-    'kubejs:incomplete_totem_body_casing',
-    'create:sequenced_assembly'
-  )
+  registerItem('kubejs:incomplete_totem_body', 'create:sequenced_assembly')
   registerItem('kubejs:totem_body')
 
   registerItem('kubejs:totem_head_casing')

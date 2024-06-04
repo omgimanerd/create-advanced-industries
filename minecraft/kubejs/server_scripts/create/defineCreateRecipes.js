@@ -144,6 +144,7 @@ const defineCreateRecipes = (e) => {
     /**
      * @callback CreateSequencedAssembly
      * @param {Internal.ItemStack_} input
+     * @param {Internal.ItemStack_}  transitional
      * @returns {SequencedAssembly}
      * @type {CreateSequencedAssembly}
      */
