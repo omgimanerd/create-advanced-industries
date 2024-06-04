@@ -173,4 +173,18 @@ StartupEvents.registry('item', (e) => {
     .displayName('Treasure Net')
     .glow(true)
     .unstackable()
+
+  // Totem of Undying Parts
+  registerItem('kubejs:totem_body_casing')
+  registerItem(
+    'kubejs:incomplete_totem_body_casing',
+    'create:sequenced_assembly'
+  )
+  registerItem('kubejs:totem_body')
+
+  registerItem('kubejs:totem_head_casing')
+  registerItem('kubejs:incomplete_totem_head', 'create:sequenced_assembly')
+  registerItem('kubejs:totem_head')
+
+  registerItem('kubejs:inactive_totem')
 })
