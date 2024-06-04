@@ -12,6 +12,7 @@
   "kubejs.ponder.enchanting_table_overhaul.text_6": "Each tier of advanced bookshelves is gated by the previous tier.",
   "kubejs.ponder.enchanting_table_overhaul.text_7": "This is an example setup for level 90 enchantments.",
   "kubejs.ponder.enchanting_table_overhaul.text_8": "Experiment with different setups! There\u0027s no single best way to do it!",
+  "kubejs.ponder.infested_stone_expulsion.header": "Getting rid of Pests",
   "kubejs.ponder.moss_block_seeding.header": "Moss Blocks and You",
   "kubejs.ponder.moss_block_seeding.text_1": "If you can\u0027t find a moss block, you can turn a stone block into one by right clicking it with biomass.",
   "kubejs.ponder.moss_block_seeding.text_2": "Right clicking a moss block with a fertilizer will cause it to spread to all nearby stone blocks.",
