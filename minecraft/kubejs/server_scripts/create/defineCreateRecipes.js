@@ -41,12 +41,8 @@ const defineCreateRecipes = (e) => {
     create.rolling = (output, input) => {
       const base = {
         type: 'createaddition:rolling',
-      }
-      if (!setIfValid(base, 'input', Parser.parseItemInput(input))) {
-        throw new Error(`Invalid input ${input}`)
-      }
-      if (!setIfValid(base, 'result', Parser.parseItemOutput(output))) {
-        throw new Error(`Invalid output ${output}`)
+        input: Parser.parseItemInput(input),
+        result: Parser.parseItemOutput(output),
       }
       return e.custom(base)
     }
@@ -91,18 +87,12 @@ const defineCreateRecipes = (e) => {
       const base = {
         type: 'create_new_age:energising',
         // https://gitlab.com/antarcticgardens/create-new-age
-        // JSON recipe key changed in latest dev branch to 'energyNeeded' instead of
-        // 'energy_needed'
+        // JSON recipe key changed in latest dev branch to 'energyNeeded'
+        // instead of 'energy_needed'
         energy_needed: energyNeeded !== undefined ? energyNeeded : 1000,
-        ingredients: [],
-        results: [],
+        ingredients: [Parser.parseItemInput(input)],
+        results: [Parser.parseItemOutput(output)],
       }
-      const parsedInput = Parser.parseItemInput(input)
-      if (parsedInput === null) throw new Error(`Invalid input ${input}`)
-      base.ingredients.push(parsedInput)
-      const itemOutput = Parser.parseItemOutput(output)
-      if (itemOutput === null) throw new Error(`Invalid output ${output}`)
-      base.results.push(itemOutput)
       return e.custom(base)
     }
   } else {
@@ -126,6 +116,7 @@ const defineCreateRecipes = (e) => {
       const base = {
         type: 'create_mechanical_extruder:extruding',
         ingredients: [],
+        result: Parser.parseItemOutput(output),
       }
       if (!Array.isArray(inputs) || inputs.length != 2) {
         throw new Error(`Two inputs are required: ${inputs}`)
@@ -133,18 +124,20 @@ const defineCreateRecipes = (e) => {
       for (const input of inputs) {
         base.ingredients.push(Parser.parseItemOrFluidInput(input))
       }
-      const itemOutput = Parser.parseItemOutput(output)
-      if (!setIfValid(base, 'result', itemOutput)) {
-        throw new Error(`Invalid output ${output}`)
-      }
       if (catalyst !== undefined) {
-        const catalystItem = Parser.parseItemInput(catalyst)
-        setIfValid(base, 'catalyst', catalystItem)
+        base.catalyst = Parser.parseItemInput(catalyst)
       }
       return e.custom(base)
     }
   } else {
     console.log('create_mechanical_extruder is not loaded.')
+  }
+
+  // Define custom recipe wrappers for Create: Vintage Improvements
+  if (Platform.isLoaded('vintageimprovements')) {
+    //  TODO
+  } else {
+    console.log('vintageimprovements is not loaded.')
   }
 
   try {
