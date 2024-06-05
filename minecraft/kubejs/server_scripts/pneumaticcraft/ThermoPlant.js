@@ -103,40 +103,27 @@ ThermoPlant.prototype.outputs = function (outputs) {
   }
 
   // Attempt to parse the inputs into the expected custom JSON format
-  this.inputs_ = Array.isArray(this.inputs_) ? this.inputs_ : [this.inputs_]
-  if (this.inputs_.length > 2) {
-    throw new Error(`Too many ingredients: ${this.inputs_}`)
+  const inputs = Parser.parseItemOrFluidInputs(this.inputs_, {
+    maxItems: 1,
+    maxFluids: 1,
+  })
+  if (inputs.items.length === 1) {
+    base.item_input = inputs.items[0]
   }
-  for (const input of this.inputs_) {
-    // If the input matched an item, parse it into the expected JSON format.
-    let g = Parser.parseItemInput(input)
-    if (setIfValid(base, 'item_input', g)) {
-      continue
-    }
-    // If the input matched a fluid, parse it into the expected JSON format.
-    g = Parser.parseFluidInput(input)
-    if (g !== null) g.type = 'pneumaticcraft:fluid'
-    if (setIfValid(base, 'fluid_input', g)) {
-      continue
-    }
-    throw new Error(`Input did not match a known format: ${input}`)
+  if (inputs.fluids.length === 1) {
+    base.fluid_input = inputs.fluids[0]
+    base.fluid_input.type = 'pneumaticcraft:fluid'
   }
 
-  // Attempt to parse the outputs into the expected custom JSON format
-  outputs = Array.isArray(outputs) ? outputs : [outputs]
-  if (outputs.length > 2) throw new Error(`Too many outputs: ${outputs}`)
-  for (const output of outputs) {
-    // If the output matched an item, parse it into the expected JSON format.
-    let g = Parser.parseItemOutput(output)
-    if (setIfValid(base, 'item_output', g)) {
-      continue
-    }
-    // If the output matched a fluid, parse it into the expected JSON format.
-    g = Parser.parseFluidOutput(output)
-    if (setIfValid(base, 'fluid_output', g)) {
-      continue
-    }
-    throw new Error(`Output did not match a known format: ${output}`)
+  outputs = Parser.parseItemOrFluidInputs(outputs, {
+    maxItems: 1,
+    maxFluids: 1,
+  })
+  if (outputs.items.length === 1) {
+    base.item_output = outputs.items[0]
+  }
+  if (outputs.fluids.length === 1) {
+    base.fluid_output = outputs.fluids[0]
   }
 
   return this.e_.custom(base)

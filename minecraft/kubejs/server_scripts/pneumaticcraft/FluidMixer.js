@@ -56,33 +56,19 @@ FluidMixer.prototype.outputs = function (outputs) {
     base.pressure = this.pressure_
   }
 
-  const input1 = Parser.parseFluidInput(this.input1_)
-  if (input1 !== null) input1.type = 'pneumaticcraft:fluid'
-  if (!setIfValid(base, 'input1', input1)) {
-    throw new Error(`Fluid input invalid: ${this.input1_}`)
+  base.input1 = Parser.parseFluidInput(this.input1_)
+  base.input1.type = 'pneumaticcraft:fluid'
+  base.input2 = Parser.parseFluidInput(this.input2_)
+  base.input2.type = 'pneumaticcraft:fluid'
+  outputs = Parser.parseItemOrFluidOutputs(outputs, {
+    maxItems: 1,
+    maxFluids: 1,
+  })
+  if (outputs.items.length === 1) {
+    base.item_output = outputs.items[0]
   }
-  const input2 = Parser.parseFluidInput(this.input2_)
-  if (input2 !== null) input2.type = 'pneumaticcraft:fluid'
-  if (!setIfValid(base, 'input2', input2)) {
-    throw new Error(`Fluid input invalid: ${this.input2_}`)
-  }
-
-  outputs = Array.isArray(outputs) ? outputs : [outputs]
-  if (outputs.length > 2) {
-    throw new Error(`Too many outputs: ${outputs}`)
-  }
-  for (const output of outputs) {
-    // If the output matched an item, parse it into the expected JSON format.
-    let g = Parser.parseItemOutput(output)
-    if (setIfValid(base, 'item_output', g)) {
-      continue
-    }
-    // If the output matched a fluid, parse it into the expected JSON format.
-    g = Parser.parseFluidOutput(output)
-    if (setIfValid(base, 'fluid_output', g)) {
-      continue
-    }
-    throw new Error(`Output did not match a known format: ${output}`)
+  if (outputs.fluids.length === 1) {
+    base.fluid_output = outputs.fluids[0]
   }
 
   return this.e_.custom(base)
