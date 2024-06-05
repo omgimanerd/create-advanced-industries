@@ -166,14 +166,14 @@ const Parser = (() => {
   const parseItemOrFluidOutput = (s) => {
     const itemOutputMaybe = parseAsItem(s)
     if (itemOutputMaybe !== null) {
-      if (itemOutputMaybe.tag !== null) {
+      if (itemOutputMaybe.tag !== undefined) {
         throw new Error(`Item output cannot have a tag: ${s}`)
       }
       return itemOutputMaybe
     }
     const fluidOutputMaybe = parseAsFluid(s)
     if (fluidOutputMaybe !== null) {
-      if (fluidOutputMaybe.tag !== null) {
+      if (fluidOutputMaybe.tag !== undefined) {
         throw new Error(`Fluid output cannot have a tag: ${s}`)
       }
       return fluidOutputMaybe
