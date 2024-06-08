@@ -10,22 +10,31 @@ StartupEvents.recipeSchemaRegistry((e) => {
 
   // Input/output component types
   const Components = e.components
+
+  const anyString = Components.get('anyString')()
+  const bool = Components.get('bool')()
+  const id = Components.get('id')()
+  const intNumber = Components.get('intNumber')()
+  const floatNumber = Components.get('floatNumber')()
+
+  const filteredString = Components.get('filteredString')
+
   const inputItem = Components.get('inputItem')()
   const inputItemArray = Components.get('inputItemArray')()
   const inputFluidOrItemArray = Components.get('inputFluidOrItemArray')()
+  const itemTag = Components.get('tag')({ registry: 'item' })
   const outputItem = Components.get('outputItem')()
   const outputItemArray = Components.get('outputItemArray')()
   const outputFluidOrItemArray = Components.get('outputFluidOrItemArray')()
+  const fluidTag = Components.get('tag')({ registry: 'fluid' })
   const fluidOrTagInput = Components.get('inputFluid')().or(
     new $RecipeComponentBuilder(2)
-      .add(Components.get('tag')({ registry: 'fluid' }).key('fluidTag'))
-      .add(Components.get('intNumber')().key('amount'))
+      .add(fluidTag.key('fluidTag'))
+      .add(intNumber.key('amount'))
       .inputRole()
   )
-
-  const bool = Components.get('bool')()
-  const intNumber = Components.get('intNumber')()
-  const id = Components.get('id')()
+  const outputFluid = Components.get('outputFluid')()
+  const outputFluidArray = Components.get('outputFluidArray')()
 
   // Create Crafts & Additions
   if (Platform.isLoaded('createaddition')) {
@@ -150,4 +159,180 @@ StartupEvents.recipeSchemaRegistry((e) => {
     )
     console.log('Recipe Schemas for vintageimprovements loaded.')
   }
+
+  // PneumaticCraft: Repressurized
+  // if (Platform.isLoaded('pneumaticcraft')) {
+  //   let $ArrayRecipeComponent = Java.loadClass(
+  //     'dev.latvian.mods.kubejs.recipe.component.ArrayRecipeComponent'
+  //   )
+  //   let $ShapedRecipeSchema = Java.loadClass(
+  //     'dev.latvian.mods.kubejs.recipe.schema.minecraft.ShapedRecipeSchema'
+  //   )
+  //   let $StringComponent = Java.loadClass(
+  //     'dev.latvian.mods.kubejs.recipe.component.StringComponent'
+  //   )
+
+  //   let pncrAmadronIO = new $RecipeComponentBuilder(3)
+  //     .add(
+  //       new $StringComponent('must be ITEM or FLUID', (s) => {
+  //         return s === 'ITEM' || s === 'FLUID'
+  //       }).key('type')
+  //     )
+  //     .add(intNumber.key('amount'))
+  //     .add(id.key('id'))
+  //     .inputRole()
+  //   let pncrFluidIdInput = new $RecipeComponentBuilder(3)
+  //     .add(anyString.key('type').optional('pneumaticcraft:fluid').alwaysWrite())
+  //     .add(intNumber.key('amount'))
+  //     .add(id.key('fluid'))
+  //     .inputRole()
+  //   let pncrFluidTagInput = new $RecipeComponentBuilder(3)
+  //     .add(anyString.key('type').optional('pneumaticcraft:fluid').alwaysWrite())
+  //     .add(intNumber.key('amount'))
+  //     .add(fluidTag.key('tag'))
+  //     .inputRole()
+  //   let pncrFluidInput = pncrFluidIdInput.or(pncrFluidTagInput)
+
+  //   let pncrItemIdInput = new $RecipeComponentBuilder(3)
+  //     .add(
+  //       anyString
+  //         .key('type')
+  //         .optional('pneumaticcraft:stacked_item')
+  //         .alwaysWrite()
+  //     )
+  //     .add(intNumber.key('amount'))
+  //     .add(id.key('item'))
+  //     .inputRole()
+  //   let pncrItemTagInput = new $RecipeComponentBuilder(3)
+  //     .add(
+  //       anyString
+  //         .key('type')
+  //         .optional('pneumaticcraft:stacked_item')
+  //         .alwaysWrite()
+  //     )
+  //     .add(intNumber.key('amount'))
+  //     .add(itemTag.key('tag'))
+  //     .inputRole()
+  //   let pncrItemInput = pncrItemIdInput.or(pncrItemTagInput)
+  //   let pncrItemArrayInput = new $ArrayRecipeComponent(
+  //     pncrItemTagInput,
+  //     true,
+  //     pncrItemIdInput.class,
+  //     []
+  //   )
+
+  //   let pncrBonusOutput = new $RecipeComponentBuilder(2)
+  //     .add(floatNumber.key('limit'))
+  //     .add(floatNumber.key('multiplier'))
+  //     .inputRole()
+  //     .key('bonus_output')
+  //   let pncrTempRange = new $RecipeComponentBuilder(2)
+  //     .add(intNumber.key('min_temp').allowEmpty().defaultOptional())
+  //     .add(intNumber.key('max_temp').allowEmpty().defaultOptional())
+  //     .inputRole()
+  //     .key('temperature')
+
+  //   e.register(
+  //     'pneumaticcraft:amadron',
+  //     new $RecipeSchema(
+  //       pncrAmadronIO.key('input'),
+  //       pncrAmadronIO.key('output'),
+  //       intNumber.key('level').optional(0),
+  //       bool.key('static').alwaysWrite().optional(false)
+  //     )
+  //   )
+  //   e.register(
+  //     'pneumaticcraft:assembly_drill',
+  //     new $RecipeSchema(
+  //       inputItem.key('input'),
+  //       outputItem.key('result'),
+  //       anyString.key('program').optional('drill').alwaysWrite()
+  //     )
+  //   )
+  //   e.register(
+  //     'pneumaticcraft:assembly_laser',
+  //     new $RecipeSchema(
+  //       inputItem.key('input'),
+  //       outputItem.key('result'),
+  //       anyString.key('program').optional('laser').alwaysWrite()
+  //     )
+  //   )
+  //   e.register(
+  //     'pneumaticcraft:explosion_crafting',
+  //     new $RecipeSchema(
+  //       inputItem.key('input'),
+  //       outputItemArray.key('results'),
+  //       intNumber.key('loss_rate').optional(20).alwaysWrite()
+  //     )
+  //   )
+  //   e.register(
+  //     'pneumaticcraft:fluid_mixer',
+  //     new $RecipeSchema(
+  //       pncrFluidInput.key('input1'),
+  //       pncrFluidInput.key('input2'),
+  //       floatNumber.key('pressure'),
+  //       intNumber.key('time'),
+  //       outputItem.key('item_output').allowEmpty().defaultOptional(),
+  //       outputFluid.key('fluid_output').allowEmpty().defaultOptional()
+  //     )
+  //   )
+  //   e.register(
+  //     'pneumaticcraft:heat_frame_cooling',
+  //     new $RecipeSchema(
+  //       pncrFluidInput.key('input'),
+  //       outputItem.key('result'),
+  //       intNumber.key('max_temp'),
+  //       pncrBonusOutput.allowEmpty().defaultOptional()
+  //     )
+  //   )
+  //   e.register(
+  //     'pneumaticcraft:fuel_quality',
+  //     new $RecipeSchema(
+  //       pncrFluidInput.key('fluid'),
+  //       intNumber.key('air_per_bucket'),
+  //       floatNumber.key('burn_rate')
+  //     )
+  //   )
+  //   e.register(
+  //     'pneumaticcraft:pressure_chamber',
+  //     new $RecipeSchema(
+  //       pncrItemArrayInput.key('inputs'),
+  //       outputItemArray.key('results'),
+  //       floatNumber.key('pressure')
+  //     )
+  //   )
+  // e.register(
+  //   'pneumaticcraft:refinery',
+  //   new $RecipeSchema(
+  //     pncrFluidInput.key('input'),
+  //     outputFluidArray.key('results'),
+  //     pncrTempRange
+  //   )
+  // )
+  // e.register(
+  //   'pneumaticcraft:thermo_plant',
+  //   new $RecipeSchema(
+  //     pncrFluidInput.key('fluid_input').defaultOptional(),
+  //     inputItem.key('item_input').defaultOptional(),
+  //     outputFluid.key('fluid_output').defaultOptional(),
+  //     outputItem.key('item_output').defaultOptional(),
+  //     pncrTempRange.allowEmpty().defaultOptional(),
+  //     bool.key('exothermic').optional(false).alwaysWrite(),
+  //     floatNumber.key('speed').allowEmpty().defaultOptional()
+  //   )
+  // )
+  // e.register(
+  //   'pneumaticcraft:compressor_upgrade_crafting',
+  //   $ShapedRecipeSchema.SCHEMA
+  // )
+  // e.register(
+  //   'pneumaticcraft:crafting_shaped_no_mirror',
+  //   $ShapedRecipeSchema.SCHEMA
+  // )
+  // e.register(
+  //   'pneumaticcraft:crafting_shaped_pressurizable',
+  //   $ShapedRecipeSchema.SCHEMA
+  // )
+  //   console.log('Recipe Schemas for pneumaticcraft loaded.')
+  // }
 })
