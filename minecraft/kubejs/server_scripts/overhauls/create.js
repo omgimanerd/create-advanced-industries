@@ -748,12 +748,12 @@ ServerEvents.recipes((e) => {
   // Cannot use tags here, recipe ends up not working, so we are manually
   // creating all the recipe combinations for cobblegen.
   const equivalentWaterBlocks = [
-    '1000mb minecraft:water',
+    Fluid.water(1000),
     'minecraft:packed_ice',
     'create_connected:fan_splashing_catalyst',
   ]
   const equivalentLavaBlocks = [
-    '1000mb minecraft:lava',
+    Fluid.lava(1000),
     'create_connected:fan_blasting_catalyst',
   ]
   const cobblegens = {
@@ -769,6 +769,6 @@ ServerEvents.recipes((e) => {
         create.extruding(output, [water, lava], catalyst)
       }
     }
-    create.extruding('create:limestone', ['1000mb create:honey', lava])
+    create.extruding('create:limestone', [Fluid.of('create:honey', 1000), lava])
   }
 })

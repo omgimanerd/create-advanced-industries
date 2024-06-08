@@ -85,7 +85,7 @@ ServerEvents.recipes((e) => {
       create.crushing(post, pre)
     })
     .custom('Next: Energize with 8000 RF', (pre, post, json) => {
-      create.energizing(json(post), json(pre), 8000)
+      e.recipes.create_new_age.energising(post, pre, 8000)
     })
     .custom('Next: Melt in a heated basin', (pre, post) => {
       create.mixing(post, pre).heated()
@@ -248,7 +248,7 @@ ServerEvents.recipes((e) => {
   // Esoteric Material: Galactic Core
   create.energizing(
     'apotheotic_additions:esoteric_material',
-    JSON.parse(filledXpCrystal.toJson()),
+    filledXpCrystal,
     1000000
   )
 
@@ -301,7 +301,7 @@ ServerEvents.recipes((e) => {
   // Nautilus shells can also be crushed into limestone dust.
   create.crushing('tfmg:limesand', 'minecraft:nautilus_shell')
 
-  // Totem of undying automation, defaults to same setup as mod
+  // Totem of undying automation from Create: Totem Factory
   create.cutting('kubejs:totem_body_casing', 'create:brass_sheet')
   create
     .SequencedAssembly(

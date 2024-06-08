@@ -200,4 +200,6 @@ JEIAddedEvents.onRuntimeAvailable((e) => {
       .toList()
     recipeManager.hideRecipes(recipeType, recipesToHide)
   })
+
+  // Consolidate recipes from Create: Vintage Improvements
 })

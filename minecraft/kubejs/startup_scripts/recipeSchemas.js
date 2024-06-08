@@ -45,8 +45,8 @@ StartupEvents.recipeSchemaRegistry((e) => {
     e.register(
       'createaddition:liquid_burning',
       new $RecipeSchema(
-        intNumber.key('burnTime'),
         fluidOrTagInput.key('input'),
+        intNumber.key('burnTime'),
         bool.key('superheated').optional(false)
       )
     )
@@ -72,7 +72,8 @@ StartupEvents.recipeSchemaRegistry((e) => {
       'create_mechanical_extruder:extruding',
       new $RecipeSchema(
         outputItem.key('result'),
-        inputFluidOrItemArray.key('ingredients')
+        inputFluidOrItemArray.key('ingredients'),
+        inputItem.key('catalyst').allowEmpty().defaultOptional()
       )
     )
     console.log('Recipe Schemas for create_mechanical_extruder loaded.')

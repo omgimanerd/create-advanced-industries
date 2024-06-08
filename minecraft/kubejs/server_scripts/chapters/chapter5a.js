@@ -110,10 +110,35 @@ ServerEvents.recipes((e) => {
   // Overhaul burn times
   e.remove({ id: 'createaddition:liquid_burning/diesel' })
   e.remove({ id: 'createaddition:liquid_burning/gasoline' })
-  create.burnableFluid('#forge:diesel', 4800) // 4 minutes
-  create.burnableFluid('#forge:kerosene', 9600) // 8 minutes
-  create.burnableFluid('#forge:gasoline', 19200) // 16 minutes
-  create.burnableFluid('#forge:lpg', 38400, true) // 32 minutes
+  create.burnableFluid(
+    {
+      fluidTag: '#forge:diesel',
+      amount: 1000,
+    },
+    4800 // 4 minutes
+  )
+  create.burnableFluid(
+    {
+      fluidTag: '#forge:kerosene',
+      amount: 1000,
+    },
+    9600 // 8 minutes
+  )
+  create.burnableFluid(
+    {
+      fluidTag: '#forge:gasoline',
+      amount: 1000,
+    },
+    19200 // 16 minutes
+  )
+  create.burnableFluid(
+    {
+      fluidTag: '#forge:lpg',
+      amount: 1000,
+    },
+    38400, // 32 minutes
+    true
+  )
 
   // Sulfur byproduct can be crushed into sulfur dust.
   create.milling('thermal:sulfur_dust', 'thermal:sulfur')
