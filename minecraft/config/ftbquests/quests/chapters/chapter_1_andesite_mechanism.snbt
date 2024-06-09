@@ -92,7 +92,7 @@
 		}
 		{
 			dependencies: ["05DB2A211C1BB3C1"]
-			description: ["Mixing gravel in a basin yields flint."]
+			description: ["Mixing gravel in a basin has a chance to yield flint."]
 			icon: "minecraft:flint"
 			id: "25EFBFAE28D15EF0"
 			tasks: [

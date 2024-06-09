@@ -22,7 +22,9 @@ ServerEvents.recipes((e) => {
 
   // Gravel mixing to get flint
   e.remove({ id: 'create:milling/gravel' })
-  create.mixing('minecraft:flint', 'minecraft:gravel')
+  create.mixing(Item.of('minecraft:flint').withChance(0.5), 'minecraft:gravel')
+  // Better recipe unlocked by steel
+  create.vibrating('minecraft:flint', 'minecraft:gravel')
 
   // Andesite alloy crafting
   e.remove({ id: 'create:crafting/materials/andesite_alloy_from_zinc' })

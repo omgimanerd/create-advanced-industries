@@ -771,4 +771,101 @@ ServerEvents.recipes((e) => {
     }
     create.extruding('create:limestone', [Fluid.of('create:honey', 1000), lava])
   }
+
+  //////////////////////////////////
+  // Create: Vintage Improvements //
+  //////////////////////////////////
+  redefineMechanismRecipe('kubejs:andesite_mechanism')(
+    'vintageimprovements:belt_grinder',
+    'vintageimprovements:grinder_belt',
+    'create:andesite_casing',
+    'create:shaft'
+  )
+  redefineRecipe(
+    'vintageimprovements:spring_coiling_machine',
+    [
+      'S  ', //
+      'WCH', //
+      'SMS', //
+    ],
+    {
+      S: 'tfmg:steel_ingot',
+      W: 'vintageimprovements:spring_coiling_machine_wheel',
+      C: 'create:andesite_casing',
+      H: 'create:shaft',
+      M: 'tfmg:steel_mechanism',
+    }
+  )
+  redefineRecipe(
+    'vintageimprovements:vacuum_chamber',
+    [
+      'SOS', //
+      'MCM', //
+      'HPH', //
+    ],
+    {
+      S: 'vintageimprovements:steel_spring',
+      O: 'create:fluid_pipe',
+      M: 'tfmg:steel_mechanism',
+      C: 'create:andesite_casing',
+      H: 'tfmg:heavy_plate',
+      P: 'create:mechanical_pump',
+    }
+  )
+  e.replaceInput(
+    { id: 'vintageimprovements:craft/vibrating_table' },
+    'vintageimprovements:iron_spring',
+    'vintageimprovements:steel_spring'
+  )
+  e.replaceInput(
+    { id: 'vintageimprovements:craft/centrifuge' },
+    'create:andesite_casing',
+    'create:mechanical_bearing'
+  )
+  redefineMechanismRecipe('kubejs:andesite_mechanism')(
+    'vintageimprovements:curving_press',
+    'create:shaft',
+    'create:andesite_casing',
+    'vintageimprovements:steel_spring'
+  )
+  e.remove({ id: 'vintageimprovements:mechanical_crafting/helve_hammer' })
+  create.mechanical_crafting(
+    'vintageimprovements:helve_hammer',
+    [
+      ' B SS', //
+      'BLLLC', //
+      'BB  H', //
+    ],
+    {
+      B: 'tfmg:steel_block',
+      S: 'vintageimprovements:steel_spring',
+      L: '#minecraft:logs',
+      C: 'tfmg:steel_casing',
+      H: 'create:shaft',
+    }
+  )
+  redefineRecipe(
+    'vintageimprovements:convex_curving_head',
+    [
+      'HIH', //
+      ' H ', //
+    ],
+    {
+      I: 'tfmg:steel_ingot',
+      H: 'tfmg:heavy_plate',
+    }
+  )
+  redefineRecipe(
+    'vintageimprovements:grinder_belt',
+    [
+      'SSS', //
+      'SBS', //
+      'SSS', //
+    ],
+    {
+      S: '#create:sandpaper',
+      B: 'create:mechanical_belt',
+    }
+  )
+  // TODO redstone module
 })

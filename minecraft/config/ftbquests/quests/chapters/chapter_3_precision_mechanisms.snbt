@@ -142,7 +142,7 @@
 		}
 		{
 			dependencies: ["16096B10FDF70979"]
-			description: ["Rose quartz can be polished by tumbling it with sand, or by sanding it with a machine. Take your pick."]
+			description: ["Rose quartz can be polished by with a grinder."]
 			id: "7D237B5C30B4AECC"
 			tasks: [{
 				id: "5F710035892313B3"
@@ -523,6 +523,16 @@
 				type: "item"
 			}]
 			x: -4.0d
+			y: 0.0d
+		}
+		{
+			id: "0E97887518973ED6"
+			tasks: [{
+				id: "7F18A486E6FF57C8"
+				item: "kubejs:ceramic_ingot_cast"
+				type: "item"
+			}]
+			x: 8.0d
 			y: 0.0d
 		}
 	]

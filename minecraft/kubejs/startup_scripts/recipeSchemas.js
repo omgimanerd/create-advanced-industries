@@ -7,6 +7,9 @@ StartupEvents.recipeSchemaRegistry((e) => {
   const $RecipeComponentBuilder = Java.loadClass(
     'dev.latvian.mods.kubejs.recipe.component.RecipeComponentBuilder'
   )
+  const $HeatCondition = Java.loadClass(
+    'com.simibubi.create.content.processing.recipe.HeatCondition'
+  )
 
   // Input/output component types
   const Components = e.components
@@ -26,8 +29,9 @@ StartupEvents.recipeSchemaRegistry((e) => {
   const outputItem = Components.get('outputItem')()
   const outputItemArray = Components.get('outputItemArray')()
   const outputFluidOrItemArray = Components.get('outputFluidOrItemArray')()
+  const inputFluid = Components.get('inputFluid')()
   const fluidTag = Components.get('tag')({ registry: 'fluid' })
-  const fluidOrTagInput = Components.get('inputFluid')().or(
+  const fluidOrTagInput = inputFluid.or(
     new $RecipeComponentBuilder(2)
       .add(fluidTag.key('fluidTag'))
       .add(intNumber.key('amount'))
@@ -35,6 +39,7 @@ StartupEvents.recipeSchemaRegistry((e) => {
   )
   const outputFluid = Components.get('outputFluid')()
   const outputFluidArray = Components.get('outputFluidArray')()
+  const heatCondition = Components.get('enum')({ class: $HeatCondition })
 
   // Create Crafts & Additions
   if (Platform.isLoaded('createaddition')) {
@@ -121,6 +126,7 @@ StartupEvents.recipeSchemaRegistry((e) => {
       new $RecipeSchema(
         outputItem.asArray().key('results'),
         inputItem.asArray().key('ingredients'),
+        intNumber.key('speed_limits').optional(1),
         intNumber.key('processingTime').optional(20)
       )
     )
@@ -135,10 +141,12 @@ StartupEvents.recipeSchemaRegistry((e) => {
     e.register(
       'vintageimprovements:pressurizing',
       new $RecipeSchema(
-        outputItemArray.key('results'),
-        inputItemArray.key('ingredients'),
-        intNumber.key('secondaryFluidResults').allowEmpty().optional(0),
-        intNumber.key('secondaryFluidInputs').allowEmpty().optional(0)
+        outputFluidOrItemArray.key('results'),
+        inputFluidOrItemArray.key('ingredients'),
+        intNumber.key('secondaryFluidResults').optional(0),
+        intNumber.key('secondaryFluidInputs').optional(0),
+        intNumber.key('processingTime').alwaysWrite().optional(40),
+        heatCondition.key('heatRequirement').allowEmpty().defaultOptional()
       )
     )
     e.register(
@@ -167,9 +175,6 @@ StartupEvents.recipeSchemaRegistry((e) => {
   //   )
   //   let $ShapedRecipeSchema = Java.loadClass(
   //     'dev.latvian.mods.kubejs.recipe.schema.minecraft.ShapedRecipeSchema'
-  //   )
-  //   let $StringComponent = Java.loadClass(
-  //     'dev.latvian.mods.kubejs.recipe.component.StringComponent'
   //   )
 
   //   let pncrAmadronIO = new $RecipeComponentBuilder(3)

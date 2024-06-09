@@ -8,23 +8,6 @@ const POLISHING_HIGH_SPEED = 3
  * @param {Internal.RecipesEventJS} e
  */
 const defineCreateRecipes = (e) => {
-  /**
-   * Returns a new function that constructs a concrete instance of
-   * SequencedAssembly with the recipe event applied as the first argument.
-   * @param {Internal.RecipesEventJS} e
-   * @returns {SequencedAssembly}
-   */
-  const SequencedAssemblyWrapper = (e) => {
-    try {
-      return getConstructorWrapper(e, SequencedAssembly)
-    } catch (e) {
-      if (e.name === 'ReferenceError') {
-        console.log('Custom SequencedAssembly wrapper is not loaded.')
-      }
-      return null
-    }
-  }
-
   return {
     // Shorthand references to KubeJS Create functions
     compacting: e.recipes.create.compacting,
@@ -74,7 +57,12 @@ const defineCreateRecipes = (e) => {
     curving: e.recipes.vintageimprovements.curving,
     polishing: e.recipes.vintageimprovements.polishing,
     hammering: e.recipes.vintageimprovements.hammering,
-    pressurizing: e.recipes.vintageimprovements.pressurizing,
+
+    /**
+     * @param {(InputItem_|Internal.InputFluid_)[]} inputs
+     * @returns {CVIPressurizingWrapper}
+     */
+    pressurizing: getConstructorWrapper(e, CVIPressurizingWrapper),
     vacuumizing: e.recipes.vintageimprovements.vacuumizing,
     vibrating: e.recipes.vintageimprovements.vibrating,
 
@@ -83,6 +71,6 @@ const defineCreateRecipes = (e) => {
      * @param {Internal.ItemStack_} transitional
      * @returns {SequencedAssembly}
      */
-    SequencedAssembly: SequencedAssemblyWrapper(e),
+    SequencedAssembly: getConstructorWrapper(e, SequencedAssembly),
   }
 }

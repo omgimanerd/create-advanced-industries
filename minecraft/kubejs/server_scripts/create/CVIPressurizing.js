@@ -1,0 +1,99 @@
+// priority: 1000
+
+/**
+ * @param {Internal.RecipesEventJS} e
+ * @param {(InputItem_|Internal.InputFluid_)[]} inputs
+ */
+function CVIPressurizingWrapper(e, inputs) {
+  this.e_ = e
+  this.inputs_ = inputs
+
+  this.secondaryFluidInput_ = null
+  this.secondaryFluidResult_ = null
+
+  this.processingTime_ = 40
+  this.heatRequirement_ = null
+}
+
+/**
+ * @param {Internal.InputFluid_} fluid
+ * @returns {CVIPressurizingWrapper}
+ */
+CVIPressurizingWrapper.prototype.secondaryFluidInput = function (fluid) {
+  if (this.secondaryFluidResult_ !== null) {
+    throw new Error(
+      'Recipe cannot have both a secondary fluid input and output'
+    )
+  }
+  this.secondaryFluidInput_ = fluid
+  return this
+}
+
+/**
+ * @param {Internal.InputFluid_} fluid
+ * @returns {CVIPressurizingWrapper}
+ */
+CVIPressurizingWrapper.prototype.secondaryFluidResult = function (fluid) {
+  if (this.secondaryFluidInput_ !== null) {
+    throw new Error(
+      'Recipe cannot have both a secondary fluid input and output'
+    )
+  }
+  this.secondaryFluidResult_ = fluid
+  return this
+}
+
+/**
+ * @param {number} processingTime
+ * @returns {CVIPressurizingWrapper}
+ */
+CVIPressurizingWrapper.prototype.processingTime = function (processingTime) {
+  this.processingTime_ = processingTime
+  return this
+}
+
+/**
+ * @returns {CVIPressurizingWrapper}
+ */
+CVIPressurizingWrapper.prototype.heated = function () {
+  this.heatRequirement_ = 'heated'
+  return this
+}
+
+/**
+ * @returns {CVIPressurizingWrapper}
+ */
+CVIPressurizingWrapper.prototype.superheated = function () {
+  this.heatRequirement_ = 'superheated'
+  return this
+}
+
+/**
+ * @param {(OutputItem_|Internal.OutputFluid_)[]} results
+ * @returns {Internal.RecipeJS}
+ */
+CVIPressurizingWrapper.prototype.outputs = function (results) {
+  this.inputs_ = Array.isArray(this.inputs_) ? this.inputs_ : [this.inputs_]
+  results = Array.isArray(results) ? results : [results]
+
+  let recipe
+  if (this.secondaryFluidInput_ !== null) {
+    this.inputs_ = [this.secondaryFluidInput_].concat(this.inputs_)
+    recipe = this.e_.recipes.vintageimprovements
+      .pressurizing(results, this.inputs_)
+      .secondaryFluidInputs(0)
+  } else if (this.secondaryFluidResult_ !== null) {
+    results = [this.secondaryFluidResult_].concat(results)
+    recipe = this.e_.recipes.vintageimprovements
+      .pressurizing(results, this.inputs_)
+      .secondaryFluidResults(0)
+  } else {
+    recipe = this.e_.recipes.vintageimprovements.pressurizing(
+      results,
+      this.inputs_
+    )
+  }
+  return recipe
+    .processingTime(this.processingTime_)
+    .heatRequirement(this.heatRequirement_)
+}

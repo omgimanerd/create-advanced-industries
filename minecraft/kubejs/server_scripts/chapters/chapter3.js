@@ -139,12 +139,15 @@ ServerEvents.recipes((e) => {
     'minecraft:quartz',
     Fluid.of('kubejs:molten_redstone', ingotFluid * 4),
   ])
+  // Better recipe gated by steel
+  create
+    .pressurizing('minecraft:quartz')
+    .secondaryFluidInput(Fluid.of('kubejs:molten_redstone', ingotFluid * 2))
+    .heated()
+    .outputs('create:rose_quartz')
 
   // Polished rose quartz overhaul
-  create.mixing(
-    ['create:polished_rose_quartz', Item.of('minecraft:sand').withChance(0.9)],
-    ['create:rose_quartz', 'minecraft:sand']
-  )
+  e.remove({ id: 'create:sandpaper_polishing/rose_quartz' })
 
   // Electron tube overhaul
   e.remove({ id: 'create:crafting/materials/electron_tube' })
