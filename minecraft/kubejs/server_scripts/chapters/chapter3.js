@@ -20,6 +20,7 @@ ServerEvents.compostableRecipes((e) => {
 
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
+  const pneumaticcraft = definePneumaticcraftRecipes(e)
   const nuggetFluid = global.MeltableItem.DEFAULT_NUGGET_FLUID
   const ingotFluid = global.MeltableItem.DEFAULT_INGOT_FLUID
 
@@ -139,12 +140,20 @@ ServerEvents.recipes((e) => {
     'minecraft:quartz',
     Fluid.of('kubejs:molten_redstone', ingotFluid * 4),
   ])
-  // Better recipe gated by steel
+
+  // Better recipes gated by steel
   create
     .pressurizing('minecraft:quartz')
     .secondaryFluidInput(Fluid.of('kubejs:molten_redstone', ingotFluid * 2))
     .heated()
     .outputs('create:rose_quartz')
+  pneumaticcraft
+    .thermo_plant()
+    .fluid_input(Fluid.of('kubejs:molten_redstone', ingotFluid * 2))
+    .item_input('minecraft:quartz')
+    .item_output('create:rose_quartz')
+    .pressure(2)
+    .temperature({ min_temp: 273 + 300 })
 
   // Polished rose quartz overhaul
   e.remove({ id: 'create:sandpaper_polishing/rose_quartz' })

@@ -165,13 +165,13 @@ ServerEvents.recipes((e) => {
   )
   e.remove({ id: 'pneumaticcraft:assembly/advanced_pressure_tube' })
   pneumaticcraft
-    .ThermoPlant([
-      'pneumaticcraft:reinforced_pressure_tube',
-      '90mb tfmg:molten_steel',
-    ])
-    .minTemp(900) // Requires 10bar pressure to reach or a superheated blaze
+    .thermo_plant()
+    .fluid_input(Fluid.of('tfmg:molten_steel', 90))
+    .item_input('pneumaticcraft:reinforced_pressure_tube')
+    .item_output('pneumaticcraft:advanced_pressure_tube')
     .pressure(9.5)
-    .outputs('pneumaticcraft:advanced_pressure_tube')
+    // Requires 10bar pressure to reach or a superheated blaze
+    .temperature({ min_temp: 273 + 900 })
   redefineRecipe(
     'pneumaticcraft:air_cannon',
     [

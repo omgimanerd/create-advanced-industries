@@ -6,11 +6,16 @@
  */
 const definePneumaticcraftRecipes = (e) => {
   return {
-    /**
-     * @param {string|string[]} inputs
-     * @returns {ThermoPlant}
-     */
-    ThermoPlant: getConstructorWrapper(e, ThermoPlant),
+    amadron: e.recipes.pneumaticcraft.amadron,
+    assembly_drill: e.recipes.pneumaticcraft.assembly_drill,
+    assembly_laser: e.recipes.pneumaticcraft.assembly_laser,
+    explosion_crafting: e.recipes.pneumaticcraft.explosion_crafting,
+    fluid_mixer: e.recipes.pneumaticcraft.fluid_mixer,
+    heat_frame_cooling: e.recipes.pneumaticcraft.heat_frame_cooling,
+    fuel_quality: e.recipes.pneumaticcraft.fuel_quality,
+    pressure_chamber: e.recipes.pneumaticcraft.pressure_chamber,
+    refinery: e.recipes.pneumaticcraft.refinery,
+    thermo_plant: e.recipes.pneumaticcraft.thermo_plant,
     /**
      * @param {OutputItem_} result
      * @param {string[]} pattern

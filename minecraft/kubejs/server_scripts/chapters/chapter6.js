@@ -417,12 +417,13 @@ ServerEvents.recipes((e) => {
     if (recipe.input.item === 'minecraft:honey_bottle') return
     let outputCount = recipe.result.count || 1
     pneumaticcraft
-      .ThermoPlant([
-        recipe.input.item,
-        `${hyperXp}mb create_enchantment_industry:hyper_experience`,
-      ])
+      .thermo_plant()
+      .fluid_input(
+        Fluid.of('create_enchantment_industry:hyper_experience', hyperXp)
+      )
+      .item_input(recipe.input.item)
+      .item_output(Item.of(recipe.result.item, outputCount))
       .pressure(9.5)
-      .minTemp(1300)
-      .outputs(`${outputCount}x ${recipe.result.item}`)
+      .temperature({ min_temp: 273 + 1300 })
   })
 })

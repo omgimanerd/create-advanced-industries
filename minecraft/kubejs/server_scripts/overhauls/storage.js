@@ -107,10 +107,17 @@ ServerEvents.recipes((e) => {
   )
   e.remove({ id: 'refinedstorage:quartz_enriched_iron' })
   pneumaticcraft
-    .ThermoPlant(['minecraft:iron_ingot', '90mb kubejs:molten_quartz'])
+    .thermo_plant()
+    .fluid_input(Fluid.of('kubejs:molten_quartz', 90))
+    .item_input('minecraft:iron_ingot')
+    .item_output(Item.of('refinedstorage:quartz_enriched_iron', 2))
     .pressure(8)
-    .minTemp(300)
-    .outputs('2x refinedstorage:quartz_enriched_iron')
+    .temperature({ min_temp: 273 + 300 })
+  create
+    .pressurizing('minecraft:iron_ingot')
+    .secondaryFluidInput(Fluid.of('kubejs:molten_quartz', 90))
+    .superheated()
+    .outputs(Item.of('refinedstorage:quartz_enriched_iron', 2))
   e.replaceInput(
     {
       mod: 'refinedstorage',

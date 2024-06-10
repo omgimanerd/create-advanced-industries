@@ -92,22 +92,38 @@ ServerEvents.recipes((e) => {
   // Fractional distillation overhauls to yield bitumen and sulfur byproducts
   e.remove({ id: 'pneumaticcraft:thermo_plant/kerosene' })
   pneumaticcraft
-    .ThermoPlant(['100mb #forge:diesel'])
+    .thermo_plant()
+    .fluid_input({
+      tag: 'forge:diesel',
+      amount: 100,
+    })
+    .fluid_output(Fluid.of('pneumaticcraft:kerosene', 80))
+    .item_output('thermal:bitumen')
     .pressure(2)
-    .minTemp(300)
-    .outputs(['80mb pneumaticcraft:kerosene', 'thermal:bitumen'])
+    .temperature({ min_temp: 273 + 300 })
   e.remove({ id: 'pneumaticcraft:thermo_plant/gasoline' })
   pneumaticcraft
-    .ThermoPlant(['100mb #forge:kerosene'])
+    .thermo_plant()
+    .fluid_input({
+      tag: 'forge:kerosene',
+      amount: 100,
+    })
+    .fluid_output(Fluid.of('pneumaticcraft:gasoline', 80))
+    .item_output('thermal:sulfur')
     .pressure(2)
-    .minTemp(300)
-    .outputs(['80mb pneumaticcraft:gasoline', 'thermal:sulfur'])
+    .temperature({ min_temp: 273 + 300 })
   e.remove({ id: 'pneumaticcraft:thermo_plant/lpg' })
+
   pneumaticcraft
-    .ThermoPlant(['100mb #forge:gasoline'])
+    .thermo_plant()
+    .fluid_input({
+      tag: 'forge:gasoline',
+      amount: 100,
+    })
+    .fluid_output(Fluid.of('pneumaticcraft:lpg', 80))
+    .item_output('thermal:sulfur')
     .pressure(2)
-    .minTemp(300)
-    .outputs(['80mb pneumaticcraft:lpg', 'thermal:sulfur'])
+    .temperature({ min_temp: 273 + 300 })
   // Overhaul burn times
   e.remove({ id: 'createaddition:liquid_burning/diesel' })
   e.remove({ id: 'createaddition:liquid_burning/gasoline' })
@@ -191,9 +207,14 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'pneumaticcraft:thermo_plant/plastic_from_biodiesel' })
   e.remove({ id: 'pneumaticcraft:thermo_plant/plastic_from_lpg' })
   pneumaticcraft
-    .ThermoPlant(['250mb #forge:lpg', 'minecraft:coal'])
-    .minTemp(100)
-    .outputs(['250mb pneumaticcraft:plastic'])
+    .thermo_plant()
+    .fluid_input({
+      tag: 'forge:lpg',
+      amount: 250,
+    })
+    .item_input('minecraft:coal')
+    .fluid_output(Fluid.of('pneumaticcraft:plastic', 250))
+    .temperature({ min_temp: 100 })
 
   // Cool plastic in a heat frame or TPP
   e.remove({ id: 'pneumaticcraft:heat_frame_cooling/plastic' })
@@ -205,10 +226,11 @@ ServerEvents.recipes((e) => {
     .bonus_output({ limit: 1, multiplier: 0.01 })
     .max_temp(50)
   pneumaticcraft
-    .ThermoPlant('1000mb pneumaticcraft:plastic')
-    .maxTemp(0)
+    .thermo_plant()
+    .fluid_input(Fluid.of('pneumaticcraft:plastic', 1000))
+    .item_output(Item.of('tfmg:plastic_sheet', 2))
     .pressure(-0.75)
-    .outputs('2x tfmg:plastic_sheet')
+    .temperature({ max_temp: 273 + 0 })
 
   // Plastic sheets are cut from plastic
   create.cutting('3x pneumaticcraft:plastic', 'tfmg:plastic_sheet')
@@ -501,10 +523,12 @@ ServerEvents.recipes((e) => {
 
   // Continuing to process silicon with coal coke yields
   pneumaticcraft
-    .ThermoPlant(['90mb kubejs:molten_silicon', 'tfmg:coal_coke_dust'])
+    .thermo_plant()
+    .fluid_input(Fluid.of('kubejs:molten_silicon', 90))
+    .item_input('tfmg:coal_coke_dust')
+    .item_output('kubejs:graphite')
     .pressure(9.5)
-    .minTemp(1000)
-    .outputs('kubejs:graphite')
+    .temperature({ min_temp: 273 + 1000 })
 
   // Under high pressure, graphite turns into diamond dust
   e.remove({ id: 'pneumaticcraft:pressure_chamber/coal_to_diamond' })
@@ -555,13 +579,6 @@ ServerEvents.recipes((e) => {
     .fill(Fluid.water(500))
     .loops(4)
     .outputs('4x kubejs:silicon_wafer')
-
-  // Faster and cheaper electron tube crafting
-  pneumaticcraft
-    .ThermoPlant(['minecraft:quartz', '180mb kubejs:molten_redstone'])
-    .pressure(8)
-    .minTemp(300)
-    .outputs('create:electron_tube')
 
   // Transistor overhaul
   e.remove({ id: 'pneumaticcraft:pressure_chamber/transistor' })

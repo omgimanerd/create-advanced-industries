@@ -182,8 +182,13 @@ StartupEvents.recipeSchemaRegistry((e) => {
       .add(id.key('id'))
       .inputRole()
 
-    let pncrFluidInput = fluidOrTagInput
-      .simpleMap({ fluidTag: 'tag' })
+    let pncrFluidInput = inputFluid
+      .or(
+        new $RecipeComponentBuilder(2)
+          .add(fluidTag.key('tag'))
+          .add(intNumber.key('amount'))
+          .inputRole()
+      )
       .mapOut((json) => {
         json.getAsJsonObject().addProperty('type', 'pneumaticcraft:fluid')
         return json
@@ -293,7 +298,7 @@ StartupEvents.recipeSchemaRegistry((e) => {
         floatNumber.key('pressure').optional(0),
         floatNumber.key('air_use_multiplier').optional(0),
         floatNumber.key('speed').optional(0)
-      )
+      ).addConstructor(() => {})
     )
 
     let $ShapedRecipeSchema = Java.loadClass(
