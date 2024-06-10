@@ -37,12 +37,6 @@ const shapedSpecial = (e, type, output, pattern, keys) => {
  */
 const definePneumaticcraftRecipes = (e) => {
   return {
-    // Helpers
-    /**
-     * @param {string} input
-     * @returns {Assembly}
-     */
-    Assembly: getConstructorWrapper(e, Assembly),
     /**
      * @param {string} input1
      * @param {string} input2

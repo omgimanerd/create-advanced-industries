@@ -281,7 +281,6 @@ StartupEvents.recipeSchemaRegistry((e) => {
         pncrTempRange
       )
     )
-    // causes NPE?
     e.register(
       'pneumaticcraft:thermo_plant',
       new $RecipeSchema(

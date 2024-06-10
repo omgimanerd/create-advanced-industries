@@ -461,10 +461,10 @@ ServerEvents.recipes((e) => {
   // Ancient Debris processing
   e.remove({ id: /minecraft:netherite_scrap.*/ })
   e.remove({ id: 'minecraft:netherite_ingot' })
-  pneumaticcraft
-    .Assembly('minecraft:ancient_debris')
-    .type(Assembly.TYPE_LASER)
-    .outputs('minecraft:netherite_scrap')
+  e.recipes.pneumaticcraft.assembly_laser(
+    'minecraft:ancient_debris',
+    'minecraft:netherite_scrap'
+  )
   create
     .compacting('minecraft:netherite_ingot', [
       '2x minecraft:netherite_scrap',
@@ -590,30 +590,30 @@ ServerEvents.recipes((e) => {
     .deploy('morered:red_alloy_ingot')
     .deploy('minecraft:iron_ingot')
     .outputs('refinedstorage:raw_basic_processor')
-  pneumaticcraft
-    .Assembly('refinedstorage:raw_basic_processor')
-    .type(Assembly.TYPE_LASER)
-    .outputs('refinedstorage:basic_processor')
+  e.recipes.pneumaticcraft.assembly_laser(
+    'refinedstorage:raw_basic_processor',
+    'refinedstorage:basic_processor'
+  )
   create
     .SequencedAssembly('kubejs:silicon_wafer')
     .deploy('create:super_glue')
     .deploy('morered:red_alloy_ingot')
     .deploy('minecraft:gold_ingot')
     .outputs('refinedstorage:raw_improved_processor')
-  pneumaticcraft
-    .Assembly('refinedstorage:raw_improved_processor')
-    .type(Assembly.TYPE_LASER)
-    .outputs('refinedstorage:improved_processor')
+  e.recipes.pneumaticcraft.assembly_laser(
+    'refinedstorage:raw_improved_processor',
+    'refinedstorage:improved_processor'
+  )
   create
     .SequencedAssembly('kubejs:silicon_wafer')
     .deploy('create:super_glue')
     .deploy('morered:red_alloy_ingot')
     .deploy('thermal:diamond_dust')
     .outputs('refinedstorage:raw_advanced_processor')
-  pneumaticcraft
-    .Assembly('refinedstorage:raw_advanced_processor')
-    .type(Assembly.TYPE_LASER)
-    .outputs('refinedstorage:advanced_processor')
+  e.recipes.pneumaticcraft.assembly_laser(
+    'refinedstorage:raw_advanced_processor',
+    'refinedstorage:advanced_processor'
+  )
 
   // Mechanism assembly
   create.mechanical_crafting(

@@ -215,30 +215,10 @@ ServerEvents.recipes((e) => {
       D: 'thermal:drill_head',
     })
   )
-  e.remove({ id: /^pneumaticcraft:assembly_io_unit_(im|ex)port$/ })
-  pneumaticcraft.shapedSpecial(
-    'pneumaticcraft:crafting_shaped_no_mirror',
-    'pneumaticcraft:assembly_io_unit_export',
-    [
-      'NNO', //
-      'N  ', //
-      'HPH', //
-    ],
-    Object.assign({}, pneumaticcraftKeys, {
-      O: 'minecraft:hopper',
-    })
-  )
-  pneumaticcraft.shapedSpecial(
-    'pneumaticcraft:crafting_shaped_no_mirror',
-    'pneumaticcraft:assembly_io_unit_import',
-    [
-      'ONN', //
-      '  N', //
-      'HPH', //
-    ],
-    Object.assign({}, pneumaticcraftKeys, {
-      O: 'minecraft:hopper',
-    })
+  e.replaceInput(
+    { id: /^pneumaticcraft:assembly_io_unit_(im|ex)port$/ },
+    'tfmg:steel_ingot',
+    'tfmg:heavy_plate'
   )
   redefineRecipe(
     'pneumaticcraft:assembly_laser',
