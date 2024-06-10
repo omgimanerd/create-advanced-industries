@@ -93,7 +93,8 @@ CVIPressurizingWrapper.prototype.outputs = function (results) {
       this.inputs_
     )
   }
-  return recipe
-    .processingTime(this.processingTime_)
-    .heatRequirement(this.heatRequirement_)
+  if (this.heatRequirement_ !== null) {
+    recipe.heatRequirement(this.heatRequirement_)
+  }
+  return recipe.processingTime(this.processingTime_)
 }

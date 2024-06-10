@@ -38,11 +38,6 @@ const shapedSpecial = (e, type, output, pattern, keys) => {
 const definePneumaticcraftRecipes = (e) => {
   return {
     /**
-     * @param {string|string[]} inputs
-     * @returns {PressureChamber}
-     */
-    PressureChamber: getConstructorWrapper(e, PressureChamber),
-    /**
      * @param {string} input
      * @returns {Refinery}
      */

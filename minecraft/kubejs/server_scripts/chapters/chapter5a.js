@@ -31,10 +31,11 @@ ServerEvents.recipes((e) => {
   // Hardened planks can only be crafted in a pressure chamber, which gates
   // steel casings behind Pneumaticcraft.
   e.remove({ id: 'tfmg:filling/hardened_wood_creosote' })
-  pneumaticcraft
-    .PressureChamber(['8x #minecraft:planks', '1x tfmg:creosote_bucket'])
-    .pressure(2)
-    .outputs(['8x tfmg:hardened_planks', 'minecraft:bucket'])
+  create
+    .pressurizing('#minecraft:planks')
+    .secondaryFluidInput(Fluid.of('tfmg:creosote', 125))
+    .heated()
+    .outputs('tfmg:hardened_planks')
 
   // Overhaul Pneumaticcraft Refinery recipes
   redefineRecipe(
@@ -507,10 +508,11 @@ ServerEvents.recipes((e) => {
 
   // Under high pressure, graphite turns into diamond dust
   e.remove({ id: 'pneumaticcraft:pressure_chamber/coal_to_diamond' })
-  pneumaticcraft
-    .PressureChamber('9x kubejs:graphite')
-    .pressure(4.75)
-    .outputs('thermal:diamond_dust')
+  e.recipes.pneumaticcraft.pressure_chamber(
+    Item.of('kubejs:graphite', 9),
+    'thermal:diamond_dust',
+    4.75
+  )
 
   // Diamond saw blades to cut silicon into wafers
   create.crushing(
