@@ -151,8 +151,6 @@ JEIAddedEvents.onRuntimeAvailable((e) => {
     recipeTypes[`${recipeType.getUid().toString()}`] = recipeType
   })
 
-  console.log(recipeTypes)
-
   // Move all custom potion brewing recipes from the Create mixer category to
   // Create automated brewing.
   const customBrewingRecipes = recipeManager
