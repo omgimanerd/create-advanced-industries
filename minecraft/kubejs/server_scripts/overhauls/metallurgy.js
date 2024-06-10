@@ -43,4 +43,6 @@ ServerEvents.recipes((e) => {
     ['minecraft:glass', MeltableItem.STEEL_INGOT_CAST],
     steelCastedMoltenGlass
   )
+
+  // TODO metallurgy flow?
 })

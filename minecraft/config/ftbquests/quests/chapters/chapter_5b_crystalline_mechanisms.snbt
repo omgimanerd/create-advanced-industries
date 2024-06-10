@@ -56,6 +56,7 @@
 				item: "kubejs:crystalline_mechanism"
 				type: "item"
 			}]
+			size: 2.0d
 			tasks: [{
 				id: "62E20D469B9A024E"
 				item: "kubejs:crystalline_mechanism"

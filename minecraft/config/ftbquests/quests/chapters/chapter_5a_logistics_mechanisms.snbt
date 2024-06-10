@@ -227,7 +227,7 @@
 		}
 		{
 			dependencies: ["2A592785D36BC8D3"]
-			description: ["Powering a surface scanner with some rotational force will make it point towards the nearest oil deposit. Once you find its location, dig all the way down to bedrock to find it."]
+			description: ["Powering a surface scanner with some rotational force will make it point towards the nearest oil deposit. Once you find its location, dig all the way down to bedrock."]
 			id: "4A2841F0F4D70DF5"
 			tasks: [{
 				id: "302CC20FD577EB8C"
@@ -435,17 +435,10 @@
 		}
 		{
 			dependencies: [
-				"127F63CD80455224"
-				"20B80014624E02DA"
 				"1DB3C79C5873426A"
+				"51E11E2489214263"
 			]
-			description: [
-				"You can craft hardened planks in a pressure chamber."
-				""
-				"Hardened planks unlock steel casings, so you can now craft compressors."
-				""
-				"Overpressuring a pipe will blow it up!"
-			]
+			description: ["Hardened planks unlock steel casings, so you can now craft PneumaticCraft compressors."]
 			id: "1A316BB40EBEF754"
 			tasks: [{
 				id: "1158C3CFC6AABDAF"
@@ -486,43 +479,6 @@
 		{
 			dependencies: ["5978BE35C75966ED"]
 			description: [
-				"The first thing you'll need is a pressure chamber, which is now possible thanks to steel."
-				""
-				"These are the minimal requirements to build the smallest possible one. Of course, you can also use pressure chamber glass for one of the sides to see into it."
-			]
-			id: "127F63CD80455224"
-			rewards: [{
-				count: 16
-				id: "652596F2C75CA590"
-				item: "pneumaticcraft:pressure_tube"
-				type: "item"
-			}]
-			tasks: [
-				{
-					count: 23L
-					id: "4BF0ED06DC4ACE98"
-					item: { Count: 22b, id: "pneumaticcraft:pressure_chamber_wall" }
-					type: "item"
-				}
-				{
-					count: 2L
-					id: "09CF5C4A04C752CA"
-					item: { Count: 2b, id: "pneumaticcraft:pressure_chamber_interface" }
-					type: "item"
-				}
-				{
-					id: "33449CF30698FCFA"
-					item: "pneumaticcraft:pressure_chamber_valve"
-					type: "item"
-				}
-			]
-			title: "Building a Pressure Chamber"
-			x: 2.0d
-			y: 0.0d
-		}
-		{
-			dependencies: ["5978BE35C75966ED"]
-			description: [
 				"Among the other things unlocked by Steel Mechanisms, mechanical extruders might be one of the most useful. Mechanical extruders can also produce blocks with a catalyst that you can't normally get in a regular cobblegen."
 				""
 				"You can also use it to simplify some of your earlier automations."
@@ -534,22 +490,6 @@
 				type: "item"
 			}]
 			x: 0.0d
-			y: 2.0d
-		}
-		{
-			dependencies: ["127F63CD80455224"]
-			description: [
-				"Until you can craft steel casings with hardened planks, you'll need to manually pump some air into the pressure chamber for the first batch."
-				""
-				"Get cranking!"
-			]
-			id: "20B80014624E02DA"
-			tasks: [{
-				id: "00DA21C797BBD86B"
-				item: "pneumaticcraft:manual_compressor"
-				type: "item"
-			}]
-			x: 4.0d
 			y: 2.0d
 		}
 		{
@@ -1158,9 +1098,12 @@
 			y: 2.0d
 		}
 		{
-			dependencies: ["657C26D7A19E343B"]
+			dependencies: [
+				"657C26D7A19E343B"
+				"46CF2D475F13F8F2"
+			]
 			description: [
-				"Press and roll copper into copper wires and wind it around the spool to get copper wire."
+				"Wind the copper wire around the spool."
 				""
 				"In addition to being a crafting ingredient, it can be used to transfer energy between electrical connectors."
 			]
@@ -1234,7 +1177,11 @@
 		}
 		{
 			dependencies: ["20444E3074A0589D"]
-			description: ["Among the recipe yields are silver nuggets."]
+			description: [
+				"Among the recipe yields are silver nuggets."
+				""
+				"You'll unlock better ways to get silver later on."
+			]
 			id: "59F5A52EB3FE897E"
 			tasks: [{
 				id: "3DE31DC3B6FB9428"
@@ -1337,7 +1284,13 @@
 				"4D56CF3158929A30"
 				"646D6F79EF32D089"
 			]
+			description: ["This quest is only here to straighten out the dependency lines. Onwards!"]
 			id: "18F0E1C41C673266"
+			rewards: [{
+				id: "06073A2FE45A7810"
+				item: "farmersdelight:hamburger"
+				type: "item"
+			}]
 			tasks: [{
 				id: "57366F6AEABAD966"
 				item: "kubejs:graphite"
@@ -1481,7 +1434,7 @@
 			description: [
 				"Advanced pressure tubes are required to make the high pressure compressors, but they require both high pressure and temperature to manufacture."
 				""
-				"This puzzle is left as an exercise to the reader. How can you get the pressure and temperature required to make one?"
+				"This puzzle is one of the key challenges in this chapter, and is left as an exercise to the reader. How can you get the pressure and temperature required to make one?"
 			]
 			id: "5714BEB6ED8A6AE0"
 			rewards: [{
@@ -1571,6 +1524,34 @@
 			title: "Pyrolyzing Bitumen"
 			x: 12.0d
 			y: -8.0d
+		}
+		{
+			dependencies: ["5978BE35C75966ED"]
+			description: [
+				"Now that you have access to Steel, you can craft most of the more advanced Create machines."
+				""
+				"The compressor is capable of low pressure crafts, and we're going to need some high pressure machines for this chapter. Using the compressor, we can make the hardened planks necessary to get into PneumaticCraft."
+			]
+			id: "51E11E2489214263"
+			tasks: [{
+				id: "3071ED6920D516DB"
+				item: "vintageimprovements:vacuum_chamber"
+				type: "item"
+			}]
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["5978BE35C75966ED"]
+			description: ["If you've automated copper, then pressing and rolling it into wires should be easy."]
+			id: "46CF2D475F13F8F2"
+			tasks: [{
+				id: "30EB973964799B27"
+				item: "createaddition:copper_wire"
+				type: "item"
+			}]
+			x: 4.0d
+			y: 2.0d
 		}
 	]
 	title: "Chapter 5a: Logistics Mechanisms"
