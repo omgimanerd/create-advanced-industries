@@ -38,12 +38,6 @@ const shapedSpecial = (e, type, output, pattern, keys) => {
 const definePneumaticcraftRecipes = (e) => {
   return {
     /**
-     * @param {string} input1
-     * @param {string} input2
-     * @returns {FluidMixer}
-     */
-    FluidMixer: getConstructorWrapper(e, FluidMixer),
-    /**
      * @param {string} input
      * @returns {HeatFrame}
      */
