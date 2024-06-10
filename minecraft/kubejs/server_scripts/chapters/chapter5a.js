@@ -564,13 +564,7 @@ ServerEvents.recipes((e) => {
   )
 
   // Diamond dust can be recrystallized into diamonds
-  e.remove({ id: 'thermal:machines/crystallizer/crystallizer_diamond' })
-  e.recipes.thermal
-    .crystallizer('minecraft:diamond', [
-      Fluid.water(2000),
-      'thermal:diamond_dust',
-    ])
-    .energy(10000)
+  // Recipe defined in overhauls/thermal.js
 
   // Silicon wafer cutting
   create

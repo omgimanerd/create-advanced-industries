@@ -199,4 +199,23 @@ ServerEvents.recipes((e) => {
     Fluid.of('thermal:creosote'),
     Fluid.of('tfmg:creosote')
   )
+
+  // Overhaul Thermal Crystallizer recipes
+  e.remove({ id: /^thermal:machines\/crystallizer\/crystallizer_.*$/ })
+  const crystallizerFromTo = {
+    'thermal:sulfur_dust': 'thermal:sulfur',
+    'thermal:quartz_dust': 'minecraft:quartz',
+    // 'thermal:apatite_dust': 'thermal:apatite', what to do with this?
+    'thermal:cinnabar_dust': 'thermal:cinnabar',
+    'thermal:emerald_dust': 'minecraft:emerald',
+    'thermal:niter_dust': 'thermal:niter',
+    'thermal:lapis_dust': 'minecraft:lapis',
+    'thermal:diamond_dust': 'minecraft:diamond',
+  }
+  for (let [from, to] of Object.entries(crystallizerFromTo)) {
+    e.recipes.thermal.crystallizer(to, [
+      from,
+      Fluid.of('kubejs:crystal_growth_accelerator', 250),
+    ])
+  }
 })

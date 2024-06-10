@@ -3,12 +3,24 @@
 
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
+  const pneumaticcraft = definePneumaticcraftRecipes(e)
 
   // Source fluid automation
   create.compacting(
     Fluid.of('starbunclemania:source_fluid', 100),
     'ars_nouveau:sourceberry_bush'
   )
+
+  // More efficient source fluid automation, gated by enchantment, each level of
+  // Nutrient Infusion adds 100 extra source.
+  for (let level = 1; level <= 5; ++level) {
+    create.compacting(
+      Fluid.of('starbunclemania:source_fluid', 100 * (level + 1)),
+      Item.of('ars_nouveau:sourceberry_bush')
+        .enchant('kubejs:nutrient_infusion', level)
+        .weakNBT()
+    )
+  }
 
   // Source fluid to source conversion should be 1:1
   e.remove({ type: 'starbunclemania:fluid_sourcelink' })
@@ -34,13 +46,28 @@ ServerEvents.recipes((e) => {
     'minecraft:sand'
   )
 
-  // Source gem crafting
+  // Source gem crafting, remove imbuement recipes
   e.remove({ id: 'ars_nouveau:imbuement_amethyst' })
   e.remove({ id: 'ars_nouveau:imbuement_lapis' })
+  e.remove({ id: 'ars_nouveau:imbuement_amethyst_block' })
   create.filling('ars_nouveau:source_gem', [
     Fluid.of('starbunclemania:source_fluid', 250),
     'minecraft:gold_nugget',
   ])
+
+  // Better recipes gated by Steel and FE
+  e.recipes.thermal
+    .crystallizer('ars_nouveau:source_gem', [
+      Fluid.of('starbunclemania:source_fluid', 125),
+      'minecraft:gold_nugget',
+    ])
+    .energy(8000)
+  pneumaticcraft
+    .thermo_plant()
+    .fluid_input(Fluid.of('starbunclemania:source_fluid', 125))
+    .item_input('minecraft:gold_nugget')
+    .pressure(4.5)
+    .item_output('ars_nouveau:source_gem')
 
   // Source mechanism
   create
