@@ -867,5 +867,13 @@ ServerEvents.recipes((e) => {
       B: 'create:mechanical_belt',
     }
   )
+
+  // Consolidate recipe categories
+  e.remove({ id: 'vintageimprovements:curving/diamond' })
+  create.polishing(
+    'createutilities:polished_amethyst',
+    'minecraft:amethyst_shard'
+  )
+
   // TODO redstone module
 })
