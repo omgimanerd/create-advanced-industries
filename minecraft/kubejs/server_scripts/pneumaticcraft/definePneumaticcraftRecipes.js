@@ -1,35 +1,4 @@
-// priority: 500
-
-// Helper to define the special custom shaped recipe formats used by
-// Pneumaticcraft
-const shapedSpecial = (e, type, output, pattern, keys) => {
-  const allowedTypes = {
-    'pneumaticcraft:compressor_upgrade_crafting': true,
-    'pneumaticcraft:crafting_shaped_no_mirror': true,
-    'pneumaticcraft:crafting_shaped_pressurizable': true,
-  }
-  if (!(type in allowedTypes)) throw new Error(`Unknown type ${type}`)
-  const base = {
-    type: type,
-    category: 'misc',
-    pattern: pattern,
-    key: {},
-  }
-  const keysInPattern = pattern.join('')
-  for (const [key, item] of Object.entries(keys)) {
-    if (!keysInPattern.includes(key)) continue
-    let parsedItem = Parser.parseItemInput(item)
-    if (!setIfValid(base.key, key, parsedItem)) {
-      throw new Error(`Invalid keys: ${keys}`)
-    }
-  }
-  const outputItem = Parser.parseItemOutput(output)
-  if (!setIfValid(base, 'result', outputItem)) {
-    throw new Error(`Invalid output ${output}`)
-  }
-
-  return e.custom(base)
-}
+// priority: 900
 
 /**
  * @param {Internal.RecipesEventJS} e
@@ -43,11 +12,40 @@ const definePneumaticcraftRecipes = (e) => {
      */
     ThermoPlant: getConstructorWrapper(e, ThermoPlant),
     /**
-     * @param {string} type
-     * @param {string} output
+     * @param {OutputItem_} result
      * @param {string[]} pattern
-     * @param {Object<string, string>} output
+     * @param {{[key in string]:InputItem_} } key
      */
-    shapedSpecial: getPartialApplication(e, shapedSpecial),
+    compressor_upgrade_crafting: (result, pattern, key) => {
+      return e.recipes.pneumaticcraft.compressor_upgrade_crafting(
+        result,
+        pattern,
+        removeUnusedKeys(pattern, key)
+      )
+    },
+    /**
+     * @param {OutputItem_} result
+     * @param {string[]} pattern
+     * @param {{[key in string]:InputItem_} } key
+     */
+    crafting_shaped_no_mirror: (result, pattern, key) => {
+      return e.recipes.pneumaticcraft.crafting_shaped_no_mirror(
+        result,
+        pattern,
+        removeUnusedKeys(pattern, key)
+      )
+    },
+    /**
+     * @param {OutputItem_} result
+     * @param {string[]} pattern
+     * @param {{[key in string]:InputItem_} } key
+     */
+    crafting_shaped_pressurizable: (result, pattern, key) => {
+      return e.recipes.pneumaticcraft.crafting_shaped_pressurizable(
+        result,
+        pattern,
+        removeUnusedKeys(pattern, key)
+      )
+    },
   }
 }

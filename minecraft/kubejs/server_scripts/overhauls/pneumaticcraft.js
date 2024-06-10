@@ -140,8 +140,7 @@ ServerEvents.recipes((e) => {
   // The advanced compressors require custom registration in order to preserve
   // the nbt data in the ingredient compressor.
   e.remove({ output: 'pneumaticcraft:advanced_air_compressor' })
-  pneumaticcraft.shapedSpecial(
-    'pneumaticcraft:compressor_upgrade_crafting',
+  pneumaticcraft.compressor_upgrade_crafting(
     'pneumaticcraft:advanced_air_compressor',
     [
       'HHH', //
@@ -153,8 +152,7 @@ ServerEvents.recipes((e) => {
     })
   )
   e.remove({ output: 'pneumaticcraft:advanced_liquid_compressor' })
-  pneumaticcraft.shapedSpecial(
-    'pneumaticcraft:compressor_upgrade_crafting',
+  pneumaticcraft.compressor_upgrade_crafting(
     'pneumaticcraft:advanced_liquid_compressor',
     [
       'HHH', //
