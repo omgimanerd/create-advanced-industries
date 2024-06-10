@@ -181,7 +181,7 @@ ServerEvents.recipes((e) => {
   // Overhaul lubricant from diesel
   e.remove({ id: 'pneumaticcraft:thermo_plant/lubricant_from_biodiesel' })
   e.remove({ id: 'pneumaticcraft:thermo_plant/lubricant_from_diesel' })
-  e.recipes.pneumaticcraft
+  pneumaticcraft
     .fluid_mixer(
       Fluid.of('pneumaticcraft:diesel', 250),
       Fluid.of('createaddition:seed_oil', 250),
@@ -218,7 +218,7 @@ ServerEvents.recipes((e) => {
 
   // Cool plastic in a heat frame or TPP
   e.remove({ id: 'pneumaticcraft:heat_frame_cooling/plastic' })
-  e.recipes.pneumaticcraft
+  pneumaticcraft
     .heat_frame_cooling(
       Fluid.of('pneumaticcraft:plastic', 1000),
       Item.of('tfmg:plastic_sheet', 2)
@@ -486,7 +486,7 @@ ServerEvents.recipes((e) => {
   // Ancient Debris processing
   e.remove({ id: /minecraft:netherite_scrap.*/ })
   e.remove({ id: 'minecraft:netherite_ingot' })
-  e.recipes.pneumaticcraft.assembly_laser(
+  pneumaticcraft.assembly_laser(
     'minecraft:ancient_debris',
     'minecraft:netherite_scrap'
   )
@@ -514,7 +514,7 @@ ServerEvents.recipes((e) => {
       ]
     )
     .superheated()
-  e.recipes.pneumaticcraft
+  pneumaticcraft
     .heat_frame_cooling(
       Fluid.of('kubejs:molten_silicon', 360),
       Item.of('refinedstorage:silicon', 4)
@@ -532,7 +532,7 @@ ServerEvents.recipes((e) => {
 
   // Under high pressure, graphite turns into diamond dust
   e.remove({ id: 'pneumaticcraft:pressure_chamber/coal_to_diamond' })
-  e.recipes.pneumaticcraft.pressure_chamber(
+  pneumaticcraft.pressure_chamber(
     Item.of('kubejs:graphite', 9),
     'thermal:diamond_dust',
     4.75
@@ -608,7 +608,7 @@ ServerEvents.recipes((e) => {
     .deploy('morered:red_alloy_ingot')
     .deploy('minecraft:iron_ingot')
     .outputs('refinedstorage:raw_basic_processor')
-  e.recipes.pneumaticcraft.assembly_laser(
+  pneumaticcraft.assembly_laser(
     'refinedstorage:raw_basic_processor',
     'refinedstorage:basic_processor'
   )
@@ -618,7 +618,7 @@ ServerEvents.recipes((e) => {
     .deploy('morered:red_alloy_ingot')
     .deploy('minecraft:gold_ingot')
     .outputs('refinedstorage:raw_improved_processor')
-  e.recipes.pneumaticcraft.assembly_laser(
+  pneumaticcraft.assembly_laser(
     'refinedstorage:raw_improved_processor',
     'refinedstorage:improved_processor'
   )
@@ -628,7 +628,7 @@ ServerEvents.recipes((e) => {
     .deploy('morered:red_alloy_ingot')
     .deploy('thermal:diamond_dust')
     .outputs('refinedstorage:raw_advanced_processor')
-  e.recipes.pneumaticcraft.assembly_laser(
+  pneumaticcraft.assembly_laser(
     'refinedstorage:raw_advanced_processor',
     'refinedstorage:advanced_processor'
   )

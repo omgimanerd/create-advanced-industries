@@ -196,7 +196,7 @@ ServerEvents.recipes((e) => {
     .deploy('minecraft:amethyst_shard')
     .outputs('extrastorage:raw_neural_processor')
   e.remove({ id: 'extrastorage:neural_processor' })
-  e.recipes.pneumaticcraft.assembly_laser(
+  pneumaticcraft.assembly_laser(
     'extrastorage:raw_neural_processor',
     'extrastorage:neural_processor'
   )

@@ -748,7 +748,7 @@ ServerEvents.recipes((e) => {
     } else {
       mixing.heated()
     }
-    e.recipes.pneumaticcraft.refinery(
+    pneumaticcraft.refinery(
       Fluid.of(archwood_sap, 50),
       [
         Fluid.of(essence_fluid, 25),
@@ -761,7 +761,7 @@ ServerEvents.recipes((e) => {
     // Solidifying the liquid essences
     // Create recipes have a slight loss compared to Pneumaticcraft
     create.compacting(essence, Fluid.of(essence_fluid, 250))
-    e.recipes.pneumaticcraft
+    pneumaticcraft
       .heat_frame_cooling(Fluid.of(essence_fluid, 1000), Item.of(essence, 10))
       .max_temp(0)
 
@@ -797,7 +797,7 @@ ServerEvents.recipes((e) => {
       Fluid.of('kubejs:vexing_archwood_sap', 50)
     )
     .heated()
-  e.recipes.pneumaticcraft.refinery(
+  pneumaticcraft.refinery(
     Fluid.of('kubejs:vexing_archwood_sap', 50),
     [
       Fluid.of('starbunclemania:source_fluid', 30),
