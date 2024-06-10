@@ -14,11 +14,6 @@ ServerEvents.recipes((e) => {
   e.replaceInput(
     {
       mod: 'compressedcreativity',
-      not: [
-        { type: 'pneumaticcraft:heat_frame_cooling' }, // causes an NPE
-        { type: 'pneumaticcraft:fluid_mixer' }, // causes an NPE
-        { type: 'pneumaticcraft:thermo_plant' }, // causes an NPE
-      ],
     },
     'pneumaticcraft:ingot_iron_compressed',
     'tfmg:steel_ingot'
@@ -105,11 +100,6 @@ ServerEvents.recipes((e) => {
           { output: 'pneumaticcraft:compressed_iron_block' },
           { output: 'pneumaticcraft:ingot_iron_compressed' },
           { output: 'pneumaticcraft:compressed_iron_gear' },
-          // Because of the RecipeComponentBuilders in their schema, running
-          // replaceInput on the following three recipe types causes an NPE
-          { type: 'pneumaticcraft:heat_frame_cooling' }, // causes an NPE
-          { type: 'pneumaticcraft:fluid_mixer' }, // causes an NPE
-          { type: 'pneumaticcraft:thermo_plant' }, // causes an NPE
         ],
       },
       from,

@@ -201,12 +201,10 @@ StartupEvents.recipeSchemaRegistry((e) => {
     let pncrBonusOutput = new $RecipeComponentBuilder(2)
       .add(floatNumber.key('limit'))
       .add(floatNumber.key('multiplier'))
-      .inputRole()
       .key('bonus_output')
     let pncrTempRange = new $RecipeComponentBuilder(2)
       .add(intNumber.key('min_temp').optional(0))
       .add(intNumber.key('max_temp').optional(0))
-      .inputRole()
       .key('temperature')
 
     e.register(
