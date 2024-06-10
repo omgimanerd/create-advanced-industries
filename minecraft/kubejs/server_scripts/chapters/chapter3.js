@@ -139,13 +139,20 @@ ServerEvents.recipes((e) => {
     ])
     .heated()
 
+  // Pressurizing recipe for redstone gated by steel
+  create
+    .pressurizing([Item.of('minecraft:cobblestone', 8), 'minecraft:red_dye'])
+    .secondaryFluidInput(Fluid.of('starbunclemania:source_fluid', 400))
+    .heated()
+    .outputs(Item.of('minecraft:redstone', 8))
+
   // Rose quartz overhaul
   create.filling('create:rose_quartz', [
     'minecraft:quartz',
     Fluid.of('kubejs:molten_redstone', ingotFluid * 4),
   ])
 
-  // Better recipes gated by steel
+  // Pressurizing recipes gated by steel and Chapter 5
   create
     .pressurizing('minecraft:quartz')
     .secondaryFluidInput(Fluid.of('kubejs:molten_redstone', ingotFluid * 2))
@@ -159,8 +166,7 @@ ServerEvents.recipes((e) => {
     .pressure(2)
     .temperature({ min_temp: 273 + 300 })
 
-  // Polished rose quartz overhaul
-  e.remove({ id: 'create:sandpaper_polishing/rose_quartz' })
+  // Polished rose quartz can be made with a grinder.
 
   // Electron tube overhaul
   e.remove({ id: 'create:crafting/materials/electron_tube' })

@@ -14,7 +14,16 @@ ServerEvents.recipes((e) => {
 
   // Red sand washing for copper
   create.splashing(
-    ['create:copper_nugget', Item.of('minecraft:clay_ball').withChance(0.25)],
+    [
+      Item.of('create:copper_nugget').withChance(0.5),
+      Item.of('minecraft:clay_ball').withChance(0.25),
+    ],
+    'minecraft:red_sand'
+  )
+
+  // Red sand vibrating gated by steel
+  create.vibrating(
+    ['create:copper_nugget', Item.of('minecraft:clay_ball').withChance(0.4)],
     'minecraft:red_sand'
   )
 

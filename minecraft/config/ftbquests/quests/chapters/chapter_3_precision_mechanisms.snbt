@@ -112,7 +112,7 @@
 			description: [
 				"And wash it to cool it down."
 				""
-				"You have a chance of getting back the clay cast here."
+				"You have a chance of getting back the ceramic cast."
 			]
 			id: "35FEE70D2889724B"
 			shape: "gear"
@@ -142,7 +142,7 @@
 		}
 		{
 			dependencies: ["16096B10FDF70979"]
-			description: ["Rose quartz can be polished by with a grinder."]
+			description: ["Rose quartz can be polished with a grinder."]
 			id: "7D237B5C30B4AECC"
 			tasks: [{
 				id: "5F710035892313B3"

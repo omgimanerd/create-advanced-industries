@@ -21,7 +21,16 @@ ServerEvents.recipes((e) => {
   // Gold nugget washing automation
   e.remove({ id: 'create:splashing/sand' })
   create.splashing(
-    ['minecraft:gold_nugget', Item.of('minecraft:clay_ball').withChance(0.25)],
+    [
+      Item.of('minecraft:gold_nugget').withChance(0.5),
+      Item.of('minecraft:clay_ball').withChance(0.25),
+    ],
+    'minecraft:sand'
+  )
+
+  // Sand vibrating gated by steel
+  create.vibrating(
+    ['minecraft:gold_nugget', Item.of('minecraft:clay_ball').withChance(0.4)],
     'minecraft:sand'
   )
 
