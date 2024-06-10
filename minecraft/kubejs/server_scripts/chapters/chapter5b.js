@@ -760,10 +760,9 @@ ServerEvents.recipes((e) => {
     // Solidifying the liquid essences
     // Create recipes have a slight loss compared to Pneumaticcraft
     create.compacting(essence, Fluid.of(essence_fluid, 250))
-    pneumaticcraft
-      .HeatFrame(`1000mb ${essence_fluid}`)
-      .maxTemp(0)
-      .outputs(`10x ${essence}`)
+    e.recipes.pneumaticcraft
+      .heat_frame_cooling(Fluid.of(essence_fluid, 1000), Item.of(essence, 10))
+      .max_temp(0)
 
     // The liquid essence can be crystallized directly into the elemental gem.
     e.recipes.thermal

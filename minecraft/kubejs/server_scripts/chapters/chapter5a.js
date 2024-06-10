@@ -196,11 +196,13 @@ ServerEvents.recipes((e) => {
 
   // Cool plastic in a heat frame or TPP
   e.remove({ id: 'pneumaticcraft:heat_frame_cooling/plastic' })
-  pneumaticcraft
-    .HeatFrame('1000mb pneumaticcraft:plastic')
-    .bonusOutput(/*limit=*/ 1, /*multiplier=*/ 0.01)
-    .maxTemp(50)
-    .outputs('2x tfmg:plastic_sheet')
+  e.recipes.pneumaticcraft
+    .heat_frame_cooling(
+      Fluid.of('pneumaticcraft:plastic', 1000),
+      Item.of('tfmg:plastic_sheet', 2)
+    )
+    .bonus_output({ limit: 1, multiplier: 0.01 })
+    .max_temp(50)
   pneumaticcraft
     .ThermoPlant('1000mb pneumaticcraft:plastic')
     .maxTemp(0)
@@ -489,15 +491,12 @@ ServerEvents.recipes((e) => {
       ]
     )
     .superheated()
-  pneumaticcraft
-    .HeatFrame('360mb kubejs:molten_silicon')
-    .maxTemp(-50)
-    .outputs('4x refinedstorage:silicon')
-  pneumaticcraft
-    .ThermoPlant('360mb kubejs:molten_silicon')
-    .maxTemp(-100)
-    .pressure(-0.75)
-    .outputs('4x refinedstorage:silicon')
+  e.recipes.pneumaticcraft
+    .heat_frame_cooling(
+      Fluid.of('kubejs:molten_silicon', 360),
+      Item.of('refinedstorage:silicon', 4)
+    )
+    .max_temp(-50)
 
   // Continuing to process silicon with coal coke yields
   pneumaticcraft

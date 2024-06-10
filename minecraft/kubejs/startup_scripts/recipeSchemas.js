@@ -253,7 +253,7 @@ StartupEvents.recipeSchemaRegistry((e) => {
       new $RecipeSchema(
         pncrFluidInput.key('input'),
         outputItem.key('result'),
-        intNumber.key('max_temp'),
+        intNumber.key('max_temp').optional(0),
         pncrBonusOutput.defaultOptional()
       )
     )
