@@ -12,7 +12,14 @@ ServerEvents.recipes((e) => {
   // Compressed Creativity //
   ///////////////////////////
   e.replaceInput(
-    { mod: 'compressedcreativity' },
+    {
+      mod: 'compressedcreativity',
+      not: [
+        { type: 'pneumaticcraft:heat_frame_cooling' }, // causes an NPE
+        { type: 'pneumaticcraft:fluid_mixer' }, // causes an NPE
+        { type: 'pneumaticcraft:thermo_plant' }, // causes an NPE
+      ],
+    },
     'pneumaticcraft:ingot_iron_compressed',
     'tfmg:steel_ingot'
   )
@@ -98,35 +105,18 @@ ServerEvents.recipes((e) => {
           { output: 'pneumaticcraft:compressed_iron_block' },
           { output: 'pneumaticcraft:ingot_iron_compressed' },
           { output: 'pneumaticcraft:compressed_iron_gear' },
+          // Because of the RecipeComponentBuilders in their schema, running
+          // replaceInput on the following three recipe types causes an NPE
+          { type: 'pneumaticcraft:heat_frame_cooling' }, // causes an NPE
+          { type: 'pneumaticcraft:fluid_mixer' }, // causes an NPE
+          { type: 'pneumaticcraft:thermo_plant' }, // causes an NPE
         ],
       },
       from,
       to
     )
   }
-  // Pneumaticcraft registers its own recipe types to preserve the pressure in
-  // input ingredients.
-  e.forEachRecipe(
-    {
-      mod: 'pneumaticcraft',
-      type: 'pneumaticcraft:crafting_shaped_pressurizable',
-    },
-    (r) => {
-      let hasMatch = false
-      const parsedRecipe = JSON.parse(r.json)
-      for (const [key, item_json] of Object.entries(parsedRecipe.key)) {
-        if (item_json.tag === 'forge:ingots/compressed_iron') {
-          parsedRecipe.key[key] = { item: 'tfmg:steel_ingot' }
-          hasMatch = true
-        }
-      }
-      if (hasMatch) {
-        r.remove()
-        e.custom(parsedRecipe)
-      }
-    }
-  )
-  // Pneumaticraft manual
+  // PneumaticCraft manual
   e.remove({ id: 'pneumaticcraft:patchouli_book_crafting' })
   e.shapeless(
     Item.of('patchouli:guide_book').withNBT({
@@ -409,38 +399,13 @@ ServerEvents.recipes((e) => {
     pneumaticcraftKeys
   )
   // Overhaul pneumatic armor to derive from netherite armor
-  e.forEachRecipe(
-    {
-      mod: 'pneumaticcraft',
-      id: /pneumaticcraft:pneumatic_((boots)|(chestplate)|(helmet)|(leggings))/,
-    },
-    (r) => {
-      let hasMatch = false
-      const parsedRecipe = JSON.parse(r.json)
-      for (const [key, item_json] of Object.entries(parsedRecipe.key)) {
-        let { item } = item_json
-        // Attempt to remap any items in the pre-existing mapping
-        let replaced = pneumaticcraftMapping[item]
-        if (replaced !== null) {
-          parsedRecipe.key[key].item = replaced
-          continue
-        }
-        // Remap the compressed iron armor to netherite
-        replaced = item.replace(
-          'pneumaticcraft:compressed_iron_',
-          'minecraft:netherite_'
-        )
-        if (item !== replaced) {
-          parsedRecipe.key[key].item = replaced
-          continue
-        }
-      }
-      if (hasMatch) {
-        r.remove()
-        e.custom(parsedRecipe)
-      }
-    }
-  )
+  for (const equip of ['boots', 'chestplate', 'helmet', 'leggings']) {
+    e.replaceInput(
+      `pneumaticcraft:pneumatic_${equip}`,
+      `pneumaticcraft:compressed_iron_${equip}`,
+      `minecraft:netherite_${equip}`
+    )
+  }
   redefineRecipe('pneumaticcraft:transfer_gadget', [
     'kubejs:logistics_mechanism',
     'minecraft:hopper',

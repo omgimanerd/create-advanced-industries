@@ -164,11 +164,15 @@ ServerEvents.recipes((e) => {
   // Overhaul lubricant from diesel
   e.remove({ id: 'pneumaticcraft:thermo_plant/lubricant_from_biodiesel' })
   e.remove({ id: 'pneumaticcraft:thermo_plant/lubricant_from_diesel' })
-  pneumaticcraft
-    .FluidMixer('250mb #forge:diesel', '250mb #forge:plantoil')
-    .time(100)
-    .pressure(2)
-    .outputs(['500mb pneumaticcraft:lubricant', 'createaddition:biomass'])
+  e.recipes.pneumaticcraft
+    .fluid_mixer(
+      Fluid.of('pneumaticcraft:diesel', 250),
+      Fluid.of('createaddition:seed_oil', 250),
+      2,
+      100
+    )
+    .item_output('createaddition:biomass')
+    .fluid_output(Fluid.of('pneumaticcraft:lubricant', 500))
 
   // Pneumatic cylinder overhaul
   e.remove({ id: 'pneumaticcraft:pneumatic_cylinder' })
