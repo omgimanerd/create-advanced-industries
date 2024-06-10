@@ -127,8 +127,8 @@
 		}
 		{
 			dependencies: [
-				"30DEFE72650445CE"
 				"66C109F90DAEFFAD"
+				"0E97887518973ED6"
 			]
 			description: ["Pour the molten brass into a cast."]
 			id: "4A50DE1D6F439D92"
@@ -256,11 +256,11 @@
 		{
 			dependencies: ["7CB72E5D1BF48057"]
 			description: [
-				"Clay blocks can be cut into ingot or gem casts."
+				"Press the clay blocks into an unfired ingot cast using a curving press."
 				""
 				"For now, we don't have the capabilities to make reuseable casts. Clay casts have a chance of breaking each time they are used to cast something."
 				""
-				"It would be good to automate clay anyway, since it might be useful in the future as well (hint hint)."
+				"It's a good idea to automate clay anyway, since it might be useful in the future as well (hint hint)."
 			]
 			id: "30DEFE72650445CE"
 			tasks: [{
@@ -269,7 +269,7 @@
 				type: "item"
 			}]
 			x: 8.0d
-			y: 2.0d
+			y: 4.0d
 		}
 		{
 			dependencies: [
@@ -284,7 +284,7 @@
 				type: "item"
 			}]
 			x: 6.0d
-			y: 2.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["42AD35328B048497"]
@@ -488,7 +488,7 @@
 		{
 			dependencies: [
 				"1FAF850E383E186C"
-				"7CB72E5D1BF48057"
+				"0E97887518973ED6"
 			]
 			description: ["You can also choose to melt the nether quartz instead."]
 			id: "064458511DEB323C"
@@ -526,6 +526,8 @@
 			y: 0.0d
 		}
 		{
+			dependencies: ["30DEFE72650445CE"]
+			description: ["Blast the clay casts into ceramic ingot casts."]
 			id: "0E97887518973ED6"
 			tasks: [{
 				id: "7F18A486E6FF57C8"
@@ -533,7 +535,7 @@
 				type: "item"
 			}]
 			x: 8.0d
-			y: 0.0d
+			y: 2.0d
 		}
 	]
 	title: "Chapter 3: Precision Mechanisms"

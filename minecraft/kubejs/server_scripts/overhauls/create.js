@@ -826,7 +826,7 @@ ServerEvents.recipes((e) => {
     'vintageimprovements:curving_press',
     'create:shaft',
     'create:andesite_casing',
-    'vintageimprovements:steel_spring'
+    'minecraft:air'
   )
   e.remove({ id: 'vintageimprovements:mechanical_crafting/helve_hammer' })
   create.mechanical_crafting(
@@ -847,12 +847,12 @@ ServerEvents.recipes((e) => {
   redefineRecipe(
     'vintageimprovements:convex_curving_head',
     [
-      'HIH', //
-      ' H ', //
+      'SAS', //
+      ' S ', //
     ],
     {
-      I: 'tfmg:steel_ingot',
-      H: 'tfmg:heavy_plate',
+      A: 'create:andesite_alloy',
+      S: 'create:iron_sheet',
     }
   )
   redefineRecipe(

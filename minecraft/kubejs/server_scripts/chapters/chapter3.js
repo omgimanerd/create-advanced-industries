@@ -68,7 +68,11 @@ ServerEvents.recipes((e) => {
       C: 'minecraft:clay_ball',
     }
   )
-  e.stonecutting('kubejs:unfired_ingot_cast', 'minecraft:clay')
+  create.curving(
+    'kubejs:unfired_ingot_cast',
+    'minecraft:clay',
+    'vintageimprovements:v_shaped_curving_head'
+  )
   e.blasting('kubejs:ceramic_ingot_cast', 'kubejs:unfired_ingot_cast')
 
   // Tuff recipe overhaul
