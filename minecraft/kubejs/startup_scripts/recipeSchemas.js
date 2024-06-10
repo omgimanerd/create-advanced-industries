@@ -7,9 +7,6 @@ StartupEvents.recipeSchemaRegistry((e) => {
   const $RecipeComponentBuilder = Java.loadClass(
     'dev.latvian.mods.kubejs.recipe.component.RecipeComponentBuilder'
   )
-  const $HeatCondition = Java.loadClass(
-    'com.simibubi.create.content.processing.recipe.HeatCondition'
-  )
 
   // Input/output component types
   const Components = e.components
@@ -18,13 +15,11 @@ StartupEvents.recipeSchemaRegistry((e) => {
   const bool = Components.get('bool')()
   const id = Components.get('id')()
   const intNumber = Components.get('intNumber')()
-  const floatNumber = Components.get('floatNumber')()
-
   const filteredString = Components.get('filteredString')
+  const floatNumber = Components.get('floatNumber')()
 
   const inputItem = Components.get('inputItem')()
   const outputItem = Components.get('outputItem')()
-
   const inputFluid = Components.get('inputFluid')()
   const fluidTag = Components.get('tag')({ registry: 'fluid' })
   const fluidOrTagInput = inputFluid.or(
@@ -38,7 +33,13 @@ StartupEvents.recipeSchemaRegistry((e) => {
   const inputFluidOrItem = Components.get('inputFluidOrItem')()
   const outputFluidOrItem = Components.get('outputFluidOrItem')()
 
-  const heatCondition = Components.get('enum')({ class: $HeatCondition })
+  let $HeatCondition, heatCondition
+  if (Platform.isLoaded('create')) {
+    $HeatCondition = Java.loadClass(
+      'com.simibubi.create.content.processing.recipe.HeatCondition'
+    )
+    heatCondition = Components.get('enum')({ class: $HeatCondition })
+  }
 
   // Create Crafts & Additions
   if (Platform.isLoaded('createaddition')) {
