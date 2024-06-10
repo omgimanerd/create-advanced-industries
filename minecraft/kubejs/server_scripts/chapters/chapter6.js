@@ -31,7 +31,6 @@ BlockEvents.rightClicked('minecraft:infested_stone', (e) => {
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
   const pneumaticcraft = definePneumaticcraftRecipes(e)
-  const enchanting = getPartialApplication(e, createEnchantingRecipe)
   const redefineRecipe = redefineRecipe_(e)
 
   // Define automatable upgrade recipes for all the apotheotic gems.
@@ -253,13 +252,9 @@ ServerEvents.recipes((e) => {
   )
 
   // The Treasure Net is gated by a level 60 enchant
-  enchanting(
-    'kubejs:treasure_net',
-    'thermal:junk_net',
-    [30, -1],
-    [40, -1],
-    [40, -1]
-  )
+  e.recipes.apotheosis
+    .enchanting('thermal:junk_net', 'kubejs:treasure_net')
+    .requirements({ eterna: 30, quanta: 40, arcana: 40 })
   e.recipes.thermal.fisher_boost(
     'kubejs:treasure_net',
     1,
@@ -346,13 +341,9 @@ ServerEvents.recipes((e) => {
 
   // Liquid Hyper Experience condensing, gated behind a level 100 enchant
   e.remove({ id: 'create_enchantment_industry:mixing/hyper_experience' })
-  enchanting(
-    'kubejs:inert_xp_condenser',
-    'apotheosis:mythic_material',
-    [50, -1],
-    [80, -1],
-    [80, -1]
-  )
+  e.recipes.apotheosis
+    .enchanting('apotheosis:mythic_material', 'kubejs:inert_xp_condenser')
+    .requirements({ eterna: 50, quanta: 80, arcana: 80 })
   // Hyper Experience condensing requires an inert XP condenser
   create
     .SequencedAssembly(
@@ -373,13 +364,10 @@ ServerEvents.recipes((e) => {
   )
 
   // Provide a way to get Eternal Steak with a level 100 enchant
-  enchanting(
-    'artifacts:eternal_steak',
-    'minecraft:cooked_beef',
-    [50, -1],
-    [60, -1],
-    [60, -1]
-  )
+  e.recipes.apotheosis
+    .enchanting('minecraft:cooked_beef', 'artifacts:eternal_steak')
+    .requirements({ eterna: 50, quanta: 60, arcana: 60 })
+    .createRecipe()
 
   // Nether Star automation
   // Skeleton skulls can be automated with resonance crafting
@@ -416,6 +404,9 @@ ServerEvents.recipes((e) => {
     // cluttering JEI
     if (recipe.input.item === 'minecraft:honey_bottle') return
     let outputCount = recipe.result.count || 1
+
+    // TODO: custom recipes added here are not included in this list.
+
     pneumaticcraft
       .thermo_plant()
       .fluid_input(
