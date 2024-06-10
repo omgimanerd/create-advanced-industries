@@ -748,14 +748,15 @@ ServerEvents.recipes((e) => {
     } else {
       mixing.heated()
     }
-    pneumaticcraft
-      .Refinery(`50mb ${archwood_sap}`)
-      .minTemp(300)
-      .outputs([
-        `25mb ${essence_fluid}`,
-        `15mb starbunclemania:source_fluid`,
-        `10mb ${sap_byproduct}`,
-      ])
+    e.recipes.pneumaticcraft.refinery(
+      Fluid.of(archwood_sap, 50),
+      [
+        Fluid.of(essence_fluid, 25),
+        Fluid.of('starbunclemania:source_fluid', 15),
+        Fluid.of(sap_byproduct, 10),
+      ],
+      { min_temp: 273 + 300 }
+    )
 
     // Solidifying the liquid essences
     // Create recipes have a slight loss compared to Pneumaticcraft
@@ -796,14 +797,15 @@ ServerEvents.recipes((e) => {
       Fluid.of('kubejs:vexing_archwood_sap', 50)
     )
     .heated()
-  pneumaticcraft
-    .Refinery('50mb kubejs:vexing_archwood_sap')
-    .minTemp(100)
-    .outputs([
-      '30mb starbunclemania:source_fluid',
-      '10mb thermal:latex',
-      '10mb kubejs:crystal_growth_accelerator',
-    ])
+  e.recipes.pneumaticcraft.refinery(
+    Fluid.of('kubejs:vexing_archwood_sap', 50),
+    [
+      Fluid.of('starbunclemania:source_fluid', 30),
+      Fluid.of('thermal:latex', 10),
+      Fluid.of('kubejs:crystal_growth_accelerator', 10),
+    ],
+    { min_temp: 273 + 100 }
+  )
   create.filling('ars_nouveau:bastion_pod', [
     'minecraft:apple',
     Fluid.of('kubejs:vexing_archwood_sap', 500),
