@@ -46,7 +46,7 @@
 	allowCastingBySpout = true
 	#.
 	#Display vanilla Log-stripping interactions in JEI.
-	displayLogStrippingRecipes = true
+	displayLogStrippingRecipes = false
 	#.
 	#The amount of Light sources destroyed before Chromatic Compound turns into Refined Radiance.
 	#Range: > 1
