@@ -438,4 +438,7 @@ ServerEvents.recipes((e) => {
       registerAutomatedInfusionEnchanting(recipe)
     }
   })
+
+  // Goal:
+  Item.of('create_things_and_misc:vibration_mechanism')
 })
