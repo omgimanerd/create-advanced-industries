@@ -7,6 +7,7 @@ ServerEvents.recipes((e) => {
   )
 
   const create = defineCreateRecipes(e)
+  const pneumaticcraft = definePneumaticcraftRecipes(e)
 
   // Create automated brewing recipes should be disabled in the Create server
   // config. They cannot be removed with KubeJS.
@@ -58,7 +59,7 @@ ServerEvents.recipes((e) => {
     // done so already.
     if (!uniquePotionIds[outputFluidString]) {
       create.centrifuging(
-        [Fluid.water(1000), 'gag:sacred_salt'],
+        [Fluid.water(1000), 'kubejs:inert_potion_residue'],
         [outputPotionFluid]
       )
     }
@@ -92,9 +93,27 @@ ServerEvents.recipes((e) => {
 
       // Add a centrifuging recipe to recycle unused potions.
       create.centrifuging(
-        [Fluid.water(1000), 'gag:sacred_salt'],
+        [Fluid.water(1000), 'kubejs:inert_potion_residue'],
         [outputPotionFluid]
       )
     }
   }
+
+  // Inert potion residue can be turned back into abjuration essence.
+  create.filling('ars_nouveau:abjuration_essence', [
+    'kubejs:inert_potion_residue',
+    Fluid.of('starbunclemania:source_fluid', 500),
+  ])
+  create
+    .pressurizing('kubejs:inert_potion_residue')
+    .secondaryFluidInput(Fluid.of('starbunclemania:source_fluid', 250))
+    .heated()
+    .outputs('ars_nouveau:abjuration_essence')
+  pneumaticcraft
+    .thermo_plant()
+    .item_input('kubejs:inert_potion_residue')
+    .fluid_input(Fluid.of('starbunclemania:source_fluid', 125))
+    .pressure(4.5)
+    .temperature({ min_temp: 273 + 300 })
+    .item_output('ars_nouveau:abjuration_essence')
 })

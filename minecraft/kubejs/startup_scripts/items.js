@@ -184,4 +184,7 @@ StartupEvents.registry('item', (e) => {
   registerItem('kubejs:totem_head')
 
   registerItem('kubejs:inactive_totem')
+
+  // Inert potion residue from potion centrifuging
+  registerItem('kubejs:inert_potion_residue')
 })

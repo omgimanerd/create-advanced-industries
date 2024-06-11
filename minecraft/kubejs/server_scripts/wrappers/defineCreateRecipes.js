@@ -62,7 +62,9 @@ const defineCreateRecipes = (e) => {
      * @callback {CVIPressurizingWrapperCB}
      * @param {(InputItem_|Internal.InputFluid_)[]} inputs
      * @returns {CVIPressurizingWrapper}
-     * @type {CVIPressurizingWrapper}
+     */
+    /**
+     * @type {CVIPressurizingWrapperCB}
      */
     pressurizing: getConstructorWrapper(e, CVIPressurizingWrapper),
     vacuumizing: e.recipes.vintageimprovements.vacuumizing,
