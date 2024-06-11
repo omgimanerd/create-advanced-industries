@@ -652,7 +652,7 @@
 		{
 			dependencies: [
 				"300B315823283E7E"
-				"68FB63D0979FE43B"
+				"750D19E2D333CD2A"
 			]
 			description: ["Raw basic processors are a requirement for both Logistics Mechanisms and Refined Storage."]
 			id: "3F6AC2F3372B28E3"
@@ -682,7 +682,7 @@
 		{
 			dependencies: [
 				"300B315823283E7E"
-				"68FB63D0979FE43B"
+				"750D19E2D333CD2A"
 			]
 			description: ["Raw improved processors are a requirement of Logistics Mechanisms and Refined Storage."]
 			id: "4000234461168668"
@@ -809,7 +809,7 @@
 		{
 			dependencies: [
 				"300B315823283E7E"
-				"68FB63D0979FE43B"
+				"750D19E2D333CD2A"
 			]
 			description: ["While not strictly necessary for this chapter, advanced processors might be useful to automate too."]
 			id: "09D7F859EC4C42E6"
@@ -1552,6 +1552,25 @@
 			}]
 			x: 4.0d
 			y: 2.0d
+		}
+		{
+			dependencies: ["68FB63D0979FE43B"]
+			description: ["You might have already automated glue, but you'll need it in larger quantities now for processor automation."]
+			id: "750D19E2D333CD2A"
+			optional: true
+			tasks: [{
+				id: "636A6848E421141C"
+				item: {
+					Count: 1b
+					id: "create:super_glue"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: 24.0d
+			y: -2.0d
 		}
 	]
 	title: "Chapter 5a: Logistics Mechanisms"

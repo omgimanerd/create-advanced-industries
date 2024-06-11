@@ -28,8 +28,7 @@ ServerEvents.recipes((e) => {
 
   const redefineRecipe = redefineRecipe_(e)
 
-  // Hardened planks can only be crafted in a pressure chamber, which gates
-  // steel casings behind Pneumaticcraft.
+  // Hardened planks can only be crafted with pressurizing
   e.remove({ id: 'tfmg:filling/hardened_wood_creosote' })
   create
     .pressurizing('#minecraft:planks')
@@ -365,6 +364,26 @@ ServerEvents.recipes((e) => {
     { C: 'create_new_age:copper_wire', M: 'create_new_age:magnetite_block' }
   )
 
+  // Carbon brushes for electrical generation
+  e.remove({ id: 'create_new_age:shaped/carbon_brushes' })
+  create.mechanical_crafting(
+    'create_new_age:carbon_brushes',
+    [
+      'HHHHH', //
+      'HDDDH', //
+      'HDSDH', //
+      'HDDDH', //
+      'HMCMH', //
+    ],
+    {
+      H: 'tfmg:heavy_plate',
+      D: 'kubejs:graphite',
+      S: 'create:shaft',
+      M: 'tfmg:steel_mechanism',
+      C: 'tfmg:heavy_machinery_casing',
+    }
+  )
+
   // Red alloy overhaul
   e.remove({ id: 'morered:red_alloy_ingot_from_jumbo_smelting' })
   create.filling('morered:red_alloy_ingot', [
@@ -447,25 +466,41 @@ ServerEvents.recipes((e) => {
     }
   )
 
-  // Carbon brushes for electrical generation
-  e.remove({ id: 'create_new_age:shaped/carbon_brushes' })
-  create.mechanical_crafting(
-    'create_new_age:carbon_brushes',
-    [
-      'HHHHH', //
-      'HDDDH', //
-      'HDSDH', //
-      'HDDDH', //
-      'HMCMH', //
-    ],
-    {
-      H: 'tfmg:heavy_plate',
-      D: 'kubejs:graphite',
-      S: 'create:shaft',
-      M: 'tfmg:steel_mechanism',
-      C: 'tfmg:heavy_machinery_casing',
-    }
+  // Super glue automation
+  create.compacting(
+    Fluid.of('create_things_and_misc:slime', 100),
+    'minecraft:slime_ball'
   )
+  create.compacting(
+    Fluid.of('create_things_and_misc:slime', 900),
+    'minecraft:slime_block'
+  )
+  create.mixing(
+    Fluid.of('create_things_and_misc:slime', 900),
+    'minecraft:slime_block'
+  )
+  e.replaceInput(
+    { id: 'create:crafting/kinetics/super_glue' },
+    'minecraft:slime_ball',
+    'minecraft:slime_block'
+  )
+  e.remove({ id: 'create_things_and_misc:gluepackagingcraft' })
+  create
+    .SequencedAssembly('minecraft:iron_nugget')
+    .deploy('create:iron_sheet')
+    .deploy('minecraft:lime_dye')
+    .outputs('create_things_and_misc:glue_packaging')
+  e.remove({ id: 'create_things_and_misc:glue_fluid_craft' })
+  create.filling('create:super_glue', [
+    'create_things_and_misc:glue_packaging',
+    Fluid.of('create_things_and_misc:slime', 1000),
+  ])
+  // Recipe to reverse slime back into blocks
+  create.compacting(
+    'minecraft:slime_block',
+    Fluid.of('create_things_and_misc:slime', 900)
+  )
+  create.vibrating(Item.of('minecraft:slime_ball', 9), 'minecraft:slime_block')
 
   // Probabilistic crushing recipe, only one yields ancient debris.
   const diceRoll = Math.random() > 0.5
@@ -614,6 +649,12 @@ ServerEvents.recipes((e) => {
     .deploy('morered:red_alloy_ingot')
     .deploy('minecraft:iron_ingot')
     .outputs('refinedstorage:raw_basic_processor')
+  create
+    .SequencedAssembly('kubejs:silicon_wafer')
+    .fill('create_things_and_misc:slime', 5)
+    .deploy('morered:red_alloy_ingot')
+    .deploy('minecraft:iron_ingot')
+    .outputs('refinedstorage:raw_basic_processor')
   pneumaticcraft.assembly_laser(
     'refinedstorage:raw_basic_processor',
     'refinedstorage:basic_processor'
@@ -624,6 +665,12 @@ ServerEvents.recipes((e) => {
     .deploy('morered:red_alloy_ingot')
     .deploy('minecraft:gold_ingot')
     .outputs('refinedstorage:raw_improved_processor')
+  create
+    .SequencedAssembly('kubejs:silicon_wafer')
+    .fill('create_things_and_misc:slime', 5)
+    .deploy('morered:red_alloy_ingot')
+    .deploy('minecraft:gold_ingot')
+    .outputs('refinedstorage:raw_improved_processor')
   pneumaticcraft.assembly_laser(
     'refinedstorage:raw_improved_processor',
     'refinedstorage:improved_processor'
@@ -631,6 +678,12 @@ ServerEvents.recipes((e) => {
   create
     .SequencedAssembly('kubejs:silicon_wafer')
     .deploy('create:super_glue')
+    .deploy('morered:red_alloy_ingot')
+    .deploy('thermal:diamond_dust')
+    .outputs('refinedstorage:raw_advanced_processor')
+  create
+    .SequencedAssembly('kubejs:silicon_wafer')
+    .fill('create_things_and_misc:slime', 5)
     .deploy('morered:red_alloy_ingot')
     .deploy('thermal:diamond_dust')
     .outputs('refinedstorage:raw_advanced_processor')
