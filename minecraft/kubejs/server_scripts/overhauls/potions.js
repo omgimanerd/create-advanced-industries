@@ -58,10 +58,12 @@ ServerEvents.recipes((e) => {
     // Add a centrifuging recipe to recycle unused potions if we have not
     // done so already.
     if (!uniquePotionIds[outputFluidString]) {
-      create.centrifuging(
-        [Fluid.water(1000), 'kubejs:inert_potion_residue'],
-        [outputPotionFluid]
-      )
+      create
+        .centrifuging(
+          [Fluid.water(1000), 'kubejs:inert_potion_residue'],
+          [outputPotionFluid]
+        )
+        .minimalRPM(196)
     }
 
     // Store all the unique potion types
@@ -92,10 +94,12 @@ ServerEvents.recipes((e) => {
       recipeNumber += 1
 
       // Add a centrifuging recipe to recycle unused potions.
-      create.centrifuging(
-        [Fluid.water(1000), 'kubejs:inert_potion_residue'],
-        [outputPotionFluid]
-      )
+      create
+        .centrifuging(
+          [Fluid.water(1000), 'kubejs:inert_potion_residue'],
+          [outputPotionFluid]
+        )
+        .minimalRPM(196)
     }
   }
 

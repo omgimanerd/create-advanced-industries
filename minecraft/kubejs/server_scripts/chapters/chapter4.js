@@ -63,8 +63,10 @@ ServerEvents.recipes((e) => {
 
   // Lime automation to allow limesand creation
   create
-    .mixing('create:limestone', ['minecraft:bone_block', Fluid.water(1000)])
+    .pressurizing('minecraft:bone_block')
+    .secondaryFluidInput(Fluid.water(500))
     .heated()
+    .outputs('create:limestone')
 
   // Charcoal transmutation to coal, with a discount for blocks
   e.recipes.ars_nouveau
@@ -183,6 +185,10 @@ ServerEvents.recipes((e) => {
       S: 'tfmg:steel_ingot',
     }
   )
+
+  // Heavy plate overhaul
+  e.remove({ id: 'tfmg:sequenced_assembly/heavy_plate' })
+  create.hammering('tfmg:heavy_plate', 'tfmg:steel_ingot').hammerBlows(3)
 
   // Recipes for reusable steel casts
   e.shaped(

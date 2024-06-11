@@ -170,6 +170,8 @@ ServerEvents.recipes((e) => {
   // Uncommon Material: Timeworn Fabric
   e.remove({ id: 'apotheotic_additions:stonecutting/timeworn_fabric' })
   e.remove({ id: 'apotheotic_additions:stonecutting/timeworn_fancy' })
+  // Another source of green dye
+  e.blasting('minecraft:green_dye', 'minecraft:kelp')
   create
     .deploying('apotheotic_additions:timeworn_fancy', [
       'minecraft:green_wool',
@@ -294,7 +296,7 @@ ServerEvents.recipes((e) => {
   ])
 
   // Nautilus shells can also be crushed into limestone dust.
-  create.crushing('tfmg:limesand', 'minecraft:nautilus_shell')
+  create.milling('tfmg:limesand', 'minecraft:nautilus_shell')
 
   // Totem of undying automation from Create: Totem Factory
   create.cutting('kubejs:totem_body_casing', 'create:brass_sheet')
@@ -338,6 +340,9 @@ ServerEvents.recipes((e) => {
   // End stone automation
   // exp the silver fish from the infested stone
   // vial of searing expulsion
+
+  // Bottles of Experience
+  e.remove({ id: 'create_new_age:energising/splash_water_bottle' })
 
   // Liquid Hyper Experience condensing, gated behind a level 100 enchant
   e.remove({ id: 'create_enchantment_industry:mixing/hyper_experience' })

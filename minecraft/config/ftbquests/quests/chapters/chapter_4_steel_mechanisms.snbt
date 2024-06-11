@@ -152,7 +152,7 @@
 		}
 		{
 			dependencies: ["0E92C48953887C96"]
-			description: ["If you dissolve the bone blocks in water and let it precipitate out, you'll get limestone."]
+			description: ["If you dissolve the bone blocks in water with a little heat and pressure, you'll get limestone."]
 			id: "3426D798E4ECFC01"
 			tasks: [{
 				id: "487A87108850BB91"
