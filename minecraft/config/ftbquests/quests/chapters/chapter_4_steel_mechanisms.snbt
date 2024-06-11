@@ -78,7 +78,7 @@
 			]
 			id: "318C60A121F68C81"
 			rewards: [{
-				count: 16
+				count: 48
 				id: "55AD7B2F758B49B5"
 				item: "tfmg:steel_ingot"
 				type: "item"
@@ -152,7 +152,7 @@
 		}
 		{
 			dependencies: ["0E92C48953887C96"]
-			description: ["If you dissolve the bone blocks in water with a little heat and pressure, you'll get limestone."]
+			description: ["If you dissolve the bone blocks in water with a little heat, you'll get limestone."]
 			id: "3426D798E4ECFC01"
 			tasks: [{
 				id: "487A87108850BB91"
@@ -540,7 +540,11 @@
 		}
 		{
 			dependencies: ["318C60A121F68C81"]
-			description: ["Steel is much harder than other metals, so it will take a little more effort to make plates."]
+			description: [
+				"Steel is much harder than other metals, so it will take a little more effort to make plates."
+				""
+				"Your first batch of steel will be used to make the helve hammer."
+			]
 			id: "79B63BFC11E77382"
 			tasks: [{
 				id: "5DC49B94BEC67F05"
@@ -657,15 +661,8 @@
 				type: "item"
 			}]
 			tasks: [{
-				icon: "kubejs:steel_ingot_cast"
 				id: "2B6FB6CF481C817D"
-				item: {
-					Count: 1b
-					id: "ftbfiltersystem:smart_filter"
-					tag: {
-						"ftbfiltersystem:filter": "or(item_tag(kubejs:steel_casts))"
-					}
-				}
+				item: "kubejs:steel_ingot_cast"
 				type: "item"
 			}]
 			title: "Steel Casting"

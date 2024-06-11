@@ -63,6 +63,12 @@ ServerEvents.recipes((e) => {
 
   // Lime automation to allow limesand creation
   create
+    .mixing('create:limestone', [
+      Item.of('minecraft:bone_block', 2),
+      Fluid.water(1000),
+    ])
+    .heated()
+  create
     .pressurizing('minecraft:bone_block')
     .secondaryFluidInput(Fluid.water(500))
     .heated()
