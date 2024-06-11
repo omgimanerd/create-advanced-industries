@@ -87,59 +87,6 @@ JEIEvents.removeCategories((e) => {
   e.remove('jumbofurnace:jumbo_furnace_upgrade')
 })
 
-JEIAddedEvents.registerRecipes((e) => {
-  const { ingredientManager, jeiHelpers, vanillaRecipeFactory } = e.data
-  /**
-   * @param {Internal.ItemStack} itemStack
-   * @param {Internal.List} books
-   * @param {Internal.List} results
-   * @returns {Internal.IJeiAnvilRecipe}
-   */
-  const createAnvilRecipe = (itemStack, books, results) => {
-    return vanillaRecipeFactory[
-      'createAnvilRecipe(net.minecraft.world.item.ItemStack,java.util.List,' +
-        'java.util.List)'
-    ](itemStack, books, results)
-  }
-
-  // Logic to register anvil recipes for Nutrient Infusion enchants on food.
-  const nutrientInfusionBooks = wrapList(
-    Array(5)
-      .fill(null)
-      .map((_, i) => {
-        return Item.of('minecraft:enchanted_book').enchant(
-          'kubejs:nutrient_infusion',
-          i + 1
-        )
-      })
-  )
-  const getEnchantedFoodResults = (itemStack) => {
-    return wrapList(
-      Array(5)
-        .fill(null)
-        .map((_, i) => {
-          return itemStack.enchant('kubejs:nutrient_infusion', i + 1)
-        })
-    )
-  }
-  let recipes = Utils.newList()
-  ingredientManager.allItemStacks
-    .stream()
-    .filter((itemStack) => {
-      return itemStack.isEdible() && itemStack.id !== 'artifacts:eternal_steak'
-    })
-    .forEach((itemStack) => {
-      recipes.add(
-        createAnvilRecipe(
-          itemStack,
-          nutrientInfusionBooks,
-          getEnchantedFoodResults(itemStack)
-        )
-      )
-    })
-  e.register(jeiHelpers.getRecipeType('anvil').get(), recipes)
-})
-
 // Multiple iterations through all recipe types is inefficient, but the code
 // is more readable.
 JEIAddedEvents.onRuntimeAvailable((e) => {
