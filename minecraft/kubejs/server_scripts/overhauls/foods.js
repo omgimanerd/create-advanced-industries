@@ -83,7 +83,11 @@ ServerEvents.recipes((e) => {
     .outputs('createsweetsandtreets:gunpowder_cake')
 
   e.remove({ id: 'createsweetsandtreets:brass_cake_pan_craft' })
-  create.pressing('createsweetsandtreets:brass_cake_pan', 'create:brass_sheet')
+  create.curving(
+    'createsweetsandtreets:brass_cake_pan',
+    'create:brass_sheet',
+    'vintageimprovements:convex_curving_head'
+  )
 
   // Pneumaticcraft foods
   e.remove({ id: 'pneumaticcraft:thermo_plant/chips' })
