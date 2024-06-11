@@ -1,6 +1,8 @@
 // priority: 0
 
 ;(() => {
+  // Hack used to store the custom device fisher category. This file is wrapped
+  // in this closure to avoid leaking this to the global namespace.
   let aquaticEntanglerRecipeType = null
 
   JEIAddedEvents.registerCategories((e) => {
@@ -20,8 +22,8 @@
         .isRecipeHandled(() => true) // Only appropriate recipes are added?
         .handleLookup((builder, recipe) => {
           const data = recipe.data
-          // Add the Aquatic Entangler as an invisible so the recipe category can
-          // be accessed in JEI.
+          // Add the Aquatic Entangler as an invisible ingredient so the recipe
+          // category can be accessed in JEI.
           builder
             .addInvisibleIngredients('input')
             .addItemStack('thermal:device_fisher')
@@ -41,8 +43,8 @@
               }
             })
 
-          // Add each output item with a custom tooltip for its output chance and
-          // biome requirement.
+          // Add each output item with a custom tooltip for its output chance
+          // and biome requirement.
           let i = 0
           const totalWeight = data.lootTableJson.totalWeight
           /**
