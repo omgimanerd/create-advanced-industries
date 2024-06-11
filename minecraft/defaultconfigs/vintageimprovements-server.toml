@@ -45,7 +45,7 @@
 		[recipes.recipes.curvingPress]
 			#.
 			#Allows automatic recognize recipes for curving press
-			allowAutoCurvingRecipes = true
+			allowAutoCurvingRecipes = false
 			#.
 			#Amount of damage, that curving heads will get after auto recipe
 			#Range: 0 ~ 1000

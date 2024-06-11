@@ -875,6 +875,28 @@ ServerEvents.recipes((e) => {
     'minecraft:amethyst_shard'
   )
 
+  // Manually add curving recipes that are desired
+  create.curving(
+    'minecraft:glass_bottle',
+    'minecraft:glass',
+    'vintageimprovements:convex_curving_head'
+  )
+  create.curving(
+    'minecraft:bucket',
+    'create:iron_sheet',
+    'vintageimprovements:convex_curving_head'
+  )
+  create.curving(
+    'minecraft:bowl',
+    '#minecraft:planks',
+    'vintageimprovements:convex_curving_head'
+  )
+  create.curving(
+    'minecraft:flower_pot',
+    'minecraft:brick',
+    'vintageimprovements:convex_curving_head'
+  )
+
   // TODO redstone module
 
   //////////////////////
