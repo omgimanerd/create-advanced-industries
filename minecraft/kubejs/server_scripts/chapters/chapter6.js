@@ -367,7 +367,6 @@ ServerEvents.recipes((e) => {
   e.recipes.apotheosis
     .enchanting('minecraft:cooked_beef', 'artifacts:eternal_steak')
     .requirements({ eterna: 50, quanta: 60, arcana: 60 })
-    .createRecipe()
 
   // Nether Star automation
   // Skeleton skulls can be automated with resonance crafting
@@ -390,9 +389,11 @@ ServerEvents.recipes((e) => {
   // chorus fruit farming
   // drop ascended coins into a well?
 
-  // Register experience spouting recipes for Apotheosis custom enchanting
-  e.forEachRecipe({ type: 'apotheosis:enchanting' }, (r) => {
-    const recipe = JSON.parse(r.json)
+  /**
+   * Register automatable alternatives for Apotheosis custom enchanting.
+   * @param {object} recipe
+   */
+  const registerAutomatedInfusionEnchanting = (recipe) => {
     const levels = recipe.requirements.eterna * 2
     // The eterna requirement is the minimum level you must be to perform the
     // enchantment, and the enchantment costs 3 levels of XP, not the entire XP
@@ -405,8 +406,6 @@ ServerEvents.recipes((e) => {
     if (recipe.input.item === 'minecraft:honey_bottle') return
     let outputCount = recipe.result.count || 1
 
-    // TODO: custom recipes added here are not included in this list.
-
     pneumaticcraft
       .thermo_plant()
       .fluid_input(
@@ -414,7 +413,29 @@ ServerEvents.recipes((e) => {
       )
       .item_input(recipe.input.item)
       .item_output(Item.of(recipe.result.item, outputCount))
-      .pressure(9.5)
-      .temperature({ min_temp: 273 + 1300 })
+      .pressure(8)
+      .temperature({ min_temp: 273 + 1000 })
+    create
+      .pressurizing(recipe.input.item)
+      .secondaryFluidInput(
+        Fluid.of(
+          'create_enchantment_industry:hyper_experience',
+          Math.ceil(hyperXp * 1.5)
+        )
+      )
+      .superheated()
+      .outputs(Item.of(recipe.result.item, outputCount))
+  }
+
+  // Go through the existing Apotheosis recipes as well as added ones.
+  e.forEachRecipe({ type: 'apotheosis:enchanting' }, (r) => {
+    registerAutomatedInfusionEnchanting(JSON.parse(r.json))
+  })
+  e.addedRecipes.forEach((r) => {
+    r.createRecipe()
+    const recipe = JSON.parse(r.json)
+    if (recipe.type === 'apotheosis:enchanting') {
+      registerAutomatedInfusionEnchanting(recipe)
+    }
   })
 })
