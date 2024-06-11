@@ -41,6 +41,25 @@ StartupEvents.recipeSchemaRegistry((e) => {
     heatCondition = Components.get('enum')({ class: $HeatCondition })
   }
 
+  // Apotheosis
+  if (Platform.isLoaded('apotheosis')) {
+    let enchantingRequirements = new $RecipeComponentBuilder(3)
+      .add(intNumber.key('eterna').optional(-1))
+      .add(intNumber.key('quanta').optional(-1))
+      .add(intNumber.key('arcana').optional(-1))
+    e.register(
+      'apotheosis:enchanting',
+      new $RecipeSchema(
+        inputItem.key('input'),
+        outputItem.key('result'),
+        enchantingRequirements.key('requirements').defaultOptional(),
+        enchantingRequirements.key('max_requirements').defaultOptional(),
+        intNumber.key('display_level').optional(0)
+      )
+    )
+    console.log('Recipe Schemas for apotheosis loaded.')
+  }
+
   // Create Crafts & Additions
   if (Platform.isLoaded('createaddition')) {
     e.register(
@@ -65,25 +84,6 @@ StartupEvents.recipeSchemaRegistry((e) => {
       )
     )
     console.log('Recipe Schemas for createaddition loaded.')
-  }
-
-  // Apotheosis
-  if (Platform.isLoaded('apotheosis')) {
-    let enchantingRequirements = new $RecipeComponentBuilder(3)
-      .add(intNumber.key('eterna').optional(-1))
-      .add(intNumber.key('quanta').optional(-1))
-      .add(intNumber.key('arcana').optional(-1))
-    e.register(
-      'apotheosis:enchanting',
-      new $RecipeSchema(
-        inputItem.key('input'),
-        outputItem.key('result'),
-        enchantingRequirements.key('requirements').defaultOptional(),
-        enchantingRequirements.key('max_requirements').defaultOptional(),
-        intNumber.key('display_level').optional(0)
-      )
-    )
-    console.log('Recipe Schemas for apotheosis loaded.')
   }
 
   // Create: New Age
@@ -185,6 +185,40 @@ StartupEvents.recipeSchemaRegistry((e) => {
       )
     )
     console.log('Recipe Schemas for vintageimprovements loaded.')
+  }
+
+  // Farmer's Delight
+  if (Platform.isLoaded('farmersdelight')) {
+    e.register(
+      'farmersdelight:cooking',
+      new $RecipeSchema(
+        inputItem.asArray().key('ingredients'),
+        outputItem.key('result'),
+        intNumber.key('cookingtime'),
+        floatNumber.key('experience').optional(1),
+        inputItem.key('container').defaultOptional(),
+        anyString.key('recipe_book_tab').optional('meals')
+      )
+    )
+    let itemOrAction = inputItem.or(
+      new $RecipeComponentBuilder(2)
+        .add(
+          anyString
+            .key('type')
+            .alwaysWrite()
+            .optional('farmersdelight:tool_action')
+        )
+        .add(anyString.key('action'))
+    )
+    e.register(
+      'farmersdelight:cutting',
+      new $RecipeSchema(
+        inputItem.asArray().key('ingredients'),
+        outputItem.asArray().key('result'),
+        itemOrAction.key('tool'),
+        anyString.key('sound').defaultOptional()
+      )
+    )
   }
 
   // PneumaticCraft: Repressurized
