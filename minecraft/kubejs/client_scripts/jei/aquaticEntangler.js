@@ -22,12 +22,6 @@
         .isRecipeHandled(() => true) // Only appropriate recipes are added?
         .handleLookup((builder, recipe) => {
           const data = recipe.data
-          // Add the Aquatic Entangler as an invisible ingredient so the recipe
-          // category can be accessed in JEI.
-          builder
-            .addInvisibleIngredients('input')
-            .addItemStack('thermal:device_fisher')
-
           // Add the input catalyst item to the input slot
           builder
             .addSlot('input', 5, 21)

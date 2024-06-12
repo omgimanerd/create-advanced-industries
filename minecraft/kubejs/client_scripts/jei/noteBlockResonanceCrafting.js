@@ -63,12 +63,6 @@
           builder
             .addSlot('input', outputItemX, line2Y)
             .addItemStack('ars_nouveau:arcane_pedestal')
-          builder
-            .addInvisibleIngredients('input')
-            .addItemStacks([
-              Item.of('minecraft:note_block'),
-              Item.of('ars_nouveau:arcane_platform'),
-            ])
           for (let i = 0; i < sequence.length; ++i) {
             let [_, instrument] = parseNote(sequence[i])
             let x = sequenceXStart + i * 15
@@ -111,6 +105,14 @@
     if (resonanceCraftingRecipeType !== null) {
       e.data.addRecipeCatalyst(
         'minecraft:note_block',
+        resonanceCraftingRecipeType
+      )
+      e.data.addRecipeCatalyst(
+        'ars_nouveau:arcane_platform',
+        resonanceCraftingRecipeType
+      )
+      e.data.addRecipeCatalyst(
+        'ars_nouveau:arcane_pedestal',
         resonanceCraftingRecipeType
       )
     } else {
