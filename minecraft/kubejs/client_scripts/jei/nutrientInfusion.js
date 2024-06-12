@@ -1,34 +1,56 @@
 // priority: 0
 
 ;(() => {
-  // Currently does not work
-  //
-  // const $IJeiAnvilRecipe = Java.loadClass(
-  //   'mezz.jei.api.recipe.vanilla.IJeiAnvilRecipe'
-  // )
-  // const $RecipeType = Java.loadClass('mezz.jei.api.recipe.RecipeType')
+  // The vanilla Anvil recipe category, contains the code that performs the
+  // actual rendering of the recipe inputs and outputs in JEI.
+  const $AnvilRecipeCategory = Java.loadClass(
+    'mezz.jei.library.plugins.vanilla.anvil.AnvilRecipeCategory'
+  )
 
-  // const nutrientInfusionRecipeType = $RecipeType.create(
-  //   'kubejs',
-  //   'nutrient_infusion',
-  //   $IJeiAnvilRecipe
-  // )
+  // RecipeType and the actual underlying processing recipe. Needed to create a
+  // RecipeType for the custom category registration.
+  const $RecipeType = Java.loadClass('mezz.jei.api.recipe.RecipeType')
+  const $IJeiAnvilRecipe = Java.loadClass(
+    'mezz.jei.api.recipe.vanilla.IJeiAnvilRecipe'
+  )
+  const nutrientInfusionRecipeType = $RecipeType.create(
+    'kubejs',
+    'nutrient_infusion',
+    $IJeiAnvilRecipe
+  )
 
-  // JEIAddedEvents.registerCategories((e) => {
-  //   const guiHelper = e.data.jeiHelpers.guiHelper
-  //   e.register(nutrientInfusionRecipeType, (category) => {
-  //     category
-  //       .title('Nutrient Infusion')
-  //       .icon(
-  //         guiHelper.createDrawableItemStack('minecraft:enchanted_golden_apple')
-  //       )
-  //       .isRecipeHandled(() => true)
-  //       .setDrawHandler()
-  //   })
-  // })
+  JEIAddedEvents.registerCategories((e) => {
+    const guiHelper = e.data.jeiHelpers.guiHelper
+    // Create an concrete instance of the anvil recipe category and defer our
+    // custom category to use its render code.
+    const anvilRecipeCategory = new $AnvilRecipeCategory(guiHelper)
+    e.register(nutrientInfusionRecipeType, (category) => {
+      category
+        .title('Nutrient Infusion')
+        .background(anvilRecipeCategory.getBackground())
+        .icon(
+          guiHelper.createDrawableItemStack('minecraft:enchanted_golden_apple')
+        )
+        .isRecipeHandled(() => true)
+        .handleLookup((builder, recipe, focuses) => {
+          anvilRecipeCategory.setRecipe(builder, recipe, focuses)
+        })
+        .setDrawHandler(
+          (recipe, recipeSlotsView, guiGraphics, mouseX, mouseY) => {
+            anvilRecipeCategory.draw(
+              recipe,
+              recipeSlotsView,
+              guiGraphics,
+              mouseX,
+              mouseY
+            )
+          }
+        )
+    })
+  })
 
   JEIAddedEvents.registerRecipes((e) => {
-    const { ingredientManager, jeiHelpers, vanillaRecipeFactory } = e.data
+    const { ingredientManager, vanillaRecipeFactory } = e.data
 
     /**
      * @param {any[]} l
@@ -73,23 +95,31 @@
           })
       )
     }
-    let recipes = Utils.newList()
-    ingredientManager.allItemStacks
+    const recipes = ingredientManager.allItemStacks
       .stream()
       .filter((itemStack) => {
         return (
           itemStack.isEdible() && itemStack.id !== 'artifacts:eternal_steak'
         )
       })
-      .forEach((itemStack) => {
-        recipes.add(
-          createAnvilRecipe(
-            itemStack,
-            nutrientInfusionBooks,
-            getEnchantedFoodResults(itemStack)
-          )
+      .map((itemStack) => {
+        return createAnvilRecipe(
+          itemStack,
+          nutrientInfusionBooks,
+          getEnchantedFoodResults(itemStack)
         )
       })
-    e.register(jeiHelpers.getRecipeType('anvil').get(), recipes)
+      .toList()
+    e.register(nutrientInfusionRecipeType, recipes)
+  })
+
+  JEIAddedEvents.registerRecipeCatalysts((e) => {
+    for (let level = 5; level >= 1; --level) {
+      e.data.addRecipeCatalyst(
+        Item.of('enchanted_book').enchant('kubejs:nutrient_infusion', level),
+        nutrientInfusionRecipeType
+      )
+    }
+    e.data.addRecipeCatalyst('minecraft:anvil', nutrientInfusionRecipeType)
   })
 })()
