@@ -29,6 +29,11 @@ ServerEvents.recipes((e) => {
     })
   }
 
+  // The resulting recipe id prefixes are important because the JEI client
+  // script relies on these to move all the recipes to their dedicated category.
+  const MIXING_PREFIX = 'kubejs:create_potion_mixing_'
+  const CENTRIFUGING_PREFIX = 'kubejs:create_potion_centrifuging_'
+
   let recipeNumber = 1
 
   // Store all the unique potion IDs to generate splash and lingering potions
@@ -50,10 +55,7 @@ ServerEvents.recipes((e) => {
         inputItems[0],
       ])
       .heated()
-      // The resulting recipe id prefix is important because the JEI client
-      // script relies on this to move all the recipes to the automated brewing
-      // recipe category.
-      .id(`kubejs:create_potion_mixing_${recipeNumber}_${outputId}`)
+      .id(`${MIXING_PREFIX}${recipeNumber}_${outputId}`)
 
     // Add a centrifuging recipe to recycle unused potions if we have not
     // done so already.
@@ -64,6 +66,7 @@ ServerEvents.recipes((e) => {
           [outputPotionFluid]
         )
         .minimalRPM(196)
+        .id(`${CENTRIFUGING_PREFIX}${recipeNumber}_${outputId}`)
     }
 
     // Store all the unique potion types
@@ -100,6 +103,7 @@ ServerEvents.recipes((e) => {
           [outputPotionFluid]
         )
         .minimalRPM(196)
+        .id(`${CENTRIFUGING_PREFIX}${recipeNumber}_${outputId}_${suffix}`)
     }
   }
 
