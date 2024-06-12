@@ -106,15 +106,10 @@
   })
 
   JEIAddedEvents.registerRecipeCatalysts((e) => {
-    // Store a dictionary of all recipe types for easy access later.
-    const recipeTypes = {}
-    e.data.jeiHelpers.allRecipeTypes.forEach((recipeType) => {
-      recipeTypes[`${recipeType.getUid().toString()}`] = recipeType
-    })
-
-    e.data.addRecipeCatalyst('kubejs:inert_potion_residue', [
-      potionCentrifugationRecipeType,
-      recipeTypes['vintageimprovements:centrifugation'],
-    ])
+    e.data.addRecipeCatalyst(
+      'vintageimprovements:centrifuge',
+      potionCentrifugationRecipeType
+    )
+    e.data.addRecipeCatalyst('create:basin', potionCentrifugationRecipeType)
   })
 })()

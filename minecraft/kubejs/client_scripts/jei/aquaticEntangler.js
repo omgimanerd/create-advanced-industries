@@ -174,13 +174,13 @@
   })
 
   JEIAddedEvents.registerRecipeCatalysts((e) => {
-    if (aquaticEntanglerRecipeType !== null) {
-      e.data.addRecipeCatalyst(
-        'thermal:device_fisher',
-        aquaticEntanglerRecipeType
-      )
-    } else {
-      console.warning('Did not store thermal:fisher recipe type!')
-    }
+    e.data.addRecipeCatalyst(
+      'thermal:device_fisher',
+      aquaticEntanglerRecipeType
+    )
+    e.data.addRecipeCatalyst(
+      'minecraft:fishing_rod',
+      aquaticEntanglerRecipeType
+    )
   })
 })()
