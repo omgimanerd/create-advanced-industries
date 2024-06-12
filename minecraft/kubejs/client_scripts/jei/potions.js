@@ -3,19 +3,21 @@
 // recipes don't clutter JEI.
 
 ;(() => {
-  const $RecipeType = Java.loadClass('mezz.jei.api.recipe.RecipeType')
+  // The Centrifugation recipe category, contains the code that performs the
+  // actual rendering of the recipe inputs and outputs in JEI
   const $CentrifugationCategory = Java.loadClass(
     'com.negodya1.vintageimprovements.compat.jei.category.CentrifugationCategory'
   )
+
+  // RecipeType and the actual underlying processing recipe. Needed to create a
+  // RecipeType for the custom category registration.
+  const $RecipeType = Java.loadClass('mezz.jei.api.recipe.RecipeType')
   const $CentrifugationRecipe = Java.loadClass(
     'com.negodya1.vintageimprovements.content.kinetics.centrifuge.CentrifugationRecipe'
   )
   const $Info = Java.loadClass(
     'com.simibubi.create.compat.jei.category.CreateRecipeCategory$Info'
   )
-
-  // Create the recipe type and use it to to register a custom category and
-  // regroup potion centrifugation.
   const potionCentrifugationRecipeType = $RecipeType.create(
     'kubejs',
     'potion_centrifuging',
@@ -24,7 +26,8 @@
 
   JEIAddedEvents.registerCategories((e) => {
     const guiHelper = e.data.jeiHelpers.guiHelper
-
+    // Create a concrete instance of the centrifugation recipe category and
+    // defer our custom category to use its render code.
     const centrifugationCategory = new $CentrifugationCategory(
       // Don't actually need any of the subfields, just need an instance of
       // CentrifugationCategory to call its lookup and draw handler.
