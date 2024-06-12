@@ -1,12 +1,53 @@
 // priority: 1000
 
 /**
+ * @returns {number}
+ */
+global.randomSeed = () => {
+  return (Math.random() * 2 ** 32) >>> 0
+}
+
+/**
+ * PRNG Mulberry32
+ * https://stackoverflow.com/a/47593316
+ * @param {number=} seed
+ * @returns {Function}
+ */
+global.mulberry32 = (seed) => {
+  seed = seed === undefined ? global.randomSeed() : seed >>> 0
+  /**
+   * @returns {number}
+   */
+  return () => {
+    let t = (seed += 0x6d2b79f5)
+    t = Math.imul(t ^ (t >>> 15), t | 1)
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61)
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296 // 2^32
+  }
+}
+
+/**
+ * In-place array shuffle using the Durstenfield shuffle algorithm.
+ * @param {any[]} a
+ * @returns {any[]}
+ */
+global.shuffle = (a, rand) => {
+  rand = rand === undefined ? Math.random : global.mulberry32()
+  for (let i = a.length - 1; i > 0; --i) {
+    let j = Math.floor(rand() * (i + 1))
+    ;[a[i], a[j]] = [a[j], a[i]]
+  }
+  return a
+}
+
+/**
  * Returns a random number in the range [low, high)
  * @param {number} low
  * @param {number=} high
  * @returns {number}
  */
-global.randRange = (low, high) => {
+global.randRange = (low, high, rand) => {
+  rand = rand === undefined ? Math.random : global.mulberry32()
   if (high === undefined) {
     high = low
     low = 0
@@ -19,8 +60,8 @@ global.randRange = (low, high) => {
  * @param {number=} high
  * @returns {number}
  */
-global.randRangeInt = (low, high) => {
-  return Math.floor(global.randRange(low, high))
+global.randRangeInt = (low, high, rand) => {
+  return Math.floor(global.randRange(low, high, rand))
 }
 
 /**
@@ -28,9 +69,9 @@ global.randRangeInt = (low, high) => {
  * @param {any[]} l
  * @returns {?any}
  */
-global.choice = (l) => {
+global.choice = (l, rand) => {
   if (l.length === 0) return null
-  return l[global.randRangeInt(0, l.length)]
+  return l[global.randRangeInt(0, l.length, rand)]
 }
 
 /**
@@ -73,4 +114,45 @@ global.exponential = (a, b, c, d) => {
   return (x) => {
     return a * (b ** (x + d)) + c // prettier-ignore
   }
+}
+
+/**
+ * Adapted from
+ * https://github.com/jsantirso/js-combinatorics/blob/master/combinatorics.js
+ * @param {number} n
+ * @param {number} k
+ * @returns {(number[])[]}
+ */
+global.combinatorics = (n, k) => {
+  let combinations = []
+  let pointers = Array(k)
+    .fill(0)
+    .map((_, i) => i)
+  // A flag set to true when we have processed the current combination length
+  let finished = false
+  while (!finished) {
+    // We process the current combination
+    combinations.push(pointers.slice())
+    // We find the first pointer that we can advance, starting from the right
+    for (let pointer = k - 1; pointer >= 0; pointer--) {
+      if (pointers[pointer] < n - (k - pointer)) {
+        // We can advance it
+        pointers[pointer]++
+        // We fix the next pointers
+        for (
+          let fixPointer = pointer + 1, i = 1;
+          fixPointer < k;
+          fixPointer++, i++
+        ) {
+          pointers[fixPointer] = pointers[pointer] + i
+        }
+        break
+      } else {
+        // We can't advance it.
+        // If it was the leftmost one, we are done with this combination length
+        if (!pointer) finished = true
+      }
+    }
+  }
+  return combinations
 }
