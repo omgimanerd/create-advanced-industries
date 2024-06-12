@@ -29,6 +29,17 @@
 
   JEIAddedEvents.registerRecipes((e) => {
     const { ingredientManager, jeiHelpers, vanillaRecipeFactory } = e.data
+
+    /**
+     * @param {any[]} l
+     */
+    const wrapList = (l) => {
+      l = Array.isArray(l) ? l : [l]
+      const r = Utils.newList()
+      l.forEach((v) => r.add(v))
+      return r
+    }
+
     /**
      * @param {Internal.ItemStack} itemStack
      * @param {Internal.List} books
