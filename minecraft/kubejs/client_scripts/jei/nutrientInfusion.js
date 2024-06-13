@@ -29,7 +29,7 @@
         .title('Nutrient Infusion')
         .background(anvilRecipeCategory.getBackground())
         .icon(
-          guiHelper.createDrawableItemStack('minecraft:enchanted_golden_apple')
+          doubleItemIcon('minecraft:anvil', 'minecraft:enchanted_golden_apple')
         )
         .isRecipeHandled(() => true)
         .handleLookup((builder, recipe, focuses) => {
@@ -74,6 +74,8 @@
           'java.util.List)'
       ](itemStack, books, results)
     }
+
+    // TODO remove the recipes from the regular anvil category.
 
     // Logic to register anvil recipes for Nutrient Infusion enchants on food.
     const nutrientInfusionBooks = wrapList(

@@ -37,7 +37,12 @@
       category
         .title('Potion Centrifugation')
         .background(guiHelper.createBlankDrawable(177, 113))
-        .icon(guiHelper.createDrawableItemStack('kubejs:inert_potion_residue'))
+        .icon(
+          doubleItemIcon(
+            'vintageimprovements:centrifuge',
+            Item.of('minecraft:potion', '{Potion:"minecraft:healing"}')
+          )
+        )
         .isRecipeHandled(() => true)
         .handleLookup((builder, recipe, focuses) => {
           centrifugationCategory.setRecipe(builder, recipe, focuses)
