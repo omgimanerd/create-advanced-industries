@@ -2,9 +2,20 @@
 // Recipe overhauls for Ars Nouveau and its addons
 
 ServerEvents.recipes((e) => {
+  const create = defineCreateRecipes(e)
+
   // Generate utility functions from util.js
   const redefineRecipe = redefineRecipe_(e)
   const redefineEnchantingRecipe = redefineEnchantingRecipe_(e)
+
+  // Allow all glyphs to be automated with Create
+  e.forEachRecipe({ type: 'ars_nouveau:glyph' }, (r) => {
+    const json = JSON.parse(r.json)
+    const ingredients = json.inputItems
+      .map((entry) => Ingredient.of(entry.item))
+      .concat([Fluid.of('create_enchantment_industry:experience', json.exp)])
+    create.mixing(json.output, ingredients)
+  })
 
   //////////////
   // Ars Creo //
