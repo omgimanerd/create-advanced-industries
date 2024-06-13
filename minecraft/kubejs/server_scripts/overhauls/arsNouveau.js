@@ -14,7 +14,11 @@ ServerEvents.recipes((e) => {
     const ingredients = json.inputItems
       .map((entry) => Ingredient.of(entry.item))
       .concat([Fluid.of('create_enchantment_industry:experience', json.exp)])
-    create.mixing(json.output, ingredients)
+    const recipeId = `kubejs:mixing_glyph_${json.output.replace(
+      /[^a-z_]/,
+      '_'
+    )}`
+    create.mixing(json.output, ingredients).id(recipeId)
   })
 
   //////////////
