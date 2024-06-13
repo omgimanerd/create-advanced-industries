@@ -1,6 +1,8 @@
 // priority: 500
 
 ServerEvents.recipes((e) => {
+  const create = defineCreateRecipes(e)
+
   // Thermal molten fluid components
   create
     .mixing(
