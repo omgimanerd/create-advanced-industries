@@ -1,4 +1,4 @@
-// priority: 100
+// priority: 500
 // Chapter 6: Apotheosis recipe overhauls
 
 /**

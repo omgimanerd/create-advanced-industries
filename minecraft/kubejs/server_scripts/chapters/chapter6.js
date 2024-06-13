@@ -33,8 +33,20 @@ ServerEvents.recipes((e) => {
   const pneumaticcraft = definePneumaticcraftRecipes(e)
   const redefineRecipe = redefineRecipe_(e)
 
+  // Get a PRNG from the world seed so that recipes are randomized per world.
+  const rand = global.mulberry32(
+    Utils.getServer().worldData.worldGenOptions().seed()
+  )
+  // Generate a shuffled list of subset n=4 positions on a 3x3 crafting grid.
+  const positions = global.shuffle(global.combinatorics(9, 4), rand)
+  const gemData = Object.entries(apotheoticGems)
+  if (gemData.length > positions.length) {
+    console.error('Not enough permutations to generate unique recipes!')
+  }
   // Define automatable upgrade recipes for all the apotheotic gems.
-  for (let [gem, tiers] of Object.entries(apotheoticGems)) {
+  let i = 0
+  for (let [gem, tiers] of gemData) {
+    // Generate upgrade recipes for each tier of gem.
     for (let i = 0; i < tiers.length - 1; ++i) {
       let fromTier = tiers[i]
       let fromGem = getGemItem(gem, fromTier)
@@ -46,6 +58,7 @@ ServerEvents.recipes((e) => {
       let tierIndex = tierOrder.indexOf(toTier)
 
       for (let material of validMaterials) {
+        // TODO maybe something more complicated than compacting
         let recipe = create.compacting(toGem, [
           material,
           Item.of('apotheosis:gem_dust', gemDustCost),
@@ -55,6 +68,27 @@ ServerEvents.recipes((e) => {
         else if (tierIndex >= 2) recipe.heated()
       }
     }
+
+    // Generate crafting recipes for the lowest tier of gem.
+    let pattern = [
+      ' AAA ', //
+      'ABBBA', //
+      'ABBBA', //
+      'ABBBA', //
+      ' AAA ', //
+    ]
+    positions[i].forEach((idx) => {
+      let x = (idx % 3) + 1
+      let y = Math.floor(idx / 3) + 1
+      const rowstring = pattern[x]
+      pattern[x] = rowstring.substring(0, y) + 'M' + rowstring.substring(y + 1)
+    })
+    create.mechanical_crafting(getGemItem(gem, tiers[0]), pattern, {
+      A: 'minecraft:amethyst_shard',
+      B: 'create:experience_nugget',
+      M: 'kubejs:crystalline_mechanism',
+    })
+    ++i
   }
 
   // Thermal molten fluid components
@@ -443,6 +477,9 @@ ServerEvents.recipes((e) => {
       registerAutomatedInfusionEnchanting(recipe)
     }
   })
+
+  // TODO crystalline mechanism makes end crystal
+  // required for beacons and nether stars
 
   // Goal:
   Item.of('create_things_and_misc:vibration_mechanism')

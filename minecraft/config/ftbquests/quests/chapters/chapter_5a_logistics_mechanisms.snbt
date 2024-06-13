@@ -1572,6 +1572,26 @@
 			x: 24.0d
 			y: -2.0d
 		}
+		{
+			dependencies: ["750D19E2D333CD2A"]
+			description: ["Processor automation is much more efficient with liquid glue!"]
+			id: "5F2FF94B6D96C395"
+			invisible: true
+			optional: true
+			rewards: [{
+				count: 2
+				id: "075595CA908137E3"
+				item: "create_things_and_misc:slime_bucket"
+				type: "item"
+			}]
+			tasks: [{
+				id: "7501CB055BF31DB4"
+				item: "create_things_and_misc:slime_bucket"
+				type: "item"
+			}]
+			x: 24.0d
+			y: 0.0d
+		}
 	]
 	title: "Chapter 5a: Logistics Mechanisms"
 }
