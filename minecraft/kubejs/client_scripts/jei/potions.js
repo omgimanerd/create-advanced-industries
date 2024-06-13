@@ -64,7 +64,7 @@
   JEIAddedEvents.onRuntimeAvailable((e) => {
     const { recipeManager, jeiHelpers } = e.data
 
-    // Store a dictionary of all recipe types for easy access later.
+    // Store a dictionary of all recipe types for easy access.
     const recipeTypes = {}
     jeiHelpers.allRecipeTypes.forEach((recipeType) => {
       recipeTypes[`${recipeType.getUid().toString()}`] = recipeType

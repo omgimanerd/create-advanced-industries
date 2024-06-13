@@ -1,5 +1,6 @@
 // priority: 999
 
+// TODO Create custom JEI category for time pouch crafting
 global.TIME_POUCH_CRAFTING = 'kubejs:time_pouch_crafting'
 
 /**
