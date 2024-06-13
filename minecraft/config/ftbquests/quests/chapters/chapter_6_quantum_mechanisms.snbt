@@ -121,6 +121,7 @@
 			y: 8.5d
 		}
 		{
+			dependencies: ["2F688322DCF88E56"]
 			id: "0989437884928BAA"
 			tasks: [{
 				id: "0EDFBDA38662C642"
@@ -395,6 +396,16 @@
 			}]
 			x: 8.0d
 			y: 4.5d
+		}
+		{
+			id: "2F688322DCF88E56"
+			tasks: [{
+				id: "13F90932128C5343"
+				item: "tfmg:steel_mechanism"
+				type: "item"
+			}]
+			x: 0.5d
+			y: -4.0d
 		}
 	]
 	title: "Chapter 6: Quantum Mechanisms"

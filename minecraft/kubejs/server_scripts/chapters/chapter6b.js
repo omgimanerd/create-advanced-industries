@@ -37,7 +37,8 @@ ServerEvents.recipes((e) => {
   const rand = global.mulberry32(
     Utils.getServer().worldData.worldGenOptions().seed()
   )
-  // Generate a shuffled list of subset n=4 positions on a 3x3 crafting grid.
+  // Generate a shuffled list of 9C4 positions for 4 elements on a 3x3 crafting
+  // grid.
   const positions = global.shuffle(global.combinatorics(9, 4), rand)
   const gemData = Object.entries(apotheoticGems)
   if (gemData.length > positions.length) {
