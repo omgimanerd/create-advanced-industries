@@ -1,6 +1,12 @@
 // priority: 100
 // Recipe overhauls for Chapter 6 progression.
 
+// Call the method to register time pouch crafting recipes.
+if (global.RegisterTimePouchCraftingEventHandlers) {
+  global.RegisterTimePouchCraftingEventHandlers()
+  console.log('Successfully registered time pouch crafting recipes.')
+}
+
 /**
  * Event handler for expelling the silverfish from infested stone to generate
  * end stone.
@@ -91,6 +97,16 @@ ServerEvents.recipes((e) => {
     })
     ++i
   }
+
+  // Overhauled recipe for Temporal Pouch
+  e.remove({ id: 'gag:time_sand_pouch' })
+  create
+    .SequencedAssembly('thermal:satchel')
+    .deploy('kubejs:crystalline_mechanism')
+    .fill('create_enchantment_industry:experience', 1000)
+    .energize(20000)
+    .loops(4)
+    .outputs('gag:time_sand_pouch')
 
   // Custom XP Crystal
   e.replaceOutput(
