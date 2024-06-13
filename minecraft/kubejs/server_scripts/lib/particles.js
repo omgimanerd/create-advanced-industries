@@ -24,7 +24,7 @@ const parseVec3Like = (v) => {
 /**
  * Helper for calling Level.spawnParticles
  * @param {Internal.Level} level
- * @param {Internal.ParticleOptions_} particl0
+ * @param {Internal.ParticleOptions_} particle
  * @param {Vec3Like} pos
  * @param {number|Vec3Like} v
  * @param {number} count
