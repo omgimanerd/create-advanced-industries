@@ -34,6 +34,13 @@ BlockEvents.rightClicked('minecraft:infested_stone', (e) => {
   }
 })
 
+ServerEvents.loaded((e) => {
+  // Dirty hack needed to ensure the world seed is ready when recipes are
+  // registered. This affects the pack load time as it requires an extra
+  // reload for the server.
+  e.server.runCommandSilent('reload')
+})
+
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
   const pneumaticcraft = definePneumaticcraftRecipes(e)
@@ -107,6 +114,7 @@ ServerEvents.recipes((e) => {
     .energize(20000)
     .loops(4)
     .outputs('gag:time_sand_pouch')
+  // TODO add recipes to fill time pouch
 
   // Custom XP Crystal
   e.replaceOutput(

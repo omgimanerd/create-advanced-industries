@@ -811,8 +811,6 @@ ServerEvents.recipes((e) => {
     Fluid.of('kubejs:vexing_archwood_sap', 500),
   ])
 
-  // TODO heart of the sea duping
-
   // Custom recipe for the Archmage Spell book without nether stars.
   e.remove({ id: 'ars_nouveau:archmage_spell_book_upgrade' })
   e.recipes.ars_nouveau.enchanting_apparatus(
