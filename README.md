@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="minecraft/icon.png" width="600" />
+  <img src="minecraft/icon5.png" width="600" />
 </p>
 
 ## Preface
