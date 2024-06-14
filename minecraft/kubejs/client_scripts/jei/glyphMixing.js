@@ -9,7 +9,7 @@ JEIAddedEvents.registerCategories((e) => {
     'com.simibubi.create.compat.jei.category.MixingCategory'
   )
 
-  // RecipeType and the actual underlying processing Recipe. Needed to create a
+  // RecipeType and the actual underlying Mixing recipe. Needed to create a
   // RecipeType for the custom category registration.
   const $RecipeType = Java.loadClass('mezz.jei.api.recipe.RecipeType')
   const $MixingRecipe = Java.loadClass(
