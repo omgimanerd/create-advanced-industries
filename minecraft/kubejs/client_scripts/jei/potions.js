@@ -62,18 +62,18 @@
   })
 
   JEIAddedEvents.onRuntimeAvailable((e) => {
-    const { recipeManager, jeiHelpers } = e.data
-
-    // Store a dictionary of all recipe types for easy access.
-    const recipeTypes = {}
-    jeiHelpers.allRecipeTypes.forEach((recipeType) => {
-      recipeTypes[`${recipeType.getUid().toString()}`] = recipeType
-    })
+    const { recipeManager } = e.data
 
     // Move all custom potion brewing recipes from the Create mixer category to
     // Create automated brewing.
+    const createMixingRecipeType = recipeManager
+      .getRecipeType('create:mixing')
+      .get()
+    const createAutomaticBrewingRecipeType = recipeManager
+      .getRecipeType('create:automatic_brewing')
+      .get()
     const customBrewingRecipes = recipeManager
-      .createRecipeLookup(recipeTypes['create:mixing'])
+      .createRecipeLookup(createMixingRecipeType)
       .get()
       .filter((recipe) => {
         return recipe
@@ -82,19 +82,19 @@
           .startsWith('kubejs:create_potion_mixing')
       })
       .toList()
-    recipeManager.hideRecipes(
-      recipeTypes['create:mixing'],
-      customBrewingRecipes
-    )
+    recipeManager.hideRecipes(createMixingRecipeType, customBrewingRecipes)
     recipeManager.addRecipes(
-      recipeTypes['create:automatic_brewing'],
+      createAutomaticBrewingRecipeType,
       customBrewingRecipes
     )
 
     // Move all potion centrifugation recipes from the CVI category to the new
     // custom category.
+    const centrifugationRecipeType = recipeManager
+      .getRecipeType('vintageimprovements:centrifugation')
+      .get()
     const customCentrifugationRecipes = recipeManager
-      .createRecipeLookup(recipeTypes['vintageimprovements:centrifugation'])
+      .createRecipeLookup(centrifugationRecipeType)
       .get()
       .filter((recipe) => {
         return recipe
@@ -104,7 +104,7 @@
       })
       .toList()
     recipeManager.hideRecipes(
-      recipeTypes['vintageimprovements:centrifugation'],
+      centrifugationRecipeType,
       customCentrifugationRecipes
     )
     recipeManager.addRecipes(

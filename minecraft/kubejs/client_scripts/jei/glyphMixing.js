@@ -62,24 +62,20 @@
   })
 
   JEIAddedEvents.onRuntimeAvailable((e) => {
-    const { recipeManager, jeiHelpers } = e.data
-
-    // Store a dictionary of all recipe types for easy access.
-    const recipeTypes = {}
-    jeiHelpers.allRecipeTypes.forEach((recipeType) => {
-      recipeTypes[`${recipeType.getUid().toString()}`] = recipeType
-    })
-
+    const { recipeManager } = e.data
     // Move all custom glyph mixing recipes from the Create mixer category
     // to the custom glyph mixing category.
+    const createMixingRecipeType = recipeManager
+      .getRecipeType('create:mixing')
+      .get()
     const glyphMixingRecipes = recipeManager
-      .createRecipeLookup(recipeTypes['create:mixing'])
+      .createRecipeLookup(createMixingRecipeType)
       .get()
       .filter((recipe) => {
         return recipe.getId().toString().startsWith('kubejs:mixing_glyph_')
       })
       .toList()
-    recipeManager.hideRecipes(recipeTypes['create:mixing'], glyphMixingRecipes)
+    recipeManager.hideRecipes(createMixingRecipeType, glyphMixingRecipes)
     recipeManager.addRecipes(glyphMixingRecipeType, glyphMixingRecipes)
   })
 
