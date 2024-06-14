@@ -19,11 +19,12 @@ JEIAddedEvents.registerCategories((e) => {
   )
 
   const guiHelper = e.data.jeiHelpers.guiHelper
-  // ItemApplicationCategory needs a reference
+  // ItemApplicationCategory needs a reference to the background IDrawable
+  const background = guiHelper.createBlankDrawable(177, 60)
   const timePouchCraftingCategory = new $ItemApplicationCategory(
     // Don't actually need any of the subfields, just need an instance of
     // ItemApplicationCategory to call its lookup and draw handler.
-    $Info(null, null, null, null, null, null)
+    $Info(null, null, background, null, null, null)
   )
   e.wrap(
     $RecipeType.create('kubejs', 'time_pouch_crafting', $ItemApplicationRecipe),
