@@ -1,6 +1,6 @@
 // priority: 0
 
-;(() => {
+JEIAddedEvents.registerCategories((e) => {
   // The vanilla Anvil recipe category, contains the code that performs the
   // actual rendering of the recipe inputs and outputs in JEI.
   const $AnvilRecipeCategory = Java.loadClass(
@@ -19,109 +19,91 @@
     $IJeiAnvilRecipe
   )
 
-  JEIAddedEvents.registerCategories((e) => {
-    const guiHelper = e.data.jeiHelpers.guiHelper
-    // Create an concrete instance of the anvil recipe category and defer our
-    // custom category to use its render code.
-    const anvilRecipeCategory = new $AnvilRecipeCategory(guiHelper)
-    e.register(nutrientInfusionRecipeType, (category) => {
-      category
-        .title('Nutrient Infusion')
-        .background(anvilRecipeCategory.getBackground())
-        .icon(
-          doubleItemIcon('minecraft:anvil', 'minecraft:enchanted_golden_apple')
-        )
-        .isRecipeHandled(() => true)
-        .handleLookup((builder, recipe, focuses) => {
-          anvilRecipeCategory.setRecipe(builder, recipe, focuses)
-        })
-        .setDrawHandler(
-          (recipe, recipeSlotsView, guiGraphics, mouseX, mouseY) => {
-            anvilRecipeCategory.draw(
-              recipe,
-              recipeSlotsView,
-              guiGraphics,
-              mouseX,
-              mouseY
-            )
-          }
-        )
-    })
+  const guiHelper = e.data.jeiHelpers.guiHelper
+  // Create an concrete instance of the anvil recipe category and defer our
+  // custom category to use its render code.
+  const anvilRecipeCategory = new $AnvilRecipeCategory(guiHelper)
+
+  e.wrap(nutrientInfusionRecipeType, anvilRecipeCategory, (category) => {
+    category
+      .title('Nutrient Infusion')
+      .background(anvilRecipeCategory.getBackground())
+      .icon(
+        doubleItemIcon('minecraft:anvil', 'minecraft:enchanted_golden_apple')
+      )
+      .isRecipeHandled(() => true)
   })
+})
 
-  JEIAddedEvents.registerRecipes((e) => {
-    const { ingredientManager, vanillaRecipeFactory } = e.data
+JEIAddedEvents.registerRecipes((e) => {
+  const { ingredientManager, vanillaRecipeFactory } = e.data
 
-    /**
-     * @param {any[]} l
-     */
-    const wrapList = (l) => {
-      l = Array.isArray(l) ? l : [l]
-      const r = Utils.newList()
-      l.forEach((v) => r.add(v))
-      return r
-    }
+  /**
+   * @param {any[]} l
+   */
+  const wrapList = (l) => {
+    l = Array.isArray(l) ? l : [l]
+    const r = Utils.newList()
+    l.forEach((v) => r.add(v))
+    return r
+  }
 
-    /**
-     * @param {Internal.ItemStack} itemStack
-     * @param {Internal.List} books
-     * @param {Internal.List} results
-     * @returns {Internal.IJeiAnvilRecipe}
-     */
-    const createAnvilRecipe = (itemStack, books, results) => {
-      return vanillaRecipeFactory[
-        'createAnvilRecipe(net.minecraft.world.item.ItemStack,java.util.List,' +
-          'java.util.List)'
-      ](itemStack, books, results)
-    }
+  /**
+   * @param {Internal.ItemStack} itemStack
+   * @param {Internal.List} books
+   * @param {Internal.List} results
+   * @returns {Internal.IJeiAnvilRecipe}
+   */
+  const createAnvilRecipe = (itemStack, books, results) => {
+    return vanillaRecipeFactory[
+      'createAnvilRecipe(net.minecraft.world.item.ItemStack,java.util.List,' +
+        'java.util.List)'
+    ](itemStack, books, results)
+  }
 
-    // TODO remove the recipes from the regular anvil category.
-
-    // Logic to register anvil recipes for Nutrient Infusion enchants on food.
-    const nutrientInfusionBooks = wrapList(
+  // TODO remove recipes from anvil category
+  // Logic to register anvil recipes for Nutrient Infusion enchants on food.
+  const nutrientInfusionBooks = wrapList(
+    Array(5)
+      .fill(null)
+      .map((_, i) => {
+        return Item.of('minecraft:enchanted_book').enchant(
+          'kubejs:nutrient_infusion',
+          i + 1
+        )
+      })
+  )
+  const getEnchantedFoodResults = (itemStack) => {
+    return wrapList(
       Array(5)
         .fill(null)
         .map((_, i) => {
-          return Item.of('minecraft:enchanted_book').enchant(
-            'kubejs:nutrient_infusion',
-            i + 1
-          )
+          return itemStack.enchant('kubejs:nutrient_infusion', i + 1)
         })
     )
-    const getEnchantedFoodResults = (itemStack) => {
-      return wrapList(
-        Array(5)
-          .fill(null)
-          .map((_, i) => {
-            return itemStack.enchant('kubejs:nutrient_infusion', i + 1)
-          })
+  }
+  const recipes = ingredientManager.allItemStacks
+    .stream()
+    .filter((itemStack) => {
+      return itemStack.isEdible() && itemStack.id !== 'artifacts:eternal_steak'
+    })
+    .map((itemStack) => {
+      return createAnvilRecipe(
+        itemStack,
+        nutrientInfusionBooks,
+        getEnchantedFoodResults(itemStack)
       )
-    }
-    const recipes = ingredientManager.allItemStacks
-      .stream()
-      .filter((itemStack) => {
-        return (
-          itemStack.isEdible() && itemStack.id !== 'artifacts:eternal_steak'
-        )
-      })
-      .map((itemStack) => {
-        return createAnvilRecipe(
-          itemStack,
-          nutrientInfusionBooks,
-          getEnchantedFoodResults(itemStack)
-        )
-      })
-      .toList()
-    e.register(nutrientInfusionRecipeType, recipes)
-  })
+    })
+    .toList()
+  e.register('kubejs:nutrient_infusion', recipes)
+})
 
-  JEIAddedEvents.registerRecipeCatalysts((e) => {
-    for (let level = 5; level >= 1; --level) {
-      e.data.addRecipeCatalyst(
-        Item.of('enchanted_book').enchant('kubejs:nutrient_infusion', level),
-        nutrientInfusionRecipeType
-      )
-    }
-    e.data.addRecipeCatalyst('minecraft:anvil', nutrientInfusionRecipeType)
-  })
-})()
+JEIAddedEvents.registerRecipeCatalysts((e) => {
+  for (let level = 5; level >= 1; --level) {
+    e.data.addRecipeCatalyst(
+      Item.of('enchanted_book').enchant('kubejs:nutrient_infusion', level),
+      'kubejs:nutrient_infusion'
+    )
+  }
+  e.data.addRecipeCatalyst('minecraft:anvil', 'kubejs:nutrient_infusion')
+})
