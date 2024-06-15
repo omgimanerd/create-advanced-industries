@@ -98,6 +98,29 @@ JEIAddedEvents.registerRecipes((e) => {
   e.register('kubejs:nutrient_infusion', recipes)
 })
 
+JEIAddedEvents.onRuntimeAvailable((e) => {
+  // Get nutrient infusion anvil recipes that are in the default minecraft
+  // anvil section and hide them. These are automatically generated for food
+  // items that do have a durability.
+  const { recipeManager } = e.data
+  const matchingAnvilRecipes = recipeManager
+    .createRecipeLookup('minecraft:anvil')
+    .get()
+    .filter((recipe) => {
+      for (let input of recipe.getRightInputs()) {
+        if (
+          input.id === 'minecraft:enchanted_book' &&
+          input.enchantments.containsKey('kubejs:nutrient_infusion')
+        ) {
+          return true
+        }
+      }
+      return false
+    })
+    .toList()
+  recipeManager.hideRecipes('minecraft:anvil', matchingAnvilRecipes)
+})
+
 JEIAddedEvents.registerRecipeCatalysts((e) => {
   for (let level = 5; level >= 1; --level) {
     e.data.addRecipeCatalyst(
