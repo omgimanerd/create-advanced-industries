@@ -315,7 +315,6 @@
 				"This allows you to press iron ingots into sheets."
 			]
 			id: "6040F99EFE02BA77"
-			optional: true
 			rewards: [{
 				id: "36426E65BE86354C"
 				type: "xp"
@@ -370,7 +369,6 @@
 			dependencies: ["6040F99EFE02BA77"]
 			description: ["Mechanical saws can cut down trees in a contraption, or automate stonecutting and other cutting recipes."]
 			id: "5AB240682413C076"
-			optional: true
 			rewards: [{
 				id: "2BED2F5B16195881"
 				type: "xp"
@@ -388,7 +386,6 @@
 			dependencies: ["6040F99EFE02BA77"]
 			description: ["Millstones grind down ingredients."]
 			id: "5A6A7E53AC3ACCB6"
-			optional: true
 			rewards: [{
 				id: "60ADBF4DE223B220"
 				type: "xp"
@@ -406,7 +403,6 @@
 			dependencies: ["6040F99EFE02BA77"]
 			description: ["Mechanical Mixers can automate shapeless crafts, but they have recipes of their own when placed on top of a basin."]
 			id: "33DF6C049377ADD9"
-			optional: true
 			rewards: [{
 				id: "2708A0764B631D25"
 				type: "xp"
@@ -428,7 +424,6 @@
 				"More interestingly though, if you put the correct block in front of an encased fan, you can use it to smelt, smoke, or wash items."
 			]
 			id: "455A87B9F1074ECE"
-			optional: true
 			rewards: [{
 				id: "5365C64644ABBEFA"
 				type: "xp"
@@ -450,7 +445,6 @@
 				"Within Create, they are also used for sequenced assembly recipes."
 			]
 			id: "16711DEC7F2E2F9C"
-			optional: true
 			rewards: [{
 				id: "0AE1E7974937810B"
 				type: "xp"
@@ -474,7 +468,6 @@
 				"Ponder them to see the full range of ways they can be used."
 			]
 			id: "20C3862B1AC49C29"
-			optional: true
 			rewards: [
 				{
 					count: 8
@@ -520,7 +513,6 @@
 			dependencies: ["6040F99EFE02BA77"]
 			description: ["Mechanical drills break the block in front of them, and can also be used on contraptions."]
 			id: "7896F717519340A1"
-			optional: true
 			rewards: [{
 				id: "5D5DFDB17378B4F8"
 				type: "xp"
@@ -538,7 +530,6 @@
 			dependencies: ["6040F99EFE02BA77"]
 			description: ["Mechanical Harvesters harvest crops that they pass over in Create contraptions."]
 			id: "38CE3D4A21B9E086"
-			optional: true
 			rewards: [{
 				id: "0B2D751A823E4D68"
 				type: "xp"
@@ -562,7 +553,6 @@
 				"&lSmelt the rubber to get cured rubber.&r"
 			]
 			id: "743A7E18CC37972B"
-			optional: true
 			rewards: [{
 				count: 8
 				id: "6E185DCC3941ECBB"
@@ -586,7 +576,6 @@
 			]
 			icon: "create:mechanical_bearing"
 			id: "0773214DEB80495F"
-			optional: true
 			rewards: [
 				{
 					id: "609CBEAD7A76D634"
