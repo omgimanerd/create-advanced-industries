@@ -29,7 +29,7 @@ ServerEvents.recipes((e) => {
     .custom('', (pre, post) => {
       create.crushing(post, pre)
     })
-    .custom('Next: Energize with 8000 RF', (pre, post, json) => {
+    .custom('Next: Energize with 8000 RF', (pre, post) => {
       e.recipes.create_new_age.energising(post, pre, 8000)
     })
     .custom('Next: Melt in a heated basin', (pre, post) => {
