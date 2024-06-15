@@ -34,22 +34,13 @@ BlockEvents.rightClicked('minecraft:infested_stone', (e) => {
   }
 })
 
-ServerEvents.loaded((e) => {
-  // Dirty hack needed to ensure the world seed is ready when recipes are
-  // registered. This affects the pack load time as it requires an extra
-  // reload for the server.
-  e.server.runCommandSilent('reload')
-})
-
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
   const pneumaticcraft = definePneumaticcraftRecipes(e)
   const redefineRecipe = redefineRecipe_(e)
 
   // Get a PRNG from the world seed so that recipes are randomized per world.
-  const rand = global.mulberry32(
-    Utils.getServer().worldData.worldGenOptions().seed()
-  )
+  const rand = global.mulberry32(global.WORLD_SEED)
   // Generate a shuffled list of 9C4 positions for 4 elements on a 3x3 crafting
   // grid.
   const positions = global.shuffle(global.combinatorics(9, 4), rand)
