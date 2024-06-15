@@ -226,13 +226,35 @@ ServerEvents.recipes((e) => {
     .energize(20000)
     .loops(4)
     .outputs('gag:time_sand_pouch')
-  e.shapeless('gag:time_sand_pouch', [
+  // The output item for this recipe does not match since .modifyResult will
+  // dynamically add 1000 to the input item's nbt value.
+  e.shapeless(Item.of('gag:time_sand_pouch', { grains: 1000 }), [
     'gag:time_sand_pouch',
     'ars_nouveau:glyph_extend_time',
   ]).modifyResult((grid) => {
     const currentGrains = grid.find('gag:time_sand_pouch').nbt.getInt('grains')
     return Item.of('gag:time_sand_pouch', `{grains:${currentGrains + 1000}}`)
   })
+
+  // Apotheosis Vial of Searing Expulsion and Arcane Extraction
+  create
+    .SequencedAssembly('minecraft:glass_bottle')
+    .fill(potionFluid('minecraft:thick', 125))
+    .fill(Fluid.lava(500))
+    .deploy('minecraft:blaze_rod')
+    .deploy('minecraft:magma_cream')
+    .deploy('apotheosis:gem_dust')
+    .energize(10000)
+    .outputs('apotheosis:vial_of_expulsion')
+  create
+    .SequencedAssembly('minecraft:glass_bottle')
+    .fill(potionFluid('minecraft:thick', 125))
+    .fill(Fluid.water(500))
+    .deploy('minecraft:ender_pearl')
+    .deploy('minecraft:amethyst_shard')
+    .deploy('apotheosis:gem_dust')
+    .energize(10000)
+    .outputs('apotheosis:vial_of_extraction')
 
   // Custom XP Crystal
   e.replaceOutput(
@@ -388,6 +410,8 @@ ServerEvents.recipes((e) => {
   // neural processor
   // chorus fruit farming
   // drop ascended coins into a well?
+  // dragon's breath automation
+  // phantom membrane automation
 
   /**
    * Register automatable alternatives for Apotheosis custom enchanting.
@@ -426,7 +450,6 @@ ServerEvents.recipes((e) => {
       .superheated()
       .outputs(Item.of(recipe.result.item, outputCount))
   }
-
   // Go through the existing Apotheosis recipes as well as added ones.
   e.forEachRecipe({ type: 'apotheosis:enchanting' }, (r) => {
     registerAutomatedInfusionEnchanting(JSON.parse(r.json))
@@ -442,6 +465,20 @@ ServerEvents.recipes((e) => {
   // TODO crystalline mechanism makes end crystal
   // required for beacons and nether stars
 
-  // Goal:
-  Item.of('create_things_and_misc:vibration_mechanism')
+  e.remove({ id: 'create_things_and_misc:vibration_mecanism_craft' })
+  create
+    .SequencedAssembly('kubejs:crystalline_mechanism')
+    .deploy('createutilities:polished_amethyst')
+    .deploy(
+      getGemItem(
+        'apotheotic_additions:modded/ars_mana',
+        'apotheotic_additions:esoteric'
+      ),
+      false,
+      'Cosmic Source Jewel'
+    )
+    .deploy('create_things_and_misc:rose_quartz_sheet')
+    .fill(potionFluid('apotheosis:extra_long_flying'))
+    .vibrate(200)
+    .outputs('create_things_and_misc:vibration_mechanism')
 })
