@@ -105,7 +105,13 @@ ServerEvents.recipes((e) => {
     .energize(20000)
     .loops(4)
     .outputs('gag:time_sand_pouch')
-  // TODO add recipes to fill time pouch
+  e.shapeless('gag:time_sand_pouch', [
+    'gag:time_sand_pouch',
+    'ars_nouveau:glyph_extend_time',
+  ]).modifyResult((grid) => {
+    const currentGrains = grid.find('gag:time_sand_pouch').nbt.getInt('grains')
+    return Item.of('gag:time_sand_pouch', `{grains:${currentGrains + 1000}}`)
+  })
 
   // Custom XP Crystal
   e.replaceOutput(
