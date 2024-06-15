@@ -3,6 +3,9 @@
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
 
+  // sculk farming to make enderium
+  // enderium recipe from liquid hyper exp
+
   // Thermal molten fluid components
   create
     .mixing(
