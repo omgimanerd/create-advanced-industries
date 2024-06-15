@@ -2,7 +2,7 @@
 	autofocus_id: "34CBF7A7AD9BF9D8"
 	default_hide_dependency_lines: false
 	default_quest_shape: ""
-	filename: "chapter_6_quantum_mechanisms"
+	filename: "chapter_6b_vibration_mechanisms"
 	group: "5B3547AEADCBC841"
 	icon: "create_things_and_misc:vibration_mechanism"
 	id: "67020B8E9395350E"
