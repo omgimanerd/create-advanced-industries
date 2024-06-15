@@ -55,6 +55,9 @@ ServerEvents.recipes((e) => {
     true
   )
 
+  // Biomass pellets can also be blasted into green dye
+  e.blasting('minecraft:green_dye', 'createaddition:biomass_pellet')
+
   // Additional straw recipe from sugarcane
   create.rolling('createaddition:straw', 'minecraft:sugar_cane')
 

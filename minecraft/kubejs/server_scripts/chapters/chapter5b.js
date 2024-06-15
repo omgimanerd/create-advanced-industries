@@ -865,6 +865,9 @@ ServerEvents.recipes((e) => {
   e.remove({
     id: /^create_enchantment_industry:compacting\/experience_block_.*$/,
   })
+  e.remove({
+    id: /^create_enchantment_industry:compat\/[a-z_]+\/mixing.*$/,
+  })
   create
     .mixing(
       Fluid.of('create_enchantment_industry:experience', 3),
