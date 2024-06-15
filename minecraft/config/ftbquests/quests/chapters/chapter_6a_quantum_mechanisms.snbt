@@ -1,0 +1,22 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "chapter_6a_quantum_mechanisms"
+	group: "5B3547AEADCBC841"
+	icon: "createteleporters:quantum_mechanism"
+	id: "565035A1584BCCAE"
+	order_index: 8
+	quest_links: [ ]
+	quests: [{
+		dependencies: ["12D9ACDA50B38FCA"]
+		id: "271A91265ACE5851"
+		tasks: [{
+			id: "7454746B3D16F6B0"
+			title: "Start"
+			type: "checkmark"
+		}]
+		x: 0.0d
+		y: 0.0d
+	}]
+	title: "Chapter 6a: Quantum Mechanisms"
+}
