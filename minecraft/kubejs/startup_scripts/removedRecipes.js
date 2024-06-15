@@ -79,4 +79,7 @@ global.removedRecipes = [
   { output: 'starbunclemania:direction_scroll' },
   { output: 'starbunclemania:fluid_scroll_allow' },
   { output: 'starbunclemania:fluid_scroll_deny' },
+  { output: 'vintageimprovements:sulfur_chunk' },
+  { output: 'vintageimprovements:sulfur' },
+  { output: 'vintageimprovements:sulfur_block' },
 ]
