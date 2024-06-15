@@ -273,6 +273,7 @@
 			y: -3.0d
 		}
 		{
+			can_repeat: false
 			dependencies: [
 				"4D904A448A2EAA12"
 				"3CD18FA2BBA17E39"

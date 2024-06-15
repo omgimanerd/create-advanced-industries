@@ -51,11 +51,13 @@
 				}
 			]
 			title: "Defeat the Warden"
-			x: 11.0d
-			y: -3.5d
+			x: 9.5d
+			y: 0.0d
 		}
 		{
+			dependencies: ["34CBF7A7AD9BF9D8"]
 			id: "6FA6FE01DAE88F07"
+			size: 2.0d
 			tasks: [{
 				dimension: "minecraft:the_end"
 				icon: "minecraft:end_portal_frame"
@@ -63,10 +65,9 @@
 				type: "dimension"
 			}]
 			x: -2.0d
-			y: -0.5d
+			y: 0.0d
 		}
 		{
-			dependencies: ["33C97AA4A311E69E"]
 			icon: {
 				Count: 1b
 				id: "ftbquests:custom_icon"
@@ -97,8 +98,8 @@
 				}
 			]
 			title: "Defeat the Wither"
-			x: 10.5d
-			y: -1.0d
+			x: 8.5d
+			y: 2.0d
 		}
 		{
 			id: "008F1DC4AE49F8BA"
@@ -107,18 +108,8 @@
 				item: "createteleporters:quantum_mechanism"
 				type: "item"
 			}]
-			x: 26.5d
+			x: 21.0d
 			y: 0.0d
-		}
-		{
-			id: "31B4B5168C7CD7D9"
-			tasks: [{
-				id: "336A5FE969DA8BE8"
-				item: "createteleporters:quantum_fluid_bucket"
-				type: "item"
-			}]
-			x: -1.0d
-			y: 8.5d
 		}
 		{
 			dependencies: ["2F688322DCF88E56"]
@@ -129,95 +120,119 @@
 				type: "item"
 			}]
 			x: 0.5d
-			y: -6.0d
+			y: -11.0d
 		}
 		{
-			dependencies: ["0989437884928BAA"]
+			dependencies: [
+				"0989437884928BAA"
+				"39E975A9D4DE7F5C"
+			]
 			id: "4B0765401750DB82"
 			tasks: [{
 				id: "79E7C4CCC6E706D4"
 				item: "apotheosis:uncommon_material"
 				type: "item"
 			}]
-			x: 2.0d
-			y: -6.0d
+			x: 2.5d
+			y: -11.0d
 		}
 		{
-			dependencies: ["4B0765401750DB82"]
+			dependencies: [
+				"4B0765401750DB82"
+				"561F418F1FD38167"
+			]
 			id: "76DD6A9D58E92677"
 			tasks: [{
 				id: "4A84810427FCBD30"
 				item: "apotheosis:rare_material"
 				type: "item"
 			}]
-			x: 3.5d
-			y: -6.0d
+			x: 4.5d
+			y: -11.0d
 		}
 		{
-			dependencies: ["76DD6A9D58E92677"]
+			dependencies: [
+				"76DD6A9D58E92677"
+				"110F774F37291024"
+			]
 			id: "1B102819B32F8719"
 			tasks: [{
 				id: "48A78F1569C82831"
 				item: "apotheosis:epic_material"
 				type: "item"
 			}]
-			x: 5.0d
-			y: -6.0d
+			x: 6.5d
+			y: -11.0d
 		}
 		{
-			dependencies: ["1B102819B32F8719"]
+			dependencies: [
+				"1B102819B32F8719"
+				"0CB1B6A224213A49"
+			]
 			id: "4A1C020108E53C54"
 			tasks: [{
 				id: "273F543F7DC7E5CC"
 				item: "apotheosis:mythic_material"
 				type: "item"
 			}]
-			x: 6.5d
-			y: -6.0d
+			x: 8.5d
+			y: -11.0d
 		}
 		{
-			dependencies: ["65E397F67AEE8BCD"]
+			dependencies: [
+				"65E397F67AEE8BCD"
+				"472AB2BD7D00F943"
+			]
 			id: "05DFED6BDF97F45E"
 			tasks: [{
 				id: "21BB102583C34887"
 				item: "apotheotic_additions:artifact_material"
 				type: "item"
 			}]
-			x: 9.5d
-			y: -6.0d
+			x: 12.5d
+			y: -11.0d
 		}
 		{
-			dependencies: ["4A1C020108E53C54"]
+			dependencies: [
+				"4A1C020108E53C54"
+				"64E010C80BF00E49"
+			]
 			id: "65E397F67AEE8BCD"
 			tasks: [{
 				id: "002181C96688B053"
 				item: "apotheosis:ancient_material"
 				type: "item"
 			}]
-			x: 8.0d
-			y: -6.0d
+			x: 10.5d
+			y: -11.0d
 		}
 		{
-			dependencies: ["05DFED6BDF97F45E"]
+			dependencies: [
+				"05DFED6BDF97F45E"
+				"6EA6A5AFFB959648"
+			]
 			id: "24C3A23FB363E65E"
 			tasks: [{
 				id: "50F26360FF2287F0"
 				item: "apotheotic_additions:heirloom_material"
 				type: "item"
 			}]
-			x: 11.0d
-			y: -6.0d
+			x: 14.5d
+			y: -11.0d
 		}
 		{
-			dependencies: ["24C3A23FB363E65E"]
+			dependencies: [
+				"24C3A23FB363E65E"
+				"41647584BA0BA5DE"
+			]
 			id: "30446B095114BCB2"
 			tasks: [{
 				id: "4AD0B45C48B79965"
 				item: "apotheotic_additions:esoteric_material"
 				type: "item"
 			}]
-			x: 12.5d
-			y: -6.0d
+			x: 16.5d
+			y: -11.0d
 		}
 		{
 			id: "7F0A4231CA344359"
@@ -230,18 +245,19 @@
 				type: "observation"
 			}]
 			title: "Defeat the Ender Dragon"
-			x: 4.0d
-			y: -4.0d
+			x: 8.5d
+			y: -2.0d
 		}
 		{
+			dependencies: ["34CBF7A7AD9BF9D8"]
 			id: "6DC625AE49A9B01A"
 			tasks: [{
 				id: "0AF9648B4710A90C"
 				item: "minecraft:enchanting_table"
 				type: "item"
 			}]
-			x: 2.5d
-			y: -2.0d
+			x: 2.0d
+			y: 0.0d
 		}
 		{
 			id: "4798028C47F41935"
@@ -250,8 +266,8 @@
 				item: "minecraft:experience_bottle"
 				type: "item"
 			}]
-			x: 5.0d
-			y: -1.0d
+			x: 14.0d
+			y: 0.0d
 		}
 		{
 			dependencies: ["57F92618AAF3CAD1"]
@@ -261,28 +277,30 @@
 				item: "create_enchantment_industry:hyper_experience_bottle"
 				type: "item"
 			}]
-			x: 8.0d
-			y: -1.0d
+			x: 17.0d
+			y: 0.0d
 		}
 		{
+			dependencies: ["7F0A4231CA344359"]
 			id: "509B4F9E047728B6"
 			tasks: [{
 				id: "45DEB4EA69ED76CB"
 				item: "minecraft:dragon_breath"
 				type: "item"
 			}]
-			x: 6.0d
-			y: -4.0d
+			x: 10.5d
+			y: -2.0d
 		}
 		{
+			dependencies: ["509B4F9E047728B6"]
 			id: "16B375C5FB372B05"
 			tasks: [{
 				id: "02D6EC5D025BC752"
 				item: "apotheosis:infused_breath"
 				type: "item"
 			}]
-			x: 7.5d
-			y: -4.0d
+			x: 12.5d
+			y: -2.0d
 		}
 		{
 			dependencies: ["4798028C47F41935"]
@@ -292,8 +310,8 @@
 				item: "kubejs:xp_condenser"
 				type: "item"
 			}]
-			x: 6.5d
-			y: -1.0d
+			x: 15.5d
+			y: 0.0d
 		}
 		{
 			dependencies: [
@@ -306,8 +324,8 @@
 				item: "minecraft:end_stone"
 				type: "item"
 			}]
-			x: 2.5d
-			y: 4.0d
+			x: 5.0d
+			y: 5.5d
 		}
 		{
 			id: "6DD93F52A87B6B32"
@@ -316,8 +334,8 @@
 				item: "minecraft:infested_stone"
 				type: "item"
 			}]
-			x: 1.0d
-			y: 4.5d
+			x: 3.0d
+			y: 6.0d
 		}
 		{
 			id: "3E44FFF4BA96011E"
@@ -326,8 +344,8 @@
 				item: "apotheosis:vial_of_expulsion"
 				type: "item"
 			}]
-			x: 1.0d
-			y: 3.0d
+			x: 3.0d
+			y: 4.5d
 		}
 		{
 			dependencies: ["4953FDEB278D7D6D"]
@@ -337,8 +355,8 @@
 				item: "minecraft:wither_skeleton_skull"
 				type: "item"
 			}]
-			x: 10.0d
-			y: 1.0d
+			x: 13.0d
+			y: 7.0d
 		}
 		{
 			dependencies: ["10ED9E8F35405C5B"]
@@ -348,8 +366,8 @@
 				item: "minecraft:skeleton_skull"
 				type: "item"
 			}]
-			x: 9.5d
-			y: 2.0d
+			x: 12.5d
+			y: 8.0d
 		}
 		{
 			dependencies: [
@@ -362,8 +380,8 @@
 				item: "minecraft:bone"
 				type: "item"
 			}]
-			x: 9.0d
-			y: 3.0d
+			x: 12.0d
+			y: 9.0d
 		}
 		{
 			id: "2FDA2B5BEB8A1870"
@@ -372,8 +390,8 @@
 				item: "thermal:device_fisher"
 				type: "item"
 			}]
-			x: 6.5d
-			y: 3.5d
+			x: 9.5d
+			y: 9.5d
 		}
 		{
 			dependencies: ["2FDA2B5BEB8A1870"]
@@ -383,8 +401,8 @@
 				item: "thermal:aquachow"
 				type: "item"
 			}]
-			x: 6.5d
-			y: 5.0d
+			x: 9.5d
+			y: 11.0d
 		}
 		{
 			dependencies: ["482F9D1480AA9724"]
@@ -394,10 +412,11 @@
 				item: "thermal:deep_aquachow"
 				type: "item"
 			}]
-			x: 8.0d
-			y: 4.5d
+			x: 11.0d
+			y: 10.5d
 		}
 		{
+			dependencies: ["368E09F5D73E4623"]
 			id: "2F688322DCF88E56"
 			tasks: [{
 				id: "13F90932128C5343"
@@ -405,7 +424,166 @@
 				type: "item"
 			}]
 			x: 0.5d
-			y: -4.0d
+			y: -9.0d
+		}
+		{
+			dependencies: ["368E09F5D73E4623"]
+			id: "39E975A9D4DE7F5C"
+			tasks: [{
+				id: "326C84106663CABC"
+				item: {
+					Count: 1b
+					id: "gag:time_sand_pouch"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: 2.5d
+			y: -9.0d
+		}
+		{
+			dependencies: ["368E09F5D73E4623"]
+			id: "561F418F1FD38167"
+			tasks: [{
+				id: "1FFAB43FA1BA9FDE"
+				item: "kubejs:crystalline_mechanism"
+				type: "item"
+			}]
+			x: 4.5d
+			y: -9.0d
+		}
+		{
+			dependencies: ["368E09F5D73E4623"]
+			id: "110F774F37291024"
+			tasks: [{
+				id: "13FE4A54EA1E1747"
+				item: "tfmg:limesand"
+				type: "item"
+			}]
+			x: 6.5d
+			y: -9.0d
+		}
+		{
+			dependencies: ["368E09F5D73E4623"]
+			id: "0CB1B6A224213A49"
+			tasks: [{
+				id: "55DB5E9C4D40ECB6"
+				item: "minecraft:ender_pearl"
+				type: "item"
+			}]
+			x: 8.5d
+			y: -9.0d
+		}
+		{
+			dependencies: ["368E09F5D73E4623"]
+			id: "64E010C80BF00E49"
+			tasks: [{
+				id: "200123E9B99908C0"
+				item: "minecraft:totem_of_undying"
+				type: "item"
+			}]
+			x: 10.5d
+			y: -9.0d
+		}
+		{
+			dependencies: ["368E09F5D73E4623"]
+			id: "472AB2BD7D00F943"
+			tasks: [{
+				id: "1E6C7F550D1BD749"
+				item: "farmersdelight:pasta_with_meatballs"
+				type: "item"
+			}]
+			x: 12.5d
+			y: -9.0d
+		}
+		{
+			dependencies: ["368E09F5D73E4623"]
+			id: "6EA6A5AFFB959648"
+			tasks: [{
+				id: "059ED14CA6B0F8D9"
+				item: "quark:diamond_heart"
+				type: "item"
+			}]
+			x: 14.5d
+			y: -9.0d
+		}
+		{
+			dependencies: ["368E09F5D73E4623"]
+			id: "41647584BA0BA5DE"
+			tasks: [{
+				id: "0D970EB28C5D869E"
+				item: "kubejs:xp_crystal"
+				type: "item"
+			}]
+			x: 16.5d
+			y: -9.0d
+		}
+		{
+			id: "7CB4CC65BC442750"
+			tasks: [{
+				id: "799C10E5A514DECF"
+				item: "minecraft:bookshelf"
+				type: "item"
+			}]
+			x: 4.0d
+			y: 0.0d
+		}
+		{
+			id: "368E09F5D73E4623"
+			tasks: [{
+				id: "1A8E7BB2AC777498"
+				item: {
+					Count: 1b
+					id: "patchouli:guide_book"
+					tag: {
+						"patchouli:book": "apotheosis:apoth_chronicle"
+					}
+				}
+				type: "item"
+			}]
+			x: 8.5d
+			y: -5.0d
+		}
+		{
+			dependencies: ["30446B095114BCB2"]
+			id: "5D5CDD8A20C12CD2"
+			tasks: [{
+				id: "184A18A585056048"
+				item: {
+					Count: 1b
+					id: "apotheosis:gem"
+					tag: {
+						affix_data: {
+							rarity: "apotheotic_additions:esoteric"
+						}
+						gem: "apotheotic_additions:modded/ars_mana"
+					}
+				}
+				type: "item"
+			}]
+			x: 18.5d
+			y: -11.0d
+		}
+		{
+			id: "7D45EDB6BB83E369"
+			tasks: [{
+				id: "38B2988D5AB71446"
+				item: "create_things_and_misc:vibration_mechanism"
+				type: "item"
+			}]
+			x: 19.5d
+			y: 0.0d
+		}
+		{
+			dependencies: ["3E42BEA143D5E555"]
+			id: "0CE7E80FB2C2864E"
+			tasks: [{
+				id: "5ADFEAA86A43CBA1"
+				item: "minecraft:nether_star"
+				type: "item"
+			}]
+			x: 10.5d
+			y: 2.5d
 		}
 	]
 	title: "Chapter 6: Quantum Mechanisms"

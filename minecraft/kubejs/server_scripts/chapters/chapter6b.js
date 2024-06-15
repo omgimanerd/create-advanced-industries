@@ -96,37 +96,6 @@ ServerEvents.recipes((e) => {
     ++i
   }
 
-  // Overhauled recipe for Temporal Pouch
-  e.remove({ id: 'gag:time_sand_pouch' })
-  create
-    .SequencedAssembly('thermal:satchel')
-    .deploy('kubejs:crystalline_mechanism')
-    .fill('create_enchantment_industry:experience', 1000)
-    .energize(20000)
-    .loops(4)
-    .outputs('gag:time_sand_pouch')
-  e.shapeless('gag:time_sand_pouch', [
-    'gag:time_sand_pouch',
-    'ars_nouveau:glyph_extend_time',
-  ]).modifyResult((grid) => {
-    const currentGrains = grid.find('gag:time_sand_pouch').nbt.getInt('grains')
-    return Item.of('gag:time_sand_pouch', `{grains:${currentGrains + 1000}}`)
-  })
-
-  // Custom XP Crystal
-  e.replaceOutput(
-    { id: 'thermal:tools/xp_crystal' },
-    'thermal:xp_crystal',
-    'kubejs:xp_crystal'
-  )
-  e.replaceInput({ mod: 'thermal' }, 'thermal:xp_crystal', 'kubejs:xp_crystal')
-  create
-    .SequencedAssembly('minecraft:experience_bottle')
-    .deploy('minecraft:emerald')
-    .deploy('minecraft:lapis_lazuli')
-    .fill('create_enchantment_industry:experience', 100)
-    .outputs('kubejs:xp_crystal')
-
   // Remove tier salvaging recipes and recycling recipes so apotheotic materials
   // are only available through the automation recipes below.
   e.remove({ id: /^apotheotic_additions:salvaging\/[a-z]+_to_[a-z]+$/ })
@@ -198,7 +167,8 @@ ServerEvents.recipes((e) => {
   create // Epic Material: Arcane Sands
     .SequencedAssembly('tfmg:limesand')
     .fill('starbunclemania:source_fluid', 1000)
-    .fill('createteleporters:quantum_fluid', 1000)
+    .fill('createteleporters:quantum_fluid', 1000) // TODO maybe not here?
+    .energize(50000)
     .outputs([
       'apotheosis:epic_material',
       Item.of('apotheosis:epic_material').withChance(0.25),
@@ -206,6 +176,7 @@ ServerEvents.recipes((e) => {
   create // Mythic Material: Godforged Pearl
     .SequencedAssembly('minecraft:ender_pearl')
     .fill('create:honey', 1000)
+    .energize(100000)
     .outputs('apotheosis:mythic_material')
   create // Ancient Material: rainbow thingy
     .SequencedAssembly('minecraft:totem_of_undying')
@@ -243,6 +214,39 @@ ServerEvents.recipes((e) => {
     filledXpCrystal,
     1000000
   )
+
+  // TODO: overhaul ender pearls?
+
+  // Overhauled recipe for Temporal Pouch
+  e.remove({ id: 'gag:time_sand_pouch' })
+  create
+    .SequencedAssembly('thermal:satchel')
+    .deploy('kubejs:crystalline_mechanism')
+    .fill('create_enchantment_industry:experience', 1000)
+    .energize(20000)
+    .loops(4)
+    .outputs('gag:time_sand_pouch')
+  e.shapeless('gag:time_sand_pouch', [
+    'gag:time_sand_pouch',
+    'ars_nouveau:glyph_extend_time',
+  ]).modifyResult((grid) => {
+    const currentGrains = grid.find('gag:time_sand_pouch').nbt.getInt('grains')
+    return Item.of('gag:time_sand_pouch', `{grains:${currentGrains + 1000}}`)
+  })
+
+  // Custom XP Crystal
+  e.replaceOutput(
+    { id: 'thermal:tools/xp_crystal' },
+    'thermal:xp_crystal',
+    'kubejs:xp_crystal'
+  )
+  e.replaceInput({ mod: 'thermal' }, 'thermal:xp_crystal', 'kubejs:xp_crystal')
+  create
+    .SequencedAssembly('minecraft:experience_bottle')
+    .deploy('minecraft:emerald')
+    .deploy('minecraft:lapis_lazuli')
+    .fill('create_enchantment_industry:experience', 100)
+    .outputs('kubejs:xp_crystal')
 
   // The Treasure Net is gated by a level 60 enchant
   e.recipes.apotheosis
