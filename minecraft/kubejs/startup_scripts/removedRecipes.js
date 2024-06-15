@@ -28,6 +28,7 @@ global.removedRecipes = [
   { output: /^create_new_age:.[a-z_]*solar_heating_plate/ },
   { output: /^create_new_age:.*thorium.*/ },
   { output: 'create_things_and_misc:sprinkler' },
+  { output: 'create_things_and_misc:sprinkler_head' },
   { output: 'createutilities:gearcube' },
   { output: 'farmersdelight:wheat_dough' },
   { output: /.*jumbo_smelting/ },
