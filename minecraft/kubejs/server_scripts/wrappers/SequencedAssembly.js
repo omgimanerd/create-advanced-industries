@@ -137,48 +137,19 @@ SequencedAssembly.prototype.energize = function (energyNeeded) {
 }
 
 /**
- * Internal helper to actually generate the energising recipes for recipe
- * definition. Must not be called during SequencedAssembly construction since
- * hasCustomSteps_ will not be known.
- *
- * @param {Internal.Ingredient|string} input
- * @param {Internal.ItemStack_|string} output
- * @param {number} energyNeeded
- * @returns
+ * @param {number} processingTime
+ * @returns {SequencedAssembly}
  */
-SequencedAssembly.prototype.createEnergizingRecipe = function (
-  input,
-  output,
-  energyNeeded
-) {
-  const base = {
-    type: 'create_new_age:energising',
-    // https://gitlab.com/antarcticgardens/create-new-age
-    // JSON recipe key changed in latest dev branch to 'energyNeeded' instead of
-    // 'energy_needed'
-    energy_needed: energyNeeded !== undefined ? energyNeeded : 1000,
-    ingredients: [],
-    results: [],
+SequencedAssembly.prototype.vibrate = function (processingTime) {
+  if (!Platform.isLoaded('vintageimprovements')) {
+    throw new Error('Create: Vintage Improvements is not loaded!')
   }
-  if (typeof input === 'string') input = InputItem.of(input)
-  let inputJson = JSON.parse(input.toJson())
-  if (inputJson.ingredient !== undefined) {
-    inputJson = Object.assign(inputJson, inputJson.ingredient)
-    delete inputJson.ingredient
-  }
-  base.ingredients.push(inputJson)
-
-  if (typeof output === 'string') {
-    const o = OutputItem.of(output)
-    output = {
-      item: o.item.id,
-      count: o.count,
-    }
-  } else {
-    output = JSON.parse(output.toJson())
-  }
-  base.results.push(output)
-  return this.e_.custom(base)
+  this.steps_.push({
+    type: 'vibrating',
+    preItemText: Text.of(`Next: Pass through a vibrating table`),
+    processingTime: processingTime === undefined ? 20 : processingTime,
+  })
+  return this
 }
 
 /**
@@ -300,7 +271,18 @@ SequencedAssembly.prototype.outputCustomSequence = function (output) {
           if (data.keepHeldItem) r.keepHeldItem()
           break
         case 'energising':
-          r = this.createEnergizingRecipe(preItem, postItem, data.energyNeeded)
+          r = this.e_.recipes.create_new_age.energising(
+            postItem,
+            preItem,
+            data.energyNeeded
+          )
+          break
+        case 'vibrating':
+          r = this.e_.recipes.vintageimprovements.vibrating(
+            post,
+            pre,
+            data.processingTime
+          )
           break
         case 'custom':
           r = data.callback(preItem, postItem, json)
@@ -353,10 +335,16 @@ SequencedAssembly.prototype.outputNativeCreate = function (output) {
             if (data.keepHeldItem) deployingStep.keepHeldItem()
             return deployingStep
           case 'energising':
-            return this.createEnergizingRecipe(
+            return this.e_.recipes.create_new_age.energising(
               this.transitional_,
               this.transitional_,
               data.energyNeeded
+            )
+          case 'vibrating':
+            return this.e_.recipes.vintageimprovements.vibrating(
+              this.transitional_,
+              this.transitional_,
+              data.processingTime
             )
           default:
             throw new Error(`Unknown assembly step ${data}`)
