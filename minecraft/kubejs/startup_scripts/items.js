@@ -94,6 +94,8 @@ StartupEvents.registry('item', (e) => {
     })
     .color(0, 0x75eae3)
     .displayName('Overcharged Diamond Wire')
+    .tag('forge:wires')
+    .tag('forge:wires/overcharged_diamond')
 
   // Graphite, produced by heating silicon carbide
   registerItem('kubejs:graphite')

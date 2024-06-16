@@ -35,9 +35,9 @@ ServerEvents.recipes((e) => {
   const redefineRecipe = redefineRecipe_(e)
   const redefineMechanismRecipe = redefineMechanismRecipe_(e)
 
-  /////////////////////////
-  // Custom KubeJS items //
-  /////////////////////////
+  /////////////////////////////////
+  // Custom KubeJS items/recipes //
+  /////////////////////////////////
   e.shaped(
     'kubejs:wooden_hand',
     [
