@@ -18,8 +18,13 @@ ServerEvents.recipes((e) => {
   const redefineRecipe = redefineRecipe_(e)
   const ingotFluid = global.MeltableItem.DEFAULT_INGOT_FLUID
 
-  // Dough must be made by combining it with eggs.
+  // Dough must be made by combining it with eggs, with the original recipe
+  // less efficient.
   e.remove({ output: 'create:dough' })
+  create.mixing('create:dough', [
+    Item.of('create:wheat_flour', 8),
+    Fluid.water(1000),
+  ])
   e.shapeless('create:dough', [
     'create:wheat_flour',
     'create:wheat_flour',

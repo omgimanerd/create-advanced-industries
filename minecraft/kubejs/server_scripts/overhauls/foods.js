@@ -113,4 +113,10 @@ ServerEvents.recipes((e) => {
       Fluid.of('createaddition:seed_oil', 100),
     ])
     .heated()
+  // Remove crafting grid recipe for sourdough
+  e.remove({ id: 'pneumaticcraft:sourdough' })
+  create.mixing('pneumaticcraft:sourdough', [
+    'create:wheat_flour',
+    Fluid.of('pneumaticcraft:yeast_culture', 125),
+  ])
 })
