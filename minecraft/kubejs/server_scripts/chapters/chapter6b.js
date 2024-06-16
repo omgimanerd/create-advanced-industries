@@ -10,6 +10,8 @@ if (global.RegisterTimePouchCraftingEventHandlers) {
 BlockEvents.rightClicked('minecraft:dragon_head', (e) => {
   const { item, hand, block, level } = e
 
+  // TODO check for item trigger
+
   // Dragon head has a rotation property from 0-16 with 0 being North increasing
   // clockwise.
   const toRad = JavaMath.PI / 180
@@ -25,6 +27,11 @@ BlockEvents.rightClicked('minecraft:dragon_head', (e) => {
     Particle: 'dragon_breath',
     Radius: 2,
     Duration: 40,
+    Potion: 'minecraft:harming',
+    ReapplicationDelay: 1,
+    // Will not shrink or disappear after harming a player.
+    DurationOnUse: 0,
+    RadiusOnUse: 0,
   })
   dragonsBreath.persistentData.fromDragonHead = true
   const { x, y, z } = block.pos
@@ -32,8 +39,14 @@ BlockEvents.rightClicked('minecraft:dragon_head', (e) => {
   dragonsBreath.spawn()
 })
 
-ItemEvents.rightClicked('minecraft:glass_bottle', (e) => {
-  const { target, item, player, level } = e
+/**
+ * TODO: needs a custom ponder
+ * @param {Internal.Item} item
+ * @param {Internal.Player} player
+ * @param {*} target
+ * @param {*} level
+ */
+const customDragonsBreathBottling = (item, player, target, level) => {
   let clickLocation
   switch (target.type) {
     case 'MISS':
@@ -68,6 +81,25 @@ ItemEvents.rightClicked('minecraft:glass_bottle', (e) => {
       break
     }
   }
+}
+
+BlockEvents.rightClicked((e) => {
+  const { item, player, block, level } = e
+  if (item.id !== 'minecraft:glass_bottle') return
+  customDragonsBreathBottling(
+    item,
+    player,
+    {
+      type: 'BLOCK',
+      hit: block.pos.getCenter(),
+    },
+    level
+  )
+})
+
+ItemEvents.rightClicked('minecraft:glass_bottle', (e) => {
+  const { item, player, target, level } = e
+  customDragonsBreathBottling(item, player, target, level)
 })
 
 /**
@@ -277,6 +309,10 @@ ServerEvents.recipes((e) => {
     filledXpCrystal,
     1000000
   )
+
+  // Phantom membranes
+  e.remove({ id: 'minecraft:honey_block' })
+  create.haunting('minecraft:phantom_membrane', 'minecraft:honeycomb')
 
   // TODO: overhaul ender pearls?
 
