@@ -260,6 +260,17 @@
 					item: "create:crafting_blueprint"
 					type: "item"
 				}
+				{
+					id: "4EE5682753E99370"
+					item: {
+						Count: 1b
+						id: "create:super_glue"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
 			]
 			tasks: [{
 				icon: "create:shaft"
@@ -286,12 +297,19 @@
 				"&oGo to the Progression chapter to start.&r"
 			]
 			id: "327F51A143F583D4"
-			rewards: [{
-				count: 8
-				id: "670BA254F927F34B"
-				item: "kubejs:andesite_mechanism"
-				type: "item"
-			}]
+			rewards: [
+				{
+					count: 8
+					id: "670BA254F927F34B"
+					item: "kubejs:andesite_mechanism"
+					type: "item"
+				}
+				{
+					id: "24C22DA53DB30CBB"
+					item: "create:brown_toolbox"
+					type: "item"
+				}
+			]
 			size: 2.0d
 			tasks: [{
 				id: "22F640220A84726B"
@@ -576,25 +594,12 @@
 			]
 			icon: "create:mechanical_bearing"
 			id: "0773214DEB80495F"
-			rewards: [
-				{
-					id: "609CBEAD7A76D634"
-					item: {
-						Count: 1b
-						id: "create:super_glue"
-						tag: {
-							Damage: 0
-						}
-					}
-					type: "item"
-				}
-				{
-					count: 4
-					id: "358F38BC0C437C08"
-					item: "create:portable_storage_interface"
-					type: "item"
-				}
-			]
+			rewards: [{
+				count: 4
+				id: "358F38BC0C437C08"
+				item: "create:portable_storage_interface"
+				type: "item"
+			}]
 			tasks: [{
 				id: "2FFB57BE06E2DB78"
 				item: {
