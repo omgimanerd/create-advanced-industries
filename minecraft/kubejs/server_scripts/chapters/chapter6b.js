@@ -7,6 +7,69 @@ if (global.RegisterTimePouchCraftingEventHandlers) {
   console.log('Successfully registered time pouch crafting recipes.')
 }
 
+BlockEvents.rightClicked('minecraft:dragon_head', (e) => {
+  const { item, hand, block, level } = e
+
+  // Dragon head has a rotation property from 0-16 with 0 being North increasing
+  // clockwise.
+  const toRad = JavaMath.PI / 180
+  const angle =
+    block.properties.getOrDefault('rotation', 0) * (360 / 16) * toRad
+  const xOffset = Math.sin(angle) * 2
+  const zOffset = Math.cos(angle) * -2
+
+  // Create the dragon's breath entity.
+  // TODO dragon's breath should harm the player (or spawn harming effect clouds)
+  const dragonsBreath = block.createEntity('minecraft:area_effect_cloud')
+  dragonsBreath.mergeNbt({
+    Particle: 'dragon_breath',
+    Radius: 2,
+    Duration: 40,
+  })
+  dragonsBreath.persistentData.fromDragonHead = true
+  const { x, y, z } = block.pos
+  dragonsBreath.setPosition(x + xOffset, y, z + zOffset)
+  dragonsBreath.spawn()
+})
+
+ItemEvents.rightClicked('minecraft:glass_bottle', (e) => {
+  const { target, item, player, level } = e
+  let clickLocation
+  switch (target.type) {
+    case 'MISS':
+      let eyePosition = player.getEyePosition().toVector3f()
+      let viewScale = player
+        .getViewVector(0)
+        .scale(player.getReachDistance())
+        .toVector3f()
+      clickLocation = eyePosition.add(viewScale)
+      break
+    case 'BLOCK':
+    case 'ENTITY':
+      clickLocation = target.hit
+      break
+    default:
+      throw new Error(`Unknown type: ${target.type}`)
+  }
+  const searchBoxSize = 1
+  const clickSearchArea = AABB.of(
+    clickLocation.x() - searchBoxSize,
+    clickLocation.y() - 0.8,
+    clickLocation.z() - searchBoxSize,
+    clickLocation.x() + searchBoxSize,
+    clickLocation.y() + 1,
+    clickLocation.z() + searchBoxSize
+  )
+  for (const entity of level.getEntitiesWithin(clickSearchArea)) {
+    if (entity.persistentData.fromDragonHead) {
+      item.count--
+      player.give('minecraft:dragon_breath')
+      entity.kill()
+      break
+    }
+  }
+})
+
 /**
  * Event handler for expelling the silverfish from infested stone to generate
  * end stone.
@@ -400,8 +463,6 @@ ServerEvents.recipes((e) => {
     .outputs('minecraft:wither_skeleton_skull')
 
   // defeat the warden
-  // sculk farming to make enderium
-  // enderium recipe from liquid hyper exp
 
   // smithing template netherite upgrade duping
 

@@ -105,3 +105,45 @@ const spawnEffectParticles = (level, pos, count, spread, color) => {
     )
   }
 }
+
+/**
+ * Visualizes an AABB in world with particle effects to help debug.
+ * @param {Internal.Level} level
+ * @param {Internal.AABB} aabb
+ */
+const debugAABB = (level, aabb) => {
+  const [x1, y1, z1] = [aabb.minX, aabb.minY, aabb.minZ]
+  const [x2, y2, z2] = [aabb.maxX, aabb.maxY, aabb.maxZ]
+  const edges = [
+    // Bottom edges
+    [new Vec3f(x1, y1, z1), new Vec3f(x2, y1, z1)],
+    [new Vec3f(x1, y1, z1), new Vec3f(x1, y1, z2)],
+    [new Vec3f(x1, y1, z2), new Vec3f(x2, y1, z2)],
+    [new Vec3f(x2, y1, z1), new Vec3f(x2, y1, z2)],
+    // Top edges
+    [new Vec3f(x1, y2, z1), new Vec3f(x2, y2, z1)],
+    [new Vec3f(x1, y2, z1), new Vec3f(x1, y2, z2)],
+    [new Vec3f(x1, y2, z2), new Vec3f(x2, y2, z2)],
+    [new Vec3f(x2, y2, z1), new Vec3f(x2, y2, z2)],
+    // Vertical edges
+    [new Vec3f(x1, y1, z1), new Vec3f(x1, y2, z1)],
+    [new Vec3f(x2, y1, z2), new Vec3f(x2, y2, z2)],
+    [new Vec3f(x1, y1, z2), new Vec3f(x1, y2, z2)],
+    [new Vec3f(x2, y1, z1), new Vec3f(x2, y2, z1)],
+  ]
+  repeat(level.server, 60, 10, () => {
+    for (let [from, to] of edges) {
+      for (let i = 0; i < 1; i += 0.1) {
+        spawnParticles(
+          level,
+          'minecraft:composter',
+          from.clone().lerp(to, i),
+          0.01,
+          5,
+          0.01,
+          true
+        )
+      }
+    }
+  })
+}
