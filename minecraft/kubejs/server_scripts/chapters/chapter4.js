@@ -37,7 +37,7 @@ ServerEvents.recipes((e) => {
 
   // Lava generation should be cheaper
   e.remove({ id: 'create:mixing/lava_from_cobble' })
-  create.mixing(Fluid.lava(250), '#minecraft:cobblestone').superheated()
+  create.mixing(Fluid.lava(250), 'minecraft:cobblestone').superheated()
 
   // Make the lava filling recipe cheaper
   e.remove({ id: 'create:filling/blaze_cake' })

@@ -2,6 +2,7 @@
 
 // Duplicate fluids or ones removed by the modpack.
 const hiddenFluids = [
+  'cofh_core:honey',
   'cofh_core:potion',
   'createarmory:molten_brass',
   'create_things_and_misc:diluted_bonemeal',
