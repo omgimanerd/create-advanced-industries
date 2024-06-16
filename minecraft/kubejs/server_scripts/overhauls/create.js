@@ -1,6 +1,33 @@
 // priority: 500
 // Recipe overhauls for all Create and Create addons
 
+ServerEvents.tags('item', (e) => {
+  /**
+   * @param {string} material
+   * @param {string} mod
+   */
+  const tagMaterialPlate = (material, mod) => {
+    e.add('forge:plates', `${mod}:${material}_sheet`)
+    e.add(`forge:plates/${material}`, `${mod}:${material}_sheet`)
+  }
+  // Untagged Create Deco sheets
+  tagMaterialPlate('andesite', 'createdeco')
+  tagMaterialPlate('zinc', 'createdeco')
+  tagMaterialPlate('netherite', 'createdeco')
+  tagMaterialPlate('industrial_iron', 'createdeco')
+
+  // Heavy plate is missing generic plates tag
+  e.add('forge:plates', 'tfmg:heavy_plate')
+
+  // Overcharged material sheets
+  tagMaterialPlate('overcharged_iron', 'create_new_age')
+  tagMaterialPlate('overcharged_gold', 'create_new_age')
+
+  // Misc and things sheets
+  tagMaterialPlate('rose_quartz', 'create_things_and_misc')
+  tagMaterialPlate('experience', 'create_things_and_misc')
+})
+
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
 
@@ -444,7 +471,7 @@ ServerEvents.recipes((e) => {
     ],
     {
       H: 'create:shaft',
-      S: 'createdeco:netherite_sheet',
+      S: '#forge:plates/netherite',
       M: 'tfmg:steel_mechanism',
       P: 'create:netherite_backtank',
       C: 'create:smart_chute',

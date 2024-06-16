@@ -31,14 +31,12 @@ JEIEvents.addItems((e) => {
 })
 
 JEIEvents.hideItems((e) => {
-  // Defined in startup_scripts/removed_recipes.js
-  if (global.hideJEI) {
-    global.removedRecipes.forEach((r) => {
-      if (r.output) {
-        e.hide(r.output)
-      }
-    })
-  }
+  // Defined in startup_scripts/removedRecipes.js
+  global.removedRecipes.forEach((r) => {
+    if (r.output) {
+      e.hide(r.output)
+    }
+  })
 
   // Hide all the buckets for unused fluids.
   hiddenFluids.forEach((fluid) => {

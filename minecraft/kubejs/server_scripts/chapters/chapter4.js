@@ -1,7 +1,7 @@
 // priority: 100
 // Recipe overhauls for Chapter 4 progression.
 
-ItemEvents.rightClicked('kubejs:unbreakable_screwdriver', (e) => {
+ItemEvents.rightClicked('#kubejs:screwdriver', (e) => {
   const player = e.player
   if (player.level.isClientSide()) {
     player.tell('You got screwed!')

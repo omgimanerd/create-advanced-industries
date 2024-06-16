@@ -1,6 +1,19 @@
 // priority: 500
 // Recipe registrations for metal casting and melting
 
+ServerEvents.tags('item', (e) => {
+  const tagMaterialIngot = (material, mod) => {
+    e.add('forge:ingots', `${mod}:${material}_ingot`)
+    e.add(`forge:ingots/${material}`, `${mod}:${material}_ingot`)
+  }
+
+  // Untagged ingots
+  tagMaterialIngot('industrial_iron', 'createdeco')
+  tagMaterialIngot('red_alloy', 'morered')
+  tagMaterialIngot('void_steel', 'createutilities')
+  tagMaterialIngot('andesite', 'create')
+})
+
 ServerEvents.recipes((e) => {
   global.metallurgy.meltable_items.forEach((i) => {
     i.registerMeltingRecipes(e)

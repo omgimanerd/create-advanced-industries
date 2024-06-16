@@ -4,7 +4,6 @@
 // JEI.hideItems uses the matcher in key: output
 // This is declared here to be available to both server_scripts and
 // client_scripts.
-global.hideJEI = true
 global.removedRecipes = [
   { output: /^ars_nouveau:[a-z]+_sourcelink/ },
   { output: 'compressedcreativity:compressed_iron_casing' },
@@ -15,6 +14,7 @@ global.removedRecipes = [
   { output: /^createaddition:.*connector/ },
   { output: 'createaddition:capacitor' },
   { output: 'createaddition:diamond_grit' },
+  // Prefer Create Deco's zinc sheet texture
   { output: 'createaddition:zinc_sheet' },
   { output: /^createaddition:[a-z_]+spool/ },
   { output: /^create_connected:copycat_[a-z_]+$/ },
@@ -58,6 +58,8 @@ global.removedRecipes = [
   { output: 'thermal:beetroot_block' },
   { output: 'thermal:carrot_block' },
   { output: 'thermal:copper_nugget' },
+  // Very specific matcher to avoid chestplate and rubberwood_pressure_plate
+  { output: /^thermal:[a-z]+_plate$/ },
   { output: 'thermal:potato_block' },
   // TODO maybe use this?
   { output: 'thermal:phytogro' },
@@ -82,4 +84,9 @@ global.removedRecipes = [
   { output: 'vintageimprovements:sulfur_chunk' },
   { output: 'vintageimprovements:sulfur' },
   { output: 'vintageimprovements:sulfur_block' },
+  // Duplicated sheets that aren't needed
+  { output: 'vintageimprovements:andesite_sheet' },
+  { output: 'vintageimprovements:cast_iron_sheet' },
+  { output: 'vintageimprovements:netherite_sheet' },
+  { output: 'vintageimprovements:zinc_sheet' },
 ]
