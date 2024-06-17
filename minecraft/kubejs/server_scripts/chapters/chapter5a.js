@@ -505,7 +505,11 @@ ServerEvents.recipes((e) => {
   // Probabilistic crushing recipe, only one yields ancient debris.
   const diceRoll = Math.random() > 0.5
   let probabilisticStone = 'create:scoria'
-  if (diceRoll) probabilisticStone = 'create:scorchia'
+  let uselessStone = 'create:scorchia'
+  if (diceRoll) {
+    probabilisticStone = 'create:scorchia'
+    uselessStone = 'create:scoria'
+  }
   create.crushing(
     [
       Item.of('minecraft:ancient_debris').withChance(0.005),
@@ -517,6 +521,7 @@ ServerEvents.recipes((e) => {
     ],
     probabilisticStone
   )
+  create.crushing('minecraft:cobblestone', uselessStone)
 
   // Ancient Debris processing
   e.remove({ id: /minecraft:netherite_scrap.*/ })

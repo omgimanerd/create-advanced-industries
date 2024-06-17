@@ -405,7 +405,7 @@ ItemEvents.foodEaten('#kubejs:enchantable_foods', (e) => {
   const { item, player } = e
   if (!item.enchanted) return
   for (const [enchant, level] of Object.entries(item.enchantments)) {
-    // TODO add more boost if enchanted?
+    // TODO Implement boost on enchanted foods
     console.log(enchant, level)
   }
 })

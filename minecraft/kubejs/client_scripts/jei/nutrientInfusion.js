@@ -61,7 +61,6 @@ JEIAddedEvents.registerRecipes((e) => {
     ](itemStack, books, results)
   }
 
-  // TODO remove recipes from anvil category
   // Logic to register anvil recipes for Nutrient Infusion enchants on food.
   const nutrientInfusionBooks = wrapList(
     Array(5)

@@ -61,7 +61,7 @@ global.removedRecipes = [
   // Very specific matcher to avoid chestplate and rubberwood_pressure_plate
   { output: /^thermal:[a-z]+_plate$/ },
   { output: 'thermal:potato_block' },
-  // TODO maybe use this?
+  // TODO Reconsider usages of Phyto Gro
   { output: 'thermal:phytogro' },
   { output: 'thermal:phyto_grenade' },
   { output: 'thermal:phyto_tnt' },

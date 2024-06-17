@@ -10,7 +10,7 @@ if (global.RegisterTimePouchCraftingEventHandlers) {
 BlockEvents.rightClicked('minecraft:dragon_head', (e) => {
   const { item, hand, block, level } = e
 
-  // TODO check for item trigger
+  // TODO Implement the item that will trigger dragon's head breath mechanic
 
   // Dragon head has a rotation property from 0-16 with 0 being North increasing
   // clockwise.

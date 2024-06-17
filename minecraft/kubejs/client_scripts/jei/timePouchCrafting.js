@@ -42,7 +42,7 @@ JEIAddedEvents.registerCategories((e) => {
 JEIAddedEvents.registerRecipes((e) => {
   const { ingredientManager } = e.data
 
-  // TODO
+  // TODO implement time pouch crafting rendering with item application recipes
 })
 
 JEIAddedEvents.registerRecipeCatalysts((e) => {

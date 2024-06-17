@@ -57,5 +57,5 @@ ServerEvents.recipes((e) => {
     steelCastedMoltenGlass
   )
 
-  // TODO metallurgy flow?
+  // TODO Implement metallurgy flow with Create Molten metals for Chapter 6a
 })

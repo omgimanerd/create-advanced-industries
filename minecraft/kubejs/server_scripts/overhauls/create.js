@@ -51,7 +51,7 @@ ServerEvents.recipes((e) => {
     }
   )
 
-  // todo check mods create misc and things
+  // TODO check mods create misc and things
   // create armory
 
   ////////////
