@@ -1,5 +1,5 @@
 // priority: 100
-// Define the logic for spawning and killing wandering traders for Chapter 5b.
+// Defines the logic for spawning and killing wandering traders in Chapter 5b.
 
 /**
  * Called within EntityEvents.spawned to handle the spawning of a wandering
