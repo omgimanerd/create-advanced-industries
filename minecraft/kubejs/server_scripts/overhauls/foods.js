@@ -1,7 +1,24 @@
 // priority: 500
 // Recipe overhauls for food related items
 
+ItemEvents.foodEaten('#kubejs:enchantable_foods', (e) => {
+  const { item, player } = e
+  if (!item.enchanted) return
+  for (const [enchant, level] of Object.entries(item.enchantments)) {
+    // TODO Implement boost on enchanted foods
+    console.log(enchant, level)
+  }
+})
+
 ServerEvents.tags('item', (e) => {
+  // Tag all enchantable foods.
+  for (const food of Utils.getRegistryIds('item')) {
+    if (food === 'artifacts:eternal_steak') continue
+    if (Item.of(food).isEdible()) {
+      e.add('kubejs:enchantable_foods', food)
+    }
+  }
+
   // Allow Create wheat flour to be used in PneumaticCraft sourdough.
   e.add('forge:dusts/flour', 'create:wheat_flour')
 })

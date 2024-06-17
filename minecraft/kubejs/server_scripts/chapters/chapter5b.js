@@ -70,17 +70,12 @@ BlockEvents.rightClicked('minecraft:moss_block', (e) => {
   /**
    * Recursive function to spread mushroom blocks to nearby moss blocks with
    * a configurable decay and increasing delay.
-   * @param {Special.Block} block
+   * @param {Internal.BlockContainerJS} block
    * @param {number} probability
    * @param {number} decayFactor
    * @param {number} delay
    */
-  const decayedSpread = (
-    /** @type {Internal.BlockContainerJS} */ block,
-    probability,
-    decayFactor,
-    delay
-  ) => {
+  const decayedSpread = (block, probability, decayFactor, delay) => {
     if (block.id !== 'minecraft:moss_block') return
     if (Math.random() > probability) return
     spawnParticles(
@@ -118,25 +113,6 @@ BlockEvents.rightClicked('minecraft:cobweb', (e) => {
   spider.spawn()
   level.destroyBlock(block, false)
   item.count--
-})
-
-ItemEvents.foodEaten('#kubejs:enchantable_foods', (e) => {
-  const { item, player } = e
-  if (!item.enchanted) return
-  for (const [enchant, level] of Object.entries(item.enchantments)) {
-    // TODO Implement boost on enchanted foods
-    console.log(enchant, level)
-  }
-})
-
-ServerEvents.tags('item', (e) => {
-  // Tag all enchantable foods for each reference later.
-  for (const food of Utils.getRegistryIds('item')) {
-    if (food === 'artifacts:eternal_steak') continue
-    if (Item.of(food).isEdible()) {
-      e.add('kubejs:enchantable_foods', food)
-    }
-  }
 })
 
 ServerEvents.compostableRecipes((e) => {
@@ -222,6 +198,8 @@ ServerEvents.recipes((e) => {
     Item.of('thermal:sawdust', 9).withChance(1),
     Item.of('thermal:sawdust', 9).withChance(0.5),
   ])
+
+  // TODO sawdust + glue to paper
 
   // Blasting recipe for sawdust to charcoal dust.
   e.remove({ id: 'create:milling/charcoal' })
