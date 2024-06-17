@@ -21,7 +21,6 @@ BlockEvents.rightClicked('minecraft:dragon_head', (e) => {
   const zOffset = Math.cos(angle) * -2
 
   // Create the dragon's breath entity.
-  // TODO dragon's breath should harm the player (or spawn harming effect clouds)
   const dragonsBreath = block.createEntity('minecraft:area_effect_cloud')
   dragonsBreath.mergeNbt({
     Particle: 'dragon_breath',
@@ -37,69 +36,6 @@ BlockEvents.rightClicked('minecraft:dragon_head', (e) => {
   const { x, y, z } = block.pos
   dragonsBreath.setPosition(x + xOffset, y, z + zOffset)
   dragonsBreath.spawn()
-})
-
-/**
- * TODO: needs a custom ponder
- * @param {Internal.Item} item
- * @param {Internal.Player} player
- * @param {*} target
- * @param {*} level
- */
-const customDragonsBreathBottling = (item, player, target, level) => {
-  let clickLocation
-  switch (target.type) {
-    case 'MISS':
-      let eyePosition = player.getEyePosition().toVector3f()
-      let viewScale = player
-        .getViewVector(0)
-        .scale(player.getReachDistance())
-        .toVector3f()
-      clickLocation = eyePosition.add(viewScale)
-      break
-    case 'BLOCK':
-    case 'ENTITY':
-      clickLocation = target.hit
-      break
-    default:
-      throw new Error(`Unknown type: ${target.type}`)
-  }
-  const searchBoxSize = 1
-  const clickSearchArea = AABB.of(
-    clickLocation.x() - searchBoxSize,
-    clickLocation.y() - 0.8,
-    clickLocation.z() - searchBoxSize,
-    clickLocation.x() + searchBoxSize,
-    clickLocation.y() + 1,
-    clickLocation.z() + searchBoxSize
-  )
-  for (const entity of level.getEntitiesWithin(clickSearchArea)) {
-    if (entity.persistentData.fromDragonHead) {
-      item.count--
-      player.give('minecraft:dragon_breath')
-      entity.kill()
-      break
-    }
-  }
-}
-
-BlockEvents.rightClicked((e) => {
-  const { item, player, block, level } = e
-  if (item.id !== 'minecraft:glass_bottle') return
-  customDragonsBreathBottling(
-    item,
-    player,
-    {
-      type: 'BLOCK',
-      hit: block.pos.getCenter(),
-    },
-    level
-  )
-})
-
-ItemEvents.rightClicked('minecraft:glass_bottle', (e) => {
-  const { item, player, target, level } = e
-  customDragonsBreathBottling(item, player, target, level)
 })
 
 /**
@@ -126,6 +62,43 @@ BlockEvents.rightClicked('minecraft:infested_stone', (e) => {
     if (Math.random() < 0.02) {
       item.count--
     }
+  }
+})
+
+BlockEvents.rightClicked('minecraft:beehive', (e) => {
+  const { item, hand, block, level } = e
+  if (hand !== 'main_hand') return
+  if (item.id !== 'apotheosis:vial_of_extraction') return
+  const honeyLevel = block.properties.getOrDefault('honey_level', 0)
+  // Each usage will reset the honey level and create an explosion.
+  block.set('minecraft:beehive', {
+    facing: block.properties.facing,
+    honey_level: '0',
+  })
+  const pos = block.pos.getCenter()
+  for (let i = 0; i < 5; ++i) {
+    level
+      .createExplosion(
+        pos.x() + global.randRange(-1.5, 1.5),
+        pos.y() + global.randRange(0, 1.5),
+        pos.z() + global.randRange(-1.5, 1.5)
+      )
+      .strength(1)
+      .explode()
+  }
+  // Only if the honey level is 5 will there be loot returned.
+  if (honeyLevel < 5) return
+  const honeyCombs = Math.floor(honeyLevel * global.randRange(1.5, 2))
+  block.popItemFromFace(Item.of('minecraft:honeycomb', honeyCombs), 'up')
+  if (Math.random() < 0.5) {
+    block.popItemFromFace(
+      Item.of('kubejs:saturated_honeycomb', global.randRangeInt(3)),
+      'up'
+    )
+  }
+  // There is a 5% chance to consume the vial of extraction.
+  if (Math.random() < 0.05) {
+    item.count--
   }
 })
 

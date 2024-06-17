@@ -189,4 +189,10 @@ StartupEvents.registry('item', (e) => {
 
   // Inert potion residue from potion centrifuging
   registerItem('kubejs:inert_potion_residue')
+
+  // Saturated honeycomb
+  e.create('kubejs:saturated_honeycomb')
+    .texture(getTextureLocation('minecraft:honeycomb'))
+    .glow(true)
+    .displayName('Saturated Honeycomb')
 })
