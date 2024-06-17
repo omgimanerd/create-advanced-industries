@@ -24,8 +24,7 @@ ServerEvents.tags('item', (e) => {
 })
 
 ServerEvents.recipes((e) => {
-  // Consistency overhauls for foods in this modpack, used mostly in chapter 5b
-
+  // Consistency overhauls for foods in this modpack, used mostly in Chapter 5b
   const create = defineCreateRecipes(e)
 
   // Create Central Kitchen + Farmer's Delight

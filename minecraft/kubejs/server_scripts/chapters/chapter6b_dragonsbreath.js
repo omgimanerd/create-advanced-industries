@@ -1,4 +1,37 @@
 // priority: 0
+// Defines the logic for spewing dragon's breath from a dragon head and
+// collecting it with a glass bottle.
+
+BlockEvents.rightClicked('minecraft:dragon_head', (e) => {
+  const { item, hand, block, level } = e
+
+  // TODO Implement the item that will trigger dragon's head breath mechanic
+
+  // Dragon head has a rotation property from 0-16 with 0 being North increasing
+  // clockwise.
+  const toRad = JavaMath.PI / 180
+  const angle =
+    block.properties.getOrDefault('rotation', 0) * (360 / 16) * toRad
+  const xOffset = Math.sin(angle) * 2
+  const zOffset = Math.cos(angle) * -2
+
+  // Create the dragon's breath entity.
+  const dragonsBreath = block.createEntity('minecraft:area_effect_cloud')
+  dragonsBreath.mergeNbt({
+    Particle: 'dragon_breath',
+    Radius: 2,
+    Duration: 40,
+    Potion: 'minecraft:harming',
+    ReapplicationDelay: 1,
+    // Will not shrink or disappear after harming a player.
+    DurationOnUse: 0,
+    RadiusOnUse: 0,
+  })
+  dragonsBreath.persistentData.fromDragonHead = true
+  const { x, y, z } = block.pos
+  dragonsBreath.setPosition(x + xOffset, y, z + zOffset)
+  dragonsBreath.spawn()
+})
 
 /**
  * TODO: needs a custom ponder
