@@ -199,53 +199,91 @@ global.EntityStruckByLightningEventCallback = (e) => {
   }
 }
 
+EntityEvents.hurt('minecraft:wandering_trader', (e) => {
+  // Mark wandering traders that were hurt by barbed wire as ineligible for
+  // loot to avoid it conflicting with the Tesla coil damage type.
+  if (e.entity.block.id === 'createaddition:barbed_wire') {
+    e.entity.persistentData.hurtByBarbedWire = true
+  }
+})
+
 LootJS.modifiers((e) => {
   // Kill wandering trader in 5 ways to get essences
   const wanderingTraderMapping = [
     {
       essence: 'kubejs:suffering_essence',
-      easyDamageSource: 'lightningBolt',
-      hardDamageSource: 'createaddition.barbed_wire', // secretly the tesla coil
+      easy: [{ damageSource: 'lightningBolt' }],
+      // Tesla coil has the same damage type
+      hard: [{ damageSource: 'createaddition.barbed_wire' }],
     },
     {
       essence: 'kubejs:torment_essence',
-      easyDamageSource: 'create.crush',
-      hardDamageSource: 'inWall',
+      easy: [{ damageSource: 'create.crush' }],
+      hard: [{ damageSource: 'inWall' }],
     },
     {
       essence: 'kubejs:mutilation_essence',
-      easyDamageSource: 'create.mechanical_saw',
-      hardDamageSource: 'pnc_minigun',
+      easy: [{ damageSource: 'create.mechanical_saw' }],
+      hard: [
+        { damageSource: 'pnc_minigun' },
+        { directKiller: 'createarmory:projectile_nine_debug' },
+      ],
     },
     {
       essence: 'kubejs:debilitation_essence',
-      hardDamageSource: 'indirectMagic',
-      easyDamageSource: 'wither',
+      easy: [{ damageSource: 'indirectMagic' }],
+      hard: [{ damageSource: 'wither' }],
     },
     {
       essence: 'kubejs:agony_essence',
-      easyDamageSource: 'drown',
-      hardDamageSource: 'onFire',
+      easy: [{ damageSource: 'drown' }],
+      hard: [{ damageSource: 'onFire' }],
     },
   ]
-  for (const {
-    essence,
-    easyDamageSource,
-    hardDamageSource,
-  } of wanderingTraderMapping) {
-    e.addEntityLootModifier('minecraft:wandering_trader')
-      .matchDamageSource((c) => {
-        return c.anyType(easyDamageSource)
+
+  /**
+   * @param {{ damageSource:string, customPredicate:function }} predicate
+   * @returns {Internal.LootActionsBuilderJS}
+   */
+  const buildWanderingTraderPredicate = (predicate) => {
+    const { damageSource, directKiller } = predicate
+    let builder = e.addEntityLootModifier('minecraft:wandering_trader')
+    if (damageSource !== undefined) {
+      builder = builder.matchDamageSource((c) => {
+        return c.anyType(damageSource)
       })
-      .addWeightedLoot([0, 2], Item.of(essence))
-      .addWeightedLoot([1, 3], Item.of('create:experience_nugget'))
-    e.addEntityLootModifier('minecraft:wandering_trader')
-      .matchDamageSource((c) => {
-        return c.anyType(hardDamageSource)
+    }
+    if (directKiller !== undefined) {
+      builder = builder.matchDirectKiller((c) => {
+        return c.anyType(directKiller)
       })
-      .addWeightedLoot([4, 6], Item.of(essence))
-      .addWeightedLoot([4, 6], [Item.of('create:experience_nugget')])
+    }
+    return builder
   }
+
+  // Go through each of the loot mappings for the essence types and set the
+  // loot conditions.
+  for (const { essence, easy, hard } of wanderingTraderMapping) {
+    for (const predicate of easy) {
+      let builder = buildWanderingTraderPredicate(predicate)
+      builder
+        .addWeightedLoot([0, 2], Item.of(essence))
+        .addWeightedLoot([1, 3], Item.of('create:experience_nugget'))
+    }
+    for (const predicate of hard) {
+      buildWanderingTraderPredicate(predicate)
+        .addWeightedLoot([4, 6], Item.of(essence))
+        .addWeightedLoot([4, 6], [Item.of('create:experience_nugget')])
+    }
+  }
+
+  // Remove loot if the wandering trader was hurt by barbed wire.
+  e.addEntityLootModifier('minecraft:wandering_trader').apply((context) => {
+    if (context.getEntity().persistentData.hurtByBarbedWire) {
+      context.removeLoot('create:experience_nugget')
+      context.removeLoot('kubejs:suffering_essence')
+    }
+  })
 
   // Make budding amethyst mineable with silk touch.
   e.addBlockLootModifier('minecraft:budding_amethyst')
