@@ -79,7 +79,11 @@ ServerEvents.recipes((e) => {
   // Register splash and lingering version of each potion type
   const typeMap = [
     { from: 'REGULAR', to: 'SPLASH', ingredient: 'minecraft:gunpowder' },
-    { from: 'SPLASH', to: 'LINGERING', ingredient: 'minecraft:dragon_breath' },
+    {
+      from: 'SPLASH',
+      to: 'LINGERING',
+      ingredient: Fluid.of('create_central_kitchen:dragon_breath', 250),
+    },
   ]
   for (const potionId in uniquePotionIds) {
     // Don't make splash and lingering potions of water.
