@@ -17,8 +17,13 @@ StartupEvents.registry('block', (e) => {
       const below = level.getBlockState(pos.below())
       return below.block.id === 'minecraft:sculk' && brightness < 1
     })
-    .growTick(() => 0)
-    .bonemeal(() => 0)
+    .growTick(() => 0) // Does not grow naturally
+    .bonemeal((randomTickCallback) => {
+      if (randomTickCallback.random.nextIntBetweenInclusive(0, 100) < 10) {
+        return 1
+      }
+      return 0
+    }) // Bonemealing only has a 10% chance to grow the vine.
     .crop('apotheosis:warden_tendril')
     .crop('apotheosis:warden_tendril', 0.25)
     .texture(0, 'kubejs:block/warden_tendril_vine_0')
