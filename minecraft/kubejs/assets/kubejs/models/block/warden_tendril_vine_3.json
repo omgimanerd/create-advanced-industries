@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "kubejs:block/warden_tendril_vine_3"
+  }
+}

@@ -380,4 +380,18 @@ StartupEvents.postInit(() => {
       { note: 'G3', instrument: 'bell' },
     ]
   )
+
+  global.RegisterResonanceCraftingRecipe(
+    'apotheosis:warden_tendril',
+    'kubejs:warden_tendril_vine_seed',
+    [
+      { note: 'C4', instrument: 'banjo' },
+      { note: 'D4', instrument: 'banjo' },
+      { note: 'F4', instrument: 'banjo' },
+      { note: 'D4', instrument: 'banjo' },
+      { note: 'A4', instrument: 'banjo' },
+      { note: 'A4', instrument: 'banjo' },
+      { note: 'G4', instrument: 'banjo' },
+    ]
+  )
 })
