@@ -1,6 +1,13 @@
 // priority: 500
 // Recipe overhauls for PneumaticCraft: Repressurized and Compressed Creativity
 
+LootJS.modifiers((e) => {
+  // Remove compressed iron from random chest loot.
+  e.addLootTypeModifier(LootType.CHEST).removeLoot(
+    Item.of('pneumaticcraft:ingot_iron_compressed')
+  )
+})
+
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
   const pneumaticcraft = definePneumaticcraftRecipes(e)
