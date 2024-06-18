@@ -126,8 +126,7 @@ LootJS.modifiers((e) => {
   // Remove loot if the wandering trader was hurt by barbed wire.
   e.addEntityLootModifier('minecraft:wandering_trader').apply((context) => {
     if (context.getEntity().persistentData.hurtByBarbedWire) {
-      context.removeLoot('create:experience_nugget')
-      context.removeLoot('kubejs:suffering_essence')
+      context.removeLoot(ItemFilter.ALWAYS_TRUE)
     }
   })
 })

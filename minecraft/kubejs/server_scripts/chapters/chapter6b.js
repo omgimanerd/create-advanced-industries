@@ -75,6 +75,13 @@ BlockEvents.rightClicked('minecraft:beehive', (e) => {
   }
 })
 
+LootJS.modifiers((e) => {
+  // Make the ender dragon drop its head regardless of death condition.
+  e.addEntityLootModifier('minecraft:ender_dragon').addLoot(
+    'minecraft:dragon_head'
+  )
+})
+
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
   const pneumaticcraft = definePneumaticcraftRecipes(e)
