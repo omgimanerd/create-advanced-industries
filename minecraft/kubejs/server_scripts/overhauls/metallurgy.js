@@ -74,7 +74,6 @@ ServerEvents.recipes((e) => {
     'minecraft:iron_ingot': 'thermal:iron_dust',
     'minecraft:gold_ingot': 'thermal:gold_dust',
     'minecraft:copper_ingot': 'thermal:copper_dust',
-    // TODO make this assembly recipe?
     'minecraft:netherite_ingot': 'thermal:netherite_dust',
     'minecraft:lapis_lazuli': 'thermal:lapis_dust',
     'minecraft:diamond': 'thermal:diamond_dust',
