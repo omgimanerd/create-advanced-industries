@@ -37,7 +37,6 @@ const defineCreateRecipes = (e) => {
     mixing: e.recipes.create.mixing,
     pressing: e.recipes.create.pressing,
     sandpaper_polishing: e.recipes.create.sandpaper_polishing,
-    sequenced_assembly: e.recipes.create.sequenced_assembly,
     splashing: e.recipes.create.splashing,
 
     // Create Crafts & Additions aliases
