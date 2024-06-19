@@ -112,7 +112,6 @@ ServerEvents.recipes((e) => {
     .pressure(2)
     .temperature({ min_temp: 273 + 300 })
   e.remove({ id: 'pneumaticcraft:thermo_plant/lpg' })
-
   pneumaticcraft
     .thermo_plant()
     .fluid_input({
@@ -257,13 +256,72 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'pneumaticcraft:pressure_chamber/empty_pcb' })
   e.blasting('pneumaticcraft:empty_pcb', 'create_new_age:copper_circuit')
 
+  // Sulfuric acid overhaul
+  e.remove({ id: 'vintageimprovements:pressurizing/sulfur_dioxide' })
+  create
+    .pressurizing('thermal:sulfur_dust')
+    .secondaryFluidResult(Fluid.of('vintageimprovements:sulfur_dioxide', 1000))
+    .heated()
+    .processingTime(80)
+    .outputs([])
+  pneumaticcraft
+    .thermo_plant()
+    .item_input('thermal:sulfur_dust')
+    .pressure(2)
+    .temperature({ min_temp: 273 + 220 })
+    .fluid_output(Fluid.of('vintageimprovements:sulfur_dioxide'))
+  e.remove({ id: 'vintageimprovements:pressurizing/sulfur_trioxide' })
+  e.remove({ id: 'vintageimprovements:pressurizing/sulfur_trioxide_alt' })
+  create
+    .pressurizing([
+      'minecraft:iron_nugget',
+      Fluid.of('vintageimprovements:sulfur_dioxide', 250),
+    ])
+    .secondaryFluidResult(Fluid.of('vintageimprovements:sulfur_trioxide', 250))
+    .superheated()
+    .processingTime(80)
+    .outputs([])
+  pneumaticcraft
+    .thermo_plant()
+    .item_input('minecraft:iron_nugget')
+    .fluid_input(Fluid.of('vintageimprovements:sulfur_dioxide', 250))
+    .pressure(2)
+    .temperature({ min_temp: 273 + 870 })
+    .fluid_output(Fluid.of('vintageimprovements:sulfur_trioxide', 250))
+  e.remove({ id: 'vintageimprovements:pressurizing/sulfuric_acid' })
+  create
+    .pressurizing(Fluid.of('vintageimprovements:sulfur_trioxide', 1000))
+    .secondaryFluidInput(Fluid.water(1000))
+    .heated()
+    .processingTime(80)
+    .outputs(Fluid.of('vintageimprovements:sulfuric_acid', 1000))
+  pneumaticcraft
+    .fluid_mixer(
+      Fluid.of('vintageimprovements:sulfur_trioxide', 1000),
+      Fluid.water(1000)
+    )
+    .time(20)
+    .pressure(4)
+    .fluid_output(Fluid.of('vintageimprovements:sulfuric_acid', 1000))
+
   // Empty PCBs get etched in an etching tank to become unassembled PCBs.
-  // Etching acid overhaul
-  create.mixing(Fluid.of('pneumaticcraft:etching_acid', 1000), [
-    Fluid.water(1000),
-    'thermal:sulfur_dust',
-    'create:copper_nugget',
-  ])
+  // Etching acid overhaul from copper sulfate
+  e.remove({ id: 'vintageimprovements:pressurizing/copper_sulfate' })
+  create.mixing(
+    [
+      'vintageimprovements:copper_sulfate',
+      Fluid.of('vintageimprovements:sulfur_dioxide', 250),
+      Fluid.water(500),
+    ],
+    ['thermal:copper_dust', Fluid.of('vintageimprovements:sulfuric_acid', 500)]
+  )
+  e.remove({ id: 'pneumaticcraft:pressure_chamber/etching_acid' })
+  create
+    .pressurizing(['vintageimprovements:copper_sulfate', 'minecraft:green_dye'])
+    .secondaryFluidInput(Fluid.water(500))
+    .heated()
+    .processingTime(80)
+    .outputs(Fluid.of('pneumaticcraft:etching_acid', 500))
 
   // Unassembled PCBs must be made in an etching tank.
   e.remove({ id: 'pneumaticcraft:assembly/unassembled_pcb' })
@@ -591,10 +649,6 @@ ServerEvents.recipes((e) => {
   )
 
   // Diamond saw blades to cut silicon into wafers
-  create.crushing(
-    Item.of('thermal:diamond_dust').withChance(0.8),
-    'minecraft:diamond'
-  )
   e.shaped(
     'kubejs:diamond_saw_blade',
     [

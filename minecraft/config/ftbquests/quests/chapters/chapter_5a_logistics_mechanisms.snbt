@@ -1475,8 +1475,8 @@
 			y: -6.0d
 		}
 		{
-			dependencies: ["172EDDB8B86F5DA2"]
-			description: ["Etching acid is made with copper sulfide and water."]
+			dependencies: ["551021C3EF44DFCE"]
+			description: ["Etching acid is made with copper sulfate, green dye, and water."]
 			id: "59A963F58BC7A631"
 			tasks: [{
 				id: "01CEAE60DD32D75C"
@@ -1495,7 +1495,7 @@
 				item: "thermal:sulfur_dust"
 				type: "item"
 			}]
-			x: 22.0d
+			x: 14.0d
 			y: -6.0d
 		}
 		{
@@ -1591,6 +1591,34 @@
 			}]
 			x: 24.0d
 			y: 0.0d
+		}
+		{
+			dependencies: ["172EDDB8B86F5DA2"]
+			description: ["Sulfuric acid can be produced from sulfur dust with high pressure and heat."]
+			id: "0075E4A4CC3C29C5"
+			tasks: [{
+				id: "48AA8F74946EA9C2"
+				item: "vintageimprovements:sulfuric_acid_bucket"
+				type: "item"
+			}]
+			x: 16.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["0075E4A4CC3C29C5"]
+			description: [
+				"Cu + 2H2SO4 -> CuSO4 + SO2 + 2H2O"
+				""
+				"Tip: Since sulfur dioxide gas does not have a bucket form, you can use Create's filter in denylist mode to filter it in the smart fluid pipes."
+			]
+			id: "551021C3EF44DFCE"
+			tasks: [{
+				id: "1691AEC90A2D4A14"
+				item: "vintageimprovements:copper_sulfate"
+				type: "item"
+			}]
+			x: 22.0d
+			y: -6.0d
 		}
 	]
 	title: "Chapter 5a: Logistics Mechanisms"
