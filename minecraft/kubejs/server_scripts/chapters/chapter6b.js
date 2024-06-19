@@ -533,8 +533,6 @@ ServerEvents.recipes((e) => {
     .deploy('minecraft:glass')
     .outputs('minecraft:beacon')
 
-  // required for beacons and nether stars
-
   e.remove({ id: 'create_things_and_misc:vibration_mecanism_craft' })
   create
     .SequencedAssembly('kubejs:crystalline_mechanism')
