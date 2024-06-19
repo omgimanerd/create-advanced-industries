@@ -34,6 +34,7 @@ ServerEvents.tags('item', (e) => {
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
 
+  // Dead corals are another source of limesand.
   create.milling(
     ['tfmg:limesand', Item.of('tfmg:limesand').withChance(0.25)],
     '#kubejs:dead_coral'
@@ -43,6 +44,7 @@ ServerEvents.recipes((e) => {
     '#kubejs:dead_coral_block'
   )
 
+  // Living corals are a source of dye.
   const colorMap = {
     tube: 'minecraft:blue_dye',
     brain: 'minecraft:pink_dye',
@@ -50,7 +52,6 @@ ServerEvents.recipes((e) => {
     fire: 'minecraft:red_dye',
     horn: 'minecraft:yellow_dye',
   }
-
   for (const [coral, dye] of Object.entries(colorMap)) {
     create.milling(
       [dye, Item.of(dye).withChance(0.25)],
