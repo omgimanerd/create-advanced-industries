@@ -34,3 +34,6 @@ As best as I can tell, the least obnoxious way.
 
 ## Author(s)
   - omgimanerd
+
+## License
+  - [Mozilla Public License 2.0](LICENSE)
