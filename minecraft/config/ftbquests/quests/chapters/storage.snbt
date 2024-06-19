@@ -9,6 +9,7 @@
 	quest_links: [ ]
 	quests: [
 		{
+			dependencies: ["76EA7D462C854493"]
 			description: [
 				"Storage Lecterns from Ars Nouveau are one option for early game storage organization."
 				""
@@ -30,6 +31,7 @@
 			y: 0.0d
 		}
 		{
+			dependencies: ["76EA7D462C854493"]
 			description: ["Functional Storage drawers are in this pack!"]
 			id: "0187FA4673644B91"
 			rewards: [
@@ -73,6 +75,7 @@
 			y: -2.0d
 		}
 		{
+			dependencies: ["76EA7D462C854493"]
 			description: [
 				"Tom's Simple Storage Mod is available in this modpack."
 				""
@@ -112,6 +115,7 @@
 			y: 0.0d
 		}
 		{
+			dependencies: ["76EA7D462C854493"]
 			description: [
 				"Refined Storage is the digital storage mod used in this modpack."
 				""

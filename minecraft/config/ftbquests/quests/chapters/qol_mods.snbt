@@ -226,6 +226,30 @@
 			x: 2.0d
 			y: 4.0d
 		}
+		{
+			dependencies: ["76EA7D462C854493"]
+			description: ["Ultimine is in this pack as a means to reduce the early game grind. Hold ~ to activate it and mine all similar connected blocks when you break a block."]
+			icon: {
+				Count: 1b
+				id: "minecraft:stone_pickaxe"
+				tag: {
+					Damage: 0
+				}
+			}
+			id: "374865EAD7E03CDB"
+			rewards: [{
+				id: "23836A609D103207"
+				item: "farmersdelight:noodle_soup"
+				type: "item"
+			}]
+			tasks: [{
+				id: "4C3397CB82AB8F72"
+				title: "Ultimine"
+				type: "checkmark"
+			}]
+			x: 0.0d
+			y: -2.0d
+		}
 	]
 	title: "QOL Mods"
 }
