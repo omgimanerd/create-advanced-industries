@@ -140,7 +140,11 @@
 		}
 		{
 			dependencies: ["3426D798E4ECFC01"]
-			description: ["Limestone can then be ground up to get limesand, a necessary flux for steel smelting."]
+			description: [
+				"Limestone can then be ground up to get limesand, a necessary flux for steel smelting."
+				""
+				"By the way, this is not the only way to get limesand, there are a few other pathways to it that are also automatable!"
+			]
 			id: "08046E96E707A76C"
 			tasks: [{
 				id: "53B42749C21B4E85"
