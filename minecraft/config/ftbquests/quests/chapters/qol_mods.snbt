@@ -195,7 +195,7 @@
 		}
 		{
 			dependencies: ["76EA7D462C854493"]
-			description: ["Create: Connected offers tons of different gearbox options to make your builds more compact or more complicated."]
+			description: ["Create: Connected offers tons of different gearbox options and fan catalysts to make your builds more compact or more complicated."]
 			icon: "create_connected:brass_gearbox"
 			id: "2A25A6DA0F27061C"
 			tasks: [{
@@ -218,6 +218,17 @@
 			dependencies: ["76EA7D462C854493"]
 			description: ["Creative Flight is available after Chapter 6, but it doesn't come for free in this pack!"]
 			id: "25489D0F726E761C"
+			rewards: [{
+				id: "0E86549566392083"
+				item: {
+					Count: 1b
+					id: "minecraft:potion"
+					tag: {
+						Potion: "apotheosis:flying"
+					}
+				}
+				type: "item"
+			}]
 			tasks: [{
 				id: "51D173EFDA6E3429"
 				item: "balancedflight:ascended_flight_ring"

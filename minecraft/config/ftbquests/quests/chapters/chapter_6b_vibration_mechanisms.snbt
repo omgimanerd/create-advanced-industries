@@ -6,7 +6,7 @@
 	group: "5B3547AEADCBC841"
 	icon: "create_things_and_misc:vibration_mechanism"
 	id: "67020B8E9395350E"
-	order_index: 7
+	order_index: 8
 	quest_links: [ ]
 	quests: [
 		{
@@ -21,6 +21,7 @@
 			y: 0.0d
 		}
 		{
+			dependencies: ["6DC625AE49A9B01A"]
 			icon: {
 				Count: 1b
 				id: "ftbquests:custom_icon"
@@ -51,7 +52,7 @@
 				}
 			]
 			title: "Defeat the Warden"
-			x: 9.5d
+			x: 8.5d
 			y: 0.0d
 		}
 		{
@@ -68,6 +69,7 @@
 			y: 0.0d
 		}
 		{
+			dependencies: ["6DC625AE49A9B01A"]
 			icon: {
 				Count: 1b
 				id: "ftbquests:custom_icon"
@@ -225,14 +227,12 @@
 			y: -11.0d
 		}
 		{
+			dependencies: ["6DC625AE49A9B01A"]
 			id: "7F0A4231CA344359"
 			tasks: [{
-				icon: "minecraft:dragon_head"
-				id: "66392C17DE8048DE"
-				observe_type: 5
-				timer: 0L
-				to_observe: "minecraft:ender_dragon"
-				type: "observation"
+				id: "5D3CA59758B2C08A"
+				item: "minecraft:dragon_head"
+				type: "item"
 			}]
 			title: "Defeat the Ender Dragon"
 			x: 8.5d
@@ -246,8 +246,8 @@
 				item: "minecraft:enchanting_table"
 				type: "item"
 			}]
-			x: 2.0d
-			y: 0.0d
+			x: 4.0d
+			y: -0.5d
 		}
 		{
 			id: "4798028C47F41935"
@@ -256,7 +256,7 @@
 				item: "minecraft:experience_bottle"
 				type: "item"
 			}]
-			x: 14.0d
+			x: 12.5d
 			y: 0.0d
 		}
 		{
@@ -293,7 +293,10 @@
 			y: -2.0d
 		}
 		{
-			dependencies: ["4798028C47F41935"]
+			dependencies: [
+				"4798028C47F41935"
+				"27B9B80E471D7E0A"
+			]
 			id: "57F92618AAF3CAD1"
 			tasks: [{
 				id: "0CFB6FC1C0BAD7E7"
@@ -314,8 +317,8 @@
 				item: "minecraft:end_stone"
 				type: "item"
 			}]
-			x: 5.0d
-			y: 5.5d
+			x: 2.5d
+			y: 8.0d
 		}
 		{
 			id: "6DD93F52A87B6B32"
@@ -324,8 +327,8 @@
 				item: "minecraft:infested_stone"
 				type: "item"
 			}]
-			x: 3.0d
-			y: 6.0d
+			x: 0.5d
+			y: 8.5d
 		}
 		{
 			id: "3E44FFF4BA96011E"
@@ -334,8 +337,8 @@
 				item: "apotheosis:vial_of_expulsion"
 				type: "item"
 			}]
-			x: 3.0d
-			y: 4.5d
+			x: 0.5d
+			y: 7.0d
 		}
 		{
 			dependencies: ["4953FDEB278D7D6D"]
@@ -345,7 +348,7 @@
 				item: "minecraft:wither_skeleton_skull"
 				type: "item"
 			}]
-			x: 8.5d
+			x: 9.5d
 			y: 4.0d
 		}
 		{
@@ -356,7 +359,7 @@
 				item: "minecraft:skeleton_skull"
 				type: "item"
 			}]
-			x: 9.5d
+			x: 10.5d
 			y: 5.5d
 		}
 		{
@@ -370,8 +373,8 @@
 				item: "minecraft:bone"
 				type: "item"
 			}]
-			x: 12.0d
-			y: 9.0d
+			x: 8.0d
+			y: 7.0d
 		}
 		{
 			id: "2FDA2B5BEB8A1870"
@@ -380,8 +383,8 @@
 				item: "thermal:device_fisher"
 				type: "item"
 			}]
-			x: 9.5d
-			y: 9.5d
+			x: 5.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["2FDA2B5BEB8A1870"]
@@ -391,8 +394,8 @@
 				item: "thermal:aquachow"
 				type: "item"
 			}]
-			x: 9.5d
-			y: 11.0d
+			x: 5.5d
+			y: 9.0d
 		}
 		{
 			dependencies: ["482F9D1480AA9724"]
@@ -402,8 +405,8 @@
 				item: "thermal:deep_aquachow"
 				type: "item"
 			}]
-			x: 11.0d
-			y: 10.5d
+			x: 7.0d
+			y: 8.5d
 		}
 		{
 			dependencies: ["368E09F5D73E4623"]
@@ -509,14 +512,24 @@
 			y: -9.0d
 		}
 		{
+			dependencies: ["6DC625AE49A9B01A"]
+			icon: "apotheosis:draconic_endshelf"
 			id: "7CB4CC65BC442750"
-			tasks: [{
-				id: "799C10E5A514DECF"
-				item: "minecraft:bookshelf"
-				type: "item"
-			}]
+			tasks: [
+				{
+					id: "799C10E5A514DECF"
+					item: "minecraft:bookshelf"
+					type: "item"
+				}
+				{
+					id: "17F14127AFB19780"
+					item: "apotheosis:draconic_endshelf"
+					type: "item"
+				}
+			]
+			title: "Level 100 Enchanting"
 			x: 4.0d
-			y: 0.0d
+			y: -2.5d
 		}
 		{
 			id: "368E09F5D73E4623"
@@ -586,28 +599,131 @@
 				item: "minecraft:note_block"
 				type: "item"
 			}]
-			x: 9.0d
-			y: 7.0d
+			x: 9.5d
+			y: 6.5d
 		}
 		{
+			dependencies: ["6651B17B190DD8F4"]
 			id: "77C422DDE35B606E"
 			tasks: [{
 				id: "54B1149D5E684E74"
 				item: "apotheosis:vial_of_extraction"
 				type: "item"
 			}]
-			x: 3.0d
-			y: 8.0d
+			x: 0.5d
+			y: 10.5d
 		}
 		{
+			dependencies: ["4798028C47F41935"]
 			id: "27B9B80E471D7E0A"
 			tasks: [{
 				id: "0C849E1A576A258A"
 				item: "kubejs:inert_xp_condenser"
 				type: "item"
 			}]
-			x: 14.5d
-			y: -2.5d
+			x: 14.0d
+			y: -1.0d
+		}
+		{
+			dependencies: [
+				"6749065CD841CA97"
+				"5850D98AF6ECC0B8"
+			]
+			id: "79B15D4E12B329B9"
+			tasks: [{
+				id: "11386C60A69E3752"
+				item: {
+					Count: 1b
+					id: "minecraft:potion"
+					tag: {
+						Potion: "apotheosis:extra_long_flying"
+					}
+				}
+				type: "item"
+			}]
+			x: 17.0d
+			y: 9.5d
+		}
+		{
+			dependencies: ["7FBFDCE728DC6848"]
+			id: "5850D98AF6ECC0B8"
+			tasks: [{
+				id: "5603FB176FC6735B"
+				item: "minecraft:phantom_membrane"
+				type: "item"
+			}]
+			x: 12.0d
+			y: 10.0d
+		}
+		{
+			dependencies: ["4F4169E360108B65"]
+			id: "6749065CD841CA97"
+			tasks: [{
+				id: "742F55CDA1D5C8FD"
+				item: "minecraft:popped_chorus_fruit"
+				type: "item"
+			}]
+			x: 15.0d
+			y: 12.5d
+		}
+		{
+			dependencies: ["77C422DDE35B606E"]
+			id: "3C447206C2554E96"
+			tasks: [{
+				id: "7DD56D9AF7B8CEE7"
+				item: "kubejs:saturated_honeycomb"
+				type: "item"
+			}]
+			x: 2.5d
+			y: 9.5d
+		}
+		{
+			dependencies: ["77C422DDE35B606E"]
+			id: "7FBFDCE728DC6848"
+			tasks: [{
+				id: "2FB3783962131CA2"
+				item: "minecraft:honeycomb"
+				type: "item"
+			}]
+			x: 2.5d
+			y: 10.5d
+		}
+		{
+			icon: "minecraft:beehive"
+			id: "6651B17B190DD8F4"
+			tasks: [
+				{
+					id: "13BFD4CD1D894C1D"
+					item: "minecraft:beehive"
+					type: "item"
+				}
+				{
+					icon: {
+						Count: 1b
+						id: "ftbquests:custom_icon"
+						tag: {
+							Icon: "ftbchunks:textures/faces/minecraft/bee.png"
+						}
+					}
+					id: "3764A5724E72740D"
+					observe_type: 5
+					timer: 0L
+					to_observe: "minecraft:bee"
+					type: "observation"
+				}
+			]
+			x: -1.5d
+			y: 11.0d
+		}
+		{
+			id: "4F4169E360108B65"
+			tasks: [{
+				id: "203D6953BBDF00FC"
+				item: "minecraft:chorus_fruit"
+				type: "item"
+			}]
+			x: 0.0d
+			y: 14.5d
 		}
 	]
 	title: "Chapter 6b: Vibration Mechanisms"

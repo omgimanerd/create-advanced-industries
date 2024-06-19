@@ -5,7 +5,7 @@
 	group: "5B3547AEADCBC841"
 	icon: "createteleporters:quantum_mechanism"
 	id: "565035A1584BCCAE"
-	order_index: 8
+	order_index: 7
 	quest_links: [ ]
 	quests: [{
 		dependencies: ["12D9ACDA50B38FCA"]
