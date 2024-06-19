@@ -4,9 +4,14 @@ const STRIPPED_LOG_REGEX = /^[a-z_]*:stripped_[a-z_]*_(log|hyphae|stem|block)$/
 
 ServerEvents.tags('item', (e) => {
   // As far as I can tell, this regex should match all stripped logs. Check if
-  // they are correctly tagged, otherwise tag them. The tag cannot be used in
-  // any KubeJS recipe script because tags and recipes are loaded in a
-  // nondeterministic order.
+  // they are correctly tagged, otherwise tag them.
+  //
+  // These tags can be used in recipes, which will be evaluated at the time of
+  // the craft, but they cannot be used in Ingredient.of('#tag'), since the
+  // association will not be available.
+  //
+  // ServerEvents.tags does not deterministically run before
+  // ServerEvents.recipes either.
   Ingredient.of(STRIPPED_LOG_REGEX).itemIds.forEach((id) => {
     if (!Item.of(id).hasTag('forge:stripped_logs')) {
       e.add('forge:stripped_logs', id)
