@@ -105,6 +105,22 @@ ServerEvents.recipes((e) => {
     'vintageimprovements:convex_curving_head'
   )
 
+  e.remove({ id: 'create:filling/powderedbrownie1' })
+  create.filling('kubejs:uncooked_brownie', [
+    'createsweetsandtreets:brass_cake_pan',
+    Fluid.of('create:chocolate', 250),
+  ])
+  e.smoking(
+    'createsweetsandtreets:unfinished_powdered_brownie',
+    'kubejs:uncooked_brownie'
+  )
+
+  e.shapeless('createsweetsandtreets:sugar_cookie', [
+    'minecraft:wheat',
+    'minecraft:sugar',
+    'minecraft:wheat',
+  ])
+
   // Pneumaticcraft foods
   e.remove({ id: 'pneumaticcraft:thermo_plant/chips' })
   create
