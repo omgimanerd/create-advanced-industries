@@ -500,6 +500,15 @@ ServerEvents.recipes((e) => {
   // Create: Balanced Flight //
   /////////////////////////////
 
+  e.remove({ id: 'create:mechanical_crafting/ascended_flight_ring' })
+  create
+    .SequencedAssembly('ars_nouveau:ring_of_jumping')
+    .deploy('create_things_and_misc:vibration_mechanism')
+    .fill(potionFluid('apotheosis:extra_long_flying', 1000))
+    .energize(1000000)
+    .loops(4)
+    .outputs('balancedflight:ascended_flight_ring')
+
   ///////////////////////
   // Create: Connected //
   ///////////////////////
