@@ -32,6 +32,15 @@ As best as I can tell, the least obnoxious way.
   - cd Create/
   - git checkout .
 
+Since quark-common.toml and packetfixer.properties keep modifying themselves,
+the actual configs are committed, rather a static copy is kept, so you will
+need to copy them.
+
+```
+cp minecraft/configs/packetfixer.properties.committed minecraft/configs/packetfixer.properties
+cp minecraft/configs/quark-common.toml.committed minecraft/configs/quark-common.toml
+```
+
 ## Author(s)
   - omgimanerd
 
