@@ -1,8 +1,9 @@
 // priority: 100
 
 BlockEvents.rightClicked('minecraft:note_block', (e) => {
-  const { player, block, level } = e
-  if (!player.isCrouching()) return
+  const { player, item, block, level } = e
+  // Only works if shift clicking with an empty hand.
+  if (!player.isCrouching() || item.id !== 'minecraft:air') return
 
   // Set the block note to the previous note
   // https://minecraft.fandom.com/wiki/Note_Block
