@@ -51,6 +51,9 @@ ServerEvents.recipes((e) => {
     }
   )
 
+  create.compacting('quark:jasper', 'minecraft:granite')
+  create.compacting('quark:shale', 'create:limestone')
+
   // TODO check mods create misc and things
   // create armory
 
