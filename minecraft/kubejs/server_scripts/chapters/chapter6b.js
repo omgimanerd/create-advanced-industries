@@ -512,7 +512,27 @@ ServerEvents.recipes((e) => {
     }
   })
 
-  // TODO crystalline mechanism makes end crystal
+  // End crystal overhaul
+  // TODO evaluate the downstream effects of this, totem of undying requires
+  // end crystal
+
+  e.remove({ id: 'minecraft:end_crystal' })
+  create
+    .SequencedAssembly('minecraft:glass_pane')
+    .deploy('minecraft:purpur_slab')
+    .deploy('kubejs:crystalline_mechanism')
+    .deploy('minecraft:nether_star')
+    .energize(25000)
+    .outputs('minecraft:end_crystal')
+
+  e.remove({ id: 'minecraft:beacon' })
+  create
+    .SequencedAssembly('minecraft:obsidian')
+    .deploy('minecraft:end_crystal')
+    .deploy('minecraft:diamond_block')
+    .deploy('minecraft:glass')
+    .outputs('minecraft:beacon')
+
   // required for beacons and nether stars
 
   e.remove({ id: 'create_things_and_misc:vibration_mecanism_craft' })

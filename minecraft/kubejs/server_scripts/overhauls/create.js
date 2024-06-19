@@ -499,12 +499,21 @@ ServerEvents.recipes((e) => {
   /////////////////////////////
   // Create: Balanced Flight //
   /////////////////////////////
+  e.remove({ id: 'balancedflight:sequenced_assembly/flight_anchor' })
+  create
+    .SequencedAssembly('minecraft:beacon')
+    .deploy('kubejs:crystalline_mechanism')
+    .deploy('create_connected:brass_gearbox')
+    .fill(potionFluid('apotheosis:extra_long_flying', 1000))
+    .energize(10000000)
+    .outputs('balancedflight:flight_anchor')
 
   e.remove({ id: 'create:mechanical_crafting/ascended_flight_ring' })
   create
-    .SequencedAssembly('ars_nouveau:ring_of_jumping')
+    .SequencedAssembly('ars_nouveau:jump_ring')
     .deploy('create_things_and_misc:vibration_mechanism')
     .fill(potionFluid('apotheosis:extra_long_flying', 1000))
+    .fill(Fluid.of('kubejs:molten_gold', 1000))
     .energize(1000000)
     .loops(4)
     .outputs('balancedflight:ascended_flight_ring')
