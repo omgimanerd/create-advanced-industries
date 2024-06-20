@@ -1,17 +1,16 @@
 // priority: 1000
 
 /**
- * Generates a list of 3-length arrays containing all the relative coordinates
- * within the given relative coordinate offset object.
- *
+ * Generates a list of Vec3i objects containing all the integral coordinates
+ * within the given AABB, max inclusive
  * @param {Internal.AABB} aabb
  * @returns {Vec3i[]}
  */
 global.getOffsetList = (aabb) => {
   const offsetList = []
-  for (const x = aabb.minX; x <= aabb.maxX; x++) {
-    for (const y = aabb.minY; y <= aabb.maxY; y++) {
-      for (const z = aabb.minZ; z <= aabb.maxZ; z++) {
+  for (let x = aabb.minX; x <= aabb.maxX; x++) {
+    for (let y = aabb.minY; y <= aabb.maxY; y++) {
+      for (let z = aabb.minZ; z <= aabb.maxZ; z++) {
         offsetList.push(new Vec3i(x, y, z))
       }
     }
@@ -20,49 +19,21 @@ global.getOffsetList = (aabb) => {
 }
 
 /**
- * @param {Internal.BlockContainerJS} block
- * @param {Internal.Direction|string} direction
+ * Generates a list of Vec3i objects containing all the integral block
+ * coordinates with the given AABB, max exclusive.
+ * @param {Internal.AABB} aabb
+ * @returns {Vec3i[]}
  */
-global.getSameDirectionBlock = (block, direction) => {
-  switch (direction) {
-    case 'north':
-      return block.north
-    case 'south':
-      return block.south
-    case 'east':
-      return block.east
-    case 'west':
-      return block.west
-    case 'up':
-      return block.up
-    case 'down':
-      return block.down
-    default:
-      throw new Error(`Unknown direction ${direction}`)
+global.getBlockList = (aabb) => {
+  const blockList = []
+  for (let x = aabb.minX; x < aabb.maxX; x++) {
+    for (let y = aabb.minY; y < aabb.maxY; y++) {
+      for (let z = aabb.minZ; z < aabb.maxZ; z++) {
+        blockList.push(new Vec3i(x, y, z))
+      }
+    }
   }
-}
-
-/**
- * @param {Internal.BlockContainerJS} block
- * @param {Internal.Direction|string} direction
- */
-global.getOppositeDirectionBlock = (block, direction) => {
-  switch (direction) {
-    case 'north':
-      return block.south
-    case 'south':
-      return block.north
-    case 'east':
-      return block.west
-    case 'west':
-      return block.east
-    case 'up':
-      return block.down
-    case 'down':
-      return block.up
-    default:
-      throw new Error(`Unknown direction ${direction}`)
-  }
+  return blockList
 }
 
 /**

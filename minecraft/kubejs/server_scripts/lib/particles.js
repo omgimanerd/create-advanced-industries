@@ -107,6 +107,24 @@ const spawnEffectParticles = (level, pos, count, spread, color) => {
 }
 
 /**
+ * @param {Internal.Level} level
+ * @param {BlockPos_} pos
+ */
+const debugBlockPos = (level, pos) => {
+  repeat(level.server, 60, 10, () => {
+    spawnParticles(
+      level,
+      'minecraft:composter',
+      [pos.x + 0.5, pos.y + 0.5, pos.z + 0.5],
+      0.05,
+      5,
+      0.05,
+      true
+    )
+  })
+}
+
+/**
  * Visualizes an AABB in world with particle effects to help debug.
  * @param {Internal.Level} level
  * @param {Internal.AABB} aabb

@@ -115,7 +115,7 @@ const setIfValid = (o, key, value) => {
 /**
  * @param {Internal.Potion} potionId
  * @param {number} quantity
- * @return {Internal.FluidStackJS}
+ * @returns {Internal.FluidStackJS}
  */
 const potionFluid = (
   /** @type {Internal.Potion} */ potionId,
@@ -127,7 +127,7 @@ const potionFluid = (
 /**
  * @param {Internal.Enchantment_} enchantment
  * @param {number} level
- * @return {Internal.Ingredient}
+ * @returns {Internal.Ingredient}
  */
 const enchantedBook = (enchantment, level) => {
   return Item.of('minecraft:enchanted_book')
