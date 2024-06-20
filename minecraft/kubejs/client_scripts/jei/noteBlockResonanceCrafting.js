@@ -40,7 +40,7 @@ JEIAddedEvents.registerCategories((e) => {
       .title('Resonance Crafting')
       .background(guiHelper.createBlankDrawable(160, 60))
       .icon(guiHelper.createDrawableItemStack('minecraft:note_block'))
-      .isRecipeHandled(() => true) // Only appropriate recipes are added?
+      .isRecipeHandled(() => true) // Only relevant recipes are registered
       .handleLookup((builder, recipe) => {
         const data = recipe.data
         const sequence = data.sequence

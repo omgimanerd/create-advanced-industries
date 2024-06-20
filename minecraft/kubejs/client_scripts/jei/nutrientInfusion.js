@@ -31,7 +31,7 @@ JEIAddedEvents.registerCategories((e) => {
       .icon(
         doubleItemIcon('minecraft:anvil', 'minecraft:enchanted_golden_apple')
       )
-      .isRecipeHandled(() => true)
+      .isRecipeHandled(() => true) // Only relevant recipes are registered
   })
 })
 

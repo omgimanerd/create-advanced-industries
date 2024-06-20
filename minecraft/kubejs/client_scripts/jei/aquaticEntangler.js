@@ -12,7 +12,7 @@ JEIAddedEvents.registerCategories((e) => {
       .title('Aquatic Entangler')
       .background(guiHelper.createBlankDrawable(160, 60))
       .icon(guiHelper.createDrawableItemStack('thermal:device_fisher'))
-      .isRecipeHandled(() => true) // Only appropriate recipes are added?
+      .isRecipeHandled(() => true) // Only relevant recipes are registered
       .handleLookup((builder, recipe) => {
         const data = recipe.data
         // Add the input catalyst item to the input slot

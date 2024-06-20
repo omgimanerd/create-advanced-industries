@@ -42,7 +42,7 @@ JEIAddedEvents.registerCategories((e) => {
             Item.of('minecraft:potion', '{Potion:"minecraft:healing"}')
           )
         )
-        .isRecipeHandled(() => true)
+        .isRecipeHandled(() => true) // Only relevant recipes are registered
     }
   )
 })

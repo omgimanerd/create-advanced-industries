@@ -39,7 +39,7 @@ JEIAddedEvents.registerCategories((e) => {
         .icon(
           doubleItemIcon('create:mechanical_mixer', 'ars_nouveau:glyph_craft')
         )
-        .isRecipeHandled(() => true)
+        .isRecipeHandled(() => true) // Only relevant recipes are registered
     }
   )
 })
