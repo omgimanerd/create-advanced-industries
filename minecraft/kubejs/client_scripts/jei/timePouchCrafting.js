@@ -1,72 +1,98 @@
 // priority: 0
 // Create a custom JEI category for time pouch crafting.
 
-;(() => {
-  const $ManualApplicationRecipe = Java.loadClass(
-    'com.simibubi.create.content.kinetics.deployer.ManualApplicationRecipe'
+JEIAddedEvents.registerCategories((e) => {
+  // Create has factory oriented constructors for its ItemApplicationCategory
+  // and ItemApplicationRecipe code, meaning it is a pain in the ass to try
+  // and construct an ItemApplicationRecipe to pass into a custom recipe
+  // category that uses the rendering code for ItemApplicationCategory.
+  //
+  // Instead of deferring the rendering to Create's existing category class,
+  // we will copy the rendering code from it since we need to augment it
+  // with some additional functionality anyway.
+
+  // Create class for JEI arrow textures.
+  const $AllGuiTextures = Java.loadClass(
+    'com.simibubi.create.foundation.gui.AllGuiTextures'
   )
-  const $ProcessingRecipeBuilder = Java.loadClass(
-    'com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder'
+  // Create class for default block rendering behavior
+  const $GuiGameElement = Java.loadClass(
+    'com.simibubi.create.foundation.gui.element.GuiGameElement'
+  )
+  // Create class for holding default lighting objects
+  const $AnimatedKinetics = Java.loadClass(
+    'com.simibubi.create.compat.jei.category.animations.AnimatedKinetics'
   )
 
-  JEIAddedEvents.registerCategories((e) => {
-    // The Manual Application recipe category, contains the code the performs
-    // the actual rendering of the recipe inputs and outputs in JEI
-    const $ItemApplicationCategory = Java.loadClass(
-      'com.simibubi.create.compat.jei.category.ItemApplicationCategory'
-    )
+  const guiHelper = e.data.jeiHelpers.guiHelper
+  e.custom(global.TIME_POUCH_CRAFTING, (category) => {
+    category
+      .title('Temporal Pouch Crafting')
+      // Dimensions from CreateJEI.java
+      .background(guiHelper.createBlankDrawable(177, 60))
+      .icon(guiHelper.createDrawableItemStack('gag:time_sand_pouch'))
+      .isRecipeHandled(() => true) // Only relevant recipes are registered
+      .handleLookup((builder, recipe) => {
+        const { input, output, cost } = recipe.data
+        const seconds = (cost / 20).toFixed(1)
+        builder
+          .addSlot('input', 27, 38)
+          .addItemStack(Item.of(input))
+          .setBackground(guiHelper.getSlotDrawable(), -1, -1)
+        builder
+          .addSlot('input', 51, 5)
+          .addItemStack(Item.of('gag:time_sand_pouch'))
+          .setBackground(guiHelper.getSlotDrawable(), -1, -1)
+          .addTooltipCallback((_, tooltip) => {
+            // TODO replace existing item tooltip
+            tooltip.add(
+              Text.of(`Consumes ${seconds} seconds worth of time.`).gold()
+            )
+          })
+        builder
+          .addSlot('output', 132, 38)
+          .addItemStack(Item.of(output))
+          .setBackground(guiHelper.getSlotDrawable(), -1, -1)
+      })
+      .setDrawHandler((recipe, _, guiGraphics) => {
+        const block = Block.getBlock(recipe.data.output)
+        if (block.id === 'minecraft:air') {
+          throw new Error(`${recipe.data} output is not a block`)
+        }
+        $AllGuiTextures.JEI_SHADOW.render(guiGraphics, 62, 47)
+        $AllGuiTextures.JEI_DOWN_ARROW.render(guiGraphics, 74, 10)
 
-    // RecipeType and the underlying ItemApplication recipe. Needed to create a
-    // RecipeType for the custom category registration.
-    const $RecipeType = Java.loadClass('mezz.jei.api.recipe.RecipeType')
-    const $Info = Java.loadClass(
-      'com.simibubi.create.compat.jei.category.CreateRecipeCategory$Info'
-    )
-
-    const guiHelper = e.data.jeiHelpers.guiHelper
-    // ItemApplicationCategory needs a reference to the background IDrawable
-    const background = guiHelper.createBlankDrawable(177, 60)
-    const timePouchCraftingCategory = new $ItemApplicationCategory(
-      // Don't actually need any of the subfields, just need an instance of
-      // ItemApplicationCategory to call its lookup and draw handler.
-      $Info(null, null, background, null, null, null)
-    )
-    e.wrap(
-      $RecipeType.create(
-        'kubejs',
-        'time_pouch_crafting',
-        $ManualApplicationRecipe
-      ),
-      timePouchCraftingCategory,
-      (category) => {
-        category
-          .title('Time Pouch Crafting')
-          .background(background)
-          .icon(guiHelper.createDrawableItemStack('gag:time_sand_pouch'))
-          .isRecipeHandled(() => true)
-      }
-    )
+        // From ItemApplicationCategory.java
+        const pose = guiGraphics.pose()
+        pose.pushPose()
+        pose.translate(74, 51, 100)
+        pose.mulPose(RotationAxis.XP.deg(-15.5))
+        pose.mulPose(RotationAxis.YP.deg(22.5))
+        $GuiGameElement['of(net.minecraft.world.level.block.state.BlockState)'](
+          block.defaultBlockState()
+        )
+          .lighting($AnimatedKinetics.DEFAULT_LIGHTING)
+          .scale(20)
+          .render(guiGraphics)
+        pose.popPose()
+      })
   })
+})
 
-  JEIAddedEvents.registerRecipes((e) => {
-    const { ingredientManager } = e.data
+JEIAddedEvents.registerRecipes((e) => {
+  if (!global.TimePouchCraftingRecipes) return
+  const r = e.custom(global.TIME_POUCH_CRAFTING)
+  for (const [input, recipe] of Object.entries(
+    global.TimePouchCraftingRecipes
+  )) {
+    r.add({
+      input: input,
+      output: recipe.output,
+      cost: recipe.cost,
+    })
+  }
+})
 
-    // let p = new $ProcessingRecipeBuilder(
-    //   $ManualApplicationRecipe,
-    //   new ResourceLocation('kubejs:test_recipe')
-    // )
-    // console.log(p.ingredients)
-    // console.log(p.results)
-
-    // e.custom('kubejs:time_pouch_crafting').add()
-
-    // TODO implement time pouch crafting rendering with item application recipes
-  })
-
-  JEIAddedEvents.registerRecipeCatalysts((e) => {
-    e.data.addRecipeCatalyst(
-      'gag:time_sand_pouch',
-      'kubejs:time_pouch_crafting'
-    )
-  })
-})()
+JEIAddedEvents.registerRecipeCatalysts((e) => {
+  e.data.addRecipeCatalyst('gag:time_sand_pouch', 'kubejs:time_pouch_crafting')
+})
