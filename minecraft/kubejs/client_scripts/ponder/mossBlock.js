@@ -47,7 +47,7 @@ Ponder.registry((e) => {
         .withItem('createaddition:biomass')
       scene.world.setFilterData(
         deployerPos,
-        deployerBlockEntity,
+        $DeployerBlockEntity,
         'createaddition:biomass'
       )
       setDeployerHeldItem(scene, deployerPos, 'createaddition:biomass')
@@ -61,7 +61,7 @@ Ponder.registry((e) => {
       scene.addKeyframe()
       scene.world.setFilterData(
         deployerPos,
-        deployerBlockEntity,
+        $DeployerBlockEntity,
         'minecraft:bone_meal'
       )
       scene.text(
@@ -118,7 +118,7 @@ Ponder.registry((e) => {
       scene.idle(25)
       scene.world.setFilterData(
         deployerPos,
-        deployerBlockEntity,
+        $DeployerBlockEntity,
         'minecraft:red_mushroom'
       )
       scene.text(

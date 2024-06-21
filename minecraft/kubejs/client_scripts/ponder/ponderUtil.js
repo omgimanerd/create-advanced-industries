@@ -1,9 +1,35 @@
 // priority: 900
 // Utility functions and classes used by the code to generate custom Ponders.
 
-const deployerBlockEntity = Java.loadClass(
+const $DeployerBlockEntity = Java.loadClass(
   'com.simibubi.create.content.kinetics.deployer.DeployerBlockEntity'
 )
+
+/**
+ * Animates the tank fluid amount at the given position.
+ * @param {Internal.ExtendedSceneBuilder} scene
+ * @param {BlockPos_} position
+ * @param {Special.Fluid} fluid
+ * @param {number} from
+ * @param {number} to
+ * @param {number=} step
+ */
+const animateTank = (scene, position, fluid, from, to, step) => {
+  step = step === undefined ? 100 : step
+  while (from != to) {
+    // Requires a closure to bind the value of amount inside the callback
+    ;((amount_) => {
+      scene.world.modifyBlockEntityNBT(position, (nbt) => {
+        nbt.TankContent = {
+          FluidName: fluid,
+          Amount: amount_,
+        }
+      })
+    })(from)
+    scene.idle(1)
+    from = to < from ? Math.max(to, from - step) : Math.min(to, from + step)
+  }
+}
 
 /**
  * @param {Internal.ExtendedSceneBuilder} scene
