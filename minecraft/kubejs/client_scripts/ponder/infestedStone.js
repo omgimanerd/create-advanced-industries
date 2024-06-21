@@ -95,7 +95,13 @@ Ponder.registry((e) => {
       scene.world.removeEntity(silverfish)
       scene.particles.simple(5, 'minecraft:poof', [5, 1, 2]).density(5)
       scene.world.setKineticSpeed(deployer, 0)
-      scene.idle(10)
+      scene.idle(20)
+      scene.text(
+        40,
+        'Each usage has a small chance to consume the Vial of Expulsion',
+        deployer
+      )
+      scene.idle(50)
     }
   )
 })
