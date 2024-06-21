@@ -45,11 +45,7 @@ Ponder.registry((e) => {
         .showControls(40, center, 'right')
         .rightClick()
         .withItem('createaddition:biomass')
-      scene.world.setFilterData(
-        deployerPos,
-        $DeployerBlockEntity,
-        'createaddition:biomass'
-      )
+      setDeployerFilter(scene, deployerPos, 'createaddition:biomass')
       setDeployerHeldItem(scene, deployerPos, 'createaddition:biomass')
       scene.idleSeconds(1)
       cycleDeployerMovement(scene, deployerPos)
@@ -59,11 +55,7 @@ Ponder.registry((e) => {
 
       // Spreading moss
       scene.addKeyframe()
-      scene.world.setFilterData(
-        deployerPos,
-        $DeployerBlockEntity,
-        'minecraft:bone_meal'
-      )
+      setDeployerFilter(scene, deployerPos, 'minecraft:bone_meal')
       scene.text(
         60,
         'Right clicking a moss block with a fertilizer will cause it to ' +
@@ -116,11 +108,7 @@ Ponder.registry((e) => {
       scene.world.setBlocks(util.select.layer(2), 'minecraft:air', false)
       scene.world.showSection(util.select.fromTo(0, 1, 0, 4, 2, 4), Facing.UP)
       scene.idle(25)
-      scene.world.setFilterData(
-        deployerPos,
-        $DeployerBlockEntity,
-        'minecraft:red_mushroom'
-      )
+      setDeployerFilter(scene, deployerPos, 'minecraft:red_mushroom')
       scene.text(
         30,
         'Right clicking a moss block with a mushroom will seed it into a ' +

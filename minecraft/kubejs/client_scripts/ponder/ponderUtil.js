@@ -32,9 +32,19 @@ const animateTank = (scene, position, fluid, from, to, step) => {
 }
 
 /**
+ *
  * @param {Internal.ExtendedSceneBuilder} scene
- * @param {BlockPos} deployerPos
- * @param {Internal.ItemStack_?} id
+ * @param {BlockPos_} deployerPos
+ * @param {Internal.ItemStack} item
+ */
+const setDeployerFilter = (scene, deployerPos, item) => {
+  scene.world.setFilterData(deployerPos, $DeployerBlockEntity, item)
+}
+
+/**
+ * @param {Internal.ExtendedSceneBuilder} scene
+ * @param {BlockPos_} deployerPos
+ * @param {Internal.ItemStack_} id
  */
 const setDeployerHeldItem = (scene, deployerPos, id) => {
   scene.world.modifyBlockEntityNBT(deployerPos, (nbt) => {
@@ -47,7 +57,7 @@ const setDeployerHeldItem = (scene, deployerPos, id) => {
 
 /**
  * @param {Internal.ExtendedSceneBuilder} scene
- * @param {BlockPos} pos
+ * @param {BlockPos_} pos
  * @param {number} ticks
  * @param {boolean?} clearHand
  */
