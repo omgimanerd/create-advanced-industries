@@ -4,7 +4,7 @@ Ponder.registry((e) => {
   e.create('minecraft:enchanting_table').scene(
     'enchanting_table_overhaul',
     'Enchanting Table',
-    'kubejs:baseplate7',
+    'kubejs:baseplate7', // kubejs/assets/kubejs/ponder/baseplate7.nbt
     (scene, util) => {
       scene.showStructure()
       const center = new BlockPos(3, 1, 3)
@@ -145,17 +145,19 @@ Ponder.registry((e) => {
       )
       scene.world.setBlocks(
         util.grid.at(5, 2, 3),
-        'minecraft:purple_candle', // Cannot set block states in ponder.
+        Block.id('minecraft:purple_candle')
+          .with('candles', '3')
+          .with('lit', true),
         false
       )
       scene.world.setBlocks(
         util.grid.at(5, 2, 4),
-        'minecraft:wither_skeleton_skull', // Cannot set block states in ponder.
+        Block.id('minecraft:wither_skeleton_skull').with('rotation', '13'),
         false
       )
       scene.world.setBlocks(
         util.grid.at(4, 2, 5),
-        'minecraft:black_candle', // Cannot set block states in ponder.
+        Block.id('minecraft:black_candle').with('lit', true),
         false
       )
       scene.world.showSection(tableModifierArea, Facing.SOUTH)
