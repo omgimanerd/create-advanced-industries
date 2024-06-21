@@ -35,9 +35,9 @@ ServerEvents.recipes((e) => {
   const redefineRecipe = redefineRecipe_(e)
   const redefineMechanismRecipe = redefineMechanismRecipe_(e)
 
-  /////////////////////////////////
-  // Custom KubeJS items/recipes //
-  /////////////////////////////////
+  ///////////////////////////////////////////////////
+  // Custom KubeJS items/recipes related to Create //
+  ///////////////////////////////////////////////////
   e.shaped(
     'kubejs:wooden_hand',
     [
@@ -50,9 +50,6 @@ ServerEvents.recipes((e) => {
       S: '#minecraft:planks',
     }
   )
-
-  create.compacting('quark:jasper', 'minecraft:granite')
-  create.compacting('quark:shale', 'create:limestone')
 
   // TODO check mods create misc and things
   // create armory
