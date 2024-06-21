@@ -33,33 +33,33 @@ Ponder.registry((e) => {
         Block.id('minecraft:small_amethyst_bud').with('facing', 'west'),
         false
       )
-      scene.world.showSection(util.select.everywhere(), Facing.SOUTH)
+      scene.world.showIndependentSectionImmediately(util.select.everywhere())
       scene.idleSeconds(1)
 
       // First keyframe explanation
       scene.addKeyframe()
       scene
         .text(
-          80,
+          40,
           'In addition to the recipes shown in JEI, amethyst ' +
             'shards can also be grown using budding amethyst as a catalyst.',
           center.west()
         )
         .placeNearTarget()
-      scene.idle(90)
+      scene.idle(50)
 
       // Second keyframe explanation
       scene.addKeyframe()
       scene
         .text(
-          80,
+          60,
           'In this pack, budding amethyst does not naturally cause attached ' +
             'buds to grow, and require crystal growth accelerator to be ' +
             'spouted on them.',
           center.west()
         )
         .placeNearTarget()
-      scene.idle(90)
+      scene.idle(70)
 
       // Spouting growth
       scene.addKeyframe()
@@ -72,7 +72,7 @@ Ponder.registry((e) => {
           spoutPos
         )
         .placeNearTarget()
-      scene.idle(60)
+      scene.idle(20)
       scene.world.modifyBlockEntityNBT(spoutPos, (nbt) => {
         nbt.ProcessingTicks = 20
       })

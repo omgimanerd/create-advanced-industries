@@ -52,7 +52,7 @@ Ponder.registry((e) => {
       ])
       scene.world.removeEntity(silverfish)
       scene.particles.simple(5, 'minecraft:poof', [5, 1, 2]).density(5)
-      scene.idle(10)
+      scene.idle(20)
 
       // End stone
       scene.addKeyframe()

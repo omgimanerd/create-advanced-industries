@@ -30,7 +30,7 @@ Ponder.registry((e) => {
       )
       scene.world.setKineticSpeed(deployerPos, 24)
       scene.world.setBlocks(util.select.layer(1), 'minecraft:stone', false)
-      scene.world.showSection(util.select.everywhere(), Facing.WEST)
+      scene.world.showIndependentSectionImmediately(util.select.everywhere())
       scene.idleSeconds(1)
 
       // Getting the first moss block

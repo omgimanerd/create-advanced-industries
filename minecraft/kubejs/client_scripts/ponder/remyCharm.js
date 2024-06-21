@@ -31,7 +31,7 @@ Ponder.registry((e) => {
         ),
         Block.id('create:shaft').with('axis', 'x')
       )
-      scene.world.showSection(center, Facing.DOWN)
+      scene.world.showIndependentSectionImmediately(center)
       scene.idleSeconds(1)
 
       // Spawning Remy
@@ -48,6 +48,10 @@ Ponder.registry((e) => {
       )
       scene.idleSeconds(1)
       scene.world.createEntity('ars_nouveau:amethyst_golem', remyLocation)
+      scene.particles
+        .simple(5, 'minecraft:poof', center.above())
+        .delta([0.3, 0.3, 0.3])
+        .density(5)
       scene.idleSeconds(2)
 
       scene.addKeyframe()

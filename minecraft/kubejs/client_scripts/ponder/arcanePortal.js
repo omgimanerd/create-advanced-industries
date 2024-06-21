@@ -60,7 +60,7 @@ Ponder.registry((e) => {
 
       // First segment before keyframe to show scene.
       const { pumps } = setupArcanePortalBlockScene(scene, center)
-      scene.world.showSection(center, Facing.DOWN)
+      scene.world.showIndependentSectionImmediately(center)
       scene.idleSeconds(1)
 
       // Opening the portal.
