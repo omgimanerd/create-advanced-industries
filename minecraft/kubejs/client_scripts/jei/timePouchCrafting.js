@@ -44,9 +44,10 @@ JEIAddedEvents.registerCategories((e) => {
           .addItemStack(Item.of('gag:time_sand_pouch'))
           .setBackground(guiHelper.getSlotDrawable(), -1, -1)
           .addTooltipCallback((_, tooltip) => {
-            // TODO replace existing item tooltip
+            tooltip.remove(tooltip.size() - 2)
             tooltip.add(
-              Text.of(`Consumes ${seconds} seconds worth of time.`).gold()
+              tooltip.size() - 2,
+              Text.of(`Consumes ${seconds}s worth of time.`).gold()
             )
           })
         builder
@@ -61,6 +62,16 @@ JEIAddedEvents.registerCategories((e) => {
         }
         $AllGuiTextures.JEI_SHADOW.render(guiGraphics, 62, 47)
         $AllGuiTextures.JEI_DOWN_ARROW.render(guiGraphics, 74, 10)
+
+        const seconds = (recipe.data.cost / 20).toFixed(1)
+        guiGraphics.drawWordWrap(
+          Client.font,
+          Text.of(`${seconds}s of time`),
+          100, // x
+          10, // y
+          100, // lineWidth
+          0 // color
+        )
 
         // From ItemApplicationCategory.java
         const pose = guiGraphics.pose()
