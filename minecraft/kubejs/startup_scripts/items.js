@@ -62,12 +62,7 @@ StartupEvents.registry('item', (e) => {
     .unstackable()
 
   // Silicon wafers produced from cutting silicon
-  e.create('kubejs:silicon_wafer')
-    .textureJson({
-      layer0: getTextureLocation('refinedstorage:silicon'),
-    })
-    .color(0, 0xaa9eac)
-    .displayName('Silicon Wafer')
+  registerItem('kubejs:silicon_wafer')
 
   // Intermediate item for transistors
   e.create('kubejs:intermediate_transistor', 'create:sequenced_assembly')
@@ -101,41 +96,11 @@ StartupEvents.registry('item', (e) => {
   registerItem('kubejs:graphite')
 
   // Essences from killing wandering traders
-  e.create('kubejs:agony_essence')
-    .textureJson({
-      layer0: 'minecraft:block/dead_tube_coral',
-    })
-    .color(0, 0x75eae3)
-    .glow(true)
-    .displayName('Agony Essence')
-  e.create('kubejs:suffering_essence')
-    .textureJson({
-      layer0: 'minecraft:block/dead_brain_coral',
-    })
-    .color(0, 0xab87d2)
-    .glow(true)
-    .displayName('Suffering Essence')
-  e.create('kubejs:torment_essence')
-    .textureJson({
-      layer0: 'minecraft:block/dead_bubble_coral',
-    })
-    .color(0, 0x69fa00)
-    .glow(true)
-    .displayName('Torment Essence')
-  e.create('kubejs:debilitation_essence')
-    .textureJson({
-      layer0: 'minecraft:block/dead_fire_coral',
-    })
-    .color(0, 0x696969)
-    .glow(true)
-    .displayName('Debilitation Essence')
-  e.create('kubejs:mutilation_essence')
-    .textureJson({
-      layer0: 'minecraft:block/dead_horn_coral',
-    })
-    .color(0, 0xa999bc)
-    .glow(true)
-    .displayName('Mutilation Essence')
+  registerItem('kubejs:agony_essence').glow(true)
+  registerItem('kubejs:suffering_essence').glow(true)
+  registerItem('kubejs:torment_essence').glow(true)
+  registerItem('kubejs:debilitation_essence').glow(true)
+  registerItem('kubejs:mutilation_essence').glow(true)
 
   // Custom amethyst golem charm to spawn a special golem named Remy.
   e.create('kubejs:remy_spawner')
@@ -156,12 +121,9 @@ StartupEvents.registry('item', (e) => {
   registerItem('kubejs:incomplete_xp_condenser', 'create:sequenced_assembly')
 
   // Fish chum
-  e.create('kubejs:fish_chum')
-    .texture(getTextureLocation('farmersdelight:cod_slice'))
-    .displayName('Fish Chum')
-    .food((food) => {
-      food.hunger(1).saturation(1).effect('minecraft:hunger', 30, 0, 1)
-    })
+  registerItem('kubejs:fish_chum').food((food) => {
+    food.hunger(1).saturation(1).effect('minecraft:hunger', 30, 0, 1)
+  })
 
   // Treasure net
   e.create('kubejs:treasure_net')

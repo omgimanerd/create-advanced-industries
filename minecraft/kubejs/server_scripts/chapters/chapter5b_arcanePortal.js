@@ -11,7 +11,7 @@ BlockEvents.rightClicked('minecraft:crying_obsidian', (e) => {
   if (hand !== 'main_hand') return
   if (item.id !== 'ars_nouveau:source_gem') return
   block.spawnLightning(true)
-  block.set('kubejs:portal_block')
+  block.set('kubejs:arcane_portal')
   spawnParticles(level, 'minecraft:enchant', block.pos.center, 0.3, 100, 1)
 })
 

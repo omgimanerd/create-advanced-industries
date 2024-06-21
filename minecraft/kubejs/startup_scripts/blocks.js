@@ -10,11 +10,18 @@ BlockEvents.modification((e) => {
 
 StartupEvents.registry('block', (e) => {
   // Register a portal block to be used in Chapter 5b
-  e.create('kubejs:portal_block').blockEntity((c) => {
-    c.serverTick(20, 0, (blockEntity) => {
-      if (global.PortalBlockTickingCallback) {
-        global.PortalBlockTickingCallback(blockEntity)
-      }
+  e.create('kubejs:arcane_portal')
+    .texture('up', 'kubejs:block/arcane_portal_top')
+    .texture('down', 'kubejs:block/arcane_portal_side')
+    .texture('north', 'kubejs:block/arcane_portal_side')
+    .texture('south', 'kubejs:block/arcane_portal_side')
+    .texture('east', 'kubejs:block/arcane_portal_side')
+    .texture('west', 'kubejs:block/arcane_portal_side')
+    .blockEntity((c) => {
+      c.serverTick(20, 0, (blockEntity) => {
+        if (global.PortalBlockTickingCallback) {
+          global.PortalBlockTickingCallback(blockEntity)
+        }
+      })
     })
-  })
 })

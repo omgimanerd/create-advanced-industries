@@ -1555,7 +1555,7 @@
 			min_width: 250
 			tasks: [{
 				id: "319CF41F80BA0260"
-				item: "kubejs:portal_block"
+				item: "kubejs:arcane_portal"
 				type: "item"
 			}]
 			x: 8.0d

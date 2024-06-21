@@ -54,8 +54,8 @@ Ponder.registry((e) => {
 
   const center = new BlockPos(2, 1, 2)
 
-  e.create('kubejs:portal_block')
-    .scene('portal_block_open', 'Opening The Arcane Portal', (scene, util) => {
+  e.create('kubejs:arcane_portal')
+    .scene('arcane_portal_open', 'Opening The Arcane Portal', (scene, util) => {
       scene.showBasePlate()
 
       // First segment before keyframe to show scene.
@@ -78,7 +78,7 @@ Ponder.registry((e) => {
       scene.idleSeconds(1)
       scene.world.replaceBlocks(
         util.select.position([2, 1, 2]),
-        'kubejs:portal_block',
+        'kubejs:arcane_portal',
         true
       )
       scene.world.createEntity('lightning_bolt', [2, 2, 2])
@@ -141,11 +141,11 @@ Ponder.registry((e) => {
       scene.world.setBlock(center, 'minecraft:air', true)
       scene.idleSeconds(1)
     })
-    .scene('portal_block_usage', 'Using the Arcane Portal', (scene, util) => {
+    .scene('arcane_portal_usage', 'Using the Arcane Portal', (scene, util) => {
       // First segment before keyframe to show scene.
       scene.showBasePlate()
       setupArcanePortalBlockScene(scene, center)
-      scene.world.setBlock(center, 'kubejs:portal_block', false)
+      scene.world.setBlock(center, 'kubejs:arcane_portal', false)
       scene.world.showSection(util.select.layer(1), Facing.DOWN)
       scene.idleSeconds(1)
 
