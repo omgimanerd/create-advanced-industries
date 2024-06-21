@@ -120,6 +120,7 @@ Ponder.registry((e) => {
           "sure there aren't any bees nearby",
         deployer
       )
+      scene.world.setKineticSpeed(deployer, 24)
       cycleDeployerMovement(scene, deployer, 20, false, () => {
         scene.particles
           .simple(5, 'minecraft:explosion', beehive)
@@ -139,6 +140,7 @@ Ponder.registry((e) => {
         ]
         setBeehive(0)
       })
+      scene.world.setKineticSpeed(deployer, 0)
       scene.idle(70)
       honeycombs.forEach((b) => scene.world.removeEntity(b))
       scene.text(

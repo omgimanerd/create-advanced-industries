@@ -75,3 +75,38 @@ const cycleDeployerMovement = (scene, pos, ticks, clearHand, onDeploy) => {
   }
   scene.world.moveDeployer(pos, -1, ticks)
 }
+
+/**
+ * @param {Internal.ExtendedSceneBuilder} scene
+ * @param {Internal.Entity} entity
+ * @param {(number[])[]} movement
+ */
+const lerpEntityMovement = (scene, entity, movements) => {
+  let prevX = entity.x
+  let prevY = entity.y
+  let prevZ = entity.z
+  let prevYRot = entity.yRot || 0
+  let prevXRot = entity.xRot || 0
+  for (const movement of movements) {
+    if (movement.length !== 6) {
+      console.error(`Unknown movement command ${movement}`)
+    }
+    let [x, y, z, yRot, xRot, steps] = movement
+    x = x === null || x === undefined ? prevX : x
+    y = y === null || y === undefined ? prevY : y
+    z = z === null || z === undefined ? prevZ : z
+    xRot = xRot === null || xRot === undefined ? prevXRot : xRot
+    yRot = yRot === null || yRot === undefined ? prevYRot : yRot
+    ;((x_, y_, z_, yRot_, xRot_, steps_) => {
+      scene.world.modifyEntity(entity, (e) => {
+        e.lerpTo(x_, y_, z_, yRot_, xRot_, steps_, false)
+      })
+      scene.idle(steps_)
+    })(x, y, z, yRot, xRot, steps)
+    prevX = x
+    prevY = y
+    prevZ = z
+    prevYRot = yRot
+    prevXRot = xRot
+  }
+}
