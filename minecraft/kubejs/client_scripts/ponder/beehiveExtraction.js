@@ -86,7 +86,9 @@ Ponder.registry((e) => {
         .placeNearTarget()
       scene.idle(20)
       animateTank(scene, tank, 'create:honey', 0, 12000, 250)
-      scene.idle(40)
+      scene.idle(20)
+      scene.world.setKineticSpeed(pumpTank, 0)
+      scene.idle(20)
       scene.world.hideSection(pumpTank, Facing.WEST)
 
       // Arcane Extraction
@@ -139,6 +141,12 @@ Ponder.registry((e) => {
       })
       scene.idle(70)
       honeycombs.forEach((b) => scene.world.removeEntity(b))
+      scene.text(
+        40,
+        'Each usage has a small chance to consume the Vial of Extraction.',
+        deployer
+      )
+      scene.idle(50)
       scene.world.hideSection(deployer, Facing.UP)
 
       // Comparator explanation
