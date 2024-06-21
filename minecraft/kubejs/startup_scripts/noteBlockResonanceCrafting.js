@@ -363,10 +363,13 @@ StartupEvents.postInit(() => {
     'minecraft:bone',
     'minecraft:skeleton_skull',
     [
+      { note: 'G4', instrument: 'xylophone' },
+      { note: 'G4', instrument: 'xylophone' },
+      { note: 'F#4', instrument: 'xylophone' },
+      { note: 'F#4', instrument: 'xylophone' },
+      { note: 'B3', instrument: 'xylophone' },
       { note: 'D4', instrument: 'xylophone' },
-      { note: 'D4', instrument: 'xylophone' },
-      { note: 'D5', instrument: 'xylophone' },
-      { note: 'A4', instrument: 'xylophone' },
+      { note: 'B3', instrument: 'xylophone' },
     ]
   )
 
