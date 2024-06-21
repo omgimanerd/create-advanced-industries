@@ -7,15 +7,33 @@ Ponder.registry((e) => {
     'Beehive Extraction',
     'kubejs:beehive', // kubejs/assets/kubejs/ponder/beehive.nbt
     (scene, util) => {
-      const comparator = util.select.fromTo(2, 1, 1, 2, 2, 1)
-      const pumpTank = util.select.fromTo(1, 2, 2, 0, 1, 2)
+      const comparatorSection = util.select.fromTo(2, 1, 1, 2, 2, 1)
+      const comparator = util.grid.at(2, 2, 1)
+      const pumpTank = util.select.fromTo(1, 3, 2, 0, 1, 2)
+      const tank = util.grid.at(0, 1, 2)
       const deployer = util.grid.at(2, 4, 2)
       const beehive = util.grid.at(2, 2, 2)
+
+      /**
+       * Helper to set the beehive honey level
+       * @param {number} honey_level
+       * @param {boolean=} particles
+       */
+      const setBeehive = (honey_level) => {
+        scene.world.setBlock(
+          beehive,
+          Block.id('minecraft:beehive')
+            .with('facing', 'north')
+            .with('honey_level', `${honey_level}`),
+          false
+        )
+      }
 
       // Scene setup
       scene.showBasePlate()
       // Dirt block from being covered
       scene.world.setBlock([2, 0, 1], 'minecraft:grass_block', false)
+      setBeehive(5)
       scene.world.showIndependentSectionImmediately(
         util.select.fromTo(2, 1, 2, 2, 2, 2)
       )
@@ -25,22 +43,16 @@ Ponder.registry((e) => {
       scene.addKeyframe()
       scene.text(
         40,
-        'Beehives can be sheared to get their honeycombs when full.',
+        'Beehives can be sheared to get their honeycombs when full. You can ' +
+          'also do this with a deployer.',
         beehive
       )
       scene.idle(50)
-      scene.world.setBlock(
-        beehive,
-        Block.id('minecraft:beehive')
-          .with('facing', 'north')
-          .with('honey_level', '5'),
-        false
-      )
       scene
-        .showControls(20, beehive, 'down')
+        .showControls(20, beehive, 'right')
         .rightClick()
         .withItem('minecraft:shears')
-      scene.idle(20)
+      setBeehive(0)
       let honeycombs = [
         scene.world.createItemEntity(
           beehive,
@@ -49,13 +61,12 @@ Ponder.registry((e) => {
         ),
         scene.world.createItemEntity(
           beehive,
-          [-0.03, 0.4, -0.05],
+          [-0.02, 0.4, -0.12],
           Item.of('minecraft:honeycomb', 1)
         ),
       ]
       scene.idle(60)
       honeycombs.forEach((b) => scene.world.removeEntity(b))
-      scene.idle(20)
 
       // Pumping out honey
       scene.addKeyframe()
@@ -64,7 +75,7 @@ Ponder.registry((e) => {
         Block.id('minecraft:beehive').with('facing', 'north'),
         false
       )
-      scene.world.showSection(pumpTank, Facing.WEST)
+      scene.world.showSection(pumpTank, Facing.EAST)
       scene.world.setKineticSpeed(pumpTank, 24)
       scene
         .text(
@@ -73,12 +84,79 @@ Ponder.registry((e) => {
           [1, 2, 2]
         )
         .placeNearTarget()
-      scene.idle(60)
+      scene.idle(20)
+      animateTank(scene, tank, 'create:honey', 0, 12000, 250)
+      scene.idle(40)
       scene.world.hideSection(pumpTank, Facing.WEST)
 
       // Arcane Extraction
       scene.addKeyframe()
-      scene.world.showSection(util.select.position(deployer), Facing.DOWN)
+      setBeehive(5)
+      scene.world.showSection(deployer, Facing.DOWN)
+      scene.idle(10)
+      setDeployerFilter(scene, deployer, 'apotheosis:vial_of_extraction')
+      setDeployerHeldItem(scene, deployer, 'apotheosis:vial_of_extraction')
+      scene.text(
+        40,
+        'For a chance to get a rare saturated honeycomb, you will need to ' +
+          'use a Vial of Arcane Extraction on the beehive.',
+        deployer
+      )
+      scene.idle(50)
+      scene.text(
+        60,
+        'The saturated honeycomb only has a chance to drop when the beehive ' +
+          'full, using the Vial of Arcane Extraction on the beehive will ' +
+          'remove all the honey regardless of its fill level.',
+        deployer
+      )
+      scene.idle(70)
+      scene.text(
+        60,
+        'Be careful when doing it! The Vial of Arcane Extraction is so ' +
+          'powerful that it will cause an explosion when it is used! Make ' +
+          "sure there aren't any bees nearby",
+        deployer
+      )
+      cycleDeployerMovement(scene, deployer, 20, false, () => {
+        scene.particles
+          .simple(5, 'minecraft:explosion', beehive)
+          .density(5)
+          .delta([1, 1, 1])
+        honeycombs = [
+          scene.world.createItemEntity(
+            beehive,
+            [-0.07, 0.4, -0.03],
+            Item.of('minecraft:honeycomb', 1)
+          ),
+          scene.world.createItemEntity(
+            beehive,
+            [-0.02, 0.4, -0.12],
+            Item.of('kubejs:saturated_honeycomb', 1)
+          ),
+        ]
+        setBeehive(0)
+      })
+      scene.idle(70)
+      honeycombs.forEach((b) => scene.world.removeEntity(b))
+      scene.world.hideSection(deployer, Facing.UP)
+
+      // Comparator explanation
+      scene.addKeyframe()
+      scene.world.showSection(comparatorSection, Facing.SOUTH)
+      scene.idle(20)
+      scene.text(
+        40,
+        'You can use a comparator to measure the honey level of a beehive. A ' +
+          "value of 5 means it's full.",
+        comparator
+      )
+      setBeehive(5)
+      scene.world.modifyBlockEntityNBT(comparator, (nbt) => {
+        nbt.putInt('OutputSignal', 5)
+      })
+      scene.world.toggleRedstonePower(comparator)
+      scene.idle(40)
     }
   )
 })

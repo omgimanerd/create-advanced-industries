@@ -60,14 +60,18 @@ const setDeployerHeldItem = (scene, deployerPos, id) => {
  * @param {BlockPos_} pos
  * @param {number} ticks
  * @param {boolean?} clearHand
+ * @param {function?} onDeploy
  */
-const cycleDeployerMovement = (scene, pos, ticks, clearHand) => {
+const cycleDeployerMovement = (scene, pos, ticks, clearHand, onDeploy) => {
   ticks = ticks === undefined ? 25 : ticks
   clearHand = clearHand === undefined ? true : clearHand
   scene.world.moveDeployer(pos, 1, ticks)
   scene.idle(ticks)
   if (clearHand) {
     setDeployerHeldItem(scene, pos, 'minecraft:air')
+  }
+  if (onDeploy !== undefined) {
+    onDeploy()
   }
   scene.world.moveDeployer(pos, -1, ticks)
 }
