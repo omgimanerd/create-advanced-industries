@@ -5,7 +5,7 @@
 
 		[World.Features."Oil Sand"]
 			#Whether this feature should naturally spawn in the world.
-			Enable = true
+			Enable = false
 
 		[World.Features.Silver]
 			#Whether this feature should naturally spawn in the world.
