@@ -34,7 +34,6 @@ BlockEvents.rightClicked('minecraft:dragon_head', (e) => {
 })
 
 /**
- * TODO: needs a custom ponder
  * @param {Internal.Item} item
  * @param {Internal.Player} player
  * @param {*} target
