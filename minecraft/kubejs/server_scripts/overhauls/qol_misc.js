@@ -3,6 +3,7 @@
 
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
+  const pneumaticcraft = definePneumaticcraftRecipes(e)
 
   // Another source of green dye
   e.blasting('minecraft:green_dye', 'minecraft:kelp')
@@ -14,12 +15,23 @@ ServerEvents.recipes((e) => {
   // Haunting cobblestone to get infested cobblestone.
   create.haunting('minecraft:infested_cobblestone', 'minecraft:cobblestone')
 
-  // Move pressure chamber crafting of slime ball to create mixing.
+  // Pressurized crafting of slime balls.
   e.remove({ id: 'pneumaticcraft:pressure_chamber/milk_to_slime_balls' })
   create.mixing(Item.of('minecraft:slime_ball', 4), [
     Fluid.of('minecraft:milk', 1000),
-    Item.of('minecraft:green_dye', 4),
+    Item.of('minecraft:green_dye', 8),
   ])
+  create
+    .pressurizing('minecraft:green_dye')
+    .secondaryFluidInput(Fluid.of('minecraft:milk', 250))
+    .processingTime(40)
+    .outputs('minecraft:slime_ball')
+  pneumaticcraft
+    .thermo_plant()
+    .item_input('minecraft:green_dye')
+    .fluid_input(Fluid.of('minecraft:milk', 250))
+    .pressure(2)
+    .item_output('minecraft:slime_ball')
 
   // Gate advanced magnet behind brass instead of gold.
   e.replaceInput(
