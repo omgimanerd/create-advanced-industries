@@ -27,7 +27,7 @@
 	#Oil worldgen whitelist by dimension ID: add dimension ID's to this list if you want oil lake worldgen to happen ONLY in those dimensions. You can wildcard the path; e.g 'modid:*' whitelists ALL dimensions of namespace 'modid'. If this is empty, it is ignored, and 'oil_world_gen_dimension_blacklist' will be checked instead.
 	oil_world_gen_dimension_whitelist = []
 	#Oil worldgen blacklist by dimension ID: add dimension ID's to this list if you don't want oil lake worldgen to happen there. You can wildcard this; e.g 'modid:*' blacklists ALL dimensions of namespace 'modid'.
-	oil_world_gen_dimension_blacklist = []
+	oil_world_gen_dimension_blacklist = ["minecraft:*"]
 
 ["Machine Properties"]
 	#Aerial Interface backwards compat: allow pre-0.8.0 behaviour of getting player's armor inventory from top face, even with Dispenser Upgrade installed
@@ -255,7 +255,7 @@
 
 [Recipes]
 	#Does Molten Plastic solidify to Plastic Sheets when poured into the world? If set to false, then Heat Frame cooling is the only other way to make Plastic Sheets (by default).
-	in_world_plastic_solidification = true
+	in_world_plastic_solidification = false
 	#Is in-world Yeast crafting allowed (making more Yeast Culture by pouring Water next to a Yeast Culture block with Sugar in it)? If set to false, then the default TPP Mushroom & Water -> Yeast Culture recipe is the only way to get Yeast Culture.
 	in_world_yeast_crafting = true
 
@@ -303,7 +303,7 @@
 	#Range: 0.0 ~ 10.0
 	ambientTemperatureHeightModifier = 0.1
 	#Automatically register heat properties for all detected modded fluids based on their self-defined temperature? (note: vanilla lava and water are always added)
-	addDefaultFluidEntries = true
+	addDefaultFluidEntries = false
 
 [Logistics]
 	#Logistics Module air usage per item per block distance
