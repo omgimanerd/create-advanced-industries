@@ -49,7 +49,7 @@ MeltableItem.prototype.registerFluid = function (e) {
   if (!this.noRegisterFluid) {
     e.create(this.fluid)
       .bucketColor(this.bucketColor)
-      .viscosity(2000)
+      .noBlock()
       .stillTexture(`kubejs:fluid/${this.fluidName}_still`)
       .flowingTexture(`kubejs:fluid/${this.fluidName}_flow`)
       .displayName(getDisplayName(this.fluidDisplayName))

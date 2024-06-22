@@ -117,10 +117,11 @@ StartupEvents.registry('fluid', (e) => {
     i.registerFluid(e)
   })
 
-  // Molten Silicon cannot be casted
+  // Molten Silicon cannot be casted, register it separately.
   e.create('kubejs:molten_silicon')
     .thickTexture(0x6e6074)
     .bucketColor(0x6e6074)
+    .noBlock()
     .displayName('Molten Silicon')
 })
 
