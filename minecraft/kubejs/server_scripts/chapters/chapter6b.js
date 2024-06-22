@@ -178,8 +178,6 @@ ServerEvents.recipes((e) => {
   // Uncommon Material: Timeworn Fabric
   e.remove({ id: 'apotheotic_additions:stonecutting/timeworn_fabric' })
   e.remove({ id: 'apotheotic_additions:stonecutting/timeworn_fancy' })
-  // Another source of green dye
-  e.blasting('minecraft:green_dye', 'minecraft:kelp')
   create
     .deploying('apotheotic_additions:timeworn_fancy', [
       'minecraft:green_wool',
