@@ -23,6 +23,8 @@ JEIAddedEvents.registerCategories((e) => {
   const $AnimatedKinetics = Java.loadClass(
     'com.simibubi.create.compat.jei.category.animations.AnimatedKinetics'
   )
+  // Class with HSV to RGB logic
+  const $Mth = Java.loadClass('net.minecraft.util.Mth')
 
   const guiHelper = e.data.jeiHelpers.guiHelper
   e.custom(global.TIME_POUCH_CRAFTING, (category) => {
@@ -34,7 +36,7 @@ JEIAddedEvents.registerCategories((e) => {
       .isRecipeHandled(() => true) // Only relevant recipes are registered
       .handleLookup((builder, recipe) => {
         const { input, output, cost } = recipe.data
-        const seconds = (cost / 20).toFixed(1)
+        const seconds = Math.round(cost / 20)
         builder
           .addSlot('input', 27, 38)
           .addItemStack(Item.of(input))
@@ -45,9 +47,16 @@ JEIAddedEvents.registerCategories((e) => {
           .setBackground(guiHelper.getSlotDrawable(), -1, -1)
           .addTooltipCallback((_, tooltip) => {
             tooltip.remove(tooltip.size() - 2)
+            const hue =
+              Client.level === undefined ? 0 : Client.level.getTime() % 1200
+            const rgb = $Mth.hsvToRgb(hue / 1200, 1, 1)
             tooltip.add(
-              tooltip.size() - 2,
-              Text.of(`Consumes ${seconds}s worth of time.`).gold()
+              tooltip.size() - 1,
+              Text.of(`Consumes ${seconds}s worth of Grains of Time`).color(rgb)
+            )
+            tooltip.add(
+              tooltip.size() - 1,
+              Text.of('Can be automated with a deployer.').gold()
             )
           })
         builder
