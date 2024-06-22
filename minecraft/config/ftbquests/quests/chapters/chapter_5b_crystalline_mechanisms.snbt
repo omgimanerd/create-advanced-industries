@@ -135,7 +135,7 @@
 			description: [
 				"Dropping a wandering trader on top of Create's mechanical saws will yield mutilation essence when they meet their end."
 				""
-				"For a harder automation, blast them with Pneumaticcraft's sentry turret for more drops."
+				"For a harder automation, blast them a minigun for more drops (mounted minigun or PNCR sentry turret)."
 			]
 			id: "2AB4E2EBC67EF311"
 			tasks: [{
@@ -274,8 +274,8 @@
 				item: "minecraft:amethyst_shard"
 				type: "item"
 			}]
-			x: -6.0d
-			y: 23.0d
+			x: -8.0d
+			y: 24.0d
 		}
 		{
 			dependencies: ["5C04720821F787C6"]
@@ -299,8 +299,8 @@
 				item: "kubejs:crystal_growth_accelerator_bucket"
 				type: "item"
 			}]
-			x: -8.5d
-			y: 28.0d
+			x: -10.5d
+			y: 29.0d
 		}
 		{
 			dependencies: ["780A813B9F1530FF"]
@@ -311,8 +311,8 @@
 				item: "sliceanddice:fertilizer_bucket"
 				type: "item"
 			}]
-			x: -8.5d
-			y: 30.0d
+			x: -10.5d
+			y: 31.0d
 		}
 		{
 			dependencies: ["77263BDEFD6943A3"]
@@ -324,8 +324,8 @@
 				item: "farmersdelight:organic_compost"
 				type: "item"
 			}]
-			x: -10.5d
-			y: 32.0d
+			x: -12.5d
+			y: 33.0d
 		}
 		{
 			dependencies: [
@@ -427,8 +427,8 @@
 				item: "sliceanddice:sprinkler"
 				type: "item"
 			}]
-			x: -10.5d
-			y: 30.0d
+			x: -12.5d
+			y: 31.0d
 		}
 		{
 			dependencies: [
@@ -492,8 +492,8 @@
 				item: "ars_nouveau:amethyst_golem_charm"
 				type: "item"
 			}]
-			x: -14.5d
-			y: 19.0d
+			x: -16.5d
+			y: 20.0d
 		}
 		{
 			dependencies: ["19B720F8CDD8A9DA"]
@@ -510,8 +510,8 @@
 				item: "kubejs:remy_spawner"
 				type: "item"
 			}]
-			x: -13.5d
-			y: 21.0d
+			x: -15.5d
+			y: 22.0d
 		}
 		{
 			dependencies: ["6D72A451CEF56252"]
@@ -976,8 +976,8 @@
 				item: "minecraft:budding_amethyst"
 				type: "item"
 			}]
-			x: -13.5d
-			y: 17.0d
+			x: -15.5d
+			y: 18.0d
 		}
 		{
 			dependencies: ["1091855210EBEE88"]
@@ -1003,8 +1003,8 @@
 				}
 				type: "item"
 			}]
-			x: -11.5d
-			y: 22.0d
+			x: -13.5d
+			y: 23.0d
 		}
 		{
 			dependencies: [
@@ -1019,8 +1019,8 @@
 				item: "minecraft:amethyst_cluster"
 				type: "item"
 			}]
-			x: -8.0d
-			y: 24.0d
+			x: -10.0d
+			y: 25.0d
 		}
 		{
 			dependencies: [
@@ -1035,8 +1035,8 @@
 				item: "minecraft:large_amethyst_bud"
 				type: "item"
 			}]
-			x: -10.0d
-			y: 25.0d
+			x: -12.0d
+			y: 26.0d
 		}
 		{
 			dependencies: [
@@ -1051,8 +1051,8 @@
 				item: "minecraft:medium_amethyst_bud"
 				type: "item"
 			}]
-			x: -12.0d
-			y: 26.0d
+			x: -14.0d
+			y: 27.0d
 		}
 		{
 			dependencies: [
@@ -1066,8 +1066,8 @@
 				item: "minecraft:small_amethyst_bud"
 				type: "item"
 			}]
-			x: -14.0d
-			y: 27.0d
+			x: -16.0d
+			y: 28.0d
 		}
 		{
 			dependencies: ["2FA97E14E8E844C3"]
@@ -1366,8 +1366,8 @@
 				}
 				type: "item"
 			}]
-			x: -11.5d
-			y: 16.0d
+			x: -13.5d
+			y: 17.0d
 		}
 		{
 			dependencies: ["33CA0C2F9BDF9EC2"]
@@ -1640,8 +1640,8 @@
 				item: "create:tree_fertilizer"
 				type: "item"
 			}]
-			x: -6.5d
-			y: 30.0d
+			x: -8.5d
+			y: 31.0d
 		}
 		{
 			dependencies: ["36407A48939066C9"]
@@ -1812,7 +1812,7 @@
 			y: 19.0d
 		}
 		{
-			dependencies: ["05ED3720FD924A0F"]
+			dependencies: ["641E68BA777D6548"]
 			description: ["With amethyst shards automated, you can now move on to the next section."]
 			id: "7EF097AE728432C9"
 			tasks: [{
@@ -2100,6 +2100,17 @@
 			}]
 			x: 14.0d
 			y: 21.0d
+		}
+		{
+			dependencies: ["05ED3720FD924A0F"]
+			id: "641E68BA777D6548"
+			tasks: [{
+				id: "339906093078F2EF"
+				item: "createutilities:polished_amethyst"
+				type: "item"
+			}]
+			x: -6.0d
+			y: 23.0d
 		}
 	]
 	title: "Chapter 5b: Crystalline Mechanisms"
