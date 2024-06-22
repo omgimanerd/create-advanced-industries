@@ -12,6 +12,7 @@ StartupEvents.recipeSchemaRegistry((e) => {
   const Components = e.components
 
   const anyString = Components.get('anyString')()
+  const blockTag = Components.get('blockTag')()
   const bool = Components.get('bool')()
   const id = Components.get('id')()
   const intNumber = Components.get('intNumber')()
@@ -352,7 +353,26 @@ StartupEvents.recipeSchemaRegistry((e) => {
         floatNumber.key('speed').optional(0)
       ).addConstructor(() => {})
     )
-
+    let transformBlock = new $RecipeComponentBuilder(2)
+      .add(
+        Components.get('outputBlockStateString')()
+          .key('block')
+          .defaultOptional()
+      )
+      .add(Components.get('fluidTag')().key('fluid').defaultOptional())
+    e.register(
+      'pneumaticcraft:heat_properties',
+      new $RecipeSchema(
+        fluidTag.key('fluid').defaultOptional(),
+        blockTag.key('block').defaultOptional(),
+        intNumber.key('temperature').optional(0),
+        intNumber.key('thermalResistance').optional(0),
+        intNumber.key('heatCapacity').optional(0),
+        transformBlock.key('transformCold').defaultOptional(),
+        transformBlock.key('transformHot').defaultOptional(),
+        anyString.key('description').optional('')
+      ).addConstructor(() => {})
+    )
     let $ShapedRecipeSchema = Java.loadClass(
       'dev.latvian.mods.kubejs.recipe.schema.minecraft.ShapedRecipeSchema'
     )

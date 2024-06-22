@@ -447,4 +447,21 @@ ServerEvents.recipes((e) => {
     .deploy('tfmg:heavy_plate')
     .cut(2000)
     .outputs('2x pneumaticcraft:turbine_blade')
+
+  //////////////////////////////////
+  // Custom Block Heat Properties //
+  //////////////////////////////////
+  e.custom({
+    type: 'pneumaticcraft:heat_properties',
+    fluid: 'starbunclemania:source_fluid',
+    temperature: 173,
+    thermalResistance: 50,
+    heatCapacity: 20000,
+    transformHot: {
+      block: 'minecraft:air',
+    },
+    transformCold: {
+      block: 'ars_nouveau:source_gem_block',
+    },
+  })
 })

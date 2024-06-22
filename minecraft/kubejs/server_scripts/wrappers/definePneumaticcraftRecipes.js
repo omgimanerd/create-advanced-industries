@@ -16,6 +16,7 @@ const definePneumaticcraftRecipes = (e) => {
     pressure_chamber: e.recipes.pneumaticcraft.pressure_chamber,
     refinery: e.recipes.pneumaticcraft.refinery,
     thermo_plant: e.recipes.pneumaticcraft.thermo_plant,
+    heat_properties: e.recipes.pneumaticcraft.heat_properties,
     /**
      * @param {OutputItem_} result
      * @param {string[]} pattern
