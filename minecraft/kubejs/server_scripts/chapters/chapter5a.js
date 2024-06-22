@@ -676,7 +676,7 @@ ServerEvents.recipes((e) => {
   create
     .SequencedAssembly('refinedstorage:silicon')
     .deploy('#kubejs:diamond_saw_blade')
-    .fill(Fluid.water(500))
+    .fill(Fluid.of('pneumaticcraft:lubricant', 100))
     .loops(4)
     .outputs('4x kubejs:silicon_wafer')
 
