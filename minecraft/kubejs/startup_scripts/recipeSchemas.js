@@ -359,7 +359,7 @@ StartupEvents.recipeSchemaRegistry((e) => {
           .key('block')
           .defaultOptional()
       )
-      .add(Components.get('fluidTag')().key('fluid').defaultOptional())
+      .add(fluidTag.key('fluid').defaultOptional())
     e.register(
       'pneumaticcraft:heat_properties',
       new $RecipeSchema(

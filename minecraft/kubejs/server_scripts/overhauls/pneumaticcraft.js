@@ -459,11 +459,4 @@ ServerEvents.recipes((e) => {
     .heatCapacity(20000)
     .transformHot({ block: 'minecraft:air' })
     .transformCold({ block: 'ars_nouveau:source_gem_block' })
-  pneumaticcraft
-    .heat_properties()
-    .fluid('thermal:latex')
-    .temperature(273 + 27)
-    .thermalResistance(100)
-    .heatCapacity(10000)
-    .transformCold({ block: 'thermal:rubber_block' })
 })
