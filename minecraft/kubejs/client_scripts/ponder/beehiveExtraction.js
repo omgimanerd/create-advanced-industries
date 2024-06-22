@@ -166,7 +166,15 @@ Ponder.registry((e) => {
         nbt.putInt('OutputSignal', 5)
       })
       scene.world.toggleRedstonePower(comparator)
-      scene.idle(40)
+      scene.idle(60)
+      scene.world.hideSection(comparatorSection, Facing.NORTH)
+      scene.text(
+        40,
+        "Don't block the front of the beehive though, or the bees won't be " +
+          'able to come out!',
+        beehive
+      )
+      scene.idle(50)
     }
   )
 })
