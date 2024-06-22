@@ -71,8 +71,7 @@ JEIAddedEvents.registerCategories((e) => {
         }
         $AllGuiTextures.JEI_SHADOW.render(guiGraphics, 62, 47)
         $AllGuiTextures.JEI_DOWN_ARROW.render(guiGraphics, 74, 10)
-
-        const seconds = (recipe.data.cost / 20).toFixed(1)
+        const seconds = Math.round(recipe.data.cost / 20)
         guiGraphics.drawWordWrap(
           Client.font,
           Text.of(`${seconds}s of time`),
