@@ -3,6 +3,11 @@
 	default_quest_shape: ""
 	filename: "qol_mods"
 	group: ""
+	icon: {
+		Count: 1b
+		id: "simplemagnets:basicmagnet"
+		tag: { }
+	}
 	id: "43189C4C9CD944F3"
 	order_index: 1
 	quest_links: [ ]

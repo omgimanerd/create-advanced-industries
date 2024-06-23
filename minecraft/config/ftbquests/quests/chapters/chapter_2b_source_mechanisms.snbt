@@ -100,12 +100,13 @@
 		{
 			dependencies: ["2D631BA672D51409"]
 			description: ["Press the sourceberries in a basin to get liquefied source."]
+			icon: "starbunclemania:source_fluid_bucket"
 			id: "1572F6384788F1BA"
 			tasks: [{
-				id: "5A096E080260E4B7"
-				item: "starbunclemania:source_fluid_bucket"
-				type: "item"
+				id: "2CB309F2B9580052"
+				type: "checkmark"
 			}]
+			title: "Liquefied Source Bucket"
 			x: 0.0d
 			y: -5.0d
 		}

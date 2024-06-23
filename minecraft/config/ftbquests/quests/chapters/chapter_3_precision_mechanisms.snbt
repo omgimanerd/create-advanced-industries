@@ -204,12 +204,13 @@
 		{
 			dependencies: ["71FAA310DA3D588D"]
 			description: ["Melt down the copper in a heated basin with a mixer."]
+			icon: "kubejs:molten_copper_bucket"
 			id: "3383144C6D0FBAD4"
 			tasks: [{
-				id: "45AA33A2D32A2A01"
-				item: "kubejs:molten_copper_bucket"
-				type: "item"
+				id: "7855B6EAAD716E4A"
+				type: "checkmark"
 			}]
+			title: "Molten Copper Bucket"
 			x: 4.0d
 			y: 8.0d
 		}
@@ -220,12 +221,13 @@
 				""
 				"...and some other impurities."
 			]
+			icon: "kubejs:molten_zinc_bucket"
 			id: "5581B367614EA274"
 			tasks: [{
-				id: "4FA26E8302F01648"
-				item: "kubejs:molten_zinc_bucket"
-				type: "item"
+				id: "735E559153FA626F"
+				type: "checkmark"
 			}]
+			title: "Molten Zinc Bucket"
 			x: 4.0d
 			y: 6.0d
 		}
@@ -379,12 +381,13 @@
 		{
 			dependencies: ["256AB7BB1AE145A6"]
 			description: ["I hope you automated this from chapter 2b."]
+			icon: "starbunclemania:source_fluid_bucket"
 			id: "519D022ECB5F6F42"
 			tasks: [{
-				id: "2DFD6231A55F9ED2"
-				item: "starbunclemania:source_fluid_bucket"
-				type: "item"
+				id: "2613983C4B64DA5D"
+				type: "checkmark"
 			}]
+			title: "Liquefied Source Bucket"
 			x: 0.0d
 			y: -6.0d
 		}
@@ -394,12 +397,13 @@
 				"5581B367614EA274"
 			]
 			description: ["Molten brass can be made by combining molten copper and molten zinc."]
+			icon: "kubejs:molten_brass_bucket"
 			id: "66C109F90DAEFFAD"
 			tasks: [{
-				id: "011D39A0BE46CBAA"
-				item: "kubejs:molten_brass_bucket"
-				type: "item"
+				id: "371EFAA2911066B5"
+				type: "checkmark"
 			}]
+			title: "Molten Brass Bucket"
 			x: 10.0d
 			y: 8.0d
 		}

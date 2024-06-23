@@ -114,12 +114,13 @@
 		{
 			dependencies: ["6426BBE70FDA2515"]
 			description: ["Molten plastic is made in Thermopneumatic Processing Plant from LPG and Coal, both of which you should now have an abundance of."]
+			icon: "pneumaticcraft:plastic_bucket"
 			id: "5BDC36619B26699B"
 			tasks: [{
-				id: "65F5029284DCB6A3"
-				item: "pneumaticcraft:plastic_bucket"
-				type: "item"
+				id: "7F21D4D0BEB1F11E"
+				type: "checkmark"
 			}]
+			title: "Bucket of Molten Plastic"
 			x: 12.0d
 			y: -10.0d
 		}
@@ -142,12 +143,13 @@
 				"646D6F79EF32D089"
 			]
 			description: ["LPG is the final product of oil distillation. It is a powerful fuel source, and can be refined into molten plastic."]
+			icon: "pneumaticcraft:lpg_bucket"
 			id: "6426BBE70FDA2515"
 			tasks: [{
-				id: "73B223A2FCC90E4D"
-				item: "pneumaticcraft:lpg_bucket"
-				type: "item"
+				id: "738D4E8B4F8F1B63"
+				type: "checkmark"
 			}]
+			title: "LPG Bucket"
 			x: 10.0d
 			y: -10.0d
 		}
@@ -157,12 +159,13 @@
 				"646D6F79EF32D089"
 			]
 			description: ["Kerosene is the second product of oil distillation. It can be further processed into gasoline."]
+			icon: "pneumaticcraft:kerosene_bucket"
 			id: "230E21BE68901D81"
 			tasks: [{
-				id: "0A510FBFED03C374"
-				item: "pneumaticcraft:kerosene_bucket"
-				type: "item"
+				id: "7ED6C87F657A6693"
+				type: "checkmark"
 			}]
+			title: "Kerosene Bucket"
 			x: 6.0d
 			y: -10.0d
 		}
@@ -172,12 +175,13 @@
 				"0D59F5CAF2852DC6"
 			]
 			description: ["Diesel is the first product of oil distillation. It can be processed in a Thermopneumatic Processing Plant and turned into kerosene."]
+			icon: "pneumaticcraft:diesel_bucket"
 			id: "7A306159E94EA54C"
 			tasks: [{
-				id: "1731903B18832265"
-				item: "pneumaticcraft:diesel_bucket"
-				type: "item"
+				id: "7010554FC5E31EE1"
+				type: "checkmark"
 			}]
+			title: "Diesel Bucket"
 			x: 4.0d
 			y: -10.0d
 		}
@@ -187,12 +191,13 @@
 				"646D6F79EF32D089"
 			]
 			description: ["Gasoline is the third product of oil distillation. It can be processed into LPG."]
+			icon: "pneumaticcraft:gasoline_bucket"
 			id: "1B2CAA9D8CAB0F09"
 			tasks: [{
-				id: "640C37C158CCEC9C"
-				item: "pneumaticcraft:gasoline_bucket"
-				type: "item"
+				id: "6107AB1565D5F763"
+				type: "checkmark"
 			}]
+			title: "Gasoline Bucket"
 			x: 8.0d
 			y: -10.0d
 		}
@@ -216,12 +221,13 @@
 		{
 			dependencies: ["7A306159E94EA54C"]
 			description: ["Combining diesel with a seed oil produces lubricant."]
+			icon: "pneumaticcraft:lubricant_bucket"
 			id: "5F46DBF36BF850AF"
 			tasks: [{
-				id: "084297DC6062A152"
-				item: "pneumaticcraft:lubricant_bucket"
-				type: "item"
+				id: "089BA3772678A099"
+				type: "checkmark"
 			}]
+			title: "Lubricant Bucket"
 			x: 8.0d
 			y: -4.0d
 		}
@@ -455,12 +461,13 @@
 			]
 			description: ["I hope you kept some of the Creosote Oil around."]
 			hide_dependency_lines: true
+			icon: "tfmg:creosote_bucket"
 			id: "1DB3C79C5873426A"
 			tasks: [{
-				id: "37FB004712B76CD4"
-				item: "tfmg:creosote_bucket"
-				type: "item"
+				id: "13F2AA7F92DEABE6"
+				type: "checkmark"
 			}]
+			title: "Creosote Bucket"
 			x: 0.0d
 			y: -2.0d
 		}
@@ -702,12 +709,13 @@
 				"By superheating molten quartz with coal coke, you get silicon in its molten form."
 			]
 			hide_dependency_lines: true
+			icon: "kubejs:molten_silicon_bucket"
 			id: "5AAAFF9CC002EB70"
 			tasks: [{
-				id: "303358B925207722"
-				item: "kubejs:molten_silicon_bucket"
-				type: "item"
+				id: "21FBF8E19D4A0CBC"
+				type: "checkmark"
 			}]
+			title: "Molten Silicon Bucket"
 			x: 42.0d
 			y: 0.0d
 		}
@@ -1055,8 +1063,9 @@
 				}
 			]
 			tasks: [{
-				id: "44FE3511BD97EDA1"
-				type: "checkmark"
+				id: "4DD6856289629DCC"
+				item: "pneumaticcraft:lpg_bucket"
+				type: "item"
 			}]
 			title: "A New Fuel Source?"
 			x: 10.0d
@@ -1477,12 +1486,13 @@
 		{
 			dependencies: ["551021C3EF44DFCE"]
 			description: ["Etching acid is made with copper sulfate, green dye, and water."]
+			icon: "pneumaticcraft:etching_acid_bucket"
 			id: "59A963F58BC7A631"
 			tasks: [{
-				id: "01CEAE60DD32D75C"
-				item: "pneumaticcraft:etching_acid_bucket"
-				type: "item"
+				id: "13DF592F9E07A7B3"
+				type: "checkmark"
 			}]
+			title: "Etching Acid Bucket"
 			x: 24.0d
 			y: -6.0d
 		}
@@ -1589,18 +1599,20 @@
 				item: "create_things_and_misc:slime_bucket"
 				type: "item"
 			}]
+			title: "Slime Bucket"
 			x: 24.0d
 			y: 0.0d
 		}
 		{
 			dependencies: ["172EDDB8B86F5DA2"]
 			description: ["Sulfuric acid can be produced from sulfur dust with high pressure and heat."]
+			icon: "vintageimprovements:sulfuric_acid_bucket"
 			id: "0075E4A4CC3C29C5"
 			tasks: [{
-				id: "48AA8F74946EA9C2"
-				item: "vintageimprovements:sulfuric_acid_bucket"
-				type: "item"
+				id: "26BFD5D6B9EA8108"
+				type: "checkmark"
 			}]
+			title: "Sulfuric Acid Bucket"
 			x: 16.0d
 			y: -6.0d
 		}

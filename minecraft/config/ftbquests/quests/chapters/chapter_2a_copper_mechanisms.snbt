@@ -204,12 +204,13 @@
 		{
 			dependencies: ["5022E4CA576CB54A"]
 			description: ["Compacting the leaves in a basin with some water will yield latex."]
+			icon: "thermal:latex_bucket"
 			id: "30D8DBD8701E60E8"
 			tasks: [{
-				id: "0C65D99B36681523"
-				item: "thermal:latex_bucket"
-				type: "item"
+				id: "48CC269B57CFB162"
+				type: "checkmark"
 			}]
+			title: "Latex Bucket"
 			x: 2.5d
 			y: 2.5d
 		}

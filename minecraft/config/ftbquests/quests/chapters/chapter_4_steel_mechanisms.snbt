@@ -105,24 +105,26 @@
 				""
 				"Don't ask how it's possible to hold molten steel in an iron bucket."
 			]
+			icon: "tfmg:molten_steel_bucket"
 			id: "565A7C5F6646857A"
 			tasks: [{
-				id: "53DB94F5D7B16C87"
-				item: "tfmg:molten_steel_bucket"
-				type: "item"
+				id: "0527EF6060244A00"
+				type: "checkmark"
 			}]
+			title: "Molten Steel Bucket"
 			x: 14.0d
 			y: -6.0d
 		}
 		{
 			dependencies: ["61A87B555F6F736C"]
 			description: ["Melt down the iron that you automated in Chapter 1."]
+			icon: "kubejs:molten_iron_bucket"
 			id: "1DB7690FA91A5285"
 			tasks: [{
-				id: "759770D41D42C989"
-				item: "kubejs:molten_iron_bucket"
-				type: "item"
+				id: "551EDE90FC0B5A6E"
+				type: "checkmark"
 			}]
+			title: "Molten Iron Bucket"
 			x: 2.0d
 			y: -6.0d
 		}
@@ -181,6 +183,7 @@
 		{
 			dependencies: ["61A87B555F6F736C"]
 			description: ["Got milk?"]
+			icon: "minecraft:milk_bucket"
 			id: "3F554592E7237AA6"
 			rewards: [{
 				count: 4
@@ -189,10 +192,11 @@
 				type: "item"
 			}]
 			tasks: [{
-				id: "0B493952B50088F7"
+				id: "71E3F330AD487BF4"
 				item: "minecraft:milk_bucket"
 				type: "item"
 			}]
+			title: "Milk Bucket"
 			x: 2.0d
 			y: -4.0d
 		}
@@ -256,6 +260,7 @@
 				""
 				"To make the blaze burner to accept fuels, right click it with a straw."
 			]
+			icon: "createaddition:bioethanol_bucket"
 			id: "4923401248EF8C10"
 			rewards: [{
 				id: "5193CFAB7B9050B7"
@@ -263,10 +268,10 @@
 				type: "item"
 			}]
 			tasks: [{
-				id: "7CDCA94E75AD8755"
-				item: "createaddition:bioethanol_bucket"
-				type: "item"
+				id: "192107D45A1D013A"
+				type: "checkmark"
 			}]
+			title: "Bucket of Biofuel"
 			x: 12.0d
 			y: 0.0d
 		}
@@ -775,6 +780,12 @@
 			id: "36093FCF2B2D947C"
 			invisible: true
 			optional: true
+			rewards: [{
+				count: 32
+				id: "757BAB87067E0107"
+				item: "create:limestone"
+				type: "item"
+			}]
 			tasks: [{
 				id: "297D4CB82F10DEA7"
 				item: "create:honey_bucket"

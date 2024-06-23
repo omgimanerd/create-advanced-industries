@@ -3,6 +3,7 @@
 	default_quest_shape: ""
 	filename: "progression"
 	group: ""
+	icon: "kubejs:andesite_mechanism"
 	id: "72AF0A15ACA9A59E"
 	order_index: 3
 	quest_links: [ ]

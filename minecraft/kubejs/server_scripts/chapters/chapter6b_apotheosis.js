@@ -67,7 +67,8 @@ const getGemItem = (id, rarity) => {
 
   // Populated by ServerEvents.highPriorityData with all the apotheotic gems
   // available in the pack and their accessible tiers. Used in
-  // ServerEvents.recipes to define automation recipes for combining the gems.
+  // ServerEvents.recipes below to define automation recipes for combining the
+  // gems.
   let apotheoticGems = {}
 
   ServerEvents.highPriorityData(() => {

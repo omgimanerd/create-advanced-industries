@@ -293,24 +293,26 @@
 		{
 			dependencies: ["5EB25E223B212790"]
 			description: ["Combining the alchemical powders with liquid fertilizer gets you crystal growth accelerator."]
+			icon: "kubejs:crystal_growth_accelerator_bucket"
 			id: "18466D2CC4D667FD"
 			tasks: [{
-				id: "0D83AD2E7B181867"
-				item: "kubejs:crystal_growth_accelerator_bucket"
-				type: "item"
+				id: "4CF1287B2157DA7F"
+				type: "checkmark"
 			}]
+			title: "Crystal Growth Accelerator Bucket"
 			x: -10.5d
 			y: 29.0d
 		}
 		{
 			dependencies: ["780A813B9F1530FF"]
 			description: ["Dissolving the organic compost in water gets you liquid fertilizer."]
+			icon: "sliceanddice:fertilizer_bucket"
 			id: "5EB25E223B212790"
 			tasks: [{
-				id: "24635C6B21D4F657"
-				item: "sliceanddice:fertilizer_bucket"
-				type: "item"
+				id: "2F5144D3223C460A"
+				type: "checkmark"
 			}]
+			title: "Bucket of Liquid Fertilizer"
 			x: -10.5d
 			y: 31.0d
 		}
@@ -844,47 +846,53 @@
 		}
 		{
 			dependencies: ["533741731F3D1475"]
+			description: ["You can heat archwood sap to refine it, breaking it down into liquid essence and some byproducts."]
+			icon: "kubejs:flourishing_archwood_sap_bucket"
 			id: "07A1E7CF68BEF269"
 			tasks: [{
-				id: "512001816A1798A0"
-				item: "kubejs:flourishing_archwood_sap_bucket"
-				type: "item"
+				id: "758AC6EE37EAA959"
+				type: "checkmark"
 			}]
+			title: "Flourishing Archwood Sap Bucket"
 			x: 2.0d
 			y: 32.0d
 		}
 		{
 			dependencies: ["533741731F3D1475"]
 			description: ["You can heat archwood sap to refine it, breaking it down into liquid essence and some byproducts."]
+			icon: "kubejs:blazing_archwood_sap_bucket"
 			id: "01FC22A5FB8B77CF"
 			tasks: [{
-				id: "26F093A4F35501E8"
-				item: "kubejs:blazing_archwood_sap_bucket"
-				type: "item"
+				id: "686FAD5F70A0314F"
+				type: "checkmark"
 			}]
+			title: "Blazing Archwood Sap Bucket"
 			x: -2.0d
 			y: 32.0d
 		}
 		{
 			dependencies: ["533741731F3D1475"]
+			description: ["You can heat archwood sap to refine it, breaking it down into liquid essence and some byproducts."]
+			icon: "kubejs:cascading_archwood_sap_bucket"
 			id: "0A050DEE89467675"
 			tasks: [{
-				id: "1B745B176B586DD5"
-				item: "kubejs:cascading_archwood_sap_bucket"
-				type: "item"
+				id: "2C86B7EC0B40D497"
+				type: "checkmark"
 			}]
+			title: "Cascading Archwood Sap Bucket"
 			x: 4.0d
 			y: 32.0d
 		}
 		{
 			dependencies: ["533741731F3D1475"]
 			description: ["You can heat archwood sap to refine it, breaking it down into liquid essence and some byproducts."]
+			icon: "kubejs:flashing_archwood_sap_bucket"
 			id: "4237CC27AD794E7A"
 			tasks: [{
-				id: "674DD9736E81691A"
-				item: "kubejs:flashing_archwood_sap_bucket"
-				type: "item"
+				id: "676ED1064FC88C3C"
+				type: "checkmark"
 			}]
+			title: "Flashing Archwood Sap Bucket"
 			x: -4.0d
 			y: 32.0d
 		}
@@ -2011,13 +2019,14 @@
 		{
 			dependencies: ["533741731F3D1475"]
 			description: ["Vexing archwood sap is the only sap that doesn't produce an elemental essence. However, its primary refining product is liquefied source. It's up to you whether or not you choose to continue using it."]
+			icon: "kubejs:vexing_archwood_sap_bucket"
 			id: "5C866601176B0F76"
 			optional: true
 			tasks: [{
-				id: "0A18D176563C51D5"
-				item: "kubejs:vexing_archwood_sap_bucket"
-				type: "item"
+				id: "1ADAA2FA6F95D26C"
+				type: "checkmark"
 			}]
+			title: "Vexing Archwood Sap Bucket"
 			x: 0.0d
 			y: 32.0d
 		}
