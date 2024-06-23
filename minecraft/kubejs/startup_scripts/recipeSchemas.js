@@ -224,6 +224,10 @@ StartupEvents.recipeSchemaRegistry((e) => {
 
   // PneumaticCraft: Repressurized
   if (Platform.isLoaded('pneumaticcraft')) {
+    let $MapRecipeComponent = Java.loadClass(
+      'dev.latvian.mods.kubejs.recipe.component.MapRecipeComponent'
+    )
+
     let pncrAmadronIO = new $RecipeComponentBuilder(3)
       .add(
         filteredString({
@@ -365,6 +369,9 @@ StartupEvents.recipeSchemaRegistry((e) => {
       new $RecipeSchema(
         fluidTag.key('fluid').defaultOptional(),
         blockTag.key('block').defaultOptional(),
+        new $MapRecipeComponent(anyString, anyString, true)
+          .key('statePredicate')
+          .defaultOptional(),
         intNumber.key('temperature').optional(0),
         intNumber.key('thermalResistance').optional(0),
         intNumber.key('heatCapacity').optional(0),
