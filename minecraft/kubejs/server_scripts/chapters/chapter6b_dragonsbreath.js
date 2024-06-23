@@ -9,9 +9,9 @@ BlockEvents.rightClicked('minecraft:dragon_head', (e) => {
 
   // Dragon head has a rotation property from 0-16 with 0 being North increasing
   // clockwise.
-  const toRad = JavaMath.PI / 180
-  const angle =
-    block.properties.getOrDefault('rotation', 0) * (360 / 16) * toRad
+  const angle = JavaMath.toRadians(
+    block.properties.getOrDefault('rotation', 0) * (360 / 16)
+  )
   const xOffset = Math.sin(angle) * 2
   const zOffset = Math.cos(angle) * -2
 
