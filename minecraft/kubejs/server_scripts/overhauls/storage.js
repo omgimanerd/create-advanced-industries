@@ -10,6 +10,8 @@ ServerEvents.recipes((e) => {
   ////////////////////////
   // Functional Storage //
   ////////////////////////
+  // Remove woodless functional storage crafting recipes.
+  e.remove({ id: /^functionalstorage:.*alternate.*$/ })
   e.replaceInput(
     [
       {

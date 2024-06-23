@@ -51,6 +51,11 @@ ServerEvents.recipes((e) => {
     }
   )
 
+  //////////////////
+  // CreateArmory //
+  //////////////////
+  e.remove({ id: 'createarmory:strengthened_brass_recipe' })
+
   // TODO check mods create misc and things
   // create armory
 
