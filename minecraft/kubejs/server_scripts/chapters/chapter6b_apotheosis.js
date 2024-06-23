@@ -4,25 +4,27 @@
 // It is important that this recipe priority is low so that this runs after
 // all Apotheosis custom enchanting recipes.
 
+/**
+ * Returns an ItemStack corresponding to the Apotheosis gem with the given ID
+ * and rarity tier.
+ * @param {string} id
+ * @param {string} rarity
+ * @returns {Internal.ItemStack_}
+ */
+const getGemItem = (id, rarity) => {
+  return Item.of('apotheosis:gem')
+    .withNBT({
+      affix_data: {
+        rarity: rarity,
+      },
+      gem: id,
+    })
+    .weakNBT()
+}
+
 // Wrap this code in a closure to avoid polluting global namespace with
 // Apotheosis helper methods.
 ;() => {
-  /**
-   * @param {string} id
-   * @param {string} rarity
-   * @returns {Internal.ItemStack_}
-   */
-  const getGemItem = (id, rarity) => {
-    return Item.of('apotheosis:gem')
-      .withNBT({
-        affix_data: {
-          rarity: rarity,
-        },
-        gem: id,
-      })
-      .weakNBT()
-  }
-
   /**
    * The order of the rarity tiers in Apotheosis.
    * @type {string[]}
