@@ -97,4 +97,26 @@ JEIAddedEvents.onRuntimeAvailable((e) => {
       .toList()
     recipeManager.hideRecipes(recipeType, recipesToHide)
   })
+
+  // Hide all anvilling recipes for Soulbound and Reactive enchantments since
+  // they apply to all items and clog JEI.
+  recipeManager.hideRecipes(
+    'minecraft:anvil',
+    recipeManager
+      .createRecipeLookup('minecraft:anvil')
+      .get()
+      .filter((recipe) => {
+        for (let input of recipe.getRightInputs()) {
+          if (
+            input.id === 'minecraft:enchanted_book' &&
+            (input.enchantments.containsKey('ars_elemental:soulbound') ||
+              input.enchantments.containsKey('ars_nouveau:reactive'))
+          ) {
+            return true
+          }
+        }
+        return false
+      })
+      .toList()
+  )
 })
