@@ -1,13 +1,17 @@
 // priority: 500
 // Recipe overhauls for food related items
 
-ItemEvents.foodEaten('#kubejs:enchantable_foods', (e) => {
+ItemEvents.foodEaten((e) => {
   const { item, player } = e
   if (!item.enchanted) return
-  for (const [enchant, level] of Object.entries(item.enchantments)) {
-    // TODO Implement boost on enchanted foods
-    console.log(enchant, level)
-  }
+  const level = item.enchantments.get('kubejs:nutrient_infusion')
+  player.potionEffects.add(
+    'minecraft:saturation',
+    5 * level * 20, // 5 seconds times 20 ticks per second per level
+    level, // effect amplifier level
+    false, // ambient
+    false // showParticles
+  )
 })
 
 ServerEvents.tags('item', (e) => {
