@@ -58,7 +58,7 @@ const defineCreateRecipes = (e) => {
     hammering: e.recipes.vintageimprovements.hammering,
 
     /**
-     * @callback {CVIPressurizingWrapperCB}
+     * @callback CVIPressurizingWrapperCB
      * @param {(InputItem_|Internal.InputFluid_)[]} inputs
      * @returns {CVIPressurizingWrapper}
      */
