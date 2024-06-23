@@ -275,6 +275,7 @@ ServerEvents.recipes((e) => {
 
   // Overhauled Aquatic Entangler outputs
   global.RegisterAquaticEntanglerRecipeOverhauls(e)
+
   // Fish chum cycling
   create.crushing(
     [

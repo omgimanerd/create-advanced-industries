@@ -52,8 +52,8 @@
 				}
 			]
 			title: "Defeat the Warden"
-			x: 8.5d
-			y: 0.0d
+			x: 5.0d
+			y: 1.5d
 		}
 		{
 			dependencies: ["34CBF7A7AD9BF9D8"]
@@ -101,7 +101,7 @@
 			]
 			title: "Defeat the Wither"
 			x: 8.5d
-			y: 2.0d
+			y: 0.5d
 		}
 		{
 			dependencies: ["2F688322DCF88E56"]
@@ -256,7 +256,7 @@
 				item: "minecraft:experience_bottle"
 				type: "item"
 			}]
-			x: 12.5d
+			x: 14.5d
 			y: 0.0d
 		}
 		{
@@ -267,7 +267,7 @@
 				item: "create_enchantment_industry:hyper_experience_bottle"
 				type: "item"
 			}]
-			x: 17.0d
+			x: 19.0d
 			y: 0.0d
 		}
 		{
@@ -303,22 +303,19 @@
 				item: "kubejs:xp_condenser"
 				type: "item"
 			}]
-			x: 15.5d
-			y: 0.0d
+			x: 17.5d
+			y: -0.5d
 		}
 		{
-			dependencies: [
-				"6DD93F52A87B6B32"
-				"3E44FFF4BA96011E"
-			]
+			dependencies: ["3E44FFF4BA96011E"]
 			id: "3F43A33616FC68DB"
 			tasks: [{
 				id: "08B10E8D1AABDC10"
 				item: "minecraft:end_stone"
 				type: "item"
 			}]
-			x: 2.5d
-			y: 8.0d
+			x: 7.0d
+			y: 10.0d
 		}
 		{
 			id: "6DD93F52A87B6B32"
@@ -327,18 +324,19 @@
 				item: "minecraft:infested_stone"
 				type: "item"
 			}]
-			x: 0.5d
-			y: 8.5d
+			x: 1.0d
+			y: 9.5d
 		}
 		{
+			dependencies: ["6DD93F52A87B6B32"]
 			id: "3E44FFF4BA96011E"
 			tasks: [{
 				id: "0893719755706541"
 				item: "apotheosis:vial_of_expulsion"
 				type: "item"
 			}]
-			x: 0.5d
-			y: 7.0d
+			x: 3.0d
+			y: 9.5d
 		}
 		{
 			dependencies: ["4953FDEB278D7D6D"]
@@ -352,14 +350,14 @@
 			y: 4.0d
 		}
 		{
-			dependencies: ["15B159D7F4360A0D"]
+			dependencies: ["10ED9E8F35405C5B"]
 			id: "4953FDEB278D7D6D"
 			tasks: [{
 				id: "2F2B98D0A39D8CE4"
 				item: "minecraft:skeleton_skull"
 				type: "item"
 			}]
-			x: 10.5d
+			x: 7.5d
 			y: 5.5d
 		}
 		{
@@ -373,8 +371,8 @@
 				item: "minecraft:bone"
 				type: "item"
 			}]
-			x: 8.0d
-			y: 7.0d
+			x: 3.0d
+			y: 5.5d
 		}
 		{
 			id: "2FDA2B5BEB8A1870"
@@ -383,8 +381,8 @@
 				item: "thermal:device_fisher"
 				type: "item"
 			}]
-			x: 5.0d
-			y: 6.0d
+			x: 0.0d
+			y: 4.5d
 		}
 		{
 			dependencies: ["2FDA2B5BEB8A1870"]
@@ -394,8 +392,8 @@
 				item: "thermal:aquachow"
 				type: "item"
 			}]
-			x: 5.5d
-			y: 9.0d
+			x: 0.5d
+			y: 6.5d
 		}
 		{
 			dependencies: ["482F9D1480AA9724"]
@@ -405,8 +403,8 @@
 				item: "thermal:deep_aquachow"
 				type: "item"
 			}]
-			x: 7.0d
-			y: 8.5d
+			x: 2.0d
+			y: 7.0d
 		}
 		{
 			dependencies: ["368E09F5D73E4623"]
@@ -574,7 +572,7 @@
 				item: "create_things_and_misc:vibration_mechanism"
 				type: "item"
 			}]
-			x: 19.5d
+			x: 27.5d
 			y: 0.0d
 		}
 		{
@@ -592,15 +590,15 @@
 			y: 2.5d
 		}
 		{
-			dependencies: ["10ED9E8F35405C5B"]
+			dependencies: ["34CBF7A7AD9BF9D8"]
 			id: "15B159D7F4360A0D"
 			tasks: [{
 				id: "27F2BA4515132EF1"
 				item: "minecraft:note_block"
 				type: "item"
 			}]
-			x: 9.5d
-			y: 6.5d
+			x: 0.0d
+			y: -2.5d
 		}
 		{
 			dependencies: ["6651B17B190DD8F4"]
@@ -610,8 +608,8 @@
 				item: "apotheosis:vial_of_extraction"
 				type: "item"
 			}]
-			x: 0.5d
-			y: 10.5d
+			x: 2.5d
+			y: 16.0d
 		}
 		{
 			dependencies: ["4798028C47F41935"]
@@ -621,8 +619,8 @@
 				item: "kubejs:inert_xp_condenser"
 				type: "item"
 			}]
-			x: 14.0d
-			y: -1.0d
+			x: 14.5d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -652,8 +650,8 @@
 				item: "minecraft:phantom_membrane"
 				type: "item"
 			}]
-			x: 12.0d
-			y: 10.0d
+			x: 9.0d
+			y: 15.5d
 		}
 		{
 			dependencies: ["4F4169E360108B65"]
@@ -663,8 +661,8 @@
 				item: "minecraft:popped_chorus_fruit"
 				type: "item"
 			}]
-			x: 15.0d
-			y: 12.5d
+			x: 9.5d
+			y: 11.5d
 		}
 		{
 			dependencies: ["77C422DDE35B606E"]
@@ -674,8 +672,8 @@
 				item: "kubejs:saturated_honeycomb"
 				type: "item"
 			}]
-			x: 2.5d
-			y: 9.5d
+			x: 4.5d
+			y: 15.0d
 		}
 		{
 			dependencies: ["77C422DDE35B606E"]
@@ -685,8 +683,8 @@
 				item: "minecraft:honeycomb"
 				type: "item"
 			}]
-			x: 2.5d
-			y: 10.5d
+			x: 4.5d
+			y: 16.0d
 		}
 		{
 			icon: "minecraft:beehive"
@@ -712,18 +710,100 @@
 					type: "observation"
 				}
 			]
-			x: -1.5d
-			y: 11.0d
+			x: 0.5d
+			y: 16.5d
 		}
 		{
+			dependencies: ["17891BFF4285EF31"]
 			id: "4F4169E360108B65"
 			tasks: [{
 				id: "203D6953BBDF00FC"
 				item: "minecraft:chorus_fruit"
 				type: "item"
 			}]
-			x: 0.0d
-			y: 14.5d
+			x: 4.5d
+			y: 12.5d
+		}
+		{
+			id: "17891BFF4285EF31"
+			tasks: [{
+				id: "7A33C5AAE77E1F8F"
+				item: "minecraft:chorus_flower"
+				type: "item"
+			}]
+			x: 0.5d
+			y: 12.0d
+		}
+		{
+			id: "0CE3CEC9D82F1BB9"
+			tasks: [{
+				id: "2AEAC8DE0FD1FDBD"
+				item: "minecraft:ender_pearl"
+				type: "item"
+			}]
+			x: 5.5d
+			y: 3.0d
+		}
+		{
+			dependencies: ["75A7D7288DF25E12"]
+			id: "589AA35E84EB3568"
+			tasks: [{
+				id: "393058B882C692C3"
+				item: "kubejs:warden_tendril_vine_seed"
+				type: "item"
+			}]
+			x: 6.5d
+			y: 1.5d
+		}
+		{
+			dependencies: ["0CE3CEC9D82F1BB9"]
+			id: "053EDF3FC60882BD"
+			tasks: [{
+				id: "78952F615CFE93DA"
+				item: "kubejs:resonant_ender_pearl"
+				type: "item"
+			}]
+			x: 7.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"0CE7E80FB2C2864E"
+				"73263EC95364E1E4"
+			]
+			id: "243F51DA64564519"
+			tasks: [{
+				id: "7561606C118A67DE"
+				item: "minecraft:end_crystal"
+				type: "item"
+			}]
+			x: 16.5d
+			y: 5.5d
+		}
+		{
+			dependencies: [
+				"3F43A33616FC68DB"
+				"6749065CD841CA97"
+			]
+			id: "4EA372BB98EA4567"
+			tasks: [{
+				id: "3CFEACA78E04807E"
+				item: "minecraft:purpur_block"
+				type: "item"
+			}]
+			x: 9.5d
+			y: 9.5d
+		}
+		{
+			dependencies: ["4EA372BB98EA4567"]
+			id: "73263EC95364E1E4"
+			tasks: [{
+				id: "00CE61FEDBD8B475"
+				item: "minecraft:purpur_slab"
+				type: "item"
+			}]
+			x: 13.5d
+			y: 6.5d
 		}
 	]
 	title: "Chapter 6b: Vibration Mechanisms"
