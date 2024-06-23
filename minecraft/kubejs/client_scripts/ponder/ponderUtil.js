@@ -59,8 +59,8 @@ const setDeployerHeldItem = (scene, deployerPos, id) => {
  * @param {Internal.ExtendedSceneBuilder} scene
  * @param {BlockPos_} pos
  * @param {number} ticks
- * @param {boolean?} clearHand
- * @param {function?} onDeploy
+ * @param {boolean=} clearHand
+ * @param {function=} onDeploy
  */
 const cycleDeployerMovement = (scene, pos, ticks, clearHand, onDeploy) => {
   ticks = ticks === undefined ? 25 : ticks

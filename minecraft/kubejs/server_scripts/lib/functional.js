@@ -2,8 +2,8 @@
 
 /**
  * @param {dev.latvian.mods.kubejs.recipe.RecipesEventJS} e
- * @param {Function} fn
- * @returns {Function}
+ * @param {function} fn
+ * @returns {function}
  */
 const getPartialApplication = (e, fn) => {
   return function () {
@@ -19,8 +19,8 @@ const getPartialApplication = (e, fn) => {
  * Returns a concrete instantiation of the given constructor with the
  * RecipesEventJS context applied as the first argument.
  * @param {Internal.RecipesEventJS} e
- * @param {Function} constructor
- * @returns {Function}
+ * @param {function} constructor
+ * @returns {function}
  */
 const getConstructorWrapper = (e, constructor) => {
   return function () {

@@ -18,7 +18,7 @@ let $UUID = Java.loadClass('java.util.UUID')
  *
  * @param {Internal.RecipesEventJS} e
  * @param {Internal.ItemStack_} input
- * @param {Internal.ItemStack_} transitional
+ * @param {Internal.ItemStack_=} transitional
  */
 function SequencedAssembly(e, input, transitional) {
   this.e_ = e
@@ -159,7 +159,8 @@ SequencedAssembly.prototype.vibrate = function (processingTime) {
  * @callback customSequencedAssemblyCallback
  * @param {Internal.ItemStack_|string} pre
  * @param {OutputItem_[]|string} post
- * @param {function} json Helper to convert ingredients to JSON objects.
+ * @param {(item:Internal.Ingredient) => object} json Helper to convert
+ *   ingredients to JSON objects.
  */
 /**
  * @param {Internal.MutableComponent} preItemText

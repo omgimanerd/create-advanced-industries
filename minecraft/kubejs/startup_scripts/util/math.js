@@ -11,7 +11,7 @@ global.randomSeed = () => {
  * PRNG Mulberry32
  * https://stackoverflow.com/a/47593316
  * @param {number=} seed
- * @returns {Function}
+ * @returns {() => number}
  */
 global.mulberry32 = (seed) => {
   seed = seed === undefined ? global.randomSeed() : seed >>> 0

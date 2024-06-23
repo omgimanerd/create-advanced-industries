@@ -402,11 +402,6 @@ ServerEvents.recipes((e) => {
     Fluid.of('create_enchantment_industry:experience', 1000),
   ])
 
-  // require going to end
-  // End stone automation
-  // exp the silver fish from the infested stone
-  // vial of searing expulsion
-
   // Bottles of Experience
   e.remove({ id: 'create_new_age:energising/splash_water_bottle' })
 

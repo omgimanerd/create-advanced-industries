@@ -61,8 +61,7 @@ const defineCreateRecipes = (e) => {
      * @callback CVIPressurizingWrapperCB
      * @param {(InputItem_|Internal.InputFluid_)[]} inputs
      * @returns {CVIPressurizingWrapper}
-     */
-    /**
+     *
      * @type {CVIPressurizingWrapperCB}
      */
     pressurizing: getConstructorWrapper(e, CVIPressurizingWrapper),
@@ -70,9 +69,12 @@ const defineCreateRecipes = (e) => {
     vibrating: e.recipes.vintageimprovements.vibrating,
 
     /**
+     * @callback SequencedAssemblyWrapper
      * @param {Internal.ItemStack_} input
-     * @param {Internal.ItemStack_} transitional
+     * @param {Internal.ItemStack_=} transitional
      * @returns {SequencedAssembly}
+     *
+     * @type {SequencedAssemblyWrapper}
      */
     SequencedAssembly: getConstructorWrapper(e, SequencedAssembly),
   }
