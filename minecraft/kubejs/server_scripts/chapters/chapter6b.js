@@ -213,7 +213,6 @@ ServerEvents.recipes((e) => {
   create // Epic Material: Arcane Sands
     .SequencedAssembly('tfmg:limesand')
     .fill('starbunclemania:source_fluid', 1000)
-    .fill('createteleporters:quantum_fluid', 1000) // TODO maybe not here?
     .energize(50000)
     .outputs([
       'apotheosis:epic_material',
@@ -510,10 +509,39 @@ ServerEvents.recipes((e) => {
     }
   })
 
+  // Chorus fruit alternative pathways
+  create
+    .pressurizing('minecraft:chorus_fruit')
+    .secondaryFluidResult(Fluid.of('starbunclemania:source_fluid', 125))
+    .heated()
+    .outputs('minecraft:popped_chorus_fruit')
+  pneumaticcraft
+    .thermo_plant()
+    .item_input('minecraft:chorus_fruit')
+    .temperature({ min_temp: 273 + 250 })
+    .pressure(2)
+    .item_output('minecraft:popped_chorus_fruit')
+    .fluid_output(Fluid.of('starbunclemania:source_fluid', 150))
+
+  // Purpur block overhaul
+  e.remove({ id: 'minecraft:purpur_block' })
+  create.mechanical_crafting(
+    'minecraft:purpur_block',
+    [
+      'FFFF', //
+      'FEEF', //
+      'FEEF', //
+      'FFFF', //
+    ],
+    {
+      F: 'minecraft:popped_chorus_fruit',
+      E: 'minecraft:end_stone',
+    }
+  )
+
   // End crystal overhaul
   // TODO evaluate the downstream effects of this, totem of undying requires
   // end crystal
-
   e.remove({ id: 'minecraft:end_crystal' })
   create
     .SequencedAssembly('minecraft:glass_pane')
