@@ -649,7 +649,7 @@
 		#If `petAllMobs` is set, these mobs still can't be pet
 		"Pettable Denylist" = ["minecraft:ender_dragon", "minecraft:wither", "minecraft:armor_stand"]
 		#Even if `petAllMobs` is not set, these mobs can be pet
-		"Pettable Allowlist" = []
+		"Pettable Allowlist" = ["quark:shiba"]
 
 	[tweaks.pig_litters]
 		#Allowed values: [1,)
