@@ -24,7 +24,7 @@ const getGemItem = (id, rarity) => {
 
 // Wrap this code in a closure to avoid polluting global namespace with
 // Apotheosis helper methods.
-;() => {
+;(() => {
   /**
    * The order of the rarity tiers in Apotheosis.
    * @type {string[]}
@@ -177,7 +177,7 @@ const getGemItem = (id, rarity) => {
           rowstring.substring(0, y) + 'M' + rowstring.substring(y + 1)
       })
       create.mechanical_crafting(getGemItem(gem, tiers[0]), pattern, {
-        A: 'minecraft:amethyst_shard',
+        A: 'createutilities:polished_amethyst',
         B: 'create:experience_nugget',
         M: 'kubejs:crystalline_mechanism',
       })
@@ -233,4 +233,4 @@ const getGemItem = (id, rarity) => {
       }
     })
   })
-}
+})()

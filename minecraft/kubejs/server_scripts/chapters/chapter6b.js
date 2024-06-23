@@ -308,7 +308,7 @@ ServerEvents.recipes((e) => {
   // Nautilus shells can also be crushed into limestone dust.
   create.milling('tfmg:limesand', 'minecraft:nautilus_shell')
 
-  // Totem of undying automation from Create: Totem Factory
+  // Totem of undying automation from Create: Totem Factory items.
   create.cutting('kubejs:totem_body_casing', 'create:brass_sheet')
   create
     .SequencedAssembly(
