@@ -1,4 +1,4 @@
-// priority: 100
+// priority: 500
 // Recipe overhauls for Chapter 6 progression.
 
 // Call the method to register time pouch crafting recipes.
@@ -86,63 +86,6 @@ ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
   const pneumaticcraft = definePneumaticcraftRecipes(e)
   const redefineRecipe = redefineRecipe_(e)
-
-  // Get a PRNG from the world seed so that recipes are randomized per world.
-  const rand = global.mulberry32(global.WORLD_SEED)
-  // Generate a shuffled list of 9C4 positions for 4 elements on a 3x3 crafting
-  // grid.
-  const positions = global.shuffle(global.combinatorics(9, 4), rand)
-  const gemData = Object.entries(apotheoticGems)
-  if (gemData.length > positions.length) {
-    console.error('Not enough combinations to generate unique recipes!')
-  }
-  // Define automatable upgrade recipes for all the apotheotic gems.
-  let i = 0
-  for (let [gem, tiers] of gemData) {
-    // Generate upgrade recipes for each tier of gem.
-    for (let i = 0; i < tiers.length - 1; ++i) {
-      let fromTier = tiers[i]
-      let fromGem = getGemItem(gem, fromTier)
-      let toTier = tiers[i + 1]
-      let toGem = getGemItem(gem, toTier)
-      let gemDustCost = getTierGemDustCost(toTier)
-      let validMaterials = getTierUpgradeMaterialCost(toTier)
-
-      let tierIndex = tierOrder.indexOf(toTier)
-
-      for (let material of validMaterials) {
-        // TODO maybe something more complicated than compacting
-        let recipe = create.compacting(toGem, [
-          material,
-          Item.of('apotheosis:gem_dust', gemDustCost),
-          fromGem,
-        ])
-        if (tierIndex >= 4) recipe.superheated()
-        else if (tierIndex >= 2) recipe.heated()
-      }
-    }
-
-    // Generate crafting recipes for the lowest tier of gem.
-    let pattern = [
-      ' AAA ', //
-      'ABBBA', //
-      'ABBBA', //
-      'ABBBA', //
-      ' AAA ', //
-    ]
-    positions[i].forEach((idx) => {
-      let x = (idx % 3) + 1
-      let y = Math.floor(idx / 3) + 1
-      const rowstring = pattern[x]
-      pattern[x] = rowstring.substring(0, y) + 'M' + rowstring.substring(y + 1)
-    })
-    create.mechanical_crafting(getGemItem(gem, tiers[0]), pattern, {
-      A: 'minecraft:amethyst_shard',
-      B: 'create:experience_nugget',
-      M: 'kubejs:crystalline_mechanism',
-    })
-    ++i
-  }
 
   // Remove tier salvaging recipes and recycling recipes so apotheotic materials
   // are only available through the automation recipes below.
@@ -264,7 +207,7 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'minecraft:honey_block' })
   create.haunting('minecraft:phantom_membrane', 'minecraft:honeycomb')
 
-  // TODO: overhaul ender pearls?
+  // TODO: overhaul ender pearl automation
 
   // Overhauled recipe for Temporal Pouch
   e.remove({ id: 'gag:time_sand_pouch' })
@@ -447,62 +390,8 @@ ServerEvents.recipes((e) => {
 
   // smithing template netherite upgrade duping
 
-  // ender transmission end automation
-
   // neural processor
-  // chorus fruit farming
   // drop ascended coins into a well?
-  // dragon's breath automation
-  // phantom membrane automation
-
-  /**
-   * Register automatable alternatives for Apotheosis custom enchanting.
-   * @param {object} recipe
-   */
-  const registerAutomatedInfusionEnchanting = (recipe) => {
-    const levels = recipe.requirements.eterna * 2
-    // The eterna requirement is the minimum level you must be to perform the
-    // enchantment, and the enchantment costs 3 levels of XP, not the entire XP
-    // bar.
-    const xpCost = global.levelToXp(levels) - global.levelToXp(levels - 3)
-    // Hyper XP is a 10:1 conversion to allow for higher experience levels.
-    let hyperXp = global.roundToNearest(xpCost / 10, 5)
-    // Honey bottle enchanting is extremely inefficient, disabled to avoid
-    // cluttering JEI
-    if (recipe.input.item === 'minecraft:honey_bottle') return
-    let outputCount = recipe.result.count || 1
-
-    pneumaticcraft
-      .thermo_plant()
-      .fluid_input(
-        Fluid.of('create_enchantment_industry:hyper_experience', hyperXp)
-      )
-      .item_input(recipe.input.item)
-      .item_output(Item.of(recipe.result.item, outputCount))
-      .pressure(8)
-      .temperature({ min_temp: 273 + 1000 })
-    create
-      .pressurizing(recipe.input.item)
-      .secondaryFluidInput(
-        Fluid.of(
-          'create_enchantment_industry:hyper_experience',
-          Math.ceil(hyperXp * 1.5)
-        )
-      )
-      .superheated()
-      .outputs(Item.of(recipe.result.item, outputCount))
-  }
-  // Go through the existing Apotheosis recipes as well as added ones.
-  e.forEachRecipe({ type: 'apotheosis:enchanting' }, (r) => {
-    registerAutomatedInfusionEnchanting(JSON.parse(r.json))
-  })
-  e.addedRecipes.forEach((r) => {
-    r.createRecipe()
-    const recipe = JSON.parse(r.json)
-    if (recipe.type === 'apotheosis:enchanting') {
-      registerAutomatedInfusionEnchanting(recipe)
-    }
-  })
 
   // Chorus fruit alternative pathways
   create
