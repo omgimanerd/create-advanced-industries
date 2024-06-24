@@ -19,13 +19,15 @@ StartupEvents.registry('block', (e) => {
     })
     .growTick(() => 0) // Does not grow naturally
     .bonemeal((randomTickCallback) => {
+      // Bonemealing only has a 10% chance to grow the vine.
       if (randomTickCallback.random.nextIntBetweenInclusive(0, 100) < 10) {
         return 1
       }
       return 0
-    }) // Bonemealing only has a 10% chance to grow the vine.
+    })
     .crop('apotheosis:warden_tendril')
     .crop('apotheosis:warden_tendril', 0.25)
+    .crop('minecraft:ender_pearl', 0.5)
     .texture(0, 'kubejs:block/warden_tendril_vine_0')
     .texture(1, 'kubejs:block/warden_tendril_vine_1')
     .texture(2, 'kubejs:block/warden_tendril_vine_2')

@@ -1,7 +1,8 @@
 // priority: 999
 
-let $CompoundTag = Java.loadClass('net.minecraft.nbt.CompoundTag')
-let $ItemStack = Java.loadClass('net.minecraft.world.item.ItemStack')
+// require() imports in 1.20 MUST use double quotes because of a bug in ProbeJS
+const { $CompoundTag } = require("packages/net/minecraft/nbt/$CompoundTag") // prettier-ignore
+const { $ItemStack } = require("packages/net/minecraft/world/item/$ItemStack") // prettier-ignore
 
 global.RESONANCE_CRAFTING = 'kubejs:resonance_crafting'
 
@@ -227,7 +228,7 @@ global.RegisterResonanceCraftingRecipe = (
  * Event handler for when a note block is played to enable resonance crafting.
  * Handler registered here to allow for easy reloading.
  *
- * @param {$NoteBlockEvent_} e
+ * @param {$NoteBlockEvent} e
  */
 global.NoteBlockEventHandler = (e) => {
   if (e.level.isClientSide()) return
