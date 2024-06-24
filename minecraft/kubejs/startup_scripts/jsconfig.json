@@ -6,7 +6,7 @@
             "ES5",
             "ES2015"
         ],
-        "rootDir": "./src",
+        "rootDir": "./",
         "typeRoots": [
             "../../.probe/startup/probe-types"
         ],
@@ -14,7 +14,7 @@
         "skipLibCheck": true
     },
     "include": [
-        "./src/**/*",
+        "./**/*",
         null
     ]
 }
