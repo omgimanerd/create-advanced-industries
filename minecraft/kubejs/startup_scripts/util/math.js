@@ -139,11 +139,10 @@ global.combinatorics = (n, k) => {
         // We can advance it
         pointers[pointer]++
         // We fix the next pointers
-        for (
-          let fixPointer = pointer + 1, i = 1;
-          fixPointer < k;
-          fixPointer++, i++
-        ) {
+        // Current Rhino build does not allow this to be declared in the loop
+        let fixPointer = pointer + 1,
+          i = 1
+        for (; fixPointer < k; fixPointer++, i++) {
           pointers[fixPointer] = pointers[pointer] + i
         }
         break
