@@ -34,10 +34,10 @@ BlockEvents.rightClicked('minecraft:dragon_head', (e) => {
 })
 
 /**
- * @param {Internal.Item} item
- * @param {Internal.Player} player
- * @param {*} target
- * @param {*} level
+ * @param {$ItemStack_} item
+ * @param {$Player_} player
+ * @param {$RayTraceResultJS_|{type:string, hit:$BlockPos_}} target
+ * @param {$Level_} level
  */
 const customDragonsBreathBottling = (item, player, target, level) => {
   let clickLocation

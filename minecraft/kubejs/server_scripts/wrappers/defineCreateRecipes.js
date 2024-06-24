@@ -5,7 +5,7 @@ const POLISHING_MEDIUM_SPEED = 2
 const POLISHING_HIGH_SPEED = 3
 
 /**
- * @param {Internal.RecipesEventJS} e
+ * @param {$RecipesEventJS_} e
  */
 const defineCreateRecipes = (e) => {
   return {
@@ -59,7 +59,7 @@ const defineCreateRecipes = (e) => {
 
     /**
      * @callback CVIPressurizingWrapperCB
-     * @param {(InputItem_|Internal.InputFluid_)[]} inputs
+     * @param {($InputItem_|$InputFluid_)[]} inputs
      * @returns {CVIPressurizingWrapper}
      *
      * @type {CVIPressurizingWrapperCB}
@@ -70,8 +70,8 @@ const defineCreateRecipes = (e) => {
 
     /**
      * @callback SequencedAssemblyWrapper
-     * @param {Internal.ItemStack_} input
-     * @param {Internal.ItemStack_=} transitional
+     * @param {$ItemStack_} input
+     * @param {$ItemStack_=} transitional
      * @returns {SequencedAssembly}
      *
      * @type {SequencedAssemblyWrapper}

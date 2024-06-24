@@ -85,7 +85,7 @@ MeltableItem.prototype.registerCastedItems = function (e) {
  * Helper method to register a melting recipe for this item.
  * Can only be called in server_scripts/
  *
- * @param {Internal.RecipesEventJS} e
+ * @param {$RecipesEventJS_} e
  * @param {string} item
  * @param {string} fluid
  * @returns {MeltableItem}
@@ -105,7 +105,7 @@ MeltableItem.prototype.registerMeltingRecipe = function (e, item, fluid) {
  * MeltableItem.
  * Can only be called in server_scripts/
  *
- * @param {Internal.RecipesEventJS} e
+ * @param {$RecipesEventJS_} e
  * @returns
  */
 MeltableItem.prototype.registerMeltingRecipes = function (e) {

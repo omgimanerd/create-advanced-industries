@@ -13,9 +13,9 @@ ServerEvents.recipes((e) => {
   // config. They cannot be removed with KubeJS.
 
   /**
-   * @param {Internal.Potion} potionId
+   * @param {$Potion_} potionId
    * @param {string} bottle
-   * @returns {Internal.FluidStackJS}
+   * @returns {$FluidStackJS_}
    */
   const getPotionFluid = (potionId, bottle) => {
     if (bottle === undefined) bottle = 'REGULAR'

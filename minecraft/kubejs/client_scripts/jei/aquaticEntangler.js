@@ -38,11 +38,11 @@ JEIAddedEvents.registerCategories((e) => {
          * Internal helper to wrap variables in a closure and generate a
          * tooltip callback using the given item yield weight and biome
          * requirement.
-         * @param {Internal.ItemStack} item
+         * @param {$ItemStack_} item
          * @param {number} weight
          * @param {number} totalWeight
          * @param {string[]} biomes
-         * @returns {Internal.IRecipeSlotTooltipCallback_}
+         * @returns {$IRecipeSlotTooltipCallback_}
          */
         const getTooltipCallback = (item, weight, totalWeight, biomes) => {
           return (_, tooltip) => {

@@ -17,7 +17,7 @@ const stripOutputPrefix = (s) => {
  * remappings, so this helper returns a copy of the key object with all the
  * keys that are not present in the pattern removed.
  * @param {string[]} pattern Crafting pattern
- * @param {Object<string,string>} keys Item mapping for the crafting pattern.
+ * @param {{string:string}} keys Item mapping for the crafting pattern.
  */
 const removeUnusedKeys = (pattern, keys) => {
   const chars = new Set()
@@ -34,14 +34,22 @@ const removeUnusedKeys = (pattern, keys) => {
 }
 
 /**
+ * @callback RedefineRecipeCallback
+ * @param {$ItemStack_} output
+ * @param {string[]} shape
+ * @param {{string:$ItemStack_}=} keys
+ *
  * Wrapper to define a utility function in the given RecipesEventJS context that
  * wraps the shaped/shapeless recipe definitions to redefine a recipe for
  * a given item.
- * @param {Internal.RecipesEventJS} e
- * @returns
+ * @param {$RecipesEventJS_} e
+ * @returns {RedefineRecipeCallback}
  */
 const redefineRecipe_ = (e) => {
-  // Overrides shaped/shapeless recipes for a given output
+  /**
+   * Overrides shaped/shapeless recipes for a given output
+   * @type {RedefineRecipeCallback}
+   */
   return (output, shape, keys) => {
     const id = output.replace(/^[0-9]+x /, '')
     e.remove({ output: id })
@@ -113,21 +121,21 @@ const setIfValid = (o, key, value) => {
 }
 
 /**
- * @param {Internal.Potion} potionId
+ * @param {$Potion_} potionId
  * @param {number} quantity
- * @returns {Internal.FluidStackJS}
+ * @returns {$FluidStackJS_}
  */
 const potionFluid = (
-  /** @type {Internal.Potion} */ potionId,
+  /** @type {$Potion_} */ potionId,
   /** @type {number} */ quantity
 ) => {
   return Fluid.of('create:potion', quantity).withNBT({ Potion: potionId })
 }
 
 /**
- * @param {Internal.Enchantment_} enchantment
+ * @param {$Enchantment_} enchantment
  * @param {number} level
- * @returns {Internal.Ingredient}
+ * @returns {$Ingredient_}
  */
 const enchantedBook = (enchantment, level) => {
   return Item.of('minecraft:enchanted_book')

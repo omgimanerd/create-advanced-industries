@@ -6,9 +6,9 @@ const $DoubleItemIcon = Java.loadClass(
 )
 
 /**
- * @param {Internal.ItemStack_} big
- * @param {Internal.ItemStack_} small
- * @returns {Internal.IDrawable}
+ * @param {$ItemStack_} big
+ * @param {$ItemStack_} small
+ * @returns {$IDrawable}
  */
 const doubleItemIcon = (big, small) => {
   return new $DoubleItemIcon(

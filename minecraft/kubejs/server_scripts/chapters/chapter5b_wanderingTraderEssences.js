@@ -4,7 +4,6 @@
 /**
  * Called within EntityEvents.spawned to handle the spawning of a wandering
  * trader when lightning strikes and emerald block.
- * @param {Internal.EntitySpawnedEventJS} e
  */
 EntityEvents.spawned('ars_nouveau:an_lightning', (e) => {
   let { entity, level } = e
@@ -30,8 +29,6 @@ EntityEvents.spawned('ars_nouveau:an_lightning', (e) => {
  *
  * We cannot use EntityEvents.hurt() to cancel the damage event because the
  * source entity is not set to the actual lightning bolt.
- *
- * @param {Internal.EntityStruckByLightningEvent} e
  */
 global.EntityStruckByLightningEventCallback = (e) => {
   const { entity, lightning } = e
@@ -89,7 +86,7 @@ LootJS.modifiers((e) => {
 
   /**
    * @param {{ damageSource:string, customPredicate:function }} predicate
-   * @returns {Internal.LootActionsBuilderJS}
+   * @returns {$LootActionsBuilderJS_}
    */
   const buildWanderingTraderPredicate = (predicate) => {
     const { damageSource, directKiller } = predicate

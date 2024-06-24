@@ -1,5 +1,10 @@
 // priority: 100
 
+const { $List } = require('packages/java/util/$List')
+const {
+  $IJeiAnvilRecipe,
+} = require('packages/mezz/jei/api/recipe/vanilla/$IJeiAnvilRecipe')
+
 /**
  * @param {number} x
  * @returns {string}
@@ -56,10 +61,10 @@ JEIAddedEvents.registerRecipes((e) => {
   }
 
   /**
-   * @param {Internal.ItemStack} itemStack
-   * @param {Internal.List} books
-   * @param {Internal.List} results
-   * @returns {Internal.IJeiAnvilRecipe}
+   * @param {$ItemStack_} itemStack
+   * @param {$List} books
+   * @param {$List} results
+   * @returns {$IJeiAnvilRecipe}
    */
   const createAnvilRecipe = (itemStack, books, results) => {
     return e.data

@@ -1,8 +1,8 @@
 // priority: 0
 
 /**
- * @param {Internal.ItemTooltipEventJS} e
- * @param {Internal.Ingredient_} item
+ * @param {$ItemTooltipEventJS} e
+ * @param {$Ingredient_} item
  * @param {string|string[]} baseText
  * @param {(string|string[])?} unshiftText
  * @param {(string|string[])?} shiftText
@@ -11,7 +11,7 @@
 const tooltipHelper = (e, item, baseText, shiftText, unshiftText, clear) => {
   /**
    * Internal helper
-   * @param {Internal.List<any>} text
+   * @param {$List} text
    * @param {}
    */
   const addText = (text, newText) => {

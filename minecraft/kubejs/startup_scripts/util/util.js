@@ -38,14 +38,17 @@ const getTextureLocation = (name) => {
 }
 
 /**
+ * @callback RegisterItemCallback
+ * @param {string} name
+ * @param {string?} type
+ * @returns {$BasicItemJS$Builder_}
+ *
  * @param {Registry.Item} e
- * @returns {Internal.BasicItemJS$Builder}
+ * @returns {RegisterItemCallback}
  */
 const registerItem_ = (e) => {
   /**
-   * @param {string} name
-   * @param {string?} type
-   * @returns {Internal.BasicItemJS$Builder}
+   * @type {RegisterItemCallback}
    */
   return (name, type) => {
     checkModPrefix(name)

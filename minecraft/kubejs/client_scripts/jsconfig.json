@@ -6,7 +6,7 @@
             "ES5",
             "ES2015"
         ],
-        "rootDir": "./",
+        "rootDir": "./src",
         "typeRoots": [
             "../../.probe/client/probe-types"
         ],
@@ -15,6 +15,7 @@
     },
     "include": [
         "./**/*",
-        null
+        null,
+        "./src/**/*"
     ]
 }

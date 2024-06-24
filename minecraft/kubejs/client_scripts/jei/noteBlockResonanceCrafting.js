@@ -5,7 +5,7 @@ JEIAddedEvents.registerCategories((e) => {
   /**
    * Internal helper to get the color and centered x offset for a note.
    * @param {string} note
-   * @returns {[Internal.Color, number]}
+   * @returns {[$MutableComponent_, number]}
    */
   const getNoteTextAndOffset = (note) => {
     const shortened = note.replace(/[0-9]/, '')
@@ -17,8 +17,8 @@ JEIAddedEvents.registerCategories((e) => {
 
   /**
    * Internal helper to parse note inputs which can be a string or object
-   * @param {string|{note:string, instrument: Internal.Instrument}} note
-   * @returns {[string, Internal.Instrument]}
+   * @param {string|{note:string, instrument: $Instrument_}} note
+   * @returns {[string, $Instrument_]}
    */
   const parseNote = (note) => {
     if (typeof note === 'object') {

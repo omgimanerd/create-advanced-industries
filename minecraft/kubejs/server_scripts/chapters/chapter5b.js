@@ -4,9 +4,9 @@
 /**
  * Handler defined in startup_scripts/spoutHandlerRegistration.js
  * Defined here to allow for server side reload.
- * @type {Internal.SpecialSpoutHandlerEvent$SpoutHandler}
- * @param {Internal.BlockContainerJS} block
- * @param {Internal.FluidStackJS} fluid
+ * @type {$SpecialSpoutHandlerEvent$SpoutHandler_}
+ * @param {$BlockContainerJS_} block
+ * @param {$FluidStackJS_} fluid
  * @param {boolean} simulate
  * @returns {number} The amount of fluid used by the spout
  */
@@ -70,7 +70,7 @@ BlockEvents.rightClicked('minecraft:moss_block', (e) => {
   /**
    * Recursive function to spread mushroom blocks to nearby moss blocks with
    * a configurable decay and increasing delay.
-   * @param {Internal.BlockContainerJS} block
+   * @param {$BlockContainerJS_} block
    * @param {number} probability
    * @param {number} decayFactor
    * @param {number} delay

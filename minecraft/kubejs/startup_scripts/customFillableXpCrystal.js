@@ -32,7 +32,7 @@ global.xpToNextLevel = (level) => {
 
 /**
  * Helper method to get the amount of XP in the custom XP Crystal.
- * @param {Internal.ItemStack} itemStack
+ * @param {$ItemStack_} itemStack
  * @returns {number}
  */
 global.customXpCrystalCapacity = (itemStack) => {
@@ -43,7 +43,7 @@ global.customXpCrystalCapacity = (itemStack) => {
 
 /**
  * Helper method to get the amount of XP in the custom XP Crystal.
- * @param {Internal.ItemStack} itemStack
+ * @param {$ItemStack_} itemStack
  * @returns {number}
  */
 global.customXpCrystalContents = (itemStack) => {
@@ -115,7 +115,7 @@ StartupEvents.registry('item', (e) => {
     })
     .unstackable()
     .displayName('Insightful Crystal')
-    .barWidth((/** @type {Internal.ItemStack} */ itemstack) => {
+    .barWidth((/** @type {$ItemStack_} */ itemstack) => {
       const capacity = global.customXpCrystalCapacity(itemstack)
       const xp = global.customXpCrystalContents(itemstack)
       // Any value greater than 13 will not show the durability bar. A fully
@@ -134,7 +134,7 @@ ItemEvents.modelProperties((e) => {
   e.register(
     'kubejs:xp_crystal',
     new ResourceLocation('stored'),
-    /** @type {Internal.ClampedItemPropertyFunction} */
+    /** @type {$ClampedItemPropertyFunction_} */
     (itemStack) => {
       if (!itemStack.nbt) return 0
       return (

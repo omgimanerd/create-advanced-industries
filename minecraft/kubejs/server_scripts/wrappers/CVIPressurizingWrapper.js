@@ -1,8 +1,8 @@
 // priority: 1000
 
 /**
- * @param {Internal.RecipesEventJS} e
- * @param {(InputItem_|Internal.InputFluid_)[]} inputs
+ * @param {$RecipesEventJS_} e
+ * @param {($InputItem_|$InputFluid_)[]} inputs
  */
 function CVIPressurizingWrapper(e, inputs) {
   this.e_ = e
@@ -16,7 +16,7 @@ function CVIPressurizingWrapper(e, inputs) {
 }
 
 /**
- * @param {Internal.InputFluid_} fluid
+ * @param {$InputFluid_} fluid
  * @returns {CVIPressurizingWrapper}
  */
 CVIPressurizingWrapper.prototype.secondaryFluidInput = function (fluid) {
@@ -30,7 +30,7 @@ CVIPressurizingWrapper.prototype.secondaryFluidInput = function (fluid) {
 }
 
 /**
- * @param {Internal.InputFluid_} fluid
+ * @param {$InputFluid_} fluid
  * @returns {CVIPressurizingWrapper}
  */
 CVIPressurizingWrapper.prototype.secondaryFluidResult = function (fluid) {
@@ -69,8 +69,8 @@ CVIPressurizingWrapper.prototype.superheated = function () {
 }
 
 /**
- * @param {(OutputItem_|Internal.OutputFluid_)[]} results
- * @returns {Internal.RecipeJS}
+ * @param {($OutputItem_|$OutputFluid_)[]} results
+ * @returns {$RecipeJS_}
  */
 CVIPressurizingWrapper.prototype.outputs = function (results) {
   this.inputs_ = Array.isArray(this.inputs_) ? this.inputs_ : [this.inputs_]

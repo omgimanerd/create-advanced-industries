@@ -5,7 +5,7 @@
  * @param {string} id
  * @param {string} displayName
  * @param {object} modelJson
- * @returns {Internal.BasicBlockJS$Builder}
+ * @returns {$BasicBlockJS$Builder_}
  */
 const registerCast = (e, id, displayName, modelJson) => {
   const block = e

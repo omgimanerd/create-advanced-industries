@@ -12,7 +12,7 @@ StartupEvents.registry('block', (e) => {
       builder.shape(2, 0, 0, 0, 16, 11, 16)
       builder.shape(3, 0, 0, 0, 16, 13, 16)
     })
-    .survive((_, /** @type {Internal.Level} */ level, pos) => {
+    .survive((_, /** @type {$Level_} */ level, pos) => {
       const brightness = level.getMaxLocalRawBrightness(pos)
       const below = level.getBlockState(pos.below())
       return below.block.id === 'minecraft:sculk' && brightness < 1
@@ -30,7 +30,7 @@ StartupEvents.registry('block', (e) => {
     .texture(1, 'kubejs:block/warden_tendril_vine_1')
     .texture(2, 'kubejs:block/warden_tendril_vine_2')
     .texture(3, 'kubejs:block/warden_tendril_vine_3')
-    .item((/** @type {Internal.BlockItemBuilder} */ item) => {
+    .item((/** @type {$BlockItemBuilder_} */ item) => {
       item.displayName('Warden Tendril Seed')
     })
 })

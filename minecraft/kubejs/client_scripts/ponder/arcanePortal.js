@@ -3,8 +3,8 @@
 Ponder.registry((e) => {
   /**
    * Helper method for the Arcane Portal ponder
-   * @param {Internal.ExtendedSceneBuilder} scene
-   * @param {BlockPos} center
+   * @param {$ExtendedSceneBuilder_} scene
+   * @param {$BlockPos_} center
    */
   const setupArcanePortalBlockScene = (scene, center) => {
     // Set up all blocks in scene.
@@ -40,8 +40,8 @@ Ponder.registry((e) => {
 
   /**
    * Helper method for the Arcane Portal ponder
-   * @param {Internal.ExtendedSceneBuilder} scene
-   * @param {BlockPos} pos
+   * @param {$ExtendedSceneBuilder_} scene
+   * @param {$BlockPos_} pos
    */
   const spawnPortalConsumptionParticles = (scene, pos) => {
     scene.particles

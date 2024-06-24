@@ -1,7 +1,7 @@
 // priority: 1000
 
 /**
- * @param {dev.latvian.mods.kubejs.recipe.RecipesEventJS} e
+ * @param {$RecipesEventJS_} e
  * @param {function} fn
  * @returns {function}
  */
@@ -18,7 +18,7 @@ const getPartialApplication = (e, fn) => {
 /**
  * Returns a concrete instantiation of the given constructor with the
  * RecipesEventJS context applied as the first argument.
- * @param {Internal.RecipesEventJS} e
+ * @param {$RecipesEventJS_} e
  * @param {function} constructor
  * @returns {function}
  */

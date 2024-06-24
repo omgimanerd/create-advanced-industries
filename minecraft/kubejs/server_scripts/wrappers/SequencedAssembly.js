@@ -16,9 +16,9 @@ let $UUID = Java.loadClass('java.util.UUID')
  *   .press(2)
  *   .outputs('kubejs:andesite_mechanism')
  *
- * @param {Internal.RecipesEventJS} e
- * @param {Internal.ItemStack_} input
- * @param {Internal.ItemStack_=} transitional
+ * @param {$RecipesEventJS_} e
+ * @param {$ItemStack_} input
+ * @param {$ItemStack_=} transitional
  */
 function SequencedAssembly(e, input, transitional) {
   this.e_ = e
@@ -72,7 +72,7 @@ SequencedAssembly.prototype.press = function (repeats) {
 }
 
 /**
- * @param {Internal.FluidStackJS_|string} fluid
+ * @param {$FluidStack_|string} fluid
  * @param {number=} qty_mb
  * @param {string=} fluidTextLabel Text used for the fluid in the item lore
  * @returns {SequencedAssembly}
@@ -81,7 +81,7 @@ SequencedAssembly.prototype.fill = function (fluid, qty_mb, fluidTextLabel) {
   // 1-argument, Fluid object is provided.
   // 2-argument, fluid should be a string and qty_mb should be provided.
   /**
-   * @type {Internal.FluidStackJS}
+   * @type {$FluidStackJS}
    */
   const f =
     qty_mb === undefined || qty_mb === null ? fluid : Fluid.of(fluid, qty_mb)
@@ -97,8 +97,9 @@ SequencedAssembly.prototype.fill = function (fluid, qty_mb, fluidTextLabel) {
 }
 
 /**
- * @param {Internal.ItemStack_|string} item
- * @param {boolean?} keepHeldItem
+ * @param {$ItemStack_} item
+ * @param {boolean=} keepHeldItem
+ * @param {string=} itemTextLabel
  * @returns {SequencedAssembly}
  */
 SequencedAssembly.prototype.deploy = function (
@@ -107,10 +108,16 @@ SequencedAssembly.prototype.deploy = function (
   itemTextLabel
 ) {
   const itemStack = typeof item === 'string' ? Item.of(item) : item
-  const label =
-    itemTextLabel === undefined
-      ? itemStack.getHoverName()
-      : Text.of(itemTextLabel)
+  let label = null
+  if (itemTextLabel !== undefined) {
+    label = Text.of(itemTextLabel)
+  } else if (itemStack.getHoverName) {
+    label = itemStack.getHoverName()
+  } else if (itemStack.getStacks) {
+    label = itemStack.getStacks().getFirst()
+  } else {
+    throw new Error(`Unable to determine an item label for ${item}`)
+  }
   this.steps_.push({
     type: 'deploying',
     preItemText: Text.of(`Next: Deploy `).append(label),
@@ -157,13 +164,13 @@ SequencedAssembly.prototype.vibrate = function (processingTime) {
  * whatever was given as this.input_. If this custom step is the last step in
  * the sequence the post item is whatever will be passed as the output item.
  * @callback customSequencedAssemblyCallback
- * @param {Internal.ItemStack_|string} pre
+ * @param {$ItemStack_|string} pre
  * @param {OutputItem_[]|string} post
- * @param {(item:Internal.Ingredient) => object} json Helper to convert
+ * @param {(item:$Ingredient_) => object} json Helper to convert
  *   ingredients to JSON objects.
  */
 /**
- * @param {Internal.MutableComponent} preItemText
+ * @param {$MutableComponent_} preItemText
  * @param {customSequencedAssemblyCallback} prePostItemHandler
  * @returns {SequencedAssembly}
  */
@@ -184,8 +191,8 @@ SequencedAssembly.prototype.custom = function (
 /**
  * @private
  * @param {number} stepNumber
- * @param {Internal.MutableComponent} loreText
- * @returns {Internal.Ingredient}
+ * @param {$MutableComponent_} loreText
+ * @returns {$Ingredient_}
  */
 SequencedAssembly.prototype.getCustomTransitionalItem = function (
   stepNumber,
@@ -211,7 +218,7 @@ SequencedAssembly.prototype.getCustomTransitionalItem = function (
 
 /**
  * @private
- * @param {OutputItem_[]} output
+ * @param {$OutputItem_[]} output
  * @returns {null}
  */
 SequencedAssembly.prototype.outputCustomSequence = function (output) {
@@ -220,7 +227,7 @@ SequencedAssembly.prototype.outputCustomSequence = function (output) {
   /**
    * Helper method that's passed to the custom callback to convert Ingredients
    * to JSON for custom recipes.
-   * @param {Internal.Ingredient} item
+   * @param {$Ingredient_} item
    * @returns {object}
    */
   const json = (item) => JSON.parse(item.toJson())

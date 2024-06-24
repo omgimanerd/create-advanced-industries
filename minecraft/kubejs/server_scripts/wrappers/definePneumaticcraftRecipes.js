@@ -1,8 +1,7 @@
 // priority: 900
 
 /**
- * @param {Internal.RecipesEventJS} e
- * @returns
+ * @param {$RecipesEventJS_} e
  */
 const definePneumaticcraftRecipes = (e) => {
   return {
@@ -18,9 +17,9 @@ const definePneumaticcraftRecipes = (e) => {
     thermo_plant: e.recipes.pneumaticcraft.thermo_plant,
     heat_properties: e.recipes.pneumaticcraft.heat_properties,
     /**
-     * @param {OutputItem_} result
+     * @param {$OutputItem_} result
      * @param {string[]} pattern
-     * @param {{[key in string]:InputItem_} } key
+     * @param {{[key in string]:$InputItem_} } key
      */
     compressor_upgrade_crafting: (result, pattern, key) => {
       return e.recipes.pneumaticcraft.compressor_upgrade_crafting(
@@ -30,7 +29,7 @@ const definePneumaticcraftRecipes = (e) => {
       )
     },
     /**
-     * @param {OutputItem_} result
+     * @param {$OutputItem_} result
      * @param {string[]} pattern
      * @param {{[key in string]:InputItem_} } key
      */
@@ -42,9 +41,9 @@ const definePneumaticcraftRecipes = (e) => {
       )
     },
     /**
-     * @param {OutputItem_} result
+     * @param {$OutputItem_} result
      * @param {string[]} pattern
-     * @param {{[key in string]:InputItem_} } key
+     * @param {{[key in string]:$InputItem_} } key
      */
     crafting_shaped_pressurizable: (result, pattern, key) => {
       return e.recipes.pneumaticcraft.crafting_shaped_pressurizable(

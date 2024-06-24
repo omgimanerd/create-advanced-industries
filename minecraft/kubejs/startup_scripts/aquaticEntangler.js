@@ -30,7 +30,7 @@ global.AquaticEntanglerRecipes = [
 ]
 
 /**
- * @param {Internal.RecipesEventJS} e
+ * @param {$RecipesEventJS_} e
  */
 global.RegisterAquaticEntanglerRecipeOverhauls = (e) => {
   e.remove({ type: 'thermal:fisher_boost' })

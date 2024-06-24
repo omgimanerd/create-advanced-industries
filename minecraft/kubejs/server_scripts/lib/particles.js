@@ -1,9 +1,7 @@
 // priority: 1000
 
-const $Vec3 = Java.loadClass('net.minecraft.world.phys.Vec3')
-
 /**
- * @typedef {$Vec3|number[]|{x: number, y: number, z:number}} Vec3Like
+ * @typedef {$Vec3_|number[]|{x: number, y: number, z:number}} Vec3Like
  */
 
 /**
@@ -11,7 +9,11 @@ const $Vec3 = Java.loadClass('net.minecraft.world.phys.Vec3')
  * @returns {number[]}
  */
 const parseVec3Like = (v) => {
-  if (v.class === $Vec3) {
+  if (
+    typeof v.x === 'function' &&
+    typeof v.y === 'function' &&
+    typeof v.z === 'function'
+  ) {
     return [v.x(), v.y(), v.z()]
   } else if (Array.isArray(v) && v.length === 3) {
     return v
@@ -23,8 +25,8 @@ const parseVec3Like = (v) => {
 
 /**
  * Helper for calling Level.spawnParticles
- * @param {Internal.Level} level
- * @param {Internal.ParticleOptions_} particle
+ * @param {$Level_} level
+ * @param {$ParticleOptions_} particle
  * @param {Vec3Like} pos
  * @param {number|Vec3Like} v
  * @param {number} count
@@ -63,7 +65,7 @@ const spawnParticles = (
 }
 
 /**
- * @param {Internal.Level} level
+ * @param {$Level_} level
  * @param {Vec3Like} pos
  * @param {number} count
  * @param {number} spread
@@ -107,8 +109,8 @@ const spawnEffectParticles = (level, pos, count, spread, color) => {
 }
 
 /**
- * @param {Internal.Level} level
- * @param {BlockPos_} pos
+ * @param {$Level_} level
+ * @param {$BlockPos_} pos
  */
 const debugBlockPos = (level, pos) => {
   repeat(level.server, 60, 10, () => {
@@ -126,8 +128,8 @@ const debugBlockPos = (level, pos) => {
 
 /**
  * Visualizes an AABB in world with particle effects to help debug.
- * @param {Internal.Level} level
- * @param {Internal.AABB} aabb
+ * @param {$Level_} level
+ * @param {$AABB_} aabb
  */
 const debugAABB = (level, aabb) => {
   const [x1, y1, z1] = [aabb.minX, aabb.minY, aabb.minZ]

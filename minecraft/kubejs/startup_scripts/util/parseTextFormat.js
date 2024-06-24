@@ -5,7 +5,7 @@
  * this helper returns a text component with the tag formatting applied.
  * Unlike real XML, this syntax allows for tags to be overlapped.
  *
- * Any valid method of Internal.MutableComponent can be used as a tag.
+ * Any valid method of MutableComponent can be used as a tag.
  *
  * Example usage:
  *   global.parseTextFormat(
@@ -14,7 +14,7 @@
  *     '<italic>italic <green> italic and green </italic> green </green>')
  *
  * @param {string} t
- * @returns {Internal.MutableComponent}
+ * @returns {$MutableComponent_}
  */
 global.parseTextFormat = (t) => {
   let modifiers = {}

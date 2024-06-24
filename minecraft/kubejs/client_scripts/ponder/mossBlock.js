@@ -3,9 +3,9 @@
 Ponder.registry((e) => {
   /**
    * Helper methods for spawning composter growth particles
-   * @param {Internal.ExtendedSceneBuilder} scene
-   * @param {Internal.SceneBuildingUtilDelegate} util
-   * @param {BlockPos} pos
+   * @param {$ExtendedSceneBuilder_} scene
+   * @param {$SceneBuildingUtilDelegate_} util
+   * @param {$BlockPos_} pos
    */
   const spawnGrowthParticles = (scene, util, pos) => {
     scene.particles
