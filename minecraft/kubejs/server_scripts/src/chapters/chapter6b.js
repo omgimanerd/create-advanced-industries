@@ -235,7 +235,7 @@ ServerEvents.recipes((e) => {
     .energize(20000)
     .loops(4)
     .outputs('gag:time_sand_pouch')
-  // The output item for this recipe does not match since .modifyResult will
+  // The output item for this recipe does not matter since .modifyResult will
   // dynamically add 1000 to the input item's nbt value.
   e.shapeless(Item.of('gag:time_sand_pouch', { grains: 1000 }), [
     'gag:time_sand_pouch',
@@ -324,7 +324,7 @@ ServerEvents.recipes((e) => {
         .enchant('kubejs:nutrient_infusion', 1)
         .weakNBT()
     )
-    // .fill(Fluid.of('kubejs:'))
+    .fill(Fluid.of('create_enchantment_industry:experience', 50))
     .deploy('kubejs:fish_hook')
     .outputs('thermal:deep_aquachow')
 

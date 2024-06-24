@@ -15,12 +15,9 @@ ServerEvents.recipes((e) => {
     [
       '  I', //
       'I I', //
-      ' IL', //
+      ' I ', //
     ],
-    {
-      I: 'minecraft:iron_nugget',
-      L: 'thermal:lead_nugget',
-    }
+    { I: 'minecraft:iron_nugget' }
   )
   redefineRecipe(
     'minecraft:fishing_rod',
