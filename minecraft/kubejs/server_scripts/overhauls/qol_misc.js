@@ -4,9 +4,37 @@
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
   const pneumaticcraft = definePneumaticcraftRecipes(e)
+  const redefineRecipe = redefineRecipe_(e)
 
   // Another source of green dye
   e.blasting('minecraft:green_dye', 'minecraft:kelp')
+
+  // Fish hooks and fishing rods.
+  e.shaped(
+    'kubejs:fish_hook',
+    [
+      '  I', //
+      'I I', //
+      ' IL', //
+    ],
+    {
+      I: 'minecraft:iron_nugget',
+      L: 'thermal:lead_nugget',
+    }
+  )
+  redefineRecipe(
+    'minecraft:fishing_rod',
+    [
+      '  S', //
+      ' ST', //
+      'S H', //
+    ],
+    {
+      S: 'minecraft:stick',
+      T: 'minecraft:string',
+      H: 'kubejs:fish_hook',
+    }
+  )
 
   // Craftable ways to get some of Quark's nice stones.
   create.compacting('quark:jasper', 'minecraft:granite')

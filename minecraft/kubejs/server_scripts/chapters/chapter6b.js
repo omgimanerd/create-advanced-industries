@@ -159,7 +159,7 @@ ServerEvents.recipes((e) => {
     .energize(50000)
     .outputs([
       'apotheosis:epic_material',
-      Item.of('apotheosis:epic_material').withChance(0.25),
+      Item.of('tfmg:limesand').withChance(0.5),
     ])
   create // Mythic Material: Godforged Pearl
     .SequencedAssembly('minecraft:ender_pearl')
@@ -201,6 +201,23 @@ ServerEvents.recipes((e) => {
     'apotheotic_additions:esoteric_material',
     filledXpCrystal,
     1000000
+  )
+
+  // Heart of Diamond from quark
+  create.mechanical_crafting(
+    'quark:diamond_heart',
+    [
+      'AAAAA', //
+      'ADDDA', //
+      'ADMDA', //
+      'ADDDA', //
+      'AAAAA', //
+    ],
+    {
+      A: 'createutilities:polished_amethyst',
+      D: 'minecraft:diamond',
+      M: 'kubejs:crystalline_mechanism',
+    }
   )
 
   // Phantom membranes
@@ -300,10 +317,16 @@ ServerEvents.recipes((e) => {
     'minecraft:slime_ball',
   ])
   e.remove({ id: 'thermal:deep_aquachow_4' })
-  create.filling('thermal:deep_aquachow', [
-    'thermal:aquachow',
-    Fluid.of('create_enchantment_industry:experience', 250),
-  ])
+  create
+    .SequencedAssembly('thermal:aquachow')
+    .deploy(
+      Item.of('kubejs:fish_chum')
+        .enchant('kubejs:nutrient_infusion', 1)
+        .weakNBT()
+    )
+    // .fill(Fluid.of('kubejs:'))
+    .deploy('kubejs:fish_hook')
+    .outputs('thermal:deep_aquachow')
 
   // Nautilus shells can also be crushed into limestone dust.
   create.milling('tfmg:limesand', 'minecraft:nautilus_shell')
@@ -325,7 +348,7 @@ ServerEvents.recipes((e) => {
       'kubejs:totem_head_casing',
       'kubejs:incomplete_totem_head'
     )
-    .deploy('minecraft:end_crystal')
+    .deploy('minecraft:end_crystal') // TODO end crystals are expensive
     .deploy('create:brass_sheet')
     .energize(50000)
     .outputs('kubejs:totem_head')

@@ -157,4 +157,7 @@ StartupEvents.registry('item', (e) => {
     .texture(getTextureLocation('minecraft:honeycomb'))
     .glow(true)
     .displayName('Saturated Honeycomb')
+
+  // Fish hook
+  registerItem('kubejs:fish_hook')
 })
