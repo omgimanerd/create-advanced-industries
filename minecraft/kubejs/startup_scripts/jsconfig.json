@@ -14,8 +14,7 @@
         "skipLibCheck": true
     },
     "include": [
-        "./**/*",
-        null,
-        "./src/**/*"
+        "./src/**/*",
+        null
     ]
 }
