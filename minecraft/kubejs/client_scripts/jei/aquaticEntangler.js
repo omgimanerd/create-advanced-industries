@@ -65,7 +65,7 @@ JEIAddedEvents.registerCategories((e) => {
           // 'minecraft:barrier' instead.
           if (entry.item === undefined) entry.item = 'minecraft:barrier'
           builder
-            .addSlot('input', xBaseOffset + xOffset, yBaseOffset + yOffset)
+            .addSlot('output', xBaseOffset + xOffset, yBaseOffset + yOffset)
             .setBackground(guiHelper.getSlotDrawable(), -1, -1)
             .addItemStack(Item.of(entry.item, entry.count))
             .addTooltipCallback(
