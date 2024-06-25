@@ -52,14 +52,35 @@
 				"What an insane sequence of automations. I hope you enjoyed playing this chapter as much as I enjoyed designing it!"
 			]
 			id: "3D27BD07DCC89201"
-			rewards: [{
-				count: 16
-				id: "33A5818D27186218"
-				item: "kubejs:logistics_mechanism"
-				type: "item"
-			}]
+			rewards: [
+				{
+					count: 16
+					id: "33A5818D27186218"
+					item: "kubejs:logistics_mechanism"
+					type: "item"
+				}
+				{
+					count: 8
+					id: "1F1652F29674B8A9"
+					item: "refinedstorage:basic_processor"
+					type: "item"
+				}
+				{
+					count: 8
+					id: "4B47B8BA8F08B473"
+					item: "refinedstorage:improved_processor"
+					type: "item"
+				}
+				{
+					count: 8
+					id: "64596B9502BC3BAD"
+					item: "refinedstorage:advanced_processor"
+					type: "item"
+				}
+			]
 			size: 2.0d
 			tasks: [{
+				count: 16L
 				id: "28EA7B628245E855"
 				item: "kubejs:logistics_mechanism"
 				type: "item"

@@ -61,6 +61,7 @@
 			]
 			size: 2.0d
 			tasks: [{
+				count: 16L
 				id: "4CBA31340600085C"
 				item: "tfmg:steel_mechanism"
 				type: "item"

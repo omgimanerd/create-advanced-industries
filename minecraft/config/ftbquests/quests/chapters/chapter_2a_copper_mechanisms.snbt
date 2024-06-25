@@ -159,6 +159,7 @@
 			]
 			size: 2.0d
 			tasks: [{
+				count: 16L
 				id: "2E9CA64348FE83FE"
 				item: "kubejs:copper_mechanism"
 				type: "item"

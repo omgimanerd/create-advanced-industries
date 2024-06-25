@@ -483,4 +483,7 @@ ServerEvents.recipes((e) => {
     .fill(Fluid.of('kubejs:infused_dragon_breath', 250))
     .vibrate(200)
     .outputs('create_things_and_misc:vibration_mechanism')
+
+  // TODO alternative uses for warden tendrils
+  // TODO alternative uses for infused dragon's breath
 })

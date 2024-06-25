@@ -11,7 +11,22 @@
 	quests: [
 		{
 			dependencies: ["4D63CE15F77DBB4D"]
+			description: [
+				"Chapter 6b."
+				""
+				"This chapter may look short, but it involves a lot of unconventional automations and problem solving. You'll also need to defeat Minecraft's 3 bosses in order to progress in this chapter. However, this should be a piece of cake with the god tier Apotheosis items you'll have access to from this chapter's progression."
+				""
+				"Since we are making Vibration mechanisms, a major theme of this chapter is resonance and vibration, and you'll see several new crafting mechanics introduced. Use the custom ponders and JEI categories to figure them out."
+				""
+				"Get creative with it!"
+			]
 			id: "34CBF7A7AD9BF9D8"
+			min_width: 280
+			rewards: [{
+				id: "703CBD2A4A7A4DF3"
+				item: "minecraft:enchanted_golden_apple"
+				type: "item"
+			}]
 			tasks: [{
 				id: "2C84E18B3D5B7212"
 				title: "Start"
@@ -22,6 +37,11 @@
 		}
 		{
 			dependencies: ["6DC625AE49A9B01A"]
+			description: [
+				"Find and defeat the Warden."
+				""
+				"You can use a biome compass to find the Deep Dark."
+			]
 			icon: {
 				Count: 1b
 				id: "ftbquests:custom_icon"
@@ -30,6 +50,7 @@
 				}
 			}
 			id: "75A7D7288DF25E12"
+			size: 2.0d
 			tasks: [
 				{
 					icon: {
@@ -52,12 +73,18 @@
 				}
 			]
 			title: "Defeat the Warden"
-			x: 5.0d
-			y: 1.5d
+			x: 12.0d
+			y: -2.0d
 		}
 		{
 			dependencies: ["34CBF7A7AD9BF9D8"]
+			description: ["You'll need to travel the End in order to complete some of the quests in this chapter. A lot of the quest progress will be non-linear."]
 			id: "6FA6FE01DAE88F07"
+			rewards: [{
+				id: "6A1E1F846F9CD008"
+				type: "xp_levels"
+				xp_levels: 10
+			}]
 			size: 2.0d
 			tasks: [{
 				dimension: "minecraft:the_end"
@@ -65,11 +92,17 @@
 				id: "599E467B972577FF"
 				type: "dimension"
 			}]
+			title: "Visit the End"
 			x: -2.0d
 			y: 0.0d
 		}
 		{
 			dependencies: ["6DC625AE49A9B01A"]
+			description: [
+				"Summon and defeat the wither. This is the only one of the bosses that you'll need to automate."
+				""
+				"See the quest branch below for help on automating the wither."
+			]
 			icon: {
 				Count: 1b
 				id: "ftbquests:custom_icon"
@@ -78,6 +111,7 @@
 				}
 			}
 			id: "3E42BEA143D5E555"
+			size: 2.0d
 			tasks: [
 				{
 					icon: {
@@ -100,8 +134,8 @@
 				}
 			]
 			title: "Defeat the Wither"
-			x: 8.5d
-			y: 0.5d
+			x: 12.0d
+			y: 2.0d
 		}
 		{
 			dependencies: ["2F688322DCF88E56"]
@@ -111,8 +145,8 @@
 				item: "apotheosis:common_material"
 				type: "item"
 			}]
-			x: 0.5d
-			y: -11.0d
+			x: 0.0d
+			y: -10.0d
 		}
 		{
 			dependencies: [
@@ -125,8 +159,8 @@
 				item: "apotheosis:uncommon_material"
 				type: "item"
 			}]
-			x: 2.5d
-			y: -11.0d
+			x: 2.0d
+			y: -10.0d
 		}
 		{
 			dependencies: [
@@ -139,8 +173,8 @@
 				item: "apotheosis:rare_material"
 				type: "item"
 			}]
-			x: 4.5d
-			y: -11.0d
+			x: 4.0d
+			y: -10.0d
 		}
 		{
 			dependencies: [
@@ -153,8 +187,8 @@
 				item: "apotheosis:epic_material"
 				type: "item"
 			}]
-			x: 6.5d
-			y: -11.0d
+			x: 6.0d
+			y: -10.0d
 		}
 		{
 			dependencies: [
@@ -167,8 +201,8 @@
 				item: "apotheosis:mythic_material"
 				type: "item"
 			}]
-			x: 8.5d
-			y: -11.0d
+			x: 8.0d
+			y: -10.0d
 		}
 		{
 			dependencies: [
@@ -181,8 +215,8 @@
 				item: "apotheotic_additions:artifact_material"
 				type: "item"
 			}]
-			x: 12.5d
-			y: -11.0d
+			x: 12.0d
+			y: -10.0d
 		}
 		{
 			dependencies: [
@@ -195,8 +229,8 @@
 				item: "apotheosis:ancient_material"
 				type: "item"
 			}]
-			x: 10.5d
-			y: -11.0d
+			x: 10.0d
+			y: -10.0d
 		}
 		{
 			dependencies: [
@@ -209,8 +243,8 @@
 				item: "apotheotic_additions:heirloom_material"
 				type: "item"
 			}]
-			x: 14.5d
-			y: -11.0d
+			x: 14.0d
+			y: -10.0d
 		}
 		{
 			dependencies: [
@@ -223,202 +257,261 @@
 				item: "apotheotic_additions:esoteric_material"
 				type: "item"
 			}]
-			x: 16.5d
-			y: -11.0d
+			x: 16.0d
+			y: -10.0d
 		}
 		{
 			dependencies: ["6DC625AE49A9B01A"]
+			description: ["Go to the end and defeat the ender dragon."]
 			id: "7F0A4231CA344359"
+			size: 2.0d
 			tasks: [{
 				id: "5D3CA59758B2C08A"
 				item: "minecraft:dragon_head"
 				type: "item"
 			}]
 			title: "Defeat the Ender Dragon"
-			x: 8.5d
-			y: -2.0d
+			x: 12.0d
+			y: 0.0d
 		}
 		{
 			dependencies: ["34CBF7A7AD9BF9D8"]
+			description: [
+				"First, you might want to make yourself some enchanted gear. You'll need to bonk some bosses next."
+				""
+				"This wouldn't be an automation pack if you weren't allowed to automate yourself to god-tier."
+				""
+				"Dare I say, you're automating yourself to &oapotheosis&r."
+				""
+				""
+				""
+				"Apotheosis: [noun] the elevation of someone to divine status; deification"
+			]
 			id: "6DC625AE49A9B01A"
+			rewards: [{
+				count: 15
+				id: "73851393FABF8508"
+				item: "minecraft:bookshelf"
+				type: "item"
+			}]
 			tasks: [{
 				id: "0AF9648B4710A90C"
 				item: "minecraft:enchanting_table"
 				type: "item"
 			}]
-			x: 4.0d
-			y: -0.5d
-		}
-		{
-			id: "4798028C47F41935"
-			tasks: [{
-				id: "2B058330A0224329"
-				item: "minecraft:experience_bottle"
-				type: "item"
-			}]
-			x: 14.5d
+			x: 8.0d
 			y: 0.0d
 		}
 		{
 			dependencies: ["57F92618AAF3CAD1"]
+			description: ["Bottles of hyper enchanting store more experience than your standard experience bottle, but with hyper experience automated, you can automate a lot of other high power enchanting."]
 			id: "72812DB3D0C75B7D"
 			tasks: [{
 				id: "15B9E185876EA094"
 				item: "create_enchantment_industry:hyper_experience_bottle"
 				type: "item"
 			}]
-			x: 19.0d
-			y: 0.0d
+			x: 26.0d
+			y: -2.0d
 		}
 		{
 			dependencies: ["7F0A4231CA344359"]
+			description: [
+				"A dragon head without the dragon is still a potent source of dragon's breath. Right click the dragon head to spew its breath out. You can right click it with a bottle to store it, or automate this with a deployer."
+				""
+				"Ponder the dragon head for an example."
+			]
 			id: "509B4F9E047728B6"
 			tasks: [{
 				id: "45DEB4EA69ED76CB"
 				item: "minecraft:dragon_breath"
 				type: "item"
 			}]
-			x: 10.5d
-			y: -2.0d
+			x: 18.0d
+			y: 0.0d
 		}
 		{
-			dependencies: ["509B4F9E047728B6"]
+			dependencies: [
+				"509B4F9E047728B6"
+				"72812DB3D0C75B7D"
+			]
+			description: [
+				"Infusing dragon's breath with concentrated hyper experience turns it into a powerful magical catalyst."
+				""
+				"You'll need this anyway to unlock level 100 enchants."
+			]
 			id: "16B375C5FB372B05"
 			tasks: [{
 				id: "02D6EC5D025BC752"
 				item: "apotheosis:infused_breath"
 				type: "item"
 			}]
-			x: 12.5d
-			y: -2.0d
+			x: 26.0d
+			y: 0.0d
 		}
 		{
-			dependencies: [
-				"4798028C47F41935"
-				"27B9B80E471D7E0A"
-			]
+			dependencies: ["27B9B80E471D7E0A"]
+			description: ["Fill the XP Condenser and compact it, and then drain out the condensed hyper experience."]
 			id: "57F92618AAF3CAD1"
 			tasks: [{
 				id: "0CFB6FC1C0BAD7E7"
 				item: "kubejs:xp_condenser"
 				type: "item"
 			}]
-			x: 17.5d
-			y: -0.5d
+			x: 24.0d
+			y: -2.0d
 		}
 		{
 			dependencies: ["3E44FFF4BA96011E"]
+			description: ["Once you've purged all the pests from the infested, you'll be left with a very clean looking piece of end stone."]
 			id: "3F43A33616FC68DB"
 			tasks: [{
 				id: "08B10E8D1AABDC10"
 				item: "minecraft:end_stone"
 				type: "item"
 			}]
-			x: 7.0d
-			y: 10.0d
+			x: 12.0d
+			y: 8.0d
 		}
 		{
+			dependencies: ["54116F1A0F3B59AE"]
+			description: ["Infested stone can be made by haunting stone."]
 			id: "6DD93F52A87B6B32"
 			tasks: [{
 				id: "65279C634CE68D69"
 				item: "minecraft:infested_stone"
 				type: "item"
 			}]
-			x: 1.0d
-			y: 9.5d
+			x: 8.0d
+			y: 8.0d
 		}
 		{
 			dependencies: ["6DD93F52A87B6B32"]
+			description: [
+				"By applying a Vial of Searing Expulsion to infested stone, you can purge the pesky silverfish from it."
+				""
+				"Ponder a piece of infested stone for an explanation of this mechanic."
+			]
 			id: "3E44FFF4BA96011E"
 			tasks: [{
 				id: "0893719755706541"
 				item: "apotheosis:vial_of_expulsion"
 				type: "item"
 			}]
-			x: 3.0d
-			y: 9.5d
+			x: 10.0d
+			y: 8.0d
 		}
 		{
 			dependencies: ["4953FDEB278D7D6D"]
+			description: [
+				"Skeleton skulls need to be dyed black and withered to turn into their wither skeleton counterpart. This can be cycled, but you'll need a wither skeleton skull to start the process."
+				""
+				"Good thing the previous quest gave you one!"
+			]
 			id: "33C97AA4A311E69E"
 			tasks: [{
 				id: "36A2F5F8042A0CD9"
 				item: "minecraft:wither_skeleton_skull"
 				type: "item"
 			}]
-			x: 9.5d
+			x: 18.0d
 			y: 4.0d
 		}
 		{
 			dependencies: ["10ED9E8F35405C5B"]
+			description: [
+				"Once you've gotten your bones, you can turn them into skeleton skulls with resonance crafting."
+				""
+				"As a reminder, ponder the note block for an explanation of this mechanic."
+			]
 			id: "4953FDEB278D7D6D"
+			rewards: [{
+				id: "43471A673F7860E7"
+				item: "minecraft:wither_skeleton_skull"
+				type: "item"
+			}]
 			tasks: [{
 				id: "2F2B98D0A39D8CE4"
 				item: "minecraft:skeleton_skull"
 				type: "item"
 			}]
-			x: 7.5d
-			y: 5.5d
+			x: 12.0d
+			y: 4.0d
 		}
 		{
 			dependencies: [
 				"2FDA2B5BEB8A1870"
 				"7392D59B8CCAA871"
 			]
+			description: ["Benthic aqua-chow is required to fish up bones from the deep ocean."]
 			id: "10ED9E8F35405C5B"
 			tasks: [{
 				id: "66A6E2403AA4FB7B"
 				item: "minecraft:bone"
 				type: "item"
 			}]
-			x: 3.0d
-			y: 5.5d
+			x: 10.0d
+			y: 4.0d
 		}
 		{
+			dependencies: ["34CBF7A7AD9BF9D8"]
+			description: ["You'll need lots of bones to summon the wither. Fishing them up from the deep ocean is one accessible way to get it, but you can totally automate this a ton of different ways."]
 			id: "2FDA2B5BEB8A1870"
 			tasks: [{
 				id: "62D08A6447E4C939"
 				item: "thermal:device_fisher"
 				type: "item"
 			}]
-			x: 0.0d
-			y: 4.5d
+			x: 8.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["2FDA2B5BEB8A1870"]
+			description: ["Aqua-chow is needed as bait in the aquatic entanger. This can be cycled fairly easily with all the fish you're getting."]
 			id: "482F9D1480AA9724"
 			tasks: [{
 				id: "50179B1A903FDF22"
 				item: "thermal:aquachow"
 				type: "item"
 			}]
-			x: 0.5d
-			y: 6.5d
+			x: 8.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["482F9D1480AA9724"]
+			description: [
+				"Benthic Aquachow works much better and gives you access to different drops in different biomes."
+				""
+				"See the aquatic entangler JEI category for more information."
+			]
 			id: "7392D59B8CCAA871"
 			tasks: [{
 				id: "40F70A5AC79DE240"
 				item: "thermal:deep_aquachow"
 				type: "item"
 			}]
-			x: 2.0d
-			y: 7.0d
+			x: 10.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["368E09F5D73E4623"]
+			description: [
+				"All that hard work!"
+				""
+				"Steel mechanisms can be crushed into scrap metal."
+			]
 			id: "2F688322DCF88E56"
 			tasks: [{
 				id: "13F90932128C5343"
 				item: "tfmg:steel_mechanism"
 				type: "item"
 			}]
-			x: 0.5d
-			y: -9.0d
+			x: 0.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["368E09F5D73E4623"]
+			description: ["Temporal pouches can accelerate ticking block entities, and rapidly age blocks. By aging a block of green wool, we can get fancy timeworn fabric."]
 			id: "39E975A9D4DE7F5C"
 			tasks: [{
 				id: "326C84106663CABC"
@@ -429,90 +522,122 @@
 				}
 				type: "item"
 			}]
-			x: 2.5d
-			y: -9.0d
+			x: 2.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["368E09F5D73E4623"]
+			description: [
+				"Oh the misery!"
+				""
+				"Process and crush down our hard earned crystalline mechanisms to get luminous crystal shards."
+			]
 			id: "561F418F1FD38167"
 			tasks: [{
 				id: "1FFAB43FA1BA9FDE"
 				item: "kubejs:crystalline_mechanism"
 				type: "item"
 			}]
-			x: 4.5d
-			y: -9.0d
+			x: 4.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["368E09F5D73E4623"]
+			description: ["Arcane sand can be produced with a copious amount of source and energy."]
 			id: "110F774F37291024"
 			tasks: [{
 				id: "13FE4A54EA1E1747"
 				item: "tfmg:limesand"
 				type: "item"
 			}]
-			x: 6.5d
-			y: -9.0d
+			x: 6.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["368E09F5D73E4623"]
+			description: ["With some honey and some (a lot) of energy, ender pearls can be turned into mythic pearls."]
 			id: "0CB1B6A224213A49"
 			tasks: [{
 				id: "55DB5E9C4D40ECB6"
 				item: "minecraft:ender_pearl"
 				type: "item"
 			}]
-			x: 8.5d
-			y: -9.0d
+			x: 8.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["368E09F5D73E4623"]
+			description: ["With some effort, even totems of undying can be automated, but the chain of requirements is fairly complex."]
 			id: "64E010C80BF00E49"
 			tasks: [{
 				id: "200123E9B99908C0"
 				item: "minecraft:totem_of_undying"
 				type: "item"
 			}]
-			x: 10.5d
-			y: -9.0d
+			x: 10.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["368E09F5D73E4623"]
+			description: [
+				"How does this not result in a burnt mess?"
+				""
+				"In any case, high heat and haunting result in firey artifact shards."
+			]
 			id: "472AB2BD7D00F943"
 			tasks: [{
 				id: "1E6C7F550D1BD749"
 				item: "farmersdelight:pasta_with_meatballs"
 				type: "item"
 			}]
-			x: 12.5d
-			y: -9.0d
+			x: 12.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["368E09F5D73E4623"]
+			description: ["Did you automate amethyst and diamonds in Chapter 5b? You'll need them to craft heart of diamonds, which are needed for high end Apotheotic gems."]
 			id: "6EA6A5AFFB959648"
 			tasks: [{
 				id: "059ED14CA6B0F8D9"
 				item: "quark:diamond_heart"
 				type: "item"
 			}]
-			x: 14.5d
-			y: -9.0d
+			x: 14.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["368E09F5D73E4623"]
+			description: [
+				"Thermal's Insightful Crystal is another way to store experience, and you'll need a filled one to craft galactic cores."
+				""
+				""
+				"Do you want to know a secret? This one actually isn't Thermal's item. I reimplemented it entirely in KubeJS to make it work with CEI's experience fluid."
+			]
 			id: "41647584BA0BA5DE"
 			tasks: [{
 				id: "0D970EB28C5D869E"
 				item: "kubejs:xp_crystal"
 				type: "item"
 			}]
-			x: 16.5d
-			y: -9.0d
+			x: 16.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["6DC625AE49A9B01A"]
+			description: [
+				"You will need to be able to perform a level 100 enchantment in order to progress."
+				""
+				"This requires you to progress through Apotheosis's enchantment tiers. By this point, the previous automations you've done should make this easy, but you can ponder the enchantment table for an explanation of how Apotheosis works."
+				""
+				"We'll leave this as another exercise to the reader."
+			]
 			icon: "apotheosis:draconic_endshelf"
 			id: "7CB4CC65BC442750"
+			rewards: [{
+				id: "08583E64791608C7"
+				type: "xp_levels"
+				xp_levels: 10
+			}]
 			tasks: [
 				{
 					id: "799C10E5A514DECF"
@@ -526,10 +651,12 @@
 				}
 			]
 			title: "Level 100 Enchanting"
-			x: 4.0d
-			y: -2.5d
+			x: 8.0d
+			y: -2.0d
 		}
 		{
+			dependencies: ["7CB4CC65BC442750"]
+			description: ["Got your Apotheosis book handy? A core part of this chapter is automating the Apotheosis material tiers. The progression of the overall chapters is tired to the branch above."]
 			id: "368E09F5D73E4623"
 			tasks: [{
 				id: "1A8E7BB2AC777498"
@@ -542,11 +669,12 @@
 				}
 				type: "item"
 			}]
-			x: 8.5d
-			y: -5.0d
+			x: 8.0d
+			y: -4.0d
 		}
 		{
-			dependencies: ["30446B095114BCB2"]
+			dependencies: ["440B300027FC2527"]
+			description: ["You should have no trouble beating the cheese out of any boss with gems of this quality."]
 			id: "5D5CDD8A20C12CD2"
 			tasks: [{
 				id: "184A18A585056048"
@@ -562,17 +690,49 @@
 				}
 				type: "item"
 			}]
-			x: 18.5d
-			y: -11.0d
+			x: 28.0d
+			y: -10.0d
 		}
 		{
+			dependencies: [
+				"16B375C5FB372B05"
+				"5D5CDD8A20C12CD2"
+				"79B15D4E12B329B9"
+				"243F51DA64564519"
+			]
+			description: [
+				"Vibration Mechanisms complete!"
+				""
+				"You can unlock Creative flight with this, among other things."
+			]
 			id: "7D45EDB6BB83E369"
+			rewards: [
+				{
+					count: 16
+					id: "4A9884F52CDC4489"
+					item: "create_things_and_misc:vibration_mechanism"
+					type: "item"
+				}
+				{
+					id: "445F7B153DD67D47"
+					item: "minecraft:nether_star"
+					type: "item"
+				}
+				{
+					id: "57E078D8C6F3539B"
+					item: "apotheotic_additions:esoteric_material"
+					type: "item"
+				}
+			]
+			size: 2.0d
 			tasks: [{
+				count: 16L
 				id: "38B2988D5AB71446"
 				item: "create_things_and_misc:vibration_mechanism"
 				type: "item"
 			}]
-			x: 27.5d
+			title: "Complete: Vibration Mechanisms"
+			x: 28.0d
 			y: 0.0d
 		}
 		{
@@ -580,17 +740,23 @@
 				"3E42BEA143D5E555"
 				"33C97AA4A311E69E"
 			]
+			description: ["Once you have a steady source of wither skeleton skulls, you can summon the wither in an automated fashion. There's a ton of different ways to do this with or without Create, so we'll leave this one up to you."]
 			id: "0CE7E80FB2C2864E"
 			tasks: [{
 				id: "5ADFEAA86A43CBA1"
 				item: "minecraft:nether_star"
 				type: "item"
 			}]
-			x: 10.5d
-			y: 2.5d
+			x: 18.0d
+			y: 2.0d
 		}
 		{
 			dependencies: ["34CBF7A7AD9BF9D8"]
+			description: [
+				"Resonance Crafting is a new crafting mechanic introduced in this chapter. Ponder the note block to see how it works."
+				""
+				"[Ponder WIP]"
+			]
 			id: "15B159D7F4360A0D"
 			tasks: [{
 				id: "27F2BA4515132EF1"
@@ -598,34 +764,45 @@
 				type: "item"
 			}]
 			x: 0.0d
-			y: -2.5d
+			y: -2.0d
 		}
 		{
 			dependencies: ["6651B17B190DD8F4"]
+			description: [
+				"While you can shear or pump honey out of a beehive, you can also apply a Vial of Arcane Extraction to a beehive to get its drops. Be careful of this method though, as it will result in a powerful explosion."
+				""
+				"Ponder the beehive for an explanation of this mechanic."
+			]
 			id: "77C422DDE35B606E"
 			tasks: [{
 				id: "54B1149D5E684E74"
 				item: "apotheosis:vial_of_extraction"
 				type: "item"
 			}]
-			x: 2.5d
-			y: 16.0d
+			x: 10.0d
+			y: 12.0d
 		}
 		{
-			dependencies: ["4798028C47F41935"]
+			dependencies: ["7B5467831BDED907"]
+			description: ["To get your first XP Condenser, you'll need a level 100 enchant."]
 			id: "27B9B80E471D7E0A"
 			tasks: [{
 				id: "0C849E1A576A258A"
 				item: "kubejs:inert_xp_condenser"
 				type: "item"
 			}]
-			x: 14.5d
-			y: -1.5d
+			x: 22.0d
+			y: -2.0d
 		}
 		{
 			dependencies: [
 				"6749065CD841CA97"
 				"5850D98AF6ECC0B8"
+			]
+			description: [
+				"With these ingredients, you can brew a potion of flying."
+				""
+				"While this can give you temporary creative flight, the Vibration Mechanism at the end of this chapter unlocks a better method for it."
 			]
 			id: "79B15D4E12B329B9"
 			tasks: [{
@@ -639,56 +816,73 @@
 				}
 				type: "item"
 			}]
-			x: 17.0d
-			y: 9.5d
+			x: 28.0d
+			y: 10.0d
 		}
 		{
 			dependencies: ["7FBFDCE728DC6848"]
+			description: [
+				"Haunting the honeycombs will turn them into phantom membranes."
+				""
+				"Phantoms are disabled in this pack (also because they're just annoying), so this is the best way to reliably farm them."
+			]
 			id: "5850D98AF6ECC0B8"
 			tasks: [{
 				id: "5603FB176FC6735B"
 				item: "minecraft:phantom_membrane"
 				type: "item"
 			}]
-			x: 9.0d
-			y: 15.5d
+			x: 28.0d
+			y: 12.0d
 		}
 		{
 			dependencies: ["4F4169E360108B65"]
+			description: ["Process the chorus fruit into popped chorus fruit."]
 			id: "6749065CD841CA97"
 			tasks: [{
 				id: "742F55CDA1D5C8FD"
 				item: "minecraft:popped_chorus_fruit"
 				type: "item"
 			}]
-			x: 9.5d
-			y: 11.5d
+			x: 14.0d
+			y: 10.0d
 		}
 		{
 			dependencies: ["77C422DDE35B606E"]
+			description: ["WIP"]
 			id: "3C447206C2554E96"
+			invisible: true
 			tasks: [{
 				id: "7DD56D9AF7B8CEE7"
 				item: "kubejs:saturated_honeycomb"
 				type: "item"
 			}]
-			x: 4.5d
-			y: 15.0d
+			x: 10.0d
+			y: 14.0d
 		}
 		{
 			dependencies: ["77C422DDE35B606E"]
+			description: ["Whichever method you choose, the resulting honeycombs are needed for the next step."]
 			id: "7FBFDCE728DC6848"
 			tasks: [{
 				id: "2FB3783962131CA2"
 				item: "minecraft:honeycomb"
 				type: "item"
 			}]
-			x: 4.5d
-			y: 16.0d
+			x: 14.0d
+			y: 12.0d
 		}
 		{
+			dependencies: ["54116F1A0F3B59AE"]
+			description: ["You'll need a beehive to farm honey, both for this quest branch and the Apotheotic materials branch above."]
 			icon: "minecraft:beehive"
 			id: "6651B17B190DD8F4"
+			rewards: [{
+				count: 4
+				id: "02A6E99E2CCBD959"
+				item: "minecraft:bee_spawn_egg"
+				type: "item"
+			}]
 			tasks: [
 				{
 					id: "13BFD4CD1D894C1D"
@@ -710,89 +904,106 @@
 					type: "observation"
 				}
 			]
-			x: 0.5d
-			y: 16.5d
+			x: 8.0d
+			y: 12.0d
 		}
 		{
 			dependencies: ["17891BFF4285EF31"]
+			description: ["The harvested chorus fruit will be used for many things beyond this chapter as well."]
 			id: "4F4169E360108B65"
 			tasks: [{
 				id: "203D6953BBDF00FC"
 				item: "minecraft:chorus_fruit"
 				type: "item"
 			}]
-			x: 4.5d
-			y: 12.5d
+			x: 10.0d
+			y: 10.0d
 		}
 		{
+			dependencies: ["54116F1A0F3B59AE"]
+			description: ["Chorus flower farms should be easy to set up with Create."]
 			id: "17891BFF4285EF31"
 			tasks: [{
 				id: "7A33C5AAE77E1F8F"
 				item: "minecraft:chorus_flower"
 				type: "item"
 			}]
-			x: 0.5d
-			y: 12.0d
+			x: 8.0d
+			y: 10.0d
 		}
 		{
+			dependencies: ["589AA35E84EB3568"]
+			description: [
+				"Warden tendril seeds can only be planted on sculk, and only grow in complete darkness. They are extremely fragile, and since sculk does not provide any nutrients, you'll need to bonemeal the heck out of them."
+				""
+				"Once they are grown though, you can harvest them for a renewable source of ender pearls."
+			]
 			id: "0CE3CEC9D82F1BB9"
 			tasks: [{
 				id: "2AEAC8DE0FD1FDBD"
 				item: "minecraft:ender_pearl"
 				type: "item"
 			}]
-			x: 5.5d
-			y: 3.0d
+			x: 18.0d
+			y: -2.0d
 		}
 		{
 			dependencies: ["75A7D7288DF25E12"]
+			description: [
+				"Once you have your first warden tendril, you can craft a seed from it with resonance crafting."
+				""
+				"As a reminder, ponder the note block for an explanation of this mechanic."
+			]
 			id: "589AA35E84EB3568"
 			tasks: [{
 				id: "393058B882C692C3"
 				item: "kubejs:warden_tendril_vine_seed"
 				type: "item"
 			}]
-			x: 6.5d
-			y: 1.5d
+			x: 16.0d
+			y: -2.0d
 		}
 		{
 			dependencies: ["0CE3CEC9D82F1BB9"]
+			description: ["Resonant ender pearls are needed for the Apotheotic materials quest branch above, and are produced with resonance crafting. These will come up again in another chapter ;)"]
 			id: "053EDF3FC60882BD"
 			tasks: [{
 				id: "78952F615CFE93DA"
 				item: "kubejs:resonant_ender_pearl"
 				type: "item"
 			}]
-			x: 7.0d
-			y: 3.0d
+			x: 18.0d
+			y: -4.0d
 		}
 		{
 			dependencies: [
 				"0CE7E80FB2C2864E"
 				"73263EC95364E1E4"
 			]
+			description: ["End crystals require both nether stars and purpur slabs."]
 			id: "243F51DA64564519"
 			tasks: [{
 				id: "7561606C118A67DE"
 				item: "minecraft:end_crystal"
 				type: "item"
 			}]
-			x: 16.5d
-			y: 5.5d
+			x: 26.0d
+			y: 2.0d
 		}
 		{
 			dependencies: [
 				"3F43A33616FC68DB"
 				"6749065CD841CA97"
 			]
+			description: ["Purpur blocks are made by combining end stone and chorus fruit."]
 			id: "4EA372BB98EA4567"
 			tasks: [{
 				id: "3CFEACA78E04807E"
 				item: "minecraft:purpur_block"
 				type: "item"
 			}]
-			x: 9.5d
-			y: 9.5d
+			x: 14.0d
+			y: 8.0d
 		}
 		{
 			dependencies: ["4EA372BB98EA4567"]
@@ -802,8 +1013,75 @@
 				item: "minecraft:purpur_slab"
 				type: "item"
 			}]
-			x: 13.5d
-			y: 6.5d
+			x: 26.0d
+			y: 8.0d
+		}
+		{
+			dependencies: ["0CE3CEC9D82F1BB9"]
+			description: ["Godforged pearls are needed for more than Apotheosis, they are a necessary ingredient for the XP Condenser."]
+			id: "7B5467831BDED907"
+			tasks: [{
+				id: "78A2F6EA12806949"
+				item: "apotheosis:mythic_material"
+				type: "item"
+			}]
+			x: 20.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["34CBF7A7AD9BF9D8"]
+			description: ["This checkmark is here to straighten out the quest dependency lines. Nothing to see here. "]
+			id: "54116F1A0F3B59AE"
+			rewards: [{
+				id: "5330C8D25DDCD9F8"
+				item: "farmersdelight:pasta_with_meatballs"
+				type: "item"
+			}]
+			tasks: [{
+				id: "31A3BFD04D7E49DC"
+				type: "checkmark"
+			}]
+			x: 0.0d
+			y: 12.0d
+		}
+		{
+			dependencies: ["7CB4CC65BC442750"]
+			description: [
+				"You'll need lots and lots of experience to perform these enchantments."
+				""
+				"Good thing you automated that in Chapter 5b ... right?"
+				""
+				"It might be helpful to have an automated setup to drain and store experience."
+			]
+			id: "5D8DA0C9F8A9F573"
+			tasks: [{
+				id: "48B99CA4BD699ECE"
+				item: "create_enchantment_industry:disenchanter"
+				type: "item"
+			}]
+			x: 6.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["30446B095114BCB2"]
+			description: ["With all the apotheotic materials, you start from the lowest quality of gem and steadily upgrade it to a cosmic tier gem with ungodly amounts of power."]
+			id: "440B300027FC2527"
+			tasks: [{
+				id: "5E85FAB837C26849"
+				item: {
+					Count: 1b
+					id: "apotheosis:gem"
+					tag: {
+						affix_data: {
+							rarity: "apotheosis:common"
+						}
+						gem: "apotheotic_additions:modded/ars_mana"
+					}
+				}
+				type: "item"
+			}]
+			x: 18.0d
+			y: -10.0d
 		}
 	]
 	title: "Chapter 6b: Vibration Mechanisms"

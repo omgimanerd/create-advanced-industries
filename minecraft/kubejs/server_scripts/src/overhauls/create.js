@@ -504,7 +504,7 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'balancedflight:sequenced_assembly/flight_anchor' })
   create
     .SequencedAssembly('minecraft:beacon')
-    .deploy('kubejs:crystalline_mechanism')
+    .deploy('create_things_and_misc:vibration_mechanism')
     .deploy('create_connected:brass_gearbox')
     .fill(potionFluid('apotheosis:extra_long_flying', 1000))
     .energize(10000000)

@@ -70,13 +70,15 @@
 					type: "item"
 				}
 				{
-					id: "35A9E7FABB9CC972"
-					type: "xp"
-					xp: 100
+					count: 16
+					id: "1D434D001F2EE298"
+					item: "ars_nouveau:source_gem"
+					type: "item"
 				}
 			]
 			size: 2.0d
 			tasks: [{
+				count: 16L
 				id: "30DDACD9E1044275"
 				item: "kubejs:source_mechanism"
 				type: "item"

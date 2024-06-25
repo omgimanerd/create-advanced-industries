@@ -50,14 +50,23 @@
 				"Then filling it with the right potions will solidify it to the final Crystalline Mechanism."
 			]
 			id: "5E9CD0318E0403BD"
-			rewards: [{
-				count: 16
-				id: "697D384B868A68D2"
-				item: "kubejs:crystalline_mechanism"
-				type: "item"
-			}]
+			rewards: [
+				{
+					count: 16
+					id: "697D384B868A68D2"
+					item: "kubejs:crystalline_mechanism"
+					type: "item"
+				}
+				{
+					count: 64
+					id: "69A033EF21A99AE1"
+					item: "create:experience_nugget"
+					type: "item"
+				}
+			]
 			size: 2.0d
 			tasks: [{
+				count: 16L
 				id: "62E20D469B9A024E"
 				item: "kubejs:crystalline_mechanism"
 				type: "item"

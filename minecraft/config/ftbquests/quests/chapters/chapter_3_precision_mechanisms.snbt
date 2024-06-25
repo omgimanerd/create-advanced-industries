@@ -71,6 +71,7 @@
 			]
 			size: 2.0d
 			tasks: [{
+				count: 16L
 				id: "12FD4E64758D90DB"
 				item: "create:precision_mechanism"
 				type: "item"
@@ -494,6 +495,7 @@
 					type: "item"
 				}
 			]
+			title: "Visit the Nether"
 			x: -2.0d
 			y: 0.0d
 		}

@@ -374,13 +374,15 @@
 					type: "item"
 				}
 				{
-					id: "6D9B80A3A9E867FF"
-					type: "xp"
-					xp: 100
+					count: 16
+					id: "47EF11FF92E9B0AD"
+					item: "create:andesite_alloy"
+					type: "item"
 				}
 			]
 			size: 2.0d
 			tasks: [{
+				count: 16L
 				id: "7175424A0E95216E"
 				item: "kubejs:andesite_mechanism"
 				type: "item"
