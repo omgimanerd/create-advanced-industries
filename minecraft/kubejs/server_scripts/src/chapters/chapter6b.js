@@ -224,8 +224,6 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'minecraft:honey_block' })
   create.haunting('minecraft:phantom_membrane', 'minecraft:honeycomb')
 
-  // TODO: overhaul ender pearl automation
-
   // Overhauled recipe for Temporal Pouch
   e.remove({ id: 'gag:time_sand_pouch' })
   create
@@ -410,13 +408,6 @@ ServerEvents.recipes((e) => {
     .energize(40000)
     .outputs('minecraft:wither_skeleton_skull')
 
-  // defeat the warden
-
-  // smithing template netherite upgrade duping
-
-  // neural processor
-  // drop ascended coins into a well?
-
   // Chorus fruit alternative pathways
   create
     .pressurizing('minecraft:chorus_fruit')
@@ -447,9 +438,17 @@ ServerEvents.recipes((e) => {
     }
   )
 
+  // Infused dragon's breath alternative
+  pneumaticcraft
+    .fluid_mixer(
+      Fluid.of('create_central_kitchen:dragon_breath', 1),
+      Fluid.of('create_enchantment_industry:hyper_experience', 1)
+    )
+    .pressure(4.8)
+    .time(20)
+    .fluid_output('kubejs:infused_dragon_breath', 1)
+
   // End crystal overhaul
-  // TODO evaluate the downstream effects of this, totem of undying requires
-  // end crystal
   e.remove({ id: 'minecraft:end_crystal' })
   create
     .SequencedAssembly('minecraft:glass_pane')
@@ -480,7 +479,8 @@ ServerEvents.recipes((e) => {
       'Cosmic Source Jewel'
     )
     .deploy('create_things_and_misc:rose_quartz_sheet')
-    .fill(potionFluid('apotheosis:extra_long_flying'))
+    .fill(potionFluid('apotheosis:extra_long_flying', 250))
+    .fill(Fluid.of('kubejs:infused_dragon_breath', 250))
     .vibrate(200)
     .outputs('create_things_and_misc:vibration_mechanism')
 })

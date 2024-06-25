@@ -52,11 +52,6 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:bone",
-          "weight": 10
-        },
-        {
-          "type": "minecraft:item",
           "name": "minecraft:string",
           "weight": 5
         },
@@ -72,20 +67,13 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:ink_sac",
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": 10,
-              "add": false
-            }
-          ],
-          "weight": 5
+          "name": "minecraft:rotten_flesh",
+          "weight": 10
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:rotten_flesh",
-          "weight": 10
+          "name": "minecraft:kelp",
+          "weight": 1
         }
       ]
     }

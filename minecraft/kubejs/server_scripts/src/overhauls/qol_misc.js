@@ -64,4 +64,9 @@ ServerEvents.recipes((e) => {
     'minecraft:gold_ingot',
     'create:brass_ingot'
   )
+
+  // smithing template netherite upgrade duping
+
+  // neural processor
+  // drop ascended coins into a well?
 })

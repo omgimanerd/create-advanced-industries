@@ -9,6 +9,10 @@
       "bonus_rolls": 0,
       "entries": [
         {
+          "type": "minecraft:empty",
+          "weight": 20
+        },
+        {
           "type": "minecraft:item",
           "name": "minecraft:cod",
           "weight": 45,
