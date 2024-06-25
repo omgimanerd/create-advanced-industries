@@ -50,4 +50,10 @@ StartupEvents.registry('fluid', (e) => {
     .thinTexture(0xcbb8db)
     .bucketColor(0xcbb8db)
     .displayName('Liquid Water Essence')
+
+  // Infused Dragon's Breath
+  e.create('kubejs:infused_dragon_breath')
+    .thickTexture(0xe7b7cd)
+    .noBucket()
+    .displayName("Infused Dragon's Breath")
 })

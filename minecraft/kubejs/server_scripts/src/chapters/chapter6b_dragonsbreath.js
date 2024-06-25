@@ -94,3 +94,19 @@ ItemEvents.rightClicked('minecraft:glass_bottle', (e) => {
   const { item, player, target, level } = e
   customDragonsBreathBottling(item, player, target, level)
 })
+
+ServerEvents.recipes((e) => {
+  const create = defineCreateRecipes(e)
+
+  // Filling and emptying for infused dragon's breath, which makes Create
+  // support the fluid in filters and right click actions on drains and buckets.
+  // Create mod I love you.
+  create.filling('apotheosis:infused_breath', [
+    'minecraft:glass_bottle',
+    Fluid.of('kubejs:infused_dragon_breath', 250),
+  ])
+  create.emptying(
+    ['minecraft:glass_bottle', Fluid.of('kubejs:infused_dragon_breath', 250)],
+    'apotheosis:infused_breath'
+  )
+})
