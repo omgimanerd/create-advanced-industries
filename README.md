@@ -12,6 +12,7 @@ loved and I wanted to design my own. I stand on the shoulders of giants and
 this would absolutely not exist without the amazing work they've done to inspire
 me.
 
+
 ## Summary
 
 There are 6 [TBD] chapters of quest progression that work very similarly, in
@@ -41,8 +42,19 @@ cp minecraft/configs/packetfixer.properties.committed minecraft/configs/packetfi
 cp minecraft/configs/quark-common.toml.committed minecraft/configs/quark-common.toml
 ```
 
+
+## Packaging for release from Prism
+Notes mostly for me.
+
+- Tag release in git
+- Export as curseforge zip
+  - Tick `defaultconfigs/`, `kubejs/`, `icon.png`
+  - Untick `options.txt`, `config/jei/world`
+
+
 ## Author(s)
   - omgimanerd
+
 
 ## License
   - [Mozilla Public License 2.0](LICENSE)
