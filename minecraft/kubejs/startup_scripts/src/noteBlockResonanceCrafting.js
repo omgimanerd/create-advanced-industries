@@ -1,8 +1,7 @@
 // priority: 999
 
-// require() imports in 1.20 MUST use double quotes because of a bug in ProbeJS
-const { $CompoundTag } = require("packages/net/minecraft/nbt/$CompoundTag") // prettier-ignore
-const { $ItemStack } = require("packages/net/minecraft/world/item/$ItemStack") // prettier-ignore
+const $CompoundTag = Java.loadClass('net.minecraft.nbt.CompoundTag')
+const $ItemStack = Java.loadClass('net.minecraft.world.item.ItemStack')
 
 global.RESONANCE_CRAFTING = 'kubejs:resonance_crafting'
 

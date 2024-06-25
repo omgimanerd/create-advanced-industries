@@ -11,4 +11,5 @@ zip server-pack-$(git describe --tags --abbrev=0).zip \
   start.sh \
   variables.txt \
   -x \
-  kubejs/probe\*
+  mods/probejs* \
+  config/jei/world/*
