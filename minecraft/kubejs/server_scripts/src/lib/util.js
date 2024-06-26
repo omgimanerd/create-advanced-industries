@@ -35,14 +35,14 @@ const removeUnusedKeys = (pattern, keys) => {
 
 /**
  * @callback RedefineRecipeCallback
- * @param {$ItemStack_} output
+ * @param {Internal.ItemStack_} output
  * @param {string[]} shape
  * @param {{string:$ItemStack_}=} keys
  *
  * Wrapper to define a utility function in the given RecipesEventJS context that
  * wraps the shaped/shapeless recipe definitions to redefine a recipe for
  * a given item.
- * @param {$RecipesEventJS_} e
+ * @param {Internal.RecipesEventJS_} e
  * @returns {RedefineRecipeCallback}
  */
 const redefineRecipe_ = (e) => {
@@ -121,21 +121,21 @@ const setIfValid = (o, key, value) => {
 }
 
 /**
- * @param {$Potion_} potionId
+ * @param {Internal.Potion_} potionId
  * @param {number} quantity
- * @returns {$FluidStackJS_}
+ * @returns {Internal.FluidStackJS_}
  */
 const potionFluid = (
-  /** @type {$Potion_} */ potionId,
+  /** @type {Internal.Potion_} */ potionId,
   /** @type {number} */ quantity
 ) => {
   return Fluid.of('create:potion', quantity).withNBT({ Potion: potionId })
 }
 
 /**
- * @param {$Enchantment_} enchantment
+ * @param {Internal.Enchantment_} enchantment
  * @param {number} level
- * @returns {$Ingredient_}
+ * @returns {Internal.Ingredient_}
  */
 const enchantedBook = (enchantment, level) => {
   return Item.of('minecraft:enchanted_book')

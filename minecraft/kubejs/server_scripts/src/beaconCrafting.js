@@ -14,9 +14,9 @@ BlockEvents.rightClicked('minecraft:beacon', (e) => {
    * Helper method to perform the processing for each beacon beam's collision
    * box. Handles checking all entities with the collision box and spawning
    * firework particles along the length of the box.
-   * @param {$AABB_} aabb
+   * @param {Internal.AABB_} aabb
    * @param {number[]} color
-   * @param {$BlockContainerJS_} block
+   * @param {Internal.BlockContainerJS_} block
    * @param {number} baseDelay
    */
   const processEntitiesInCollisionBox = (aabb, color, block, baseDelay) => {

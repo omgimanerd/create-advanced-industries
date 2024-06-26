@@ -118,8 +118,8 @@ global.ResonanceCraftingRecipes = {}
  *
  * @typedef {Object} NoteBlockResonanceRecipeDataJEI
  * @property {string} type
- * @property {$ItemStack_} input
- * @property {$ItemStack_} output
+ * @property {Internal.ItemStack_} input
+ * @property {Internal.ItemStack_} output
  * @property {{note:string, instrument:$Instrument_}[]} sequence
  * @property {boolean=} hideSequence
  *
@@ -129,8 +129,8 @@ global.ResonanceCraftingRecipesJEI = []
 
 /**
  * This is the method used to register Resonance Crafting recipes.
- * @param {$InputItem_} input
- * @param {$OutputItem_} output
+ * @param {InputItem_} input
+ * @param {OutputItem_} output
  * @param {(string|{note:string, instrument:$Instrument_})[]} notes
  * @param {boolean} hideSequence
  */
@@ -154,7 +154,7 @@ global.RegisterResonanceCraftingRecipe = (
   /**
    * Helper to generate the transitional items.
    * @param {number} step
-   * @returns {$ItemStack_}
+   * @returns {Internal.ItemStack_}
    */
   let transitionalItem = (step) => {
     return input
@@ -227,7 +227,7 @@ global.RegisterResonanceCraftingRecipe = (
  * Event handler for when a note block is played to enable resonance crafting.
  * Handler registered here to allow for easy reloading.
  *
- * @param {$NoteBlockEvent} e
+ * @param {Internal.NoteBlockEvent} e
  */
 global.NoteBlockEventHandler = (e) => {
   if (e.level.isClientSide()) return
@@ -303,7 +303,7 @@ StartupEvents.postInit(() => {
   /**
    * Internal helper to get all items for a list of item ids or tags.
    * @param {string[]} tags
-   * @returns {$List_}
+   * @returns {Internal.List}
    */
   const getAllItemStacks = (tags) => {
     const itemStacks = Utils.newList()

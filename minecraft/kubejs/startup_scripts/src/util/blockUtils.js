@@ -3,7 +3,7 @@
 /**
  * Generates a list of Vec3i objects containing all the integral coordinates
  * within the given AABB, max inclusive
- * @param {$AABB_} aabb
+ * @param {Internal.AABB_} aabb
  * @returns {Vec3i[]}
  */
 global.getOffsetList = (aabb) => {
@@ -21,7 +21,7 @@ global.getOffsetList = (aabb) => {
 /**
  * Generates a list of Vec3i objects containing all the integral block
  * coordinates with the given AABB, max exclusive.
- * @param {$AABB_} aabb
+ * @param {Internal.AABB_} aabb
  * @returns {BlockPos[]}
  */
 global.getBlockList = (aabb) => {
@@ -38,14 +38,14 @@ global.getBlockList = (aabb) => {
 
 /**
  * Returns the total internal volume of the given AABB.
- * @param {$AABB_} aabb
+ * @param {Internal.AABB_} aabb
  */
 global.getVolume = (aabb) => {
   return aabb.getXsize() * aabb.getYsize() * aabb.getZsize()
 }
 
 /**
- * @param {$BlockContainerJS_} block
+ * @param {Internal.BlockContainerJS_} block
  */
 global.getSurroundingBlocks = (block) => {
   return [

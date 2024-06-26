@@ -9,8 +9,8 @@ global.TimePouchCraftingRecipes = {}
 
 /**
  * Registers a Time Pouch Crafting recipe.
- * @param {$Block_} input The block that will be converted
- * @param {$Block_} output The block to be converted to
+ * @param {Internal.Block_} input The block that will be converted
+ * @param {Internal.Block_} output The block to be converted to
  * @param {number} cost The cost in grains of time. 20 grains = 20 ticks = 1s
  */
 global.RegisterTimePouchCraftingRecipe = (input, output, cost) => {

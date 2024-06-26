@@ -49,10 +49,10 @@ JEIAddedEvents.registerRecipes((e) => {
   }
 
   /**
-   * @param {$ItemStack_} itemStack
-   * @param {$List_} books
-   * @param {$List_} results
-   * @returns {$IJeiAnvilRecipe_}
+   * @param {Internal.ItemStack_} itemStack
+   * @param {Internal.List} books
+   * @param {Internal.List} results
+   * @returns {Internal.IJeiAnvilRecipe_}
    */
   const createAnvilRecipe = (itemStack, books, results) => {
     return vanillaRecipeFactory[

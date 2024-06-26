@@ -7,8 +7,8 @@ const $DeployerBlockEntity = Java.loadClass(
 
 /**
  * Animates the tank fluid amount at the given position.
- * @param {$ExtendedSceneBuilder_} scene
- * @param {$BlockPos_} position
+ * @param {Internal.ExtendedSceneBuilder_} scene
+ * @param {BlockPos_} position
  * @param {Special.Fluid} fluid
  * @param {number} from
  * @param {number} to
@@ -33,18 +33,18 @@ const animateTank = (scene, position, fluid, from, to, step) => {
 
 /**
  *
- * @param {$ExtendedSceneBuilder_} scene
- * @param {$BlockPos_} deployerPos
- * @param {$ItemStack_} item
+ * @param {Internal.ExtendedSceneBuilder_} scene
+ * @param {BlockPos_} deployerPos
+ * @param {Internal.ItemStack_} item
  */
 const setDeployerFilter = (scene, deployerPos, item) => {
   scene.world.setFilterData(deployerPos, $DeployerBlockEntity, item)
 }
 
 /**
- * @param {$ExtendedSceneBuilder_} scene
- * @param {$BlockPos_} deployerPos
- * @param {$ItemStack_} id
+ * @param {Internal.ExtendedSceneBuilder_} scene
+ * @param {BlockPos_} deployerPos
+ * @param {Internal.ItemStack_} id
  */
 const setDeployerHeldItem = (scene, deployerPos, id) => {
   scene.world.modifyBlockEntityNBT(deployerPos, (nbt) => {
@@ -56,8 +56,8 @@ const setDeployerHeldItem = (scene, deployerPos, id) => {
 }
 
 /**
- * @param {$ExtendedSceneBuilder_} scene
- * @param {$BlockPos_} pos
+ * @param {Internal.ExtendedSceneBuilder_} scene
+ * @param {BlockPos_} pos
  * @param {number} ticks
  * @param {boolean=} clearHand
  * @param {function=} onDeploy
@@ -77,8 +77,8 @@ const cycleDeployerMovement = (scene, pos, ticks, clearHand, onDeploy) => {
 }
 
 /**
- * @param {$ExtendedSceneBuilder_} scene
- * @param {$Entity_} entity
+ * @param {Internal.ExtendedSceneBuilder_} scene
+ * @param {Internal.Entity_} entity
  * @param {(number[])[]} movement
  */
 const lerpEntityMovement = (scene, entity, movements) => {

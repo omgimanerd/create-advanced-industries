@@ -1,7 +1,7 @@
 // priority: 100
 
 /**
- * @type {$CapabilityFluid$FluidIOItemStack_}
+ * @type {Internal.CapabilityFluid$FluidIOItemStack_}
  */
 global.customXpCrystalOnFill = (itemStack, fluidStack, simulate) => {
   const capacity = global.customXpCrystalCapacity(itemStack)
@@ -17,7 +17,7 @@ global.customXpCrystalOnFill = (itemStack, fluidStack, simulate) => {
 }
 
 /**
- * @type {$CapabilityFluid$FluidIOItemStack_}
+ * @type {Internal.CapabilityFluid$FluidIOItemStack_}
  */
 global.customXpCrystalOnDrain = (itemStack, resource, simulate) => {
   if (resource.amount === 0) return 0
@@ -32,7 +32,7 @@ global.customXpCrystalOnDrain = (itemStack, resource, simulate) => {
 
 /**
  * Right click event handler for the XP crystal.
- * @param {$ItemClickedEventJS_}
+ * @param {Internal.ItemClickedEventJS_}
  */
 ItemEvents.rightClicked('kubejs:xp_crystal', (e) => {
   const { player, item } = e

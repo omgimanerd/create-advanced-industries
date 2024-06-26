@@ -1,7 +1,7 @@
 // priority: 1000
 
 /**
- * @param {$MinecraftServer_} server
+ * @param {Internal.MinecraftServer_} server
  * @param {number} duration Duration to repeat the callback in ticks
  * @param {number} interval Repeat interval in ticks
  * @param {function} cb

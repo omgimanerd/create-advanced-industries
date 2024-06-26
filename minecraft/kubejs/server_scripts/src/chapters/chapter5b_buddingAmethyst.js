@@ -12,9 +12,9 @@ LootJS.modifiers((e) => {
 /**
  * Handler defined in startup_scripts/spoutHandlerRegistration.js
  * Defined here to allow for server side reload
- * @type {$SpecialSpoutHandlerEvent$SpoutHandler_}
- * @param {$BlockContainerJS_} block
- * @param {$FluidStackJS_} fluid
+ * @type {Internal.SpecialSpoutHandlerEvent$SpoutHandler_}
+ * @param {Internal.BlockContainerJS_} block
+ * @param {Internal.FluidStackJS_} fluid
  * @param {boolean} simulate
  * @returns {number} The amount of fluid used by the spout
  */
@@ -33,7 +33,7 @@ global.BuddingAmethystSpoutHandlerCallback = (block, fluid, simulate) => {
       growCandidates.push(surroundingBlock)
     }
   }
-  /** @type {$BlockContainerJS_} */
+  /** @type {Internal.BlockContainerJS_} */
   const candidate = global.choice(growCandidates)
   if (candidate === null) return 0
   // All possible short circuit conditions need to be evaluated before here.

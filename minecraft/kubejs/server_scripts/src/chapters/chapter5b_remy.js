@@ -22,7 +22,7 @@ BlockEvents.rightClicked((e) => {
 /**
  * Computes the loot and feeding cooldown from feeding food to Remy the Epicure
  * for the amethyst farming mechanic.
- * @param {$FoodProperties_} foodProperties
+ * @param {Internal.FoodProperties_} foodProperties
  * @param {number} repeatedFoodPenalty
  */
 const computeAmethystGolemFeedResults = (

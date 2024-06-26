@@ -5,7 +5,7 @@ const POLISHING_MEDIUM_SPEED = 2
 const POLISHING_HIGH_SPEED = 3
 
 /**
- * @param {$RecipesEventJS_} e
+ * @param {Internal.RecipesEventJS_} e
  */
 const defineCreateRecipes = (e) => {
   return {
@@ -70,8 +70,8 @@ const defineCreateRecipes = (e) => {
 
     /**
      * @callback SequencedAssemblyWrapper
-     * @param {$ItemStack_} input
-     * @param {$ItemStack_=} transitional
+     * @param {Internal.ItemStack_} input
+     * @param {Internal.ItemStack_=} transitional
      * @returns {SequencedAssembly}
      *
      * @type {SequencedAssemblyWrapper}

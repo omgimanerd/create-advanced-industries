@@ -15,7 +15,7 @@ StartupEvents.registry('enchantment', (e) => {
         return i.isEdible() && i.id !== 'artifacts:eternal_steak'
       })
     )
-    .canEnchant((/** @type {$ItemStack_} */ i) => {
+    .canEnchant((/** @type {Internal.ItemStack_} */ i) => {
       return i.isEdible() && i.id !== 'artifacts:eternal_steak'
     })
     .displayName('Nutrient Infusion')

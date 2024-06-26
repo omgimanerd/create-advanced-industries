@@ -1,7 +1,7 @@
 // priority: 900
 
 /**
- * @param {$RecipesEventJS_} e
+ * @param {Internal.RecipesEventJS_} e
  */
 const definePneumaticcraftRecipes = (e) => {
   return {
@@ -17,7 +17,7 @@ const definePneumaticcraftRecipes = (e) => {
     thermo_plant: e.recipes.pneumaticcraft.thermo_plant,
     heat_properties: e.recipes.pneumaticcraft.heat_properties,
     /**
-     * @param {$OutputItem_} result
+     * @param {OutputItem_} result
      * @param {string[]} pattern
      * @param {{[key in string]:$InputItem_} } key
      */
@@ -29,7 +29,7 @@ const definePneumaticcraftRecipes = (e) => {
       )
     },
     /**
-     * @param {$OutputItem_} result
+     * @param {OutputItem_} result
      * @param {string[]} pattern
      * @param {{[key in string]:InputItem_} } key
      */
@@ -41,7 +41,7 @@ const definePneumaticcraftRecipes = (e) => {
       )
     },
     /**
-     * @param {$OutputItem_} result
+     * @param {OutputItem_} result
      * @param {string[]} pattern
      * @param {{[key in string]:$InputItem_} } key
      */

@@ -41,7 +41,7 @@ const getTextureLocation = (name) => {
  * @callback RegisterItemCallback
  * @param {string} name
  * @param {string?} type
- * @returns {$BasicItemJS$Builder_}
+ * @returns {Internal.BasicItemJS$Builder_}
  *
  * @param {Registry.Item} e
  * @returns {RegisterItemCallback}

@@ -86,7 +86,7 @@ LootJS.modifiers((e) => {
 
   /**
    * @param {{ damageSource:string, customPredicate:function }} predicate
-   * @returns {$LootActionsBuilderJS_}
+   * @returns {Internal.LootActionsBuilderJS_}
    */
   const buildWanderingTraderPredicate = (predicate) => {
     const { damageSource, directKiller } = predicate

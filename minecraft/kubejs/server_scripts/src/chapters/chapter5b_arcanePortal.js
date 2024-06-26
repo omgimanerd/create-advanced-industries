@@ -16,7 +16,7 @@ BlockEvents.rightClicked('minecraft:crying_obsidian', (e) => {
 
 /**
  * Helper method for the Arcane Portal's block entity callback.
- * @param {$ItemStack_} item
+ * @param {Internal.ItemStack_} item
  */
 const checkPortalPickaxeSacrifice = (item) => {
   if (item.id !== 'minecraft:iron_pickaxe') return false
@@ -33,13 +33,13 @@ const checkPortalPickaxeSacrifice = (item) => {
 /**
  * Block entity defined in startup_scripts/blocks.js
  * Callback defined here to allow for server side reload
- * @type {$BlockEntityCallback_}
- * @param {$BlockEntityJS_} e
+ * @type {Internal.BlockEntityCallback_}
+ * @param {Internal.BlockEntityJS_} e
  */
 global.PortalBlockTickingCallback = (e) => {
   const { block, blockPos, level } = e
   /**
-   * @param {$SoundEvent_} sound
+   * @param {Internal.SoundEvent_} sound
    * @param {number} volume
    * @param {number} pitch
    */
@@ -59,7 +59,7 @@ global.PortalBlockTickingCallback = (e) => {
   // Eat wandering traders and enchanted pickaxes, yielding hearthstones.
   let laborersEaten = pdata.getInt('laborers_eaten')
   let pickaxesEaten = pdata.getInt('pickaxes_eaten')
-  for (const /** @type {$Entity_} */ entity of entities) {
+  for (const /** @type {Internal.Entity_} */ entity of entities) {
     if (entity.type === 'minecraft:wandering_trader') {
       entity.remove('killed')
       playSound('minecraft:entity.enderman.teleport', 2, 1)
@@ -110,7 +110,7 @@ global.PortalBlockTickingCallback = (e) => {
   if (nextEatTime === 0) {
     nextEatTime = currentTime + global.randRangeInt(200, 400)
   } else if (currentTime >= nextEatTime && surrounding.length > 0) {
-    /** @type {$BlockContainerJS_} */
+    /** @type {Internal.BlockContainerJS_} */
     let eatLocation = global.choice(surrounding)
     spawnParticles(
       level,

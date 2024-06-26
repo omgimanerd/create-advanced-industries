@@ -9,7 +9,7 @@
  * and rarity tier.
  * @param {string} id
  * @param {string} rarity
- * @returns {$ItemStack_}
+ * @returns {Internal.ItemStack_}
  */
 const getGemItem = (id, rarity) => {
   return Item.of('apotheosis:gem')
