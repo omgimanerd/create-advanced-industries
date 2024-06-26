@@ -44,6 +44,8 @@ ServerEvents.recipes((e) => {
   e.remove(/^tfmg:colored_concrete\/full_block\/[a-z_]+concrete/)
   e.remove({ id: 'tfmg:fractional_distillation/crude_oil' })
 
+  e.remove({ id: 'tfmg:compacting/thermite_powder' })
+
   ///////////////////////////////////
   // PneumaticCraft: Repressurized //
   ///////////////////////////////////
