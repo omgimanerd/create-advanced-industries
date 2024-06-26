@@ -2,7 +2,7 @@
 // Recipe overhauls for the Thermal Series mods
 
 ServerEvents.recipes((e) => {
-  // Generate utility functions from util.js
+  const create = defineCreateRecipes(e)
   const redefineRecipe = redefineRecipe_(e)
 
   ////////////////////
@@ -218,4 +218,13 @@ ServerEvents.recipes((e) => {
       Fluid.of('kubejs:crystal_growth_accelerator', 250),
     ])
   }
+
+  // Allow rubberwood to be centrifuged into latex.
+  create
+    .centrifuging(
+      [Fluid.of('thermal:latex', 250), Item.of('thermal:sawdust', 4)],
+      'thermal:rubberwood_log'
+    )
+    .minimalRPM(128)
+    .processingTime(20)
 })
