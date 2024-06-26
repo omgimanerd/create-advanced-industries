@@ -3,6 +3,43 @@
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
 
+  // Create stones metallurgy
+  // Remove default crushing recipes.
+  e.remove({ id: /^create:crushing\/crimsite.*$/ })
+  e.remove({ id: /^create:crushing\/asurine.*$/ })
+  e.remove({ id: /^create:crushing\/ochrum.*$/ })
+
+  // The four create stones veridium, ochrum, asurine, and crimsite can be
+  // processed into 8 different ore types with varying amounts of effort.
+  const oresToCrushed = {
+    'minecraft:raw_iron': 'create:crushed_raw_iron',
+    'minecraft:raw_copper': 'create:crushed_raw_gold',
+    'minecraft:raw_gold': 'create:crushed_raw_copper',
+    'create:raw_zinc': 'create:crushed_raw_zinc',
+    'thermal:raw_tin': 'create:crushed_raw_tin',
+    'thermal:raw_lead': 'create:crushed_raw_lead',
+    'thermal:raw_silver': 'create:crushed_raw_silver',
+    'thermal:raw_nickel': 'create:crushed_raw_nickel',
+  }
+
+  // Tier 1
+  const tier1Crushing = {
+    'create:crimsite': 'create:crushed_raw_iron',
+    'create:veridium': 'create:crushed_raw_copper',
+    'create:ochrum': 'create:crushed_raw_gold',
+    'create:asurine': 'create:crushed_raw_zinc',
+  }
+  for (const [stone, crushed] of Object.entries(tier1Crushing)) {
+    create.crushing(
+      [
+        Item.of(crushed),
+        Item.of(crushed).withChance(0.5),
+        Item.of('create:experience_nugget').withChance(0.25),
+      ],
+      stone
+    )
+  }
+
   // sculk farming to make enderium
   // enderium recipe from liquid hyper exp
 

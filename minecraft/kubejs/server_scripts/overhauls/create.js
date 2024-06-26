@@ -723,6 +723,8 @@ ServerEvents.recipes((e) => {
     }
   )
 
+  // TODO: fix recipes that use aluminum as an input
+
   // TODO: add efficient liquid concrete overhaul
   // Make pipes require a sheet
   const redefinePipeRecipe = (output, ingot, sheet) => {
