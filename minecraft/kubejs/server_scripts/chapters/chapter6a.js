@@ -3,7 +3,6 @@
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
 
-  // Create stones metallurgy
   // Remove default crushing recipes.
   e.remove({ id: /^create:crushing\/crimsite.*$/ })
   e.remove({ id: /^create:crushing\/asurine.*$/ })
@@ -13,13 +12,24 @@ ServerEvents.recipes((e) => {
   // processed into 8 different ore types with varying amounts of effort.
   const oresToCrushed = {
     'minecraft:raw_iron': 'create:crushed_raw_iron',
-    'minecraft:raw_copper': 'create:crushed_raw_gold',
-    'minecraft:raw_gold': 'create:crushed_raw_copper',
+    'minecraft:raw_copper': 'create:crushed_raw_copper',
+    'minecraft:raw_gold': 'create:crushed_raw_gold',
     'create:raw_zinc': 'create:crushed_raw_zinc',
     'thermal:raw_tin': 'create:crushed_raw_tin',
     'thermal:raw_lead': 'create:crushed_raw_lead',
     'thermal:raw_silver': 'create:crushed_raw_silver',
     'thermal:raw_nickel': 'create:crushed_raw_nickel',
+  }
+  for (const [raw, crushed] of Object.entries(oresToCrushed)) {
+    e.remove({ type: 'create:crushing', output: crushed })
+    create.crushing(
+      [
+        crushed,
+        Item.of(crushed).withChance(0.25),
+        Item.of('create:experience_nugget').withChance(0.1),
+      ],
+      raw
+    )
   }
 
   // Tier 1
@@ -39,6 +49,10 @@ ServerEvents.recipes((e) => {
       stone
     )
   }
+
+  // Tier 2
+
+  // Tier 3
 
   // sculk farming to make enderium
   // enderium recipe from liquid hyper exp
@@ -79,6 +93,9 @@ ServerEvents.recipes((e) => {
   create
     .compacting(Fluid.of('thermal:ender', 250), 'kubejs:resonant_ender_pearl')
     .superheated()
+
+  // Thermal alloys
+  e.remove({ id: /^thermal:fire_charge.*$/ })
 
   // Thermal alloys dusts
   e.remove({ id: 'thermal:lumium_dust_4' })
