@@ -4,29 +4,43 @@
 // metallurgy item and recipe registrations. Used by both startup_scripts and
 // server_scripts
 function MeltableItem(options) {
+  // The three storage forms of the metal/gem input.
   this.nugget = options.nugget
   this.ingot = options.ingot
   this.block = options.block
 
-  // If options.block is a forge tag, then specify a block for the melted fluid
-  // to cast back into. Mostly for glass.
-  this.blockCastingOutput = options.blockCastingOutput
+  // raw and crushed are only populated for non-alloy metals that have a raw
+  // form for metallurgy.
+  this.raw = options.raw
+  this.crushed = options.crushed
+
+  // Information about the fluid that the metal/gem will melt into to help with
+  // registration.
   this.fluid = options.fluid
+  this.fluidName = stripModPrefix(this.fluid)
+  this.fluidDisplayName = getDisplayName(this.fluid)
   this.fluidTags = options.fluidTags === undefined ? [] : options.fluidTags
   this.bucketColor = options.bucketColor
   this.noRegisterFluid = options.noRegisterFluid
   this.fluidTextureLocation = options.fluidTextureLocation
 
+  //  If options.block is a forge tag, then specify a block for the melted
+  // fluid to cast back into. Mostly for glass.
+  this.blockCastingOutput = options.blockCastingOutput
+
+  // Whether or not the ingot form should have a casting recipe, also mostly
+  // for glass.
   this.noIngotCastingRecipe = !!options.noIngotCastingRecipe
+
+  // The ratio at which the ingot converts to the block form, used to determine
+  // the amount of molten fluid that should result from melting a block.
   this.blockRatio = options.blockRatio
     ? options.blockRatio
     : MeltableItem.DEFAULT_BLOCK_RATIO
   this.requiresSuperheating = options.requiresSuperheating
 
-  // Names of the items that result from having the molten liquids poured into
+  // Names of the casts that result from having the molten liquids poured into
   // them.
-  this.fluidName = stripModPrefix(this.fluid)
-  this.fluidDisplayName = getDisplayName(this.fluid)
   this.ceramicMoltenIngotCast = `kubejs:ceramic_ingot_cast_${this.fluidName}`
   this.steelMoltenIngotCast = `kubejs:steel_ingot_cast_${this.fluidName}`
 }
@@ -131,6 +145,20 @@ MeltableItem.prototype.registerMeltingRecipes = function (e) {
     this.block,
     Fluid.of(this.fluid, MeltableItem.DEFAULT_INGOT_FLUID * this.blockRatio)
   )
+  if (this.raw) {
+    this.registerMeltingRecipe(
+      e,
+      this.raw,
+      Fluid.of(this.fluid, MeltableItem.DEFAULT_INGOT_FLUID)
+    )
+  }
+  if (this.crushed) {
+    this.registerMeltingRecipe(
+      e,
+      this.crushed,
+      Fluid.of(this.fluid, MeltableItem.DEFAULT_INGOT_FLUID)
+    )
+  }
   return this
 }
 
