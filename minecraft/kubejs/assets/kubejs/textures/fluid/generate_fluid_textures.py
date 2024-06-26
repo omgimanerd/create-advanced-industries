@@ -17,9 +17,12 @@ METAL_FLUIDS = {
     "molten_copper": (163, 59, 31),  # a33b1f
     "molten_gold": (236, 209, 41),  # ecd129
     "molten_zinc": (174, 189, 168),  # aebda8
-    "molten_brass": (209, 156, 57),  # d19c39
+    "molten_tin": (68, 105, 124),  # 44697c
     "molten_lead": (38, 38, 83),  # 262653
     "molten_silver": (168, 184, 191),  # a8b8bf
+    "molten_nickel": (219, 207, 150),  # dbcf96
+
+    "molten_brass": (209, 156, 57),  # d19c39
     "molten_glass": (206, 231, 230),  # cee7e6
     "molten_quartz": (158, 153, 153),  # 9e9999
     "molten_diamond": (30, 194, 195),  # 1ec2c3

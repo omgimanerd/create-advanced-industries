@@ -12,6 +12,7 @@ function MeltableItem(options) {
   // to cast back into. Mostly for glass.
   this.blockCastingOutput = options.blockCastingOutput
   this.fluid = options.fluid
+  this.fluidTags = options.fluidTags === undefined ? [] : options.fluidTags
   this.bucketColor = options.bucketColor
   this.noRegisterFluid = options.noRegisterFluid
   this.fluidTextureLocation = options.fluidTextureLocation
@@ -47,12 +48,16 @@ MeltableItem.STEEL_INGOT_CAST = 'kubejs:steel_ingot_cast'
  */
 MeltableItem.prototype.registerFluid = function (e) {
   if (!this.noRegisterFluid) {
-    e.create(this.fluid)
+    let fluid = e
+      .create(this.fluid)
       .bucketColor(this.bucketColor)
       .noBlock()
       .stillTexture(`kubejs:fluid/${this.fluidName}_still`)
       .flowingTexture(`kubejs:fluid/${this.fluidName}_flow`)
       .displayName(getDisplayName(this.fluidDisplayName))
+    this.fluidTags.forEach((tag) => {
+      fluid.tag(tag)
+    })
   }
 }
 

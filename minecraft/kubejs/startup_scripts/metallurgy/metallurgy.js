@@ -16,6 +16,7 @@ global.metallurgy.meltable_items = [
     ingot: 'minecraft:iron_ingot',
     block: 'minecraft:iron_block',
     fluid: 'kubejs:molten_iron',
+    fluidTags: ['kubejs:molten_metal'],
     bucketColor: 0x5a0303,
   }),
   new MeltableItem({
@@ -23,6 +24,7 @@ global.metallurgy.meltable_items = [
     ingot: 'minecraft:copper_ingot',
     block: 'minecraft:copper_block',
     fluid: 'kubejs:molten_copper',
+    fluidTags: ['kubejs:molten_metal'],
     bucketColor: 0xa33b1f,
   }),
   new MeltableItem({
@@ -30,6 +32,7 @@ global.metallurgy.meltable_items = [
     ingot: 'minecraft:gold_ingot',
     block: 'minecraft:gold_block',
     fluid: 'kubejs:molten_gold',
+    fluidTags: ['kubejs:molten_metal'],
     bucketColor: 0xecd129,
   }),
   new MeltableItem({
@@ -37,20 +40,23 @@ global.metallurgy.meltable_items = [
     ingot: 'create:zinc_ingot',
     block: 'create:zinc_block',
     fluid: 'kubejs:molten_zinc',
+    fluidTags: ['kubejs:molten_metal'],
     bucketColor: 0xaebda8,
   }),
   new MeltableItem({
-    nugget: 'create:brass_nugget',
-    ingot: 'create:brass_ingot',
-    block: 'create:brass_block',
-    fluid: 'kubejs:molten_brass',
-    bucketColor: 0xd19c39,
+    nugget: 'thermal:tin_nugget',
+    ingot: 'thermal:tin_ingot',
+    block: 'thermal:tin_block',
+    fluid: 'kubejs:molten_tin',
+    fluidTags: ['kubejs:molten_metal'],
+    bucketColor: 0x44697c,
   }),
   new MeltableItem({
     nugget: 'thermal:lead_nugget',
     ingot: 'thermal:lead_ingot',
     block: 'thermal:lead_block',
     fluid: 'kubejs:molten_lead',
+    fluidTags: ['kubejs:molten_metal'],
     bucketColor: 0x262653,
   }),
   new MeltableItem({
@@ -58,7 +64,23 @@ global.metallurgy.meltable_items = [
     ingot: 'thermal:silver_ingot',
     block: 'thermal:silver_block',
     fluid: 'kubejs:molten_silver',
+    fluidTags: ['kubejs:molten_metal'],
     bucketColor: 0xa8b8bf,
+  }),
+  new MeltableItem({
+    nugget: 'thermal:nickel_nugget',
+    ingot: 'thermal:nickel_ingot',
+    block: 'thermal:nickel_block',
+    fluid: 'kubejs:molten_nickel',
+    fluidTags: ['kubejs:molten_metal'],
+    bucketColor: 0xdbcf96,
+  }),
+  new MeltableItem({
+    nugget: 'create:brass_nugget',
+    ingot: 'create:brass_ingot',
+    block: 'create:brass_block',
+    fluid: 'kubejs:molten_brass',
+    bucketColor: 0xd19c39,
   }),
   new MeltableItem({
     ingot: 'tfmg:steel_ingot',
@@ -116,13 +138,6 @@ StartupEvents.registry('fluid', (e) => {
   global.metallurgy.meltable_items.forEach((i) => {
     i.registerFluid(e)
   })
-
-  // Molten Silicon cannot be casted, register it separately.
-  e.create('kubejs:molten_silicon')
-    .thickTexture(0x6e6074)
-    .bucketColor(0x6e6074)
-    .noBlock()
-    .displayName('Molten Silicon')
 })
 
 StartupEvents.registry('block', (e) => {
