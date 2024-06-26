@@ -553,7 +553,7 @@
 			description: [
 				"Steel is much harder than other metals, so it will take a little more effort to make plates."
 				""
-				"Your first batch of steel will be used to make the helve hammer."
+				"Your first batch of steel should be used to make the helve hammer so that you can make plates easily."
 			]
 			id: "79B63BFC11E77382"
 			tasks: [{
