@@ -202,6 +202,13 @@ ServerEvents.recipes((e) => {
 
   // Heavy plate overhaul
   e.remove({ id: 'tfmg:sequenced_assembly/heavy_plate' })
+  create
+    .SequencedAssembly('tfmg:steel_ingot')
+    .press(3)
+    .outputs([
+      Item.of('tfmg:heavy_plate').withChance(2),
+      Item.of('tfmg:steel_ingot').withChance(8),
+    ])
   create.hammering('tfmg:heavy_plate', 'tfmg:steel_ingot').hammerBlows(3)
 
   // Recipes for reusable steel casts
@@ -212,17 +219,12 @@ ServerEvents.recipes((e) => {
       'SSS', //
     ],
     {
-      S: 'tfmg:steel_ingot',
+      S: 'tfmg:heavy_plate',
     }
   )
   create
-    .SequencedAssembly('tfmg:heavy_plate')
-    .deploy('tfmg:steel_ingot')
-    .press(3)
-    .outputs([
-      'kubejs:steel_ingot_cast',
-      Item.of('tfmg:steel_ingot').withChance(0.25),
-    ])
+    .curving('kubejs:steel_ingot_cast', 'tfmg:heavy_plate')
+    .itemAsHead('vintageimprovements:v_shaped_curving_head')
 
   // Recipe for screwdriver with rebar overhaul.
   e.remove({ id: 'tfmg:stonecutting/rebar' })
