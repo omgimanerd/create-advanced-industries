@@ -2,6 +2,7 @@
 
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
+  const MeltableItem = global.MeltableItem
 
   const metals = [
     {
@@ -10,6 +11,7 @@ ServerEvents.recipes((e) => {
       dirty: 'kubejs:dirty_iron_dust',
       dust: 'thermal:iron_dust',
       ingot: 'minecraft:iron_ingot',
+      fluid: 'kubejs:molten_iron',
     },
     {
       raw: 'minecraft:raw_copper',
@@ -17,6 +19,7 @@ ServerEvents.recipes((e) => {
       dirty: 'kubejs:dirty_copper_dust',
       dust: 'thermal:copper_dust',
       ingot: 'minecraft:copper_ingot',
+      fluid: 'kubejs:molten_copper',
     },
     {
       raw: 'minecraft:raw_gold',
@@ -24,6 +27,7 @@ ServerEvents.recipes((e) => {
       dirty: 'kubejs:dirty_gold_dust',
       dust: 'thermal:gold_dust',
       ingot: 'minecraft:gold_ingot',
+      fluid: 'kubejs:molten_gold',
     },
     {
       raw: 'create:raw_zinc',
@@ -31,6 +35,7 @@ ServerEvents.recipes((e) => {
       dirty: 'kubejs:dirty_zinc_dust',
       dust: 'kubejs:zinc_dust',
       ingot: 'create:zinc_ingot',
+      fluid: 'kubejs:molten_zinc',
     },
     {
       raw: 'thermal:raw_tin',
@@ -38,6 +43,7 @@ ServerEvents.recipes((e) => {
       dirty: 'kubejs:dirty_tin_dust',
       dust: 'thermal:tin_dust',
       ingot: 'thermal:tin_ingot',
+      fluid: 'kubejs:molten_tin',
     },
     {
       raw: 'thermal:raw_lead',
@@ -45,6 +51,7 @@ ServerEvents.recipes((e) => {
       dirty: 'kubejs:dirty_lead_dust',
       dust: 'thermal:lead_dust',
       ingot: 'thermal:lead_ingot',
+      fluid: 'kubejs:molten_lead',
     },
     {
       raw: 'thermal:raw_silver',
@@ -52,6 +59,7 @@ ServerEvents.recipes((e) => {
       dirty: 'kubejs:dirty_silver_dust',
       dust: 'thermal:silver_dust',
       ingot: 'thermal:silver_ingot',
+      fluid: 'kubejs:molten_silver',
     },
     {
       raw: 'thermal:raw_nickel',
@@ -59,6 +67,7 @@ ServerEvents.recipes((e) => {
       dirty: 'kubejs:dirty_nickel_dust',
       dust: 'thermal:nickel_dust',
       ingot: 'thermal:nickel_ingot',
+      fluid: 'kubejs:molten_nickel',
     },
   ]
 
@@ -70,7 +79,7 @@ ServerEvents.recipes((e) => {
   // so it only handles the base registrations and the metallic forms of the
   // output, not the ore processing.
 
-  for (const { raw, crushed, dirty, dust, ingot } of metals) {
+  for (const { raw, crushed, dirty, dust, ingot, fluid } of metals) {
     // Overhaul crushing the raw ore to the crushed form.
     e.remove({ type: 'create:crushing', output: crushed })
     create.crushing(
@@ -88,8 +97,28 @@ ServerEvents.recipes((e) => {
     // The crushed form can also be smelted into ingots.
     e.blasting(ingot, dirty)
 
+    // Dirty dust can be melted for a slight gain and slag output
+    create
+      .mixing(
+        [
+          Fluid.of(
+            fluid,
+            MeltableItem.DEFAULT_INGOT_FLUID +
+              2 * MeltableItem.DEFAULT_NUGGET_FLUID
+          ),
+          'thermal:slag',
+        ],
+        dirty
+      )
+      .heated()
+
     // Dirty dust can be washed to the regular dust form.
     create.splashing([dust, Item.of(dust).withChance(0.1)], dirty)
+
+    // Regular dust can always be melted
+    create
+      .mixing(Fluid.of(fluid, MeltableItem.DEFAULT_INGOT_FLUID), dust)
+      .heated()
   }
 
   // Only zinc dust does not have a smelting recipe since it was custom.
