@@ -15,8 +15,6 @@ global.metallurgy.meltable_items = [
     nugget: 'minecraft:iron_nugget',
     ingot: 'minecraft:iron_ingot',
     block: 'minecraft:iron_block',
-    raw: 'minecraft:raw_iron',
-    crushed: 'create:crushed_raw_iron',
     fluid: 'kubejs:molten_iron',
     fluidTags: ['kubejs:molten_metal'],
     bucketColor: 0x5a0303,
@@ -25,8 +23,6 @@ global.metallurgy.meltable_items = [
     nugget: 'create:copper_nugget',
     ingot: 'minecraft:copper_ingot',
     block: 'minecraft:copper_block',
-    raw: 'minecraft:raw_copper',
-    crushed: 'create:crushed_raw_copper',
     fluid: 'kubejs:molten_copper',
     fluidTags: ['kubejs:molten_metal'],
     bucketColor: 0xa33b1f,
@@ -35,8 +31,6 @@ global.metallurgy.meltable_items = [
     nugget: 'minecraft:gold_nugget',
     ingot: 'minecraft:gold_ingot',
     block: 'minecraft:gold_block',
-    raw: 'minecraft:raw_gold',
-    crushed: 'create:crushed_raw_gold',
     fluid: 'kubejs:molten_gold',
     fluidTags: ['kubejs:molten_metal'],
     bucketColor: 0xecd129,
@@ -45,8 +39,6 @@ global.metallurgy.meltable_items = [
     nugget: 'create:zinc_nugget',
     ingot: 'create:zinc_ingot',
     block: 'create:zinc_block',
-    raw: 'create:raw_zinc',
-    crushed: 'create:crushed_raw_zinc',
     fluid: 'kubejs:molten_zinc',
     fluidTags: ['kubejs:molten_metal'],
     bucketColor: 0xaebda8,
@@ -55,8 +47,6 @@ global.metallurgy.meltable_items = [
     nugget: 'thermal:tin_nugget',
     ingot: 'thermal:tin_ingot',
     block: 'thermal:tin_block',
-    raw: 'thermal:raw_tin',
-    crushed: 'create:crushed_raw_tin',
     fluid: 'kubejs:molten_tin',
     fluidTags: ['kubejs:molten_metal'],
     bucketColor: 0x44697c,
@@ -65,8 +55,6 @@ global.metallurgy.meltable_items = [
     nugget: 'thermal:lead_nugget',
     ingot: 'thermal:lead_ingot',
     block: 'thermal:lead_block',
-    raw: 'thermal:raw_lead',
-    crushed: 'create:crushed_raw_lead',
     fluid: 'kubejs:molten_lead',
     fluidTags: ['kubejs:molten_metal'],
     bucketColor: 0x262653,
@@ -75,8 +63,6 @@ global.metallurgy.meltable_items = [
     nugget: 'thermal:silver_nugget',
     ingot: 'thermal:silver_ingot',
     block: 'thermal:silver_block',
-    raw: 'thermal:raw_silver',
-    crushed: 'create:crushed_raw_silver',
     fluid: 'kubejs:molten_silver',
     fluidTags: ['kubejs:molten_metal'],
     bucketColor: 0xa8b8bf,
@@ -85,8 +71,6 @@ global.metallurgy.meltable_items = [
     nugget: 'thermal:nickel_nugget',
     ingot: 'thermal:nickel_ingot',
     block: 'thermal:nickel_block',
-    raw: 'thermal:raw_nickel',
-    crushed: 'create:crushed_raw_silver',
     fluid: 'kubejs:molten_nickel',
     fluidTags: ['kubejs:molten_metal'],
     bucketColor: 0xdbcf96,
@@ -171,4 +155,26 @@ StartupEvents.registry('block', (e) => {
   global.metallurgy.meltable_items.forEach((i) => {
     i.registerCastedItems(e)
   })
+})
+
+StartupEvents.registry('item', (e) => {
+  const registerItem = registerItem_(e)
+
+  // Dirty dusts for later processing.
+  const dirtyDusts = [
+    'kubejs:dirty_iron_dust',
+    'kubejs:dirty_copper_dust',
+    'kubejs:dirty_gold_dust',
+    'kubejs:dirty_zinc_dust',
+    'kubejs:dirty_tin_dust',
+    'kubejs:dirty_lead_dust',
+    'kubejs:dirty_silver_dust',
+    'kubejs:dirty_nickel_dust',
+  ]
+  for (const dust of dirtyDusts) {
+    registerItem(dust).tag('kubejs:dirty_metal_dust').tag('forge:dusts')
+  }
+
+  // Zinc does not have a dust form
+  registerItem('kubejs:zinc_dust').tag('forge:dusts').tag('forge:dusts/zinc')
 })

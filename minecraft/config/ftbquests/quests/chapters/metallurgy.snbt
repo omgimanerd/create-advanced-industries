@@ -1,0 +1,121 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "metallurgy"
+	group: ""
+	icon: "minecraft:iron_ingot"
+	id: "15BD896D68D60F3C"
+	order_index: 4
+	quest_links: [ ]
+	quests: [
+		{
+			id: "56272D5C722BFAB6"
+			tasks: [{
+				id: "262D8D58ECDF8F56"
+				type: "checkmark"
+			}]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"6D76F15E31EA5C4F"
+				"3F538C71EFF264FE"
+			]
+			id: "42E88D28CC3CD197"
+			tasks: [{
+				id: "70D6D8956598A208"
+				item: "minecraft:iron_ingot"
+				type: "item"
+			}]
+			x: 10.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["679437D6962A8B73"]
+			icon: "create:crushed_raw_copper"
+			id: "15B3F08FA1526D02"
+			tasks: [{
+				id: "1072E40FABCF8E8A"
+				item: "create:crushing_wheel"
+				type: "item"
+			}]
+			title: "Crushing: 1.5x"
+			x: 10.0d
+			y: -6.0d
+		}
+		{
+			icon: "minecraft:raw_copper"
+			id: "679437D6962A8B73"
+			tasks: [{
+				id: "1765CF55EDB281E7"
+				item: "minecraft:raw_iron"
+				type: "item"
+			}]
+			title: "Raw Ore"
+			x: 10.0d
+			y: -8.0d
+		}
+		{
+			dependencies: [
+				"15B3F08FA1526D02"
+				"679437D6962A8B73"
+				"0BCB7FA490D47F49"
+				"6A394DBD8571B96F"
+			]
+			id: "6D76F15E31EA5C4F"
+			tasks: [{
+				id: "3FF107D84571357C"
+				item: "kubejs:steel_ingot_cast_molten_iron"
+				type: "item"
+			}]
+			title: "Melting: 1-1.1x"
+			x: 4.0d
+			y: -2.0d
+		}
+		{
+			dependencies: [
+				"15B3F08FA1526D02"
+				"679437D6962A8B73"
+				"0BCB7FA490D47F49"
+				"6A394DBD8571B96F"
+			]
+			id: "3F538C71EFF264FE"
+			tasks: [{
+				id: "3CFA9182443D53AD"
+				item: "minecraft:furnace"
+				type: "item"
+			}]
+			title: "Smelting: 1x"
+			x: 16.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["15B3F08FA1526D02"]
+			icon: "kubejs:dirty_copper_dust"
+			id: "0BCB7FA490D47F49"
+			tasks: [{
+				id: "63228AD18746C9CD"
+				item: "vintageimprovements:vibrating_table"
+				type: "item"
+			}]
+			title: "Vibrating: 1.5x"
+			x: 10.0d
+			y: -4.0d
+		}
+		{
+			dependencies: ["0BCB7FA490D47F49"]
+			icon: "thermal:copper_dust"
+			id: "6A394DBD8571B96F"
+			tasks: [{
+				id: "26EE49B9B92DA032"
+				item: "thermal:iron_dust"
+				type: "item"
+			}]
+			title: "Washing: 1.1x"
+			x: 10.0d
+			y: -2.0d
+		}
+	]
+	title: "Metallurgy"
+}

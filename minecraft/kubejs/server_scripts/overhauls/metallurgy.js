@@ -1,5 +1,6 @@
 // priority: 500
-// Recipe registrations for metal casting and melting
+// Recipe registrations for metal casting and melting for all the registrations
+// in startup_scripts/metallurgy.js
 
 ServerEvents.tags('item', (e) => {
   const tagMaterialIngot = (material, mod) => {
@@ -34,6 +35,7 @@ ServerEvents.recipes((e) => {
     .heated()
 
   // A full block is casted from molten glass instead of a glass shard.
+  // Register this manually so we don't need to add edge cases to MeltableItem.
   const ceramicCastedMoltenGlass = 'kubejs:ceramic_ingot_cast_molten_glass'
   const steelCastedMoltenGlass = 'kubejs:steel_ingot_cast_molten_glass'
   const MeltableItem = global.MeltableItem
@@ -83,6 +85,4 @@ ServerEvents.recipes((e) => {
   for (const [ingot, dust] of Object.entries(ingotDustMap)) {
     create.milling(dust, ingot)
   }
-
-  // TODO Implement metallurgy flow with Create Molten metals for Chapter 6a
 })

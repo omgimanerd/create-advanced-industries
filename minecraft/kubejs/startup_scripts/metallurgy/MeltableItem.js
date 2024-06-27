@@ -9,11 +9,6 @@ function MeltableItem(options) {
   this.ingot = options.ingot
   this.block = options.block
 
-  // raw and crushed are only populated for non-alloy metals that have a raw
-  // form for metallurgy.
-  this.raw = options.raw
-  this.crushed = options.crushed
-
   // Information about the fluid that the metal/gem will melt into to help with
   // registration.
   this.fluid = options.fluid
@@ -145,20 +140,6 @@ MeltableItem.prototype.registerMeltingRecipes = function (e) {
     this.block,
     Fluid.of(this.fluid, MeltableItem.DEFAULT_INGOT_FLUID * this.blockRatio)
   )
-  if (this.raw) {
-    this.registerMeltingRecipe(
-      e,
-      this.raw,
-      Fluid.of(this.fluid, MeltableItem.DEFAULT_INGOT_FLUID)
-    )
-  }
-  if (this.crushed) {
-    this.registerMeltingRecipe(
-      e,
-      this.crushed,
-      Fluid.of(this.fluid, MeltableItem.DEFAULT_INGOT_FLUID)
-    )
-  }
   return this
 }
 
