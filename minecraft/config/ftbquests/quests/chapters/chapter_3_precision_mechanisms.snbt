@@ -234,7 +234,11 @@
 		}
 		{
 			dependencies: ["42AD35328B048497"]
-			description: ["With a little bit of source, we can transmute cobblestone to tuff."]
+			description: [
+				"With a little bit of source, we can transmute cobblestone to tuff."
+				""
+				"Keep in mind the Manipulation Essence from Ars Nouveau is not consumed during imbuement recipes."
+			]
 			id: "38E010EEA4A77E38"
 			tasks: [{
 				id: "7B5DA1C0E9F28197"

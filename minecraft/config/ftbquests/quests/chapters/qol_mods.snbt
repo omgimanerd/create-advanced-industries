@@ -19,6 +19,7 @@
 				""
 				"Here's a Charging Gadget on us to help you out!"
 			]
+			icon: "buildinggadgets2:gadget_building"
 			id: "338E33764FE38864"
 			rewards: [
 				{
@@ -105,11 +106,12 @@
 				""
 				"Comforts has got you covered."
 			]
+			icon: "comforts:sleeping_bag_red"
 			id: "11336DA3B627B311"
 			rewards: [{
-				id: "46A2C677FC4E0957"
-				type: "xp"
-				xp: 100
+				id: "0AC9691D8E14380F"
+				item: "comforts:sleeping_bag_white"
+				type: "item"
 			}]
 			tasks: [{
 				id: "7EFC94E7A93C74A2"
@@ -117,10 +119,10 @@
 					Count: 1b
 					id: "ftbfiltersystem:smart_filter"
 					tag: {
-						"ftbfiltersystem:filter": "or(item_tag(comforts:hammocks)item_tag(comforts:sleeping_bags))"
+						"ftbfiltersystem:filter": "item_tag(minecraft:beds)"
 					}
 				}
-				title: "Sleeping Bag or Hammock"
+				title: "Getting a Bed"
 				type: "item"
 			}]
 			title: "Comforts"
@@ -130,6 +132,20 @@
 		{
 			dependencies: ["76EA7D462C854493"]
 			description: ["Need more inventory space? How about a Sophisticated Backpack?"]
+			icon: {
+				Count: 1b
+				id: "sophisticatedbackpacks:backpack"
+				tag: {
+					contentsUuid: [I;
+						1168842720
+						345917485
+						-2071955299
+						-1495048411
+					]
+					inventorySlots: 27
+					upgradeSlots: 1
+				}
+			}
 			id: "79B54F4808B55E13"
 			rewards: [
 				{
