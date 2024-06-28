@@ -49,8 +49,19 @@ ServerEvents.recipes((e) => {
       C: 'functionalstorage:controller_extension',
     }
   )
-  // TODO gate behind quantum mechanisms
-  e.remove({ id: 'functionalstorage:ender_drawer' })
+  redefineRecipe(
+    'functionalstorage:ender_drawer',
+    [
+      'PPP', //
+      'MDM', //
+      'PPP', //
+    ],
+    {
+      P: '#minecraft:planks',
+      M: 'createteleporters:quantum_mechanism',
+      D: '#functionalstorage:drawer',
+    }
+  )
   e.replaceInput(
     [
       {
@@ -176,9 +187,6 @@ ServerEvents.recipes((e) => {
     'kubejs:silicon_wafer',
     'kubejs:logistics_mechanism'
   )
-  // TODO gate behind quantum mechanisms
-  e.remove({ id: 'refinedstorage:network_receiver' })
-  e.remove({ id: 'refinedstorage:wireless_transmitter' })
 
   //////////////////
   // ExtraStorage //
@@ -206,7 +214,21 @@ ServerEvents.recipes((e) => {
   ///////////////////////
   // RSInfinityBooster //
   ///////////////////////
-  // TODO gate behind quantum mechs
+  redefineRecipe(
+    'rsinfinitybooster:infinity_card',
+    [
+      'EME', //
+      'MRM', //
+      'NNN', //
+    ],
+    {
+      E: 'kubejs:resonant_ender_pearl',
+      M: 'createteleporters:quantum_mechanism',
+      R: 'refinedstorage:range_upgrade',
+      N: 'thermal:enderium_ingot',
+    }
+  )
+  // TODO
   e.remove({ id: 'rsinfinitybooster:dimension_card' })
 
   //////////////////

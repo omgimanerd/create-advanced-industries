@@ -45,8 +45,45 @@ ServerEvents.recipes((e) => {
       M: 'kubejs:source_mechanism',
     }
   )
-  // Gate warp scrolls behind quantum
-
+  redefineRecipe(
+    'ars_nouveau:warp_scroll',
+    [
+      'LLL', //
+      'MPM', //
+      'SSS', //
+    ],
+    {
+      L: 'minecraft:lapis_lazuli',
+      M: 'createteleporters:quantum_mechanism',
+      P: 'minecraft:paper',
+      S: 'ars_nouveau:source_gem',
+    }
+  )
+  create
+    .SequencedAssembly('minecraft:paper')
+    .deploy('minecraft:lapis_lazuli')
+    .deploy('createteleporters:quantum_mechanism')
+    .fill(Fluid.of('starbunclemania:source_fluid', 500))
+    .outputs('ars_nouveau:warp_scroll')
+  e.remove({ id: 'ars_nouveau:stable_warp_scroll' })
+  e.recipes.ars_nouveau.enchanting_apparatus(
+    [
+      'kubejs:resonant_ender_pearl',
+      'create:experience_block',
+      'create:experience_block',
+      'kubejs:resonant_ender_pearl',
+      'create:experience_block',
+      'create:experience_block',
+    ],
+    'ars_nouveau:warp_scroll',
+    'ars_nouveau:stable_warp_scroll'
+  )
+  create
+    .SequencedAssembly('ars_nouveau:warp_scroll')
+    .deploy('kubejs:resonant_ender_pearl')
+    .fill(potionFluid('quark:resilience', 50))
+    .energize(8000)
+    .outputs('ars_nouveau:stable_warp_scroll')
   e.replaceInput(
     'ars_nouveau:enchanting_apparatus',
     'minecraft:gold_ingot',
@@ -158,6 +195,11 @@ ServerEvents.recipes((e) => {
       P: 'ars_nouveau:arcane_pedestal',
     }
   )
+  // Alternative cheaper recipe for source stone
+  create.filling('ars_nouveau:sourcestone', [
+    '#forge:stone',
+    Fluid.of('starbunclemania:source_fluid', 30),
+  ])
 
   /////////////////////
   // Starbunclemania //
