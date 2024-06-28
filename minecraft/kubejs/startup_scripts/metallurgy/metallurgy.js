@@ -160,7 +160,7 @@ StartupEvents.registry('block', (e) => {
 StartupEvents.registry('item', (e) => {
   const registerItem = registerItem_(e)
 
-  // Dirty dusts for later processing.
+  // Dirty dusts for ore processing.
   const dirtyDusts = [
     'kubejs:dirty_iron_dust',
     'kubejs:dirty_copper_dust',

@@ -61,21 +61,15 @@ ServerEvents.recipes((e) => {
     steelCastedMoltenGlass
   )
 
-  // Add crushing recipes for every gem/ingot into dust.
+  // Add crushing recipes for every gem/ingot into dust that wasn't already
+  // overhauled by metallurgy.
   const ingotDustMap = {
-    'thermal:tin_ingot': 'thermal:tin_dust',
-    'thermal:lead_ingot': 'thermal:lead_dust',
-    'thermal:silver_ingot': 'thermal:silver_dust',
-    'thermal:nickel_ingot': 'thermal:nickel_dust',
     'thermal:ruby': 'thermal:ruby_dust',
     'thermal:sapphire': 'thermal:sapphire_dust',
     'thermal:apatite': 'thermal:apatite_dust',
     'thermal:cinnabar': 'thermal:cinnabar_dust',
     'thermal:niter': 'thermal:niter_dust',
     // Sulfur dust overhauled in chapter 5a
-    'minecraft:iron_ingot': 'thermal:iron_dust',
-    'minecraft:gold_ingot': 'thermal:gold_dust',
-    'minecraft:copper_ingot': 'thermal:copper_dust',
     'minecraft:netherite_ingot': 'thermal:netherite_dust',
     'minecraft:lapis_lazuli': 'thermal:lapis_dust',
     'minecraft:diamond': 'thermal:diamond_dust',
