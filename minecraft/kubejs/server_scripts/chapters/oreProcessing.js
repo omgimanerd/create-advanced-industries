@@ -19,75 +19,7 @@ ServerEvents.recipes((e) => {
   const MeltableItem = global.MeltableItem
   const DEFAULT_INGOT_FLUID = MeltableItem.DEFAULT_INGOT_FLUID
 
-  // MeltableItem will become too bloated if we include the ore processing flow,
-  // so it only handles the base registrations and the metallic forms of the
-  // output, not the ore processing.
-  const oreProcessingMetals = {
-    iron: {
-      raw: 'minecraft:raw_iron',
-      crushed: 'create:crushed_raw_iron',
-      dirty: 'kubejs:dirty_iron_dust',
-      dust: 'thermal:iron_dust',
-      ingot: 'minecraft:iron_ingot',
-      fluid: 'kubejs:molten_iron',
-    },
-    copper: {
-      raw: 'minecraft:raw_copper',
-      crushed: 'create:crushed_raw_copper',
-      dirty: 'kubejs:dirty_copper_dust',
-      dust: 'thermal:copper_dust',
-      ingot: 'minecraft:copper_ingot',
-      fluid: 'kubejs:molten_copper',
-    },
-    gold: {
-      raw: 'minecraft:raw_gold',
-      crushed: 'create:crushed_raw_gold',
-      dirty: 'kubejs:dirty_gold_dust',
-      dust: 'thermal:gold_dust',
-      ingot: 'minecraft:gold_ingot',
-      fluid: 'kubejs:molten_gold',
-    },
-    zinc: {
-      raw: 'create:raw_zinc',
-      crushed: 'create:crushed_raw_zinc',
-      dirty: 'kubejs:dirty_zinc_dust',
-      dust: 'kubejs:zinc_dust',
-      ingot: 'create:zinc_ingot',
-      fluid: 'kubejs:molten_zinc',
-    },
-    tin: {
-      raw: 'thermal:raw_tin',
-      crushed: 'create:crushed_raw_tin',
-      dirty: 'kubejs:dirty_tin_dust',
-      dust: 'thermal:tin_dust',
-      ingot: 'thermal:tin_ingot',
-      fluid: 'kubejs:molten_tin',
-    },
-    lead: {
-      raw: 'thermal:raw_lead',
-      crushed: 'create:crushed_raw_lead',
-      dirty: 'kubejs:dirty_lead_dust',
-      dust: 'thermal:lead_dust',
-      ingot: 'thermal:lead_ingot',
-      fluid: 'kubejs:molten_lead',
-    },
-    silver: {
-      raw: 'thermal:raw_silver',
-      crushed: 'create:crushed_raw_silver',
-      dirty: 'kubejs:dirty_silver_dust',
-      dust: 'thermal:silver_dust',
-      ingot: 'thermal:silver_ingot',
-      fluid: 'kubejs:molten_silver',
-    },
-    nickel: {
-      raw: 'thermal:raw_nickel',
-      crushed: 'create:crushed_raw_nickel',
-      dirty: 'kubejs:dirty_nickel_dust',
-      dust: 'thermal:nickel_dust',
-      ingot: 'thermal:nickel_ingot',
-      fluid: 'kubejs:molten_nickel',
-    },
-  }
+  const oreProcessingMetals = global.getMaterials(global.MATERIALS_BASE_METALS)
 
   //////////////////////////
   // BASIC ORE PROCESSING //
