@@ -92,10 +92,15 @@ ServerEvents.recipes((e) => {
     if (ingredients.size() < 2) {
       console.error(`Unknown recipe ${recipe}`)
     }
-    const ingredient = ingredients[1].asIngredient().first.id
-    const dust = global.lookupDust(ingredient)
-    // console.log(ingredient, dust)
-    create.turning(r.originalRecipeResult, ingredient).processingTime(40)
+    const ingredientId = ingredients[1].asIngredient().first.id
+    const block = global.lookupBlock(ingredientId)
+    const dust = global.lookupDust(ingredientId)
+    create
+      .turning(
+        [Item.of(r.originalRecipeResult, 3), Item.of(dust).withChance(0.5)],
+        block
+      )
+      .processingTime(40)
   })
 
   // smithing template netherite upgrade duping

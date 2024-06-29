@@ -254,13 +254,51 @@ global.getBaseMetals = () => {
 /**
  * Given the ingot form of a material, returns the name of the crushed dust
  * equivalent if it exists.
- * @param {string} ingot
- * @param {string}
+ * @param {string} ingot_
+ * @returns {string}
  */
-global.lookupDust = (ingot) => {
-  for (const { ingot_, dust } of global.materials) {
-    if (ingot_ === ingot) {
+global.lookupDust = (ingot_) => {
+  const missingDustLookups = {
+    'thermal:invar_ingot': 'thermal:invar_dust',
+    'thermal:enderium_ingot': 'thermal:enderium_dust',
+    'thermal:signalum_ingot': 'thermal:signalum_dust',
+    'thermal:constantan_ingot': 'thermal:constantan_dust',
+    'thermal:lumium_ingot': 'thermal:lumium_dust',
+    'thermal:electrum_ingot': 'thermal:electrum_dust',
+    'thermal:bronze_ingot': 'thermal:bronze_dust',
+    'minecraft:netherite_ingot': 'thermal:netherite_dust',
+  }
+  const missingLookup = missingDustLookups[ingot_]
+  if (missingLookup) return missingLookup
+  for (const { ingot, dust } of global.materials) {
+    if (ingot === ingot_) {
       return dust
+    }
+  }
+}
+
+/**
+ * Given the ingot form of a material, returns the name of the block form
+ * if it exists.
+ * @param {string} ingot_
+ * @returns {string}
+ */
+global.lookupBlock = (ingot_) => {
+  const missingBlockLookups = {
+    'thermal:invar_ingot': 'thermal:invar_block',
+    'thermal:enderium_ingot': 'thermal:enderium_block',
+    'thermal:signalum_ingot': 'thermal:signalum_block',
+    'thermal:constantan_ingot': 'thermal:constantan_block',
+    'thermal:lumium_ingot': 'thermal:lumium_block',
+    'thermal:electrum_ingot': 'thermal:electrum_block',
+    'thermal:bronze_ingot': 'thermal:bronze_block',
+    'minecraft:netherite_ingot': 'minecraft:netherite_block',
+  }
+  const missingLookup = missingBlockLookups[ingot_]
+  if (missingLookup) return missingLookup
+  for (const { ingot, block } of global.materials) {
+    if (ingot === ingot_) {
+      return block
     }
   }
 }
