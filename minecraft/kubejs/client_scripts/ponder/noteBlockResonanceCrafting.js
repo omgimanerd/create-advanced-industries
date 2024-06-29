@@ -84,6 +84,12 @@ Ponder.registry((e) => {
         }
         scene.idle(10)
       }
+      scene.text(
+        40,
+        'JEI will tell you what notes to play to perform each craft.',
+        noteBlocks[4]
+      )
+      scene.idle(50)
     }
   )
 })
