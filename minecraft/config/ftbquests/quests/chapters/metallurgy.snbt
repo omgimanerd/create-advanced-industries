@@ -1,4 +1,5 @@
 {
+	autofocus_id: "679437D6962A8B73"
 	default_hide_dependency_lines: false
 	default_quest_shape: ""
 	filename: "metallurgy"
@@ -9,52 +10,52 @@
 	quest_links: [ ]
 	quests: [
 		{
-			id: "56272D5C722BFAB6"
-			tasks: [{
-				id: "262D8D58ECDF8F56"
-				type: "checkmark"
-			}]
-			x: 0.0d
-			y: 0.0d
-		}
-		{
 			dependencies: [
 				"6D76F15E31EA5C4F"
 				"3F538C71EFF264FE"
 			]
+			icon: "minecraft:copper_ingot"
 			id: "42E88D28CC3CD197"
 			tasks: [{
-				id: "70D6D8956598A208"
-				item: "minecraft:iron_ingot"
-				type: "item"
+				id: "427F1A254755E42B"
+				type: "checkmark"
 			}]
-			x: 10.0d
-			y: 4.0d
+			title: "Ingots"
+			x: 1.0d
+			y: 12.0d
 		}
 		{
 			dependencies: ["679437D6962A8B73"]
+			description: ["Crushing the raw ore with crushing wheels will yield crushed ore."]
 			icon: "create:crushed_raw_copper"
 			id: "15B3F08FA1526D02"
-			tasks: [{
-				id: "1072E40FABCF8E8A"
-				item: "create:crushing_wheel"
-				type: "item"
-			}]
+			tasks: [
+				{
+					id: "1C291352E3DBD4B3"
+					type: "checkmark"
+				}
+				{
+					id: "152E233D1E53E66D"
+					item: "create:crushing_wheel"
+					type: "item"
+				}
+			]
 			title: "Crushing: 1.5x"
-			x: 10.0d
-			y: -6.0d
+			x: 1.0d
+			y: 2.0d
 		}
 		{
+			dependencies: ["76EA7D462C854493"]
+			description: ["Starting from raw ore, you can always smelt it to get the ingot for the least effort."]
 			icon: "minecraft:raw_copper"
 			id: "679437D6962A8B73"
 			tasks: [{
-				id: "1765CF55EDB281E7"
-				item: "minecraft:raw_iron"
-				type: "item"
+				id: "44CA930A5F284A04"
+				type: "checkmark"
 			}]
 			title: "Raw Ore"
-			x: 10.0d
-			y: -8.0d
+			x: 1.0d
+			y: 0.0d
 		}
 		{
 			dependencies: [
@@ -63,15 +64,23 @@
 				"0BCB7FA490D47F49"
 				"6A394DBD8571B96F"
 			]
+			description: ["Melting and casting an ore processing product takes more effort, but will always give slightly higher yields."]
+			icon: "kubejs:steel_ingot_cast"
 			id: "6D76F15E31EA5C4F"
-			tasks: [{
-				id: "3FF107D84571357C"
-				item: "kubejs:steel_ingot_cast_molten_iron"
-				type: "item"
-			}]
-			title: "Melting: 1-1.1x"
-			x: 4.0d
-			y: -2.0d
+			tasks: [
+				{
+					id: "62B5E93BA638F444"
+					type: "checkmark"
+				}
+				{
+					id: "1CEE58E08371A5D7"
+					item: "kubejs:steel_ingot_cast"
+					type: "item"
+				}
+			]
+			title: "Melting: 1-1.3x"
+			x: -5.0d
+			y: 6.0d
 		}
 		{
 			dependencies: [
@@ -80,41 +89,56 @@
 				"0BCB7FA490D47F49"
 				"6A394DBD8571B96F"
 			]
+			description: ["Smelting or blasting is always an option for ore processing, providing you a base 1x yield for little effort."]
+			icon: "minecraft:furnace"
 			id: "3F538C71EFF264FE"
 			tasks: [{
-				id: "3CFA9182443D53AD"
-				item: "minecraft:furnace"
-				type: "item"
+				id: "22F003CD1D56968A"
+				type: "checkmark"
 			}]
 			title: "Smelting: 1x"
-			x: 16.0d
-			y: -2.0d
+			x: 7.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["15B3F08FA1526D02"]
+			description: ["Vibrational sorting increases your yield some more, giving you the dirty dust form of the ore."]
 			icon: "kubejs:dirty_copper_dust"
 			id: "0BCB7FA490D47F49"
-			tasks: [{
-				id: "63228AD18746C9CD"
-				item: "vintageimprovements:vibrating_table"
-				type: "item"
-			}]
+			tasks: [
+				{
+					id: "78776B776B2F9DDA"
+					type: "checkmark"
+				}
+				{
+					id: "56102F2A944ACAC6"
+					item: "vintageimprovements:vibrating_table"
+					type: "item"
+				}
+			]
 			title: "Vibrating: 1.5x"
-			x: 10.0d
-			y: -4.0d
+			x: 1.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["0BCB7FA490D47F49"]
+			description: ["Washing the dirty dust gets you fine metal powder."]
 			icon: "thermal:copper_dust"
 			id: "6A394DBD8571B96F"
-			tasks: [{
-				id: "26EE49B9B92DA032"
-				item: "thermal:iron_dust"
-				type: "item"
-			}]
+			tasks: [
+				{
+					id: "21A3472542B97EEB"
+					type: "checkmark"
+				}
+				{
+					id: "14BC822A8980CC0D"
+					item: "create:encased_fan"
+					type: "item"
+				}
+			]
 			title: "Washing: 1.1x"
-			x: 10.0d
-			y: -2.0d
+			x: 1.0d
+			y: 6.0d
 		}
 	]
 	title: "Metallurgy"

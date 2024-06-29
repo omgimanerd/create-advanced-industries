@@ -1,5 +1,19 @@
 // priority: 500
 
+ServerEvents.tags('block', (e) => {
+  for (const stone of [
+    'asurine',
+    'veridium',
+    'crimsite',
+    'ochrum',
+    'scorchia',
+    'scoria',
+  ]) {
+    e.add('kubejs:dormant_vent', `molten_vents:dormant_molten_${stone}`)
+    e.add('kubejs:active_vent', `molten_vents:active_molten_${stone}`)
+  }
+})
+
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
   const MeltableItem = global.MeltableItem

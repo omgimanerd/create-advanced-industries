@@ -7,16 +7,133 @@
 	id: "565035A1584BCCAE"
 	order_index: 7
 	quest_links: [ ]
-	quests: [{
-		dependencies: ["12D9ACDA50B38FCA"]
-		id: "271A91265ACE5851"
-		tasks: [{
-			id: "7454746B3D16F6B0"
-			title: "Start"
-			type: "checkmark"
-		}]
-		x: 0.0d
-		y: 0.0d
-	}]
+	quests: [
+		{
+			dependencies: ["12D9ACDA50B38FCA"]
+			id: "271A91265ACE5851"
+			tasks: [{
+				id: "7454746B3D16F6B0"
+				title: "Start"
+				type: "checkmark"
+			}]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			id: "23A0F081DF173BAF"
+			tasks: [{
+				id: "489303C19E48BFFA"
+				item: "createteleporters:quantum_mechanism"
+				type: "item"
+			}]
+			x: 13.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["52C4538635906B7E"]
+			id: "15767FCAAF205D26"
+			tasks: [{
+				id: "785C52A5B026FBA2"
+				item: "create:ochrum"
+				type: "item"
+			}]
+			x: 4.5d
+			y: -7.0d
+		}
+		{
+			dependencies: ["52C4538635906B7E"]
+			id: "2578836993147D85"
+			tasks: [{
+				id: "43F573ED7DBAE407"
+				item: "create:veridium"
+				type: "item"
+			}]
+			x: 6.0d
+			y: -7.0d
+		}
+		{
+			dependencies: ["52C4538635906B7E"]
+			id: "6669A573CE76EB7F"
+			tasks: [{
+				id: "66C0B62230B1EF26"
+				item: "create:asurine"
+				type: "item"
+			}]
+			x: 7.5d
+			y: -7.0d
+		}
+		{
+			dependencies: ["52C4538635906B7E"]
+			id: "15C6D1A37EC0C53C"
+			tasks: [{
+				id: "76DD285441822ACC"
+				item: "create:crimsite"
+				type: "item"
+			}]
+			x: 9.0d
+			y: -7.0d
+		}
+		{
+			id: "6DBFC6E2B2B08D29"
+			tasks: [{
+				id: "489E09DEC0A9FB13"
+				item: "thermal:enderium_ingot"
+				type: "item"
+			}]
+			x: 4.0d
+			y: 0.5d
+		}
+		{
+			id: "29D5CED6D2FC7E91"
+			tasks: [{
+				id: "16E7D005A8E7AE87"
+				item: "thermal:lumium_ingot"
+				type: "item"
+			}]
+			x: 5.5d
+			y: 0.5d
+		}
+		{
+			id: "107558182C78B789"
+			tasks: [{
+				id: "7F563467911F8F7C"
+				item: "thermal:signalum_ingot"
+				type: "item"
+			}]
+			x: 7.0d
+			y: 0.5d
+		}
+		{
+			icon: "molten_vents:dormant_molten_asurine"
+			id: "5EA0A56E4C6E4C4F"
+			tasks: [{
+				icon: "molten_vents:dormant_molten_asurine"
+				id: "0814CDF464ACC37A"
+				observe_type: 1
+				timer: 0L
+				to_observe: "kubejs:dormant_vent"
+				type: "observation"
+			}]
+			title: "Find a Dormant Vent"
+			x: 6.5d
+			y: -11.0d
+		}
+		{
+			dependencies: ["5EA0A56E4C6E4C4F"]
+			icon: "molten_vents:active_molten_asurine"
+			id: "52C4538635906B7E"
+			tasks: [{
+				icon: "molten_vents:active_molten_asurine"
+				id: "55BE27EC27A2F0F2"
+				observe_type: 1
+				timer: 0L
+				to_observe: "kubejs:active_vent"
+				type: "observation"
+			}]
+			title: "Activating a Molten Vent"
+			x: 7.0d
+			y: -9.0d
+		}
+	]
 	title: "Chapter 6a: Quantum Mechanisms"
 }
