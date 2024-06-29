@@ -177,4 +177,10 @@ StartupEvents.registry('item', (e) => {
 
   // Zinc does not have a dust form
   registerItem('kubejs:zinc_dust').tag('forge:dusts').tag('forge:dusts/zinc')
+
+  // Crushed forms of Create stones as item intermediates
+  registerItem('kubejs:crushed_crimsite')
+  registerItem('kubejs:crushed_veridium')
+  registerItem('kubejs:crushed_ochrum')
+  registerItem('kubejs:crushed_asurine')
 })

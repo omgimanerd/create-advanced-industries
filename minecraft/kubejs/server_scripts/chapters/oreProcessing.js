@@ -8,92 +8,78 @@ ServerEvents.recipes((e) => {
   // MeltableItem will become too bloated if we include the ore processing flow,
   // so it only handles the base registrations and the metallic forms of the
   // output, not the ore processing.
-  const oreProcessingMetals = [
-    {
+  const oreProcessingMetals = {
+    iron: {
       raw: 'minecraft:raw_iron',
       crushed: 'create:crushed_raw_iron',
       dirty: 'kubejs:dirty_iron_dust',
       dust: 'thermal:iron_dust',
       ingot: 'minecraft:iron_ingot',
       fluid: 'kubejs:molten_iron',
-      byproductFluid: 'kubejs:molten_nickel',
     },
-    {
+    copper: {
       raw: 'minecraft:raw_copper',
       crushed: 'create:crushed_raw_copper',
       dirty: 'kubejs:dirty_copper_dust',
       dust: 'thermal:copper_dust',
       ingot: 'minecraft:copper_ingot',
       fluid: 'kubejs:molten_copper',
-      byproductFluid: 'kubejs:molten_tin',
     },
-    {
+    gold: {
       raw: 'minecraft:raw_gold',
       crushed: 'create:crushed_raw_gold',
       dirty: 'kubejs:dirty_gold_dust',
       dust: 'thermal:gold_dust',
       ingot: 'minecraft:gold_ingot',
       fluid: 'kubejs:molten_gold',
-      byproductFluid: 'kubejs:molten_silver',
     },
-    {
+    zinc: {
       raw: 'create:raw_zinc',
       crushed: 'create:crushed_raw_zinc',
       dirty: 'kubejs:dirty_zinc_dust',
       dust: 'kubejs:zinc_dust',
       ingot: 'create:zinc_ingot',
       fluid: 'kubejs:molten_zinc',
-      byproductFluid: 'kubejs:molten_lead',
     },
-    {
+    tin: {
       raw: 'thermal:raw_tin',
       crushed: 'create:crushed_raw_tin',
       dirty: 'kubejs:dirty_tin_dust',
       dust: 'thermal:tin_dust',
       ingot: 'thermal:tin_ingot',
       fluid: 'kubejs:molten_tin',
-      byproductFluid: 'kubejs:molten_copper',
     },
-    {
+    lead: {
       raw: 'thermal:raw_lead',
       crushed: 'create:crushed_raw_lead',
       dirty: 'kubejs:dirty_lead_dust',
       dust: 'thermal:lead_dust',
       ingot: 'thermal:lead_ingot',
       fluid: 'kubejs:molten_lead',
-      byproductFluid: 'kubejs:molten_zinc',
     },
-    {
+    silver: {
       raw: 'thermal:raw_silver',
       crushed: 'create:crushed_raw_silver',
       dirty: 'kubejs:dirty_silver_dust',
       dust: 'thermal:silver_dust',
       ingot: 'thermal:silver_ingot',
       fluid: 'kubejs:molten_silver',
-      byproductFluid: 'kubejs:molten_gold',
     },
-    {
+    nickel: {
       raw: 'thermal:raw_nickel',
       crushed: 'create:crushed_raw_nickel',
       dirty: 'kubejs:dirty_nickel_dust',
       dust: 'thermal:nickel_dust',
       ingot: 'thermal:nickel_ingot',
       fluid: 'kubejs:molten_nickel',
-      byproductFluid: 'kubejs:molten_iron',
     },
-  ]
+  }
 
   //////////////////////////
   // BASIC ORE PROCESSING //
   //////////////////////////
-  for (const {
-    raw,
-    crushed,
-    dirty,
-    dust,
-    ingot,
-    fluid,
-  } of oreProcessingMetals) {
+  for (const [_, data] of Object.entries(oreProcessingMetals)) {
+    let { raw, crushed, dirty, dust, ingot, fluid } = data
     // Overhaul crushing the raw ore to the crushed form.
     e.remove({ type: 'create:crushing', output: crushed })
     create.crushing(
@@ -186,25 +172,65 @@ ServerEvents.recipes((e) => {
   e.remove({ id: /^create:crushing\/asurine.*$/ })
   e.remove({ id: /^create:crushing\/ochrum.*$/ })
 
-  // Tier 1
+  create.crushing('kubejs:crushed_crimsite', 'create:crimsite')
+  create.crushing('kubejs:crushed_veridium', 'create:veridium')
+  create.crushing('kubejs:crushed_ochrum', 'create:ochrum')
+  create.crushing('kubejs:crushed_asurine', 'create:asurine')
+
   const tier1Crushing = {
-    'create:crimsite': 'minecraft:raw_iron',
-    'create:veridium': 'minecraft:raw_copper',
-    'create:ochrum': 'minecraft:raw_gold',
-    'create:asurine': 'create:raw_zinc',
+    'kubejs:crushed_crimsite': 'minecraft:raw_iron',
+    'kubejs:crushed_veridium': 'minecraft:raw_copper',
+    'kubejs:crushed_ochrum': 'minecraft:raw_gold',
+    'kubejs:crushed_asurine': 'create:raw_zinc',
   }
-  for (const [stone, crushed] of Object.entries(tier1Crushing)) {
+  const crushedStones = Object.keys(tier1Crushing)
+  const dichotomicSecondary = {
+    'minecraft:raw_iron': 'thermal:raw_nickel',
+    'minecraft:raw_copper': 'thermal:raw_tin',
+    'minecraft:raw_gold': 'thermal:raw_silver',
+    'create:raw_zinc': 'thermal:raw_lead',
+  }
+  for (const [stone, result] of Object.entries(tier1Crushing)) {
+    // Tier 1
     create.crushing(
       [
-        Item.of(crushed),
-        Item.of(crushed).withChance(0.5),
+        Item.of(result),
+        Item.of(result).withChance(0.25),
         Item.of('create:experience_nugget').withChance(0.25),
       ],
       stone
     )
+
+    // Tier 2
+    let secondary = dichotomicSecondary[result]
+    create
+      .mixing(
+        [
+          Item.of(result),
+          Item.of(result).withChance(0.25),
+          Item.of(secondary).withChance(0.75),
+          'thermal:slag',
+        ],
+        [stone, 'create_things_and_misc:crushed_magma']
+      )
+      .heated()
   }
 
-  // Tier 2
-
   // Tier 3
+  const tier3Combinations = global.combinatorics(4, 3).map((indexes) => {
+    return indexes.map((i) => crushedStones[i])
+  })
+  for (const combination of tier3Combinations) {
+    let primaries = combination.map((v) => tier1Crushing[v])
+    let secondaries = primaries.map((v) => dichotomicSecondary[v])
+    let primaryItems = primaries.map((i) => Item.of(i).withChance(0.25))
+    let secondaryItems = secondaries.map((i) => Item.of(i))
+    create
+      .pressurizing(
+        combination.concat(Fluid.of('starbunclemania:source_fluid', 300))
+      )
+      .secondaryFluidInput(Fluid.of('vintageimprovements:sulfuric_acid', 150))
+      .heated()
+      .outputs(primaryItems.concat(secondaryItems))
+  }
 })
