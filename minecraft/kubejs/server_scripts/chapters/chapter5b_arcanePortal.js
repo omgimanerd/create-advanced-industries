@@ -62,7 +62,7 @@ global.PortalBlockTickingCallback = (e) => {
   for (const /** @type {Internal.Entity_} */ entity of entities) {
     if (entity.type === 'minecraft:wandering_trader') {
       entity.remove('killed')
-      playSound('minecraft:entity.enderman.teleport', 2, 1)
+      entity.playSound('minecraft:entity.enderman.teleport', 2, 1)
       laborersEaten = Math.min(5, laborersEaten + 1)
       spawnParticles(
         level,
@@ -78,7 +78,7 @@ global.PortalBlockTickingCallback = (e) => {
     if (item !== null) {
       if (checkPortalPickaxeSacrifice(item)) {
         entity.remove('discarded')
-        playSound('minecraft:entity.enderman.teleport', 2, 1)
+        entity.playSound('minecraft:entity.enderman.teleport', 2, 1)
         pickaxesEaten = Math.min(5, pickaxesEaten + 1)
         spawnParticles(level, 'minecraft:enchant', entity, 0.15, 75, 0.1)
       } else {
