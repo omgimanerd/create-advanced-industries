@@ -48,8 +48,9 @@ StartupEvents.registry('item', (e) => {
     registerItem(v.dirty).tag('kubejs:dirty_metal_dust').tag('forge:dusts')
   })
 
-  // Zinc does not have a regular dust form
+  // Zinc and steel do not have a regular dust forms
   registerItem('kubejs:zinc_dust').tag('forge:dusts').tag('forge:dusts/zinc')
+  registerItem('kubejs:steel_dust').tag('forge:dusts').tag('forge:dusts/steel')
 
   // Crushed forms of Create stones as item intermediates
   registerItem('kubejs:crushed_crimsite')

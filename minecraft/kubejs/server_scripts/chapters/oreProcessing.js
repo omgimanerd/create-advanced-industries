@@ -77,42 +77,10 @@ ServerEvents.recipes((e) => {
         dirty
       )
       .heated()
-
-    // Regular dust can always be melted, and does not produce slag
-    create.mixing(Fluid.of(fluid, DEFAULT_INGOT_FLUID), dust).heated()
-
-    // Ingots can be crushed back into dust
-    create.crushing(dust, ingot)
   }
 
   // Only zinc dust does not have a smelting recipe.
   e.blasting('create:zinc_ingot', 'kubejs:zinc_dust')
-
-  // Lapis, diamond, emerald, and quartz dust can also be melted.
-  create
-    .mixing(
-      Fluid.of('kubejs:molten_lapis', DEFAULT_INGOT_FLUID),
-      'thermal:lapis_dust'
-    )
-    .heated()
-  create
-    .mixing(
-      Fluid.of('kubejs:molten_diamond', DEFAULT_INGOT_FLUID),
-      'thermal:diamond_dust'
-    )
-    .superheated()
-  create
-    .mixing(
-      Fluid.of('kubejs:molten_emerald', DEFAULT_INGOT_FLUID),
-      'thermal:emerald_dust'
-    )
-    .superheated()
-  create
-    .mixing(
-      Fluid.of('kubejs:molten_quartz', DEFAULT_INGOT_FLUID),
-      'thermal:quartz_dust'
-    )
-    .heated()
 
   /////////////////////////////
   // ADVANCED ORE PROCESSING //

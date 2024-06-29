@@ -6,8 +6,7 @@ ServerEvents.recipes((e) => {
   const pneumaticcraft = definePneumaticcraftRecipes(e)
   const redefineRecipe = redefineRecipe_(e)
 
-  // Add crushing recipes for every gem/ingot into dust that wasn't already
-  // overhauled by metallurgy.
+  // Add crushing recipes for items not overhauled by metallurgy.
   const ingotDustMap = {
     'thermal:ruby': 'thermal:ruby_dust',
     'thermal:sapphire': 'thermal:sapphire_dust',
@@ -16,10 +15,6 @@ ServerEvents.recipes((e) => {
     'thermal:niter': 'thermal:niter_dust',
     // Sulfur dust overhauled in chapter 5a
     'minecraft:netherite_ingot': 'thermal:netherite_dust',
-    'minecraft:lapis_lazuli': 'thermal:lapis_dust',
-    'minecraft:diamond': 'thermal:diamond_dust',
-    'minecraft:emerald': 'thermal:emerald_dust',
-    'minecraft:quartz': 'thermal:quartz_dust',
   }
   for (const [ingot, dust] of Object.entries(ingotDustMap)) {
     create.milling(dust, ingot)
@@ -98,7 +93,8 @@ ServerEvents.recipes((e) => {
       console.error(`Unknown recipe ${recipe}`)
     }
     const ingredient = ingredients[1].asIngredient().first.id
-    // const dust =
+    const dust = global.lookupDust(ingredient)
+    // console.log(ingredient, dust)
     create.turning(r.originalRecipeResult, ingredient).processingTime(40)
   })
 

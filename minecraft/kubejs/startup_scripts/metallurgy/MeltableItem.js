@@ -11,6 +11,9 @@ function MeltableItem(options) {
   this.ingot = options.ingot
   this.block = options.block
 
+  // The dust form, which can be melted
+  this.dust = options.dust
+
   // Information about the fluid that the metal/gem will melt into to help with
   // registration.
   this.fluid = options.fluid
@@ -147,6 +150,13 @@ MeltableItem.prototype.registerMeltingRecipes = function (e) {
     this.block,
     Fluid.of(this.fluid, MeltableItem.DEFAULT_INGOT_FLUID * this.blockRatio)
   )
+  if (this.dust) {
+    this.registerMeltingRecipe(
+      e,
+      this.dust,
+      Fluid.of(this.fluid, MeltableItem.DEFAULT_INGOT_FLUID)
+    )
+  }
   return this
 }
 

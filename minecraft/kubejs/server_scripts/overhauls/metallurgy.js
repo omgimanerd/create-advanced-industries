@@ -16,6 +16,8 @@ ServerEvents.tags('item', (e) => {
 })
 
 ServerEvents.recipes((e) => {
+  const create = defineCreateRecipes(e)
+
   global.metallurgy.meltable_items.forEach((i) => {
     i.registerMeltingRecipes(e)
       .registerCastingRecipes(e)
@@ -58,4 +60,10 @@ ServerEvents.recipes((e) => {
     ['minecraft:glass', MeltableItem.STEEL_INGOT_CAST],
     steelCastedMoltenGlass
   )
+
+  for (const { ingot, dust } of global.materials) {
+    if (dust === undefined) continue
+    // Ingot forms of the materials can always be crushed back into dust.
+    create.milling(dust, ingot)
+  }
 })

@@ -164,6 +164,8 @@ global.materials = [
     ingot: 'tfmg:steel_ingot',
     // No nugget form
 
+    dust: 'kubejs:steel_dust',
+
     fluid: 'tfmg:molten_steel',
     fluidTextureLocation: 'tfmg:fluid/molten_steel_still',
     superheated: true,
@@ -184,7 +186,7 @@ global.materials = [
   {
     type: global.MATERIAL_TYPE_GEM,
     block: 'minecraft:quartz_block',
-    ingot: 'minecraft:quartz_block',
+    ingot: 'minecraft:quartz',
     // No nugget form
 
     dust: 'thermal:quartz_dust',
@@ -247,4 +249,18 @@ global.getMaterialType = (type) => {
  */
 global.getBaseMetals = () => {
   return global.getMaterialType(global.MATERIAL_TYPE_BASE_METAL)
+}
+
+/**
+ * Given the ingot form of a material, returns the name of the crushed dust
+ * equivalent if it exists.
+ * @param {string} ingot
+ * @param {string}
+ */
+global.lookupDust = (ingot) => {
+  for (const { ingot_, dust } of global.materials) {
+    if (ingot_ === ingot) {
+      return dust
+    }
+  }
 }
