@@ -16,8 +16,6 @@ ServerEvents.tags('item', (e) => {
 })
 
 ServerEvents.recipes((e) => {
-  const create = defineCreateRecipes(e)
-
   global.metallurgy.meltable_items.forEach((i) => {
     i.registerMeltingRecipes(e)
       .registerCastingRecipes(e)
@@ -60,23 +58,4 @@ ServerEvents.recipes((e) => {
     ['minecraft:glass', MeltableItem.STEEL_INGOT_CAST],
     steelCastedMoltenGlass
   )
-
-  // Add crushing recipes for every gem/ingot into dust that wasn't already
-  // overhauled by metallurgy.
-  const ingotDustMap = {
-    'thermal:ruby': 'thermal:ruby_dust',
-    'thermal:sapphire': 'thermal:sapphire_dust',
-    'thermal:apatite': 'thermal:apatite_dust',
-    'thermal:cinnabar': 'thermal:cinnabar_dust',
-    'thermal:niter': 'thermal:niter_dust',
-    // Sulfur dust overhauled in chapter 5a
-    'minecraft:netherite_ingot': 'thermal:netherite_dust',
-    'minecraft:lapis_lazuli': 'thermal:lapis_dust',
-    'minecraft:diamond': 'thermal:diamond_dust',
-    'minecraft:emerald': 'thermal:emerald_dust',
-    'minecraft:quartz': 'thermal:quartz_dust',
-  }
-  for (const [ingot, dust] of Object.entries(ingotDustMap)) {
-    create.milling(dust, ingot)
-  }
 })

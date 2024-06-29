@@ -6,6 +6,25 @@ ServerEvents.recipes((e) => {
   const pneumaticcraft = definePneumaticcraftRecipes(e)
   const redefineRecipe = redefineRecipe_(e)
 
+  // Add crushing recipes for every gem/ingot into dust that wasn't already
+  // overhauled by metallurgy.
+  const ingotDustMap = {
+    'thermal:ruby': 'thermal:ruby_dust',
+    'thermal:sapphire': 'thermal:sapphire_dust',
+    'thermal:apatite': 'thermal:apatite_dust',
+    'thermal:cinnabar': 'thermal:cinnabar_dust',
+    'thermal:niter': 'thermal:niter_dust',
+    // Sulfur dust overhauled in chapter 5a
+    'minecraft:netherite_ingot': 'thermal:netherite_dust',
+    'minecraft:lapis_lazuli': 'thermal:lapis_dust',
+    'minecraft:diamond': 'thermal:diamond_dust',
+    'minecraft:emerald': 'thermal:emerald_dust',
+    'minecraft:quartz': 'thermal:quartz_dust',
+  }
+  for (const [ingot, dust] of Object.entries(ingotDustMap)) {
+    create.milling(dust, ingot)
+  }
+
   // Another source of green dye
   e.blasting('minecraft:green_dye', 'minecraft:kelp')
 
