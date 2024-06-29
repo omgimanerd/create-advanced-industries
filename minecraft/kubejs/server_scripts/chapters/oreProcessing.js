@@ -19,13 +19,21 @@ ServerEvents.recipes((e) => {
   const MeltableItem = global.MeltableItem
   const DEFAULT_INGOT_FLUID = MeltableItem.DEFAULT_INGOT_FLUID
 
-  const oreProcessingMetals = global.getMaterials(global.MATERIALS_BASE_METALS)
+  const oreProcessingMetals = global.getMaterialType(
+    global.MATERIAL_TYPE_BASE_METAL
+  )
 
   //////////////////////////
   // BASIC ORE PROCESSING //
   //////////////////////////
-  for (const [_, data] of Object.entries(oreProcessingMetals)) {
-    let { raw, crushed, dirty, dust, ingot, fluid } = data
+  for (const {
+    raw,
+    crushed,
+    dirty,
+    dust,
+    ingot,
+    fluid,
+  } of oreProcessingMetals) {
     // Overhaul crushing the raw ore to the crushed form.
     e.remove({ type: 'create:crushing', output: crushed })
     create.crushing(

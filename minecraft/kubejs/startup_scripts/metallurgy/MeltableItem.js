@@ -4,6 +4,8 @@
 // metallurgy item and recipe registrations. Used by both startup_scripts and
 // server_scripts
 function MeltableItem(options) {
+  this.type = options.type
+
   // The three storage forms of the metal/gem input.
   this.nugget = options.nugget
   this.ingot = options.ingot
@@ -14,14 +16,8 @@ function MeltableItem(options) {
   this.fluid = options.fluid
   this.fluidName = stripModPrefix(this.fluid)
   this.fluidDisplayName = getDisplayName(this.fluid)
-  this.fluidTags = options.fluidTags === undefined ? [] : options.fluidTags
   this.bucketColor = options.bucketColor
-  this.noRegisterFluid = options.noRegisterFluid
   this.fluidTextureLocation = options.fluidTextureLocation
-
-  //  If options.block is a forge tag, then specify a block for the melted
-  // fluid to cast back into. Mostly for glass.
-  this.blockCastingOutput = options.blockCastingOutput
 
   // Whether or not the ingot form should have a casting recipe, also mostly
   // for glass.
@@ -32,7 +28,7 @@ function MeltableItem(options) {
   this.blockRatio = options.blockRatio
     ? options.blockRatio
     : MeltableItem.DEFAULT_BLOCK_RATIO
-  this.requiresSuperheating = options.requiresSuperheating
+  this.superheated = options.superheated
 
   // Names of the casts that result from having the molten liquids poured into
   // them.
@@ -56,7 +52,8 @@ MeltableItem.STEEL_INGOT_CAST = 'kubejs:steel_ingot_cast'
  * @param {Registry.Fluid} e
  */
 MeltableItem.prototype.registerFluid = function (e) {
-  if (!this.noRegisterFluid) {
+  // Only custom fluids start with kubejs:
+  if (this.fluid.startsWith('kubejs:')) {
     let fluid = e
       .create(this.fluid)
       .bucketColor(this.bucketColor)
@@ -64,9 +61,19 @@ MeltableItem.prototype.registerFluid = function (e) {
       .stillTexture(`kubejs:fluid/${this.fluidName}_still`)
       .flowingTexture(`kubejs:fluid/${this.fluidName}_flow`)
       .displayName(getDisplayName(this.fluidDisplayName))
-    this.fluidTags.forEach((tag) => {
-      fluid.tag(tag)
-    })
+    switch (this.type) {
+      case global.MATERIAL_TYPE_BASE_METAL:
+        fluid.tag('kubejs:molten_base_metal')
+        break
+      case global.MATERIAL_TYPE_ALLOY_METAL:
+        fluid.tag('kubejs:molten_alloy_metal')
+        break
+      case global.MATERIAL_TYPE_GEM:
+        fluid.tag('kubejs:molten_gem')
+        break
+      default:
+        throw new Error(`Unknown material type ${this.type}`)
+    }
   }
 }
 
@@ -106,7 +113,7 @@ MeltableItem.prototype.registerCastedItems = function (e) {
  */
 MeltableItem.prototype.registerMeltingRecipe = function (e, item, fluid) {
   const recipe = e.recipes.create.mixing([fluid], item)
-  if (this.requiresSuperheating) {
+  if (this.superheated) {
     recipe.superheated()
   } else {
     recipe.heated()

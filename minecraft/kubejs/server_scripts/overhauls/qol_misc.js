@@ -78,7 +78,7 @@ ServerEvents.recipes((e) => {
     if (ingredients.size() < 2) {
       console.error(`Unknown recipe ${recipe}`)
     }
-    // const ingredientId = ingredients[1].asIngredient().first.id
+    const ingredient = ingredients[1].asIngredient().first.id
     // const dust =
     create.turning(r.originalRecipeResult, ingredient).processingTime(40)
   })
