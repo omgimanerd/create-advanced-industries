@@ -67,6 +67,7 @@ const defineCreateRecipes = (e) => {
     pressurizing: getConstructorWrapper(e, CVIPressurizingWrapper),
     vacuumizing: e.recipes.vintageimprovements.vacuumizing,
     vibrating: e.recipes.vintageimprovements.vibrating,
+    turning: e.recipes.vintageimprovements.turning,
 
     /**
      * @callback SequencedAssemblyWrapper

@@ -925,13 +925,15 @@ ServerEvents.recipes((e) => {
     }
   )
 
+  // Curving heads are made from steel on the lathe.
+  e.replaceInput(
+    { type: 'vintageimprovements:turning' },
+    'minecraft:iron_block',
+    'tfmg:steel_block'
+  )
+
   // Consolidate recipe categories
   e.remove({ id: 'vintageimprovements:curving/diamond' })
-  create.polishing(
-    'createutilities:polished_amethyst',
-    'minecraft:amethyst_shard',
-    POLISHING_HIGH_SPEED
-  )
 
   // Manually add curving recipes that are desired
   create.curving(
@@ -960,4 +962,10 @@ ServerEvents.recipes((e) => {
   //////////////////////
   // Create Utilities //
   //////////////////////
+
+  create.polishing(
+    'createutilities:polished_amethyst',
+    'minecraft:amethyst_shard',
+    POLISHING_HIGH_SPEED
+  )
 })

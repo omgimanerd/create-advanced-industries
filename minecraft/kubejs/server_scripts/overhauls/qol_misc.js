@@ -72,6 +72,16 @@ ServerEvents.recipes((e) => {
     'create:brass_ingot'
   )
 
+  // Every gear can be made on the lathe for cheaper
+  e.forEachRecipe({ output: '#forge:gears' }, (r) => {
+    const ingredients = r.originalRecipeIngredients
+    if (ingredients.size() < 2) {
+      console.error(`Unknown recipe ${recipe}`)
+    }
+    const ingredient = ingredients[1]
+    create.turning(r.originalRecipeResult, ingredient).processingTime(40)
+  })
+
   // smithing template netherite upgrade duping
 
   // neural processor
