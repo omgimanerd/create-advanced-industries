@@ -1,7 +1,6 @@
 // priority: 100
 
 Ponder.registry((e) => {
-  // Ponder for Remy charm
   e.create('kubejs:remy_spawner').scene(
     'remy_the_epicure',
     'Remy The Epicure',

@@ -1,7 +1,6 @@
 // priority: 0
 
 Ponder.registry((e) => {
-  // Ponder for beehive extraction
   e.create('minecraft:beehive').scene(
     'beehive_extraction',
     'Beehive Extraction',

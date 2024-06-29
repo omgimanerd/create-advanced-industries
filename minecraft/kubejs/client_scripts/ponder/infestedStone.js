@@ -1,7 +1,6 @@
 // priority: 100
 
 Ponder.registry((e) => {
-  // Ponder for infested stone expulsion.
   e.create('minecraft:infested_stone').scene(
     'infested_stone_expulsion',
     'Getting rid of Pests',

@@ -1,7 +1,6 @@
 // priority: 0
 
 Ponder.registry((e) => {
-  // Ponder for dragon's breath bottling
   e.create('minecraft:dragon_head').scene(
     'dragons_breath_bottling',
     "Dragon's Breath Bottling",
