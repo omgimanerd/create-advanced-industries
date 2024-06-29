@@ -53,6 +53,7 @@ ServerEvents.recipes((e) => {
   e.remove({ id: /^pneumaticcraft:[a-z_/]+compressed_iron_ingot$/ })
   e.remove({ id: 'pneumaticcraft:thermo_plant/compressed_iron_drill_bit' })
   e.remove({ id: /^pneumaticcraft:[a-z_/]+wheat_flour$/ })
+  e.remove({ id: 'pneumaticcraft:copper_ingot_from_nugget' })
 
   ////////////////////
   // Thermal Series //
@@ -60,6 +61,7 @@ ServerEvents.recipes((e) => {
   // Only the crystallizer and pyrolyzer recipes are whitelisted.
   e.remove({ id: /^thermal:machines\/(?!crystallizer|pyrolyzer).*/ })
   e.remove({ id: /^thermal:earth_charge\/[a-z_]+/ })
+  e.remove({ id: 'thermal:storage/copper_ingot_from_nuggets' })
 
   // TODO remove all thermal recipes that aren't used
 })
