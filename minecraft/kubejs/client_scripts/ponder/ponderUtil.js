@@ -57,6 +57,20 @@ const setDeployerHeldItem = (scene, deployerPos, id) => {
 
 /**
  * @param {Internal.ExtendedSceneBuilder_} scene
+ * @param {BlockPos_} pedestalPos
+ * @param {Internal.ItemStack_} id
+ */
+const setPedestalItem = (scene, pedestalPos, id) => {
+  scene.world.modifyBlockEntityNBT(pedestalPos, (nbt) => {
+    nbt.itemStack = {
+      id: id,
+      Count: 1,
+    }
+  })
+}
+
+/**
+ * @param {Internal.ExtendedSceneBuilder_} scene
  * @param {BlockPos_} pos
  * @param {number} ticks
  * @param {boolean=} clearHand
