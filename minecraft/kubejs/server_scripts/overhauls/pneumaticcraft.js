@@ -325,6 +325,7 @@ ServerEvents.recipes((e) => {
     ['HGH'],
     Object.assign({}, pneumaticcraftKeys, { G: '#forge:glass' })
   )
+  create.turning('4x pneumaticcraft:pressure_tube', 'tfmg:steel_ingot')
   // Refinery overhauls defined in Chapter 5a
   e.remove({ id: 'pneumaticcraft:reinforced_stone_from_slab' })
   redefineRecipe(
@@ -419,6 +420,16 @@ ServerEvents.recipes((e) => {
       )
       .id(`kubejs:gun_ammo_filling_${idString.replace(/[^a-z_]/g, '_')}`)
   }
+
+  // Alternative lathing recipe for the cannon barrel.
+  create.turning(
+    [
+      'pneumaticcraft:cannon_barrel',
+      Item.of('tfmg:steel_ingot').withChance(0.1),
+    ],
+    'tfmg:steel_block'
+  )
+
   redefineRecipe(
     'pneumaticcraft:gps_tool',
     [
