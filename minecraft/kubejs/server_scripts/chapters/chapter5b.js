@@ -199,8 +199,6 @@ ServerEvents.recipes((e) => {
     Item.of('thermal:sawdust', 9).withChance(0.5),
   ])
 
-  // TODO sawdust + glue to paper
-
   // Blasting recipe for sawdust to charcoal dust.
   e.remove({ id: 'create:milling/charcoal' })
   e.blasting('tfmg:charcoal_dust', 'thermal:sawdust')

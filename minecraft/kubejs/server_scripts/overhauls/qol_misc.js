@@ -58,6 +58,13 @@ ServerEvents.recipes((e) => {
     .pressure(2)
     .item_output('minecraft:slime_ball')
 
+  // Another alternative paper recipe
+  create
+    .SequencedAssembly('thermal:sawdust')
+    .fill(Fluid.of('create_things_and_misc:slime', 10))
+    .press()
+    .outputs('minecraft:paper')
+
   // Gate advanced magnet behind brass instead of gold.
   e.replaceInput(
     { id: 'simplemagnets:advancedmagnet' },
