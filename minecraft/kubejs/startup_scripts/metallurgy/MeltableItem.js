@@ -1,8 +1,11 @@
 // priority: 900
 
-// JS prototype class to store information about meltable items for
-// metallurgy item and recipe registrations. Used by both startup_scripts and
-// server_scripts
+/**
+ * JS prototype class to store information about meltable items for metallurgy
+ * item and recipe registrations. Used by both startup_scripts and
+ * server_scripts.
+ * @param {Material} options
+ */
 function MeltableItem(options) {
   this.type = options.type
 
@@ -50,8 +53,7 @@ MeltableItem.STEEL_INGOT_CAST = 'kubejs:steel_ingot_cast'
 
 /**
  * Registers the fluid for the MeltableItem if necessary.
- * Must be called in startup_scripts
- *
+ * Must be called in startup_scripts.
  * @param {Registry.Fluid} e
  */
 MeltableItem.prototype.registerFluid = function (e) {
@@ -107,7 +109,7 @@ MeltableItem.prototype.registerCastedItems = function (e) {
 
 /**
  * Helper method to register a melting recipe for this item.
- * Can only be called in server_scripts/
+ * Can only be called in server_scripts.
  *
  * @param {Internal.RecipesEventJS_} e
  * @param {string} item
@@ -127,8 +129,7 @@ MeltableItem.prototype.registerMeltingRecipe = function (e, item, fluid) {
 /**
  * Registers the melting recipes for the nugget, ingot, and block of this
  * MeltableItem.
- * Can only be called in server_scripts/
- *
+ * Can only be called in server_scripts.
  * @param {Internal.RecipesEventJS_} e
  * @returns
  */
@@ -160,9 +161,12 @@ MeltableItem.prototype.registerMeltingRecipes = function (e) {
   return this
 }
 
-// Register the fluid filling recipes for the ingot and block casts.
-//
-// Can only be called in server_scripts/
+/**
+ * Register the fluid filling recipes for the ingot and block casts.
+ * Can only be called in server_scripts.
+ * @param {Internal.RecipesEventJS_} e
+ * @returns {MeltableItem}
+ */
 MeltableItem.prototype.registerCastingRecipes = function (e) {
   if (!this.noIngotCastingRecipe) {
     e.recipes.create.filling(this.ceramicMoltenIngotCast, [
@@ -177,9 +181,12 @@ MeltableItem.prototype.registerCastingRecipes = function (e) {
   return this
 }
 
-// Register the washing recipes to get the ingot back from the casted items.
-//
-// Can only be called in server_scripts/
+/**
+ * Register the washing recipes to get the ingot back from the casted items.
+ * Can only be called in server_scripts.
+ * @param {Internal.RecipesEventJS_} e
+ * @returns {MeltableItem}
+ */
 MeltableItem.prototype.registerWashedCastRecipes = function (e) {
   if (!this.noIngotCastingRecipe) {
     e.recipes.create.splashing(
@@ -195,6 +202,19 @@ MeltableItem.prototype.registerWashedCastRecipes = function (e) {
       [this.ingot, MeltableItem.STEEL_INGOT_CAST],
       this.steelMoltenIngotCast
     )
+  }
+  return this
+}
+
+/**
+ * Register the milling/crushing recipes to get the dust from the ingot form.
+ * Can only be called in server_scripts.
+ * @param {Internal.RecipesEventJS_} e
+ * @returns {MeltableItem}
+ */
+MeltableItem.prototype.registerDustCrushingRecipes = function (e) {
+  if (this.dust) {
+    e.recipes.create.milling(this.dust, this.ingot)
   }
   return this
 }
