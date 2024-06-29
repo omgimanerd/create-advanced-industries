@@ -23,6 +23,15 @@ METAL_FLUIDS = {
     "molten_nickel": (219, 207, 150),  # dbcf96
 
     "molten_brass": (209, 156, 57),  # d19c39
+    "molten_invar": (132, 148, 148),  # 849494
+    "molten_enderium": (12, 92, 124),  # 0c5c7c
+    "molten_signalum": (162, 15, 0),  # a20f00
+    "molten_constantan": (164, 100, 36),  # a46424
+    "molten_lumium": (251, 243, 192),  # fbf3c0
+    "molten_electrum": (188, 164, 76),  # bca44c
+    "molten_bronze": (140, 68, 36),  # 8c4424
+    "molten_netherite": (58, 57, 47),  # 44392f
+
     "molten_glass": (206, 231, 230),  # cee7e6
     "molten_quartz": (158, 153, 153),  # 9e9999
     "molten_diamond": (30, 194, 195),  # 1ec2c3

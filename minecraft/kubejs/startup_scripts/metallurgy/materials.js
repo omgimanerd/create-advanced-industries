@@ -170,6 +170,94 @@ global.materials = [
     fluidTextureLocation: 'tfmg:fluid/molten_steel_still',
     superheated: true,
   },
+  {
+    type: global.MATERIAL_TYPE_ALLOY_METAL,
+    block: 'thermal:invar_block',
+    ingot: 'thermal:invar_ingot',
+    nugget: 'thermal:invar_nugget',
+
+    dust: 'thermal:invar_dust',
+
+    fluid: 'kubejs:molten_invar',
+    bucketColor: 0x849494,
+  },
+  {
+    type: global.MATERIAL_TYPE_ALLOY_METAL,
+    block: 'thermal:enderium_block',
+    ingot: 'thermal:enderium_ingot',
+    nugget: 'thermal:enderium_nugget',
+
+    dust: 'thermal:enderium_dust',
+
+    fluid: 'kubejs:molten_enderium',
+    bucketColor: 0x0c5c7c,
+  },
+  {
+    type: global.MATERIAL_TYPE_ALLOY_METAL,
+    block: 'thermal:signalum_block',
+    ingot: 'thermal:signalum_ingot',
+    nugget: 'thermal:signalum_nugget',
+
+    dust: 'thermal:signalum_dust',
+
+    fluid: 'kubejs:molten_signalum',
+    bucketColor: 0xa20f00,
+  },
+  {
+    type: global.MATERIAL_TYPE_ALLOY_METAL,
+    block: 'thermal:constantan_block',
+    ingot: 'thermal:constantan_ingot',
+    nugget: 'thermal:constantan_nugget',
+
+    dust: 'thermal:constantan_dust',
+
+    fluid: 'kubejs:molten_constantan',
+    bucketColor: 0xa46424,
+  },
+  {
+    type: global.MATERIAL_TYPE_ALLOY_METAL,
+    block: 'thermal:lumium_block',
+    ingot: 'thermal:lumium_ingot',
+    nugget: 'thermal:lumium_nugget',
+
+    dust: 'thermal:lumium_dust',
+
+    fluid: 'kubejs:molten_lumium',
+    bucketColor: 0xfbf3c0,
+  },
+  {
+    type: global.MATERIAL_TYPE_ALLOY_METAL,
+    block: 'thermal:electrum_block',
+    ingot: 'thermal:electrum_ingot',
+    nugget: 'thermal:electrum_nugget',
+
+    dust: 'thermal:electrum_dust',
+
+    fluid: 'kubejs:molten_electrum',
+    bucketColor: 0xbca44c,
+  },
+  {
+    type: global.MATERIAL_TYPE_ALLOY_METAL,
+    block: 'thermal:bronze_block',
+    ingot: 'thermal:bronze_ingot',
+    nugget: 'thermal:bronze_nugget',
+
+    dust: 'thermal:bronze_dust',
+
+    fluid: 'kubejs:molten_bronze',
+    bucketColor: 0x8c4424,
+  },
+  {
+    type: global.MATERIAL_TYPE_ALLOY_METAL,
+    block: 'minecraft:netherite_block',
+    ingot: 'minecraft:netherite_ingot',
+    nugget: 'thermal:netherite_nugget',
+
+    dust: 'thermal:netherite_dust',
+
+    fluid: 'kubejs:molten_netherite',
+    bucketColor: 0x44392f,
+  },
 
   // Gems
   {
@@ -258,18 +346,6 @@ global.getBaseMetals = () => {
  * @returns {string}
  */
 global.lookupDust = (ingot_) => {
-  const missingDustLookups = {
-    'thermal:invar_ingot': 'thermal:invar_dust',
-    'thermal:enderium_ingot': 'thermal:enderium_dust',
-    'thermal:signalum_ingot': 'thermal:signalum_dust',
-    'thermal:constantan_ingot': 'thermal:constantan_dust',
-    'thermal:lumium_ingot': 'thermal:lumium_dust',
-    'thermal:electrum_ingot': 'thermal:electrum_dust',
-    'thermal:bronze_ingot': 'thermal:bronze_dust',
-    'minecraft:netherite_ingot': 'thermal:netherite_dust',
-  }
-  const missingLookup = missingDustLookups[ingot_]
-  if (missingLookup) return missingLookup
   for (const { ingot, dust } of global.materials) {
     if (ingot === ingot_) {
       return dust
@@ -284,18 +360,6 @@ global.lookupDust = (ingot_) => {
  * @returns {string}
  */
 global.lookupBlock = (ingot_) => {
-  const missingBlockLookups = {
-    'thermal:invar_ingot': 'thermal:invar_block',
-    'thermal:enderium_ingot': 'thermal:enderium_block',
-    'thermal:signalum_ingot': 'thermal:signalum_block',
-    'thermal:constantan_ingot': 'thermal:constantan_block',
-    'thermal:lumium_ingot': 'thermal:lumium_block',
-    'thermal:electrum_ingot': 'thermal:electrum_block',
-    'thermal:bronze_ingot': 'thermal:bronze_block',
-    'minecraft:netherite_ingot': 'minecraft:netherite_block',
-  }
-  const missingLookup = missingBlockLookups[ingot_]
-  if (missingLookup) return missingLookup
   for (const { ingot, block } of global.materials) {
     if (ingot === ingot_) {
       return block

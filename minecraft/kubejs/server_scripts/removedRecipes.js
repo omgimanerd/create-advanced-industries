@@ -26,6 +26,11 @@ ServerEvents.recipes((e) => {
   ////////////
   e.remove({ output: '#forge:nuggets', type: 'create:splashing' })
 
+  /////////////////
+  // Create Deco //
+  /////////////////
+  e.remove({ id: 'createdeco:netherite_ingot' })
+
   ////////////////////////////
   // Create Misc and Things //
   ////////////////////////////
