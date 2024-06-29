@@ -28,8 +28,8 @@
 
   BlockEvents.rightClicked((e) => {
     const { item, hand, facing, block, player } = e
-    if (hand !== 'main_hand' || player.crouching) return
     if (item.id !== 'create:wrench') return
+    if (hand !== 'main_hand' || player.crouching) return
     if (block.id.startsWith('create:')) return
     if (!whitelist[block.id]) return
     if (block.properties === undefined) return
@@ -49,10 +49,12 @@
     } else {
       newDirection = blockFacingDirection.getCounterClockWise(facing.axis)
     }
+    // If the resulting direction is a forbidden state, skip any action.
+    if (forbiddenStates[block.id] === newDirection) return
+    // block.properties is immutable, so we need to copy it.
     const newProperties = Object.assign({}, block.properties, {
       facing: newDirection,
     })
-    if (forbiddenStates[block.id] === newDirection) return
     block.set(block.id, newProperties)
     player.swing()
     if (newDirection !== blockFacingDirection) {
