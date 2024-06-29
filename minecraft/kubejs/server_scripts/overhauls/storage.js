@@ -228,7 +228,7 @@ ServerEvents.recipes((e) => {
       N: 'thermal:enderium_ingot',
     }
   )
-  // TODO
+  // TODO gate behind quantum mechanism
   e.remove({ id: 'rsinfinitybooster:dimension_card' })
 
   //////////////////
