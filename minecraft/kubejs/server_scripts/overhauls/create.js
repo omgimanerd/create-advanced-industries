@@ -896,15 +896,20 @@ ServerEvents.recipes((e) => {
       H: 'create:shaft',
     }
   )
-  redefineRecipe(
-    'vintageimprovements:convex_curving_head',
+  e.remove({ id: 'vintageimprovements:mechanical_crafting/lathe' })
+  create.mechanical_crafting(
+    'vintageimprovements:lathe',
     [
-      'SAS', //
-      ' S ', //
+      'CSPPC', //
+      'S DMS', //
+      'CSPPC', //
     ],
     {
-      A: 'create:andesite_alloy',
-      S: 'create:iron_sheet',
+      C: 'create:andesite_casing',
+      S: 'create:shaft',
+      D: 'thermal:drill_head',
+      M: 'create:precision_mechanism',
+      P: 'create:iron_sheet',
     }
   )
   redefineRecipe(

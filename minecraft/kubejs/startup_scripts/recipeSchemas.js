@@ -170,6 +170,14 @@ StartupEvents.recipeSchemaRegistry((e) => {
       )
     )
     e.register(
+      'vintageimprovements:turning',
+      new $RecipeSchema(
+        outputItem.asArray().key('results'),
+        inputItem.asArray().key('ingredients'),
+        intNumber.key('processingTime').optional(200)
+      )
+    )
+    e.register(
       'vintageimprovements:vacuumizing',
       new $RecipeSchema(
         outputFluidOrItem.asArray().key('results'),
