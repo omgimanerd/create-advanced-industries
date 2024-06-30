@@ -68,7 +68,12 @@ ServerEvents.recipes((e) => {
     })
     .forEach((/** @type {Material} */ v) => {
       const { dust, fluid, superheated, alloyRatios } = v
-      e.remove({ type: 'minecraft:crafting_shapeless', output: dust })
+      if (dust) {
+        // Only remove shapeless crafting recipes where a dust existed. Brass
+        // does not a dust, and this will remove all shapeless recipes if
+        // dust is undefined.
+        e.remove({ type: 'minecraft:crafting_shapeless', output: dust })
+      }
       let totalFluidOutput = 0
       const ingredients = Object.entries(alloyRatios).map((e) => {
         totalFluidOutput += e[1] * MeltableItem.DEFAULT_INGOT_FLUID
