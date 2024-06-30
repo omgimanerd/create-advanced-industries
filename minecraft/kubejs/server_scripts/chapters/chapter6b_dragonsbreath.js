@@ -6,6 +6,7 @@ BlockEvents.rightClicked('minecraft:dragon_head', (e) => {
   const { item, hand, block, level } = e
 
   // TODO Implement the item that will trigger dragon's head breath mechanic
+  // regen potion
 
   // Dragon head has a rotation property from 0-16 with 0 being North increasing
   // clockwise.
@@ -70,7 +71,7 @@ const customDragonsBreathBottling = (item, player, target, level) => {
     if (entity.persistentData.fromDragonHead) {
       item.count--
       player.give('minecraft:dragon_breath')
-      entity.kill()
+      entity.discard()
       break
     }
   }

@@ -30,7 +30,7 @@ BlockEvents.rightClicked('minecraft:beacon', (e) => {
           return entity.type === 'minecraft:item'
         })
         .forEach((entity) => {
-          if (entity.item.id === 'minecraft:glass') entity.kill()
+          if (entity.item.id === 'minecraft:glass') entity.discard()
           entity.block.popItem(Item.of('minecraft:yellow_stained_glass'))
         })
     })

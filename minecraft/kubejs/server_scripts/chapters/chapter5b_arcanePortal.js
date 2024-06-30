@@ -61,7 +61,7 @@ global.PortalBlockTickingCallback = (e) => {
   let pickaxesEaten = pdata.getInt('pickaxes_eaten')
   for (const /** @type {Internal.Entity_} */ entity of entities) {
     if (entity.type === 'minecraft:wandering_trader') {
-      entity.remove('killed')
+      entity.discard()
       entity.playSound('minecraft:entity.enderman.teleport', 2, 1)
       laborersEaten = Math.min(5, laborersEaten + 1)
       spawnParticles(
