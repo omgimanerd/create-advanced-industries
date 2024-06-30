@@ -22,15 +22,14 @@ ServerEvents.recipes((e) => {
     i.registerMeltingRecipes(e)
       .registerCastingRecipes(e)
       .registerWashedCastRecipes(e)
+      .registerDustCrushingRecipes(e)
   })
 
   // Manually register melting recipes for all glass types
-  e.recipes.create
-    .mixing(Fluid.of('kubejs:molten_glass', 360), '#forge:glass')
-    .heated()
+  create.mixing(Fluid.of('kubejs:molten_glass', 360), '#forge:glass').heated()
 
   // Better melting recipe for sand into glass
-  e.recipes.create
+  create
     .mixing(Fluid.of('kubejs:molten_glass', 450), '#minecraft:smelts_to_glass')
     .heated()
 
@@ -39,15 +38,15 @@ ServerEvents.recipes((e) => {
   const ceramicCastedMoltenGlass = 'kubejs:ceramic_ingot_cast_molten_glass'
   const steelCastedMoltenGlass = 'kubejs:steel_ingot_cast_molten_glass'
   const MeltableItem = global.MeltableItem
-  e.recipes.create.filling(ceramicCastedMoltenGlass, [
+  create.filling(ceramicCastedMoltenGlass, [
     Fluid.of('kubejs:molten_glass', MeltableItem.DEFAULT_INGOT_FLUID * 4),
     MeltableItem.CERAMIC_INGOT_CAST,
   ])
-  e.recipes.create.filling(steelCastedMoltenGlass, [
+  create.filling(steelCastedMoltenGlass, [
     Fluid.of('kubejs:molten_glass', MeltableItem.DEFAULT_INGOT_FLUID * 4),
     MeltableItem.STEEL_INGOT_CAST,
   ])
-  e.recipes.create.splashing(
+  create.splashing(
     [
       'minecraft:glass',
       Item.of(MeltableItem.CERAMIC_INGOT_CAST).withChance(
@@ -56,8 +55,34 @@ ServerEvents.recipes((e) => {
     ],
     ceramicCastedMoltenGlass
   )
-  e.recipes.create.splashing(
+  create.splashing(
     ['minecraft:glass', MeltableItem.STEEL_INGOT_CAST],
     steelCastedMoltenGlass
   )
+
+  // Register all metallic alloying recipes, and remove the custom blend
+  // crafting.
+  global.materials
+    .filter((v) => {
+      return v.type === global.MATERIAL_TYPE_ALLOY_METAL && v.alloyRatios
+    })
+    .forEach((/** @type {Material} */ v) => {
+      const { dust, fluid, superheated, alloyRatios } = v
+      e.remove({ type: 'minecraft:crafting_shapeless', output: dust })
+      let totalFluidOutput = 0
+      const ingredients = Object.entries(alloyRatios).map((e) => {
+        totalFluidOutput += e[1] * MeltableItem.DEFAULT_INGOT_FLUID
+        return Fluid.of(e[0], e[1] * MeltableItem.DEFAULT_INGOT_FLUID)
+      })
+      const fluidOutput = Fluid.of(fluid, totalFluidOutput)
+      console.log(fluidOutput, ingredients)
+      const r = create.mixing(fluidOutput, ingredients)
+      if (superheated) {
+        r.superheated()
+      } else {
+        r.heated()
+      }
+    })
+
+  // Rich slag + liquid = better?
 })

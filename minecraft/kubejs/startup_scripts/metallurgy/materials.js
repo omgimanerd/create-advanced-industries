@@ -6,10 +6,7 @@
   (global.MATERIAL_TYPE_GEM = 'gem')
 
 /**
- * Holds all the mappings for every form of material for easy lookup and
- * transformation.
- *
- * @typedef {object} Material
+ * @typedef {Object} Material
  * @property {string} type
  * @property {string} block
  * @property {string} ingot
@@ -23,6 +20,11 @@
  *   generate_fluid_textures.py
  * @property {string=} fluidTextureLocation
  * @property {boolean=} superheated
+ * @property {{string:number}} alloyRatios
+ */
+/**
+ * Holds all the mappings for every form of material for easy lookup and
+ * transformation.
  *
  * @type {Material[]}
  */
@@ -157,6 +159,11 @@ global.materials = [
 
     fluid: 'kubejs:molten_brass',
     bucketColor: 0xd19c39,
+
+    alloyRatios: {
+      'kubejs:molten_copper': 1,
+      'kubejs:molten_zinc': 1,
+    },
   },
   {
     type: global.MATERIAL_TYPE_ALLOY_METAL,
@@ -180,6 +187,11 @@ global.materials = [
 
     fluid: 'kubejs:molten_invar',
     bucketColor: 0x849494,
+
+    alloyRatios: {
+      'kubejs:molten_iron': 2,
+      'kubejs:molten_nickel': 1,
+    },
   },
   {
     type: global.MATERIAL_TYPE_ALLOY_METAL,
@@ -191,6 +203,13 @@ global.materials = [
 
     fluid: 'kubejs:molten_enderium',
     bucketColor: 0x0c5c7c,
+    superheated: true,
+
+    alloyRatios: {
+      'kubejs:molten_lead': 3,
+      'kubejs:molten_diamond': 1,
+      'thermal:ender': 1,
+    },
   },
   {
     type: global.MATERIAL_TYPE_ALLOY_METAL,
@@ -202,6 +221,13 @@ global.materials = [
 
     fluid: 'kubejs:molten_signalum',
     bucketColor: 0xa20f00,
+    superheated: true,
+
+    alloyRatios: {
+      'kubejs:molten_copper': 3,
+      'kubejs:molten_silver': 1,
+      'thermal:redstone': 1,
+    },
   },
   {
     type: global.MATERIAL_TYPE_ALLOY_METAL,
@@ -213,6 +239,12 @@ global.materials = [
 
     fluid: 'kubejs:molten_constantan',
     bucketColor: 0xa46424,
+    superheated: true,
+
+    alloyRatios: {
+      'kubejs:molten_copper': 1,
+      'kubejs:molten_nickel': 1,
+    },
   },
   {
     type: global.MATERIAL_TYPE_ALLOY_METAL,
@@ -224,6 +256,12 @@ global.materials = [
 
     fluid: 'kubejs:molten_lumium',
     bucketColor: 0xfbf3c0,
+
+    alloyRatios: {
+      'kubejs:molten_tin': 3,
+      'kubejs:molten_silver': 1,
+      'thermal:glowstone': 1,
+    },
   },
   {
     type: global.MATERIAL_TYPE_ALLOY_METAL,
@@ -235,6 +273,11 @@ global.materials = [
 
     fluid: 'kubejs:molten_electrum',
     bucketColor: 0xbca44c,
+
+    alloyRatios: {
+      'kubejs:molten_gold': 1,
+      'kubejs:molten_silver': 1,
+    },
   },
   {
     type: global.MATERIAL_TYPE_ALLOY_METAL,
@@ -246,6 +289,11 @@ global.materials = [
 
     fluid: 'kubejs:molten_bronze',
     bucketColor: 0x8c4424,
+
+    alloyRatios: {
+      'kubejs:molten_copper': 3,
+      'kubejs:molten_tin': 1,
+    },
   },
   {
     type: global.MATERIAL_TYPE_ALLOY_METAL,

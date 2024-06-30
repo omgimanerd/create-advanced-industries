@@ -33,7 +33,13 @@ ServerEvents.recipes((e) => {
     )
     .id('kubejs:custom_ars_nouveau_enchanting_blaze_burner')
 
-  // Automated dirt reward
+  // Automated dirt crafting
+  e.remove({ id: 'thermal:dirt_crafting' })
+  e.shapeless('minecraft:dirt', [
+    'thermal:compost',
+    'thermal:slag',
+    '#forge:sand',
+  ]).id('kubejs:dirt_crafting_manual_only')
   create.mixing('4x minecraft:dirt', [
     'thermal:compost',
     'thermal:slag',
@@ -100,12 +106,7 @@ ServerEvents.recipes((e) => {
 
   // Brass mixing
   e.remove({ id: 'create:mixing/brass_ingot' })
-  create
-    .mixing(Fluid.of('kubejs:molten_brass', 2 * ingotFluid), [
-      Fluid.of('kubejs:molten_copper', ingotFluid),
-      Fluid.of('kubejs:molten_zinc', ingotFluid),
-    ])
-    .heated()
+  // Overhauled in server_scripts/overhauls/metallurgy.js
 
   // Remove ars soul sand recipes
   e.remove({ id: 'ars_nouveau:conjuration_essence_to_soul_sand' })

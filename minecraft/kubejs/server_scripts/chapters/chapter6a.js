@@ -46,26 +46,6 @@ ServerEvents.recipes((e) => {
   // Thermal alloys
   e.remove({ id: /^thermal:fire_charge.*$/ })
 
-  // Thermal alloys dusts
-  e.remove({ id: 'thermal:lumium_dust_4' })
-  create.mixing('4x thermal:lumium_dust', [
-    '3x thermal:tin_dust',
-    'thermal:silver_dust',
-    Fluid.of('thermal:glowstone', 500),
-  ])
-  e.remove({ id: 'thermal:signalum_dust_4' })
-  create.mixing('4x thermal:signalum_dust', [
-    '3x thermal:copper_dust',
-    'thermal:silver_dust',
-    Fluid.of('thermal:redstone', 1000),
-  ])
-  e.remove({ id: 'thermal:enderium_dust_2' })
-  create.mixing('4x thermal:enderium_dust', [
-    '3x thermal:lead_dust',
-    'thermal:diamond_dust',
-    Fluid.of('thermal:ender', 500),
-  ])
-
   // Redstone pearls
   e.remove({ id: 'createteleporters:redstone_pearl_recipe' })
   create
