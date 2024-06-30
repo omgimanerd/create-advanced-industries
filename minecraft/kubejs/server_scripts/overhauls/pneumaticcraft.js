@@ -456,7 +456,7 @@ ServerEvents.recipes((e) => {
     .SequencedAssembly('create:copper_sheet')
     .deploy('tfmg:heavy_plate')
     .deploy('tfmg:heavy_plate')
-    .cut(2000)
+    .cut()
     .outputs('2x pneumaticcraft:turbine_blade')
 
   //////////////////////////////////
