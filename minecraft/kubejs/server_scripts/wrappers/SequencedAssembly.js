@@ -127,36 +127,46 @@ SequencedAssembly.prototype.deploy = function (
   return this
 }
 
-/**
- * @param {number} energyNeeded
- * @returns {SequencedAssembly}
- */
-SequencedAssembly.prototype.energize = function (energyNeeded) {
-  if (!Platform.isLoaded('create_new_age')) {
-    throw new Error('Create: New Age is not loaded!')
+if (Platform.isLoaded('create_new_age')) {
+  /**
+   * @param {number} energyNeeded
+   * @returns {SequencedAssembly}
+   */
+  SequencedAssembly.prototype.energize = function (energyNeeded) {
+    if (!Platform.isLoaded('create_new_age')) {
+      throw new Error('Create: New Age is not loaded!')
+    }
+    this.steps_.push({
+      type: 'energising',
+      preItemText: Text.of(`Next: Energize with ${energyNeeded}RF`),
+      energyNeeded: energyNeeded,
+    })
+    return this
   }
-  this.steps_.push({
-    type: 'energising',
-    preItemText: Text.of(`Next: Energize with ${energyNeeded}RF`),
-    energyNeeded: energyNeeded,
-  })
-  return this
 }
 
-/**
- * @param {number} processingTime
- * @returns {SequencedAssembly}
- */
-SequencedAssembly.prototype.vibrate = function (processingTime) {
-  if (!Platform.isLoaded('vintageimprovements')) {
-    throw new Error('Create: Vintage Improvements is not loaded!')
+if (Platform.isLoaded('vintageimprovements')) {
+  SequencedAssembly.prototype.curve = function (itemAsHead) {
+    this.steps_.push({
+      type: 'curving',
+      preItemText: Text.of('Press with a curving press'),
+      itemAsHead: itemAsHead,
+    })
+    return this
   }
-  this.steps_.push({
-    type: 'vibrating',
-    preItemText: Text.of(`Next: Pass through a vibrating table`),
-    processingTime: processingTime === undefined ? 20 : processingTime,
-  })
-  return this
+
+  /**
+   * @param {number} processingTime
+   * @returns {SequencedAssembly}
+   */
+  SequencedAssembly.prototype.vibrate = function (processingTime) {
+    this.steps_.push({
+      type: 'vibrating',
+      preItemText: Text.of(`Next: Pass through a vibrating table`),
+      processingTime: processingTime === undefined ? 20 : processingTime,
+    })
+    return this
+  }
 }
 
 /**
@@ -285,6 +295,13 @@ SequencedAssembly.prototype.outputCustomSequence = function (output) {
             data.energyNeeded
           )
           break
+        case 'curving':
+          r = this.e_.recipes.vintageimprovements.curving(
+            post,
+            pre,
+            data.itemAsHead
+          )
+          break
         case 'vibrating':
           r = this.e_.recipes.vintageimprovements.vibrating(
             post,
@@ -347,6 +364,12 @@ SequencedAssembly.prototype.outputNativeCreate = function (output) {
               this.transitional_,
               this.transitional_,
               data.energyNeeded
+            )
+          case 'curving':
+            return this.e_.recipes.vintageimprovements.curving(
+              this.transitional_,
+              this.transitional_,
+              data.itemAsHead
             )
           case 'vibrating':
             return this.e_.recipes.vintageimprovements.vibrating(

@@ -51,14 +51,6 @@ ServerEvents.recipes((e) => {
     }
   )
 
-  //////////////////
-  // CreateArmory //
-  //////////////////
-  e.remove({ id: 'createarmory:strengthened_brass_recipe' })
-
-  // TODO check mods create misc and things
-  // create armory
-
   ////////////
   // Create //
   ////////////
@@ -346,43 +338,54 @@ ServerEvents.recipes((e) => {
   ])
 
   ///////////////////
-  // Create Armory //
+  // CreateArmory //
   ///////////////////
-  e.replaceInput(
-    { id: 'createarmory:barrel_part_recipe' },
-    'create:andesite_alloy',
-    'tfmg:steel_ingot'
-  )
+  e.remove({ id: 'createarmory:strengthened_brass_recipe' })
+  e.remove({ id: 'createarmory:barrel_part_recipe' })
+  create.turning('createarmory:barrel_part', 'tfmg:steel_ingot')
+
+  // Casings overhaul
+  e.remove({ output: 'createarmory:nine_mm_casing' })
+  e.remove({ output: 'createarmory:fifty_cal_casing' })
+  e.remove({ output: 'createarmory:five_five_six_casing' })
+  e.stonecutting('createarmory:nine_mm_casing', 'create:brass_sheet')
+  e.stonecutting('createarmory:fifty_cal_casing', 'create:brass_sheet')
+  e.stonecutting('createarmory:five_five_six_casing', 'create:brass_sheet')
+
+  // Bullets overhaul
   e.remove({ id: 'createarmory:nine_mm_recipe' })
   create
     .SequencedAssembly(
       'createarmory:nine_mm_casing',
       'createarmory:unfinished_nine_mm'
     )
+    .curve('vintageimprovements:convex_curving_head')
     .deploy('minecraft:gunpowder')
     .deploy('create:copper_nugget')
     .press()
-    .outputs('createarmory:nine_mm')
+    .outputs(Item.of('createarmory:nine_mm', 16))
   e.remove({ id: 'createarmory:fifty_cal_recipe' })
   create
     .SequencedAssembly(
       'createarmory:fifty_cal_casing',
       'createarmory:unfinished_fifty_cal_casing'
     )
+    .curve('vintageimprovements:convex_curving_head')
     .deploy('minecraft:gunpowder')
     .deploy('create:copper_nugget')
     .press()
-    .outputs('createarmory:fifty_cal')
+    .outputs(Item.of('createarmory:fifty_cal', 16))
   e.remove({ id: 'createarmory:five_five_six_recipe' })
   create
     .SequencedAssembly(
       'createarmory:five_five_six_casing',
       'createarmory:unfinished_five_five_six_casing'
     )
+    .curve('vintageimprovements:convex_curving_head')
     .deploy('minecraft:gunpowder')
     .deploy('create:copper_nugget')
     .press()
-    .outputs('createarmory:five_five_six')
+    .outputs(Item.of('createarmory:five_five_six', 16))
 
   ///////////////////////////////
   // Create Crafts & Additions //
