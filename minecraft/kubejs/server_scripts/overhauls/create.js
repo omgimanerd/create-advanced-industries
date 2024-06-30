@@ -963,9 +963,20 @@ ServerEvents.recipes((e) => {
   )
 
   // Curving heads are made from steel on the lathe.
-  e.replaceInput(
-    { type: 'vintageimprovements:turning' },
-    'minecraft:iron_block',
+  e.remove({ id: 'vintageimprovements:turning/convex_curving_head' })
+  e.remove({ id: 'vintageimprovements:turning/concave_curving_head' })
+  create.turning(
+    [
+      'vintageimprovements:concave_curving_head',
+      Item.of('kubejs:steel_dust').withChance(0.5),
+    ],
+    'tfmg:steel_block'
+  )
+  create.turning(
+    [
+      'vintageimprovements:convex_curving_head',
+      Item.of('kubejs:steel_dust').withChance(0.5),
+    ],
     'tfmg:steel_block'
   )
 
