@@ -131,7 +131,8 @@ ServerEvents.recipes((e) => {
           Item.of(result),
           Item.of(result).withChance(0.25),
           Item.of(secondary).withChance(0.75),
-          'thermal:slag',
+          // TODO find usage for rich slag
+          'thermal:rich_slag',
         ],
         [stone, 'create_things_and_misc:crushed_magma']
       )
