@@ -341,9 +341,41 @@ ServerEvents.recipes((e) => {
   // CreateArmory //
   ///////////////////
   e.remove({ id: 'createarmory:strengthened_brass_recipe' })
-  e.remove({ id: 'createarmory:barrel_part_recipe' })
-  create.turning('createarmory:barrel_part', 'tfmg:steel_ingot')
-
+  e.remove({ id: 'createarmory:rocket_recipe' })
+  create
+    .SequencedAssembly('createarmory:barrel_part')
+    .deploy('minecraft:gunpowder')
+    .deploy('createarmory:impact_nade')
+    .outputs('2x createarmory:rpg_rocket')
+  e.remove({ id: 'createarmory:shotgun_shell_recipe' })
+  create
+    .SequencedAssembly('create:iron_sheet')
+    .curve('vintageimprovements:convex_curving_head')
+    .deploy('minecraft:gunpowder')
+    .deploy('minecraft:iron_nugget')
+    .deploy('minecraft:iron_nugget')
+    .outputs('8x createarmory:shotgun_shell')
+  create
+    .SequencedAssembly('create:iron_sheet')
+    .curve('vintageimprovements:convex_curving_head')
+    .deploy('minecraft:gunpowder')
+    .fill(potionFluid('ars_nouveau:blasting_potion', 250))
+    .deploy('minecraft:tripwire_hook')
+    .outputs('8x createarmory:impact_nade')
+  create
+    .SequencedAssembly('create:iron_sheet')
+    .curve('vintageimprovements:convex_curving_head')
+    .deploy('minecraft:tnt')
+    .deploy('minecraft:tripwire_hook')
+    .outputs('4x createarmory:impact_nade')
+  create
+    .SequencedAssembly('create:iron_sheet')
+    .curve('vintageimprovements:convex_curving_head')
+    .deploy('minecraft:gunpowder')
+    .deploy('kubejs:zinc_dust')
+    .deploy('minecraft:gray_dye')
+    .deploy('minecraft:tripwire_hook')
+    .outputs('16x createarmory:smoke_nade')
   // Casings overhaul
   e.remove({ output: 'createarmory:nine_mm_casing' })
   e.remove({ output: 'createarmory:fifty_cal_casing' })
@@ -351,7 +383,6 @@ ServerEvents.recipes((e) => {
   e.stonecutting('createarmory:nine_mm_casing', 'create:brass_sheet')
   e.stonecutting('createarmory:fifty_cal_casing', 'create:brass_sheet')
   e.stonecutting('createarmory:five_five_six_casing', 'create:brass_sheet')
-
   // Bullets overhaul
   e.remove({ id: 'createarmory:nine_mm_recipe' })
   create
@@ -386,6 +417,9 @@ ServerEvents.recipes((e) => {
     .deploy('create:copper_nugget')
     .press()
     .outputs(Item.of('createarmory:five_five_six', 16))
+
+  e.remove({ id: 'createarmory:barrel_part_recipe' })
+  create.turning('createarmory:barrel_part', 'tfmg:steel_ingot')
 
   ///////////////////////////////
   // Create Crafts & Additions //

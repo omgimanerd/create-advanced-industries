@@ -17,6 +17,7 @@ global.removedRecipes = [
   // Prefer Create Deco's zinc sheet texture
   { output: 'createaddition:zinc_sheet' },
   { output: /^createaddition:[a-z_]+spool/ },
+  { output: /^createarmory:.*_mold(_complete)*$/ },
   { output: 'create_central_kitchen:cherry_pie_slice' },
   { output: 'create_central_kitchen:truffle_pie_slice' },
   { output: 'create_central_kitchen:mulberry_pie_slice' },
