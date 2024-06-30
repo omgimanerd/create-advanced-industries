@@ -98,12 +98,16 @@ ServerEvents.recipes((e) => {
     const ingredientId = ingredients[1].asIngredient().first.id
     const block = global.lookupBlock(ingredientId)
     const dust = global.lookupDust(ingredientId)
-    create
-      .turning(
-        [Item.of(r.originalRecipeResult, 3), Item.of(dust).withChance(0.5)],
-        block
-      )
-      .processingTime(40)
+    if (dust) {
+      create
+        .turning(
+          [Item.of(r.originalRecipeResult, 3), Item.of(dust).withChance(0.5)],
+          block
+        )
+        .processingTime(40)
+    } else {
+      console.error(`No dust form for gear recipe ${r.json}`)
+    }
   })
 
   // smithing template netherite upgrade duping
