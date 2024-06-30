@@ -75,7 +75,6 @@ ServerEvents.recipes((e) => {
         return Fluid.of(e[0], e[1] * MeltableItem.DEFAULT_INGOT_FLUID)
       })
       const fluidOutput = Fluid.of(fluid, totalFluidOutput)
-      console.log(fluidOutput, ingredients)
       const r = create.mixing(fluidOutput, ingredients)
       if (superheated) {
         r.superheated()
