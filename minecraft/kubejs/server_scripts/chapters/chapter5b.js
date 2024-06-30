@@ -344,7 +344,7 @@ ServerEvents.recipes((e) => {
       focus: 'ars_elemental:lesser_air_focus',
       essence: 'ars_nouveau:air_essence',
       essence_fluid: 'kubejs:liquid_air_essence',
-      archwood: 'ars_nouveau:yellow_archwood', // not a complete id
+      archwood: 'ars_elemental:yellow_archwood', // not a complete id
       archwood_sap: 'kubejs:flashing_archwood_sap',
       archwood_fruit: 'ars_elemental:flashpine_pod',
       sap_byproduct: 'createaddition:bioethanol',
