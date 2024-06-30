@@ -34,6 +34,9 @@ ServerEvents.recipes((e) => {
     'minecraft:iron_nugget',
   ])
 
+  // Shafts can be cut from andesite, or for more effort, lathed.
+  create.turning('8x create:shaft', 'create:andesite_alloy')
+
   // Cutting recipes for all wooden slabs.
   e.forEachRecipe(
     { type: 'minecraft:crafting_shaped', output: '#minecraft:wooden_slabs' },

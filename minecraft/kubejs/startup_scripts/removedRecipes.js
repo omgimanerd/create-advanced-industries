@@ -30,6 +30,10 @@ global.removedRecipes = [
   { output: /^createdeco:[a-z_]+_coin$/ },
   { output: /^createdeco:[a-z_]+_coinstack$/ },
   { output: 'createdeco:netherite_nugget' },
+  { output: /^createcasing:.*creative.*$/ },
+  // Conflicts with Create: Connected's brass gearboxes
+  { output: /^createcasing:(vertical_)*brass_gearbox$/ },
+  { output: 'createcasing:brass_shaft' },
   { output: /^create_new_age:heat.*/ },
   { output: /^create_new_age:[a-z_]*corium/ },
   { output: /^create_new_age:reactor.*/ },

@@ -35,21 +35,27 @@ ServerEvents.recipes((e) => {
   const redefineRecipe = redefineRecipe_(e)
   const redefineMechanismRecipe = redefineMechanismRecipe_(e)
 
-  ///////////////////////////////////////////////////
-  // Custom KubeJS items/recipes related to Create //
-  ///////////////////////////////////////////////////
-  e.shaped(
-    'kubejs:wooden_hand',
-    [
-      ' A ', //
-      'SSS', //
-      ' S ', //
-    ],
-    {
-      A: 'create:andesite_alloy',
-      S: '#minecraft:planks',
-    }
-  )
+  /**
+   * IMPORTANT NOTE: const is broken inside statement blocks because Rhino does
+   * not parse it correctly!
+   */
+  ////////////////////////////////
+  // Create Advanced Industries //
+  ////////////////////////////////
+  {
+    e.shaped(
+      'kubejs:wooden_hand',
+      [
+        ' A ', //
+        'SSS', //
+        ' S ', //
+      ],
+      {
+        A: 'create:andesite_alloy',
+        S: '#minecraft:planks',
+      }
+    )
+  }
 
   ////////////
   // Create //
@@ -517,6 +523,61 @@ ServerEvents.recipes((e) => {
 
   // TODO do something with control chip?
 
+  /////////////////////
+  // Create: Encased //
+  /////////////////////
+  {
+    let casingMap = {
+      'createcasing:brass_mixer': 'create:brass_casing',
+      'createcasing:copper_mixer': 'create:copper_casing',
+      'createcasing:railway_mixer': 'create:railway_casing',
+      'createcasing:industrial_iron_mixer': 'create:industrial_iron_block',
+    }
+    for (const [machine, casing] of Object.entries(casingMap)) {
+      redefineMechanismRecipe('kubejs:andesite_mechanism')(
+        machine,
+        'create:shaft',
+        casing,
+        'create:whisk'
+      )
+    }
+    casingMap = {
+      'createcasing:brass_press': 'create:brass_casing',
+      'createcasing:copper_press': 'create:copper_casing',
+      'createcasing:railway_press': 'create:railway_casing',
+      'createcasing:industrial_iron_press': 'create:industrial_iron_block',
+    }
+    for (const [machine, casing] of Object.entries(casingMap)) {
+      redefineMechanismRecipe('kubejs:andesite_mechanism')(
+        machine,
+        'create:shaft',
+        casing,
+        'minecraft:iron_block'
+      )
+    }
+
+    // Remove all crafting recipes for wooden shafts and only allow them to be
+    // lathed.
+    e.forEachRecipe(
+      { mod: 'createcasing', output: /^createcasing:.*_shaft$/ },
+      (r) => {
+        const ingredients = r.originalRecipeIngredients
+        if (ingredients.size() < 2) {
+          console.log(ingredients)
+          return
+        }
+        r.remove()
+        const log = r.originalRecipeIngredients[1].asIngredient().first.id
+        create.turning(
+          [r.originalRecipeResult, Item.of('thermal:sawdust').withChance(0.5)],
+          log
+        )
+      }
+    )
+  }
+
+  // TODO chorium ingot might be useful?
+
   //////////////////////////////////
   // Create: Enchantment Industry //
   //////////////////////////////////
@@ -587,16 +648,16 @@ ServerEvents.recipes((e) => {
     e.remove({ mod: 'create_mechanical_extruder', output: 'minecraft:stone' })
     // Cannot use tags here, recipe ends up not working, so we are manually
     // creating all the recipe combinations for cobblegen.
-    const equivalentWaterBlocks = [
+    let equivalentWaterBlocks = [
       Fluid.water(1000),
       'minecraft:packed_ice',
       'create_connected:fan_splashing_catalyst',
     ]
-    const equivalentLavaBlocks = [
+    let equivalentLavaBlocks = [
       Fluid.lava(1000),
       'create_connected:fan_blasting_catalyst',
     ]
-    const cobblegens = {
+    let cobblegens = {
       'minecraft:polished_andesite': 'minecraft:andesite',
       'minecraft:polished_diorite': 'minecraft:diorite',
       'minecraft:polished_granite': 'minecraft:granite',
@@ -620,7 +681,7 @@ ServerEvents.recipes((e) => {
   // Create: New Age //
   /////////////////////
   {
-    const createNewAgeKeys = {
+    let createNewAgeKeys = {
       S: 'create:shaft',
       E: 'create_new_age:electrical_connector',
       L: 'minecraft:lightning_rod',
@@ -739,7 +800,7 @@ ServerEvents.recipes((e) => {
     )
     // The copper circuit unlocked in chapter 5a can be stonecut into every logic
     // gate or redstone component.
-    const logicComponents = [
+    let logicComponents = [
       'minecraft:comparator',
       'minecraft:repeater',
       'quark:redstone_randomizer',
@@ -773,7 +834,7 @@ ServerEvents.recipes((e) => {
       'morered:bitwise_xor_gate',
       'morered:bitwise_xnor_gate',
     ]
-    for (const component of logicComponents) {
+    for (let component of logicComponents) {
       if (component.startsWith('morered')) e.remove({ output: component })
       e.stonecutting(component, 'create_new_age:copper_circuit')
     }
@@ -835,7 +896,7 @@ ServerEvents.recipes((e) => {
 
     // TODO: add efficient liquid concrete overhaul
     // Make pipes require a sheet
-    const redefinePipeRecipe = (output, ingot, sheet) => {
+    let redefinePipeRecipe = (output, ingot, sheet) => {
       e.remove({ output: output })
       const keys = {
         I: ingot,
@@ -844,7 +905,7 @@ ServerEvents.recipes((e) => {
       e.shaped(output, ['SIS'], keys)
       e.shaped(output, ['I', 'S', 'I'], keys)
     }
-    const aestheticPipeReplacements = [
+    let aestheticPipeReplacements = [
       {
         material: 'steel',
         ingot: 'tfmg:steel_ingot',
