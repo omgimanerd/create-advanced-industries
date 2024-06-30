@@ -204,7 +204,7 @@ ServerEvents.recipes((e) => {
 
   // Recipes for reusable steel casts
   e.shaped(
-    'kubejs:steel_ingot_cast',
+    '4x kubejs:steel_ingot_cast',
     [
       'S S', //
       'SSS', //

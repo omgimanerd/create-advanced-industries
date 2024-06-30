@@ -35,6 +35,13 @@ ServerEvents.recipes((e) => {
     .secondaryFluidInput(Fluid.of('tfmg:creosote', 125))
     .heated()
     .outputs('tfmg:hardened_planks')
+  pneumaticcraft
+    .thermo_plant()
+    .item_input('#minecraft:planks')
+    .fluid_input(Fluid.of('tfmg:creosote', 100))
+    .pressure(9)
+    .temperature({ min_temp: 273 + 250 })
+    .item_output('tfmg:hardened_planks')
 
   // Overhaul Pneumaticcraft Refinery recipes
   redefineRecipe(
@@ -589,23 +596,17 @@ ServerEvents.recipes((e) => {
     'minecraft:netherite_scrap'
   )
   create
-    .compacting('minecraft:netherite_ingot', [
-      '2x minecraft:netherite_scrap',
-      '2x minecraft:gold_ingot',
-    ])
-    .superheated()
-  create
     .pressurizing('minecraft:netherite_scrap')
     .secondaryFluidInput(Fluid.of('kubejs:molten_gold', 135))
     .superheated()
-    .outputs('minecraft:netherite_ingot')
+    .outputs(Fluid.of('kubejs:molten_netherite', ingotFluid))
   pneumaticcraft
     .thermo_plant()
     .item_input('2x minecraft:netherite_scrap')
     .fluid_input(Fluid.of('kubejs:molten_gold', 90))
     .pressure(9)
     .temperature({ min_temp: 273 + 800 })
-    .item_output('minecraft:netherite_ingot')
+    .fluid_output(Fluid.of('kubejs:molten_netherite', ingotFluid))
 
   // Silicon overhaul, must be solidified in a heat frame or TPP
   e.remove({ id: 'refinedstorage:silicon' })
