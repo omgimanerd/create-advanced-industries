@@ -6,6 +6,9 @@ ServerEvents.recipes((e) => {
   const pneumaticcraft = definePneumaticcraftRecipes(e)
   const redefineRecipe = redefineRecipe_(e)
 
+  // Rosin from resin
+  create.mixing('thermal:rosin', Fluid.of('thermal:resin', 250)).heated()
+
   // Add crushing recipes for items not overhauled by metallurgy.
   const ingotDustMap = {
     'thermal:ruby': 'thermal:ruby_dust',
