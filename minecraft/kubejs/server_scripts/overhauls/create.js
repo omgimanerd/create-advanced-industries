@@ -394,7 +394,7 @@ ServerEvents.recipes((e) => {
     .deploy('minecraft:gunpowder')
     .deploy('create:copper_nugget')
     .press()
-    .outputs(Item.of('createarmory:nine_mm', 16))
+    .outputs('16x createarmory:nine_mm', 16)
   e.remove({ id: 'createarmory:fifty_cal_recipe' })
   create
     .SequencedAssembly(
@@ -405,7 +405,7 @@ ServerEvents.recipes((e) => {
     .deploy('minecraft:gunpowder')
     .deploy('create:copper_nugget')
     .press()
-    .outputs(Item.of('createarmory:fifty_cal', 16))
+    .outputs('16x createarmory:fifty_cal')
   e.remove({ id: 'createarmory:five_five_six_recipe' })
   create
     .SequencedAssembly(
@@ -416,7 +416,7 @@ ServerEvents.recipes((e) => {
     .deploy('minecraft:gunpowder')
     .deploy('create:copper_nugget')
     .press()
-    .outputs(Item.of('createarmory:five_five_six', 16))
+    .outputs('16x createarmory:five_five_six')
 
   e.remove({ id: 'createarmory:barrel_part_recipe' })
   create.turning('createarmory:barrel_part', 'tfmg:steel_ingot')

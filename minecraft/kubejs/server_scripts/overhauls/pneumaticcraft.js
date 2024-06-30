@@ -374,6 +374,19 @@ ServerEvents.recipes((e) => {
     ],
     pneumaticcraftKeys
   )
+  e.remove({ id: 'pneumaticcraft:minigun' })
+  pneumaticcraft.crafting_shaped_pressurizable(
+    'pneumaticcraft:minigun',
+    [
+      'HMH', //
+      'A  ', //
+    ],
+    {
+      H: 'tfmg:heavy_plate',
+      M: 'createarmory:upgraded_mini_gun',
+      A: 'pneumaticcraft:air_canister',
+    }
+  )
   // Overhaul pneumatic armor to derive from netherite armor
   for (const equip of ['boots', 'chestplate', 'helmet', 'leggings']) {
     e.replaceInput(
@@ -386,15 +399,12 @@ ServerEvents.recipes((e) => {
     'kubejs:logistics_mechanism',
     'minecraft:hopper',
   ])
-  // Bullet manufacturing might go in chapter 5b
+  // Minigun ammo manufacturing
   e.remove({ id: 'pneumaticcraft:gun_ammo' })
   create
     .SequencedAssembly('tfmg:heavy_plate')
-    .press()
-    .deploy('minecraft:gunpowder')
-    .deploy('thermal:lead_nugget')
-    .deploy('create:copper_nugget')
-    .press()
+    .deploy('createarmory:nine_mm')
+    .loops(32)
     .outputs('pneumaticcraft:gun_ammo')
   // Generate potion filling recipes for pneumaticcraft's minigun ammo.
   e.remove({ id: 'pneumaticcraft:gun_ammo_potion_crafting' })
