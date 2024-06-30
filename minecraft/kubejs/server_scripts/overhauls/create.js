@@ -428,7 +428,13 @@ ServerEvents.recipes((e) => {
       .outputs('16x createarmory:five_five_six')
 
     e.remove({ id: 'createarmory:barrel_part_recipe' })
-    create.turning('createarmory:barrel_part', 'tfmg:steel_ingot')
+    create.turning(
+      [
+        'createarmory:barrel_part',
+        Item.of('kubejs:steel_dust').withChance(0.5),
+      ],
+      'tfmg:steel_ingot'
+    )
   }
 
   /////////////////////////////
