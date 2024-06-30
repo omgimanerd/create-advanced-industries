@@ -45,10 +45,7 @@ ServerEvents.recipes((e) => {
   create.cutting('8x thermal:cured_rubber', 'thermal:cured_rubber_block')
   // Remove default rubber packing recipe to avoid cyclical duping.
   e.remove({ id: 'thermal:storage/cured_rubber_block' })
-  create.compacting(
-    'thermal:cured_rubber_block',
-    Item.of('thermal:cured_rubber', 8)
-  )
+  create.compacting('thermal:cured_rubber_block', '8x thermal:cured_rubber')
 
   // Copper mechanism
   e.shaped(

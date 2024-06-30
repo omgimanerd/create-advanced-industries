@@ -56,9 +56,9 @@ ServerEvents.recipes((e) => {
 
   // Pressurized crafting of slime balls.
   e.remove({ id: 'pneumaticcraft:pressure_chamber/milk_to_slime_balls' })
-  create.mixing(Item.of('minecraft:slime_ball', 4), [
+  create.mixing('4x minecraft:slime_ball', [
     Fluid.of('minecraft:milk', 1000),
-    Item.of('minecraft:green_dye', 8),
+    '8x minecraft:green_dye',
   ])
   create
     .pressurizing('minecraft:green_dye')

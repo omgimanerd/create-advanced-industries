@@ -21,10 +21,7 @@ ServerEvents.recipes((e) => {
   // Dough must be made by combining it with eggs, with the original recipe
   // less efficient.
   e.remove({ output: 'create:dough' })
-  create.mixing('create:dough', [
-    Item.of('create:wheat_flour', 8),
-    Fluid.water(1000),
-  ])
+  create.mixing('create:dough', ['8x create:wheat_flour', Fluid.water(1000)])
   e.shapeless('create:dough', [
     'create:wheat_flour',
     'create:wheat_flour',
@@ -71,10 +68,7 @@ ServerEvents.recipes((e) => {
 
   // Lime automation to allow limesand creation
   create
-    .mixing('create:limestone', [
-      Item.of('minecraft:bone_block', 2),
-      Fluid.water(1000),
-    ])
+    .mixing('create:limestone', ['2x minecraft:bone_block', Fluid.water(1000)])
     .heated()
   create
     .pressurizing('minecraft:bone_block')
@@ -176,10 +170,7 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'tfmg:industrial_blasting/steel' })
   create
     .mixing(
-      [
-        Fluid.of('tfmg:molten_steel', 3 * ingotFluid),
-        Item.of('thermal:slag', 2),
-      ],
+      [Fluid.of('tfmg:molten_steel', 3 * ingotFluid), '2x thermal:slag'],
       [
         '2x tfmg:coal_coke_dust',
         Fluid.of('kubejs:molten_iron', 3 * ingotFluid),

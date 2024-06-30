@@ -141,10 +141,10 @@ ServerEvents.recipes((e) => {
 
   // Pressurizing recipe for redstone gated by steel
   create
-    .pressurizing([Item.of('minecraft:cobblestone', 8), 'minecraft:red_dye'])
+    .pressurizing(['8x minecraft:cobblestone', 'minecraft:red_dye'])
     .secondaryFluidInput(Fluid.of('starbunclemania:source_fluid', 400))
     .heated()
-    .outputs(Item.of('minecraft:redstone', 8))
+    .outputs('8x minecraft:redstone', 8)
 
   // Rose quartz overhaul
   create.filling('create:rose_quartz', [

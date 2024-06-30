@@ -219,14 +219,14 @@ ServerEvents.recipes((e) => {
   pneumaticcraft
     .heat_frame_cooling(
       Fluid.of('pneumaticcraft:plastic', 1000),
-      Item.of('tfmg:plastic_sheet', 2)
+      '2x tfmg:plastic_sheet'
     )
     .bonus_output({ limit: 1, multiplier: 0.01 })
     .max_temp(50)
   pneumaticcraft
     .thermo_plant()
     .fluid_input(Fluid.of('pneumaticcraft:plastic', 1000))
-    .item_output(Item.of('tfmg:plastic_sheet', 2))
+    .item_output('2x tfmg:plastic_sheet')
     .pressure(-0.75)
     .temperature({ max_temp: 273 + 0 })
 
@@ -558,7 +558,7 @@ ServerEvents.recipes((e) => {
     'minecraft:slime_block',
     Fluid.of('create_things_and_misc:slime', 900)
   )
-  create.vibrating(Item.of('minecraft:slime_ball', 9), 'minecraft:slime_block')
+  create.vibrating('9x minecraft:slime_ball', 'minecraft:slime_block')
 
   // Probabilistic crushing recipe, only one yields ancient debris.
   const diceRoll = Math.random() > 0.5
@@ -601,7 +601,7 @@ ServerEvents.recipes((e) => {
     .outputs('minecraft:netherite_ingot')
   pneumaticcraft
     .thermo_plant()
-    .item_input(Item.of('minecraft:netherite_scrap', 2))
+    .item_input('2x minecraft:netherite_scrap')
     .fluid_input(Fluid.of('kubejs:molten_gold', 90))
     .pressure(9)
     .temperature({ min_temp: 273 + 800 })
@@ -627,7 +627,7 @@ ServerEvents.recipes((e) => {
   pneumaticcraft
     .heat_frame_cooling(
       Fluid.of('kubejs:molten_silicon', 360),
-      Item.of('refinedstorage:silicon', 4)
+      '4x refinedstorage:silicon'
     )
     .max_temp(-50)
 
@@ -643,7 +643,7 @@ ServerEvents.recipes((e) => {
   // Under high pressure, graphite turns into diamond dust
   e.remove({ id: 'pneumaticcraft:pressure_chamber/coal_to_diamond' })
   pneumaticcraft.pressure_chamber(
-    Item.of('kubejs:graphite', 9),
+    '9x kubejs:graphite',
     'thermal:diamond_dust',
     4.75
   )

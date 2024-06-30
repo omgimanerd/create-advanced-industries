@@ -123,14 +123,14 @@ ServerEvents.recipes((e) => {
     .thermo_plant()
     .fluid_input(Fluid.of('kubejs:molten_quartz', 90))
     .item_input('minecraft:iron_ingot')
-    .item_output(Item.of('refinedstorage:quartz_enriched_iron', 2))
+    .item_output('2x refinedstorage:quartz_enriched_iron')
     .pressure(8)
     .temperature({ min_temp: 273 + 300 })
   create
     .pressurizing('minecraft:iron_ingot')
     .secondaryFluidInput(Fluid.of('kubejs:molten_quartz', 90))
     .superheated()
-    .outputs(Item.of('refinedstorage:quartz_enriched_iron', 2))
+    .outputs('2x refinedstorage:quartz_enriched_iron')
   e.replaceInput(
     {
       mod: 'refinedstorage',

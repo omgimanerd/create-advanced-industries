@@ -40,7 +40,7 @@ ServerEvents.recipes((e) => {
     '#kubejs:dead_coral'
   )
   create.milling(
-    [Item.of('tfmg:limesand', 4), Item.of('tfmg:limesand').withChance(0.25)],
+    ['4x tfmg:limesand', Item.of('tfmg:limesand').withChance(0.25)],
     '#kubejs:dead_coral_block'
   )
 

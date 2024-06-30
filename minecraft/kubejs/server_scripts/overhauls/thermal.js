@@ -222,7 +222,7 @@ ServerEvents.recipes((e) => {
   // Allow rubberwood to be centrifuged into latex.
   create
     .centrifuging(
-      [Fluid.of('thermal:latex', 250), Item.of('thermal:sawdust', 4)],
+      [Fluid.of('thermal:latex', 250), '4x thermal:sawdust'],
       'thermal:rubberwood_log'
     )
     .minimalRPM(128)
