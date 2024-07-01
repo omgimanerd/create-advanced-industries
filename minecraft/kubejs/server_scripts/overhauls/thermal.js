@@ -33,6 +33,7 @@ ServerEvents.recipes((e) => {
     ],
     { I: 'minecraft:iron_ingot', S: 'create:shaft' }
   )
+  // TODO thermal:centrifugal_separator
   redefineRecipe(
     'thermal:machine_pyrolyzer',
     [

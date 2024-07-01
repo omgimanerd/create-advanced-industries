@@ -52,7 +52,7 @@ ServerEvents.recipes((e) => {
   create.milling('4x minecraft:sand', 'minecraft:sandstone')
 
   // Clay block automation, dirt comes from thermal recipe
-  create.mixing('2x minecraft:clay', [
+  create.mixing('4x minecraft:clay', [
     'minecraft:dirt',
     'minecraft:sand',
     Fluid.water(1000),
@@ -74,6 +74,9 @@ ServerEvents.recipes((e) => {
       C: 'minecraft:clay_ball',
     }
   )
+  create
+    .deploying('kubejs:unfired_ingot_cast', ['minecraft:clay', '#forge:ingots'])
+    .keepHeldItem()
   create
     .curving('kubejs:unfired_ingot_cast', 'minecraft:clay')
     .mode(V_SHAPED_CURVING_HEAD)

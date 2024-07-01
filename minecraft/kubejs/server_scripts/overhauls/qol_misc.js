@@ -50,6 +50,12 @@ ServerEvents.recipes((e) => {
     }
   )
 
+  // Leads can be recycled
+  create.crushing(
+    ['3x minecraft:string', Item.of('minecraft:string').withChance(0.5)],
+    'minecraft:lead'
+  )
+
   // Craftable ways to get some of Quark's nice stones.
   create.compacting('quark:jasper', 'minecraft:granite')
   create.compacting('quark:shale', 'create:limestone')
