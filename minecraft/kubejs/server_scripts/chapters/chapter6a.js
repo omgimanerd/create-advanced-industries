@@ -50,7 +50,7 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'createteleporters:redstone_pearl_recipe' })
   create
     .SequencedAssembly('minecraft:ender_pearl')
-    .fill('kubejs:molten_redstone', 180)
+    .fill(Fluid.of('kubejs:molten_redstone', 180))
     .energize(40000)
     .outputs('createteleporters:redstone_pearl')
 })

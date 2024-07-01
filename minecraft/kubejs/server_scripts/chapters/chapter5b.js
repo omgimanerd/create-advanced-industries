@@ -305,17 +305,17 @@ ServerEvents.recipes((e) => {
   // Thermal crystallization, then manual spouting.
   create
     .SequencedAssembly('minecraft:small_amethyst_bud')
-    .fill('kubejs:crystal_growth_accelerator', 100)
+    .fill(Fluid.of('kubejs:crystal_growth_accelerator', 100))
     .loops(10)
     .outputs('minecraft:medium_amethyst_bud')
   create
     .SequencedAssembly('minecraft:medium_amethyst_bud')
-    .fill('kubejs:crystal_growth_accelerator', 100)
+    .fill(Fluid.of('kubejs:crystal_growth_accelerator', 100))
     .loops(10)
     .outputs('minecraft:large_amethyst_bud')
   create
     .SequencedAssembly('minecraft:large_amethyst_bud')
-    .fill('kubejs:crystal_growth_accelerator', 100)
+    .fill(Fluid.of('kubejs:crystal_growth_accelerator', 100))
     .loops(10)
     .outputs('minecraft:amethyst_cluster')
   e.recipes.thermal

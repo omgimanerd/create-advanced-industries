@@ -204,7 +204,7 @@ ServerEvents.recipes((e) => {
       'kubejs:intermediate_pneumatic_cylinder'
     )
     .deploy('tfmg:rebar')
-    .fill('pneumaticcraft:lubricant', 250)
+    .fill(Fluid.of('pneumaticcraft:lubricant', 250))
     .press()
     .outputs('pneumaticcraft:pneumatic_cylinder')
 
@@ -722,7 +722,7 @@ ServerEvents.recipes((e) => {
     .outputs('refinedstorage:raw_basic_processor')
   create
     .SequencedAssembly('kubejs:silicon_wafer')
-    .fill('create_things_and_misc:slime', 5)
+    .fill(Fluid.of('create_things_and_misc:slime', 5))
     .deploy('morered:red_alloy_wire')
     .deploy('minecraft:iron_ingot')
     .outputs('refinedstorage:raw_basic_processor')
@@ -738,7 +738,7 @@ ServerEvents.recipes((e) => {
     .outputs('refinedstorage:raw_improved_processor')
   create
     .SequencedAssembly('kubejs:silicon_wafer')
-    .fill('create_things_and_misc:slime', 5)
+    .fill(Fluid.of('create_things_and_misc:slime', 5))
     .deploy('morered:red_alloy_wire')
     .deploy('minecraft:gold_ingot')
     .outputs('refinedstorage:raw_improved_processor')
@@ -754,7 +754,7 @@ ServerEvents.recipes((e) => {
     .outputs('refinedstorage:raw_advanced_processor')
   create
     .SequencedAssembly('kubejs:silicon_wafer')
-    .fill('create_things_and_misc:slime', 5)
+    .fill(Fluid.of('create_things_and_misc:slime', 5))
     .deploy('morered:red_alloy_wire')
     .deploy('thermal:diamond_dust')
     .outputs('refinedstorage:raw_advanced_processor')

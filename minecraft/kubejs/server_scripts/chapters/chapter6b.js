@@ -109,7 +109,7 @@ ServerEvents.recipes((e) => {
   // Apotheosis material automation
   create // Common Material: Mysterious Scrap Metal
     .SequencedAssembly('tfmg:steel_mechanism')
-    .fill('create_enchantment_industry:experience', 16)
+    .fill(Fluid.of('create_enchantment_industry:experience', 16))
     .cut(2, 40)
     .custom('Next: Crush with Crushing Wheels', (pre, post) => {
       create.crushing(post, pre)
@@ -143,7 +143,7 @@ ServerEvents.recipes((e) => {
   )
   create // Rare Material: Luminous Crystal Shard
     .SequencedAssembly('kubejs:crystalline_mechanism')
-    .fill('create_enchantment_industry:experience', 64)
+    .fill(Fluid.of('create_enchantment_industry:experience', 64))
     .cut(2, 40)
     .deploy('thermal:lumium_ingot')
     .custom('Next: Crush with Crushing Wheels', (pre, post) => {
@@ -155,7 +155,7 @@ ServerEvents.recipes((e) => {
     ])
   create // Epic Material: Arcane Sands
     .SequencedAssembly('tfmg:limesand')
-    .fill('starbunclemania:source_fluid', 1000)
+    .fill(Fluid.of('starbunclemania:source_fluid', 1000))
     .energize(50000)
     .outputs([
       'apotheosis:epic_material',
@@ -163,7 +163,7 @@ ServerEvents.recipes((e) => {
     ])
   create // Mythic Material: Godforged Pearl
     .SequencedAssembly('minecraft:ender_pearl')
-    .fill('create:honey', 1000)
+    .fill(Fluid.of('create:honey', 1000))
     .energize(100000)
     .outputs('apotheosis:mythic_material')
   create // Ancient Material: rainbow thingy
@@ -229,7 +229,7 @@ ServerEvents.recipes((e) => {
   create
     .SequencedAssembly('thermal:satchel')
     .deploy('kubejs:crystalline_mechanism')
-    .fill('create_enchantment_industry:experience', 1000)
+    .fill(Fluid.of('create_enchantment_industry:experience', 1000))
     .energize(20000)
     .loops(4)
     .outputs('gag:time_sand_pouch')
@@ -274,7 +274,7 @@ ServerEvents.recipes((e) => {
     .SequencedAssembly('minecraft:experience_bottle')
     .deploy('minecraft:emerald')
     .deploy('minecraft:lapis_lazuli')
-    .fill('create_enchantment_industry:experience', 100)
+    .fill(Fluid.of('create_enchantment_industry:experience', 100))
     .outputs('kubejs:xp_crystal')
 
   // The Treasure Net is gated by a level 60 enchant
@@ -381,7 +381,7 @@ ServerEvents.recipes((e) => {
       'kubejs:inert_xp_condenser',
       'kubejs:incomplete_xp_condenser'
     )
-    .fill('create_enchantment_industry:experience', 1000)
+    .fill(Fluid.of('create_enchantment_industry:experience', 1000))
     .custom('Next: Compact in a superheated basin', (pre, post) => {
       create.compacting(post, pre).superheated()
     })
@@ -403,7 +403,7 @@ ServerEvents.recipes((e) => {
   // Skeleton skulls can be automated with resonance crafting
   create
     .SequencedAssembly('minecraft:skeleton_skull')
-    .fill('create_enchantment_industry:ink', 100)
+    .fill(Fluid.of('create_enchantment_industry:ink', 100))
     .fill(potionFluid('apotheosis:strong_wither', 100))
     .energize(40000)
     .outputs('minecraft:wither_skeleton_skull')

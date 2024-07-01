@@ -16,7 +16,7 @@ ServerEvents.recipes((e) => {
       return create.haunting(post, pre)
     })
     .deploy('minecraft:skeleton_skull')
-    .fill('create_enchantment_industry:experience', 1000)
+    .fill(Fluid.of('create_enchantment_industry:experience', 1000))
     .loops(5)
     .outputs('apotheosis:boss_summoner')
 
