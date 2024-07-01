@@ -252,7 +252,7 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'create_new_age:deploying/copper_circuit' })
   create
     .SequencedAssembly('create_new_age:blank_circuit')
-    .deploy('morered:red_alloy_ingot')
+    .deploy('morered:red_alloy_wire')
     .press()
     .deploy('create:super_glue')
     .deploy('create_new_age:copper_wire')
@@ -260,7 +260,7 @@ ServerEvents.recipes((e) => {
     .outputs('create_new_age:copper_circuit')
   create
     .SequencedAssembly('create_new_age:blank_circuit')
-    .deploy('morered:red_alloy_ingot')
+    .deploy('morered:red_alloy_wire')
     .press()
     .fill(Fluid.of('create_things_and_misc:slime', 5))
     .deploy('create_new_age:copper_wire')
@@ -463,6 +463,9 @@ ServerEvents.recipes((e) => {
     'create_new_age:overcharged_iron',
     Fluid.of('kubejs:molten_redstone', 360),
   ])
+
+  // Rolling red alloy into wire
+  create.rolling('6x morered:red_alloy_wire', 'morered:red_alloy_ingot')
 
   // Overhaul Create: New Age's magnetic blocks
   // Magnetite block crafting recipe
@@ -714,13 +717,13 @@ ServerEvents.recipes((e) => {
   create
     .SequencedAssembly('kubejs:silicon_wafer')
     .deploy('create:super_glue')
-    .deploy('morered:red_alloy_ingot')
+    .deploy('morered:red_alloy_wire')
     .deploy('minecraft:iron_ingot')
     .outputs('refinedstorage:raw_basic_processor')
   create
     .SequencedAssembly('kubejs:silicon_wafer')
     .fill('create_things_and_misc:slime', 5)
-    .deploy('morered:red_alloy_ingot')
+    .deploy('morered:red_alloy_wire')
     .deploy('minecraft:iron_ingot')
     .outputs('refinedstorage:raw_basic_processor')
   pneumaticcraft.assembly_laser(
@@ -730,13 +733,13 @@ ServerEvents.recipes((e) => {
   create
     .SequencedAssembly('kubejs:silicon_wafer')
     .deploy('create:super_glue')
-    .deploy('morered:red_alloy_ingot')
+    .deploy('morered:red_alloy_wire')
     .deploy('minecraft:gold_ingot')
     .outputs('refinedstorage:raw_improved_processor')
   create
     .SequencedAssembly('kubejs:silicon_wafer')
     .fill('create_things_and_misc:slime', 5)
-    .deploy('morered:red_alloy_ingot')
+    .deploy('morered:red_alloy_wire')
     .deploy('minecraft:gold_ingot')
     .outputs('refinedstorage:raw_improved_processor')
   pneumaticcraft.assembly_laser(
@@ -746,13 +749,13 @@ ServerEvents.recipes((e) => {
   create
     .SequencedAssembly('kubejs:silicon_wafer')
     .deploy('create:super_glue')
-    .deploy('morered:red_alloy_ingot')
+    .deploy('morered:red_alloy_wire')
     .deploy('thermal:diamond_dust')
     .outputs('refinedstorage:raw_advanced_processor')
   create
     .SequencedAssembly('kubejs:silicon_wafer')
     .fill('create_things_and_misc:slime', 5)
-    .deploy('morered:red_alloy_ingot')
+    .deploy('morered:red_alloy_wire')
     .deploy('thermal:diamond_dust')
     .outputs('refinedstorage:raw_advanced_processor')
   pneumaticcraft.assembly_laser(

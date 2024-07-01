@@ -532,8 +532,6 @@ ServerEvents.recipes((e) => {
   // Create: Connected //
   ///////////////////////
 
-  // TODO do something with control chip?
-
   /////////////////////
   // Create: Encased //
   /////////////////////
@@ -1102,6 +1100,4 @@ ServerEvents.recipes((e) => {
       .curving('minecraft:flower_pot', 'minecraft:brick')
       .mode(CONVEX_CURVING_HEAD)
   }
-
-  // TODO redstone module
 })

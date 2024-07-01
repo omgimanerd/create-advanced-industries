@@ -315,6 +315,7 @@
 				""
 				"Once you prepare these, use the pumpjack ponder to figure out how to build one."
 			]
+			icon: "tfmg:pumpjack_crank"
 			id: "55624517D9B6A2CD"
 			rewards: [{
 				count: 16
@@ -879,7 +880,7 @@
 		{
 			dependencies: [
 				"4C5481815C938E67"
-				"68FB63D0979FE43B"
+				"750D19E2D333CD2A"
 			]
 			description: ["Apply red alloy ingots, glue, and copper wire to the blank circuit to make a copper circuit."]
 			id: "097A84D100994B26"
@@ -1022,8 +1023,8 @@
 				item: "morered:red_alloy_ingot"
 				type: "item"
 			}]
-			x: 18.0d
-			y: -2.0d
+			x: 16.0d
+			y: 0.0d
 		}
 		{
 			dependencies: ["6D912BAC546961CB"]
@@ -1570,43 +1571,27 @@
 			y: 2.0d
 		}
 		{
-			dependencies: ["68FB63D0979FE43B"]
-			description: ["You might have already automated glue, but you'll need it in larger quantities now for processor and circuit automation."]
+			dependencies: ["2EDD47F79BFDE8F0"]
+			description: [
+				"You might have already automated glue, but you'll need it in larger quantities now for processor and circuit automation."
+				""
+				"Liquid glue might be better for your logistics though..."
+			]
+			icon: {
+				Count: 1b
+				id: "create:super_glue"
+				tag: {
+					Damage: 0
+				}
+			}
 			id: "750D19E2D333CD2A"
 			tasks: [{
-				id: "636A6848E421141C"
-				item: {
-					Count: 1b
-					id: "create:super_glue"
-					tag: {
-						Damage: 0
-					}
-				}
-				type: "item"
+				id: "6D70B1B1BB110828"
+				type: "checkmark"
 			}]
-			x: 24.0d
+			title: "Super Glue"
+			x: 18.0d
 			y: -2.0d
-		}
-		{
-			dependencies: ["750D19E2D333CD2A"]
-			description: ["Processor automation is much more efficient with liquid glue!"]
-			id: "5F2FF94B6D96C395"
-			invisible: true
-			optional: true
-			rewards: [{
-				count: 2
-				id: "075595CA908137E3"
-				item: "create_things_and_misc:slime_bucket"
-				type: "item"
-			}]
-			tasks: [{
-				id: "7501CB055BF31DB4"
-				item: "create_things_and_misc:slime_bucket"
-				type: "item"
-			}]
-			title: "Slime Bucket"
-			x: 24.0d
-			y: 0.0d
 		}
 		{
 			dependencies: ["172EDDB8B86F5DA2"]
@@ -1664,7 +1649,7 @@
 				id: "195C15A3B8C0C1DB"
 				type: "checkmark"
 			}]
-			title: "Redstone Modules"
+			title: "Redstone Mechanisms"
 			x: 18.0d
 			y: -12.0d
 		}
@@ -1691,6 +1676,22 @@
 			}]
 			x: 10.0d
 			y: 6.0d
+		}
+		{
+			dependencies: ["68FB63D0979FE43B"]
+			description: [
+				"Red alloy wire can be crafted or rolled from red alloy ingot."
+				""
+				"In addition to being a crafting component, red alloy wire can carry redstone signals in ways redstone dust cannot, such as going up walls."
+			]
+			id: "2EDD47F79BFDE8F0"
+			tasks: [{
+				id: "578D12CC1414D570"
+				item: "morered:red_alloy_wire"
+				type: "item"
+			}]
+			x: 16.0d
+			y: -2.0d
 		}
 	]
 	title: "Chapter 5a: Logistics Mechanisms"
