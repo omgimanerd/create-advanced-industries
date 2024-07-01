@@ -14,6 +14,8 @@ global.removedRecipes = [
   { output: /^createaddition:.*connector/ },
   { output: 'createaddition:capacitor' },
   { output: 'createaddition:diamond_grit' },
+  { output: 'createaddition:electrum_ingot' },
+  { output: 'createaddition:electrum_nugget' },
   // Prefer Create Deco's zinc sheet texture
   { output: 'createaddition:zinc_sheet' },
   { output: /^createaddition:[a-z_]+spool/ },
