@@ -130,7 +130,7 @@ ServerEvents.recipes((e) => {
       'minecraft:iron_ingot',
       'create:iron_sheet'
     )
-    redefineMechanismRecipe('kubejs:precision_mechanism')(
+    redefineMechanismRecipe('create:precision_mechanism')(
       '4x create:smart_chute',
       'create:brass_sheet',
       'create:chute',
@@ -187,7 +187,7 @@ ServerEvents.recipes((e) => {
       'create:copper_casing',
       'minecraft:air'
     )
-    redefineMechanismRecipe('kubejs:precision_mechanism')(
+    redefineMechanismRecipe('create:precision_mechanism')(
       'create:steam_engine',
       'create:shaft',
       'kubejs:copper_mechanism',
