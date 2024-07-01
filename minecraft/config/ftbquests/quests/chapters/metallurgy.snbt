@@ -1,5 +1,5 @@
 {
-	autofocus_id: "679437D6962A8B73"
+	autofocus_id: "6A394DBD8571B96F"
 	default_hide_dependency_lines: false
 	default_quest_shape: ""
 	filename: "metallurgy"
@@ -21,7 +21,7 @@
 				type: "checkmark"
 			}]
 			title: "Ingots"
-			x: 1.0d
+			x: 0.0d
 			y: 12.0d
 		}
 		{
@@ -41,7 +41,7 @@
 				}
 			]
 			title: "Crushing: 1.5x"
-			x: 1.0d
+			x: 0.0d
 			y: 2.0d
 		}
 		{
@@ -54,7 +54,7 @@
 				type: "checkmark"
 			}]
 			title: "Raw Ore"
-			x: 1.0d
+			x: 0.0d
 			y: 0.0d
 		}
 		{
@@ -79,7 +79,7 @@
 				}
 			]
 			title: "Melting: 1-1.3x"
-			x: -5.0d
+			x: -4.0d
 			y: 6.0d
 		}
 		{
@@ -97,7 +97,7 @@
 				type: "checkmark"
 			}]
 			title: "Smelting: 1x"
-			x: 7.0d
+			x: 4.0d
 			y: 6.0d
 		}
 		{
@@ -117,7 +117,7 @@
 				}
 			]
 			title: "Vibrating: 1.5x"
-			x: 1.0d
+			x: 0.0d
 			y: 4.0d
 		}
 		{
@@ -137,8 +137,188 @@
 				}
 			]
 			title: "Washing: 1.1x"
-			x: 1.0d
+			x: 0.0d
 			y: 6.0d
+		}
+		{
+			id: "232DF7027B26AAE9"
+			tasks: [{
+				id: "0927F6B87E36ABE2"
+				item: "minecraft:iron_ingot"
+				type: "item"
+			}]
+			x: 6.5d
+			y: 2.0d
+		}
+		{
+			id: "14275110BB7BB212"
+			tasks: [{
+				id: "1B13E9E7EB5CC079"
+				item: "minecraft:copper_ingot"
+				type: "item"
+			}]
+			x: 8.0d
+			y: 2.0d
+		}
+		{
+			id: "390C3490927F7DD0"
+			tasks: [{
+				id: "0DC33E73A24E0105"
+				item: "minecraft:gold_ingot"
+				type: "item"
+			}]
+			x: 10.0d
+			y: 2.0d
+		}
+		{
+			id: "2FFB929A6A33AE6E"
+			tasks: [{
+				id: "60B473DC9FC286A8"
+				item: "create:zinc_ingot"
+				type: "item"
+			}]
+			x: 11.5d
+			y: 2.0d
+		}
+		{
+			id: "04B9307A3930E0EE"
+			tasks: [{
+				id: "1ED3BB1B40A3C424"
+				item: "thermal:tin_ingot"
+				type: "item"
+			}]
+			x: 13.0d
+			y: 2.0d
+		}
+		{
+			id: "04C9485B2AC69D24"
+			tasks: [{
+				id: "39523FC91B617AB4"
+				item: "thermal:lead_ingot"
+				type: "item"
+			}]
+			x: 14.5d
+			y: 2.0d
+		}
+		{
+			id: "2AD268874A9428E4"
+			tasks: [{
+				id: "46900E5AFDD206D2"
+				item: "thermal:silver_ingot"
+				type: "item"
+			}]
+			x: 16.0d
+			y: 2.0d
+		}
+		{
+			id: "5A91B144697E8324"
+			tasks: [{
+				id: "43C79E9938524D03"
+				item: "thermal:nickel_ingot"
+				type: "item"
+			}]
+			x: 18.0d
+			y: 2.0d
+		}
+		{
+			id: "1BC78B00014FA6E0"
+			tasks: [{
+				id: "1842E41DA78CB240"
+				item: "tfmg:steel_ingot"
+				type: "item"
+			}]
+			x: 10.0d
+			y: 4.5d
+		}
+		{
+			id: "342FBBE6CC3AFCB3"
+			tasks: [{
+				id: "228B6F818B30E143"
+				item: "thermal:bronze_ingot"
+				type: "item"
+			}]
+			x: 11.5d
+			y: 4.5d
+		}
+		{
+			id: "0BD15C2756FCB15C"
+			tasks: [{
+				id: "331997FF3D21DD5D"
+				item: "thermal:electrum_ingot"
+				type: "item"
+			}]
+			x: 13.0d
+			y: 4.5d
+		}
+		{
+			id: "01D5D44C32E596B9"
+			tasks: [{
+				id: "6965E4A7C30E117A"
+				item: "thermal:invar_ingot"
+				type: "item"
+			}]
+			x: 14.5d
+			y: 4.5d
+		}
+		{
+			id: "27F1D5BAECD76B1C"
+			tasks: [{
+				id: "121357F4CF28BAB5"
+				item: "thermal:constantan_ingot"
+				type: "item"
+			}]
+			x: 16.0d
+			y: 4.5d
+		}
+		{
+			id: "3C5DF0E35EA5858C"
+			tasks: [{
+				id: "2C218551FAC12072"
+				item: "thermal:signalum_ingot"
+				type: "item"
+			}]
+			x: 10.0d
+			y: 7.5d
+		}
+		{
+			id: "435B7E783206A732"
+			tasks: [{
+				id: "6FEC71658FEE5958"
+				item: "thermal:lumium_ingot"
+				type: "item"
+			}]
+			x: 11.5d
+			y: 7.5d
+		}
+		{
+			id: "7B512AD2EBA7475C"
+			tasks: [{
+				id: "2828738DE42B95BF"
+				item: "thermal:enderium_ingot"
+				type: "item"
+			}]
+			x: 13.0d
+			y: 7.5d
+		}
+		{
+			id: "4682046C57A674C4"
+			tasks: [{
+				id: "45C753AC07EA0DEA"
+				item: "createutilities:void_steel_ingot"
+				type: "item"
+			}]
+			x: 14.5d
+			y: 7.5d
+		}
+		{
+			id: "209B51A6D568975D"
+			tasks: [{
+				id: "4075787394545143"
+				item: "createcasing:chorium_ingot"
+				type: "item"
+			}]
+			x: 13.0d
+			y: 10.0d
 		}
 	]
 	title: "Metallurgy"
