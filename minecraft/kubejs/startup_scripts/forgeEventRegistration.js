@@ -9,3 +9,13 @@ ForgeEvents.onEvent(
     }
   }
 )
+
+ForgeEvents.onEvent(
+  'net.minecraftforge.event.entity.EntityLeaveLevelEvent',
+  (e) => {
+    // Callback defined in server_scripts
+    if (global.EntityLeaveLevelEventCallback) {
+      global.EntityLeaveLevelEventCallback(e)
+    }
+  }
+)
