@@ -517,7 +517,7 @@ ServerEvents.recipes((e) => {
         S: 'create:brass_sheet',
         C: 'create_new_age:copper_wire',
         P: 'pneumaticcraft:capacitor',
-        B: 'create:brass_casing',
+        B: 'thermal:electrum_block',
       }
     )
     redefineMechanismRecipe('create:precision_mechanism')(
@@ -737,7 +737,7 @@ ServerEvents.recipes((e) => {
     e.remove({ output: 'create_new_age:electrical_connector' })
     create
       .SequencedAssembly('tfmg:heavy_plate')
-      .deploy('create:andesite_alloy')
+      .deploy('thermal:electrum_nugget')
       .deploy('create_new_age:copper_wire')
       .press()
       .outputs('create_new_age:electrical_connector')

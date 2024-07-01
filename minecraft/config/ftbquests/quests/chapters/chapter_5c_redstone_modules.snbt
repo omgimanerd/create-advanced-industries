@@ -1,0 +1,42 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "chapter_5c_redstone_modules"
+	group: "5B3547AEADCBC841"
+	icon: "vintageimprovements:redstone_module"
+	id: "6009289D79FF7BBF"
+	order_index: 7
+	quest_links: [ ]
+	quests: [
+		{
+			id: "1B854F010A299B1C"
+			tasks: [{
+				id: "56FD444D86E710F6"
+				type: "checkmark"
+			}]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			id: "6579AAF797DDC0C5"
+			tasks: [{
+				id: "1107120B5C33EB77"
+				item: "vintageimprovements:redstone_module"
+				type: "item"
+			}]
+			x: 11.0d
+			y: 0.5d
+		}
+		{
+			id: "7DE9E3C644C60C0C"
+			tasks: [{
+				id: "71AA5652AE57D531"
+				item: "create_connected:control_chip"
+				type: "item"
+			}]
+			x: 7.0d
+			y: -1.5d
+		}
+	]
+	title: "Chapter 5c: Redstone Modules"
+}

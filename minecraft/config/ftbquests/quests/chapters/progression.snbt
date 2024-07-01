@@ -159,6 +159,17 @@
 			x: 12.5d
 			y: 1.5d
 		}
+		{
+			dependencies: ["11BA49A842F724F6"]
+			id: "43300D7923D22328"
+			tasks: [{
+				id: "5AF68EDF662A1908"
+				item: "vintageimprovements:redstone_module"
+				type: "item"
+			}]
+			x: 10.0d
+			y: -4.0d
+		}
 	]
 	title: "Progression"
 }

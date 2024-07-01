@@ -476,10 +476,7 @@
 			y: 0.0d
 		}
 		{
-			dependencies: [
-				"366F518195117AF6"
-				"5978BE35C75966ED"
-			]
+			dependencies: ["5978BE35C75966ED"]
 			description: ["I hope you kept some of the Creosote Oil around."]
 			hide_dependency_lines: true
 			icon: "tfmg:creosote_bucket"
@@ -923,19 +920,19 @@
 				type: "item"
 			}]
 			x: 26.0d
-			y: 6.0d
+			y: 4.0d
 		}
 		{
-			dependencies: ["4630AEF58B2E670F"]
-			description: ["Netherite ingots are produced by compacting netherite scrap and gold ingots in a superheated basin."]
+			dependencies: ["36A1FC9D04780F5B"]
+			description: ["Like in Chapter 3, you can cast the molten form back into the ingot, though it should be much less of a hassle now that you have steel casts."]
 			id: "0EBC7AF9C3657B63"
 			tasks: [{
 				id: "234D3207C9B92C52"
 				item: "minecraft:netherite_ingot"
 				type: "item"
 			}]
-			x: 24.0d
-			y: 6.0d
+			x: 22.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["0EBC7AF9C3657B63"]
@@ -946,8 +943,8 @@
 				item: "thermal:netherite_nugget"
 				type: "item"
 			}]
-			x: 22.0d
-			y: 6.0d
+			x: 20.0d
+			y: 4.0d
 		}
 		{
 			dependencies: [
@@ -1093,8 +1090,15 @@
 			y: -6.0d
 		}
 		{
-			dependencies: ["3DAFEBA27621ED6F"]
-			description: ["The produced FE can be stored in an accumulator."]
+			dependencies: [
+				"3DAFEBA27621ED6F"
+				"431460B31C387189"
+			]
+			description: [
+				"The produced FE can be stored in an accumulator."
+				""
+				"See the right side of this chapter for the capacitor production steps."
+			]
 			id: "04B884DDB7CAE725"
 			optional: true
 			rewards: [{
@@ -1172,38 +1176,6 @@
 			}]
 			x: 18.0d
 			y: 0.0d
-		}
-		{
-			dependencies: ["097A84D100994B26"]
-			description: [
-				"Take a look at the stonecutting recipes for the copper circuit."
-				""
-				"You can now do complex redstone logic if you want more fine-grained control of your factory components."
-			]
-			icon: "minecraft:stonecutter"
-			id: "5B70ACA2A3E76CAB"
-			optional: true
-			rewards: [
-				{
-					count: 16
-					id: "309C20E0A9703EE3"
-					item: "morered:red_alloy_wire"
-					type: "item"
-				}
-				{
-					count: 8
-					id: "1443E90A5171AA4E"
-					item: "create_new_age:copper_circuit"
-					type: "item"
-				}
-			]
-			tasks: [{
-				id: "1D901C3C474350AE"
-				type: "checkmark"
-			}]
-			title: "Logic Gates"
-			x: 18.0d
-			y: -12.0d
 		}
 		{
 			dependencies: ["20444E3074A0589D"]
@@ -1376,8 +1348,18 @@
 		}
 		{
 			dependencies: ["4940E876A0E00E4E"]
-			description: ["Overcharged diamond comes from energising diamonds."]
+			description: [
+				"Overcharged diamond comes from energising diamonds."
+				""
+				"Take a look at the right side of this chapter to figure out how to automate diamonds."
+			]
 			id: "6F56D8745AD29295"
+			rewards: [{
+				count: 16
+				id: "57ABBDBBC89762CD"
+				item: "minecraft:diamond"
+				type: "item"
+			}]
 			tasks: [{
 				id: "36999D426CEC3DF3"
 				item: "create_new_age:overcharged_diamond"
@@ -1437,7 +1419,7 @@
 			}]
 			title: "Netherite Magnets"
 			x: 34.0d
-			y: 4.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["2A592785D36BC8D3"]
@@ -1530,8 +1512,11 @@
 			y: -6.0d
 		}
 		{
-			dependencies: ["4C3E437A65D6858D"]
-			description: ["Electrical connectors can be attached to machines and generators as input/output for energy."]
+			dependencies: [
+				"4C3E437A65D6858D"
+				"431460B31C387189"
+			]
+			description: ["Electrical connectors can be attached to machines and generators to input or output energy."]
 			id: "380CA240E042FBFA"
 			tasks: [{
 				id: "692B6098E643F29C"
@@ -1652,6 +1637,60 @@
 			}]
 			x: 22.0d
 			y: -6.0d
+		}
+		{
+			dependencies: ["59F5A52EB3FE897E"]
+			description: ["With silver and gold readily available, you can melt them both to make electrum. Access to steel casts should make this process much easier."]
+			id: "053341B7FCB8D85A"
+			tasks: [{
+				id: "07FCCED61A34828D"
+				item: "kubejs:steel_ingot_cast_molten_electrum"
+				type: "item"
+			}]
+			x: 4.0d
+			y: 6.0d
+		}
+		{
+			dependencies: ["097A84D100994B26"]
+			description: [
+				"With copper circuits unlocked, you can also make redstone modules, which will allow for complex redstone logic."
+				""
+				"This will become very helpful in controlling parts of your factory, especially for some of the more complex production chains."
+				""
+				"See Chapter 5c to learn how to produce these."
+			]
+			icon: "vintageimprovements:redstone_module"
+			id: "54C9E8883DD2F25A"
+			tasks: [{
+				id: "195C15A3B8C0C1DB"
+				type: "checkmark"
+			}]
+			x: 18.0d
+			y: -12.0d
+		}
+		{
+			dependencies: ["4630AEF58B2E670F"]
+			description: ["Netherite is a tier 2 alloy, but its molten form isn't produced the same way as the other tier 2 alloys."]
+			id: "36A1FC9D04780F5B"
+			tasks: [{
+				id: "4EB0EEFE4774E316"
+				item: "kubejs:steel_ingot_cast_molten_netherite"
+				type: "item"
+			}]
+			x: 24.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["053341B7FCB8D85A"]
+			description: ["Electrum is a highly conductive tier 2 alloy, making it excellent for electrical connectors and accumulators."]
+			id: "431460B31C387189"
+			tasks: [{
+				id: "5D5AD180C5F9A711"
+				item: "thermal:electrum_ingot"
+				type: "item"
+			}]
+			x: 10.0d
+			y: 6.0d
 		}
 	]
 	title: "Chapter 5a: Logistics Mechanisms"
