@@ -76,8 +76,8 @@ global.EntityLeaveLevelEventCallback = (e) => {
   const itemEntities = level.getEntitiesWithin(
     AABB.ofBlock(fallingBlockPosition)
   )
-  const processor = RecipeIngredientProcessor.fromItemEntities(itemEntities)
   // Attempt to process each matching recipe.
+  const processor = RecipeIngredientProcessor.fromItemEntities(itemEntities)
   for (const { ingredients, results } of matchingRecipes) {
     while (processor.processIngredientList(ingredients, results)) {}
   }
@@ -87,4 +87,8 @@ global.EntityLeaveLevelEventCallback = (e) => {
   processor.getResultingItems().forEach((itemStack) => {
     belowBlock.popItemFromFace(itemStack, 'up')
   })
+
+  // TODO play sound on successful craft.
+  // TODO custom JEI category
+  // TODO custom ponder
 }
