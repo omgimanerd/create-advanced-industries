@@ -1571,9 +1571,8 @@
 		}
 		{
 			dependencies: ["68FB63D0979FE43B"]
-			description: ["You might have already automated glue, but you'll need it in larger quantities now for processor automation."]
+			description: ["You might have already automated glue, but you'll need it in larger quantities now for processor and circuit automation."]
 			id: "750D19E2D333CD2A"
-			optional: true
 			tasks: [{
 				id: "636A6848E421141C"
 				item: {
@@ -1665,6 +1664,7 @@
 				id: "195C15A3B8C0C1DB"
 				type: "checkmark"
 			}]
+			title: "Redstone Modules"
 			x: 18.0d
 			y: -12.0d
 		}

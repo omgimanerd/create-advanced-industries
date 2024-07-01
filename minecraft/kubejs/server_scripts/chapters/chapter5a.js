@@ -258,7 +258,14 @@ ServerEvents.recipes((e) => {
     .deploy('create_new_age:copper_wire')
     .press()
     .outputs('create_new_age:copper_circuit')
-  // TODO add alternative with liquid glue
+  create
+    .SequencedAssembly('create_new_age:blank_circuit')
+    .deploy('morered:red_alloy_ingot')
+    .press()
+    .fill(Fluid.of('create_things_and_misc:slime', 5))
+    .deploy('create_new_age:copper_wire')
+    .press()
+    .outputs('create_new_age:copper_circuit')
 
   // Empty PCB overhaul
   e.remove({ id: 'pneumaticcraft:pressure_chamber/empty_pcb' })

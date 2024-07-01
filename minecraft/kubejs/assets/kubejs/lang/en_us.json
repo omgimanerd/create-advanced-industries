@@ -3,5 +3,7 @@
   "fluid_type.create_things_and_misc.slime": "Liquid Slime",
   "fluid_type.createteleporters.quantum_fluid": "Quantum Fluid",
   "fluid_type.createbakeandcake.applesyrup": "Apple Syrup",
-  "item.createarmory.impact_nade": "Impact Grenade"
+
+  "item.createarmory.impact_nade": "Impact Grenade",
+  "item.vintageimprovements.redstone_module": "Redstone Mechanisms"
 }

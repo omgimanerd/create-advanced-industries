@@ -9,6 +9,7 @@
 	quest_links: [ ]
 	quests: [
 		{
+			dependencies: ["43300D7923D22328"]
 			id: "1B854F010A299B1C"
 			tasks: [{
 				id: "56FD444D86E710F6"
@@ -18,16 +19,20 @@
 			y: 0.0d
 		}
 		{
+			dependencies: ["1B854F010A299B1C"]
 			id: "6579AAF797DDC0C5"
+			size: 2.0d
 			tasks: [{
 				id: "1107120B5C33EB77"
 				item: "vintageimprovements:redstone_module"
 				type: "item"
 			}]
-			x: 11.0d
-			y: 0.5d
+			title: "Complete: Redstone Mechanisms"
+			x: 10.0d
+			y: 0.0d
 		}
 		{
+			dependencies: ["1B854F010A299B1C"]
 			id: "7DE9E3C644C60C0C"
 			tasks: [{
 				id: "71AA5652AE57D531"
