@@ -203,7 +203,7 @@ ServerEvents.recipes((e) => {
     .SequencedAssembly('kubejs:silicon_wafer')
     .deploy('create:super_glue')
     .deploy('morered:red_alloy_ingot')
-    .deploy('minecraft:amethyst_shard')
+    .deploy('createutilities:polished_amethyst')
     .outputs('extrastorage:raw_neural_processor')
   e.remove({ id: 'extrastorage:neural_processor' })
   pneumaticcraft.assembly_laser(
