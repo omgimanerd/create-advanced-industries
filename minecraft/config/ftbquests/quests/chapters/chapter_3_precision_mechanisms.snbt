@@ -401,7 +401,11 @@
 				"3383144C6D0FBAD4"
 				"5581B367614EA274"
 			]
-			description: ["Molten brass can be made by combining molten copper and molten zinc."]
+			description: [
+				"Molten brass can be made by combining molten copper and molten zinc."
+				""
+				"This is the first tier 2 alloy you'll need. Bronze, electrum, constantan, and invar are the other tier 2 alloys, but you won't need them yet. See the metallurgy chapter for more information about metal alloying!"
+			]
 			icon: "kubejs:molten_brass_bucket"
 			id: "66C109F90DAEFFAD"
 			tasks: [{

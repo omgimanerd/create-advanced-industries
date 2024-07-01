@@ -109,8 +109,9 @@
 			icon: "tfmg:molten_steel_bucket"
 			id: "565A7C5F6646857A"
 			tasks: [{
-				id: "0527EF6060244A00"
-				type: "checkmark"
+				id: "7F9C46DCA336E6D2"
+				item: "tfmg:molten_steel_bucket"
+				type: "item"
 			}]
 			title: "Molten Steel Bucket"
 			x: 14.0d
@@ -143,11 +144,7 @@
 		}
 		{
 			dependencies: ["3426D798E4ECFC01"]
-			description: [
-				"Limestone can then be ground up to get limesand, a necessary flux for steel smelting."
-				""
-				"By the way, this is not the only way to get limesand, there are a few other pathways to it that are also automatable!"
-			]
+			description: ["Limestone can then be ground up to get limesand, a necessary flux for steel smelting."]
 			id: "08046E96E707A76C"
 			tasks: [{
 				id: "53B42749C21B4E85"
@@ -159,7 +156,11 @@
 		}
 		{
 			dependencies: ["0E92C48953887C96"]
-			description: ["If you dissolve the bone blocks in water with a little heat, you'll get limestone."]
+			description: [
+				"If you dissolve the bone blocks in water with a little heat, you'll get limestone."
+				""
+				"By the way, this is not the only way to get limestone, there are a few other pathways to it that are also automatable!"
+			]
 			id: "3426D798E4ECFC01"
 			tasks: [{
 				id: "487A87108850BB91"
@@ -553,7 +554,7 @@
 			description: [
 				"Steel is much harder than other metals, so it will take a little more effort to make plates."
 				""
-				"Your first batch of steel should be used to make the helve hammer so that you can make plates easily."
+				"Your first batch of steel should be used to make the &lspring coiling machine&r and then the &lhelve hammer&r so that you can make plates easily."
 			]
 			id: "79B63BFC11E77382"
 			tasks: [{
@@ -629,7 +630,11 @@
 		}
 		{
 			dependencies: ["3C9F4B037437C8CD"]
-			description: ["Unlocking superheated blaze burners opens the gate to the most powerful source of kinetic energy in Create."]
+			description: [
+				"Unlocking superheated blaze burners opens the gate to the most powerful source of kinetic energy in Create."
+				""
+				"Ponder the steam engine to see how to set one up."
+			]
 			icon: "create:steam_engine"
 			id: "28D76BDC9F8E5E85"
 			optional: true
@@ -648,12 +653,9 @@
 				}
 			]
 			tasks: [{
-				icon: "create:steam_engine"
-				id: "7F328AACF422DBCB"
-				observe_type: 0
-				timer: 0L
-				to_observe: "create:steam_engine"
-				type: "observation"
+				id: "0C7A4C38D8245B60"
+				item: "create:steam_engine"
+				type: "item"
 			}]
 			title: "Steam Engines"
 			x: 16.0d
