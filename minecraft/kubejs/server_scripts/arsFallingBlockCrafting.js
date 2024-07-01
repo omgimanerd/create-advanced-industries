@@ -46,22 +46,6 @@ const registerBlockCrushingRecipe = (
   })
 }
 
-registerBlockCrushingRecipe(
-  'createutilities:void_steel_block',
-  null,
-  null,
-  'minecraft:stone',
-  'minecraft:cobblestone'
-)
-
-registerBlockCrushingRecipe(
-  'createutilities:void_steel_block',
-  null,
-  null,
-  'minecraft:obsidian',
-  Item.of('create:powdered_obsidian', 2)
-)
-
 /**
  *
  * @param {Internal.EntityLeaveLevelEvent_} e
