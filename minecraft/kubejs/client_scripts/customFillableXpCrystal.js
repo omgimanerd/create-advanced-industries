@@ -1,10 +1,5 @@
 // priority: 100
 
-const { $List } = require('packages/java/util/$List')
-const {
-  $IJeiAnvilRecipe,
-} = require('packages/mezz/jei/api/recipe/vanilla/$IJeiAnvilRecipe')
-
 /**
  * @param {number} x
  * @returns {string}
