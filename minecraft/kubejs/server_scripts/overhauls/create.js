@@ -569,7 +569,6 @@ ServerEvents.recipes((e) => {
       (r) => {
         const ingredients = r.originalRecipeIngredients
         if (ingredients.size() < 2) {
-          console.log(ingredients)
           return
         }
         r.remove()
