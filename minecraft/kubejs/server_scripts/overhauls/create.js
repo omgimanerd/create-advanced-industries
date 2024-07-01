@@ -357,29 +357,34 @@ ServerEvents.recipes((e) => {
       .deploy('createarmory:impact_nade')
       .outputs('2x createarmory:rpg_rocket')
     e.remove({ id: 'createarmory:shotgun_shell_recipe' })
+    // TODO: similar sequenced assembly steps result in confusing intermediate
+    // items.
     create
-      .SequencedAssembly('create:iron_sheet')
-      .curve('vintageimprovements:convex_curving_head')
+      .SequencedAssembly(
+        'create:iron_sheet',
+        'createarmory:unfinished_shotgun_shell'
+      )
+      .curve(CONVEX_CURVING_HEAD)
       .deploy('minecraft:gunpowder')
       .deploy('minecraft:iron_nugget')
       .deploy('minecraft:iron_nugget')
       .outputs('8x createarmory:shotgun_shell')
     create
       .SequencedAssembly('create:iron_sheet')
-      .curve('vintageimprovements:convex_curving_head')
+      .curve(CONVEX_CURVING_HEAD)
       .deploy('minecraft:gunpowder')
       .fill(potionFluid('ars_nouveau:blasting_potion', 250))
       .deploy('minecraft:tripwire_hook')
       .outputs('8x createarmory:impact_nade')
     create
       .SequencedAssembly('create:iron_sheet')
-      .curve('vintageimprovements:convex_curving_head')
+      .curve(CONVEX_CURVING_HEAD)
       .deploy('minecraft:tnt')
       .deploy('minecraft:tripwire_hook')
       .outputs('4x createarmory:impact_nade')
     create
       .SequencedAssembly('create:iron_sheet')
-      .curve('vintageimprovements:convex_curving_head')
+      .curve(CONVEX_CURVING_HEAD)
       .deploy('minecraft:gunpowder')
       .deploy('kubejs:zinc_dust')
       .deploy('minecraft:gray_dye')
@@ -399,7 +404,7 @@ ServerEvents.recipes((e) => {
         'createarmory:nine_mm_casing',
         'createarmory:unfinished_nine_mm'
       )
-      .curve('vintageimprovements:convex_curving_head')
+      .curve(CONVEX_CURVING_HEAD)
       .deploy('minecraft:gunpowder')
       .deploy('create:copper_nugget')
       .press()
@@ -410,7 +415,7 @@ ServerEvents.recipes((e) => {
         'createarmory:fifty_cal_casing',
         'createarmory:unfinished_fifty_cal_casing'
       )
-      .curve('vintageimprovements:convex_curving_head')
+      .curve(CONVEX_CURVING_HEAD)
       .deploy('minecraft:gunpowder')
       .deploy('create:copper_nugget')
       .press()
@@ -421,7 +426,7 @@ ServerEvents.recipes((e) => {
         'createarmory:five_five_six_casing',
         'createarmory:unfinished_five_five_six_casing'
       )
-      .curve('vintageimprovements:convex_curving_head')
+      .curve(CONVEX_CURVING_HEAD)
       .deploy('minecraft:gunpowder')
       .deploy('create:copper_nugget')
       .press()
@@ -1084,26 +1089,18 @@ ServerEvents.recipes((e) => {
     e.remove({ id: 'vintageimprovements:curving/diamond' })
 
     // Manually add curving recipes that are desired
-    create.curving(
-      'minecraft:glass_bottle',
-      'minecraft:glass',
-      'vintageimprovements:convex_curving_head'
-    )
-    create.curving(
-      'minecraft:bucket',
-      'create:iron_sheet',
-      'vintageimprovements:convex_curving_head'
-    )
-    create.curving(
-      'minecraft:bowl',
-      '#minecraft:planks',
-      'vintageimprovements:convex_curving_head'
-    )
-    create.curving(
-      'minecraft:flower_pot',
-      'minecraft:brick',
-      'vintageimprovements:convex_curving_head'
-    )
+    create
+      .curving('minecraft:glass_bottle', 'minecraft:glass')
+      .mode(CONVEX_CURVING_HEAD)
+    create
+      .curving('minecraft:bucket', 'create:iron_sheet')
+      .mode(CONVEX_CURVING_HEAD)
+    create
+      .curving('minecraft:bowl', '#minecraft:planks')
+      .mode(CONVEX_CURVING_HEAD)
+    create
+      .curving('minecraft:flower_pot', 'minecraft:brick')
+      .mode(CONVEX_CURVING_HEAD)
   }
 
   // TODO redstone module

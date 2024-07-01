@@ -215,7 +215,7 @@ ServerEvents.recipes((e) => {
   )
   create
     .curving('kubejs:steel_ingot_cast', 'tfmg:heavy_plate')
-    .itemAsHead('vintageimprovements:v_shaped_curving_head')
+    .mode(V_SHAPED_CURVING_HEAD)
 
   // Recipe for screwdriver with rebar overhaul.
   e.remove({ id: 'tfmg:stonecutting/rebar' })

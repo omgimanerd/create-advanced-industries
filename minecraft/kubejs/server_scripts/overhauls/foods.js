@@ -103,11 +103,9 @@ ServerEvents.recipes((e) => {
     .outputs('createsweetsandtreets:gunpowder_cake')
 
   e.remove({ id: 'createsweetsandtreets:brass_cake_pan_craft' })
-  create.curving(
-    'createsweetsandtreets:brass_cake_pan',
-    'create:brass_sheet',
-    'vintageimprovements:convex_curving_head'
-  )
+  create
+    .curving('createsweetsandtreets:brass_cake_pan', 'create:brass_sheet')
+    .mode(CONVEX_CURVING_HEAD)
 
   e.remove({ id: 'create:filling/powderedbrownie1' })
   create.filling('kubejs:uncooked_brownie', [

@@ -4,6 +4,11 @@ const POLISHING_LOW_SPEED = 1
 const POLISHING_MEDIUM_SPEED = 2
 const POLISHING_HIGH_SPEED = 3
 
+const CONVEX_CURVING_HEAD = 1
+const CONCAVE_CURVING_HEAD = 2
+const W_SHAPED_CURVING_HEAD = 3
+const V_SHAPED_CURVING_HEAD = 4
+
 /**
  * @param {Internal.RecipesEventJS_} e
  */

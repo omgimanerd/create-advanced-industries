@@ -146,11 +146,18 @@ if (Platform.isLoaded('create_new_age')) {
 }
 
 if (Platform.isLoaded('vintageimprovements')) {
-  SequencedAssembly.prototype.curve = function (itemAsHead) {
+  SequencedAssembly.prototype.curve = function (input) {
+    let itemAsHead, mode
+    if (typeof input === 'number') {
+      mode = input
+    } else {
+      itemAsHead = input
+    }
     this.steps_.push({
       type: 'curving',
       preItemText: Text.of('Press with a curving press'),
       itemAsHead: itemAsHead,
+      mode: mode,
     })
     return this
   }
@@ -296,11 +303,12 @@ SequencedAssembly.prototype.outputCustomSequence = function (output) {
           )
           break
         case 'curving':
-          r = this.e_.recipes.vintageimprovements.curving(
-            post,
-            pre,
-            data.itemAsHead
-          )
+          r = this.e_.recipes.vintageimprovements.curving(post, pre)
+          if (data.itemAsHead) {
+            r.itemAsHead(data.itemAsHead)
+          } else if (data.mode) {
+            r.mode(data.mode)
+          }
           break
         case 'vibrating':
           r = this.e_.recipes.vintageimprovements.vibrating(
@@ -366,11 +374,16 @@ SequencedAssembly.prototype.outputNativeCreate = function (output) {
               data.energyNeeded
             )
           case 'curving':
-            return this.e_.recipes.vintageimprovements.curving(
+            const curvingStep = this.e_.recipes.vintageimprovements.curving(
               this.transitional_,
-              this.transitional_,
-              data.itemAsHead
+              this.transitional_
             )
+            if (data.itemAsHead) {
+              curvingStep.itemAsHead(data.itemAsHead)
+            } else if (data.mode) {
+              curvingStep.mode(data.mode)
+            }
+            return curvingStep
           case 'vibrating':
             return this.e_.recipes.vintageimprovements.vibrating(
               this.transitional_,
