@@ -43,14 +43,19 @@
      * negative direction. We need to take into account the negative or positive
      * directive or this will rotate blocks the opposite way if we are facing
      * the opposite side of the block.
+     *
+     * Rotate the block until it is not in a forbidden state.
      */
     if (facing.axisDirection.step > 0) {
       newDirection = blockFacingDirection.getClockWise(facing.axis)
     } else {
       newDirection = blockFacingDirection.getCounterClockWise(facing.axis)
     }
-    // If the resulting direction is a forbidden state, skip any action.
-    if (forbiddenStates[block.id] === newDirection) return
+    if (newDirection === forbiddenStates[block.id]) {
+      // Theoretically should never end up in a forbidden state since it's a
+      // dict, but the new direction could still be invalid and cause an error.
+      newDirection = blockFacingDirection.getOpposite()
+    }
     // block.properties is immutable, so we need to copy it.
     const newProperties = Object.assign({}, block.properties, {
       facing: newDirection,
@@ -58,7 +63,7 @@
     block.set(block.id, newProperties)
     player.swing()
     if (newDirection !== blockFacingDirection) {
-      player.playNotifySound('create:wrench_rotate', 'players', 2, 1)
+      player.playNotifySound('create:wrench_rotate', 'players', 1, 1)
     }
     e.cancel()
   })
