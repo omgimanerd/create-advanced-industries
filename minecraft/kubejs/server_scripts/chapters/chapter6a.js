@@ -3,6 +3,16 @@
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
 
+  // Void steel crafting with void conversion.
+  global.RegisterVoidConversionRecipe(
+    'createutilities:void_steel_ingot',
+    'tfmg:steel_ingot'
+  )
+  global.RegisterVoidConversionRecipe(
+    'createutilities:void_steel_block',
+    'tfmg:steel_block'
+  )
+
   // sculk farming to make enderium
   // enderium recipe from liquid hyper exp
 
