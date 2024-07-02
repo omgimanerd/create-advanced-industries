@@ -39,8 +39,8 @@
 				item: "create_connected:control_chip"
 				type: "item"
 			}]
-			x: 7.0d
-			y: -1.5d
+			x: 4.5d
+			y: -2.5d
 		}
 	]
 	title: "Chapter 5c: Redstone Modules"

@@ -147,7 +147,7 @@
 				item: "minecraft:iron_ingot"
 				type: "item"
 			}]
-			x: 6.5d
+			x: 4.0d
 			y: 2.0d
 		}
 		{
@@ -157,7 +157,7 @@
 				item: "minecraft:copper_ingot"
 				type: "item"
 			}]
-			x: 8.0d
+			x: 6.0d
 			y: 2.0d
 		}
 		{
@@ -167,7 +167,7 @@
 				item: "minecraft:gold_ingot"
 				type: "item"
 			}]
-			x: 10.0d
+			x: 8.0d
 			y: 2.0d
 		}
 		{
@@ -177,7 +177,7 @@
 				item: "create:zinc_ingot"
 				type: "item"
 			}]
-			x: 11.5d
+			x: 10.0d
 			y: 2.0d
 		}
 		{
@@ -187,7 +187,7 @@
 				item: "thermal:tin_ingot"
 				type: "item"
 			}]
-			x: 13.0d
+			x: 12.0d
 			y: 2.0d
 		}
 		{
@@ -197,7 +197,7 @@
 				item: "thermal:lead_ingot"
 				type: "item"
 			}]
-			x: 14.5d
+			x: 14.0d
 			y: 2.0d
 		}
 		{
@@ -227,8 +227,8 @@
 				item: "tfmg:steel_ingot"
 				type: "item"
 			}]
-			x: 10.0d
-			y: 4.5d
+			x: 9.0d
+			y: 4.0d
 		}
 		{
 			id: "342FBBE6CC3AFCB3"
@@ -237,8 +237,8 @@
 				item: "thermal:bronze_ingot"
 				type: "item"
 			}]
-			x: 11.5d
-			y: 4.5d
+			x: 11.0d
+			y: 4.0d
 		}
 		{
 			id: "0BD15C2756FCB15C"
@@ -248,7 +248,7 @@
 				type: "item"
 			}]
 			x: 13.0d
-			y: 4.5d
+			y: 4.0d
 		}
 		{
 			id: "01D5D44C32E596B9"
@@ -257,8 +257,8 @@
 				item: "thermal:invar_ingot"
 				type: "item"
 			}]
-			x: 14.5d
-			y: 4.5d
+			x: 15.0d
+			y: 4.0d
 		}
 		{
 			id: "27F1D5BAECD76B1C"
@@ -267,8 +267,8 @@
 				item: "thermal:constantan_ingot"
 				type: "item"
 			}]
-			x: 16.0d
-			y: 4.5d
+			x: 17.0d
+			y: 4.0d
 		}
 		{
 			id: "3C5DF0E35EA5858C"
@@ -277,8 +277,8 @@
 				item: "thermal:signalum_ingot"
 				type: "item"
 			}]
-			x: 10.0d
-			y: 7.5d
+			x: 9.0d
+			y: 6.0d
 		}
 		{
 			id: "435B7E783206A732"
@@ -287,8 +287,8 @@
 				item: "thermal:lumium_ingot"
 				type: "item"
 			}]
-			x: 11.5d
-			y: 7.5d
+			x: 11.0d
+			y: 6.0d
 		}
 		{
 			id: "7B512AD2EBA7475C"
@@ -298,7 +298,7 @@
 				type: "item"
 			}]
 			x: 13.0d
-			y: 7.5d
+			y: 6.0d
 		}
 		{
 			id: "4682046C57A674C4"
@@ -307,8 +307,8 @@
 				item: "createutilities:void_steel_ingot"
 				type: "item"
 			}]
-			x: 14.5d
-			y: 7.5d
+			x: 15.0d
+			y: 6.0d
 		}
 		{
 			id: "209B51A6D568975D"
@@ -317,8 +317,28 @@
 				item: "createcasing:chorium_ingot"
 				type: "item"
 			}]
-			x: 13.0d
-			y: 10.0d
+			x: 12.0d
+			y: 8.0d
+		}
+		{
+			id: "5FE092FA33D4D5AF"
+			tasks: [{
+				id: "73BA115674A905DE"
+				item: "create:andesite_alloy"
+				type: "item"
+			}]
+			x: 20.0d
+			y: 2.0d
+		}
+		{
+			id: "5E90DF0BBD58BB3C"
+			tasks: [{
+				id: "1CAFF5B53FF5E626"
+				item: "create:brass_ingot"
+				type: "item"
+			}]
+			x: 7.0d
+			y: 4.0d
 		}
 	]
 	title: "Metallurgy"
