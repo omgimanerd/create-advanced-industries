@@ -361,30 +361,26 @@ ServerEvents.recipes((e) => {
     // items.
     create
       .SequencedAssembly(
-        'create:iron_sheet',
+        'create:brass_sheet',
         'createarmory:unfinished_shotgun_shell'
       )
-      .curve(CONVEX_CURVING_HEAD)
       .deploy('minecraft:gunpowder')
       .deploy('minecraft:iron_nugget')
       .deploy('minecraft:iron_nugget')
       .outputs('8x createarmory:shotgun_shell')
     create
       .SequencedAssembly('create:iron_sheet')
-      .curve(CONVEX_CURVING_HEAD)
       .deploy('minecraft:gunpowder')
       .fill(potionFluid('ars_nouveau:blasting_potion', 250))
       .deploy('minecraft:tripwire_hook')
       .outputs('8x createarmory:impact_nade')
     create
       .SequencedAssembly('create:iron_sheet')
-      .curve(CONVEX_CURVING_HEAD)
       .deploy('minecraft:tnt')
       .deploy('minecraft:tripwire_hook')
       .outputs('4x createarmory:impact_nade')
     create
       .SequencedAssembly('create:iron_sheet')
-      .curve(CONVEX_CURVING_HEAD)
       .deploy('minecraft:gunpowder')
       .deploy('kubejs:zinc_dust')
       .deploy('minecraft:gray_dye')
@@ -901,8 +897,8 @@ ServerEvents.recipes((e) => {
     )
 
     // TODO: fix recipes that use aluminum as an input
-
     // TODO: add efficient liquid concrete overhaul
+
     // Make pipes require a sheet
     let redefinePipeRecipe = (output, ingot, sheet) => {
       e.remove({ output: output })
@@ -1087,11 +1083,10 @@ ServerEvents.recipes((e) => {
     e.remove({ id: 'vintageimprovements:curving/diamond' })
 
     // Manually add curving recipes that are desired
+    // Any sequenced assembly recipes that curve an iron sheet may conflict
+    // with the default bucket recipe.
     create
       .curving('minecraft:glass_bottle', 'minecraft:glass')
-      .mode(CONVEX_CURVING_HEAD)
-    create
-      .curving('minecraft:bucket', 'create:iron_sheet')
       .mode(CONVEX_CURVING_HEAD)
     create
       .curving('minecraft:bowl', '#minecraft:planks')
