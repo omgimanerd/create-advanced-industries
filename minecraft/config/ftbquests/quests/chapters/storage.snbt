@@ -33,6 +33,7 @@
 		{
 			dependencies: ["76EA7D462C854493"]
 			description: ["Functional Storage drawers are in this pack!"]
+			icon: "functionalstorage:oak_4"
 			id: "0187FA4673644B91"
 			rewards: [
 				{

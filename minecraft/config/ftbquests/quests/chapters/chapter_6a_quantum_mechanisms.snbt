@@ -186,7 +186,7 @@
 				item: "thermal:invar_ingot"
 				type: "item"
 			}]
-			x: 7.0d
+			x: 7.5d
 			y: -5.5d
 		}
 		{

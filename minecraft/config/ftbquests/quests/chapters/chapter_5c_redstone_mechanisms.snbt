@@ -1,7 +1,7 @@
 {
 	default_hide_dependency_lines: false
 	default_quest_shape: ""
-	filename: "chapter_5c_redstone_modules"
+	filename: "chapter_5c_redstone_mechanisms"
 	group: "5B3547AEADCBC841"
 	icon: "vintageimprovements:redstone_module"
 	id: "6009289D79FF7BBF"
@@ -43,5 +43,5 @@
 			y: -2.5d
 		}
 	]
-	title: "Chapter 5c: Redstone Modules"
+	title: "Chapter 5c: Redstone Mechanisms"
 }
