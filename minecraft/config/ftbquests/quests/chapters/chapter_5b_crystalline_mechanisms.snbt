@@ -1764,7 +1764,7 @@
 			description: [
 				"Occasionally, you might find fruits growing off the side of archwood trees. Flashpines are found on the side of flashing archwood trees, and can be grown on flashing archwood logs."
 				""
-				"Once you unlock the other side of this chapter, you can also magick your own if you can't find one."
+				"You can also magick your own from flashing archwood sap if you can't find one."
 			]
 			id: "0389D8A16877CE14"
 			tasks: [{
@@ -1802,7 +1802,7 @@
 				"653A068E19991D20"
 			]
 			description: [
-				"Water. Earth. Fire. Air. Long ago, the four nations lived together in harmony. Then, everything changed when the Fire Nation attacked. Only the Avatar, master of all four elements, could ... wait a minute. That might be copyrighted. Oops."
+				"Water. Earth. Fire. Air. Long ago, the four nations lived together in harmony. Then, everything changed when the Fire Nation attacked. Only the Avatar, master of all four elements, could ... wait a minute. That might be copyrighted."
 				""
 				"Onto the next section!"
 			]
@@ -2121,6 +2121,7 @@
 		}
 		{
 			dependencies: ["05ED3720FD924A0F"]
+			description: ["Run the amethyst shards through a belt grinder to get polished amethyst."]
 			id: "641E68BA777D6548"
 			tasks: [{
 				id: "339906093078F2EF"

@@ -1,5 +1,5 @@
 {
-	autofocus_id: "6A394DBD8571B96F"
+	autofocus_id: "4B33C79B447C78A6"
 	default_hide_dependency_lines: false
 	default_quest_shape: ""
 	filename: "metallurgy"
@@ -148,8 +148,8 @@
 				item: "minecraft:iron_ingot"
 				type: "item"
 			}]
-			x: 8.0d
-			y: 2.0d
+			x: 9.0d
+			y: 2.5d
 		}
 		{
 			dependencies: ["4B33C79B447C78A6"]
@@ -159,8 +159,8 @@
 				item: "minecraft:copper_ingot"
 				type: "item"
 			}]
-			x: 10.0d
-			y: 2.0d
+			x: 11.0d
+			y: 2.5d
 		}
 		{
 			dependencies: ["4B33C79B447C78A6"]
@@ -170,8 +170,8 @@
 				item: "minecraft:gold_ingot"
 				type: "item"
 			}]
-			x: 12.0d
-			y: 2.0d
+			x: 13.0d
+			y: 2.5d
 		}
 		{
 			dependencies: ["4B33C79B447C78A6"]
@@ -181,8 +181,8 @@
 				item: "create:zinc_ingot"
 				type: "item"
 			}]
-			x: 14.0d
-			y: 2.0d
+			x: 15.0d
+			y: 2.5d
 		}
 		{
 			dependencies: ["4B33C79B447C78A6"]
@@ -192,8 +192,8 @@
 				item: "thermal:tin_ingot"
 				type: "item"
 			}]
-			x: 16.0d
-			y: 2.0d
+			x: 17.0d
+			y: 2.5d
 		}
 		{
 			dependencies: ["4B33C79B447C78A6"]
@@ -203,8 +203,8 @@
 				item: "thermal:lead_ingot"
 				type: "item"
 			}]
-			x: 18.0d
-			y: 2.0d
+			x: 19.0d
+			y: 2.5d
 		}
 		{
 			dependencies: ["4B33C79B447C78A6"]
@@ -214,8 +214,8 @@
 				item: "thermal:silver_ingot"
 				type: "item"
 			}]
-			x: 20.0d
-			y: 2.0d
+			x: 21.0d
+			y: 2.5d
 		}
 		{
 			dependencies: ["4B33C79B447C78A6"]
@@ -225,8 +225,8 @@
 				item: "thermal:nickel_ingot"
 				type: "item"
 			}]
-			x: 22.0d
-			y: 2.0d
+			x: 23.0d
+			y: 2.5d
 		}
 		{
 			dependencies: ["4B33C79B447C78A6"]
@@ -236,8 +236,8 @@
 				item: "tfmg:steel_ingot"
 				type: "item"
 			}]
-			x: 13.0d
-			y: 4.0d
+			x: 14.0d
+			y: 4.5d
 		}
 		{
 			dependencies: ["4B33C79B447C78A6"]
@@ -247,8 +247,8 @@
 				item: "thermal:bronze_ingot"
 				type: "item"
 			}]
-			x: 15.0d
-			y: 4.0d
+			x: 16.0d
+			y: 4.5d
 		}
 		{
 			dependencies: ["4B33C79B447C78A6"]
@@ -258,8 +258,8 @@
 				item: "thermal:electrum_ingot"
 				type: "item"
 			}]
-			x: 17.0d
-			y: 4.0d
+			x: 18.0d
+			y: 4.5d
 		}
 		{
 			dependencies: ["4B33C79B447C78A6"]
@@ -269,8 +269,8 @@
 				item: "thermal:invar_ingot"
 				type: "item"
 			}]
-			x: 19.0d
-			y: 4.0d
+			x: 20.0d
+			y: 4.5d
 		}
 		{
 			dependencies: ["4B33C79B447C78A6"]
@@ -280,8 +280,8 @@
 				item: "thermal:constantan_ingot"
 				type: "item"
 			}]
-			x: 21.0d
-			y: 4.0d
+			x: 22.0d
+			y: 4.5d
 		}
 		{
 			dependencies: ["4B33C79B447C78A6"]
@@ -291,8 +291,8 @@
 				item: "thermal:signalum_ingot"
 				type: "item"
 			}]
-			x: 13.0d
-			y: 6.0d
+			x: 14.0d
+			y: 6.5d
 		}
 		{
 			dependencies: ["4B33C79B447C78A6"]
@@ -302,8 +302,8 @@
 				item: "thermal:lumium_ingot"
 				type: "item"
 			}]
-			x: 15.0d
-			y: 6.0d
+			x: 16.0d
+			y: 6.5d
 		}
 		{
 			dependencies: ["4B33C79B447C78A6"]
@@ -313,8 +313,8 @@
 				item: "thermal:enderium_ingot"
 				type: "item"
 			}]
-			x: 17.0d
-			y: 6.0d
+			x: 18.0d
+			y: 6.5d
 		}
 		{
 			dependencies: ["4B33C79B447C78A6"]
@@ -324,8 +324,8 @@
 				item: "createutilities:void_steel_ingot"
 				type: "item"
 			}]
-			x: 19.0d
-			y: 6.0d
+			x: 20.0d
+			y: 6.5d
 		}
 		{
 			dependencies: ["4B33C79B447C78A6"]
@@ -335,8 +335,8 @@
 				item: "createcasing:chorium_ingot"
 				type: "item"
 			}]
-			x: 16.0d
-			y: 8.0d
+			x: 17.0d
+			y: 8.5d
 		}
 		{
 			dependencies: ["4B33C79B447C78A6"]
@@ -346,8 +346,8 @@
 				item: "create:andesite_alloy"
 				type: "item"
 			}]
-			x: 24.0d
-			y: 2.0d
+			x: 25.0d
+			y: 2.5d
 		}
 		{
 			dependencies: ["4B33C79B447C78A6"]
@@ -357,8 +357,8 @@
 				item: "create:brass_ingot"
 				type: "item"
 			}]
-			x: 11.0d
-			y: 4.0d
+			x: 12.0d
+			y: 4.5d
 		}
 		{
 			hide_dependent_lines: true
