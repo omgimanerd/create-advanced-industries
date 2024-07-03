@@ -10,6 +10,15 @@ ServerEvents.recipes((e) => {
   ////////////////////////
   // Functional Storage //
   ////////////////////////
+  // Fluid drawers should depend on Create fluid tanks.
+  e.replaceInput(
+    {
+      mod: 'functionalstorage',
+      id: /^functionalstorage:fluid_[0-9]{1}$/,
+    },
+    'minecraft:bucket',
+    'create:fluid_tank'
+  )
   // Remove woodless functional storage crafting recipes.
   e.remove({ id: /^functionalstorage:.*alternate.*$/ })
   e.replaceInput(
