@@ -46,3 +46,15 @@ ForgeEvents.onEvent(
     global.ArsGravityBlockCrushingCallback(e)
   }
 )
+
+StartupEvents.postInit((e) => {
+  // Void steel crafting with void conversion.
+  global.RegisterVoidConversionRecipe(
+    'createutilities:void_steel_ingot',
+    'tfmg:steel_ingot'
+  )
+  global.RegisterVoidConversionRecipe(
+    'createutilities:void_steel_block',
+    'tfmg:steel_block'
+  )
+})
