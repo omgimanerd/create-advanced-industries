@@ -272,14 +272,18 @@
 					type: "item"
 				}
 			]
+			shape: "gear"
+			size: 1.5d
 			tasks: [{
 				icon: "create:shaft"
 				id: "0E33DD3B4D795430"
 				observe_type: 0
 				timer: 0L
+				title: "Spin the shaft with the waterwheel"
 				to_observe: "create:shaft"
 				type: "observation"
 			}]
+			title: "Get a Shaft Spinning!"
 			x: 9.0d
 			y: -3.0d
 		}
@@ -606,7 +610,7 @@
 					Count: 1b
 					id: "ftbfiltersystem:smart_filter"
 					tag: {
-						"ftbfiltersystem:filter": "or(item(create:mechanical_piston)item(create:sticky_mechanical_piston)item(create:gantry_carriage)item(create:mechanical_bearing)item(create:rope_pulley)item(create:cart_assembler))"
+						"ftbfiltersystem:filter": "or(item(create:mechanical_piston)item(create:sticky_mechanical_piston)item(create:gantry_carriage)item(create:mechanical_bearing)item(create:rope_pulley)item(create:cart_assembler)item(create:windmill_bearing))"
 					}
 				}
 				type: "item"
