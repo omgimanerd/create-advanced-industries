@@ -9,7 +9,7 @@ global.VoidConversionRecipes = {}
  */
 global.RegisterVoidConversionRecipe = (output, input) => {
   if (global.VoidConversionRecipes[input]) {
-    throw new Error('Recipe already exists!')
+    throw new Error(`Recipe already exists for input ${input}!`)
   }
   global.VoidConversionRecipes[input] =
     typeof output === 'string' ? Item.of(output) : output
