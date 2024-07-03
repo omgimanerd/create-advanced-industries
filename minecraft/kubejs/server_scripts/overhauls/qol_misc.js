@@ -6,6 +6,11 @@ ServerEvents.recipes((e) => {
   const pneumaticcraft = definePneumaticcraftRecipes(e)
   const redefineRecipe = redefineRecipe_(e)
 
+  // Basalt can be crushed into cobblestone
+  e.remove({ id: 'vintageimprovements:crushing/basalt_recycling' })
+  e.remove({ id: 'vintageimprovements:crushing/basalt' })
+  create.crushing('minecraft:cobblestone', 'minecraft:basalt')
+
   // Rosin from resin
   create.mixing('thermal:rosin', Fluid.of('thermal:resin', 250)).heated()
 
