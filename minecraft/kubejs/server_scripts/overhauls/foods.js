@@ -31,6 +31,69 @@ ServerEvents.recipes((e) => {
   // Consistency overhauls for foods in this modpack, used mostly in Chapter 5b
   const create = defineCreateRecipes(e)
 
+  // Allow for Nutrient Infusion's enchantment book to be created with Ars
+  // Nouveau
+  e.recipes.ars_nouveau.enchantment(
+    [
+      'farmersdelight:cooked_bacon',
+      'minecraft:melon_slice',
+      'farmersdelight:fried_egg',
+      'farmersdelight:tomato_sauce',
+    ],
+    'kubejs:nutrient_infusion',
+    1,
+    2000
+  )
+  e.recipes.ars_nouveau.enchantment(
+    [
+      'farmersdelight:cooked_bacon',
+      'minecraft:melon_slice',
+      'farmersdelight:fried_egg',
+      'farmersdelight:tomato_sauce',
+      'minecraft:cookie',
+    ],
+    'kubejs:nutrient_infusion',
+    2,
+    3500
+  )
+  e.recipes.ars_nouveau.enchantment(
+    [
+      'farmersdelight:cooked_bacon',
+      'minecraft:melon_slice',
+      'farmersdelight:fried_egg',
+      'farmersdelight:tomato_sauce',
+      'farmersdelight:bacon_sandwich',
+    ],
+    'kubejs:nutrient_infusion',
+    3,
+    5000
+  )
+  e.recipes.ars_nouveau.enchantment(
+    [
+      'farmersdelight:cooked_bacon',
+      'minecraft:melon_slice',
+      'farmersdelight:fried_egg',
+      'farmersdelight:bacon_sandwich',
+      'farmersdelight:bacon_sandwich',
+    ],
+    'kubejs:nutrient_infusion',
+    4,
+    6500
+  )
+  e.recipes.ars_nouveau.enchantment(
+    [
+      'farmersdelight:cooked_bacon',
+      'minecraft:melon_slice',
+      'farmersdelight:fried_egg',
+      'farmersdelight:bacon_sandwich',
+      'farmersdelight:bacon_sandwich',
+      'farmersdelight:bacon_and_eggs',
+    ],
+    'kubejs:nutrient_infusion',
+    5,
+    8000
+  )
+
   // Create Central Kitchen + Farmer's Delight
   e.remove({ id: /^create_central_kitchen:sequenced_assembly.*/ })
   e.remove({ id: 'create_central_kitchen:crafting/tomato_sauce_from_bucket' })
