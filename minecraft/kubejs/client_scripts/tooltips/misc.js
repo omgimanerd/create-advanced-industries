@@ -6,13 +6,6 @@ ItemEvents.tooltip((e) => {
     'com.simibubi.create.foundation.item.TooltipHelper'
   )
 
-  // Add a tooltip to the blaze milk bucket.
-  tooltipHelper(
-    e,
-    'kubejs:blaze_milk_bucket',
-    '<gold>Where did you even milk this from?</gold>'
-  )
-
   const holdShift = () => {
     return $Lang
       .translateDirect(
