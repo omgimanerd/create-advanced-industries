@@ -107,17 +107,8 @@ ServerEvents.recipes((e) => {
     }
   )
   // Apotheosis material automation
-  create // Common Material: Mysterious Scrap Metal
-    .SequencedAssembly('tfmg:steel_mechanism')
-    .fill(Fluid.of('create_enchantment_industry:experience', 16))
-    .cut(2, 40)
-    .custom('Next: Crush with Crushing Wheels', (pre, post) => {
-      create.crushing(post, pre)
-    })
-    .outputs([
-      'apotheosis:common_material',
-      Item.of('apotheosis:common_material').withChance(0.25),
-    ])
+  // Common Material: Mysterious Scrap Metal
+  create.crushing('apotheosis:common_material', 'tfmg:steel_mechanism')
   // Uncommon Material: Timeworn Fabric
   e.remove({ id: 'apotheotic_additions:stonecutting/timeworn_fabric' })
   e.remove({ id: 'apotheotic_additions:stonecutting/timeworn_fancy' })
