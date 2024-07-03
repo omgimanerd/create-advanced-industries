@@ -22,7 +22,7 @@ ServerEvents.recipes((e) => {
   // less efficient.
   e.remove({ output: 'create:dough' })
   create.mixing('create:dough', ['8x create:wheat_flour', Fluid.water(1000)])
-  e.shapeless('create:dough', [
+  e.shapeless('2x create:dough', [
     'create:wheat_flour',
     'create:wheat_flour',
     'create:wheat_flour',
