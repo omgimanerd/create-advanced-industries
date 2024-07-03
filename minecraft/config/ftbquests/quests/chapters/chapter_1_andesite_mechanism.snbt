@@ -235,7 +235,11 @@
 		}
 		{
 			dependencies: ["0A1CEFA45C20D991"]
-			description: ["Automating logs will be pretty helpful. Wood is always a good thing to have."]
+			description: [
+				"Automating logs will be pretty helpful. Wood is always a good thing to have."
+				""
+				"I recommend building a tree farm with Create's mechanical saws."
+			]
 			icon: "minecraft:oak_log"
 			id: "6FA4151E4E653522"
 			tasks: [

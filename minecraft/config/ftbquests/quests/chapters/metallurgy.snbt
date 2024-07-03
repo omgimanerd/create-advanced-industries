@@ -45,7 +45,7 @@
 			y: 2.0d
 		}
 		{
-			dependencies: ["76EA7D462C854493"]
+			dependencies: ["4B33C79B447C78A6"]
 			description: ["Starting from raw ore, you can always smelt it to get the ingot for the least effort."]
 			icon: "minecraft:raw_copper"
 			id: "679437D6962A8B73"
@@ -141,204 +141,235 @@
 			y: 6.0d
 		}
 		{
+			dependencies: ["4B33C79B447C78A6"]
 			id: "232DF7027B26AAE9"
 			tasks: [{
 				id: "0927F6B87E36ABE2"
 				item: "minecraft:iron_ingot"
 				type: "item"
 			}]
-			x: 4.0d
+			x: 8.0d
 			y: 2.0d
 		}
 		{
+			dependencies: ["4B33C79B447C78A6"]
 			id: "14275110BB7BB212"
 			tasks: [{
 				id: "1B13E9E7EB5CC079"
 				item: "minecraft:copper_ingot"
 				type: "item"
 			}]
-			x: 6.0d
+			x: 10.0d
 			y: 2.0d
 		}
 		{
+			dependencies: ["4B33C79B447C78A6"]
 			id: "390C3490927F7DD0"
 			tasks: [{
 				id: "0DC33E73A24E0105"
 				item: "minecraft:gold_ingot"
 				type: "item"
 			}]
-			x: 8.0d
+			x: 12.0d
 			y: 2.0d
 		}
 		{
+			dependencies: ["4B33C79B447C78A6"]
 			id: "2FFB929A6A33AE6E"
 			tasks: [{
 				id: "60B473DC9FC286A8"
 				item: "create:zinc_ingot"
 				type: "item"
 			}]
-			x: 10.0d
+			x: 14.0d
 			y: 2.0d
 		}
 		{
+			dependencies: ["4B33C79B447C78A6"]
 			id: "04B9307A3930E0EE"
 			tasks: [{
 				id: "1ED3BB1B40A3C424"
 				item: "thermal:tin_ingot"
 				type: "item"
 			}]
-			x: 12.0d
+			x: 16.0d
 			y: 2.0d
 		}
 		{
+			dependencies: ["4B33C79B447C78A6"]
 			id: "04C9485B2AC69D24"
 			tasks: [{
 				id: "39523FC91B617AB4"
 				item: "thermal:lead_ingot"
 				type: "item"
 			}]
-			x: 14.0d
+			x: 18.0d
 			y: 2.0d
 		}
 		{
+			dependencies: ["4B33C79B447C78A6"]
 			id: "2AD268874A9428E4"
 			tasks: [{
 				id: "46900E5AFDD206D2"
 				item: "thermal:silver_ingot"
 				type: "item"
 			}]
-			x: 16.0d
+			x: 20.0d
 			y: 2.0d
 		}
 		{
+			dependencies: ["4B33C79B447C78A6"]
 			id: "5A91B144697E8324"
 			tasks: [{
 				id: "43C79E9938524D03"
 				item: "thermal:nickel_ingot"
 				type: "item"
 			}]
-			x: 18.0d
+			x: 22.0d
 			y: 2.0d
 		}
 		{
+			dependencies: ["4B33C79B447C78A6"]
 			id: "1BC78B00014FA6E0"
 			tasks: [{
 				id: "1842E41DA78CB240"
 				item: "tfmg:steel_ingot"
 				type: "item"
 			}]
-			x: 9.0d
+			x: 13.0d
 			y: 4.0d
 		}
 		{
+			dependencies: ["4B33C79B447C78A6"]
 			id: "342FBBE6CC3AFCB3"
 			tasks: [{
 				id: "228B6F818B30E143"
 				item: "thermal:bronze_ingot"
 				type: "item"
 			}]
-			x: 11.0d
+			x: 15.0d
 			y: 4.0d
 		}
 		{
+			dependencies: ["4B33C79B447C78A6"]
 			id: "0BD15C2756FCB15C"
 			tasks: [{
 				id: "331997FF3D21DD5D"
 				item: "thermal:electrum_ingot"
 				type: "item"
 			}]
-			x: 13.0d
+			x: 17.0d
 			y: 4.0d
 		}
 		{
+			dependencies: ["4B33C79B447C78A6"]
 			id: "01D5D44C32E596B9"
 			tasks: [{
 				id: "6965E4A7C30E117A"
 				item: "thermal:invar_ingot"
 				type: "item"
 			}]
-			x: 15.0d
+			x: 19.0d
 			y: 4.0d
 		}
 		{
+			dependencies: ["4B33C79B447C78A6"]
 			id: "27F1D5BAECD76B1C"
 			tasks: [{
 				id: "121357F4CF28BAB5"
 				item: "thermal:constantan_ingot"
 				type: "item"
 			}]
-			x: 17.0d
+			x: 21.0d
 			y: 4.0d
 		}
 		{
+			dependencies: ["4B33C79B447C78A6"]
 			id: "3C5DF0E35EA5858C"
 			tasks: [{
 				id: "2C218551FAC12072"
 				item: "thermal:signalum_ingot"
 				type: "item"
 			}]
-			x: 9.0d
+			x: 13.0d
 			y: 6.0d
 		}
 		{
+			dependencies: ["4B33C79B447C78A6"]
 			id: "435B7E783206A732"
 			tasks: [{
 				id: "6FEC71658FEE5958"
 				item: "thermal:lumium_ingot"
 				type: "item"
 			}]
-			x: 11.0d
+			x: 15.0d
 			y: 6.0d
 		}
 		{
+			dependencies: ["4B33C79B447C78A6"]
 			id: "7B512AD2EBA7475C"
 			tasks: [{
 				id: "2828738DE42B95BF"
 				item: "thermal:enderium_ingot"
 				type: "item"
 			}]
-			x: 13.0d
+			x: 17.0d
 			y: 6.0d
 		}
 		{
+			dependencies: ["4B33C79B447C78A6"]
 			id: "4682046C57A674C4"
 			tasks: [{
 				id: "45C753AC07EA0DEA"
 				item: "createutilities:void_steel_ingot"
 				type: "item"
 			}]
-			x: 15.0d
+			x: 19.0d
 			y: 6.0d
 		}
 		{
+			dependencies: ["4B33C79B447C78A6"]
 			id: "209B51A6D568975D"
 			tasks: [{
 				id: "4075787394545143"
 				item: "createcasing:chorium_ingot"
 				type: "item"
 			}]
-			x: 12.0d
+			x: 16.0d
 			y: 8.0d
 		}
 		{
+			dependencies: ["4B33C79B447C78A6"]
 			id: "5FE092FA33D4D5AF"
 			tasks: [{
 				id: "73BA115674A905DE"
 				item: "create:andesite_alloy"
 				type: "item"
 			}]
-			x: 20.0d
+			x: 24.0d
 			y: 2.0d
 		}
 		{
+			dependencies: ["4B33C79B447C78A6"]
 			id: "5E90DF0BBD58BB3C"
 			tasks: [{
 				id: "1CAFF5B53FF5E626"
 				item: "create:brass_ingot"
 				type: "item"
 			}]
-			x: 7.0d
+			x: 11.0d
 			y: 4.0d
+		}
+		{
+			hide_dependent_lines: true
+			id: "4B33C79B447C78A6"
+			tasks: [{
+				id: "13F35BA8C5778C5B"
+				title: "Start"
+				type: "checkmark"
+			}]
+			x: 6.0d
+			y: 6.0d
 		}
 	]
 	title: "Metallurgy"
