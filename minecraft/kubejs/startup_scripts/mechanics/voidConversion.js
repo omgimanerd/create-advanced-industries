@@ -8,6 +8,8 @@ global.VoidConversionRecipes = {}
  * @param {string} input
  */
 global.RegisterVoidConversionRecipe = (output, input) => {
+  // TODO custom ponder
+  // TODO custom JEI category
   if (global.VoidConversionRecipes[input]) {
     throw new Error(`Recipe already exists for input ${input}!`)
   }

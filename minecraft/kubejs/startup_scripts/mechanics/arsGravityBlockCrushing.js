@@ -18,7 +18,7 @@ global.ArsGravityBlockCrushingRecipes = {}
  * @param {Internal.ItemStack_|Internal.ItemStack_[]} fromItem
  * @param {Internal.ItemStack_|Internal.ItemStack_[]} toItem
  */
-const registerBlockCrushingRecipe = (
+global.RegisterArsGravityBlockCrushingRecipe = (
   fallingBlock,
   belowBlock,
   minimumSpeed,
@@ -47,10 +47,9 @@ const registerBlockCrushingRecipe = (
 }
 
 /**
- *
  * @param {Internal.EntityLeaveLevelEvent_} e
  */
-global.EntityLeaveLevelEventCallback = (e) => {
+global.ArsGravityBlockCrushingCallback = (e) => {
   const { entity, level } = e
   if (level.isClientSide()) return
 
@@ -92,3 +91,16 @@ global.EntityLeaveLevelEventCallback = (e) => {
   // TODO custom JEI category
   // TODO custom ponder
 }
+
+ForgeEvents.onEvent(
+  'net.minecraftforge.event.entity.EntityLeaveLevelEvent',
+  (e) => {
+    global.ArsGravityBlockCrushingCallback(e)
+  }
+)
+
+StartupEvents.postInit((e) => {
+  // Recipe registration needs to happen here. If the item registry is not
+  // available, Item.of and Ingredient.of will return an empty item.
+  // TODO: maybe we could defer evaluation of that to the callback itself?
+})
