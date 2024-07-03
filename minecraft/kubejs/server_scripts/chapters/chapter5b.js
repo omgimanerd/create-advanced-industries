@@ -153,6 +153,16 @@ ServerEvents.recipes((e) => {
   create
     .mixing('2x minecraft:blaze_powder', Fluid.of('kubejs:blaze_milk', 250))
     .heated()
+  create.centrifuging(
+    ['2x minecraft:blaze_powder', Fluid.of('minecraft:milk', 250)],
+    Fluid.of('kubejs:blaze_milk', 250)
+  )
+
+  // Blaze powder can be crystallized back into rods
+  e.recipes.thermal.crystallizer('minecraft:blaze_rod', [
+    'minecraft:blaze_powder',
+    Fluid.of('kubejs:crystal_growth_accelerator', 250),
+  ])
 
   // Compost block from compost
   redefineRecipe(
