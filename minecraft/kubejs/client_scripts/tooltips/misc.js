@@ -24,6 +24,13 @@ ItemEvents.tooltip((e) => {
       .withStyle('dark_gray')
   }
 
+  // Add some additional text to the FTB Quests book.
+  tooltipHelper(
+    e,
+    'ftbquests:book',
+    '<gray>You can also bind the quest window to a keybind</gray>'
+  )
+
   // Add a Create-style tooltip to the glass shaft.
   e.addAdvanced('createcasing:glass_shaft', (_, advanced, text) => {
     let last = null
