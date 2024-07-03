@@ -324,6 +324,7 @@ global.materials = [
     block: 'minecraft:quartz_block',
     ingot: 'minecraft:quartz',
     // No nugget form
+    blockRatio: 4,
 
     dust: 'thermal:quartz_dust',
 
