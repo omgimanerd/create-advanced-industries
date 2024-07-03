@@ -203,7 +203,7 @@
 			y: -8.0d
 		}
 		{
-			dependencies: ["71FAA310DA3D588D"]
+			dependencies: ["28140460D3E700F5"]
 			description: ["Melt down the copper in a heated basin with a mixer."]
 			icon: "kubejs:molten_copper_bucket"
 			id: "3383144C6D0FBAD4"
@@ -212,11 +212,11 @@
 				type: "checkmark"
 			}]
 			title: "Molten Copper Bucket"
-			x: 4.0d
+			x: 6.0d
 			y: 8.0d
 		}
 		{
-			dependencies: ["38E010EEA4A77E38"]
+			dependencies: ["28140460D3E700F5"]
 			description: [
 				"Melting down tuff yields molten zinc..."
 				""
@@ -229,7 +229,7 @@
 				type: "checkmark"
 			}]
 			title: "Molten Zinc Bucket"
-			x: 4.0d
+			x: 6.0d
 			y: 6.0d
 		}
 		{
@@ -237,7 +237,7 @@
 			description: [
 				"With a little bit of source, we can transmute cobblestone to tuff."
 				""
-				"Keep in mind the Manipulation Essence from Ars Nouveau is not consumed during imbuement recipes."
+				"Keep in mind the Manipulation Essence from Ars Nouveau is not consumed in imbuement recipes."
 			]
 			id: "38E010EEA4A77E38"
 			tasks: [{
@@ -263,7 +263,7 @@
 		{
 			dependencies: ["7CB72E5D1BF48057"]
 			description: [
-				"Press the clay blocks into an unfired ingot cast using a curving press."
+				"Press the clay blocks into an unfired ingot cast using a deployer and any ingot. The ingot is not consumed."
 				""
 				"For now, we don't have the capabilities to make reuseable casts. Clay casts have a chance of breaking each time they are used to cast something."
 				""
@@ -361,7 +361,11 @@
 				"360D9ADBFF3CDE8F"
 				"360E45D9718B6578"
 			]
-			description: ["Dirt can be automated from sand, compost, and slag."]
+			description: [
+				"Dirt can be automated from sand, compost, and slag."
+				""
+				"Note that this is not the only way to get dirt ;)"
+			]
 			id: "2B8298F4B50342A6"
 			tasks: [{
 				id: "40B2F39DA9F25F42"
@@ -558,6 +562,33 @@
 			}]
 			x: 8.0d
 			y: 2.0d
+		}
+		{
+			dependencies: [
+				"38E010EEA4A77E38"
+				"71FAA310DA3D588D"
+			]
+			description: [
+				"You'll need a blaze burner for the next step."
+				""
+				"That tree farm that you &odefinitely&r have by now should be able to supply you with an infinite source of charcoal to fuel them with. You can use a deployer to automatically fuel the blaze burner."
+			]
+			icon: "create:blaze_burner"
+			id: "28140460D3E700F5"
+			tasks: [
+				{
+					id: "58A97B9E28BB1988"
+					item: "create:blaze_burner"
+					type: "item"
+				}
+				{
+					id: "2AB5A3A95324D589"
+					item: "minecraft:charcoal"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 8.0d
 		}
 	]
 	title: "Chapter 3: Precision Mechanisms"
