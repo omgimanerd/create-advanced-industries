@@ -121,18 +121,7 @@ ServerEvents.recipes((e) => {
   // Uncommon Material: Timeworn Fabric
   e.remove({ id: 'apotheotic_additions:stonecutting/timeworn_fabric' })
   e.remove({ id: 'apotheotic_additions:stonecutting/timeworn_fancy' })
-  create
-    .deploying('apotheotic_additions:timeworn_fancy', [
-      'minecraft:green_wool',
-      'gag:time_sand_pouch',
-    ])
-    .keepHeldItem()
-  create
-    .deploying('apotheotic_additions:timeworn_fabric', [
-      'apotheotic_additions:timeworn_fancy',
-      'gag:time_sand_pouch',
-    ])
-    .keepHeldItem()
+  // Timeworn fabric is registered as a time pouch craft.
   create.cutting(
     '4x apotheosis:uncommon_material',
     'apotheotic_additions:timeworn_fabric'
