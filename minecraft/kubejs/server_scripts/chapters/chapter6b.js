@@ -141,6 +141,7 @@ ServerEvents.recipes((e) => {
     '4x apotheosis:uncommon_material',
     'apotheotic_additions:timeworn_fancy'
   )
+  // TODO make this corundum farming
   create // Rare Material: Luminous Crystal Shard
     .SequencedAssembly('kubejs:crystalline_mechanism')
     .fill(Fluid.of('create_enchantment_industry:experience', 64))
@@ -168,10 +169,8 @@ ServerEvents.recipes((e) => {
     .outputs('apotheosis:mythic_material')
   create // Ancient Material: rainbow thingy
     .SequencedAssembly('minecraft:totem_of_undying')
-    .custom('', (pre, post) => {
-      e.recipes.thermal.centrifuge(post, pre)
-    })
-    .press(2)
+    .fill(Fluid.of('create_enchantment_industry:experience', 1000))
+    .vibrate()
     .outputs('apotheosis:ancient_material')
   create // Artifact Material: Artifact Shards
     .SequencedAssembly('farmersdelight:pasta_with_meatballs')
