@@ -32,15 +32,156 @@
 			y: 0.0d
 		}
 		{
-			dependencies: ["1B854F010A299B1C"]
+			dependencies: ["081F41D32EC31231"]
 			id: "7DE9E3C644C60C0C"
 			tasks: [{
 				id: "71AA5652AE57D531"
 				item: "create_connected:control_chip"
 				type: "item"
 			}]
-			x: 4.5d
-			y: -2.5d
+			x: 10.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["3796FA39AF2143F3"]
+			id: "081F41D32EC31231"
+			tasks: [{
+				id: "341D677107A16168"
+				item: "vintageimprovements:signalum_wire"
+				type: "item"
+			}]
+			x: 8.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["4744928DAD0E0817"]
+			id: "3796FA39AF2143F3"
+			tasks: [{
+				id: "42FD2CF680196E95"
+				item: "vintageimprovements:signalum_sheet"
+				type: "item"
+			}]
+			x: 6.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["3D17B280784160FB"]
+			id: "4744928DAD0E0817"
+			tasks: [{
+				id: "0EA094D1E4E85423"
+				item: "thermal:signalum_ingot"
+				type: "item"
+			}]
+			x: 4.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["5F9328BDD9322B96"]
+			id: "3D17B280784160FB"
+			tasks: [{
+				id: "2A95E3977741D31B"
+				item: "kubejs:steel_ingot_cast_molten_signalum"
+				type: "item"
+			}]
+			x: 2.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["7533DFB7B990B93A"]
+			icon: "kubejs:molten_signalum_bucket"
+			id: "5F9328BDD9322B96"
+			tasks: [{
+				id: "325D35446704F171"
+				item: "kubejs:molten_signalum_bucket"
+				type: "item"
+			}]
+			title: "Molten Signalum"
+			x: 0.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["710BAD1B3ACE8949"]
+			icon: "thermal:redstone_bucket"
+			id: "7533DFB7B990B93A"
+			tasks: [{
+				id: "3305CC32DE86FB54"
+				item: "thermal:redstone_bucket"
+				type: "item"
+			}]
+			title: "Destabilized Redstone"
+			x: 0.0d
+			y: -4.0d
+		}
+		{
+			dependencies: ["1B854F010A299B1C"]
+			icon: "kubejs:molten_redstone_bucket"
+			id: "710BAD1B3ACE8949"
+			tasks: [{
+				id: "44A676B72C1B60FE"
+				item: "kubejs:molten_redstone_bucket"
+				type: "item"
+			}]
+			title: "Molten Redstone"
+			x: 0.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["7533DFB7B990B93A"]
+			description: ["This is a byproduct that results from manufacturing destabilized redstone. It has a few niche uses, but you can recycle it by centrifuging it back into inert potion essence."]
+			id: "1F5838BE9C93FE67"
+			tasks: [{
+				id: "1E21230866D50AF5"
+				item: {
+					Count: 1b
+					id: "minecraft:potion"
+					tag: {
+						Potion: "quark:resilience"
+					}
+				}
+				type: "item"
+			}]
+			x: 2.0d
+			y: -4.0d
+		}
+		{
+			dependencies: ["3939775E62B07B02"]
+			id: "1B0E7F421B5B41E9"
+			tasks: [{
+				id: "2ADA77578C111C30"
+				item: {
+					Count: 1b
+					id: "minecraft:potion"
+					tag: {
+						Potion: "ars_elemental:shock_potion"
+					}
+				}
+				type: "item"
+			}]
+			x: 8.0d
+			y: -4.0d
+		}
+		{
+			dependencies: ["1F5838BE9C93FE67"]
+			description: ["You can turn the potion residue back into abjuration essence with a little bit of source and a little bit more effort."]
+			id: "770CA5D1AEFD5856"
+			tasks: [{
+				id: "6B17DBF30CB5854E"
+				item: "kubejs:inert_potion_residue"
+				type: "item"
+			}]
+			x: 4.0d
+			y: -4.0d
+		}
+		{
+			dependencies: ["770CA5D1AEFD5856"]
+			id: "3939775E62B07B02"
+			tasks: [{
+				id: "09164F76753EB70B"
+				item: "ars_nouveau:abjuration_essence"
+				type: "item"
+			}]
+			x: 6.0d
+			y: -4.0d
 		}
 	]
 	title: "Chapter 5c: Redstone Mechanisms"

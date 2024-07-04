@@ -67,6 +67,8 @@ ServerEvents.recipes((e) => {
   e.remove({ id: /^thermal:machines\/(?!crystallizer|pyrolyzer).*/ })
   e.remove({ id: /^thermal:earth_charge\/[a-z_]+/ })
   e.remove({ id: 'thermal:storage/copper_ingot_from_nuggets' })
+  // Remove all fire charge alloying
+  e.remove({ id: /^thermal:fire_charge.*$/ })
 
   // TODO remove all thermal recipes that aren't used
 })

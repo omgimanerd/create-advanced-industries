@@ -5,14 +5,47 @@ ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
   const MeltableItem = global.MeltableItem
 
-  e.remove({ id: 'create_connected:sequenced_assembly/control_chip' })
+  // Making destabilized redstone
+  create
+    .mixing(
+      [
+        Fluid.of('thermal:redstone', 500),
+        potionFluid('quark:resilience', 500),
+        Item.of('apotheosis:vial_of_extraction').withChance(0.75),
+      ],
+      [
+        Fluid.of('kubejs:molten_redstone', 1000),
+        'apotheosis:vial_of_extraction',
+      ]
+    )
+    .superheated()
+  create.centrifuging(
+    [Fluid.of('thermal:redstone', 400), potionFluid('quark:resilience', 400)],
+    Fluid.of('kubejs:molten_redstone', 1000)
+  )
+  create
+    .mixing(Fluid.of('kubejs:molten_redstone', 10), [
+      Fluid.of('thermal:redstone', 500),
+      potionFluid('quark:resilience', 500),
+      'minecraft:glowstone_dust',
+    ])
+    .superheated()
 
-  // TODO do something with control chip?
+  // Control chip overhaul
+  e.remove({ id: 'create_connected:sequenced_assembly/control_chip' })
+  create
+    .SequencedAssembly('create:brass_sheet')
+    .deploy('vintageimprovements:signalum_wire')
+    .fill(potionFluid('ars_elemental:shock_potion', 720))
+    .energize(8000)
+    .press()
+    .outputs('create_connected:control_chip')
 
   e.remove({ id: 'vintageimprovements:sequenced_assembly/redstone_module' })
   create
     .SequencedAssembly('create:precision_mechanism')
     .fill(Fluid.of('kubejs:molten_redstone', MeltableItem.DEFAULT_NUGGET_FLUID))
+    .deploy('create_new_age:copper_circuit')
     .deploy('create_connected:control_chip')
     .deploy('morered:red_alloy_wire')
     .loops(4)

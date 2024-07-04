@@ -1641,7 +1641,7 @@
 		{
 			dependencies: ["097A84D100994B26"]
 			description: [
-				"With copper circuits unlocked, you can also make redstone modules, which will allow for complex redstone logic."
+				"With copper circuits unlocked, you can also make redstone mechanisms to make it easier to build complex redstone logic."
 				""
 				"This will become very helpful in controlling parts of your factory, especially for some of the more complex production chains."
 				""
