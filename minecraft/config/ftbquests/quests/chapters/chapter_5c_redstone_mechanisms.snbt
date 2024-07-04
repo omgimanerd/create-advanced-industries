@@ -10,16 +10,32 @@
 	quests: [
 		{
 			dependencies: ["43300D7923D22328"]
+			description: [
+				"Welcome to Chapter 5c."
+				""
+				"This one is a short one, but don't get complacent, this automation might be a little trickier than it seems until you &oget&r your first Redstone Mechanism."
+			]
 			id: "1B854F010A299B1C"
+			rewards: [{
+				count: 16
+				id: "78CB81E4651FF735"
+				item: "morered:red_alloy_ingot"
+				type: "item"
+			}]
 			tasks: [{
 				id: "56FD444D86E710F6"
+				title: "Start"
 				type: "checkmark"
 			}]
+			title: "Start"
 			x: 0.0d
 			y: 0.0d
 		}
 		{
-			dependencies: ["1B854F010A299B1C"]
+			dependencies: [
+				"1B854F010A299B1C"
+				"7DE9E3C644C60C0C"
+			]
 			id: "6579AAF797DDC0C5"
 			size: 2.0d
 			tasks: [{
@@ -32,7 +48,11 @@
 			y: 0.0d
 		}
 		{
-			dependencies: ["081F41D32EC31231"]
+			dependencies: [
+				"081F41D32EC31231"
+				"1B0E7F421B5B41E9"
+			]
+			description: ["The control chip manufacturing should be straightforward once you have all the components."]
 			id: "7DE9E3C644C60C0C"
 			tasks: [{
 				id: "71AA5652AE57D531"
@@ -44,6 +64,7 @@
 		}
 		{
 			dependencies: ["3796FA39AF2143F3"]
+			description: ["And roll the sheets into wire."]
 			id: "081F41D32EC31231"
 			tasks: [{
 				id: "341D677107A16168"
@@ -55,6 +76,7 @@
 		}
 		{
 			dependencies: ["4744928DAD0E0817"]
+			description: ["Press the signalum ingot into sheets."]
 			id: "3796FA39AF2143F3"
 			tasks: [{
 				id: "42FD2CF680196E95"
@@ -66,6 +88,7 @@
 		}
 		{
 			dependencies: ["3D17B280784160FB"]
+			description: ["Wash the cast to get your signalum ingot."]
 			id: "4744928DAD0E0817"
 			tasks: [{
 				id: "0EA094D1E4E85423"
@@ -77,6 +100,7 @@
 		}
 		{
 			dependencies: ["5F9328BDD9322B96"]
+			description: ["Casting it is the same though, and this should be a familiar process by now."]
 			id: "3D17B280784160FB"
 			tasks: [{
 				id: "2A95E3977741D31B"
@@ -88,6 +112,7 @@
 		}
 		{
 			dependencies: ["7533DFB7B990B93A"]
+			description: ["Signalum is a tier 2 alloy that requires superheating and the compressor in order to manufacture."]
 			icon: "kubejs:molten_signalum_bucket"
 			id: "5F9328BDD9322B96"
 			tasks: [{
@@ -101,6 +126,13 @@
 		}
 		{
 			dependencies: ["710BAD1B3ACE8949"]
+			description: [
+				"Centrifuge the molten redstone or mix with a Vial of Arcane Extraction in order to separate it."
+				""
+				"Until you unlock stuff from Chapter 6, centrifuging might just be the easier route, even if the recipe is lossy."
+				""
+				"You might need a fluid filter to extract from the centrifuge. Potions don't work in Create's fluid filters, so you might need a filter &oblacklisting&r the destabilized redstone in order to filter it out."
+			]
 			icon: "thermal:redstone_bucket"
 			id: "7533DFB7B990B93A"
 			tasks: [{
@@ -114,6 +146,7 @@
 		}
 		{
 			dependencies: ["1B854F010A299B1C"]
+			description: ["Melt down some redstone first."]
 			icon: "kubejs:molten_redstone_bucket"
 			id: "710BAD1B3ACE8949"
 			tasks: [{
@@ -145,6 +178,7 @@
 		}
 		{
 			dependencies: ["3939775E62B07B02"]
+			description: ["What a coincidence! It turns out we'll need some potions to manufacture control chips!"]
 			id: "1B0E7F421B5B41E9"
 			tasks: [{
 				id: "2ADA77578C111C30"
@@ -162,7 +196,7 @@
 		}
 		{
 			dependencies: ["1F5838BE9C93FE67"]
-			description: ["You can turn the potion residue back into abjuration essence with a little bit of source and a little bit more effort."]
+			description: ["Centrifuging the stability potion will result in inert potion essence."]
 			id: "770CA5D1AEFD5856"
 			tasks: [{
 				id: "6B17DBF30CB5854E"
@@ -174,6 +208,7 @@
 		}
 		{
 			dependencies: ["770CA5D1AEFD5856"]
+			description: ["You can turn the potion residue back into abjuration essence with a little bit of source and a little bit of effort."]
 			id: "3939775E62B07B02"
 			tasks: [{
 				id: "09164F76753EB70B"

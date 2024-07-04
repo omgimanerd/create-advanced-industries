@@ -19,10 +19,13 @@ ServerEvents.recipes((e) => {
       ]
     )
     .superheated()
-  create.centrifuging(
-    [Fluid.of('thermal:redstone', 400), potionFluid('quark:resilience', 400)],
-    Fluid.of('kubejs:molten_redstone', 1000)
-  )
+  create
+    .centrifuging(
+      [Fluid.of('thermal:redstone', 250), potionFluid('quark:resilience', 250)],
+      Fluid.of('kubejs:molten_redstone', 1000)
+    )
+    .minimalRPM(256)
+    .processingTime(100)
   create
     .mixing(Fluid.of('kubejs:molten_redstone', 10), [
       Fluid.of('thermal:redstone', 500),
@@ -41,6 +44,7 @@ ServerEvents.recipes((e) => {
     .press()
     .outputs('create_connected:control_chip')
 
+  // Redstone mechanism overhaul
   e.remove({ id: 'vintageimprovements:sequenced_assembly/redstone_module' })
   create
     .SequencedAssembly('create:precision_mechanism')
