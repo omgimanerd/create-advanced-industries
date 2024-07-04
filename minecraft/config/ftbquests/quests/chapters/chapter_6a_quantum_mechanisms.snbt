@@ -176,8 +176,8 @@
 				item: "createteleporters:quantum_casing"
 				type: "item"
 			}]
-			x: 4.0d
-			y: 4.0d
+			x: 2.5d
+			y: 1.5d
 		}
 		{
 			id: "06EBEF87B13AD4AC"
@@ -228,6 +228,46 @@
 			}]
 			x: 7.0d
 			y: 1.5d
+		}
+		{
+			id: "3699DD3B91E59D8D"
+			tasks: [{
+				id: "67C45BF54A7FC751"
+				item: "createteleporters:redstone_pearl"
+				type: "item"
+			}]
+			x: 8.0d
+			y: -0.5d
+		}
+		{
+			id: "76A6A184D9C43C1B"
+			tasks: [{
+				id: "05CDF1770D28BF12"
+				item: "createteleporters:advanced_part"
+				type: "item"
+			}]
+			x: 10.5d
+			y: 2.0d
+		}
+		{
+			id: "3675892BE1757F09"
+			tasks: [{
+				id: "0C00C561F21E7E4A"
+				item: "extrastorage:neural_processor"
+				type: "item"
+			}]
+			x: 6.5d
+			y: 3.5d
+		}
+		{
+			id: "56A24AF47C360AC9"
+			tasks: [{
+				id: "2618A40AE1A2362E"
+				item: "extrastorage:raw_neural_processor"
+				type: "item"
+			}]
+			x: 3.5d
+			y: 3.5d
 		}
 	]
 	title: "Chapter 6a: Quantum Mechanisms"

@@ -207,24 +207,6 @@ ServerEvents.recipes((e) => {
     'minecraft:redstone',
     'kubejs:logistics_mechanism'
   )
-  e.remove({ id: 'extrastorage:raw_neural_processor' })
-  create
-    .SequencedAssembly('kubejs:silicon_wafer')
-    .deploy('create:super_glue')
-    .deploy('morered:red_alloy_ingot')
-    .deploy('createutilities:polished_amethyst')
-    .outputs('extrastorage:raw_neural_processor')
-  create
-    .SequencedAssembly('kubejs:silicon_wafer')
-    .fill(Fluid.of('create_things_and_misc:slime', 5))
-    .deploy('morered:red_alloy_ingot')
-    .deploy('createutilities:polished_amethyst')
-    .outputs('extrastorage:raw_neural_processor')
-  e.remove({ id: 'extrastorage:neural_processor' })
-  pneumaticcraft.assembly_laser(
-    'extrastorage:raw_neural_processor',
-    'extrastorage:neural_processor'
-  )
 
   ///////////////////////
   // RSInfinityBooster //
