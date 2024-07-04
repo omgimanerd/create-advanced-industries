@@ -206,6 +206,7 @@ ServerEvents.recipes((e) => {
   create.crushing('9x minecraft:bone_meal', 'minecraft:bone_block')
 
   // Cobweb crafting
+  e.remove({ id: 'apotheosis:cobweb' })
   e.shaped(
     'minecraft:cobweb',
     [
@@ -215,9 +216,13 @@ ServerEvents.recipes((e) => {
     ],
     {
       S: 'minecraft:string',
-      L: 'minecraft:slimeball',
+      L: 'minecraft:slime_ball',
     }
   )
+  create.mixing('minecraft:cobweb', [
+    Fluid.of('create_things_and_misc:slime', 50),
+    '4x minecraft:string',
+  ])
 
   // Sawdust recipe
   create.crushing(
