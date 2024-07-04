@@ -560,6 +560,8 @@
 				""
 				"Right click the blaze with a bucket of lava to feed it, and then right click it with an empty bucket to get a bucket of blaze milk. Each bucket of lava yields 3 buckets of blaze milk."
 				""
+				"If you feed it a blaze cake, you can get 10 buckets of blaze milk instead."
+				""
 				"Here's a name tag to name your blaze so it won't despawn."
 			]
 			icon: {
@@ -1896,7 +1898,7 @@
 		{
 			dependencies: ["12830BE9407D4D43"]
 			description: [
-				"Did you manage to work your way up to an Unbreaking VII book?"
+				"Did you manage to work your way up to an Unbreaking VIII book?"
 				""
 				"With enough of these, you might even be able to make something ... &ounbreakable.&r"
 			]
