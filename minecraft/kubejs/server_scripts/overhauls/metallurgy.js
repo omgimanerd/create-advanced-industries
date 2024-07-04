@@ -76,7 +76,10 @@ ServerEvents.recipes((e) => {
       }
       let totalFluidOutput = 0
       const ingredients = Object.entries(alloyRatios).map((e) => {
-        totalFluidOutput += e[1] * MeltableItem.DEFAULT_INGOT_FLUID
+        // Exclude the thermal fluids from the total output of the alloy.
+        if (!e[0].startsWith('thermal')) {
+          totalFluidOutput += e[1] * MeltableItem.DEFAULT_INGOT_FLUID
+        }
         return Fluid.of(e[0], e[1] * MeltableItem.DEFAULT_INGOT_FLUID)
       })
       const fluidOutput = Fluid.of(fluid, totalFluidOutput)
