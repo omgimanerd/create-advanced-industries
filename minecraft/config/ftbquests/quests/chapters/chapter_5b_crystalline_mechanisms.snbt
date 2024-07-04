@@ -112,7 +112,7 @@
 			description: [
 				"For torment essence, drop a wandering trader into the Create crushing wheels."
 				""
-				"For a harder automation, if they are killed via suffociation in wall, you'll get more drops."
+				"For a harder automation, if they are killed via suffociation in a wall, you'll get more drops."
 			]
 			id: "33FE12881BA0EEB5"
 			tasks: [{
