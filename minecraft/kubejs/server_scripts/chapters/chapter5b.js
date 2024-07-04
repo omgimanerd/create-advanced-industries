@@ -502,7 +502,7 @@ ServerEvents.recipes((e) => {
     // Archwood tree sap can be used to get the Ars fruits
     create.filling(archwood_fruit, [
       'minecraft:apple',
-      Fluid.of(archwood_sap, 1000),
+      Fluid.of(archwood_sap, 250),
     ])
   }
 
