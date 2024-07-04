@@ -527,6 +527,10 @@ ServerEvents.recipes((e) => {
   ///////////////////////
   // Create: Connected //
   ///////////////////////
+  // This is cut from the redstone mechanism instead.
+  e.remove({
+    id: 'create_connected:crafting/kinetics/sequenced_pulse_generator',
+  })
 
   /////////////////////
   // Create: Encased //
