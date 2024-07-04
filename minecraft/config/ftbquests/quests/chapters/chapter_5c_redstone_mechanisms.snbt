@@ -36,9 +36,25 @@
 				"1B854F010A299B1C"
 				"7DE9E3C644C60C0C"
 			]
+			description: ["And with that, you should have everything you need to manufacture a Redstone Mechanism!"]
 			id: "6579AAF797DDC0C5"
+			rewards: [
+				{
+					count: 16
+					id: "3A6BB4BD6B769B67"
+					item: "vintageimprovements:redstone_module"
+					type: "item"
+				}
+				{
+					count: 64
+					id: "32ECB347B4CAE4A2"
+					item: "morered:red_alloy_ingot"
+					type: "item"
+				}
+			]
 			size: 2.0d
 			tasks: [{
+				count: 16L
 				id: "1107120B5C33EB77"
 				item: "vintageimprovements:redstone_module"
 				type: "item"

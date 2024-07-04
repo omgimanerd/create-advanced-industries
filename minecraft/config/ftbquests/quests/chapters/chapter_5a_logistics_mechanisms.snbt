@@ -1649,6 +1649,8 @@
 			]
 			icon: "vintageimprovements:redstone_module"
 			id: "54C9E8883DD2F25A"
+			shape: "gear"
+			size: 2.0d
 			tasks: [{
 				id: "195C15A3B8C0C1DB"
 				type: "checkmark"
