@@ -390,7 +390,7 @@ ServerEvents.recipes((e) => {
   // Chorus fruit alternative pathways
   create
     .pressurizing('minecraft:chorus_fruit')
-    .secondaryFluidResult(Fluid.of('starbunclemania:source_fluid', 125))
+    .secondaryFluidOutput(Fluid.of('starbunclemania:source_fluid', 125))
     .heated()
     .outputs('minecraft:popped_chorus_fruit')
   pneumaticcraft

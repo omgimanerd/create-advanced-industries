@@ -9,7 +9,7 @@ function CVIPressurizingWrapper(e, inputs) {
   this.inputs_ = inputs
 
   this.secondaryFluidInput_ = null
-  this.secondaryFluidResult_ = null
+  this.secondaryFluidOutput_ = null
 
   this.processingTime_ = 40
   this.heatRequirement_ = null
@@ -20,7 +20,7 @@ function CVIPressurizingWrapper(e, inputs) {
  * @returns {CVIPressurizingWrapper}
  */
 CVIPressurizingWrapper.prototype.secondaryFluidInput = function (fluid) {
-  if (this.secondaryFluidResult_ !== null) {
+  if (this.secondaryFluidOutput_ !== null) {
     throw new Error(
       'Recipe cannot have both a secondary fluid input and output'
     )
@@ -33,13 +33,13 @@ CVIPressurizingWrapper.prototype.secondaryFluidInput = function (fluid) {
  * @param {Internal.InputFluid_} fluid
  * @returns {CVIPressurizingWrapper}
  */
-CVIPressurizingWrapper.prototype.secondaryFluidResult = function (fluid) {
+CVIPressurizingWrapper.prototype.secondaryFluidOutput = function (fluid) {
   if (this.secondaryFluidInput_ !== null) {
     throw new Error(
       'Recipe cannot have both a secondary fluid input and output'
     )
   }
-  this.secondaryFluidResult_ = fluid
+  this.secondaryFluidOutput_ = fluid
   return this
 }
 
@@ -81,12 +81,12 @@ CVIPressurizingWrapper.prototype.outputs = function (results) {
     this.inputs_ = [this.secondaryFluidInput_].concat(this.inputs_)
     recipe = this.e_.recipes.vintageimprovements
       .pressurizing(results, this.inputs_)
-      .secondaryFluidInputs(0)
-  } else if (this.secondaryFluidResult_ !== null) {
-    results = [this.secondaryFluidResult_].concat(results)
+      .secondaryFluidInput(0)
+  } else if (this.secondaryFluidOutput_ !== null) {
+    results = [this.secondaryFluidOutput_].concat(results)
     recipe = this.e_.recipes.vintageimprovements
       .pressurizing(results, this.inputs_)
-      .secondaryFluidResults(0)
+      .secondaryFluidOutput(0)
   } else {
     recipe = this.e_.recipes.vintageimprovements.pressurizing(
       results,

@@ -275,7 +275,7 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'vintageimprovements:pressurizing/sulfur_dioxide' })
   create
     .pressurizing('thermal:sulfur_dust')
-    .secondaryFluidResult(Fluid.of('vintageimprovements:sulfur_dioxide', 1000))
+    .secondaryFluidOutput(Fluid.of('vintageimprovements:sulfur_dioxide', 1000))
     .heated()
     .processingTime(80)
     .outputs([])
@@ -292,7 +292,7 @@ ServerEvents.recipes((e) => {
       'minecraft:iron_nugget',
       Fluid.of('vintageimprovements:sulfur_dioxide', 250),
     ])
-    .secondaryFluidResult(Fluid.of('vintageimprovements:sulfur_trioxide', 250))
+    .secondaryFluidOutput(Fluid.of('vintageimprovements:sulfur_trioxide', 250))
     .superheated()
     .processingTime(80)
     .outputs([])

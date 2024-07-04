@@ -163,8 +163,8 @@ StartupEvents.recipeSchemaRegistry((e) => {
       new $RecipeSchema(
         outputFluidOrItem.asArray().key('results'),
         inputFluidOrItem.asArray().key('ingredients'),
-        intNumber.key('secondaryFluidResults').optional(0),
-        intNumber.key('secondaryFluidInputs').optional(0),
+        intNumber.key('secondaryFluidOutput').optional(0),
+        intNumber.key('secondaryFluidInput').optional(0),
         intNumber.key('processingTime').alwaysWrite().optional(40),
         heatCondition.key('heatRequirement').optional('none')
       )
