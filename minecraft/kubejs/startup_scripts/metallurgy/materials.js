@@ -20,7 +20,11 @@
  *   generate_fluid_textures.py
  * @property {string=} fluidTextureLocation
  * @property {boolean=} superheated
- * @property {{string:number}} alloyRatios
+ * @property {{string:number}} alloyRatios An object containing the fluids to
+ *   mix in order to get the resulting molten alloy fluid. May only contain two.
+ * @property {[string, number]} pressurizingCatalyst If specified, turns the
+ *   alloying recipe from a mixing recipe into a pressurizing recipe that
+ *   requires this fluid as the catalyst.
  */
 /**
  * Holds all the mappings for every form of material for easy lookup and
@@ -208,8 +212,8 @@ global.materials = [
     alloyRatios: {
       'kubejs:molten_lead': 3,
       'kubejs:molten_diamond': 1,
-      'thermal:ender': 1,
     },
+    pressurizingCatalyst: ['thermal:ender', 1],
   },
   {
     type: global.MATERIAL_TYPE_ALLOY_METAL,
@@ -226,8 +230,8 @@ global.materials = [
     alloyRatios: {
       'kubejs:molten_copper': 3,
       'kubejs:molten_silver': 1,
-      'thermal:redstone': 1,
     },
+    pressurizingCatalyst: ['thermal:redstone', 1],
   },
   {
     type: global.MATERIAL_TYPE_ALLOY_METAL,
@@ -260,8 +264,8 @@ global.materials = [
     alloyRatios: {
       'kubejs:molten_tin': 3,
       'kubejs:molten_silver': 1,
-      'thermal:glowstone': 1,
     },
+    pressurizingCatalyst: ['thermal:glowstone', 1],
   },
   {
     type: global.MATERIAL_TYPE_ALLOY_METAL,

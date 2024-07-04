@@ -67,7 +67,7 @@ ServerEvents.recipes((e) => {
       return v.type === global.MATERIAL_TYPE_ALLOY_METAL && v.alloyRatios
     })
     .forEach((/** @type {Material} */ v) => {
-      const { dust, fluid, superheated, alloyRatios } = v
+      const { dust, fluid, superheated, alloyRatios, pressurizingCatalyst } = v
       if (dust) {
         // Only remove shapeless crafting recipes where a dust existed. Brass
         // does not a dust, and this will remove all shapeless recipes if
@@ -76,20 +76,33 @@ ServerEvents.recipes((e) => {
       }
       let totalFluidOutput = 0
       const ingredients = Object.entries(alloyRatios).map((e) => {
-        // Exclude the thermal fluids from the total output of the alloy.
-        if (!e[0].startsWith('thermal')) {
-          totalFluidOutput += e[1] * MeltableItem.DEFAULT_INGOT_FLUID
-        }
+        totalFluidOutput += e[1] * MeltableItem.DEFAULT_INGOT_FLUID
         return Fluid.of(e[0], e[1] * MeltableItem.DEFAULT_INGOT_FLUID)
       })
       const fluidOutput = Fluid.of(fluid, totalFluidOutput)
-      const r = create.mixing(fluidOutput, ingredients)
-      if (superheated) {
-        r.superheated()
+      if (pressurizingCatalyst !== undefined) {
+        let secondaryFluidInput = Fluid.of(
+          pressurizingCatalyst[0],
+          pressurizingCatalyst[1] * MeltableItem.DEFAULT_INGOT_FLUID
+        )
+        let pressurizingRecipe = create
+          .pressurizing(ingredients)
+          .secondaryFluidInput(secondaryFluidInput)
+        if (superheated) {
+          pressurizingRecipe.superheated()
+        } else {
+          pressurizingRecipe.heated()
+        }
+        pressurizingRecipe.outputs(fluidOutput)
       } else {
-        r.heated()
+        let mixingRecipe = create.mixing(fluidOutput, ingredients)
+        if (superheated) {
+          mixingRecipe.superheated()
+        } else {
+          mixingRecipe.heated()
+        }
       }
     })
 
-  // Rich slag + liquid = better?
+  // TODO Rich slag + liquid = better?
 })
