@@ -541,7 +541,7 @@ ServerEvents.recipes((e) => {
     for (const [machine, casing] of Object.entries(casingMap)) {
       redefineMechanismRecipe('kubejs:andesite_mechanism')(
         machine,
-        'create:shaft',
+        'create:cogwheel',
         casing,
         'create:whisk'
       )

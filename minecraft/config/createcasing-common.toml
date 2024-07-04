@@ -5,7 +5,7 @@
 	#.
 	#.
 	#Should Brass/Copper/Train mixe faster
-	shouldCustomMixerMixeFaster = false
+	shouldCustomMixerMixeFaster = true
 	#.
 	#Should Wooden Shaft break if the speed is too high
 	shouldWoodenShaftBreak = false
