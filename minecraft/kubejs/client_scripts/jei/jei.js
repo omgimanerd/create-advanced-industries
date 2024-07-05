@@ -15,7 +15,6 @@ const hiddenFluids = [
   'thermal:light_oil',
   'thermal:refined_fuel',
   'tfmg:liquid_plastic',
-  'tfmg:molten_slag',
   'tfmg:gasoline',
   'tfmg:diesel',
   'tfmg:kerosene',

@@ -35,6 +35,8 @@ ServerEvents.recipes((e) => {
   const redefineRecipe = redefineRecipe_(e)
   const redefineMechanismRecipe = redefineMechanismRecipe_(e)
 
+  const MeltableItem = global.MeltableItem
+
   /**
    * IMPORTANT NOTE: const is broken inside statement blocks because Rhino does
    * not parse it correctly!
@@ -844,8 +846,12 @@ ServerEvents.recipes((e) => {
       }
     )
 
-    // TODO: fix recipes that use aluminum as an input
-    // TODO: add efficient liquid concrete overhaul
+    // Replace all things that require an aluminum ingot with steel
+    e.replaceInput(
+      { input: 'tfmg:aluminum_ingot' },
+      'tfmg:aluminum_ingot',
+      'tfmg:heavy_plate'
+    )
 
     // Make pipes require a sheet
     let redefinePipeRecipe = (output, ingot, sheet) => {
@@ -889,11 +895,52 @@ ServerEvents.recipes((e) => {
         r.sheet,
       ])
     })
-    e.replaceInput(
+
+    // Steel fluid tanks
+    redefineRecipe(
       'tfmg:steel_fluid_tank',
-      'tfmg:steel_ingot',
-      'tfmg:heavy_plate'
+      [
+        'H', //
+        'T', //
+        'H', //
+      ],
+      {
+        H: 'tfmg:heavy_plate',
+        T: 'create:fluid_tank',
+      }
     )
+    redefineRecipe(
+      'tfmg:pumpjack_crank',
+      [
+        'H H', //
+        'RIR', //
+      ],
+      {
+        H: 'tfmg:heavy_plate',
+        R: 'tfmg:rebar',
+        I: 'tfmg:machine_input',
+      }
+    )
+    e.replaceInput({ mod: 'tfmg' }, 'tfmg:slag', 'thermal:slag')
+    e.replaceOutput({ mod: 'tfmg' }, 'tfmg:slag', 'thermal:slag')
+
+    // Slag melting
+    create
+      .mixing(
+        Fluid.of('tfmg:molten_slag', MeltableItem.DEFAULT_INGOT_FLUID),
+        'thermal:slag'
+      )
+      .heated()
+    create
+      .mixing(
+        Fluid.of('tfmg:molten_slag', 4 * MeltableItem.DEFAULT_INGOT_FLUID),
+        'thermal:slag_block'
+      )
+      .heated()
+    // TODO rich slag is the only way to get aluminum?
+    // TODO molten slag can be centrifuged to crap?
+
+    // TODO: add efficient liquid concrete overhaul + cement
   }
 
   //////////////////////
