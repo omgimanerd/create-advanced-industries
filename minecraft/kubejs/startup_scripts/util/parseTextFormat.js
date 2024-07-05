@@ -14,7 +14,7 @@
  *     '<italic>italic <green> italic and green </italic> green </green>')
  *
  * @param {string} t
- * @returns {$MutableComponent_}
+ * @returns {Internal.MutableComponent_}
  */
 global.parseTextFormat = (t) => {
   let modifiers = {}

@@ -6,56 +6,41 @@ ItemEvents.tooltip((e) => {
     'com.simibubi.create.foundation.item.TooltipHelper'
   )
 
-  const holdShift = () => {
+  const holdShift = (shift) => {
     return $Lang
       .translateDirect(
         'tooltip.holdForDescription',
         $Lang
           .translateDirect('tooltip.keyShift')
-          .withStyle(e.shift ? 'white' : 'gray')
+          .withStyle(shift ? 'white' : 'gray')
       )
       .withStyle('dark_gray')
   }
 
   // Add some additional text to the FTB Quests book.
-  tooltipHelper(
-    e,
-    'ftbquests:book',
-    '<gray>You can also bind the quest window to a keybind</gray>'
-  )
-
-  // Remove the weird 'Complete' text from the Quantum mechanism tooltip.
-  tooltipHelper(
-    e,
-    'createteleporters:quantum_mechanism',
-    null,
-    null,
-    null,
-    true
-  )
-
-  // Add a Create-style tooltip to the glass shaft.
-  e.addAdvanced('createcasing:glass_shaft', (_, advanced, text) => {
-    let last = null
-    if (advanced) {
-      last = text.remove(text.size() - 1)
-    }
-    text.add(holdShift())
-    if (e.shift) {
-      text.addAll(
-        $TooltipHelper.cutStringTextComponent(
-          'Breaks when the system is overstressed.',
-          $TooltipHelper.Palette.STANDARD_CREATE
-        )
-      )
-    }
-    if (last) {
-      text.add(last)
-    }
+  tooltipHelper(e, 'ftbquests:book', {
+    baseText: Text.gray('You can also bind the quest window to a keybind'),
   })
 
-  // Neat utility to display NBT in the tooltip
-  e.addAdvancedToAll((item, advanced, text) => {
+  // Remove the weird 'Complete' text from the Quantum mechanism tooltip.
+  tooltipHelper(e, 'createteleporters:quantum_mechanism', {
+    clear: true,
+  })
+
+  // Add a Create-style tooltip to the glass shaft.
+  const glassCasingShiftText = $TooltipHelper.cutStringTextComponent(
+    'Breaks when the system is overstressed.',
+    $TooltipHelper.Palette.STANDARD_CREATE
+  )
+  glassCasingShiftText.add(0, holdShift(true))
+  tooltipHelper(e, 'createcasing:glass_shaft', {
+    shiftText: glassCasingShiftText,
+    unShiftText: holdShift(false),
+  })
+
+  // Neat utility to display NBT in the tooltip, debug only, remove for the 1.0
+  // release.
+  e.addAdvancedToAll((item, text) => {
     if (item.nbt && e.alt) {
       text.add(Text.of('NBT: ').append(Text.prettyPrintNbt(item.nbt)))
     }
