@@ -2,17 +2,17 @@
 	autofocus_id: "34CBF7A7AD9BF9D8"
 	default_hide_dependency_lines: false
 	default_quest_shape: ""
-	filename: "chapter_6b_vibration_mechanisms"
+	filename: "chapter_6_vibration_mechanisms"
 	group: "5B3547AEADCBC841"
 	icon: "create_things_and_misc:vibration_mechanism"
 	id: "67020B8E9395350E"
-	order_index: 9
+	order_index: 8
 	quest_links: [ ]
 	quests: [
 		{
 			dependencies: ["4D63CE15F77DBB4D"]
 			description: [
-				"Chapter 6b."
+				"Chapter 6."
 				""
 				"This chapter may look short, but it involves a lot of unconventional automations and problem solving. You'll also need to defeat Minecraft's 3 bosses in order to progress in this chapter. However, this should be a piece of cake with the god tier Apotheosis items you'll have access to from this chapter's progression."
 				""
@@ -1084,5 +1084,5 @@
 			y: -10.0d
 		}
 	]
-	title: "Chapter 6b: Vibration Mechanisms"
+	title: "Chapter 6: Vibration Mechanisms"
 }

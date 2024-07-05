@@ -126,10 +126,8 @@
 		}
 		{
 			dependencies: [
-				"3D27BD07DCC89201"
-				"5E9CD0318E0403BD"
-				"11BA49A842F724F6"
-				"6B75CD039419AEFC"
+				"4D63CE15F77DBB4D"
+				"7D45EDB6BB83E369"
 			]
 			icon: "createteleporters:quantum_mechanism"
 			id: "12D9ACDA50B38FCA"
@@ -138,9 +136,9 @@
 				title: "Start Chapter"
 				type: "checkmark"
 			}]
-			title: "Chapter 6a: Quantum Mechanisms"
-			x: 12.5d
-			y: -1.5d
+			title: "Chapter 7: Quantum Mechanisms"
+			x: 15.0d
+			y: 0.0d
 		}
 		{
 			dependencies: [
@@ -156,9 +154,9 @@
 				title: "Start Chapter"
 				type: "checkmark"
 			}]
-			title: "Chapter 6b: Vibration Mechanisms"
+			title: "Chapter 6: Vibration Mechanisms"
 			x: 12.5d
-			y: 1.5d
+			y: 0.0d
 		}
 		{
 			dependencies: [

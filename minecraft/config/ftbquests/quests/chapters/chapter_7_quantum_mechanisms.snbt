@@ -1,11 +1,11 @@
 {
 	default_hide_dependency_lines: false
 	default_quest_shape: ""
-	filename: "chapter_6a_quantum_mechanisms"
+	filename: "chapter_7_quantum_mechanisms"
 	group: "5B3547AEADCBC841"
 	icon: "createteleporters:quantum_mechanism"
 	id: "565035A1584BCCAE"
-	order_index: 8
+	order_index: 9
 	quest_links: [ ]
 	quests: [
 		{
@@ -82,8 +82,8 @@
 				item: "thermal:enderium_ingot"
 				type: "item"
 			}]
-			x: 8.5d
-			y: -3.5d
+			x: 6.0d
+			y: 0.0d
 		}
 		{
 			id: "29D5CED6D2FC7E91"
@@ -92,8 +92,8 @@
 				item: "thermal:lumium_ingot"
 				type: "item"
 			}]
-			x: 10.0d
-			y: -3.5d
+			x: 9.5d
+			y: 4.0d
 		}
 		{
 			id: "107558182C78B789"
@@ -102,8 +102,8 @@
 				item: "thermal:signalum_ingot"
 				type: "item"
 			}]
-			x: 11.5d
-			y: -3.5d
+			x: 10.5d
+			y: 4.0d
 		}
 		{
 			icon: "molten_vents:dormant_molten_asurine"
@@ -269,6 +269,16 @@
 			x: 3.5d
 			y: 3.5d
 		}
+		{
+			id: "3832D225F6D0C417"
+			tasks: [{
+				id: "56DC5A9D67327A49"
+				item: "createutilities:graviton_tube"
+				type: "item"
+			}]
+			x: 9.5d
+			y: -2.5d
+		}
 	]
-	title: "Chapter 6a: Quantum Mechanisms"
+	title: "Chapter 7: Quantum Mechanisms"
 }
