@@ -232,6 +232,7 @@ ServerEvents.recipes((e) => {
 
   // Screw overhaul
   e.remove({ id: 'tfmg:stonecutting/screw' })
+  create.cutting('6x tfmg:screw', 'tfmg:steel_ingot')
   create
     .turning(['8x tfmg:screw', 'kubejs:steel_dust'], 'tfmg:steel_ingot')
     .processingTime(100)
