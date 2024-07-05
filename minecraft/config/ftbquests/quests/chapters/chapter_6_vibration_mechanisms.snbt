@@ -315,9 +315,11 @@
 			y: -2.0d
 		}
 		{
-			dependencies: ["7F0A4231CA344359"]
+			dependencies: ["2B05BB13A47507C0"]
 			description: [
-				"A dragon head without the dragon is still a potent source of dragon's breath. Right click the dragon head to spew its breath out. You can right click it with a bottle to store it, or automate this with a deployer."
+				"A dragon head without the dragon is still a potent source of dragon's breath. Right click the dragon head with the Potion of Regeneration II to spew its breath out."
+				""
+				"You can right click the dragon's breath with a bottle to store it, or automate this with a deployer."
 				""
 				"Ponder the dragon head for an example."
 			]
@@ -1082,6 +1084,29 @@
 			}]
 			x: 18.0d
 			y: -10.0d
+		}
+		{
+			dependencies: ["7F0A4231CA344359"]
+			description: [
+				"You'll need a Potion of Regeneration II for the next step."
+				""
+				"By now, automated brewing should be a familiar process."
+			]
+			id: "2B05BB13A47507C0"
+			tasks: [{
+				id: "5F5F6CE71B9C6298"
+				item: {
+					Count: 1b
+					id: "minecraft:potion"
+					tag: {
+						Potion: "minecraft:strong_regeneration"
+					}
+				}
+				type: "item"
+			}]
+			title: "Potion of Regeneration II"
+			x: 16.0d
+			y: 0.0d
 		}
 	]
 	title: "Chapter 6: Vibration Mechanisms"
