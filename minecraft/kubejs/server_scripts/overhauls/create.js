@@ -924,22 +924,6 @@ ServerEvents.recipes((e) => {
     e.replaceInput({ mod: 'tfmg' }, 'tfmg:slag', 'thermal:slag')
     e.replaceOutput({ mod: 'tfmg' }, 'tfmg:slag', 'thermal:slag')
 
-    // Slag melting
-    create
-      .mixing(
-        Fluid.of('tfmg:molten_slag', MeltableItem.DEFAULT_INGOT_FLUID),
-        'thermal:slag'
-      )
-      .heated()
-    create
-      .mixing(
-        Fluid.of('tfmg:molten_slag', 4 * MeltableItem.DEFAULT_INGOT_FLUID),
-        'thermal:slag_block'
-      )
-      .heated()
-    // TODO rich slag is the only way to get aluminum?
-    // TODO molten slag can be centrifuged to crap?
-
     // TODO: add efficient liquid concrete overhaul + cement
   }
 
