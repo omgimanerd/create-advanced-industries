@@ -45,7 +45,7 @@ ServerEvents.recipes((e) => {
       raw
     )
 
-    // Melting the raw has only a slight additional yield, and is quite messy.
+    // Melting the raw ore has a slight additional yield and has slag byproduct.
     create
       .mixing(
         [Fluid.of(fluid, DEFAULT_INGOT_FLUID * (10 / 9)), 'thermal:slag'],
@@ -95,9 +95,25 @@ ServerEvents.recipes((e) => {
   e.remove({ id: /^create:crushing\/ochrum.*$/ })
 
   create.crushing('kubejs:crushed_crimsite', 'create:crimsite')
+  e.recipes.ars_nouveau.crush(
+    'create:crimsite',
+    Item.of('kubejs:crushed_crimsite').withChance(1)
+  )
   create.crushing('kubejs:crushed_veridium', 'create:veridium')
+  e.recipes.ars_nouveau.crush(
+    'create:veridium',
+    Item.of('kubejs:crushed_veridium').withChance(1)
+  )
   create.crushing('kubejs:crushed_ochrum', 'create:ochrum')
+  e.recipes.ars_nouveau.crush(
+    'create:ochrum',
+    Item.of('kubejs:crushed_ochrum').withChance(1)
+  )
   create.crushing('kubejs:crushed_asurine', 'create:asurine')
+  e.recipes.ars_nouveau.crush(
+    'create:asurine',
+    Item.of('kubejs:crushed_ochrum').withChance(1)
+  )
 
   const tier1Crushing = {
     'kubejs:crushed_crimsite': 'minecraft:raw_iron',

@@ -208,6 +208,10 @@ ServerEvents.recipes((e) => {
     'minecraft:bone_block'
   )
   create.crushing('9x minecraft:bone_meal', 'minecraft:bone_block')
+  e.recipes.ars_nouveau.crush(
+    'minecraft:bone_block',
+    Item.of('minecraft:bone_meal', 9).withChance(1)
+  )
 
   // Cobweb crafting
   e.remove({ id: 'apotheosis:cobweb' })
@@ -228,9 +232,12 @@ ServerEvents.recipes((e) => {
     '4x minecraft:string',
   ])
 
-  // Sawdust recipe
+  // Sawdust recipe, with benefits if you do it with ars nouveau.
   create.crushing(
-    ['9x thermal:sawdust', Item.of('thermal:sawdust', 3).withChance(0.5)],
+    [
+      Item.of('thermal:sawdust', 9).withChance(1),
+      Item.of('thermal:sawdust', 3).withChance(0.5),
+    ],
     '#minecraft:logs'
   )
   create.milling('9x thermal:sawdust', '#minecraft:logs')

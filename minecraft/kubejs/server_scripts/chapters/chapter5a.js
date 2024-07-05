@@ -586,18 +586,21 @@ ServerEvents.recipes((e) => {
     probabilisticStone = 'create:scorchia'
     uselessStone = 'create:scoria'
   }
-  create.crushing(
-    [
-      Item.of('minecraft:ancient_debris').withChance(0.005),
-      Item.of('minecraft:iron_nugget').withChance(global.randRange(0.01, 0.1)),
-      Item.of('create:copper_nugget').withChance(global.randRange(0.01, 0.1)),
-      Item.of('minecraft:gold_nugget').withChance(global.randRange(0.01, 0.1)),
-      Item.of('create:zinc_nugget').withChance(global.randRange(0.01, 0.1)),
-      Item.of('thermal:silver_nugget').withChance(global.randRange(0.01, 0.1)),
-    ],
-    probabilisticStone
-  )
+  const randomOutputs = [
+    Item.of('minecraft:ancient_debris').withChance(0.005),
+    Item.of('minecraft:iron_nugget').withChance(global.randRange(0.01, 0.1)),
+    Item.of('create:copper_nugget').withChance(global.randRange(0.01, 0.1)),
+    Item.of('minecraft:gold_nugget').withChance(global.randRange(0.01, 0.1)),
+    Item.of('create:zinc_nugget').withChance(global.randRange(0.01, 0.1)),
+    Item.of('thermal:silver_nugget').withChance(global.randRange(0.01, 0.1)),
+  ]
+  create.crushing(randomOutputs, probabilisticStone)
   create.crushing('minecraft:cobblestone', uselessStone)
+  e.recipes.ars_nouveau.crush(probabilisticStone, randomOutputs)
+  e.recipes.ars_nouveau.crush(
+    uselessStone,
+    Item.of('minecraft:cobblestone').withChance(1)
+  )
 
   // Ancient Debris processing
   e.remove({ id: /minecraft:netherite_scrap.*/ })

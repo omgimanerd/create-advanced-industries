@@ -25,6 +25,10 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'vintageimprovements:crushing/basalt_recycling' })
   e.remove({ id: 'vintageimprovements:crushing/basalt' })
   create.crushing('minecraft:cobblestone', 'minecraft:basalt')
+  e.recipes.ars_nouveau.crush(
+    'minecraft:basalt',
+    Item.of('minecraft:cobblestone').withChance(1)
+  )
 
   // Rosin from resin
   create.mixing('thermal:rosin', Fluid.of('thermal:resin', 250)).heated()
