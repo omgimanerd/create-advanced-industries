@@ -8,31 +8,24 @@ global.randomSeed = () => {
 }
 
 /**
- * PRNG Mulberry32
- * https://stackoverflow.com/a/47593316
- * @param {number=} seed
+ * Returns an anonymous function that can be invoked with no arguments and
+ * substituted in place for Math.random()
+ *
+ * @param {Internal.Random_} random An instance of a seeded Random
  * @returns {() => number}
  */
-global.mulberry32 = (seed) => {
-  seed = seed === undefined ? global.randomSeed() : seed >>> 0
-  /**
-   * @returns {number}
-   */
-  return () => {
-    let t = (seed += 0x6d2b79f5)
-    t = Math.imul(t ^ (t >>> 15), t | 1)
-    t ^= t + Math.imul(t ^ (t >>> 7), t | 61)
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296 // 2^32
-  }
+global.wrapSeededRandom = (random) => {
+  return () => random.nextDouble()
 }
 
 /**
  * In-place array shuffle using the Durstenfield shuffle algorithm.
  * @param {any[]} a
+ * @param {() => number} rand
  * @returns {any[]}
  */
 global.shuffle = (a, rand) => {
-  rand = rand === undefined ? Math.random : global.mulberry32()
+  rand = rand === undefined ? Math.random : rand
   for (let i = a.length - 1; i > 0; --i) {
     let j = Math.floor(rand() * (i + 1))
     ;[a[i], a[j]] = [a[j], a[i]]
@@ -44,10 +37,11 @@ global.shuffle = (a, rand) => {
  * Returns a random number in the range [low, high)
  * @param {number} low
  * @param {number=} high
+ * @param {() => number} rand
  * @returns {number}
  */
 global.randRange = (low, high, rand) => {
-  rand = rand === undefined ? Math.random : global.mulberry32()
+  rand = rand === undefined ? Math.random : rand
   if (high === undefined) {
     high = low
     low = 0
