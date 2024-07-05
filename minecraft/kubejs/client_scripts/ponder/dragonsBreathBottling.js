@@ -21,6 +21,9 @@ Ponder.registry((e) => {
       scene.idle(20)
 
       // Trigger dragon's breath
+      const strongRegenPotion = Item.of('minecraft:potion').withNBT({
+        Potion: 'minecraft:strong_regeneration',
+      })
       scene.addKeyframe()
       scene.text(
         40,
@@ -28,20 +31,38 @@ Ponder.registry((e) => {
         dragonHead
       )
       scene.idle(50)
+      scene
+        .showControls(20, bottlingDeployer, 'left')
+        .rightClick()
+        .withItem(strongRegenPotion)
+      setDeployerFilter(scene, dragonHeadDeployer, strongRegenPotion)
+      setDeployerHeldItem(scene, dragonHeadDeployer, strongRegenPotion)
+      scene.text(
+        40,
+        'Right click the dragon head with a Potion of Regeneration II.',
+        dragonHead
+      )
+      scene.idle(50)
       scene.world.setKineticSpeed(dragonHeadDeployer, 24)
       let dragonsBreathParticles
-      cycleDeployerMovement(scene, dragonHeadDeployer, 20, false, () => {
-        dragonsBreathParticles = scene.world.createEntity(
-          'minecraft:area_effect_cloud',
-          new Vec3d(2, 2, 2),
-          (entity) => {
-            entity.mergeNbt({
-              Particle: 'dragon_breath',
-              Radius: 1,
-            })
-          }
-        )
-      })
+      cycleDeployerMovement(
+        scene,
+        dragonHeadDeployer,
+        20,
+        /*clearHand=*/ true,
+        () => {
+          dragonsBreathParticles = scene.world.createEntity(
+            'minecraft:area_effect_cloud',
+            new Vec3d(2, 2, 2),
+            (entity) => {
+              entity.mergeNbt({
+                Particle: 'dragon_breath',
+                Radius: 1,
+              })
+            }
+          )
+        }
+      )
       scene.world.setKineticSpeed(dragonHeadDeployer, 0)
       scene.idle(20)
 
@@ -73,6 +94,14 @@ Ponder.registry((e) => {
         )
       })
       scene.idle(20)
+      scene.overlay
+        .showSelectionWithText(
+          util.select.position(bottlingDeployer.below(2)),
+          40
+        )
+        .text('The deployer must have a block to right click on!')
+        .colored('green')
+      scene.idle(50)
     }
   )
 })

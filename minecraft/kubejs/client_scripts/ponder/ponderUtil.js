@@ -44,28 +44,24 @@ const setDeployerFilter = (scene, deployerPos, item) => {
 /**
  * @param {Internal.ExtendedSceneBuilder_} scene
  * @param {BlockPos_} deployerPos
- * @param {Internal.ItemStack_} id
+ * @param {Internal.ItemStack_} itemStack
  */
-const setDeployerHeldItem = (scene, deployerPos, id) => {
+const setDeployerHeldItem = (scene, deployerPos, itemStack) => {
+  itemStack = typeof itemStack === 'string' ? Item.of(itemStack) : itemStack
   scene.world.modifyBlockEntityNBT(deployerPos, (nbt) => {
-    nbt.HeldItem = {
-      id: id,
-      Count: 1,
-    }
+    nbt.HeldItem = itemStack.toNBT()
   })
 }
 
 /**
  * @param {Internal.ExtendedSceneBuilder_} scene
  * @param {BlockPos_} pedestalPos
- * @param {Internal.ItemStack_} id
+ * @param {Internal.ItemStack_} itemStack
  */
-const setPedestalItem = (scene, pedestalPos, id) => {
+const setPedestalItem = (scene, pedestalPos, itemStack) => {
+  itemStack = typeof itemStack === 'string' ? Item.of(itemStack) : itemStack
   scene.world.modifyBlockEntityNBT(pedestalPos, (nbt) => {
-    nbt.itemStack = {
-      id: id,
-      Count: 1,
-    }
+    nbt.itemStack = itemStack.toNBT()
   })
 }
 

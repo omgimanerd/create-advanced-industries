@@ -3,10 +3,16 @@
 // collecting it with a glass bottle.
 
 BlockEvents.rightClicked('minecraft:dragon_head', (e) => {
-  const { item, hand, block, level } = e
-
-  // TODO Implement the item that will trigger dragon's head breath mechanic
-  // regen potion
+  const { item, hand, player, block, level } = e
+  if (level.isClientSide()) return
+  const requiredPotion = Item.of('minecraft:potion').withNBT({
+    Potion: 'minecraft:strong_regeneration',
+  })
+  if (hand !== 'main_hand') return
+  if (!item.equalsIgnoringCount(requiredPotion)) return
+  item.shrink(1)
+  player.give('minecraft:glass_bottle')
+  player.swing()
 
   // Dragon head has a rotation property from 0-16 with 0 being North increasing
   // clockwise.
@@ -32,9 +38,18 @@ BlockEvents.rightClicked('minecraft:dragon_head', (e) => {
   const { x, y, z } = block.pos
   dragonsBreath.setPosition(x + xOffset, y, z + zOffset)
   dragonsBreath.spawn()
+  dragonsBreath.playSound(
+    'entity.wandering_trader.drink_potion',
+    /*volume=*/ 3,
+    /*pitch=*/ 0
+  )
 })
 
 /**
+ * Handler for bottling dragon's breath, invoked on both a generic block event
+ * right click (in order for deployers to work) and the glass bottle right
+ * click event.
+ *
  * @param {Internal.ItemStack_} item
  * @param {Internal.Player_} player
  * @param {Internal.RayTraceResultJS_|{type:string, hit:$BlockPos_}} target
@@ -79,6 +94,7 @@ const customDragonsBreathBottling = (item, player, target, level) => {
 
 BlockEvents.rightClicked((e) => {
   const { item, player, block, level } = e
+  if (level.isClientSide()) return
   if (item.id !== 'minecraft:glass_bottle') return
   customDragonsBreathBottling(
     item,
@@ -93,6 +109,7 @@ BlockEvents.rightClicked((e) => {
 
 ItemEvents.rightClicked('minecraft:glass_bottle', (e) => {
   const { item, player, target, level } = e
+  if (level.isClientSide()) return
   customDragonsBreathBottling(item, player, target, level)
 })
 
