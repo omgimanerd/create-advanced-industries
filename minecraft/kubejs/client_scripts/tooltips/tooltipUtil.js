@@ -29,8 +29,12 @@ const tooltipHelper = (e, item, baseText, shiftText, unshiftText, clear) => {
     if (advanced) {
       last = text.remove(text.size() - 1)
     }
+    // Remove all the elements from the tooltip besides the first, which is the
+    // item name.
     if (clear) {
-      text.clear()
+      while (text.size() > 1) {
+        text.remove(text.size() - 1)
+      }
     }
     addText(text, baseText)
     if (e.shift) {
