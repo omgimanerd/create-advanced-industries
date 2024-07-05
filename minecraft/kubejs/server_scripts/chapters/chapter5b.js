@@ -44,7 +44,7 @@ ItemEvents.entityInteracted((e) => {
   if (item.id === 'create:blaze_cake') {
     item.count--
     repeat(server, 10, 3, () => {
-      target.playSound('entity.generic.eat', 3, 0)
+      target.playSound('entity.generic.eat', /*volume=*/ 3, /*pitch=*/ 0)
     })
     remainingMilks = Math.max(10, remainingMilks)
   }
@@ -53,19 +53,23 @@ ItemEvents.entityInteracted((e) => {
   if (item.id === 'minecraft:lava_bucket') {
     item.count--
     player.addItem(item.getCraftingRemainingItem())
-    target.playSound('entity.wandering_trader.drink_milk', 3, 1)
+    target.playSound(
+      'entity.wandering_trader.drink_milk',
+      /*volume=*/ 3,
+      /*pitch=*/ 1
+    )
     remainingMilks = Math.max(3, remainingMilks)
   }
 
   // Milking the blaze
   if (item.id === 'minecraft:bucket') {
     if (remainingMilks === 0) {
-      target.playSound('entity.villager.ambient', 3, 2)
+      target.playSound('entity.villager.ambient', /*volume=*/ 3, /*pitch=*/ 2)
     } else {
       item.count--
       remainingMilks--
       player.addItem('kubejs:blaze_milk_bucket')
-      target.playSound('entity.cow.milk', 3, 1)
+      target.playSound('entity.cow.milk', /*volume=*/ 3, /*pitch=*/ 1)
     }
   }
 
