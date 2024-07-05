@@ -75,6 +75,7 @@ global.removedRecipes = [
   { output: 'tfmg:steel_distillation_controller' },
   { output: 'tfmg:steel_distillation_output' },
   { output: 'tfmg:sulfur_dust' },
+  { output: 'tfmg:turbine_blade' },
   { output: 'thermal:apple_block' },
   { output: 'thermal:beetroot_block' },
   { output: 'thermal:carrot_block' },
