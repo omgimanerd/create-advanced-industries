@@ -1,14 +1,6 @@
 // priority: 0
 // Recipe overhauls for uncategorized misc and qol mods.
 
-ServerEvents.tags('block', (e) => {
-  Ingredient.of(/.*_trapdoor$/).itemIds.forEach((id) => {
-    if (Item.of(id).block) {
-      e.add('create:wrench_pickup', id)
-    }
-  })
-})
-
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
   const pneumaticcraft = definePneumaticcraftRecipes(e)

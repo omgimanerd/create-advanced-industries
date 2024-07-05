@@ -1,5 +1,24 @@
 // priority: 100
 
+ServerEvents.tags('block', (e) => {
+  // Trapdoors can be picked up by the Create wrench.
+  Ingredient.of(/.*_trapdoor$/).itemIds.forEach((id) => {
+    if (Item.of(id).block) {
+      e.add('create:wrench_pickup', id)
+      // Some modded trapdoors are not correctly tagged.
+      e.add('minecraft:trapdoors', id)
+    }
+  })
+
+  // Make Functional Storage drawers wrenchable and rotatable.
+  Ingredient.of(/^functionalstorage:.*$/).itemIds.forEach((id) => {
+    if (Item.of(id).block) {
+      e.add('create:wrench_pickup', id)
+    }
+  })
+})
+
+// Allow vanilla and modded blocks to be rotatable with the Create wrench.
 ;(() => {
   /** @type {{string:Internal.Direction_}} */
   const direction = {
@@ -11,7 +30,7 @@
     west: Direction.WEST,
   }
 
-  const whitelist = {
+  const blockWhitelist = {
     'minecraft:piston': true,
     'minecraft:sticky_piston': true,
     'minecraft:repeater': true,
@@ -22,16 +41,33 @@
     'minecraft:observer': true,
   }
 
+  // This is only needed for the hopper, which will throw an error if we
+  // attempt set it into this state.
   const forbiddenStates = {
     'minecraft:hopper': 'up',
   }
 
   BlockEvents.rightClicked((e) => {
     const { item, hand, facing, block, player } = e
-    if (item.id !== 'create:wrench') return
-    if (hand !== 'main_hand' || player.crouching) return
+    // Rotation must be done with the Create wrench in the main hand.
+    if (item.id !== 'create:wrench' || hand !== 'main_hand') return
+    // If the player is crouching, defer to the default breaking behavior.
+    if (player.crouching) return
+    // Create blocks themselves have special handlers we should not mess with.
     if (block.id.startsWith('create:')) return
-    if (!whitelist[block.id]) return
+
+    // Only allow whitelisted blocks to be rotated.
+    let allowed = !!blockWhitelist[block.id]
+    // If the block list check fails, check to see if it has the
+    // kubejs:create_wrench_rotate tag, which is slower.
+    if (!allowed) {
+      if (block.hasTag('kubejs:create_wrench_rotate')) {
+        allowed = true
+      }
+    }
+    if (!allowed) return
+
+    // If the block does not have rotation property (for whatever reason), stop
     if (block.properties === undefined) return
     const blockFacing = block.properties.facing
     if (blockFacing === undefined) return
