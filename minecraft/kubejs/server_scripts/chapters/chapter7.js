@@ -64,9 +64,10 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'createteleporters:quantum_mechanism_recipe' })
   create
     .SequencedAssembly(
-      'vintageimprovements:enderium_sheet',
+      'create_things_and_misc:vibration_mechanism',
       'createteleporters:incomplete_q_mechanism'
     )
+    .fill(potionFluid('quark:resilience', 250))
     .fill(Fluid.of('createteleporters:quantum_fluid', 1000))
     .deploy('createteleporters:advanced_part')
     .deploy('createteleporters:redstone_pearl')
