@@ -230,6 +230,12 @@ ServerEvents.recipes((e) => {
     }
   )
 
+  // Screw overhaul
+  e.remove({ id: 'tfmg:stonecutting/screw' })
+  create
+    .turning(['8x tfmg:screw', 'kubejs:steel_dust'], 'tfmg:steel_ingot')
+    .processingTime(100)
+
   // Unbreakable screwdriver, only easily accessible with Chapter 5b automation
   e.recipes.ars_nouveau.enchanting_apparatus(
     Array(8).fill(enchantedBook('minecraft:unbreaking', 8)),

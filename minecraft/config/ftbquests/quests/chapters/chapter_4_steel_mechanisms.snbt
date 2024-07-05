@@ -34,7 +34,6 @@
 		}
 		{
 			dependencies: [
-				"318C60A121F68C81"
 				"56194FBB8BFDBC86"
 				"0D49F7009518DEC8"
 				"5FD60166A60F0448"
@@ -539,7 +538,7 @@
 		}
 		{
 			dependencies: ["318C60A121F68C81"]
-			description: ["Screws are fabricated from steel."]
+			description: ["Screws are fabricated from steel on a lathe."]
 			id: "0D49F7009518DEC8"
 			tasks: [{
 				id: "70F5B80D543D4B48"

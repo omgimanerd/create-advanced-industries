@@ -896,7 +896,7 @@ ServerEvents.recipes((e) => {
       ])
     })
 
-    // Steel fluid tanks
+    // Steel fluid tanks and pumpjack components
     redefineRecipe(
       'tfmg:steel_fluid_tank',
       [
