@@ -658,7 +658,11 @@
 		}
 		{
 			dependencies: ["7CB4CC65BC442750"]
-			description: ["Got your Apotheosis book handy? A core part of this chapter is automating the Apotheosis material tiers. The progression of the overall chapters is tired to the branch above."]
+			description: [
+				"Got your Apotheosis book handy? A core part of this chapter is automating the Apotheosis material tiers."
+				""
+				"You will need to complete the other parts of this chapter to progress this branch."
+			]
 			id: "368E09F5D73E4623"
 			tasks: [{
 				id: "1A8E7BB2AC777498"
@@ -1091,6 +1095,8 @@
 				"You'll need a Potion of Regeneration II for the next step."
 				""
 				"By now, automated brewing should be a familiar process."
+				""
+				"The ghast tears required can also be produced with resonance crafting."
 			]
 			id: "2B05BB13A47507C0"
 			tasks: [{
