@@ -146,8 +146,6 @@
 				"Centrifuge the molten redstone or mix with a Vial of Arcane Extraction in order to separate it."
 				""
 				"Until you unlock stuff from Chapter 6, centrifuging might just be the easier route, even if the recipe is lossy."
-				""
-				"You might need a fluid filter to extract from the centrifuge. Potions don't work in Create's fluid filters, so you might need a filter &oblacklisting&r the destabilized redstone in order to filter it out."
 			]
 			icon: "thermal:redstone_bucket"
 			id: "7533DFB7B990B93A"
