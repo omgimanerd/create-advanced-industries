@@ -1,7 +1,7 @@
 // priority: 1000
 
 /**
- * @typedef ArsGravityBlockCrushingRecipe
+ * @typedef {Object} ArsGravityBlockCrushingRecipe
  * @property {Internal.Block_} belowBlock
  * @property {number=} minimumSpeed
  * @property {Internal.ItemStack_} ingredients
