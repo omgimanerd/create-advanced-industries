@@ -59,10 +59,12 @@ BlockEvents.rightClicked('minecraft:beehive', (e) => {
       .strength(1)
       .explode()
   }
-  // Only if the honey level is 5 will there be loot returned.
+  // Only if the honey level is 5 will there be loot returned. Using this has
+  // a chance to double or triple the amount of honeycombs returned.
   if (honeyLevel < 5) return
-  const honeyCombs = Math.floor(honeyLevel * global.randRange(1.5, 2))
+  const honeyCombs = Math.floor(honeyLevel * global.randRange(2, 3))
   block.popItemFromFace(Item.of('minecraft:honeycomb', honeyCombs), 'up')
+  // There is a 50% chance to return a saturated honeycomb.
   if (Math.random() < 0.5) {
     block.popItemFromFace(
       Item.of('kubejs:saturated_honeycomb', global.randRangeInt(3)),
