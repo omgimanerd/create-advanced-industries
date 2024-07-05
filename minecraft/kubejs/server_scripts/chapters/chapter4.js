@@ -196,11 +196,7 @@ ServerEvents.recipes((e) => {
   create
     .SequencedAssembly('tfmg:steel_ingot')
     .press(3)
-    .outputs([
-      Item.of('tfmg:heavy_plate').withChance(2),
-      Item.of('tfmg:steel_ingot').withChance(8),
-    ])
-  create.hammering('tfmg:heavy_plate', 'tfmg:steel_ingot').hammerBlows(3)
+    .outputs('tfmg:heavy_plate')
 
   // Recipes for reusable steel casts
   e.shaped(

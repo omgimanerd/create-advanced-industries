@@ -551,11 +551,7 @@
 		}
 		{
 			dependencies: ["318C60A121F68C81"]
-			description: [
-				"Steel is much harder than other metals, so it will take a little more effort to make plates."
-				""
-				"Your first batch of steel should be used to make the &lspring coiling machine&r and then the &lhelve hammer&r so that you can make plates easily."
-			]
+			description: ["Steel is much harder than other metals, so it will take a little more effort to make plates."]
 			id: "79B63BFC11E77382"
 			tasks: [{
 				id: "5DC49B94BEC67F05"
