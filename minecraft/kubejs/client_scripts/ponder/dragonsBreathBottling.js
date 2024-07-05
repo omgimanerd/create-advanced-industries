@@ -45,24 +45,19 @@ Ponder.registry((e) => {
       scene.idle(50)
       scene.world.setKineticSpeed(dragonHeadDeployer, 24)
       let dragonsBreathParticles
-      cycleDeployerMovement(
-        scene,
-        dragonHeadDeployer,
-        20,
-        /*clearHand=*/ true,
-        () => {
-          dragonsBreathParticles = scene.world.createEntity(
-            'minecraft:area_effect_cloud',
-            new Vec3d(2, 2, 2),
-            (entity) => {
-              entity.mergeNbt({
-                Particle: 'dragon_breath',
-                Radius: 1,
-              })
-            }
-          )
-        }
-      )
+      cycleDeployerMovement(scene, dragonHeadDeployer, 20, false, () => {
+        dragonsBreathParticles = scene.world.createEntity(
+          'minecraft:area_effect_cloud',
+          new Vec3d(2, 2, 2),
+          (entity) => {
+            entity.mergeNbt({
+              Particle: 'dragon_breath',
+              Radius: 1,
+            })
+          }
+        )
+        setDeployerHeldItem(scene, dragonHeadDeployer, 'minecraft:glass_bottle')
+      })
       scene.world.setKineticSpeed(dragonHeadDeployer, 0)
       scene.idle(20)
 
