@@ -90,22 +90,6 @@ ServerEvents.recipes((e) => {
       'create:andesite_casing',
       '#forge:stone'
     )
-    e.recipes.remove({ id: 'create:mechanical_crafting/crushing_wheel' })
-    create.mechanical_crafting(
-      '2x create:crushing_wheel',
-      [
-        ' SSS ', //
-        'SSPSS', //
-        'SPAPS', //
-        'SSPSS', //
-        ' SSS ', //
-      ],
-      {
-        S: 'minecraft:stone',
-        P: '#minecraft:planks',
-        A: 'create:andesite_alloy',
-      }
-    )
     redefineMechanismRecipe('kubejs:andesite_mechanism')(
       'create:mechanical_press',
       'create:shaft',
