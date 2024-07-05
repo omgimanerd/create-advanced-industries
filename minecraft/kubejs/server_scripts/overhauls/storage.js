@@ -268,8 +268,21 @@ ServerEvents.recipes((e) => {
     'minecraft:quartz',
     'create:precision_mechanism'
   )
-  // TODO gate behind quantum mechanism
   e.remove({ id: 'toms_storage:adv_wireless_terminal' })
+  e.shaped(
+    'toms_storage:ts.adv_wireless_terminal',
+    [
+      'SSS', //
+      'MTM', //
+      'SQS', //
+    ],
+    {
+      S: '#forge:plates/netherite',
+      M: 'kubejs:logistics_mechanism',
+      T: 'toms_storage:ts.wireless_terminal',
+      Q: 'createteleporters:quantum_mechanism',
+    }
+  )
   e.replaceInput(
     { id: 'toms_storage:tag_item_filter' },
     'minecraft:name_tag',
