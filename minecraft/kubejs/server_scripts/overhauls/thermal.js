@@ -203,15 +203,9 @@ ServerEvents.recipes((e) => {
     Fluid.of('tfmg:creosote')
   )
 
-  // Thermal Chiller recipes
+  // Thermal Chiller recipes are all removed.
+  // Ice overhauls in overhauls/ice.js
   e.remove({ type: 'thermal:chiller' })
-  e.recipes.thermal.chiller('minecraft:ice', Fluid.water(1000)).energy(12000)
-  e.recipes.thermal
-    .chiller('minecraft:packed_ice', ['minecraft:ice', Fluid.water(1000)])
-    .energy(12000)
-  e.recipes.thermal
-    .chiller('minecraft:blue_ice', ['minecraft:packed_ice', Fluid.water(1000)])
-    .energy(12000)
 
   // Thermal Refinery recipes, only useful ones are added back.
   // Also add a PNCR/Create alternatives.
