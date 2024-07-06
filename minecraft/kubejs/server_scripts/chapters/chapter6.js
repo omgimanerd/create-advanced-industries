@@ -259,6 +259,18 @@ ServerEvents.recipes((e) => {
     .outputs('kubejs:xp_crystal')
 
   // The Treasure Net is gated by a level 60 enchant
+  redefineRecipe(
+    'thermal:junk_net',
+    [
+      'LSL', //
+      'SLS', //
+      'LSL', //
+    ],
+    {
+      L: 'thermal:lead_nugget',
+      S: 'minecraft:string',
+    }
+  )
   e.recipes.apotheosis
     .enchanting('thermal:junk_net', 'kubejs:treasure_net')
     .requirements({ eterna: 30, quanta: 40, arcana: 40 })

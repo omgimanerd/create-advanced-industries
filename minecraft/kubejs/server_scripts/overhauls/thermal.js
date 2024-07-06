@@ -189,6 +189,17 @@ ServerEvents.recipes((e) => {
       B: 'minecraft:glass_bottle',
     })
   )
+
+  // Add recipe support for the Syrup Bottle
+  create.filling('thermal:syrup_bottle', [
+    'minecraft:glass_bottle',
+    Fluid.of('thermal:syrup', 250),
+  ])
+  create.emptying(
+    ['minecraft:glass_bottle', Fluid.of('thermal:syrup', 250)],
+    'thermal:syrup_bottle'
+  )
+
   redefineRecipe(
     'thermal:upgrade_augment_1',
     [
@@ -229,6 +240,30 @@ ServerEvents.recipes((e) => {
       S: 'pneumaticcraft:plastic',
       P: 'pneumaticcraft:printed_circuit_board',
       M: 'tfmg:steel_mechanism',
+    }
+  )
+  redefineRecipe(
+    '4x thermal:item_filter_augment',
+    [
+      'BBB', //
+      'BFB', //
+      'BBB', //
+    ],
+    {
+      B: 'minecraft:blue_dye',
+      F: 'create:filter',
+    }
+  )
+  redefineRecipe(
+    '4x thermal:fluid_filter_augment',
+    [
+      'BBB', //
+      'BFB', //
+      'BBB', //
+    ],
+    {
+      B: 'minecraft:blue_dye',
+      F: 'create:smart_fluid_pipe',
     }
   )
 

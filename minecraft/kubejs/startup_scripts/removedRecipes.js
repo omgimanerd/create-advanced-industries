@@ -106,6 +106,7 @@ global.removedRecipes = [
   { output: 'thermal:machine_brewer' },
   // thermal:machine_crystallizer is enabled
   // thermal:machine_crafter is enabled
+  { output: 'thermal:machine_frame' },
   // All dynamos are disabled
   { output: /^thermal:dynamo_.*/ },
   { output: 'thermal:tinker_bench' },
@@ -118,6 +119,11 @@ global.removedRecipes = [
   { output: 'thermal:device_soil_infuser' },
   { output: 'thermal:device_rock_gen' },
   { output: 'thermal:device_xp_condenser' },
+  { output: 'thermal:rs_control_augment' },
+  { output: 'thermal:side_config_augment' },
+  { output: 'thermal:xp_storage_augment' },
+  { output: /^thermal:rf_coil.*_augment$/ },
+  { output: /^thermal:fluid_tank.*augment$/ },
   { output: /^thermal:diving_.*/ },
   { output: 'thermal:xp_crystal' },
   { output: '#forge:coins' },
