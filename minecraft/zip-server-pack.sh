@@ -11,5 +11,7 @@ zip server-pack-$(git describe --tags --abbrev=0).zip \
   start.sh \
   variables.txt \
   -x \
-  mods/probejs* \
-  config/jei/world/*
+  '*config/jei/world/*' \
+  '*kubejs/assets/kubejs/textures/fluid/__pycache__/*' \
+  '*kubejs/probe*' \
+  '*mods/probejs*'
