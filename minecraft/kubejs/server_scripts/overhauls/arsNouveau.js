@@ -148,6 +148,7 @@ ServerEvents.recipes((e) => {
     ],
     'ars_nouveau:relay'
   )
+  // TODO source relay warper should depend on quantum mechanisms
   e.replaceInput(
     'ars_nouveau:arcane_core',
     'ars_nouveau:source_gem',

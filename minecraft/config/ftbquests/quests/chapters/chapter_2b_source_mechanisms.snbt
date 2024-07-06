@@ -136,7 +136,11 @@
 				"1572F6384788F1BA"
 				"39E20F0E25618A92"
 			]
-			description: ["Due to instabilities in the world, source cannot be created in any other way, and you must transmute it from its liquid form."]
+			description: [
+				"Due to instabilities in the world, source can only be transmuted from its liquid form."
+				""
+				"Source condensers can be used to convert it back to its liquid form."
+			]
 			id: "7929E375AF5FD000"
 			optional: true
 			rewards: [{
@@ -191,6 +195,40 @@
 			}]
 			x: 5.0d
 			y: 0.0d
+		}
+		{
+			dependencies: ["7929E375AF5FD000"]
+			description: ["You can either move liquid source around with pipes, or if you've converted it with the fluid sourcelink, you can use source relays to move it around."]
+			id: "20FCD1A3AC667575"
+			optional: true
+			rewards: [
+				{
+					id: "4DF545D5CED5A04C"
+					item: {
+						Count: 1b
+						id: "ars_nouveau:dominion_wand"
+						tag: { }
+					}
+					type: "item"
+				}
+				{
+					id: "490C99CA80BB9F8E"
+					item: "ars_nouveau:relay"
+					type: "item"
+				}
+				{
+					id: "33B380CCC7BBC30D"
+					item: "ars_nouveau:relay_splitter"
+					type: "item"
+				}
+			]
+			tasks: [{
+				id: "4E64DFB9001135CE"
+				item: "ars_nouveau:relay"
+				type: "item"
+			}]
+			x: 2.5d
+			y: -10.0d
 		}
 	]
 	title: "Chapter 2b: Source Mechanisms"
