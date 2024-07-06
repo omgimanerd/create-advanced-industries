@@ -80,37 +80,37 @@ ServerEvents.recipes((e) => {
     redefineRecipe('create:belt_connector', ['RRR'], {
       R: 'thermal:cured_rubber',
     })
-    redefineMechanismRecipe('kubejs:andesite_mechanism')(
+    redefineMechanismRecipe(KINETIC_MECHANISM)(
       'create:encased_fan',
       'create:shaft',
       'create:andesite_casing',
       'create:propeller'
     )
-    redefineMechanismRecipe('kubejs:andesite_mechanism')(
+    redefineMechanismRecipe(KINETIC_MECHANISM)(
       'create:millstone',
       'create:cogwheel',
       'create:andesite_casing',
       '#forge:stone'
     )
-    redefineMechanismRecipe('kubejs:andesite_mechanism')(
+    redefineMechanismRecipe(KINETIC_MECHANISM)(
       'create:mechanical_press',
       'create:shaft',
       'create:andesite_casing',
       'minecraft:iron_block'
     )
-    redefineMechanismRecipe('kubejs:andesite_mechanism')(
+    redefineMechanismRecipe(KINETIC_MECHANISM)(
       'create:mechanical_mixer',
       'create:cogwheel',
       'create:andesite_casing',
       'create:whisk'
     )
-    redefineMechanismRecipe('kubejs:andesite_mechanism')(
+    redefineMechanismRecipe(KINETIC_MECHANISM)(
       'create:weighted_ejector',
       'create:golden_sheet',
       'create:depot',
       'create:cogwheel'
     )
-    redefineMechanismRecipe('kubejs:andesite_mechanism')(
+    redefineMechanismRecipe(KINETIC_MECHANISM)(
       '4x create:chute',
       'create:iron_sheet',
       'minecraft:iron_ingot',
@@ -122,7 +122,7 @@ ServerEvents.recipes((e) => {
       'create:chute',
       'create:electron_tube'
     )
-    redefineMechanismRecipe('kubejs:andesite_mechanism')(
+    redefineMechanismRecipe(KINETIC_MECHANISM)(
       'create:speedometer',
       'minecraft:compass',
       'create:andesite_casing',
@@ -179,43 +179,43 @@ ServerEvents.recipes((e) => {
       'kubejs:copper_mechanism',
       'minecraft:copper_block'
     )
-    redefineMechanismRecipe('kubejs:andesite_mechanism')(
+    redefineMechanismRecipe(KINETIC_MECHANISM)(
       'create:mechanical_piston',
       '#minecraft:wooden_slabs',
       'create:andesite_casing',
       'create:piston_extension_pole'
     )
-    redefineMechanismRecipe('kubejs:andesite_mechanism')(
+    redefineMechanismRecipe(KINETIC_MECHANISM)(
       'create:gantry_carriage',
       '#minecraft:wooden_slabs',
       'create:andesite_casing',
       'create:cogwheel'
     )
-    redefineMechanismRecipe('kubejs:andesite_mechanism')(
+    redefineMechanismRecipe(KINETIC_MECHANISM)(
       'create:windmill_bearing',
       '#minecraft:wooden_slabs',
       '#forge:stone',
       'create:shaft'
     )
-    redefineMechanismRecipe('kubejs:andesite_mechanism')(
+    redefineMechanismRecipe(KINETIC_MECHANISM)(
       'create:clockwork_bearing',
       '#minecraft:wooden_slabs',
       'create:brass_casing',
       'create:electron_tube'
     )
-    redefineMechanismRecipe('kubejs:andesite_mechanism')(
+    redefineMechanismRecipe(KINETIC_MECHANISM)(
       'create:mechanical_bearing',
       '#minecraft:wooden_slabs',
       'create:andesite_casing',
       'create:shaft'
     )
-    redefineMechanismRecipe('kubejs:andesite_mechanism')(
+    redefineMechanismRecipe(KINETIC_MECHANISM)(
       'create:rope_pulley',
       'create:andesite_casing',
       '#minecraft:wool',
       'create:iron_sheet'
     )
-    redefineMechanismRecipe('kubejs:andesite_mechanism')(
+    redefineMechanismRecipe(KINETIC_MECHANISM)(
       'create:elevator_pulley',
       'create:brass_casing',
       'create:rope_pulley',
@@ -232,34 +232,34 @@ ServerEvents.recipes((e) => {
         A: 'create:andesite_alloy',
         R: 'minecraft:redstone',
         L: '#minecraft:logs',
-        M: 'kubejs:andesite_mechanism',
+        M: KINETIC_MECHANISM,
       }
     )
-    redefineMechanismRecipe('kubejs:andesite_mechanism')(
+    redefineMechanismRecipe(KINETIC_MECHANISM)(
       'create:contraption_controls',
       '#minecraft:buttons',
       'create:andesite_casing',
       'create:electron_tube'
     )
-    redefineMechanismRecipe('kubejs:andesite_mechanism')(
+    redefineMechanismRecipe(KINETIC_MECHANISM)(
       'create:mechanical_drill',
       'thermal:drill_head',
       'minecraft:iron_ingot',
       'create:andesite_casing'
     )
-    redefineMechanismRecipe('kubejs:andesite_mechanism')(
+    redefineMechanismRecipe(KINETIC_MECHANISM)(
       'create:mechanical_saw',
       'thermal:saw_blade',
       'minecraft:iron_ingot',
       'create:andesite_casing'
     )
-    redefineMechanismRecipe('kubejs:andesite_mechanism')(
+    redefineMechanismRecipe(KINETIC_MECHANISM)(
       'create:deployer',
       'create:shaft',
       'create:andesite_casing',
       'kubejs:wooden_hand'
     )
-    redefineMechanismRecipe('kubejs:andesite_mechanism')(
+    redefineMechanismRecipe(KINETIC_MECHANISM)(
       '2x create:portable_storage_interface',
       'create:chute',
       'create:andesite_casing',
@@ -275,7 +275,7 @@ ServerEvents.recipes((e) => {
       {
         A: 'create:andesite_alloy',
         I: 'create:iron_sheet',
-        M: 'kubejs:andesite_mechanism',
+        M: KINETIC_MECHANISM,
         C: 'create:andesite_casing',
       }
     )
@@ -289,11 +289,11 @@ ServerEvents.recipes((e) => {
       {
         A: 'create:andesite_alloy',
         I: 'create:iron_sheet',
-        M: 'kubejs:andesite_mechanism',
+        M: KINETIC_MECHANISM,
         C: 'create:andesite_casing',
       }
     )
-    redefineMechanismRecipe('kubejs:andesite_mechanism')(
+    redefineMechanismRecipe(KINETIC_MECHANISM)(
       'create:mechanical_roller',
       'create:electron_tube',
       'create:andesite_casing',
@@ -463,7 +463,7 @@ ServerEvents.recipes((e) => {
         I: 'create:iron_sheet',
         S: 'create:shaft',
         A: 'create:andesite_alloy',
-        M: 'kubejs:andesite_mechanism',
+        M: KINETIC_MECHANISM,
         C: 'create:andesite_casing',
       }
     )
@@ -529,7 +529,7 @@ ServerEvents.recipes((e) => {
       'createcasing:industrial_iron_mixer': 'create:industrial_iron_block',
     }
     for (const [machine, casing] of Object.entries(casingMap)) {
-      redefineMechanismRecipe('kubejs:andesite_mechanism')(
+      redefineMechanismRecipe(KINETIC_MECHANISM)(
         machine,
         'create:cogwheel',
         casing,
@@ -543,7 +543,7 @@ ServerEvents.recipes((e) => {
       'createcasing:industrial_iron_press': 'create:industrial_iron_block',
     }
     for (const [machine, casing] of Object.entries(casingMap)) {
-      redefineMechanismRecipe('kubejs:andesite_mechanism')(
+      redefineMechanismRecipe(KINETIC_MECHANISM)(
         machine,
         'create:shaft',
         casing,
@@ -798,7 +798,7 @@ ServerEvents.recipes((e) => {
   // Create: Slice and Dice //
   ////////////////////////////
   {
-    redefineMechanismRecipe('kubejs:andesite_mechanism')(
+    redefineMechanismRecipe(KINETIC_MECHANISM)(
       'sliceanddice:slicer',
       'create:cogwheel',
       'create:andesite_casing',
@@ -942,7 +942,7 @@ ServerEvents.recipes((e) => {
   // Create: Vintage Improvements //
   //////////////////////////////////
   {
-    redefineMechanismRecipe('kubejs:andesite_mechanism')(
+    redefineMechanismRecipe(KINETIC_MECHANISM)(
       'vintageimprovements:belt_grinder',
       'vintageimprovements:grinder_belt',
       'create:andesite_casing',
@@ -989,7 +989,7 @@ ServerEvents.recipes((e) => {
       'create:andesite_casing',
       'create:mechanical_bearing'
     )
-    redefineMechanismRecipe('kubejs:andesite_mechanism')(
+    redefineMechanismRecipe(KINETIC_MECHANISM)(
       'vintageimprovements:curving_press',
       'create:shaft',
       'create:andesite_casing',

@@ -3,7 +3,7 @@
 	default_quest_shape: ""
 	filename: "progression"
 	group: ""
-	icon: "kubejs:andesite_mechanism"
+	icon: "kubejs:kinetic_mechanism"
 	id: "72AF0A15ACA9A59E"
 	order_index: 3
 	quest_links: [ ]
@@ -11,14 +11,14 @@
 		{
 			dependencies: ["327F51A143F583D4"]
 			description: ["As you may have noticed, the theme of this modpack is automation. Build large and build wide, and may your factories grow."]
-			icon: "kubejs:andesite_mechanism"
+			icon: "kubejs:kinetic_mechanism"
 			id: "2F39752E838CCB4F"
 			tasks: [{
 				id: "694815C7631AB847"
 				title: "Start Chapter"
 				type: "checkmark"
 			}]
-			title: "Chapter 1: Andesite Mechanisms"
+			title: "Chapter 1: Kinetic Mechanisms"
 			x: 0.0d
 			y: 0.0d
 		}

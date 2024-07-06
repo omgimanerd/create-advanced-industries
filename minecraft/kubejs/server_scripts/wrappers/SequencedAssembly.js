@@ -14,7 +14,7 @@ let $UUID = Java.loadClass('java.util.UUID')
  *   .deploy('create:andesite_alloy')
  *   .deploy('create:shaft')
  *   .press(2)
- *   .outputs('kubejs:andesite_mechanism')
+ *   .outputs(KINETIC_MECHANISM)
  *
  * @param {Internal.RecipesEventJS} e
  * @param {Internal.ItemStack_} input

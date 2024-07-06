@@ -10,8 +10,8 @@ StartupEvents.registry('item', (e) => {
     )
   }
 
-  // Chapter 1: Andesite Mechanisms
-  registerMechanism('kubejs:andesite_mechanism')
+  // Chapter 1: Kinetic Mechanisms
+  registerMechanism('kubejs:kinetic_mechanism')
   // Chapter 2a: Copper Mechanisms
   registerMechanism('kubejs:copper_mechanism')
   // Chapter 2b: Source Mechanisms
@@ -22,6 +22,7 @@ StartupEvents.registry('item', (e) => {
   registerMechanism('kubejs:logistics_mechanism')
   // Chapter 5b: Crystalline Mechanism
   registerMechanism('kubejs:crystalline_mechanism')
+  // Redstone Mechanisms defined by Create: Vintage Improvements
   // Vibrational Mechanisms defined by Create: Misc and Things
   // Quantum mechanisms defined by Create: Teleporters
 

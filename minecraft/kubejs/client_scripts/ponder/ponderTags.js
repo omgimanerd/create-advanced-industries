@@ -3,7 +3,7 @@
 Ponder.tags((e) => {
   e.createTag(
     'kubejs:custom_mechanics',
-    'kubejs:andesite_mechanism',
+    KINETIC_MECHANISM,
     'Custom Mechanics',
     'All the custom crafting and interaction mechanics in this modpack',
     [

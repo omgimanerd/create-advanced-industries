@@ -181,7 +181,7 @@ ServerEvents.recipes((e) => {
   e.remove({ output: 'create:precision_mechanism' })
   create
     .SequencedAssembly(
-      'kubejs:andesite_mechanism',
+      KINETIC_MECHANISM,
       'create:incomplete_precision_mechanism'
     )
     .deploy('create:electron_tube')

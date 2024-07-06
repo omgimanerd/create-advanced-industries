@@ -44,11 +44,12 @@ JEIEvents.hideItems((e) => {
   })
 
   // Hide intermediate mechanism items.
-  e.hide('kubejs:incomplete_andesite_mechanism')
+  e.hide('kubejs:incomplete_kinetic_mechanism')
   e.hide('kubejs:incomplete_copper_mechanism')
   e.hide('kubejs:incomplete_source_mechanism')
   e.hide('kubejs:incomplete_logistics_mechanism')
   e.hide('kubejs:incomplete_crystalline_mechanism')
+  e.hide('createteleporters:incomplete_q_mechanism')
 })
 
 JEIEvents.addFluids((e) => {

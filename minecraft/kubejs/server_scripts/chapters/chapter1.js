@@ -55,9 +55,9 @@ ServerEvents.recipes((e) => {
     '#forge:stripped_logs',
   ])
 
-  // Andesite mechanism
+  // Kinetic mechanism
   e.shaped(
-    'kubejs:andesite_mechanism',
+    KINETIC_MECHANISM,
     [
       'PSP', //
       'CAC', //
@@ -69,14 +69,11 @@ ServerEvents.recipes((e) => {
       C: 'create:cogwheel',
       A: 'create:andesite_alloy',
     }
-  ).id('kubejs:andesite_mechanism_manual_only')
+  ).id('kubejs:kinetic_mechanism_manual_only')
   create
-    .SequencedAssembly(
-      'create:andesite_alloy',
-      'kubejs:incomplete_andesite_mechanism'
-    )
+    .SequencedAssembly('create:andesite_alloy', INCOMPLETE_KINETIC_MECHANISM)
     .deploy('#minecraft:wooden_slabs')
     .deploy('create:shaft')
     .deploy('create:cogwheel')
-    .outputs('kubejs:andesite_mechanism')
+    .outputs(KINETIC_MECHANISM)
 })

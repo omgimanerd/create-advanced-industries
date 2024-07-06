@@ -99,7 +99,7 @@ ServerEvents.recipes((e) => {
   const thermalDeviceKeys = {
     P: '#minecraft:planks',
     G: 'thermal:iron_gear',
-    M: 'kubejs:andesite_mechanism',
+    M: KINETIC_MECHANISM,
     C: 'create:andesite_casing',
     S: 'tfmg:steel_casing',
     H: 'tfmg:heavy_plate',
@@ -211,7 +211,7 @@ ServerEvents.recipes((e) => {
       S: 'createdeco:zinc_sheet',
       A: 'create:andesite_alloy',
       G: '#forge:glass',
-      M: 'kubejs:andesite_mechanism',
+      M: KINETIC_MECHANISM,
     }
   )
   redefineRecipe(

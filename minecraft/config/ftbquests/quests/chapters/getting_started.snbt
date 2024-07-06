@@ -294,7 +294,7 @@
 				"3CD18FA2BBA17E39"
 			]
 			description: [
-				"Andesite Mechanisms unlock the basics of Create, and are the subject of Chapter 1."
+				"Kinetic Mechanisms unlock the basics of Create, and are the subject of Chapter 1."
 				""
 				"They're quite expensive if you handcraft them, so let's try and automate them. The rest of the quests in this chapter are optional, but will help guide you through some of the basic Create machines. As always, remember to ponder them if you get stuck."
 				""
@@ -305,7 +305,7 @@
 				{
 					count: 8
 					id: "670BA254F927F34B"
-					item: "kubejs:andesite_mechanism"
+					item: "kubejs:kinetic_mechanism"
 					type: "item"
 				}
 				{
@@ -317,10 +317,10 @@
 			size: 2.0d
 			tasks: [{
 				id: "22F640220A84726B"
-				item: "kubejs:andesite_mechanism"
+				item: "kubejs:kinetic_mechanism"
 				type: "item"
 			}]
-			title: "Your First Andesite Mechanism"
+			title: "Your First Kinetic Mechanism"
 			x: 9.0d
 			y: 0.0d
 		}
