@@ -96,6 +96,16 @@ ServerEvents.recipes((e) => {
       M: 'create:mechanical_crafter',
     })
   )
+
+  create
+    .SequencedAssembly('create:powdered_obsidian')
+    .deploy('#forge:glass_panes')
+    .deploy('pneumaticcraft:plastic')
+    .deploy('#forge:glass_panes')
+    .deploy('pneumaticcraft:plastic')
+    .loops(2)
+    .outputs('2x thermal:obsidian_glass')
+
   const thermalDeviceKeys = {
     P: '#minecraft:planks',
     G: 'thermal:iron_gear',
