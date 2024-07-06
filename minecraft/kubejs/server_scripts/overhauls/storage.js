@@ -29,7 +29,7 @@ ServerEvents.recipes((e) => {
       { id: 'functionalstorage:storage_controller' },
     ],
     'minecraft:comparator',
-    'create:precision_mechanism'
+    PRECISION_MECHANISM
   )
   redefineRecipe(
     'functionalstorage:framed_storage_controller',
@@ -67,7 +67,7 @@ ServerEvents.recipes((e) => {
     ],
     {
       P: '#minecraft:planks',
-      M: 'createteleporters:quantum_mechanism',
+      M: QUANTUM_MECHANISM,
       D: '#functionalstorage:drawer',
     }
   )
@@ -84,7 +84,7 @@ ServerEvents.recipes((e) => {
       },
     ],
     'minecraft:redstone',
-    'create:precision_mechanism'
+    PRECISION_MECHANISM
   )
 
   /////////////////////
@@ -94,7 +94,7 @@ ServerEvents.recipes((e) => {
     Q: 'refinedstorage:quartz_enriched_iron',
     B: 'refinedstorage:basic_processor',
     G: 'refinedstorage:improved_processor',
-    M: 'kubejs:logistics_mechanism',
+    M: LOGISTICS_MECHANISM,
     L: '#minecraft:glass',
     R: 'minecraft:redstone',
   }
@@ -146,7 +146,7 @@ ServerEvents.recipes((e) => {
       id: /^refinedstorage:[0-9]+k(fluid_){0,1}_storage_part$/,
     },
     'minecraft:redstone',
-    'kubejs:logistics_mechanism'
+    LOGISTICS_MECHANISM
   )
   redefineRecipe(
     '2x refinedstorage:upgrade',
@@ -187,14 +187,14 @@ ServerEvents.recipes((e) => {
       },
     ],
     'minecraft:redstone',
-    'kubejs:logistics_mechanism'
+    LOGISTICS_MECHANISM
   )
   e.replaceInput(
     {
       id: 'refinedstorage:controller',
     },
     'kubejs:silicon_wafer',
-    'kubejs:logistics_mechanism'
+    LOGISTICS_MECHANISM
   )
 
   //////////////////
@@ -205,7 +205,7 @@ ServerEvents.recipes((e) => {
       id: /^extrastorage:part\/storagepart_[0-9]+k(_fluid){0,1}$/,
     },
     'minecraft:redstone',
-    'kubejs:logistics_mechanism'
+    LOGISTICS_MECHANISM
   )
 
   ///////////////////////
@@ -220,7 +220,7 @@ ServerEvents.recipes((e) => {
     ],
     {
       E: 'kubejs:resonant_ender_pearl',
-      M: 'createteleporters:quantum_mechanism',
+      M: QUANTUM_MECHANISM,
       R: 'refinedstorage:range_upgrade',
       N: 'thermal:enderium_ingot',
     }
@@ -234,7 +234,7 @@ ServerEvents.recipes((e) => {
   e.replaceInput(
     { id: 'rsrequestify:requester' },
     'minecraft:redstone',
-    'kubejs:logistics_mechanism'
+    LOGISTICS_MECHANISM
   )
 
   //////////////////////////////
@@ -245,7 +245,7 @@ ServerEvents.recipes((e) => {
       mod: 'toms_storage',
     },
     'minecraft:comparator',
-    'create:precision_mechanism'
+    PRECISION_MECHANISM
   )
   e.replaceInput(
     {
@@ -266,7 +266,7 @@ ServerEvents.recipes((e) => {
       id: 'toms_storage:inventory_cable_connector',
     },
     'minecraft:quartz',
-    'create:precision_mechanism'
+    PRECISION_MECHANISM
   )
   e.remove({ id: 'toms_storage:adv_wireless_terminal' })
   e.shaped(
@@ -278,9 +278,9 @@ ServerEvents.recipes((e) => {
     ],
     {
       S: '#forge:plates/netherite',
-      M: 'kubejs:logistics_mechanism',
+      M: LOGISTICS_MECHANISM,
       T: 'toms_storage:ts.wireless_terminal',
-      Q: 'createteleporters:quantum_mechanism',
+      Q: QUANTUM_MECHANISM,
     }
   )
   e.replaceInput(

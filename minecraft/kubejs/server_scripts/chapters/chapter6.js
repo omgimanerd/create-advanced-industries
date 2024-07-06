@@ -110,7 +110,7 @@ ServerEvents.recipes((e) => {
   )
   // Apotheosis material automation
   // Common Material: Mysterious Scrap Metal
-  create.crushing('4x apotheosis:common_material', 'tfmg:steel_mechanism')
+  create.crushing('4x apotheosis:common_material', STEEL_MECHANISM)
   // Uncommon Material: Timeworn Fabric
   e.remove({ id: 'apotheotic_additions:stonecutting/timeworn_fabric' })
   e.remove({ id: 'apotheotic_additions:stonecutting/timeworn_fancy' })
@@ -125,7 +125,7 @@ ServerEvents.recipes((e) => {
   )
   // TODO make this corundum farming
   create // Rare Material: Luminous Crystal Shard
-    .SequencedAssembly('kubejs:crystalline_mechanism')
+    .SequencedAssembly(CRYSTALLINE_MECHANISM)
     .fill(Fluid.of('create_enchantment_industry:experience', 64))
     .cut(2, 40)
     .deploy('thermal:lumium_ingot')
@@ -197,7 +197,7 @@ ServerEvents.recipes((e) => {
     {
       A: 'createutilities:polished_amethyst',
       D: 'minecraft:diamond',
-      M: 'kubejs:crystalline_mechanism',
+      M: CRYSTALLINE_MECHANISM,
     }
   )
 
@@ -209,7 +209,7 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'gag:time_sand_pouch' })
   create
     .SequencedAssembly('thermal:satchel')
-    .deploy('kubejs:crystalline_mechanism')
+    .deploy(CRYSTALLINE_MECHANISM)
     .fill(Fluid.of('create_enchantment_industry:experience', 1000))
     .energize(20000)
     .loops(4)
@@ -446,7 +446,7 @@ ServerEvents.recipes((e) => {
   create
     .SequencedAssembly('minecraft:glass_pane')
     .deploy('minecraft:purpur_slab')
-    .deploy('kubejs:crystalline_mechanism')
+    .deploy(CRYSTALLINE_MECHANISM)
     .deploy('minecraft:nether_star')
     .energize(25000)
     .outputs('minecraft:end_crystal')
@@ -461,7 +461,7 @@ ServerEvents.recipes((e) => {
 
   e.remove({ id: 'create_things_and_misc:vibration_mecanism_craft' })
   create
-    .SequencedAssembly('kubejs:crystalline_mechanism')
+    .SequencedAssembly(CRYSTALLINE_MECHANISM, INCOMPLETE_VIBRATION_MECHANISM)
     .deploy('createutilities:polished_amethyst')
     .deploy(
       getGemItem(
@@ -475,7 +475,7 @@ ServerEvents.recipes((e) => {
     .fill(potionFluid('apotheosis:extra_long_flying', 250))
     .fill(Fluid.of('kubejs:infused_dragon_breath', 250))
     .vibrate(200)
-    .outputs('create_things_and_misc:vibration_mechanism')
+    .outputs(VIBRATION_MECHANISM)
 
   // TODO alternative uses for warden tendrils
   // TODO alternative uses for infused dragon's breath

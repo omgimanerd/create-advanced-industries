@@ -49,7 +49,7 @@ ServerEvents.recipes((e) => {
 
   // Copper mechanism
   e.shaped(
-    'kubejs:copper_mechanism',
+    COPPER_MECHANISM,
     [
       'CRC', //
       'RMR', //
@@ -62,9 +62,9 @@ ServerEvents.recipes((e) => {
     }
   ).id('kubejs:copper_mechanism_manual_only')
   create
-    .SequencedAssembly(KINETIC_MECHANISM, 'kubejs:incomplete_copper_mechanism')
+    .SequencedAssembly(KINETIC_MECHANISM, INCOMPLETE_COPPER_MECHANISM)
     .deploy('create:copper_sheet')
     .deploy('thermal:cured_rubber')
     .press()
-    .outputs('kubejs:copper_mechanism')
+    .outputs(COPPER_MECHANISM)
 })

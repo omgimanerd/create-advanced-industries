@@ -71,10 +71,10 @@ ServerEvents.recipes((e) => {
 
   // Source mechanism
   create
-    .SequencedAssembly(KINETIC_MECHANISM, 'kubejs:incomplete_source_mechanism')
+    .SequencedAssembly(KINETIC_MECHANISM, INCOMPLETE_SOURCE_MECHANISM)
     .deploy('ars_nouveau:source_gem')
     .press()
     .fill('starbunclemania:source_fluid', 100)
     .press()
-    .outputs('kubejs:source_mechanism')
+    .outputs(SOURCE_MECHANISM)
 })

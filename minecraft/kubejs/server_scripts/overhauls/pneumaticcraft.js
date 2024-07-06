@@ -31,7 +31,7 @@ ServerEvents.recipes((e) => {
     H: 'tfmg:heavy_plate',
     B: 'tfmg:steel_bars',
     I: 'tfmg:steel_ingot',
-    M: 'tfmg:steel_mechanism',
+    M: STEEL_MECHANISM,
     T: 'pneumaticcraft:pressure_tube',
   }
   redefineRecipe(
@@ -94,7 +94,7 @@ ServerEvents.recipes((e) => {
     'pneumaticcraft:reinforced_brick_slab': 'tfmg:steel_ingot',
     'pneumaticcraft:reinforced_stone_slab': 'tfmg:heavy_plate',
     'pneumaticcraft:compressed_iron_gear': 'thermal:iron_gear',
-    'pneumaticcraft:logistics_core': 'kubejs:logistics_mechanism',
+    'pneumaticcraft:logistics_core': LOGISTICS_MECHANISM,
   }
   // Replace all recipes that used reinforced bricks or stone and make them
   // use steel and heavy plates. Replace all recipes with logistics cores with
@@ -127,7 +127,7 @@ ServerEvents.recipes((e) => {
     H: 'tfmg:heavy_plate',
     C: 'tfmg:steel_casing',
     S: 'tfmg:steel_ingot',
-    M: 'tfmg:steel_mechanism',
+    M: STEEL_MECHANISM,
     A: 'pneumaticcraft:advanced_pressure_tube',
     L: 'pneumaticcraft:plastic',
     N: 'pneumaticcraft:pneumatic_cylinder',
@@ -296,7 +296,7 @@ ServerEvents.recipes((e) => {
       ' H ', //
     ],
     Object.assign({}, pneumaticcraftKeys, {
-      M: 'kubejs:logistics_mechanism',
+      M: LOGISTICS_MECHANISM,
       C: '#forge:chests/wooden',
     })
   )
@@ -404,7 +404,7 @@ ServerEvents.recipes((e) => {
     )
   }
   redefineRecipe('pneumaticcraft:transfer_gadget', [
-    'kubejs:logistics_mechanism',
+    LOGISTICS_MECHANISM,
     'minecraft:hopper',
   ])
   // Minigun ammo manufacturing

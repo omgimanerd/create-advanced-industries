@@ -183,7 +183,7 @@ const getGemItem = (id, rarity) => {
       create.mechanical_crafting(getGemItem(gem, tiers[0]), pattern, {
         A: 'createutilities:polished_amethyst',
         B: 'create:experience_nugget',
-        M: 'kubejs:crystalline_mechanism',
+        M: CRYSTALLINE_MECHANISM,
       })
       ++i
     }

@@ -74,7 +74,7 @@ ServerEvents.recipes((e) => {
         A: 'create:andesite_alloy',
         S: 'create:shaft',
         C: 'minecraft:copper_ingot',
-        M: 'kubejs:copper_mechanism',
+        M: COPPER_MECHANISM,
       }
     )
     redefineRecipe('create:belt_connector', ['RRR'], {
@@ -116,7 +116,7 @@ ServerEvents.recipes((e) => {
       'minecraft:iron_ingot',
       'create:iron_sheet'
     )
-    redefineMechanismRecipe('create:precision_mechanism')(
+    redefineMechanismRecipe(PRECISION_MECHANISM)(
       '4x create:smart_chute',
       'create:brass_sheet',
       'create:chute',
@@ -129,22 +129,22 @@ ServerEvents.recipes((e) => {
       'minecraft:air'
     )
     redefineRecipe('create:mechanical_pump', [
-      'kubejs:copper_mechanism',
+      COPPER_MECHANISM,
       'create:cogwheel',
       'create:fluid_pipe',
     ])
-    redefineMechanismRecipe('kubejs:copper_mechanism')(
+    redefineMechanismRecipe(COPPER_MECHANISM)(
       '2x create:smart_fluid_pipe',
       'create:filter',
       'create:fluid_pipe',
       'minecraft:redstone_torch'
     )
     redefineRecipe('create:fluid_valve', [
-      'kubejs:copper_mechanism',
+      COPPER_MECHANISM,
       'create:fluid_pipe',
       'create:iron_sheet',
     ])
-    redefineMechanismRecipe('kubejs:copper_mechanism')(
+    redefineMechanismRecipe(COPPER_MECHANISM)(
       '2x create:fluid_tank',
       'create:copper_sheet',
       'minecraft:barrel',
@@ -152,31 +152,31 @@ ServerEvents.recipes((e) => {
     )
     redefineRecipe('create:hose_pulley', ['C', 'M', 'P'], {
       C: 'create:copper_casing',
-      M: 'kubejs:copper_mechanism',
+      M: COPPER_MECHANISM,
       P: 'create:rope_pulley',
     })
-    redefineMechanismRecipe('kubejs:copper_mechanism')(
+    redefineMechanismRecipe(COPPER_MECHANISM)(
       '2x create:item_drain',
       'minecraft:iron_bars',
       'create:copper_casing',
       'minecraft:air'
     )
-    redefineMechanismRecipe('kubejs:copper_mechanism')(
+    redefineMechanismRecipe(COPPER_MECHANISM)(
       '2x create:spout',
       'minecraft:air',
       'create:copper_casing',
       'thermal:cured_rubber'
     )
-    redefineMechanismRecipe('kubejs:copper_mechanism')(
+    redefineMechanismRecipe(COPPER_MECHANISM)(
       '2x create:portable_fluid_interface',
       'create:chute',
       'create:copper_casing',
       'minecraft:air'
     )
-    redefineMechanismRecipe('create:precision_mechanism')(
+    redefineMechanismRecipe(PRECISION_MECHANISM)(
       'create:steam_engine',
       'create:shaft',
-      'kubejs:copper_mechanism',
+      COPPER_MECHANISM,
       'minecraft:copper_block'
     )
     redefineMechanismRecipe(KINETIC_MECHANISM)(
@@ -299,7 +299,7 @@ ServerEvents.recipes((e) => {
       'create:andesite_casing',
       'create:crushing_wheel'
     )
-    redefineMechanismRecipe('create:precision_mechanism')(
+    redefineMechanismRecipe(PRECISION_MECHANISM)(
       '2x create:mechanical_crafter',
       'create:electron_tube',
       'create:brass_casing',
@@ -309,9 +309,9 @@ ServerEvents.recipes((e) => {
       'create:brass_casing',
       'create:cogwheel',
       'create:electron_tube',
-      'create:precision_mechanism',
+      PRECISION_MECHANISM,
     ])
-    redefineMechanismRecipe('create:precision_mechanism')(
+    redefineMechanismRecipe(PRECISION_MECHANISM)(
       'create:rotation_speed_controller',
       'create:cogwheel',
       'create:shaft',
@@ -431,7 +431,7 @@ ServerEvents.recipes((e) => {
     e.remove({ id: 'balancedflight:sequenced_assembly/flight_anchor' })
     create
       .SequencedAssembly('minecraft:beacon')
-      .deploy('create_things_and_misc:vibration_mechanism')
+      .deploy(VIBRATION_MECHANISM)
       .deploy('create_connected:brass_gearbox')
       .fill(potionFluid('apotheosis:extra_long_flying', 1000))
       .energize(10000000)
@@ -440,7 +440,7 @@ ServerEvents.recipes((e) => {
     e.remove({ id: 'create:mechanical_crafting/ascended_flight_ring' })
     create
       .SequencedAssembly('ars_nouveau:jump_ring')
-      .deploy('create_things_and_misc:vibration_mechanism')
+      .deploy(VIBRATION_MECHANISM)
       .fill(potionFluid('apotheosis:extra_long_flying', 1000))
       .fill(Fluid.of('kubejs:molten_gold', 1000))
       .energize(1000000)
@@ -480,7 +480,7 @@ ServerEvents.recipes((e) => {
         S: 'create_new_age:copper_wire',
         I: 'tfmg:steel_ingot',
         P: 'pneumaticcraft:capacitor',
-        M: 'create:precision_mechanism',
+        M: PRECISION_MECHANISM,
         B: 'create:brass_sheet',
         X: 'create:brass_casing',
       }
@@ -502,7 +502,7 @@ ServerEvents.recipes((e) => {
         B: 'thermal:electrum_block',
       }
     )
-    redefineMechanismRecipe('create:precision_mechanism')(
+    redefineMechanismRecipe(PRECISION_MECHANISM)(
       'createaddition:portable_energy_interface',
       'create_new_age:copper_wire',
       'create:brass_casing',
@@ -582,7 +582,7 @@ ServerEvents.recipes((e) => {
     })
     redefineRecipe('create_enchantment_industry:printer', ['C', 'M', 'P'], {
       C: 'create:copper_casing',
-      M: 'kubejs:copper_mechanism',
+      M: COPPER_MECHANISM,
       P: 'create:mechanical_press',
     })
   }
@@ -603,10 +603,10 @@ ServerEvents.recipes((e) => {
       {
         H: 'create:shaft',
         B: 'create:brass_sheet',
-        P: 'create:precision_mechanism',
+        P: PRECISION_MECHANISM,
         T: 'create:copper_backtank',
         C: 'create:chute',
-        S: 'tfmg:steel_mechanism',
+        S: STEEL_MECHANISM,
       }
     )
     e.remove({ id: 'create_jetpack:netherite_jetpack' })
@@ -621,7 +621,7 @@ ServerEvents.recipes((e) => {
       {
         H: 'create:shaft',
         S: '#forge:plates/netherite',
-        M: 'tfmg:steel_mechanism',
+        M: STEEL_MECHANISM,
         P: 'create:netherite_backtank',
         C: 'create:smart_chute',
         J: 'create_jetpack:jetpack',
@@ -633,7 +633,7 @@ ServerEvents.recipes((e) => {
   // Create Mechanical Extruder //
   ////////////////////////////////
   {
-    redefineMechanismRecipe('tfmg:steel_mechanism')(
+    redefineMechanismRecipe(STEEL_MECHANISM)(
       'create_mechanical_extruder:mechanical_extruder',
       'create:shaft',
       'create:mechanical_press',
@@ -682,7 +682,7 @@ ServerEvents.recipes((e) => {
       H: 'tfmg:heavy_plate',
       C: 'tfmg:heavy_machinery_casing',
       I: 'tfmg:steel_ingot',
-      M: 'tfmg:steel_mechanism',
+      M: STEEL_MECHANISM,
     }
     redefineRecipe(
       'create_new_age:energiser_t1',
@@ -842,7 +842,7 @@ ServerEvents.recipes((e) => {
         S: 'create:shaft',
         C: 'tfmg:steel_casing',
         P: 'create:copper_sheet',
-        M: 'tfmg:steel_mechanism',
+        M: STEEL_MECHANISM,
       }
     )
 
@@ -960,7 +960,7 @@ ServerEvents.recipes((e) => {
         W: 'vintageimprovements:spring_coiling_machine_wheel',
         C: 'create:andesite_casing',
         H: 'create:shaft',
-        M: 'tfmg:steel_mechanism',
+        M: STEEL_MECHANISM,
       }
     )
     redefineRecipe(
@@ -973,7 +973,7 @@ ServerEvents.recipes((e) => {
       {
         S: 'vintageimprovements:steel_spring',
         O: 'create:fluid_pipe',
-        M: 'tfmg:steel_mechanism',
+        M: STEEL_MECHANISM,
         C: 'create:andesite_casing',
         H: 'tfmg:heavy_plate',
         P: 'create:mechanical_pump',
@@ -1023,7 +1023,7 @@ ServerEvents.recipes((e) => {
         C: 'create:andesite_casing',
         S: 'create:shaft',
         D: 'thermal:drill_head',
-        M: 'create:precision_mechanism',
+        M: PRECISION_MECHANISM,
         P: 'create:iron_sheet',
       }
     )

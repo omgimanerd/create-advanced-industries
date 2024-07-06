@@ -7,7 +7,7 @@ ServerEvents.recipes((e) => {
   e.replaceInput(
     { id: 'apotheosis:library' },
     'minecraft:ender_chest',
-    'kubejs:crystalline_mechanism'
+    CRYSTALLINE_MECHANISM
   )
 
   // TODO: this is a confusing recipe in JEI.
@@ -25,6 +25,6 @@ ServerEvents.recipes((e) => {
   e.replaceInput(
     { output: /^apotheotic_additions:[a-z]+_shelf$/ },
     'apotheosis:ancient_material',
-    'create_things_and_misc:vibration_mechanism'
+    VIBRATION_MECHANISM
   )
 })

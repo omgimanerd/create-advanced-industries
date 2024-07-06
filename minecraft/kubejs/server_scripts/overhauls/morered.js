@@ -38,6 +38,6 @@ ServerEvents.recipes((e) => {
   ]
   for (let component of logicComponents) {
     if (component.startsWith('morered')) e.remove({ output: component })
-    e.stonecutting(component, 'vintageimprovements:redstone_module')
+    e.stonecutting(component, REDSTONE_MECHANISM)
   }
 })

@@ -56,7 +56,7 @@ ServerEvents.recipes((e) => {
       F: 'minecraft:furnace',
       C: 'tfmg:steel_casing',
       S: 'tfmg:steel_ingot',
-      M: 'tfmg:steel_mechanism',
+      M: STEEL_MECHANISM,
     }
   )
   redefineRecipe(
@@ -86,7 +86,7 @@ ServerEvents.recipes((e) => {
       T: 'pneumaticcraft:small_tank',
       C: 'tfmg:steel_casing',
       S: 'tfmg:steel_ingot',
-      M: 'tfmg:steel_mechanism',
+      M: STEEL_MECHANISM,
     }
   )
 
@@ -452,7 +452,7 @@ ServerEvents.recipes((e) => {
       H: 'tfmg:heavy_plate',
       D: 'kubejs:graphite',
       S: 'create:shaft',
-      M: 'tfmg:steel_mechanism',
+      M: STEEL_MECHANISM,
       C: 'tfmg:heavy_machinery_casing',
     }
   )
@@ -768,7 +768,7 @@ ServerEvents.recipes((e) => {
 
   // Mechanism assembly
   create.mechanical_crafting(
-    'kubejs:logistics_mechanism',
+    LOGISTICS_MECHANISM,
     [
       'PPPPP', //
       'PRNRP', //
@@ -777,7 +777,7 @@ ServerEvents.recipes((e) => {
       'PPPPP', //
     ],
     {
-      M: 'tfmg:steel_mechanism',
+      M: STEEL_MECHANISM,
       P: 'pneumaticcraft:plastic',
       C: 'pneumaticcraft:printed_circuit_board',
       B: 'refinedstorage:basic_processor',

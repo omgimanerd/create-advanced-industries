@@ -178,15 +178,12 @@ ServerEvents.recipes((e) => {
   ])
 
   // Precision mechanism
-  e.remove({ output: 'create:precision_mechanism' })
+  e.remove({ output: PRECISION_MECHANISM })
   create
-    .SequencedAssembly(
-      KINETIC_MECHANISM,
-      'create:incomplete_precision_mechanism'
-    )
+    .SequencedAssembly(KINETIC_MECHANISM, INCOMPLETE_PRECISION_MECHANISM)
     .deploy('create:electron_tube')
     .press()
     .deploy('create:brass_sheet')
     .press()
-    .outputs('create:precision_mechanism')
+    .outputs(PRECISION_MECHANISM)
 })

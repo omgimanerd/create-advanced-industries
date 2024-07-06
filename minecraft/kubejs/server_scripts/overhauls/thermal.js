@@ -103,7 +103,7 @@ ServerEvents.recipes((e) => {
     C: 'create:andesite_casing',
     S: 'tfmg:steel_casing',
     H: 'tfmg:heavy_plate',
-    N: 'tfmg:steel_mechanism',
+    N: STEEL_MECHANISM,
   }
   redefineRecipe(
     'thermal:device_tree_extractor',
@@ -125,7 +125,7 @@ ServerEvents.recipes((e) => {
     ],
     Object.assign({}, thermalDeviceKeys, {
       G: 'thermal:copper_gear',
-      M: 'kubejs:copper_mechanism',
+      M: COPPER_MECHANISM,
       F: 'minecraft:fishing_rod',
     })
   )
@@ -239,7 +239,7 @@ ServerEvents.recipes((e) => {
       D: 'create_new_age:overcharged_diamond',
       S: 'pneumaticcraft:plastic',
       P: 'pneumaticcraft:printed_circuit_board',
-      M: 'tfmg:steel_mechanism',
+      M: STEEL_MECHANISM,
     }
   )
   redefineRecipe(

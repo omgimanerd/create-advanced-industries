@@ -27,7 +27,7 @@ ServerEvents.recipes((e) => {
   redefineRecipe('ars_creo:starbuncle_wheel', [
     'ars_nouveau:starbuncle_charm',
     'create:water_wheel',
-    'create:precision_mechanism',
+    PRECISION_MECHANISM,
   ])
 
   /////////////////
@@ -42,7 +42,7 @@ ServerEvents.recipes((e) => {
     ],
     {
       B: 'minecraft:book',
-      M: 'kubejs:source_mechanism',
+      M: SOURCE_MECHANISM,
     }
   )
   redefineRecipe(
@@ -54,7 +54,7 @@ ServerEvents.recipes((e) => {
     ],
     {
       L: 'minecraft:lapis_lazuli',
-      M: 'createteleporters:quantum_mechanism',
+      M: QUANTUM_MECHANISM,
       P: 'minecraft:paper',
       S: 'ars_nouveau:source_gem',
     }
@@ -62,7 +62,7 @@ ServerEvents.recipes((e) => {
   create
     .SequencedAssembly('minecraft:paper')
     .deploy('minecraft:lapis_lazuli')
-    .deploy('createteleporters:quantum_mechanism')
+    .deploy(QUANTUM_MECHANISM)
     .fill(Fluid.of('starbunclemania:source_fluid', 500))
     .outputs('ars_nouveau:warp_scroll')
   e.remove({ id: 'ars_nouveau:stable_warp_scroll' })
@@ -87,7 +87,7 @@ ServerEvents.recipes((e) => {
   e.replaceInput(
     'ars_nouveau:enchanting_apparatus',
     'minecraft:gold_ingot',
-    'kubejs:source_mechanism'
+    SOURCE_MECHANISM
   )
   redefineRecipe(
     'ars_nouveau:source_jar',
@@ -99,13 +99,13 @@ ServerEvents.recipes((e) => {
     {
       S: 'ars_nouveau:archwood_slab',
       G: '#forge:glass',
-      M: 'kubejs:source_mechanism',
+      M: SOURCE_MECHANISM,
     }
   )
   e.replaceInput(
     'ars_nouveau:relay',
     'ars_nouveau:source_gem_block',
-    'kubejs:source_mechanism'
+    SOURCE_MECHANISM
   )
   redefineRecipe(
     'ars_nouveau:scribes_table',
@@ -117,7 +117,7 @@ ServerEvents.recipes((e) => {
     {
       P: 'ars_nouveau:archwood_slab',
       N: 'minecraft:gold_nugget',
-      M: 'kubejs:source_mechanism',
+      M: SOURCE_MECHANISM,
       L: '#forge:logs/archwood',
     }
   )
@@ -131,7 +131,7 @@ ServerEvents.recipes((e) => {
     {
       P: 'ars_nouveau:archwood_planks',
       G: 'minecraft:gold_ingot',
-      M: 'kubejs:source_mechanism',
+      M: SOURCE_MECHANISM,
     }
   )
   redefineEnchantingRecipe(
@@ -139,11 +139,11 @@ ServerEvents.recipes((e) => {
     [
       'minecraft:quartz',
       'minecraft:lapis_lazuli',
-      'kubejs:source_mechanism',
+      SOURCE_MECHANISM,
       'minecraft:lapis_lazuli',
       'minecraft:quartz',
       'minecraft:lapis_lazuli',
-      'kubejs:source_mechanism',
+      SOURCE_MECHANISM,
       'minecraft:lapis_lazuli',
     ],
     'ars_nouveau:relay'
@@ -151,18 +151,18 @@ ServerEvents.recipes((e) => {
   e.replaceInput(
     'ars_nouveau:arcane_core',
     'ars_nouveau:source_gem',
-    'kubejs:source_mechanism'
+    SOURCE_MECHANISM
   )
   redefineEnchantingRecipe(
     'ars_nouveau:relay_warp',
     [
-      'kubejs:source_mechanism',
+      SOURCE_MECHANISM,
       'minecraft:ender_pearl',
-      'createteleporters:quantum_mechanism',
+      QUANTUM_MECHANISM,
       'minecraft:ender_pearl',
-      'kubejs:source_mechanism',
+      SOURCE_MECHANISM,
       'minecraft:ender_pearl',
-      'createteleporters:quantum_mechanism',
+      QUANTUM_MECHANISM,
       'minecraft:ender_pearl',
     ],
     'ars_nouveau:relay'
@@ -178,19 +178,19 @@ ServerEvents.recipes((e) => {
     {
       S: 'ars_nouveau:source_gem',
       G: 'minecraft:gold_ingot',
-      M: 'kubejs:source_mechanism',
+      M: SOURCE_MECHANISM,
     }
   )
   redefineEnchantingRecipe(
     'ars_nouveau:storage_lectern',
     [
-      'kubejs:source_mechanism',
+      SOURCE_MECHANISM,
       '#forge:chests',
-      'create:precision_mechanism',
+      PRECISION_MECHANISM,
       '#forge:chests',
-      'kubejs:source_mechanism',
+      SOURCE_MECHANISM,
       '#forge:chests',
-      'create:precision_mechanism',
+      PRECISION_MECHANISM,
       '#forge:chests',
     ],
     'minecraft:lectern',
@@ -204,7 +204,7 @@ ServerEvents.recipes((e) => {
       ' G ', //
     ],
     {
-      M: 'kubejs:source_mechanism',
+      M: SOURCE_MECHANISM,
       G: 'minecraft:gold_ingot',
       P: 'ars_nouveau:arcane_pedestal',
     }
@@ -228,7 +228,7 @@ ServerEvents.recipes((e) => {
     {
       G: 'minecraft:gold_ingot',
       B: 'minecraft:bucket',
-      M: 'kubejs:source_mechanism',
+      M: SOURCE_MECHANISM,
     }
   )
 })

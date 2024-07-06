@@ -47,11 +47,11 @@ ServerEvents.recipes((e) => {
   // Redstone mechanism overhaul
   e.remove({ id: 'vintageimprovements:sequenced_assembly/redstone_module' })
   create
-    .SequencedAssembly('create:precision_mechanism')
+    .SequencedAssembly(PRECISION_MECHANISM, INCOMPLETE_REDSTONE_MECHANISM)
     .fill(Fluid.of('kubejs:molten_redstone', MeltableItem.DEFAULT_NUGGET_FLUID))
     .deploy('create_new_age:copper_circuit')
     .deploy('create_connected:control_chip')
     .deploy('morered:red_alloy_wire')
     .loops(4)
-    .outputs('vintageimprovements:redstone_module')
+    .outputs(REDSTONE_MECHANISM)
 })

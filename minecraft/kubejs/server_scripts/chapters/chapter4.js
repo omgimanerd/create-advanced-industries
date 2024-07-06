@@ -247,15 +247,12 @@ ServerEvents.recipes((e) => {
   // Steel mechanism overhaul
   e.remove({ id: 'tfmg:sequenced_assembly/steel_mechanism' })
   create
-    .SequencedAssembly(
-      'create:precision_mechanism',
-      'tfmg:unfinished_steel_mechanism'
-    )
+    .SequencedAssembly(PRECISION_MECHANISM, INCOMPLETE_STEEL_MECHANISM)
     .deploy('tfmg:heavy_plate')
     .deploy('create:sturdy_sheet')
     .press()
     .deploy('tfmg:screw')
     .deploy('#kubejs:screwdriver')
     .loops(2)
-    .outputs('tfmg:steel_mechanism')
+    .outputs(STEEL_MECHANISM)
 })

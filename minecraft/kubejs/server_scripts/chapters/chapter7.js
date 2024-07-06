@@ -63,15 +63,12 @@ ServerEvents.recipes((e) => {
   // Quantum Mechanism
   e.remove({ id: 'createteleporters:quantum_mechanism_recipe' })
   create
-    .SequencedAssembly(
-      'create_things_and_misc:vibration_mechanism',
-      'createteleporters:incomplete_q_mechanism'
-    )
+    .SequencedAssembly(VIBRATION_MECHANISM, INCOMPLETE_QUANTUM_MECHANISM)
     .fill(potionFluid('quark:resilience', 250))
     .fill(Fluid.of('createteleporters:quantum_fluid', 1000))
     .deploy('createteleporters:advanced_part')
     .deploy('createteleporters:redstone_pearl')
     .deploy('extrastorage:neural_processor')
     .energize(100000)
-    .outputs('createteleporters:quantum_mechanism')
+    .outputs(QUANTUM_MECHANISM)
 })

@@ -317,7 +317,7 @@ ServerEvents.recipes((e) => {
     ],
     {
       G: 'minecraft:gold_ingot',
-      M: 'kubejs:source_mechanism',
+      M: SOURCE_MECHANISM,
       P: 'ars_nouveau:archwood_planks',
     }
   )
@@ -667,17 +667,17 @@ ServerEvents.recipes((e) => {
       'createutilities:polished_amethyst',
       'gag:sacred_salt',
     ],
-    'kubejs:source_mechanism',
-    'kubejs:incomplete_crystalline_mechanism',
+    SOURCE_MECHANISM,
+    INCOMPLETE_CRYSTALLINE_MECHANISM,
     8000
   )
   create
-    .SequencedAssembly('kubejs:incomplete_crystalline_mechanism')
+    .SequencedAssembly(INCOMPLETE_CRYSTALLINE_MECHANISM)
     .deploy('ars_elemental:mark_of_mastery')
     .fill(potionFluid('ars_nouveau:spell_damage_potion_strong', 250))
     .fill(potionFluid('ars_nouveau:mana_regen_potion_long', 250))
     .fill(potionFluid('minecraft:strong_harming', 250))
     .fill(potionFluid('minecraft:strong_strength', 250))
     .fill(potionFluid('ars_elemental:shock_potion', 250))
-    .outputs('kubejs:crystalline_mechanism')
+    .outputs(CRYSTALLINE_MECHANISM)
 })
