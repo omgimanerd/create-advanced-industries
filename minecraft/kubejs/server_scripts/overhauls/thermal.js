@@ -37,6 +37,30 @@ ServerEvents.recipes((e) => {
   // The only enabled Thermal machines are the chiller, refinery, pyrolyzer,
   // crystallizer, and crafter.
   redefineRecipe(
+    'thermal:machine_chiller',
+    [
+      ' F ', //
+      'ICI', //
+      'PRP', //
+    ],
+    Object.assign({}, thermalMachineKeys, {
+      F: 'create:encased_fan',
+      I: 'minecraft:packed_ice',
+    })
+  )
+  redefineRecipe(
+    'thermal:machine_refinery',
+    [
+      ' T ', //
+      'OCO', //
+      'PRP', //
+    ],
+    Object.assign({}, thermalMachineKeys, {
+      T: 'tfmg:steel_fluid_tank',
+      O: 'pneumaticcraft:refinery_output',
+    })
+  )
+  redefineRecipe(
     'thermal:machine_pyrolyzer',
     [
       ' K ', //
@@ -58,6 +82,18 @@ ServerEvents.recipes((e) => {
     Object.assign({}, thermalMachineKeys, {
       G: '#forge:glass',
       D: 'minecraft:diamond',
+    })
+  )
+  redefineRecipe(
+    'thermal:machine_crafter',
+    [
+      ' E ', //
+      'MCM', //
+      'PRP', //
+    ],
+    Object.assign({}, thermalMachineKeys, {
+      E: 'create:electron_tube',
+      M: 'create:mechanical_crafter',
     })
   )
   const thermalDeviceKeys = {
