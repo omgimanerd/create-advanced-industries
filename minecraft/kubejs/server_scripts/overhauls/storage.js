@@ -95,7 +95,7 @@ ServerEvents.recipes((e) => {
     B: 'refinedstorage:basic_processor',
     G: 'refinedstorage:improved_processor',
     M: LOGISTICS_MECHANISM,
-    L: '#minecraft:glass',
+    L: '#forge:glass',
     R: 'minecraft:redstone',
   }
   e.replaceInput(
@@ -165,6 +165,21 @@ ServerEvents.recipes((e) => {
       'QMQ', //
     ],
     commonRefinedStorageKeys
+  )
+  e.replaceInput(
+    { id: 'refinedstorage:range_upgrade' },
+    'minecraft:ender_pearl',
+    QUANTUM_MECHANISM
+  )
+  e.replaceInput(
+    { id: 'refinedstorage:crafting_upgrade' },
+    'minecraft:crafting_table',
+    'create:mechanical_crafter'
+  )
+  e.replaceInput(
+    { id: 'refinedstorage:regulator_upgrade' },
+    'minecraft:redstone_dust',
+    REDSTONE_MECHANISM
   )
   e.remove({ output: 'refinedstorage:machine_casing' })
   create.item_application('refinedstorage:machine_casing', [
