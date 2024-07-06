@@ -1,7 +1,6 @@
 // priority: 0
 // Defines the logic for spewing dragon's breath from a dragon head and
 // collecting it with a glass bottle.
-// TODO need to disable dragon's from being captured by Ars Nouveau
 
 BlockEvents.rightClicked('minecraft:dragon_head', (e) => {
   const { item, hand, player, block, level } = e
