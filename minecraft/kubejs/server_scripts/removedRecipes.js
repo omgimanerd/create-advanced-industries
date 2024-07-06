@@ -63,8 +63,18 @@ ServerEvents.recipes((e) => {
   ////////////////////
   // Thermal Series //
   ////////////////////
-  // Only the crystallizer and pyrolyzer recipes are whitelisted.
-  e.remove({ id: /^thermal:machines\/(?!crystallizer|pyrolyzer).*/ })
+  // Remove all recipes for disabled machines.
+  e.remove({ type: 'thermal:press' })
+  e.remove({ type: 'thermal:sawmill' })
+  e.remove({ type: 'thermal:pulverizer' })
+  e.remove({ type: 'thermal:smelter' })
+  e.remove({ type: 'thermal:insolator' })
+  e.remove({ type: 'thermal:centrifuge' })
+  e.remove({ type: 'thermal:press' })
+  e.remove({ type: 'thermal:crucible' })
+  e.remove({ type: 'thermal:bottler' })
+  e.remove({ type: 'thermal:brewer' })
+
   e.remove({ id: /^thermal:earth_charge\/[a-z_]+/ })
   e.remove({ id: 'thermal:storage/copper_ingot_from_nuggets' })
   // Remove all fire charge alloying

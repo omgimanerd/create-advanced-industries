@@ -123,7 +123,7 @@ ServerEvents.recipes((e) => {
   e.forEachRecipe({ output: '#forge:gears' }, (r) => {
     const ingredients = r.originalRecipeIngredients
     if (ingredients.size() < 2) {
-      console.error(`Unknown recipe ${recipe}`)
+      console.error(`Unknown recipe ${r}`)
     }
     const ingredientId = ingredients[1].asIngredient().first.id
     const block = global.lookupBlock(ingredientId)
@@ -139,6 +139,15 @@ ServerEvents.recipes((e) => {
       console.error(`No dust form for gear recipe ${r.json}`)
     }
   })
+
+  // Allow rubberwood to be centrifuged into latex.
+  create
+    .centrifuging(
+      [Fluid.of('thermal:latex', 250), '4x thermal:sawdust'],
+      'thermal:rubberwood_log'
+    )
+    .minimalRPM(128)
+    .processingTime(20)
 
   // smithing template netherite upgrade duping
 

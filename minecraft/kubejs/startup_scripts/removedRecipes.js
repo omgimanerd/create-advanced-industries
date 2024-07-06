@@ -90,7 +90,23 @@ global.removedRecipes = [
   { output: 'thermal:phytogro' },
   { output: 'thermal:phyto_grenade' },
   { output: 'thermal:phyto_tnt' },
-  { output: /^thermal:machine_(?!crystallizer|pyrolyzer).*/ },
+  // Only the crystallizer and pyrolyzer machines are whitelisted
+  { output: 'thermal:machine_furnace' },
+  { output: 'thermal:machine_sawmill' },
+  { output: 'thermal:machine_pulverizer' },
+  { output: 'thermal:machine_smelter' },
+  { output: 'thermal:machine_insolator' },
+  { output: 'thermal:machine_centrifuge' },
+  { output: 'thermal:machine_press' },
+  { output: 'thermal:machine_crucible' },
+  // thermal:machine_chiller is enabled
+  // thermal:machine_refinery is enabled
+  // thermal:machine_pyrolyzer is enabled
+  { output: 'thermal:machine_bottler' },
+  { output: 'thermal:machine_brewer' },
+  // thermal:machine_crystallizer is enabled
+  // thermal:machine_crafter is enabled
+  // All dynamos are disabled
   { output: /^thermal:dynamo_.*/ },
   { output: 'thermal:tinker_bench' },
   { output: 'thermal:charge_bench' },

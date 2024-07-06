@@ -3,6 +3,7 @@
 
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
+  const pneumaticcraft = definePneumaticcraftRecipes(e)
   const redefineRecipe = redefineRecipe_(e)
 
   ////////////////////
@@ -33,6 +34,8 @@ ServerEvents.recipes((e) => {
     ],
     { I: 'minecraft:iron_ingot', S: 'create:shaft' }
   )
+  // The only enabled Thermal machines are the chiller, refinery, pyrolyzer,
+  // crystallizer, and crafter.
   redefineRecipe(
     'thermal:machine_pyrolyzer',
     [
@@ -200,6 +203,39 @@ ServerEvents.recipes((e) => {
     Fluid.of('tfmg:creosote')
   )
 
+  // Thermal Chiller recipes
+  e.remove({ type: 'thermal:chiller' })
+  e.recipes.thermal.chiller('minecraft:ice', Fluid.water(1000)).energy(12000)
+  e.recipes.thermal
+    .chiller('minecraft:packed_ice', ['minecraft:ice', Fluid.water(1000)])
+    .energy(12000)
+  e.recipes.thermal
+    .chiller('minecraft:blue_ice', ['minecraft:packed_ice', Fluid.water(1000)])
+    .energy(12000)
+
+  // Thermal Refinery recipes, only useful ones are added back.
+  // Also add a PNCR/Create alternatives.
+  e.remove({ type: 'thermal:refinery' })
+  e.recipes.thermal.refinery(
+    [Item.of('thermal:rosin').withChance(0.5), Fluid.of('thermal:latex', 100)],
+    Fluid.of('thermal:resin', 200)
+  )
+  pneumaticcraft
+    .thermo_plant()
+    .fluid_input(Fluid.of('thermal:resin', 200))
+    .item_output('thermal:rosin')
+    .fluid_output(Fluid.of('thermal:latex', 100))
+    .temperature({ min_temp: 273 + 100 })
+    .pressure(1)
+  e.recipes.thermal.refinery(
+    [Fluid.water(750), Fluid.of('thermal:syrup', 250)],
+    Fluid.of('thermal:sap', 1000)
+  )
+  create.centrifuging(
+    [Fluid.water(700), Fluid.of('thermal:syrup', 200)],
+    Fluid.of('thermal:sap', 1000)
+  )
+
   // Overhaul Thermal Crystallizer recipes
   e.remove({ id: /^thermal:machines\/crystallizer\/crystallizer_.*$/ })
   const crystallizerFromTo = {
@@ -218,13 +254,4 @@ ServerEvents.recipes((e) => {
       Fluid.of('kubejs:crystal_growth_accelerator', 250),
     ])
   }
-
-  // Allow rubberwood to be centrifuged into latex.
-  create
-    .centrifuging(
-      [Fluid.of('thermal:latex', 250), '4x thermal:sawdust'],
-      'thermal:rubberwood_log'
-    )
-    .minimalRPM(128)
-    .processingTime(20)
 })
