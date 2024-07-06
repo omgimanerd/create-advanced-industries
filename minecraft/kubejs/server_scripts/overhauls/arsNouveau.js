@@ -148,11 +148,24 @@ ServerEvents.recipes((e) => {
     ],
     'ars_nouveau:relay'
   )
-  // TODO source relay warper should depend on quantum mechanisms
   e.replaceInput(
     'ars_nouveau:arcane_core',
     'ars_nouveau:source_gem',
     'kubejs:source_mechanism'
+  )
+  redefineEnchantingRecipe(
+    'ars_nouveau:relay_warp',
+    [
+      'kubejs:source_mechanism',
+      'minecraft:ender_pearl',
+      'createteleporters:quantum_mechanism',
+      'minecraft:ender_pearl',
+      'kubejs:source_mechanism',
+      'minecraft:ender_pearl',
+      'createteleporters:quantum_mechanism',
+      'minecraft:ender_pearl',
+    ],
+    'ars_nouveau:relay'
   )
   e.remove({ id: 'ars_nouveau:basic_spell_turret' })
   e.shaped(
