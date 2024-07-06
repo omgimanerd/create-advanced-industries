@@ -232,9 +232,9 @@ ServerEvents.recipes((e) => {
 
   // Screw overhaul
   e.remove({ id: 'tfmg:stonecutting/screw' })
-  create.cutting('6x tfmg:screw', 'tfmg:steel_ingot')
+  create.cutting('4x tfmg:screw', 'tfmg:steel_ingot')
   create
-    .turning(['8x tfmg:screw', 'kubejs:steel_dust'], 'tfmg:steel_ingot')
+    .turning(['64x tfmg:screw', 'kubejs:steel_dust'], 'tfmg:steel_block')
     .processingTime(100)
 
   // Unbreakable screwdriver, only easily accessible with Chapter 5b automation
