@@ -50,6 +50,26 @@ JEIEvents.hideItems((e) => {
   e.hide('kubejs:incomplete_logistics_mechanism')
   e.hide('kubejs:incomplete_crystalline_mechanism')
   e.hide('createteleporters:incomplete_q_mechanism')
+
+  // Hide the colored Refined Storage items. Dark blue is the default.
+  const colors = [
+    'white',
+    'orange',
+    'magenta',
+    'yellow',
+    'lime',
+    'pink',
+    'gray',
+    'light_gray',
+    'cyan',
+    'purple',
+    'blue',
+    'brown',
+    'green',
+    'red',
+    'black',
+  ]
+  e.hide(new RegExp(`refinedstorage:(${colors.join('|')}).*`))
 })
 
 JEIEvents.addFluids((e) => {

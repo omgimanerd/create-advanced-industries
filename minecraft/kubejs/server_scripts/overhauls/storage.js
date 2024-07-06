@@ -108,12 +108,12 @@ ServerEvents.recipes((e) => {
   redefineRecipe(
     '2x refinedstorage:construction_core',
     [
-      ' G ', //
+      ' C ', //
       'BMB', //
-      ' G ', //
+      ' C ', //
     ],
     Object.assign({}, commonRefinedStorageKeys, {
-      G: 'minecraft:glowstone_dust',
+      C: 'pneumaticcraft:capacitor',
     })
   )
   redefineRecipe(
