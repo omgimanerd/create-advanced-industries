@@ -60,6 +60,20 @@ ServerEvents.recipes((e) => {
     steelCastedMoltenGlass
   )
 
+  // Add crushing recipes for items not overhauled by metallurgy.
+  const ingotDustMap = {
+    'thermal:ruby': 'thermal:ruby_dust',
+    'thermal:sapphire': 'thermal:sapphire_dust',
+    'thermal:apatite': 'thermal:apatite_dust',
+    'thermal:cinnabar': 'thermal:cinnabar_dust',
+    'thermal:niter': 'thermal:niter_dust',
+    // Sulfur dust overhauled in chapter 5a
+    'minecraft:netherite_ingot': 'thermal:netherite_dust',
+  }
+  for (const [ingot, dust] of Object.entries(ingotDustMap)) {
+    create.milling(dust, ingot)
+  }
+
   // Register all metallic alloying recipes, and remove the custom blend
   // crafting.
   global.materials

@@ -30,22 +30,14 @@ ServerEvents.recipes((e) => {
     Item.of('minecraft:cobblestone').withChance(1)
   )
 
+  // Haunting cobblestone to get infested cobblestone.
+  create.haunting('minecraft:infested_cobblestone', 'minecraft:cobblestone')
+
   // Rosin from resin
   create.mixing('thermal:rosin', Fluid.of('thermal:resin', 250)).heated()
 
-  // Add crushing recipes for items not overhauled by metallurgy.
-  const ingotDustMap = {
-    'thermal:ruby': 'thermal:ruby_dust',
-    'thermal:sapphire': 'thermal:sapphire_dust',
-    'thermal:apatite': 'thermal:apatite_dust',
-    'thermal:cinnabar': 'thermal:cinnabar_dust',
-    'thermal:niter': 'thermal:niter_dust',
-    // Sulfur dust overhauled in chapter 5a
-    'minecraft:netherite_ingot': 'thermal:netherite_dust',
-  }
-  for (const [ingot, dust] of Object.entries(ingotDustMap)) {
-    create.milling(dust, ingot)
-  }
+  // Syrup bottles can be energized into honey.
+  create.energizing('minecraft:honey_bottle', 'thermal:syrup_bottle', 24000)
 
   // Another source of green dye
   e.blasting('minecraft:green_dye', 'minecraft:kelp')
@@ -83,9 +75,6 @@ ServerEvents.recipes((e) => {
   // Craftable ways to get some of Quark's nice stones.
   create.compacting('quark:jasper', 'minecraft:granite')
   create.compacting('quark:shale', 'create:limestone')
-
-  // Haunting cobblestone to get infested cobblestone.
-  create.haunting('minecraft:infested_cobblestone', 'minecraft:cobblestone')
 
   // Pressurized crafting of slime balls.
   e.remove({ id: 'pneumaticcraft:pressure_chamber/milk_to_slime_balls' })
