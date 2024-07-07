@@ -138,6 +138,9 @@ ServerEvents.recipes((e) => {
     .minimalRPM(128)
     .processingTime(20)
 
+  // Energized hearthstones.
+  create.energizing('gag:energized_hearthstone', 'gag:hearthstone', 20000)
+
   // smithing template netherite upgrade duping
 
   // neural processor
