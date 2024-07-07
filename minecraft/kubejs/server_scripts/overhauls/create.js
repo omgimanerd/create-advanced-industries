@@ -846,9 +846,9 @@ ServerEvents.recipes((e) => {
       }
     )
 
-    // Replace all things that require an aluminum ingot with steel
+    // Replace pumpjack components that require aluminum with heavy plates.
     e.replaceInput(
-      { input: 'tfmg:aluminum_ingot' },
+      { output: /^tfmg:pumpjack.*$/, input: 'tfmg:aluminum_ingot' },
       'tfmg:aluminum_ingot',
       'tfmg:heavy_plate'
     )
@@ -878,6 +878,11 @@ ServerEvents.recipes((e) => {
         material: 'plastic',
         ingot: 'tfmg:plastic_sheet',
         sheet: 'pneumaticcraft:plastic',
+      },
+      {
+        material: 'aluminum',
+        ingot: 'tfmg:aluminum_ingot',
+        sheet: 'vintageimprovements:aluminum_sheet',
       },
     ]
     aestheticPipeReplacements.forEach((r) => {
