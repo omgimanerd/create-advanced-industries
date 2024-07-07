@@ -481,7 +481,7 @@ ServerEvents.recipes((e) => {
     )
     .pressure(4.8)
     .time(20)
-    .fluid_output('kubejs:infused_dragon_breath', 1)
+    .fluid_output(Fluid.of('kubejs:infused_dragon_breath', 1))
 
   // End crystal overhaul
   e.remove({ id: 'minecraft:end_crystal' })
@@ -493,6 +493,7 @@ ServerEvents.recipes((e) => {
     .energize(25000)
     .outputs('minecraft:end_crystal')
 
+  // Beacon overhaul
   e.remove({ id: 'minecraft:beacon' })
   create
     .SequencedAssembly('minecraft:obsidian')
@@ -501,6 +502,7 @@ ServerEvents.recipes((e) => {
     .deploy('minecraft:glass')
     .outputs('minecraft:beacon')
 
+  // Final Vibration Mechanism craft
   e.remove({ id: 'create_things_and_misc:vibration_mecanism_craft' })
   create
     .SequencedAssembly(CRYSTALLINE_MECHANISM, INCOMPLETE_VIBRATION_MECHANISM)
