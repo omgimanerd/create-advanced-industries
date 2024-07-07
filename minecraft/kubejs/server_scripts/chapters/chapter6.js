@@ -224,7 +224,67 @@ ServerEvents.recipes((e) => {
     return Item.of('gag:time_sand_pouch', `{grains:${currentGrains + 1000}}`)
   })
 
-  // Apotheosis Sigils
+  // Apotheosis Gem Fused Slates
+  e.remove({ id: 'apotheosis:gem_fused_slate' })
+  e.shaped(
+    '8x apotheosis:gem_fused_slate',
+    [
+      'DDD', //
+      'DGD', //
+      'DDD', //
+    ],
+    {
+      D: 'minecraft:reinforced_deepslate',
+      G: 'apotheosis:gem_dust',
+    }
+  )
+  create
+    .SequencedAssembly('minecraft:reinforced_deepslate')
+    .cut()
+    .deploy('apotheosis:gem_dust')
+    .press()
+    .outputs('apotheosis:gem_fused_slate')
+
+  // Redefine each of the sigil recipes to only output 1 sigil.
+  e.forEachRecipe({ id: /^apotheosis:sigil_of_.*$/ }, (r) => {
+    const json = JSON.parse(r.json)
+    r.remove()
+    e.shaped(json.result.item, json.pattern, json.key)
+  })
+
+  // Sequenced Assemblies for each sigil.
+  create
+    .SequencedAssembly('apotheosis:gem_fused_slate')
+    .deploy('apotheosis:gem_dust')
+    .deploy('minecraft:amethyst_shard')
+    .fill(Fluid.of('create_central_kitchen:dragon_breath', 125))
+    .press()
+    .outputs('apotheosis:sigil_of_socketing')
+  create
+    .SequencedAssembly('apotheosis:gem_fused_slate')
+    .deploy('apotheosis:gem_dust')
+    .deploy('minecraft:ender_pearl')
+    .deploy('minecraft:blaze_rod')
+    .fill(Fluid.lava(500))
+    .press()
+    .outputs('apotheosis:sigil_of_withdrawal')
+  create
+    .SequencedAssembly('apotheosis:gem_fused_slate')
+    .deploy('apotheosis:gem_dust')
+    .deploy('apotheosis:gem_dust')
+    .press()
+    .outputs('apotheosis:sigil_of_rebirth')
+  create
+    .SequencedAssembly('apotheosis:gem_fused_slate')
+    .deploy('apotheosis:gem_dust')
+    .deploy('apotheosis:mythic_material')
+    .press()
+    .outputs('apotheosis:sigil_of_enhancement')
+  create
+    .SequencedAssembly('apotheosis:gem_fused_slate')
+    .deploy('minecraft:flint')
+    .press()
+    .outputs('apotheosis:sigil_of_unnaming')
 
   // Custom XP Crystal
   e.replaceOutput(

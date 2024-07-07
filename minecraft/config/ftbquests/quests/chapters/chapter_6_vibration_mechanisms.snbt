@@ -364,19 +364,26 @@
 			y: -2.0d
 		}
 		{
-			description: ["Once you've purged all the pests from the infested, you'll be left with a very clean looking piece of end stone."]
+			dependencies: ["6DD93F52A87B6B32"]
+			description: ["Once you've purged all the pests from the infested stone, you'll be left with a very clean looking piece of end stone."]
 			id: "3F43A33616FC68DB"
 			tasks: [{
 				id: "08B10E8D1AABDC10"
 				item: "minecraft:end_stone"
 				type: "item"
 			}]
-			x: 12.0d
+			x: 10.0d
 			y: 8.0d
 		}
 		{
-			dependencies: ["54116F1A0F3B59AE"]
-			description: ["Infested stone can be made by haunting stone."]
+			dependencies: ["3EDB39A43C7F778E"]
+			description: [
+				"Infested stone can be made by haunting stone."
+				""
+				"Applying the Sigil of Withdrawal to the infested stone will expel the silverfish."
+				""
+				"You can ponder the infested stone to see how this works."
+			]
 			id: "6DD93F52A87B6B32"
 			tasks: [{
 				id: "65279C634CE68D69"
@@ -821,6 +828,7 @@
 			y: 10.0d
 		}
 		{
+			dependencies: ["6651B17B190DD8F4"]
 			description: ["WIP"]
 			id: "3C447206C2554E96"
 			invisible: true
@@ -833,19 +841,26 @@
 			y: 14.0d
 		}
 		{
-			description: ["Whichever method you choose, the resulting honeycombs are needed for the next step."]
+			dependencies: ["6651B17B190DD8F4"]
+			description: ["Regardless of which method you use, the resulting honeycombs are needed for the next step."]
 			id: "7FBFDCE728DC6848"
 			tasks: [{
 				id: "2FB3783962131CA2"
 				item: "minecraft:honeycomb"
 				type: "item"
 			}]
-			x: 14.0d
+			x: 12.0d
 			y: 12.0d
 		}
 		{
-			dependencies: ["54116F1A0F3B59AE"]
-			description: ["You'll need a beehive to farm honey, both for this quest branch and the Apotheotic materials branch above."]
+			dependencies: ["3EDB39A43C7F778E"]
+			description: [
+				"You'll need a beehive to farm honey, both for this quest branch and the Apotheotic materials quest branch."
+				""
+				"Applying the Sigil of Withdrawal to the beehive when it is full of honey will double or triple the honeycomb yield."
+				""
+				"Ponder the beehive for an explanation of this mechanic."
+			]
 			icon: "minecraft:beehive"
 			id: "6651B17B190DD8F4"
 			rewards: [{
@@ -875,7 +890,7 @@
 					type: "observation"
 				}
 			]
-			x: 8.0d
+			x: 10.0d
 			y: 12.0d
 		}
 		{
@@ -887,11 +902,11 @@
 				item: "minecraft:chorus_fruit"
 				type: "item"
 			}]
-			x: 10.0d
+			x: 12.0d
 			y: 10.0d
 		}
 		{
-			dependencies: ["54116F1A0F3B59AE"]
+			dependencies: ["3EDB39A43C7F778E"]
 			description: ["Chorus flower farms should be easy to set up with Create."]
 			id: "17891BFF4285EF31"
 			tasks: [{
@@ -899,7 +914,7 @@
 				item: "minecraft:chorus_flower"
 				type: "item"
 			}]
-			x: 8.0d
+			x: 10.0d
 			y: 10.0d
 		}
 		{
@@ -1000,22 +1015,6 @@
 			y: -2.0d
 		}
 		{
-			dependencies: ["34CBF7A7AD9BF9D8"]
-			description: ["This checkmark is here to straighten out the quest dependency lines. Nothing to see here. "]
-			id: "54116F1A0F3B59AE"
-			rewards: [{
-				id: "5330C8D25DDCD9F8"
-				item: "farmersdelight:pasta_with_meatballs"
-				type: "item"
-			}]
-			tasks: [{
-				id: "31A3BFD04D7E49DC"
-				type: "checkmark"
-			}]
-			x: 0.0d
-			y: 12.0d
-		}
-		{
 			dependencies: ["7CB4CC65BC442750"]
 			description: [
 				"You'll need lots and lots of experience to perform these enchantments."
@@ -1078,6 +1077,73 @@
 			title: "Potion of Regeneration II"
 			x: 16.0d
 			y: 0.0d
+		}
+		{
+			dependencies: ["03E1D7E6F6A7AA78"]
+			description: [
+				"From here, you should have all the materials you need to make Sigils of Withdrawal."
+				""
+				"You'll need them automated for two of the mechanics in this quest branch."
+			]
+			id: "3EDB39A43C7F778E"
+			tasks: [{
+				id: "3F287639F8BE53E6"
+				item: "apotheosis:sigil_of_withdrawal"
+				type: "item"
+			}]
+			x: 8.0d
+			y: 12.0d
+		}
+		{
+			dependencies: ["34CBF7A7AD9BF9D8"]
+			description: ["Deepslate can be automated by mixing cobblestone with coal, both of which you should have an abundance of."]
+			id: "730B64754B0BFC9D"
+			tasks: [{
+				id: "0B45680B863C5B68"
+				item: "minecraft:deepslate"
+				type: "item"
+			}]
+			x: 0.0d
+			y: 12.0d
+		}
+		{
+			dependencies: [
+				"16DE2DD8FDA03A48"
+				"730B64754B0BFC9D"
+			]
+			description: ["Reinforced deepslate is made from deepslate and invar."]
+			id: "36C487052DC00979"
+			tasks: [{
+				id: "55DB7E2208D219B2"
+				item: "minecraft:reinforced_deepslate"
+				type: "item"
+			}]
+			x: 4.0d
+			y: 12.0d
+		}
+		{
+			dependencies: ["730B64754B0BFC9D"]
+			description: ["Compacting deepslate in a superheated basin yields small quantities of nickel. This is one way to automate invar, but it has extremely low yields, so you may want to look for a better way to get nickel."]
+			id: "16DE2DD8FDA03A48"
+			tasks: [{
+				id: "08B4F99A39EDE01E"
+				item: "thermal:invar_ingot"
+				type: "item"
+			}]
+			x: 2.0d
+			y: 10.0d
+		}
+		{
+			dependencies: ["36C487052DC00979"]
+			description: ["Gem dust, which you should have from Chapter 5b, can be combined with reinforced deepslate to get gem-fused slates."]
+			id: "03E1D7E6F6A7AA78"
+			tasks: [{
+				id: "5EF34582C39D81AE"
+				item: "apotheosis:gem_fused_slate"
+				type: "item"
+			}]
+			x: 6.0d
+			y: 12.0d
 		}
 	]
 	title: "Chapter 6: Vibration Mechanisms"

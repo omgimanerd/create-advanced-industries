@@ -29,7 +29,7 @@ Ponder.registry((e) => {
       scene.text(
         40,
         'You can expel the silverfish out of infested stone with a ' +
-          'Sigil of Withdrawal',
+          'Sigil of Withdrawal.',
         center
       )
       scene.idle(50)
@@ -98,7 +98,7 @@ Ponder.registry((e) => {
       scene.idle(20)
       scene.text(
         40,
-        'Each usage has a small chance to consume the Sigil of Withdrawal',
+        'Each usage has a small chance to consume the Sigil of Withdrawal.',
         deployer
       )
       scene.idle(50)

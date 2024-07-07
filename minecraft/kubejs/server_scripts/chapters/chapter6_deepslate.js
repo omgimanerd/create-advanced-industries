@@ -15,6 +15,17 @@ ServerEvents.tags('block', (e) => {
 })
 
 ServerEvents.recipes((e) => {
+  const create = defineCreateRecipes(e)
+
+  // Regular deepslate has a small nickel yield when melted, making it a
+  // viable but inefficient way to get invar.
+  create
+    .compacting(
+      [Fluid.of('kubejs:molten_iron', 10), Fluid.of('kubejs:molten_nickel', 2)],
+      'minecraft:deepslate'
+    )
+    .superheated()
+
   // Make reinforced deepslate accessible.
   e.shaped(
     '8x minecraft:reinforced_deepslate',
