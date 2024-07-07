@@ -95,27 +95,27 @@ Ponder.registry((e) => {
       setBeehive(5)
       scene.world.showSection(deployer, Facing.DOWN)
       scene.idle(10)
-      setDeployerFilter(scene, deployer, 'apotheosis:vial_of_extraction')
-      setDeployerHeldItem(scene, deployer, 'apotheosis:vial_of_extraction')
+      setDeployerFilter(scene, deployer, 'apotheosis:sigil_of_withdrawal')
+      setDeployerHeldItem(scene, deployer, 'apotheosis:sigil_of_withdrawal')
       scene.text(
         40,
         'For a chance to get a rare saturated honeycomb, you will need to ' +
-          'use a Vial of Arcane Extraction on the beehive.',
+          'use a Sigil of Withdrawal on the beehive.',
         deployer
       )
       scene.idle(50)
       scene.text(
         60,
         'The saturated honeycomb only has a chance to drop when the beehive ' +
-          'full, using the Vial of Arcane Extraction on the beehive will ' +
+          'full, using the Sigil of Withdrawal on the beehive will ' +
           'remove all the honey regardless of its fill level.',
         deployer
       )
       scene.idle(70)
       scene.text(
         60,
-        'Be careful when doing it! The Vial of Arcane Extraction is so ' +
-          'powerful that it will cause an explosion when it is used! Make ' +
+        'Be careful when doing it! The Sigil of Withdrawal is so powerful ' +
+          'that it will cause an explosion when it is used! Make ' +
           "sure there aren't any bees nearby",
         deployer
       )
@@ -144,7 +144,7 @@ Ponder.registry((e) => {
       honeycombs.forEach((b) => scene.world.removeEntity(b))
       scene.text(
         40,
-        'Each usage has a small chance to consume the Vial of Extraction.',
+        'Each usage has a small chance to consume the Sigil of Withdrawal.',
         deployer
       )
       scene.idle(50)

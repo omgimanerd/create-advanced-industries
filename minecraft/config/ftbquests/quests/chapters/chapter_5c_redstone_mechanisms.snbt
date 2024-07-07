@@ -142,11 +142,7 @@
 		}
 		{
 			dependencies: ["710BAD1B3ACE8949"]
-			description: [
-				"Centrifuge the molten redstone or mix with a Vial of Arcane Extraction in order to separate it."
-				""
-				"Until you unlock stuff from Chapter 6, centrifuging might just be the easier route, even if the recipe is lossy."
-			]
+			description: ["Centrifuge the molten redstone in order to separate it."]
 			icon: "thermal:redstone_bucket"
 			id: "7533DFB7B990B93A"
 			tasks: [{

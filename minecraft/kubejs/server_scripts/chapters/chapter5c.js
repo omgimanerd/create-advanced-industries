@@ -7,27 +7,14 @@ ServerEvents.recipes((e) => {
 
   // Making destabilized redstone
   create
-    .mixing(
-      [
-        Fluid.of('thermal:redstone', 500),
-        potionFluid('quark:resilience', 500),
-        Item.of('apotheosis:vial_of_extraction').withChance(0.75),
-      ],
-      [
-        Fluid.of('kubejs:molten_redstone', 1000),
-        'apotheosis:vial_of_extraction',
-      ]
-    )
-    .superheated()
-  create
     .centrifuging(
-      [Fluid.of('thermal:redstone', 250), potionFluid('quark:resilience', 250)],
+      [Fluid.of('thermal:redstone', 500), potionFluid('quark:resilience', 500)],
       Fluid.of('kubejs:molten_redstone', 1000)
     )
     .minimalRPM(256)
     .processingTime(100)
   create
-    .mixing(Fluid.of('kubejs:molten_redstone', 10), [
+    .mixing(Fluid.of('kubejs:molten_redstone', 1000), [
       Fluid.of('thermal:redstone', 500),
       potionFluid('quark:resilience', 500),
       'minecraft:glowstone_dust',

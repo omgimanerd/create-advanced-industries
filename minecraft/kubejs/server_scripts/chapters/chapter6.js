@@ -14,7 +14,7 @@ if (global.RegisterTimePouchCraftingEventHandlers) {
 BlockEvents.rightClicked('minecraft:infested_stone', (e) => {
   const { item, hand, block, level } = e
   if (hand !== 'main_hand') return
-  if (item.id !== 'apotheosis:vial_of_expulsion') return
+  if (item.id !== 'apotheosis:sigil_of_withdrawal') return
 
   // Each usage will spawn a silverfish.
   const silverfish = block.createEntity('minecraft:silverfish')
@@ -26,8 +26,8 @@ BlockEvents.rightClicked('minecraft:infested_stone', (e) => {
   if (Math.random() < 0.25) {
     block.set('minecraft:end_stone')
 
-    // Upon a successful conversion, there is a 2% chance the vial of expulsion
-    // will be consumed.
+    // Upon a successful conversion, there is a 2% chance the sigil will be
+    // consumed.
     if (Math.random() < 0.02) {
       item.count--
     }
@@ -41,7 +41,7 @@ BlockEvents.rightClicked('minecraft:infested_stone', (e) => {
 BlockEvents.rightClicked('minecraft:beehive', (e) => {
   const { item, hand, block, level } = e
   if (hand !== 'main_hand') return
-  if (item.id !== 'apotheosis:vial_of_extraction') return
+  if (item.id !== 'apotheosis:sigil_of_extraction') return
   const honeyLevel = block.properties.getOrDefault('honey_level', 0)
   // Each usage will reset the honey level and create an explosion.
   block.set('minecraft:beehive', {
@@ -71,7 +71,7 @@ BlockEvents.rightClicked('minecraft:beehive', (e) => {
       'up'
     )
   }
-  // There is a 5% chance to consume the vial of extraction.
+  // There is a 5% chance to consume the sigil.
   if (Math.random() < 0.05) {
     item.count--
   }
@@ -224,25 +224,7 @@ ServerEvents.recipes((e) => {
     return Item.of('gag:time_sand_pouch', `{grains:${currentGrains + 1000}}`)
   })
 
-  // Apotheosis Vial of Searing Expulsion and Arcane Extraction
-  create
-    .SequencedAssembly('minecraft:glass_bottle')
-    .fill(potionFluid('minecraft:thick', 125))
-    .fill(Fluid.lava(500))
-    .deploy('minecraft:blaze_rod')
-    .deploy('minecraft:magma_cream')
-    .deploy('apotheosis:gem_dust')
-    .energize(10000)
-    .outputs('apotheosis:vial_of_expulsion')
-  create
-    .SequencedAssembly('minecraft:glass_bottle')
-    .fill(potionFluid('minecraft:thick', 125))
-    .fill(Fluid.water(500))
-    .deploy('minecraft:ender_pearl')
-    .deploy('minecraft:amethyst_shard')
-    .deploy('apotheosis:gem_dust')
-    .energize(10000)
-    .outputs('apotheosis:vial_of_extraction')
+  // Apotheosis Sigils
 
   // Custom XP Crystal
   e.replaceOutput(

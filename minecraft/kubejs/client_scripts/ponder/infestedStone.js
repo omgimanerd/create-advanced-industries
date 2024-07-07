@@ -8,7 +8,7 @@ Ponder.registry((e) => {
       scene.showBasePlate()
       const center = util.grid.at(2, 1, 2)
       const deployer = center.above(2)
-      const vialOfExpulsion = 'apotheosis:vial_of_expulsion'
+      const sigil = 'apotheosis:sigil_of_withdrawal'
 
       // Scene setup
       scene.world.setBlock(center, 'minecraft:infested_stone', false)
@@ -17,8 +17,8 @@ Ponder.registry((e) => {
         Block.id('create:deployer').with('facing', 'down'),
         false
       )
-      setDeployerFilter(scene, deployer, vialOfExpulsion)
-      setDeployerHeldItem(scene, deployer, vialOfExpulsion)
+      setDeployerFilter(scene, deployer, sigil)
+      setDeployerHeldItem(scene, deployer, sigil)
       scene.world.showSection(util.select.everywhere(), Facing.SOUTH)
       scene.idle(20)
 
@@ -28,7 +28,8 @@ Ponder.registry((e) => {
       scene.idle(30)
       scene.text(
         40,
-        'You can expel the silverfish out of infested stone with a Vial of Expulsion',
+        'You can expel the silverfish out of infested stone with a ' +
+          'Sigil of Withdrawal',
         center
       )
       scene.idle(50)
@@ -97,7 +98,7 @@ Ponder.registry((e) => {
       scene.idle(20)
       scene.text(
         40,
-        'Each usage has a small chance to consume the Vial of Expulsion',
+        'Each usage has a small chance to consume the Sigil of Withdrawal',
         deployer
       )
       scene.idle(50)

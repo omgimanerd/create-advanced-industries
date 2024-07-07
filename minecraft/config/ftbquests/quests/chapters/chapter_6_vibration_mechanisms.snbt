@@ -364,7 +364,6 @@
 			y: -2.0d
 		}
 		{
-			dependencies: ["3E44FFF4BA96011E"]
 			description: ["Once you've purged all the pests from the infested, you'll be left with a very clean looking piece of end stone."]
 			id: "3F43A33616FC68DB"
 			tasks: [{
@@ -385,22 +384,6 @@
 				type: "item"
 			}]
 			x: 8.0d
-			y: 8.0d
-		}
-		{
-			dependencies: ["6DD93F52A87B6B32"]
-			description: [
-				"By applying a Vial of Searing Expulsion to infested stone, you can purge the pesky silverfish from it."
-				""
-				"Ponder a piece of infested stone for an explanation of this mechanic."
-			]
-			id: "3E44FFF4BA96011E"
-			tasks: [{
-				id: "0893719755706541"
-				item: "apotheosis:vial_of_expulsion"
-				type: "item"
-			}]
-			x: 10.0d
 			y: 8.0d
 		}
 		{
@@ -773,22 +756,6 @@
 			y: -2.0d
 		}
 		{
-			dependencies: ["6651B17B190DD8F4"]
-			description: [
-				"While you can shear or pump honey out of a beehive, you can also apply a Vial of Arcane Extraction to a beehive to get its drops. Be careful of this method though, as it will result in a powerful explosion."
-				""
-				"Ponder the beehive for an explanation of this mechanic."
-			]
-			id: "77C422DDE35B606E"
-			tasks: [{
-				id: "54B1149D5E684E74"
-				item: "apotheosis:vial_of_extraction"
-				type: "item"
-			}]
-			x: 10.0d
-			y: 12.0d
-		}
-		{
 			dependencies: ["7B5467831BDED907"]
 			description: ["To get your first XP Condenser, you'll need a level 100 enchant."]
 			id: "27B9B80E471D7E0A"
@@ -854,7 +821,6 @@
 			y: 10.0d
 		}
 		{
-			dependencies: ["77C422DDE35B606E"]
 			description: ["WIP"]
 			id: "3C447206C2554E96"
 			invisible: true
@@ -867,7 +833,6 @@
 			y: 14.0d
 		}
 		{
-			dependencies: ["77C422DDE35B606E"]
 			description: ["Whichever method you choose, the resulting honeycombs are needed for the next step."]
 			id: "7FBFDCE728DC6848"
 			tasks: [{
