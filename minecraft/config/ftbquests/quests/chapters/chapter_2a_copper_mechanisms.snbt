@@ -141,7 +141,13 @@
 				"45CB879FCDF7A8CF"
 				"5901D1978F5CC0C8"
 			]
-			description: ["You know what to do by now."]
+			description: [
+				"You know what to do by now."
+				""
+				"Copper mechanisms unlock fluid logistics and allow you to craft all of the Create machines to move around and craft with fluids."
+				""
+				"See their uses in JEI to look through the options. Remember to Ponder an unfamiliar machine to understand how it works!"
+			]
 			id: "2D2665410D75CA15"
 			rewards: [
 				{

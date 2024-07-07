@@ -42,6 +42,8 @@
 				"Congratulations! You've unlocked Steel Mechanisms."
 				""
 				"Steel mechanisms open the gate to petrochemical processing and the industrial revolution."
+				""
+				"In addition to unlocking all the PneumaticCraft machines, they unlock certain other kinetic machines that might make some of earlier automation chains a little more efficient."
 			]
 			id: "2061A7E481B97D93"
 			rewards: [

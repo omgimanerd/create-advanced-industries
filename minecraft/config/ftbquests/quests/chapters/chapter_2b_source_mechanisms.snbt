@@ -61,6 +61,13 @@
 				"1572F6384788F1BA"
 				"7639F3BB40822434"
 			]
+			description: [
+				"Woohoo! Source Mechanisms automated!"
+				""
+				"Source Mechanisms gate Ars Nouveau and allow you to craft the spellbook as well as the spell turrets. They offer alternatives to some of Create's automations, and in some cases can provide a more efficient crafting recipe."
+				""
+				"Keep an eye out for the various spells that Ars Nouveau provides and see if you can find ways to improve your factory efficiency with magic!"
+			]
 			id: "39E20F0E25618A92"
 			rewards: [
 				{
