@@ -129,7 +129,7 @@ const debugBlockPos = (level, pos) => {
 /**
  * Visualizes an AABB in world with particle effects to help debug.
  * @param {Internal.Level_} level
- * @param {Internal.AABB_} aabb
+ * @param {AABB_} aabb
  */
 const debugAABB = (level, aabb) => {
   const [x1, y1, z1] = [aabb.minX, aabb.minY, aabb.minZ]
