@@ -125,3 +125,5 @@ RecipeIngredientProcessor.prototype.getResultingItems = function () {
   }
   return resultList
 }
+
+global.RecipeIngredientProcessor = RecipeIngredientProcessor
