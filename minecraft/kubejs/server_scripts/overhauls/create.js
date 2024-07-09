@@ -259,6 +259,26 @@ ServerEvents.recipes((e) => {
       'create:andesite_casing',
       'kubejs:wooden_hand'
     )
+    // Replace mechanical crafter recipe
+    // for the extendo-grip because it uses
+    // a brass hand instead of a wooden hand
+    e.remove({ id: 'create:extendo_grip' })
+    create.mechanical_crafting(
+      'create:extendo_grip',
+      [
+        ' B ',
+        ' M ',
+        'SSS',
+        'SSS',
+        ' H ',
+      ],
+      {
+        B: 'create:brass_ingot',
+        M: PRECISION_MECHANISM,
+        S: 'minecraft:stick',
+        H: 'kubejs:wooden_hand',
+      },
+    )
     redefineMechanismRecipe(KINETIC_MECHANISM)(
       '2x create:portable_storage_interface',
       'create:chute',
