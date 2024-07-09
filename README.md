@@ -55,6 +55,11 @@ Notes mostly for me.
 ## Author(s)
   - omgimanerd
 
+## Contributors
+  - bleepbloopsify, for playtesting and patching occasional bugs
+  - nyagibyte, for textures
+  - tiptox, for the pack logo
+  - RPorotos, for many of the custom textures
 
 ## License
   - [Mozilla Public License 2.0](LICENSE)
