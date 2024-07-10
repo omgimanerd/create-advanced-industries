@@ -80,8 +80,6 @@ global.EnergizedBeaconCraftingRecipes = []
     })
 
     // Recipes for the corundum clusters.
-    // These tags are registered using a datapack json so that they can be
-    // referenced in the corresponding server script.
     global.EnergizedBeaconCraftingRecipes.push({
       ingredient: '#kubejs:corundum_cluster',
       result: cluster,

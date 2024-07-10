@@ -223,4 +223,12 @@
     // Cancel the event so the beacon UI doesn't open.
     e.cancel()
   })
+
+  // Tag all the corundum clusters so that they can be used in the corresponding
+  // recipe.
+  ServerEvents.tags('item', (e) => {
+    Ingredient.of(/^quark:[a-z]+_corundum_cluster$/).itemIds.forEach((id) => {
+      e.add('kubejs:corundum_cluster', id)
+    })
+  })
 })()
