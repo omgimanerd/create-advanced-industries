@@ -1,5 +1,7 @@
 // priority: 1000
 
+global.ENERGIZED_BEACON_CRAFTING = 'kubejs:energized_beacon_crafting'
+
 /**
  * Beacon crafting recipes are registered and stored in a global here so that
  * they are available to the server side for processing and the client side for
@@ -13,7 +15,7 @@
  *
  * @type {BeaconCraftingRecipe[]}
  */
-global.BeaconCraftingRecipes = []
+global.EnergizedBeaconCraftingRecipes = []
 
 // Register the actual beacon crafting recipes.
 ;(() => {
@@ -30,7 +32,7 @@ global.BeaconCraftingRecipes = []
   }
   for (const [cluster, color] of Object.entries(corundumClusterMapping)) {
     // Recipes for glass blocks.
-    global.BeaconCraftingRecipes.push({
+    global.EnergizedBeaconCraftingRecipes.push({
       ingredient: '#forge:glass/silica',
       result: `minecraft:${color}_stained_glass`,
       redirectorBlock: cluster,
@@ -38,7 +40,7 @@ global.BeaconCraftingRecipes = []
     })
 
     // Recipes for glass panes.
-    global.BeaconCraftingRecipes.push({
+    global.EnergizedBeaconCraftingRecipes.push({
       ingredient: '#forge:glass_panes',
       result: `minecraft:${color}_stained_glass_pane`,
       redirectorBlock: cluster,
@@ -46,7 +48,7 @@ global.BeaconCraftingRecipes = []
     })
 
     // Recipes for framed glass panes.
-    global.BeaconCraftingRecipes.push({
+    global.EnergizedBeaconCraftingRecipes.push({
       ingredient: '#quark:framed_glasses',
       result: `quark:${color}_framed_glass_pane`,
       redirectorBlock: cluster,
@@ -54,7 +56,7 @@ global.BeaconCraftingRecipes = []
     })
 
     // Recipes for glass shards.
-    global.BeaconCraftingRecipes.push({
+    global.EnergizedBeaconCraftingRecipes.push({
       ingredient: '#quark:shards',
       result: `quark:${color}_shard`,
       redirectorBlock: cluster,
@@ -62,7 +64,7 @@ global.BeaconCraftingRecipes = []
     })
 
     // Recipes for wool.
-    global.BeaconCraftingRecipes.push({
+    global.EnergizedBeaconCraftingRecipes.push({
       ingredient: '#minecraft:wool',
       result: `minecraft:${color}_wool`,
       redirectorBlock: cluster,
@@ -70,11 +72,19 @@ global.BeaconCraftingRecipes = []
     })
 
     // Recipes for terracotta.
-    global.BeaconCraftingRecipes.push({
+    global.EnergizedBeaconCraftingRecipes.push({
       ingredient: '#minecraft:terracotta',
       result: `minecraft:${color}_terracotta`,
       redirectorBlock: cluster,
       energy: 400,
+    })
+
+    // Recipes for the corundum clusters.
+    global.EnergizedBeaconCraftingRecipes.push({
+      ingredient: '#kubejs:corundum_cluster',
+      result: cluster,
+      redirectorBlock: cluster,
+      energy: 500,
     })
   }
 })()

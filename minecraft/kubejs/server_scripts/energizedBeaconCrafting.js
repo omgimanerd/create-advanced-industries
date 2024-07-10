@@ -4,7 +4,7 @@
   // Populated on first load with the beacon crafting recipes. If a recipe uses
   // a tag, it is expanded into all matching items for fast lookup in this
   // object.
-  const recipeLookup = {}
+  let recipeLookup = {}
 
   // Postprocess the beacon crafting recipes.
   for (const {
@@ -12,7 +12,7 @@
     result,
     redirectorBlock,
     energy,
-  } of global.BeaconCraftingRecipes) {
+  } of global.EnergizedBeaconCraftingRecipes) {
     let items = ingredient.startsWith('#')
       ? Ingredient.of(ingredient).itemIds
       : [ingredient]
@@ -222,5 +222,13 @@
 
     // Cancel the event so the beacon UI doesn't open.
     e.cancel()
+  })
+
+  // Tag all the corundum clusters so that they can be used in the corresponding
+  // recipe.
+  ServerEvents.tags('item', (e) => {
+    Ingredient.of(/^quark:[a-z]+_corundum_cluster$/).itemIds.forEach((id) => {
+      e.add('kubejs:corundum_cluster', id)
+    })
   })
 })()
