@@ -17,25 +17,83 @@ global.ENERGIZED_BEACON_CRAFTING = 'kubejs:energized_beacon_crafting'
  */
 global.EnergizedBeaconCraftingRecipes = []
 
+// Must be kept in sync with the energizing recipes for each of these items.
+global.EnergizedBeaconItems = {
+  'create_new_age:overcharged_iron': {
+    result: 'minecraft:iron_ingot',
+    energy: 1000,
+  },
+  'create_new_age:overcharged_gold': {
+    result: 'minecraft:gold_ingot',
+    energy: 2000,
+  },
+  'create_new_age:overcharged_diamond': {
+    result: 'minecraft:diamond',
+    energy: 10000,
+  },
+  'gag:energized_hearthstone': {
+    result: 'gag:hearthstone',
+    energy: 20000,
+  },
+}
+
 // Register the actual beacon crafting recipes.
 ;(() => {
-  const corundumClusterMapping = {
-    'quark:black_corundum_cluster': 'black',
-    'quark:white_corundum_cluster': 'white',
-    'quark:violet_corundum_cluster': 'magenta',
-    'quark:indigo_corundum_cluster': 'blue',
-    'quark:blue_corundum_cluster': 'light_blue',
-    'quark:green_corundum_cluster': 'lime',
-    'quark:yellow_corundum_cluster': 'yellow',
-    'quark:orange_corundum_cluster': 'orange',
-    'quark:red_corundum_cluster': 'red',
-  }
-  for (const [cluster, color] of Object.entries(corundumClusterMapping)) {
+  // Direct from java/org/violetmoon/quark/base/util/CorundumColor.java
+  const corundumClusterMapping = [
+    {
+      color: 'red',
+      cluster: 'quark:red_corundum_cluster',
+      beaconColor: [1, 0, 0],
+    },
+    {
+      color: 'orange',
+      cluster: 'quark:orange_corundum_cluster',
+      beaconColor: [1, 0.5, 0],
+    },
+    {
+      color: 'yellow',
+      cluster: 'quark:yellow_corundum_cluster',
+      beaconColor: [1, 1, 0],
+    },
+    {
+      color: 'lime',
+      cluster: 'quark:green_corundum_cluster',
+      beaconColor: [0, 1, 0],
+    },
+    {
+      color: 'light_blue',
+      cluster: 'quark:blue_corundum_cluster',
+      beaconColor: [0, 1, 1],
+    },
+    {
+      color: 'blue',
+      cluster: 'quark:indigo_corundum_cluster',
+      beaconColor: [0, 0, 1],
+    },
+    {
+      color: 'magenta',
+      cluster: 'quark:violet_corundum_cluster',
+      beaconColor: [1, 0, 1],
+    },
+    {
+      color: 'white',
+      cluster: 'quark:white_corundum_cluster',
+      beaconColor: [1, 1, 1],
+    },
+    {
+      color: 'black',
+      cluster: 'quark:black_corundum_cluster',
+      beaconColor: [0, 0, 0],
+    },
+  ]
+  for (const { color, cluster, beaconColor } of corundumClusterMapping) {
     // Recipes for glass blocks.
     global.EnergizedBeaconCraftingRecipes.push({
       ingredient: '#forge:glass/silica',
       result: `minecraft:${color}_stained_glass`,
       redirectorBlock: cluster,
+      beaconColor: beaconColor,
       energy: 100,
     })
 
@@ -44,6 +102,7 @@ global.EnergizedBeaconCraftingRecipes = []
       ingredient: '#forge:glass_panes',
       result: `minecraft:${color}_stained_glass_pane`,
       redirectorBlock: cluster,
+      beaconColor: beaconColor,
       energy: 50,
     })
 
@@ -52,6 +111,7 @@ global.EnergizedBeaconCraftingRecipes = []
       ingredient: '#quark:framed_glasses',
       result: `quark:${color}_framed_glass_pane`,
       redirectorBlock: cluster,
+      beaconColor: beaconColor,
       energy: 50,
     })
 
@@ -60,6 +120,7 @@ global.EnergizedBeaconCraftingRecipes = []
       ingredient: '#quark:shards',
       result: `quark:${color}_shard`,
       redirectorBlock: cluster,
+      beaconColor: beaconColor,
       energy: 25,
     })
 
@@ -68,6 +129,7 @@ global.EnergizedBeaconCraftingRecipes = []
       ingredient: '#minecraft:wool',
       result: `minecraft:${color}_wool`,
       redirectorBlock: cluster,
+      beaconColor: beaconColor,
       energy: 200,
     })
 
@@ -76,14 +138,18 @@ global.EnergizedBeaconCraftingRecipes = []
       ingredient: '#minecraft:terracotta',
       result: `minecraft:${color}_terracotta`,
       redirectorBlock: cluster,
+      beaconColor: beaconColor,
       energy: 400,
     })
 
     // Recipes for the corundum clusters.
     global.EnergizedBeaconCraftingRecipes.push({
+      // This tag is added via datapack json so that it can be resolved in the
+      // client scripts with Ingredient.of.
       ingredient: '#kubejs:corundum_cluster',
       result: cluster,
       redirectorBlock: cluster,
+      beaconColor: beaconColor,
       energy: 500,
     })
   }

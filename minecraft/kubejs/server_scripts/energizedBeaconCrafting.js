@@ -5,57 +5,42 @@
   // a tag, it is expanded into all matching items for fast lookup in this
   // object.
   let recipeLookup = {}
-
-  // Postprocess the beacon crafting recipes.
-  for (const {
-    ingredient,
-    result,
-    redirectorBlock,
-    energy,
-  } of global.EnergizedBeaconCraftingRecipes) {
-    let items = ingredient.startsWith('#')
-      ? Ingredient.of(ingredient).itemIds
-      : [ingredient]
-    items.forEach((id) => {
-      const itemIdLookup = recipeLookup[id] || {}
-      const redirectorLookup = itemIdLookup[redirectorBlock]
-      if (redirectorLookup !== undefined) {
-        throw new Error(
-          `${id} with redirector ${redirectorBlock} already has a recipe!`
-        )
-      }
-      itemIdLookup[redirectorBlock] = {
-        result: result,
-        energy: energy,
-      }
-      recipeLookup[id] = itemIdLookup
-    })
-  }
-  console.log(
-    `Successfully processed ${
-      Object.keys(recipeLookup).length
-    } beacon crafting recipes`
-  )
-
-  // Must be kept in sync with the energizing recipes for each of these items.
-  const allowedBeaconItems = {
-    'create_new_age:overcharged_iron': {
-      result: 'minecraft:iron_ingot',
-      energy: 1000,
-    },
-    'create_new_age:overcharged_gold': {
-      result: 'minecraft:gold_ingot',
-      energy: 2000,
-    },
-    'create_new_age:overcharged_diamond': {
-      result: 'minecraft:diamond',
-      energy: 10000,
-    },
-    'gag:energized_hearthstone': {
-      result: 'gag:hearthstone',
-      energy: 20000,
-    },
-  }
+  ServerEvents.loaded((e) => {
+    // This is a crazy hack because it seems like the first time
+    // server.scheduleInTicks is called, it executes the callback instantly.
+    // Call it once here so that when we schedule the beacon block processing
+    // it doesn't all execute in the same tick.
+    e.server.scheduleInTicks(1, () => {})
+    for (const {
+      ingredient,
+      result,
+      redirectorBlock,
+      energy,
+    } of global.EnergizedBeaconCraftingRecipes) {
+      let items = ingredient.startsWith('#')
+        ? Ingredient.of(ingredient).itemIds
+        : [ingredient]
+      items.forEach((id) => {
+        const itemIdLookup = recipeLookup[id] || {}
+        const redirectorLookup = itemIdLookup[redirectorBlock]
+        if (redirectorLookup !== undefined) {
+          throw new Error(
+            `${id} with redirector ${redirectorBlock} already has a recipe!`
+          )
+        }
+        itemIdLookup[redirectorBlock] = {
+          result: result,
+          energy: energy,
+        }
+        recipeLookup[id] = itemIdLookup
+      })
+    }
+    console.log(
+      `Successfully processed ${
+        Object.keys(recipeLookup).length
+      } beacon crafting recipes`
+    )
+  })
 
   /**
    * Define the actual block right click handler on the beacon that will handle
@@ -66,7 +51,7 @@
     if (level.isClientSide()) return
     if (block.entity.getBeamSections === undefined) return
 
-    const allowedItem = allowedBeaconItems[item.id]
+    const allowedItem = global.EnergizedBeaconItems[item.id]
     if (hand !== 'main_hand' || allowedItem === undefined) return
     let { result, energy } = allowedItem
 
@@ -145,7 +130,7 @@
 
     // Delay counter in ticks, used to schedule the processing along the length
     // of the beacon beam.
-    let delay = 0
+    let delay = 1
 
     const origin = new Vec3i(0, 0, 0)
     block.entity.getBeamSections().forEach((beam) => {
@@ -157,11 +142,11 @@
         beam.offset.y,
         beam.offset.z
       )
-      // Integer coordinates represent the north-west corner of a block. The start
-      // and end coordinates of the bounding box itself need to be computed
-      // differently depending on which direction the beam was facing. Each
-      // bounding box encapsulates the block modifying the beam and every block
-      // up to the next modifying block, end exclusive.
+      // Integer coordinates represent the north-west corner of a block. The
+      // start and end coordinates of the bounding box itself need to be
+      // computed differently depending on which direction the beam was facing.
+      // Each bounding box encapsulates the block modifying the beam and every
+      // block up to the next modifying block, end exclusive.
       let start = redirectorBlock.pos
       let end = modifyingBlock.pos
       switch (direction) {
@@ -222,13 +207,5 @@
 
     // Cancel the event so the beacon UI doesn't open.
     e.cancel()
-  })
-
-  // Tag all the corundum clusters so that they can be used in the corresponding
-  // recipe.
-  ServerEvents.tags('item', (e) => {
-    Ingredient.of(/^quark:[a-z]+_corundum_cluster$/).itemIds.forEach((id) => {
-      e.add('kubejs:corundum_cluster', id)
-    })
   })
 })()
