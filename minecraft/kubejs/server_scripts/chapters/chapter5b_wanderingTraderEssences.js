@@ -116,7 +116,7 @@ LootJS.modifiers((e) => {
     for (const predicate of hard) {
       buildWanderingTraderPredicate(predicate)
         .addWeightedLoot([4, 6], Item.of(essence))
-        .addWeightedLoot([4, 6], [Item.of('create:experience_nugget')])
+        .addWeightedLoot([7, 9], [Item.of('create:experience_nugget')])
     }
   }
 
