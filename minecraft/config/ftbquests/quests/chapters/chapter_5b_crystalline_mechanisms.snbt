@@ -305,8 +305,9 @@
 			icon: "kubejs:crystal_growth_accelerator_bucket"
 			id: "18466D2CC4D667FD"
 			tasks: [{
-				id: "4CF1287B2157DA7F"
-				type: "checkmark"
+				id: "33D31825DD54A081"
+				item: "kubejs:crystal_growth_accelerator_bucket"
+				type: "item"
 			}]
 			title: "Crystal Growth Accelerator Bucket"
 			x: -10.5d
@@ -318,8 +319,9 @@
 			icon: "sliceanddice:fertilizer_bucket"
 			id: "5EB25E223B212790"
 			tasks: [{
-				id: "2F5144D3223C460A"
-				type: "checkmark"
+				id: "1965177E082EF886"
+				item: "sliceanddice:fertilizer_bucket"
+				type: "item"
 			}]
 			title: "Bucket of Liquid Fertilizer"
 			x: -10.5d
@@ -861,8 +863,9 @@
 			icon: "kubejs:flourishing_archwood_sap_bucket"
 			id: "07A1E7CF68BEF269"
 			tasks: [{
-				id: "758AC6EE37EAA959"
-				type: "checkmark"
+				id: "43880AFA3E06ECC6"
+				item: "kubejs:flourishing_archwood_sap_bucket"
+				type: "item"
 			}]
 			title: "Flourishing Archwood Sap Bucket"
 			x: 2.0d
@@ -874,8 +877,9 @@
 			icon: "kubejs:blazing_archwood_sap_bucket"
 			id: "01FC22A5FB8B77CF"
 			tasks: [{
-				id: "686FAD5F70A0314F"
-				type: "checkmark"
+				id: "33E8DC6F26F67B77"
+				item: "kubejs:blazing_archwood_sap_bucket"
+				type: "item"
 			}]
 			title: "Blazing Archwood Sap Bucket"
 			x: -2.0d
@@ -887,8 +891,9 @@
 			icon: "kubejs:cascading_archwood_sap_bucket"
 			id: "0A050DEE89467675"
 			tasks: [{
-				id: "2C86B7EC0B40D497"
-				type: "checkmark"
+				id: "47DBA8DB03D14974"
+				item: "kubejs:cascading_archwood_sap_bucket"
+				type: "item"
 			}]
 			title: "Cascading Archwood Sap Bucket"
 			x: 4.0d
@@ -900,8 +905,9 @@
 			icon: "kubejs:flashing_archwood_sap_bucket"
 			id: "4237CC27AD794E7A"
 			tasks: [{
-				id: "676ED1064FC88C3C"
-				type: "checkmark"
+				id: "7E5D60380B2205AC"
+				item: "kubejs:flashing_archwood_sap_bucket"
+				type: "item"
 			}]
 			title: "Flashing Archwood Sap Bucket"
 			x: -4.0d
@@ -2034,8 +2040,9 @@
 			id: "5C866601176B0F76"
 			optional: true
 			tasks: [{
-				id: "1ADAA2FA6F95D26C"
-				type: "checkmark"
+				id: "0C2E4CA8D11A5B27"
+				item: "kubejs:vexing_archwood_sap_bucket"
+				type: "item"
 			}]
 			title: "Vexing Archwood Sap Bucket"
 			x: 0.0d
