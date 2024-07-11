@@ -15,7 +15,7 @@ JEIAddedEvents.registerCategories((e) => {
   const $AllGuiTextures = Java.loadClass(
     'com.simibubi.create.foundation.gui.AllGuiTextures'
   )
-  // Create class for default block rendering behavior
+  // Create class for block rendering in JEI.
   const $GuiGameElement = Java.loadClass(
     'com.simibubi.create.foundation.gui.element.GuiGameElement'
   )
