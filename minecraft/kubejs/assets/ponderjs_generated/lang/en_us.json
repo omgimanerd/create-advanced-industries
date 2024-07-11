@@ -1,4 +1,6 @@
 {
+  "kubejs.ponder.tag.custom_mechanics": "Custom Mechanics",
+  "kubejs.ponder.tag.custom_mechanics.description": "All the custom crafting and interaction mechanics in this modpack",
   "kubejs.ponder.arcane_portal_open.header": "Opening The Arcane Portal",
   "kubejs.ponder.arcane_portal_open.text_1": "Right click a crying obsidian block with a source gem to open an Arcane Portal.",
   "kubejs.ponder.arcane_portal_open.text_2": "Once you open the portal, it requires a constant supply of liquefied source to stay open.",
