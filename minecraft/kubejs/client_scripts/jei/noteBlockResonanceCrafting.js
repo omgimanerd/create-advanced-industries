@@ -4,7 +4,7 @@ JEIAddedEvents.registerCategories((e) => {
   /**
    * Internal helper to get the color and centered x offset for a note.
    * @param {string} note
-   * @returns {[$MutableComponent_, number]}
+   * @returns {[Internal.MutableComponent_, number]}
    */
   const getNoteTextAndOffset = (note) => {
     const shortened = note.replace(/[0-9]/, '')
@@ -16,8 +16,8 @@ JEIAddedEvents.registerCategories((e) => {
 
   /**
    * Internal helper to parse note inputs which can be a string or object
-   * @param {string|{note:string, instrument: $Instrument_}} note
-   * @returns {[string, $Instrument_]}
+   * @param {string|{note:string, instrument:Internal.Instrument_}} note
+   * @returns {[string,Internal.Instrument_]}
    */
   const parseNote = (note) => {
     if (typeof note === 'object') {
@@ -62,9 +62,12 @@ JEIAddedEvents.registerCategories((e) => {
           let [_, instrument] = parseNote(sequence[i])
           let x = sequenceXStart + i * 15
           if (instrument !== 'harp') {
-            builder
-              .addSlot('input', x, line3Y)
-              .addItemStacks(global.INSTRUMENTS[instrument])
+            let slot = builder.addSlot('input', x, line3Y)
+            for (const instrumentBlock of global.INSTRUMENTS[instrument]) {
+              Ingredient.of(instrumentBlock).itemIds.forEach((id) => {
+                slot.addItemStack(id)
+              })
+            }
           }
         }
       })

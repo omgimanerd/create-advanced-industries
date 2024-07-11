@@ -5,6 +5,7 @@ const $ItemStack = Java.loadClass('net.minecraft.world.item.ItemStack')
 
 global.RESONANCE_CRAFTING = 'kubejs:resonance_crafting'
 
+/** @type {string} */
 global.NOTES = [
   'F#3', // 0
   'G3', // 1
@@ -33,6 +34,9 @@ global.NOTES = [
   'F#5', // 24
 ]
 
+/**
+ * @type {string:number}
+ */
 global.NOTE_TO_ID = {
   'F#3': 0,
   G3: 1,
@@ -61,6 +65,7 @@ global.NOTE_TO_ID = {
   'F#5': 24,
 }
 
+/** @type {string:Internal.Color_} */
 global.NOTE_TO_COLOR = {
   'F#3': Color.rgba(119, 210, 5, 0), // #77D700
   G3: Color.rgba(149, 192, 0, 0), // #95C000
@@ -88,6 +93,34 @@ global.NOTE_TO_COLOR = {
   F5: Color.rgba(89, 232, 0, 0), // #59E800
   'F#5': Color.rgba(148, 193, 0, 0), // #94C100
   '?': Color.rgba(255, 255, 255, 0), // Special case
+}
+
+/**
+ * @type {Internal.Instrument_:string[]}
+ */
+global.INSTRUMENTS = {
+  bass: ['#minecraft:logs', '#minecraft:planks', '#minecraft:wooden_slabs'],
+  snare: ['#minecraft:sand', 'minecraft:gravel'],
+  hat: ['minecraft:glass', 'minecraft:sea_lantern', 'minecraft:beacon'],
+  basedrum: [
+    '#minecraft:base_stone_overworld',
+    'minecraft:netherrack',
+    '#minecraft:nylium',
+    'minecraft:obsidian',
+    'minecraft:quartz_block',
+    '#forge:sandstone',
+  ],
+  bell: ['minecraft:gold_block'],
+  flute: ['minecraft:clay'],
+  chime: ['minecraft:packed_ice'],
+  guitar: ['#minecraft:wool'],
+  xylophone: ['minecraft:bone_block'],
+  iron_xylophone: ['minecraft:iron_block'],
+  cow_bell: ['minecraft:soul_sand'],
+  didgeridoo: ['minecraft:pumpkin'],
+  bit: ['minecraft:emerald_block'],
+  banjo: ['minecraft:hay_block'],
+  harp: ['minecraft:air'],
 }
 
 /**
@@ -120,7 +153,7 @@ global.ResonanceCraftingRecipes = {}
  * @property {string} type
  * @property {Internal.ItemStack_} input
  * @property {Internal.ItemStack_} output
- * @property {{note:string, instrument:$Instrument_}[]} sequence
+ * @property {{note:string, instrument:Internal.Instrument_}[]} sequence
  * @property {boolean=} hideSequence
  *
  * @type {NoteBlockResonanceRecipeDataJEI[]}
@@ -131,7 +164,7 @@ global.ResonanceCraftingRecipesJEI = []
  * This is the method used to register Resonance Crafting recipes.
  * @param {InputItem_} input
  * @param {OutputItem_} output
- * @param {(string|{note:string, instrument:$Instrument_})[]} notes
+ * @param {(string|{note:string, instrument:Internal.Instrument_})[]} notes
  * @param {boolean} hideSequence
  */
 global.RegisterResonanceCraftingRecipe = (
@@ -300,59 +333,6 @@ ForgeEvents.onEvent('net.minecraftforge.event.level.NoteBlockEvent', (e) => {
 
 // Recipe registrations must happen here.
 StartupEvents.postInit(() => {
-  /**
-   * Internal helper to get all items for a list of item ids or tags.
-   * @param {string[]} tags
-   * @returns {Internal.List}
-   */
-  const getAllItemStacks = (tags) => {
-    const itemStacks = Utils.newList()
-    for (const tag of tags) {
-      Ingredient.of(tag).itemIds.forEach((id) => {
-        itemStacks.add(Item.of(id))
-      })
-    }
-    return itemStacks
-  }
-
-  // Mapping of all note block instruments and the block required to play them
-  // This can only be populated after the item registry is available.
-  global.INSTRUMENTS = {
-    bass: getAllItemStacks([
-      '#minecraft:logs',
-      '#minecraft:planks',
-      '#minecraft:wooden_slabs',
-    ]),
-    snare: getAllItemStacks(['#minecraft:sand', 'minecraft:gravel']),
-    hat: getAllItemStacks([
-      'minecraft:glass',
-      'minecraft:sea_lantern',
-      'minecraft:beacon',
-    ]),
-    basedrum: getAllItemStacks([
-      '#minecraft:base_stone_overworld',
-      'minecraft:netherrack',
-      '#minecraft:nylium',
-      'minecraft:obsidian',
-      'minecraft:quartz_block',
-      '#forge:sandstone',
-    ]),
-    bell: [Item.of('minecraft:gold_block')],
-    flute: [Item.of('minecraft:clay')],
-    chime: [Item.of('minecraft:packed_ice')],
-    guitar: getAllItemStacks(['#minecraft:wool']),
-    xylophone: [Item.of('minecraft:bone_block')],
-    iron_xylophone: [Item.of('minecraft:iron_block')],
-    cow_bell: [Item.of('minecraft:soul_sand')],
-    didgeridoo: [Item.of('minecraft:pumpkin')],
-    bit: [Item.of('minecraft:emerald_block')],
-    banjo: [Item.of('minecraft:hay_block')],
-    harp: [Item.getEmpty()],
-  }
-
-  // Recipes must be registered here to work properly in JEI. For local testing,
-  // they can still be registered in server_scripts.
-
   // Recipes used in Chapter 6
   global.RegisterResonanceCraftingRecipe(
     'minecraft:ender_pearl',
