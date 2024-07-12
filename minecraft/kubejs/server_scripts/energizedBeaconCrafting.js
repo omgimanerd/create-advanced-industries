@@ -48,7 +48,6 @@
    */
   BlockEvents.rightClicked('minecraft:beacon', (e) => {
     const { hand, item, block, player, level, server } = e
-    if (level.isClientSide()) return
     if (block.entity.getBeamSections === undefined) return
 
     const allowedItem = global.EnergizedBeaconItems[item.id]

@@ -3,8 +3,7 @@
 // collecting it with a glass bottle.
 
 BlockEvents.rightClicked('minecraft:dragon_head', (e) => {
-  const { item, hand, player, block, level } = e
-  if (level.isClientSide()) return
+  const { item, hand, player, block } = e
   const requiredPotion = Item.of('minecraft:potion').withNBT({
     Potion: 'minecraft:strong_regeneration',
   })
@@ -94,7 +93,6 @@ const customDragonsBreathBottling = (item, player, target, level) => {
 
 BlockEvents.rightClicked((e) => {
   const { item, player, block, level } = e
-  if (level.isClientSide()) return
   if (item.id !== 'minecraft:glass_bottle') return
   customDragonsBreathBottling(
     item,
@@ -109,7 +107,6 @@ BlockEvents.rightClicked((e) => {
 
 ItemEvents.rightClicked('minecraft:glass_bottle', (e) => {
   const { item, player, target, level } = e
-  if (level.isClientSide()) return
   customDragonsBreathBottling(item, player, target, level)
 })
 

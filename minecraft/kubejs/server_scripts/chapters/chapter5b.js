@@ -28,7 +28,6 @@ global.NetherWartSpoutHandlerCallback = (block, fluid, simulate) => {
  */
 ItemEvents.entityInteracted((e) => {
   const { hand, item, player, target, level, server } = e
-  if (level.isClientSide()) return
   if (hand !== 'main_hand') return
   if (target.type !== 'minecraft:blaze') return
   if (

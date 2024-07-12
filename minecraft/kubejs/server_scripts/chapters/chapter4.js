@@ -3,9 +3,9 @@
 
 ItemEvents.rightClicked('#kubejs:screwdriver', (e) => {
   const player = e.player
-  if (player.level.isClientSide()) {
-    player.tell('You got screwed!')
-  }
+  if (e.hand !== 'main_hand') return
+  player.tell('You got screwed!')
+  player.swing()
 })
 
 ServerEvents.tags('item', (e) => {

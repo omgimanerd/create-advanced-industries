@@ -13,7 +13,7 @@ ServerEvents.tags('fluid', (e) => {
 ItemEvents.rightClicked((e) => {
   const { item, player, level } = e
   if (item.id == 'kubejs:diamond_saw_blade') {
-    if (!player.level.isClientSide() && !player.isCreative()) {
+    if (!player.isCreative()) {
       player.attack(new $DamageSources(level.registryAccess()).cactus(), 1)
       player.damageHeldItem()
       player.tell("Ouch, that's sharp!")
