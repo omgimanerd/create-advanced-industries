@@ -2,10 +2,12 @@
 // Utility functions and classes used by the code to generate custom Ponders.
 
 // TODO add a custom ars enchanting ponder
-// TODO add a custom ars imbuement ponder
 
 const $DeployerBlockEntity = Java.loadClass(
   'com.simibubi.create.content.kinetics.deployer.DeployerBlockEntity'
+)
+const $FunnelBlockEntity = Java.loadClass(
+  'com.simibubi.create.content.logistics.funnel.FunnelBlockEntity'
 )
 
 /**
@@ -37,33 +39,47 @@ const animateTank = (scene, position, fluid, from, to, step) => {
 /**
  * Animates the source jar's fluid level at the given position.
  * @param {Internal.ExtendedSceneBuilder_} scene
- * @param {BlockPos_} position
+ * @param {BlockPos_} pos
  * @param {number} from
  * @param {number} to
  * @param {number=} delay
  */
-const animateSourceJar = (scene, position, from, to, delay) => {
+const animateSourceJar = (scene, pos, from, to, delay) => {
   delay = delay === undefined ? 5 : delay
   while (from != to) {
-    // Requires a closure to bind the value of amount inside the callback.
-    ;((amount_) => {
-      scene.world.modifyBlock(
-        position,
-        () => {
-          return Block.id('ars_nouveau:source_jar', {
-            fill: amount_,
-          })
-        },
-        false
-      )
-    })(from)
+    setSourceJarFill(scene, pos, amount_, false)
     scene.idle(delay)
     from = to < from ? Math.max(to, from - 1) : Math.min(to, from + 1)
   }
 }
 
 /**
- *
+ * @param {Internal.ExtendedSceneBuilder_} scene
+ * @param {BlockPos_} pos
+ * @param {Internal.ItemStack_} itemStack
+ */
+const setArsContainerItem = (scene, pos, itemStack) => {
+  itemStack = typeof itemStack === 'string' ? Item.of(itemStack) : itemStack
+  scene.world.modifyBlockEntityNBT(pos, (nbt) => {
+    nbt.itemStack = itemStack.toNBT()
+  })
+}
+
+/**
+ * @param {Internal.ExtendedSceneBuilder_} scene
+ * @param {BlockPos_} pos
+ * @param {number} fill
+ * @param {boolean=} particles
+ */
+const setSourceJarFill = (scene, pos, fill, particles) => {
+  scene.world.modifyBlock(
+    pos,
+    Block.id('ars_nouveau:source_jar', { fill: `${fill}` }),
+    !!particles
+  )
+}
+
+/**
  * @param {Internal.ExtendedSceneBuilder_} scene
  * @param {BlockPos_} deployerPos
  * @param {Internal.ItemStack_} item
@@ -74,25 +90,22 @@ const setDeployerFilter = (scene, deployerPos, item) => {
 
 /**
  * @param {Internal.ExtendedSceneBuilder_} scene
+ * @param {BlockPos_} funnelPos
+ * @param {Internal.ItemStack_} item
+ */
+const setFunnelFilter = (scene, funnelPos, item) => {
+  scene.world.setFilterData(funnelPos, $FunnelBlockEntity, item)
+}
+
+/**
+ * @param {Internal.ExtendedSceneBuilder_} scene
  * @param {BlockPos_} deployerPos
- * @param {Internal.ItemStack_} itemStack
+ * @param {string|Internal.ItemStack_} itemStack
  */
 const setDeployerHeldItem = (scene, deployerPos, itemStack) => {
   itemStack = typeof itemStack === 'string' ? Item.of(itemStack) : itemStack
   scene.world.modifyBlockEntityNBT(deployerPos, (nbt) => {
     nbt.HeldItem = itemStack.toNBT()
-  })
-}
-
-/**
- * @param {Internal.ExtendedSceneBuilder_} scene
- * @param {BlockPos_} pedestalPos
- * @param {Internal.ItemStack_} itemStack
- */
-const setArsContainerItem = (scene, pedestalPos, itemStack) => {
-  itemStack = typeof itemStack === 'string' ? Item.of(itemStack) : itemStack
-  scene.world.modifyBlockEntityNBT(pedestalPos, (nbt) => {
-    nbt.itemStack = itemStack.toNBT()
   })
 }
 
