@@ -35,6 +35,34 @@ const animateTank = (scene, position, fluid, from, to, step) => {
 }
 
 /**
+ * Animates the source jar's fluid level at the given position.
+ * @param {Internal.ExtendedSceneBuilder_} scene
+ * @param {BlockPos_} position
+ * @param {number} from
+ * @param {number} to
+ * @param {number=} delay
+ */
+const animateSourceJar = (scene, position, from, to, delay) => {
+  delay = delay === undefined ? 5 : delay
+  while (from != to) {
+    // Requires a closure to bind the value of amount inside the callback.
+    ;((amount_) => {
+      scene.world.modifyBlock(
+        position,
+        () => {
+          return Block.id('ars_nouveau:source_jar', {
+            fill: amount_,
+          })
+        },
+        false
+      )
+    })(from)
+    scene.idle(delay)
+    from = to < from ? Math.max(to, from - 1) : Math.min(to, from + 1)
+  }
+}
+
+/**
  *
  * @param {Internal.ExtendedSceneBuilder_} scene
  * @param {BlockPos_} deployerPos
@@ -61,7 +89,7 @@ const setDeployerHeldItem = (scene, deployerPos, itemStack) => {
  * @param {BlockPos_} pedestalPos
  * @param {Internal.ItemStack_} itemStack
  */
-const setPedestalItem = (scene, pedestalPos, itemStack) => {
+const setArsContainerItem = (scene, pedestalPos, itemStack) => {
   itemStack = typeof itemStack === 'string' ? Item.of(itemStack) : itemStack
   scene.world.modifyBlockEntityNBT(pedestalPos, (nbt) => {
     nbt.itemStack = itemStack.toNBT()

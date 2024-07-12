@@ -48,7 +48,7 @@ Ponder.registry((e) => {
         .showControls(40, pedestal.above(), 'down')
         .rightClick()
         .withItem('minecraft:ender_pearl')
-      setPedestalItem(scene, pedestal, 'minecraft:ender_pearl')
+      setArsContainerItem(scene, pedestal, 'minecraft:ender_pearl')
       scene.idle(50)
 
       // Playing notes in the right order
@@ -80,7 +80,7 @@ Ponder.registry((e) => {
           .delta([0.2, 0.2, 0.2])
           .color(noteColors[i])
         if (i === noteBlocks.length - 1) {
-          setPedestalItem(scene, pedestal, 'kubejs:resonant_ender_pearl')
+          setArsContainerItem(scene, pedestal, 'kubejs:resonant_ender_pearl')
         }
         scene.idle(10)
       }
