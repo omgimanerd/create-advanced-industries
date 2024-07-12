@@ -105,10 +105,10 @@ Ponder.registry((e) => {
         consumptionSpot
       )
       scene.idleSeconds(1)
-      scene.world.setBlock(consumptionSpot, 'minecraft:air', true)
+      scene.world.destroyBlock(consumptionSpot)
       spawnPortalConsumptionParticles(scene, consumptionSpot)
 
-      scene.idleSeconds(1)
+      scene.idleSeconds(2)
       scene.world.setBlock(
         consumptionSpot,
         'starbunclemania:source_fluid_block',
@@ -121,7 +121,7 @@ Ponder.registry((e) => {
       for (const [_, pumpSpot] of Object.entries(pumps)) {
         scene.world.setKineticSpeed(pumpSpot, 0)
       }
-      scene.world.setBlock(consumptionSpot, 'minecraft:air', true)
+      scene.world.destroyBlock(consumptionSpot)
       spawnPortalConsumptionParticles(scene, consumptionSpot)
       scene.text(
         40,
@@ -138,7 +138,7 @@ Ponder.registry((e) => {
         .density(2)
       scene.idleSeconds(4)
       scene.particles.simple(5, 'minecraft:explosion', center).density(10)
-      scene.world.setBlock(center, 'minecraft:air', true)
+      scene.world.destroyBlock(center)
       scene.idleSeconds(1)
     })
     .scene('arcane_portal_usage', 'Using the Arcane Portal', (scene, util) => {
