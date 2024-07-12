@@ -1,13 +1,6 @@
 // priority: 100
 // Recipe overhauls for Chapter 4 progression.
 
-ItemEvents.rightClicked('#kubejs:screwdriver', (e) => {
-  const player = e.player
-  if (e.hand !== 'main_hand') return
-  player.tell('You got screwed!')
-  player.swing()
-})
-
 ServerEvents.tags('item', (e) => {
   e.add('kubejs:screwdriver', 'tfmg:screwdriver')
   e.add('kubejs:screwdriver', 'kubejs:unbreakable_screwdriver')
