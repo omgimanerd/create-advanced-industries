@@ -88,9 +88,51 @@ Ponder.registry((e) => {
     // kubejs/assets/kubejs/ponder/source_condenser.nbt
     'kubejs:source_condenser',
     (scene, util) => {
-      scene.showStructure()
+      scene.showBasePlate()
+      const sourceCondenser = util.grid.at(3, 2, 2)
+      const fluidTank = util.grid.at(3, 1, 2)
+      const sourceJar = util.grid.at(1, 1, 2)
 
       // Scene setup
+      setSourceJarFill(scene, sourceJar, 4)
+      scene.world.showSection(util.select.layers(1, 2), Facing.DOWN)
+      scene.idle(10)
+      scene.text(
+        40,
+        'Souce Condensers perform the opposite function of fluid ' +
+          'sourcelinks by converting raw source back into fluid.',
+        sourceCondenser
+      )
+      scene.idle(50)
+      scene.text(
+        40,
+        'The Source Condenser will automatically pull from nearby source jars.',
+        sourceJar
+      )
+      scene.particles
+        .simple(5, 'minecraft:cloud', sourceJar)
+        .motion([0.3, 0.15, 0])
+        .scale(0.5)
+        .density(2)
+        .lifetime(9)
+        .color(DEFAULT_ARS_COLOR)
+      setSourceJarFill(scene, sourceJar, 3)
+      scene.idle(10)
+      scene.world.modifyBlockEntityNBT(sourceCondenser, (nbt) => {
+        nbt.FluidName = 'starbunclemania:source_fluid'
+        nbt.Amount = 1000
+      })
+      scene.idle(40)
+      scene.text(
+        40,
+        'It will also automatically push the liquefied source to a fluid ' +
+          'tank placed underneath it.',
+        fluidTank
+      )
+      scene.world.modifyBlockEntityNBT(sourceCondenser, (nbt) => {
+        nbt.Amount = 0
+      })
+      animateTank(scene, fluidTank, 'starbunclemania:source_fluid', 0, 1000, 50)
     }
   )
 
@@ -299,4 +341,19 @@ Ponder.registry((e) => {
   //     'kubejs:enchanting_apparatus_automation',
   //     (scene, util) => {}
   //   )
+})
+
+Ponder.tags((e) => {
+  e.createTag(
+    'kubejs:ars_nouveau', // Tag ID
+    'ars_nouveau:archmage_spell_book', // Tag icon
+    'Ars Nouveau', // Tag title
+    'Ponders for Ars Nouveau in this modpack', // Tag description
+    // Ponder IDs that belong in this tag.
+    [
+      'starbunclemania:fluid_sourcelink',
+      'starbunclemania:source_condenser',
+      'ars_nouveau:imbuement_chamber',
+    ]
+  )
 })

@@ -78,5 +78,8 @@
   "kubejs.ponder.remy_the_epicure.text_6": "There is a small cooldown every time you feed Remy.",
   "kubejs.ponder.remy_the_epicure.text_7": "Be careful not to feed Remy anything that\u0027ll give him an upset stomach.",
   "kubejs.ponder.remy_the_epicure.text_8": "You won\u0027t be able to feed Remy until the effect wears off.",
-  "kubejs.ponder.source_condenser.header": "Source Condenser"
+  "kubejs.ponder.source_condenser.header": "Source Condenser",
+  "kubejs.ponder.source_condenser.text_1": "Souce Condensers perform the opposite function of fluid sourcelinks by converting raw source back into fluid.",
+  "kubejs.ponder.source_condenser.text_2": "The Source Condenser will automatically pull from nearby source jars.",
+  "kubejs.ponder.source_condenser.text_3": "It will also automatically push the liquefied source to a fluid tank placed underneath it."
 }

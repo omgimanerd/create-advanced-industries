@@ -2,10 +2,12 @@
 
 Ponder.tags((e) => {
   e.createTag(
-    'kubejs:custom_mechanics',
-    'kubejs:kinetic_mechanism',
-    'Custom Mechanics',
+    'kubejs:custom_mechanics', // Tag ID
+    'kubejs:kinetic_mechanism', // Tag icon
+    'Custom Mechanics', // Tag title
+    // Tag description
     'All the custom crafting and interaction mechanics in this modpack',
+    // Ponder IDs that belong in this tag.
     [
       'kubejs:arcane_portal',
       'minecraft:beehive',
