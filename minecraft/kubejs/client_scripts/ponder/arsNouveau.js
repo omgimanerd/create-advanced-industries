@@ -490,6 +490,15 @@ Ponder.registry((e) => {
         setSourceJarFill(scene, toSourceJar2, i)
         scene.idle(delay + 5)
       }
+      scene.idle(20)
+
+      scene.text(
+        40,
+        'You can also bind source relays to other source relays. This is ' +
+          'very useful with the other types of source relays explained in ' +
+          'the next scene',
+        sourceRelay
+      )
     })
     .scene(
       'ars_nouveay_relay_collector_depositor',

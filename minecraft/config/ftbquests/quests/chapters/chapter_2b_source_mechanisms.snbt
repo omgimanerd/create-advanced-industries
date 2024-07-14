@@ -144,17 +144,26 @@
 				"39E20F0E25618A92"
 			]
 			description: [
-				"Due to instabilities in the world, source can only be transmuted from its liquid form."
+				"Due to instabilities in the world, source can only be transmuted from its liquid form. Use the fluid sourcelink to convert liquid source into its usable form. Spell turrets and other Ars Nouveau can only use the source stored in a source jar."
 				""
 				"Source condensers can be used to convert it back to its liquid form."
+				""
+				"See the Ponders for more information."
 			]
 			id: "7929E375AF5FD000"
 			optional: true
-			rewards: [{
-				id: "34F663DDC73A729D"
-				item: "starbunclemania:source_condenser"
-				type: "item"
-			}]
+			rewards: [
+				{
+					id: "34F663DDC73A729D"
+					item: "starbunclemania:source_condenser"
+					type: "item"
+				}
+				{
+					id: "7875D3926CCE4512"
+					item: "ars_nouveau:source_jar"
+					type: "item"
+				}
+			]
 			tasks: [{
 				id: "33CC663A438C728B"
 				item: "starbunclemania:fluid_sourcelink"
@@ -205,7 +214,7 @@
 		}
 		{
 			dependencies: ["7929E375AF5FD000"]
-			description: ["You can either move liquid source around with pipes, or if you've converted it with the fluid sourcelink, you can use source relays to move it around."]
+			description: ["You can move liquid source around with pipes, or with source relays if you've already converted it with the fluid sourcelink."]
 			id: "20FCD1A3AC667575"
 			optional: true
 			rewards: [
