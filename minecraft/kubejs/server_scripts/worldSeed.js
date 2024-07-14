@@ -1,7 +1,6 @@
 // priority: 1000
 
-ServerEvents.recipes((e) => {
-  // Perform this operation here to check if
+ServerEvents.recipes(() => {
   const server = Utils.getServer()
   global.WORLD_SEED =
     server === null ? -1 : server.worldData.worldGenOptions().seed()

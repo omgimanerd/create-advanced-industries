@@ -34,10 +34,7 @@ ServerEvents.recipes((e) => {
       'DDD', //
       'IDI', //
     ],
-    {
-      I: 'thermal:invar_ingot',
-      D: 'minecraft:deepslate',
-    }
+    { I: 'thermal:invar_ingot', D: 'minecraft:deepslate' }
   )
   create
     .SequencedAssembly('minecraft:deepslate')

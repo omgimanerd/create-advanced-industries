@@ -70,9 +70,7 @@ ServerEvents.recipes((e) => {
       'C C', //
       'CCC', //
     ],
-    {
-      C: 'minecraft:clay_ball',
-    }
+    { C: 'minecraft:clay_ball' }
   )
   create
     .deploying('kubejs:unfired_ingot_cast', ['minecraft:clay', '#forge:ingots'])

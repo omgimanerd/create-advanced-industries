@@ -34,9 +34,7 @@ const registerCast = (e, id, displayName, modelJson) => {
 const registerBaseIngotCast = (e, id, baseTexture) => {
   const modelJson = {
     parent: 'kubejs:block/base_ingot_cast',
-    textures: {
-      base: baseTexture,
-    },
+    textures: { base: baseTexture },
   }
   return registerCast(e, id, getDisplayName(id), modelJson)
 }
@@ -57,10 +55,7 @@ const registerFilledIngotCast = (
 ) => {
   const modelJson = {
     parent: 'kubejs:block/filled_ingot_cast',
-    textures: {
-      base: baseTexture,
-      fluid: fluidTexture,
-    },
+    textures: { base: baseTexture, fluid: fluidTexture },
   }
   return registerCast(e, id, displayName, modelJson).lightLevel(12)
 }

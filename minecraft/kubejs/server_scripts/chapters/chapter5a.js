@@ -10,14 +10,12 @@ ServerEvents.tags('fluid', (e) => {
   e.add('forge:lpg', 'pneumaticcraft:lpg')
 })
 
-ItemEvents.rightClicked((e) => {
-  const { item, player, level } = e
-  if (item.id == 'kubejs:diamond_saw_blade') {
-    if (!player.isCreative()) {
-      player.attack(new $DamageSources(level.registryAccess()).cactus(), 1)
-      player.damageHeldItem()
-      player.tell("Ouch, that's sharp!")
-    }
+ItemEvents.rightClicked('kubejs:diamond_saw_blade', (e) => {
+  const { player, level } = e
+  if (!player.isCreative()) {
+    player.attack(new $DamageSources(level.registryAccess()).cactus(), 1)
+    player.damageHeldItem()
+    player.tell("Ouch, that's sharp!")
   }
 })
 
@@ -66,11 +64,7 @@ ServerEvents.recipes((e) => {
       'GTG', //
       'HHH',
     ],
-    {
-      H: 'tfmg:heavy_plate',
-      G: '#forge:glass',
-      T: 'pneumaticcraft:small_tank',
-    }
+    { H: 'tfmg:heavy_plate', G: '#forge:glass', T: 'pneumaticcraft:small_tank' }
   )
 
   // Overhaul Thermopneumatic Processing Plant recipe
@@ -133,31 +127,19 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'createaddition:liquid_burning/diesel' })
   e.remove({ id: 'createaddition:liquid_burning/gasoline' })
   create.burnableFluid(
-    {
-      fluidTag: '#forge:diesel',
-      amount: 1000,
-    },
+    { fluidTag: '#forge:diesel', amount: 1000 },
     4800 // 4 minutes
   )
   create.burnableFluid(
-    {
-      fluidTag: '#forge:kerosene',
-      amount: 1000,
-    },
+    { fluidTag: '#forge:kerosene', amount: 1000 },
     9600 // 8 minutes
   )
   create.burnableFluid(
-    {
-      fluidTag: '#forge:gasoline',
-      amount: 1000,
-    },
+    { fluidTag: '#forge:gasoline', amount: 1000 },
     19200 // 16 minutes
   )
   create.burnableFluid(
-    {
-      fluidTag: '#forge:lpg',
-      amount: 1000,
-    },
+    { fluidTag: '#forge:lpg', amount: 1000 },
     38400, // 32 minutes
     true
   )
@@ -213,10 +195,7 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'pneumaticcraft:thermo_plant/plastic_from_lpg' })
   pneumaticcraft
     .thermo_plant()
-    .fluid_input({
-      tag: 'forge:lpg',
-      amount: 250,
-    })
+    .fluid_input({ tag: 'forge:lpg', amount: 250 })
     .item_input('minecraft:coal')
     .fluid_output(Fluid.of('pneumaticcraft:plastic', 250))
     .temperature({ min_temp: 100 })
@@ -671,10 +650,7 @@ ServerEvents.recipes((e) => {
       'DSD', //
       'DDD', //
     ],
-    {
-      D: 'thermal:diamond_dust',
-      S: 'thermal:saw_blade',
-    }
+    { D: 'thermal:diamond_dust', S: 'thermal:saw_blade' }
   )
 
   // The unbreakable diamond saw blade is not easily accessible until chapter 5b

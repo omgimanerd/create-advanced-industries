@@ -922,10 +922,7 @@ ServerEvents.recipes((e) => {
         'T', //
         'H', //
       ],
-      {
-        H: 'tfmg:heavy_plate',
-        T: 'create:fluid_tank',
-      }
+      { H: 'tfmg:heavy_plate', T: 'create:fluid_tank' }
     )
     redefineRecipe(
       'tfmg:pumpjack_crank',
@@ -933,11 +930,7 @@ ServerEvents.recipes((e) => {
         'H H', //
         'RIR', //
       ],
-      {
-        H: 'tfmg:heavy_plate',
-        R: 'tfmg:rebar',
-        I: 'tfmg:machine_input',
-      }
+      { H: 'tfmg:heavy_plate', R: 'tfmg:rebar', I: 'tfmg:machine_input' }
     )
     e.replaceInput({ mod: 'tfmg' }, 'tfmg:slag', 'thermal:slag')
     e.replaceOutput({ mod: 'tfmg' }, 'tfmg:slag', 'thermal:slag')
@@ -1052,10 +1045,7 @@ ServerEvents.recipes((e) => {
         'SBS', //
         'SSS', //
       ],
-      {
-        S: '#create:sandpaper',
-        B: 'create:mechanical_belt',
-      }
+      { S: '#create:sandpaper', B: 'create:mechanical_belt' }
     )
 
     // Curving heads are made from steel on the lathe.

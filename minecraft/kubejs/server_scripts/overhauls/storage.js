@@ -38,10 +38,7 @@ ServerEvents.recipes((e) => {
       'NCN', //
       'NNN', //
     ],
-    {
-      N: 'minecraft:iron_nugget',
-      C: 'functionalstorage:storage_controller',
-    }
+    { N: 'minecraft:iron_nugget', C: 'functionalstorage:storage_controller' }
   )
   redefineRecipe('functionalstorage:controller_extension', [
     'functionalstorage:storage_controller',
@@ -53,10 +50,7 @@ ServerEvents.recipes((e) => {
       'NCN', //
       'NNN', //
     ],
-    {
-      N: 'minecraft:iron_nugget',
-      C: 'functionalstorage:controller_extension',
-    }
+    { N: 'minecraft:iron_nugget', C: 'functionalstorage:controller_extension' }
   )
   redefineRecipe(
     'functionalstorage:ender_drawer',
@@ -73,15 +67,9 @@ ServerEvents.recipes((e) => {
   )
   e.replaceInput(
     [
-      {
-        id: 'functionalstorage:collector_upgrade',
-      },
-      {
-        id: 'functionalstorage:pusher_upgrade',
-      },
-      {
-        id: 'functionalstorage:puller_upgrade',
-      },
+      { id: 'functionalstorage:collector_upgrade' },
+      { id: 'functionalstorage:pusher_upgrade' },
+      { id: 'functionalstorage:puller_upgrade' },
     ],
     'minecraft:redstone',
     PRECISION_MECHANISM
@@ -99,9 +87,7 @@ ServerEvents.recipes((e) => {
     R: 'minecraft:redstone',
   }
   e.replaceInput(
-    {
-      mod: 'refinedstorage',
-    },
+    { mod: 'refinedstorage' },
     'refinedstorage:silicon',
     'kubejs:silicon_wafer'
   )
@@ -123,9 +109,7 @@ ServerEvents.recipes((e) => {
       'BMB', //
       ' E ', //
     ],
-    Object.assign({}, commonRefinedStorageKeys, {
-      E: 'create:electron_tube',
-    })
+    Object.assign({}, commonRefinedStorageKeys, { E: 'create:electron_tube' })
   )
   e.remove({ id: 'refinedstorage:quartz_enriched_iron' })
   pneumaticcraft
@@ -188,26 +172,16 @@ ServerEvents.recipes((e) => {
   ])
   e.replaceInput(
     [
-      {
-        id: 'refinedstorage:cable',
-      },
-      {
-        id: 'refinedstorage:interface',
-      },
-      {
-        id: 'refinedstorage:constructor',
-      },
-      {
-        id: 'refinedstorage:destructor',
-      },
+      { id: 'refinedstorage:cable' },
+      { id: 'refinedstorage:interface' },
+      { id: 'refinedstorage:constructor' },
+      { id: 'refinedstorage:destructor' },
     ],
     'minecraft:redstone',
     LOGISTICS_MECHANISM
   )
   e.replaceInput(
-    {
-      id: 'refinedstorage:controller',
-    },
+    { id: 'refinedstorage:controller' },
     'kubejs:silicon_wafer',
     LOGISTICS_MECHANISM
   )
@@ -216,9 +190,7 @@ ServerEvents.recipes((e) => {
   // ExtraStorage //
   //////////////////
   e.replaceInput(
-    {
-      id: /^extrastorage:part\/storagepart_[0-9]+k(_fluid){0,1}$/,
-    },
+    { id: /^extrastorage:part\/storagepart_[0-9]+k(_fluid){0,1}$/ },
     'minecraft:redstone',
     LOGISTICS_MECHANISM
   )
@@ -256,30 +228,22 @@ ServerEvents.recipes((e) => {
   // Tom's Simple Storage Mod //
   //////////////////////////////
   e.replaceInput(
-    {
-      mod: 'toms_storage',
-    },
+    { mod: 'toms_storage' },
     'minecraft:comparator',
     PRECISION_MECHANISM
   )
   e.replaceInput(
-    {
-      mod: 'toms_storage',
-    },
+    { mod: 'toms_storage' },
     '#minecraft:trapdoors',
     'create:brass_ingot'
   )
   e.replaceInput(
-    {
-      mod: 'toms_storage',
-    },
+    { mod: 'toms_storage' },
     'minecraft:quartz',
     'create:electron_tube'
   )
   e.replaceInput(
-    {
-      id: 'toms_storage:inventory_cable_connector',
-    },
+    { id: 'toms_storage:inventory_cable_connector' },
     'minecraft:quartz',
     PRECISION_MECHANISM
   )

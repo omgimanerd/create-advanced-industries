@@ -21,9 +21,7 @@ ServerEvents.recipes((e) => {
       'S S', //
       ' S ', //
     ],
-    {
-      S: 'create:iron_sheet',
-    }
+    { S: 'create:iron_sheet' }
   )
   redefineRecipe(
     'thermal:drill_head',
@@ -122,9 +120,7 @@ ServerEvents.recipes((e) => {
       'NBN', //
       'PCP', //
     ],
-    Object.assign({}, thermalDeviceKeys, {
-      B: 'minecraft:bucket',
-    })
+    Object.assign({}, thermalDeviceKeys, { B: 'minecraft:bucket' })
   )
   redefineRecipe(
     'thermal:device_fisher',
@@ -146,9 +142,7 @@ ServerEvents.recipes((e) => {
       'MOM', //
       'PCP', //
     ],
-    Object.assign({}, thermalDeviceKeys, {
-      O: 'minecraft:composter',
-    })
+    Object.assign({}, thermalDeviceKeys, { O: 'minecraft:composter' })
   )
   redefineRecipe(
     'thermal:device_water_gen',
@@ -259,10 +253,7 @@ ServerEvents.recipes((e) => {
       'BFB', //
       'BBB', //
     ],
-    {
-      B: 'minecraft:blue_dye',
-      F: 'create:filter',
-    }
+    { B: 'minecraft:blue_dye', F: 'create:filter' }
   )
   redefineRecipe(
     '4x thermal:fluid_filter_augment',
@@ -271,10 +262,7 @@ ServerEvents.recipes((e) => {
       'BFB', //
       'BBB', //
     ],
-    {
-      B: 'minecraft:blue_dye',
-      F: 'create:smart_fluid_pipe',
-    }
+    { B: 'minecraft:blue_dye', F: 'create:smart_fluid_pipe' }
   )
 
   // Replace Thermal Creosote with TFMG Creosote

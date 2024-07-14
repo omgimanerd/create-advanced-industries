@@ -233,10 +233,7 @@ ServerEvents.recipes((e) => {
       'DGD', //
       'DDD', //
     ],
-    {
-      D: 'minecraft:reinforced_deepslate',
-      G: 'apotheosis:gem_dust',
-    }
+    { D: 'minecraft:reinforced_deepslate', G: 'apotheosis:gem_dust' }
   )
   create
     .SequencedAssembly('minecraft:reinforced_deepslate')
@@ -317,10 +314,7 @@ ServerEvents.recipes((e) => {
       'SLS', //
       'LSL', //
     ],
-    {
-      L: 'thermal:lead_nugget',
-      S: 'minecraft:string',
-    }
+    { L: 'thermal:lead_nugget', S: 'minecraft:string' }
   )
   e.recipes.apotheosis
     .enchanting('thermal:junk_net', 'kubejs:treasure_net')
@@ -400,11 +394,7 @@ ServerEvents.recipes((e) => {
       'EHE', //
       ' B ', //
     ],
-    {
-      E: 'minecraft:emerald',
-      H: 'kubejs:totem_head',
-      B: 'kubejs:totem_body',
-    }
+    { E: 'minecraft:emerald', H: 'kubejs:totem_head', B: 'kubejs:totem_body' }
   )
   create.filling('minecraft:totem_of_undying', [
     'kubejs:inactive_totem',
@@ -476,10 +466,7 @@ ServerEvents.recipes((e) => {
       'FEEF', //
       'FFFF', //
     ],
-    {
-      F: 'minecraft:popped_chorus_fruit',
-      E: 'minecraft:end_stone',
-    }
+    { F: 'minecraft:popped_chorus_fruit', E: 'minecraft:end_stone' }
   )
 
   // Infused dragon's breath alternative
@@ -530,6 +517,5 @@ ServerEvents.recipes((e) => {
     .vibrate(200)
     .outputs(VIBRATION_MECHANISM)
 
-  // TODO alternative uses for warden tendrils
   // TODO alternative uses for infused dragon's breath
 })

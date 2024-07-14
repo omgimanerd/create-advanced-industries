@@ -82,12 +82,7 @@ const redefineMechanismRecipe_ = (e) => {
           'ZMZ', //
           ' B ', //
         ],
-        {
-          T: top,
-          M: middle,
-          B: bottom,
-          Z: mechanism,
-        }
+        { T: top, M: middle, B: bottom, Z: mechanism }
       )
     }
   }

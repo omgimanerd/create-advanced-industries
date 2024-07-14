@@ -128,10 +128,7 @@ ServerEvents.recipes((e) => {
       'BFB', //
       'BBB',
     ],
-    {
-      B: 'tfmg:fireproof_bricks',
-      F: 'minecraft:furnace',
-    }
+    { B: 'tfmg:fireproof_bricks', F: 'minecraft:furnace' }
   )
 
   // Coke overhaul, this actually produces the fluid amount per tick, so the
@@ -139,22 +136,11 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'tfmg:coking/coal_coke' })
   e.custom({
     type: 'tfmg:coking',
-    ingredients: [
-      {
-        item: 'minecraft:coal',
-        count: 1,
-      },
-    ],
+    ingredients: [{ item: 'minecraft:coal', count: 1 }],
     processingTime: 1000,
     results: [
-      {
-        item: 'tfmg:coal_coke',
-        count: 4,
-      },
-      {
-        fluid: 'tfmg:creosote',
-        amount: 1,
-      },
+      { item: 'tfmg:coal_coke', count: 4 },
+      { fluid: 'tfmg:creosote', amount: 1 },
     ],
   }).id('kubejs:coal_coking')
 
@@ -179,9 +165,7 @@ ServerEvents.recipes((e) => {
       'SSS', //
       'SSS', //
     ],
-    {
-      S: 'tfmg:steel_ingot',
-    }
+    { S: 'tfmg:steel_ingot' }
   )
 
   // Heavy plate overhaul
@@ -198,9 +182,7 @@ ServerEvents.recipes((e) => {
       'S S', //
       'SSS', //
     ],
-    {
-      S: 'tfmg:heavy_plate',
-    }
+    { S: 'tfmg:heavy_plate' }
   )
   create
     .curving('kubejs:steel_ingot_cast', 'tfmg:heavy_plate')
@@ -216,11 +198,7 @@ ServerEvents.recipes((e) => {
       ' S ', //
       'D  ', //
     ],
-    {
-      R: 'tfmg:rebar',
-      S: 'tfmg:steel_ingot',
-      D: 'minecraft:red_dye',
-    }
+    { R: 'tfmg:rebar', S: 'tfmg:steel_ingot', D: 'minecraft:red_dye' }
   )
 
   // Screw overhaul

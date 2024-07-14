@@ -206,9 +206,7 @@ ServerEvents.recipes((e) => {
       '  N', //
       'HPH', //
     ],
-    Object.assign({}, pneumaticcraftKeys, {
-      D: 'thermal:drill_head',
-    })
+    Object.assign({}, pneumaticcraftKeys, { D: 'thermal:drill_head' })
   )
   e.replaceInput(
     { id: /^pneumaticcraft:assembly_io_unit_(im|ex)port$/ },
@@ -222,9 +220,7 @@ ServerEvents.recipes((e) => {
       '  N', //
       'HPH',
     ],
-    Object.assign({}, pneumaticcraftKeys, {
-      Q: 'create:polished_rose_quartz',
-    })
+    Object.assign({}, pneumaticcraftKeys, { Q: 'create:polished_rose_quartz' })
   )
   redefineRecipe(
     'pneumaticcraft:assembly_platform',
@@ -233,9 +229,7 @@ ServerEvents.recipes((e) => {
       'LLL', //
       'HPH', //
     ],
-    Object.assign({}, pneumaticcraftKeys, {
-      D: 'create:depot',
-    })
+    Object.assign({}, pneumaticcraftKeys, { D: 'create:depot' })
   )
   redefineRecipe(
     'pneumaticcraft:charging_station',
@@ -244,9 +238,7 @@ ServerEvents.recipes((e) => {
       'TDT', //
       'HPH', //
     ],
-    Object.assign({}, pneumaticcraftKeys, {
-      D: 'create:depot',
-    })
+    Object.assign({}, pneumaticcraftKeys, { D: 'create:depot' })
   )
   redefineRecipe(
     '6x pneumaticcraft:heat_pipe',
@@ -358,9 +350,7 @@ ServerEvents.recipes((e) => {
       'PMP', //
       'ADA', //
     ],
-    Object.assign({}, pneumaticcraftKeys, {
-      O: 'pneumaticcraft:solar_cell',
-    })
+    Object.assign({}, pneumaticcraftKeys, { O: 'pneumaticcraft:solar_cell' })
   )
   redefineRecipe(
     'pneumaticcraft:universal_sensor',

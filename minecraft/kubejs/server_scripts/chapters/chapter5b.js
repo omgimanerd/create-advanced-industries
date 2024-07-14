@@ -27,7 +27,7 @@ global.NetherWartSpoutHandlerCallback = (block, fluid, simulate) => {
  * Callback handler for feeding and milking a blaze.
  */
 ItemEvents.entityInteracted((e) => {
-  const { hand, item, player, target, level, server } = e
+  const { hand, item, player, target, server } = e
   if (hand !== 'main_hand') return
   if (target.type !== 'minecraft:blaze') return
   if (
@@ -223,10 +223,7 @@ ServerEvents.recipes((e) => {
       'SLS', //
       'SSS', //
     ],
-    {
-      S: 'minecraft:string',
-      L: 'minecraft:slime_ball',
-    }
+    { S: 'minecraft:string', L: 'minecraft:slime_ball' }
   )
   create.mixing('minecraft:cobweb', [
     Fluid.of('create_things_and_misc:slime', 50),
@@ -635,11 +632,7 @@ ServerEvents.recipes((e) => {
       'LPL', //
       ' L ', //
     ],
-    {
-      L: 'minecraft:leather',
-      S: 'minecraft:string',
-      P: 'minecraft:paper',
-    }
+    { L: 'minecraft:leather', S: 'minecraft:string', P: 'minecraft:paper' }
   )
 
   // Crying obsidian can be crafted with lots of source

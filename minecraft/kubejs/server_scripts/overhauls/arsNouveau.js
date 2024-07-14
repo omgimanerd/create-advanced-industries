@@ -40,10 +40,7 @@ ServerEvents.recipes((e) => {
       'MBM', //
       ' M ', //
     ],
-    {
-      B: 'minecraft:book',
-      M: SOURCE_MECHANISM,
-    }
+    { B: 'minecraft:book', M: SOURCE_MECHANISM }
   )
   redefineRecipe(
     'ars_nouveau:warp_scroll',
@@ -96,11 +93,7 @@ ServerEvents.recipes((e) => {
       'G G', //
       'SMS', //
     ],
-    {
-      S: 'ars_nouveau:archwood_slab',
-      G: '#forge:glass',
-      M: SOURCE_MECHANISM,
-    }
+    { S: 'ars_nouveau:archwood_slab', G: '#forge:glass', M: SOURCE_MECHANISM }
   )
   e.replaceInput(
     'ars_nouveau:relay',
@@ -225,10 +218,6 @@ ServerEvents.recipes((e) => {
       'GBG', //
       ' M ',
     ],
-    {
-      G: 'minecraft:gold_ingot',
-      B: 'minecraft:bucket',
-      M: SOURCE_MECHANISM,
-    }
+    { G: 'minecraft:gold_ingot', B: 'minecraft:bucket', M: SOURCE_MECHANISM }
   )
 })
