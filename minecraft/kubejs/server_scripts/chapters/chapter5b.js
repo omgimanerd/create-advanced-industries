@@ -162,10 +162,12 @@ ServerEvents.recipes((e) => {
   )
 
   // Blaze powder can be crystallized back into rods
-  e.recipes.thermal.crystallizer('minecraft:blaze_rod', [
-    'minecraft:blaze_powder',
-    Fluid.of('kubejs:crystal_growth_accelerator', 250),
-  ])
+  e.recipes.thermal
+    .crystallizer('minecraft:blaze_rod', [
+      'minecraft:blaze_powder',
+      Fluid.of('kubejs:crystal_growth_accelerator', 250),
+    ])
+    .id('kubejs:blaze_rod_crystallizing')
 
   // Compost block from compost
   redefineRecipe(

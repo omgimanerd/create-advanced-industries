@@ -320,13 +320,15 @@ ServerEvents.recipes((e) => {
     'thermal:cinnabar_dust': 'thermal:cinnabar',
     'thermal:emerald_dust': 'minecraft:emerald',
     'thermal:niter_dust': 'thermal:niter',
-    'thermal:lapis_dust': 'minecraft:lapis',
+    'thermal:lapis_dust': 'minecraft:lapis_lazuli',
     'thermal:diamond_dust': 'minecraft:diamond',
   }
   for (let [from, to] of Object.entries(crystallizerFromTo)) {
-    e.recipes.thermal.crystallizer(to, [
-      from,
-      Fluid.of('kubejs:crystal_growth_accelerator', 250),
-    ])
+    e.recipes.thermal
+      .crystallizer(to, [
+        from,
+        Fluid.of('kubejs:crystal_growth_accelerator', 250),
+      ])
+      .id(`kubejs:${to.replace(':', '_')}`)
   }
 })
