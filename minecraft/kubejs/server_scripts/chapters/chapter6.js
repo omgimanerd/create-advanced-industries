@@ -286,6 +286,15 @@ ServerEvents.recipes((e) => {
     .press()
     .outputs('apotheosis:sigil_of_unnaming')
 
+  // Saturated honeycomb usage
+  create.centrifuging(
+    [
+      Fluid.of('create:honey', 100),
+      Item.of('kubejs:saturated_honeycomb').withChance(0.9),
+    ],
+    'kubejs:saturated_honeycomb'
+  )
+
   // Custom XP Crystal
   e.replaceOutput(
     { id: 'thermal:tools/xp_crystal' },
