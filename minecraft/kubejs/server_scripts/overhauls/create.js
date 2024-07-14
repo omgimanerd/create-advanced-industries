@@ -35,8 +35,6 @@ ServerEvents.recipes((e) => {
   const redefineRecipe = redefineRecipe_(e)
   const redefineMechanismRecipe = redefineMechanismRecipe_(e)
 
-  const MeltableItem = global.MeltableItem
-
   /**
    * IMPORTANT NOTE: const is broken inside statement blocks because Rhino does
    * not parse it correctly!
@@ -518,6 +516,20 @@ ServerEvents.recipes((e) => {
   e.remove({
     id: 'create_connected:crafting/kinetics/sequenced_pulse_generator',
   })
+  // Convenience recipes for vertical gearboxes.
+  e.shapeless('create_connected:vertical_parallel_gearbox', [
+    'create:vertical_gearbox',
+    'create:large_cogwheel',
+  ])
+  e.shapeless('create_connected:vertical_six_way_gearbox', [
+    'create:vertical_gearbox',
+    'create:large_cogwheel',
+    'create:large_cogwheel',
+  ])
+  e.shapeless('create_connected:vertical_six_way_gearbox', [
+    'create_connected:vertical_parallel_gearbox',
+    'create:large_cogwheel',
+  ])
 
   /////////////////////
   // Create: Encased //

@@ -6,21 +6,6 @@ ServerEvents.recipes((e) => {
   const pneumaticcraft = definePneumaticcraftRecipes(e)
   const redefineRecipe = redefineRecipe_(e)
 
-  // Convenience recipe for vertical gearboxes.
-  e.shapeless('create_connected:vertical_parallel_gearbox', [
-    'create:vertical_gearbox',
-    'create:large_cogwheel',
-  ])
-  e.shapeless('create_connected:vertical_six_way_gearbox', [
-    'create:vertical_gearbox',
-    'create:large_cogwheel',
-    'create:large_cogwheel',
-  ])
-  e.shapeless('create_connected:vertical_six_way_gearbox', [
-    'create_connected:vertical_parallel_gearbox',
-    'create:large_cogwheel',
-  ])
-
   // Basalt can be crushed into cobblestone
   e.remove({ id: 'vintageimprovements:crushing/basalt_recycling' })
   e.remove({ id: 'vintageimprovements:crushing/basalt' })
@@ -125,7 +110,7 @@ ServerEvents.recipes((e) => {
         )
         .processingTime(40)
     } else {
-      console.error(`No dust form for gear recipe ${r.json}`)
+      console.log(`No dust form for gear recipe ${r.json}`)
     }
   })
 
