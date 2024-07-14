@@ -4,6 +4,18 @@
 Ponder.registry((e) => {
   const DEFAULT_ARS_COLOR = Color.rgba(255, 25, 180, 0)
 
+  /**
+   * @param {Internal.ExtendedSceneBuilder_} scene
+   * @param {number} ticks
+   * @param {BlockPos_} pos
+   */
+  const rightClickWithDominionWand = (scene, ticks, pos) => {
+    scene
+      .showControls(ticks, pos, 'down')
+      .rightClick()
+      .withItem('ars_nouveau:dominion_wand')
+  }
+
   // Fluid Sourcelink
   e.create('starbunclemania:fluid_sourcelink').scene(
     'fluid_sourcelink',
@@ -57,27 +69,15 @@ Ponder.registry((e) => {
 
       // Fluid sourcelink distributing source
       scene.addKeyframe()
-      scene.particles
-        .simple(5, 'minecraft:cloud', fluidSourcelink)
-        .motion([0, -0.15, 0])
-        .scale(0.5)
-        .density(2)
-        .lifetime(10)
-        .color(DEFAULT_ARS_COLOR)
-      scene.idle(10)
-      animateSourceJar(scene, sourceJar1, 0, 3, 5)
-      scene.particles
-        .simple(5, 'minecraft:cloud', fluidSourcelink)
-        .motion([-0.15, -0.15, 0])
-        .scale(0.5)
-        .density(2)
-        .lifetime(10)
-        .color(DEFAULT_ARS_COLOR)
+      scene.idle(drawSourceFlowParticles(scene, fluidSourcelink, sourceJar1))
+      animateSourceJar(scene, sourceJar1, 0, 3, 1)
+      scene.idle(5)
+      scene.idle(drawSourceFlowParticles(scene, fluidSourcelink, sourceJar2))
       scene.world.modifyBlockEntityNBT(fluidSourcelink, (nbt) => {
         nbt.Amount = 0
       })
+      animateSourceJar(scene, sourceJar2, 0, 3, 1)
       scene.idle(10)
-      animateSourceJar(scene, sourceJar2, 0, 3, 5)
     }
   )
 
@@ -109,13 +109,7 @@ Ponder.registry((e) => {
         'The Source Condenser will automatically pull from nearby source jars.',
         sourceJar
       )
-      scene.particles
-        .simple(5, 'minecraft:cloud', sourceJar)
-        .motion([0.3, 0.15, 0])
-        .scale(0.5)
-        .density(2)
-        .lifetime(9)
-        .color(DEFAULT_ARS_COLOR)
+      scene.idle(drawSourceFlowParticles(scene, sourceJar, sourceCondenser))
       setSourceJarFill(scene, sourceJar, 3)
       scene.idle(10)
       scene.world.modifyBlockEntityNBT(sourceCondenser, (nbt) => {
@@ -228,7 +222,7 @@ Ponder.registry((e) => {
         )
         scene.idle(50)
 
-        // Having source nearby increases the craft speed.
+        // Having source nearby increases the craft speed
         scene.addKeyframe()
         setSourceJarFill(scene, sourceJar, 6)
         scene.world.showSection(sourceJar, Facing.EAST)
@@ -326,7 +320,6 @@ Ponder.registry((e) => {
   //         enchantingApparatus,
   //         (/** @type {Internal.CompoundTag_} */ nbt) => {
   //           nbt.itemStack.putByte('Count', 1)
-  //           console.log(nbt)
   //         }
   //       )
   //       scene.world.showSection(util.select.everywhere(), Facing.DOWN)
@@ -341,6 +334,282 @@ Ponder.registry((e) => {
   //     'kubejs:enchanting_apparatus_automation',
   //     (scene, util) => {}
   //   )
+
+  // Source Relays
+  e.create([
+    'ars_nouveau:source_jar',
+    'ars_nouveau:relay',
+    'ars_nouveau:relay_splitter',
+    'ars_nouveau:relay_deposit',
+    'ars_nouveau:relay_warp',
+    'ars_nouveau:relay_collector',
+  ])
+    .scene('ars_nouveau_relay', 'Source Relays', (scene, util) => {
+      scene.showBasePlate()
+
+      // Scene setup
+      let fromSourceJar = util.grid.at(1, 1, 3)
+      let sourceRelay = util.grid.at(2, 1, 2)
+      let toSourceJar = util.grid.at(3, 1, 1)
+      let sourceJarInitialFill = 4
+      scene.world.setBlock(
+        fromSourceJar,
+        Block.id('ars_nouveau:source_jar', {
+          fill: `${sourceJarInitialFill}`,
+        }).blockState,
+        false
+      )
+      scene.world.setBlock(sourceRelay, 'ars_nouveau:relay', false)
+      scene.world.setBlock(toSourceJar, 'ars_nouveau:source_jar', false)
+      scene.world.showSection(util.select.position(fromSourceJar), Facing.DOWN)
+      scene.world.showSection(util.select.position(sourceRelay), Facing.DOWN)
+      scene.world.showSection(util.select.position(toSourceJar), Facing.DOWN)
+
+      // Dominion wand binding
+      scene.idle(10)
+      scene.text(
+        30,
+        'Source Relays move raw source from jar to jar.',
+        sourceRelay
+      )
+      scene.idle(40)
+      scene.text(
+        30,
+        'The Dominion Wand is used to bind source and destination blocks ' +
+          'for source to move between.'
+      )
+      scene.idle(40)
+      rightClickWithDominionWand(scene, 25, fromSourceJar.above())
+      scene.overlay
+        .showSelectionWithText(fromSourceJar, 30)
+        .text('Right click the source jar to take from.')
+        .colored('green')
+      scene.idle(40)
+      rightClickWithDominionWand(scene, 25, sourceRelay.above())
+      scene.overlay
+        .showSelectionWithText(sourceRelay, 30)
+        .text('Then right click the source relay to set the relay.')
+        .colored('green')
+      scene.idle(40)
+      rightClickWithDominionWand(scene, 25, sourceRelay.above())
+      scene.overlay
+        .showSelectionWithText(sourceRelay, 30)
+        .text('Right click the source relay again.')
+        .colored('blue')
+      scene.idle(40)
+      rightClickWithDominionWand(scene, 25, toSourceJar.above())
+      scene.overlay
+        .showSelectionWithText(toSourceJar, 30)
+        .text('Then right click the destination source jar.')
+        .colored('blue')
+      scene.idle(40)
+
+      // Animate source transfer
+      scene.addKeyframe()
+      for (let i = 1; i <= sourceJarInitialFill; ++i) {
+        setSourceJarFill(scene, fromSourceJar, sourceJarInitialFill - i)
+        scene.idle(drawSourceFlowParticles(scene, fromSourceJar, sourceRelay))
+        scene.idle(5)
+        scene.idle(drawSourceFlowParticles(scene, sourceRelay, toSourceJar))
+        setSourceJarFill(scene, toSourceJar, i)
+        scene.idle(5)
+      }
+      scene.text(
+        40,
+        'When binding blocks with the dominion wand, the source is always ' +
+          'selected first, then the destination.'
+      )
+      scene.idle(50)
+
+      // Splitter source relay
+      scene.addKeyframe()
+      scene.text(
+        40,
+        'The regular source relay can only have one target and destination. ' +
+          'To take and send from multiple jars, you need to upgrade it to ' +
+          'a Source Relay: Splitter',
+        sourceRelay
+      )
+      scene.world.hideSection(sourceRelay, Facing.EAST)
+      scene.idle(20)
+      scene.world.setBlock(sourceRelay, 'ars_nouveau:relay_splitter', false)
+      scene.world.showSection(sourceRelay, Facing.EAST)
+      scene.idle(40)
+
+      // Additional source jars
+      fromSourceJar = util.grid.at(3, 1, 1)
+      let fromSourceJar2 = util.grid.at(3, 1, 3)
+      toSourceJar = util.grid.at(1, 1, 3)
+      let toSourceJar2 = util.grid.at(1, 1, 1)
+      scene.world.setBlock(fromSourceJar2, 'ars_nouveau:source_jar', false)
+      setSourceJarFill(scene, fromSourceJar2, sourceJarInitialFill)
+      scene.world.setBlock(toSourceJar2, 'ars_nouveau:source_jar', false)
+      scene.world.showSection(util.select.position(fromSourceJar2), Facing.DOWN)
+      scene.world.showSection(util.select.position(toSourceJar2), Facing.DOWN)
+      scene.idle(40)
+
+      // Clear and rebind source jars
+      rightClickWithDominionWand(scene, 25, sourceRelay.above())
+      scene.overlay
+        .showSelectionWithText(sourceRelay, 30)
+        .text('Shift right click the source relay to clear the settings.')
+        .colored('green')
+      scene.idle(40)
+      scene.text(
+        40,
+        'Then bind all the source jars you want to distribute to and from.',
+        sourceRelay
+      )
+      scene.idle(50)
+      let bindings = [
+        [fromSourceJar, sourceRelay],
+        [fromSourceJar2, sourceRelay],
+        [sourceRelay, toSourceJar],
+        [sourceRelay, toSourceJar2],
+      ]
+      for (const [from, to] of bindings) {
+        rightClickWithDominionWand(scene, 10, from.above())
+        scene.overlay.showOutline('green', null, util.select.position(from), 10)
+        scene.idle(15)
+        rightClickWithDominionWand(scene, 10, to.above())
+        scene.overlay.showOutline('green', null, util.select.position(to), 10)
+        scene.idle(25)
+      }
+
+      // Animate source transfer
+      scene.addKeyframe()
+      for (let i = 1; i <= sourceJarInitialFill; ++i) {
+        setSourceJarFill(scene, fromSourceJar, sourceJarInitialFill - i)
+        setSourceJarFill(scene, fromSourceJar2, sourceJarInitialFill - i)
+        let delay = drawSourceFlowParticles(scene, fromSourceJar, sourceRelay)
+        drawSourceFlowParticles(scene, fromSourceJar2, sourceRelay)
+        scene.idle(delay + 5)
+        delay = drawSourceFlowParticles(scene, sourceRelay, toSourceJar)
+        drawSourceFlowParticles(scene, sourceRelay, toSourceJar2)
+        setSourceJarFill(scene, toSourceJar, i)
+        setSourceJarFill(scene, toSourceJar2, i)
+        scene.idle(delay + 5)
+      }
+    })
+    .scene(
+      'ars_nouveay_relay_collector_depositor',
+      'Types of Source Relays',
+      (scene, util) => {
+        scene.showBasePlate()
+
+        // Scene setup
+        const sourceJar1 = util.grid.at(4, 1, 3)
+        const sourceJar2 = util.grid.at(4, 1, 2)
+        const sourceJar3 = util.grid.at(4, 1, 1)
+        const destSourceJar = util.grid.at(0, 1, 2)
+        const sourceRelay = util.grid.at(2, 1, 2)
+        const sourceJarInitialFill = 3
+        scene.world.setBlocks(
+          util.select.position(sourceJar1).add(sourceJar2).add(sourceJar3),
+          Block.id('ars_nouveau:source_jar', {
+            fill: `${sourceJarInitialFill}`,
+          }).blockState
+        )
+        scene.world.setBlock(destSourceJar, 'ars_nouveau:source_jar', false)
+        scene.world.setBlock(sourceRelay, 'ars_nouveau:relay_collector', false)
+        scene.world.showSection(util.select.layer(1), Facing.DOWN)
+        scene.idle(20)
+
+        // Collector relay explanation
+        scene.text(
+          40,
+          'The Source Relay: Collector pulls source from all nearby source ' +
+            'jars that are unbound.',
+          sourceRelay
+        )
+        scene.idle(50)
+        scene.text(
+          40,
+          'Simply bind a destination jar and it will collect source into it.',
+          sourceRelay
+        )
+        scene.idle(50)
+        rightClickWithDominionWand(scene, 10, sourceRelay.above())
+        scene.overlay.showOutline(
+          'green',
+          null,
+          util.select.position(sourceRelay),
+          10
+        )
+        scene.idle(15)
+        rightClickWithDominionWand(scene, 10, destSourceJar.above())
+        scene.overlay.showOutline(
+          'green',
+          null,
+          util.select.position(destSourceJar),
+          10
+        )
+        scene.idle(25)
+
+        // Animate the source transfer
+        scene.addKeyframe()
+        for (let i = 1; i <= sourceJarInitialFill; ++i) {
+          setSourceJarFill(scene, sourceJar1, sourceJarInitialFill - i)
+          setSourceJarFill(scene, sourceJar2, sourceJarInitialFill - i)
+          setSourceJarFill(scene, sourceJar3, sourceJarInitialFill - i)
+          let delay = drawSourceFlowParticles(scene, sourceJar1, sourceRelay)
+          drawSourceFlowParticles(scene, sourceJar2, sourceRelay)
+          drawSourceFlowParticles(scene, sourceJar3, sourceRelay)
+          scene.idle(delay + 5)
+          delay = drawSourceFlowParticles(scene, sourceRelay, destSourceJar)
+          setSourceJarFill(scene, destSourceJar, i * 3)
+          scene.idle(delay + 5)
+        }
+        scene.idle(20)
+
+        // Depositor
+        scene.addKeyframe()
+        scene.text(
+          40,
+          'The Source Relay: Depositor does the opposite, taking source from ' +
+            'unbound source jars to deposit to bound source jars.',
+          sourceRelay
+        )
+        scene.world.hideSection(sourceRelay, Facing.NORTH)
+        scene.idle(20)
+        scene.world.setBlock(sourceRelay, 'ars_nouveau:relay_deposit', false)
+        scene.world.showSection(sourceRelay, Facing.NORTH)
+        scene.idle(40)
+        const bindings = [
+          [sourceRelay, sourceJar1],
+          [sourceRelay, sourceJar2],
+          [sourceRelay, sourceJar3],
+        ]
+        for (const [from, to] of bindings) {
+          rightClickWithDominionWand(scene, 10, from.above())
+          scene.overlay.showOutline(
+            'green',
+            null,
+            util.select.position(from),
+            10
+          )
+          scene.idle(15)
+          rightClickWithDominionWand(scene, 10, to.above())
+          scene.overlay.showOutline('green', null, util.select.position(to), 10)
+          scene.idle(25)
+        }
+
+        // Animate the source transfer
+        scene.addKeyframe()
+        for (let i = 1; i <= sourceJarInitialFill; ++i) {
+          setSourceJarFill(scene, destSourceJar, (sourceJarInitialFill - i) * 3)
+          scene.idle(drawSourceFlowParticles(scene, destSourceJar, sourceRelay))
+          scene.idle(5)
+          let delay = drawSourceFlowParticles(scene, sourceRelay, sourceJar1)
+          drawSourceFlowParticles(scene, sourceRelay, sourceJar2)
+          drawSourceFlowParticles(scene, sourceRelay, sourceJar3)
+          setSourceJarFill(scene, sourceJar1, i)
+          setSourceJarFill(scene, sourceJar2, i)
+          setSourceJarFill(scene, sourceJar3, i)
+          scene.idle(delay + 5)
+        }
+      }
+    )
 })
 
 Ponder.tags((e) => {
@@ -354,6 +623,12 @@ Ponder.tags((e) => {
       'starbunclemania:fluid_sourcelink',
       'starbunclemania:source_condenser',
       'ars_nouveau:imbuement_chamber',
+      'ars_nouveau:source_jar',
+      'ars_nouveau:relay',
+      'ars_nouveau:relay_splitter',
+      'ars_nouveau:relay_deposit',
+      'ars_nouveau:relay_warp',
+      'ars_nouveau:relay_collector',
     ]
   )
 })

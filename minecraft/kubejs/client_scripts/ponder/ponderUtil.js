@@ -164,3 +164,31 @@ const lerpEntityMovement = (scene, entity, movements) => {
     prevXRot = xRot
   }
 }
+
+/**
+ * Draws particles to simulate the flow of source from Ars Nouveau. Returns
+ * the lifetime of the particles to delay on.
+ * @param {Internal.ExtendedSceneBuilder_} scene
+ * @param {BlockPos_} source
+ * @param {BlockPos_} dest
+ * @returns {number}
+ */
+const drawSourceFlowParticles = (scene, source, dest) => {
+  const source3d = Array.isArray(source)
+    ? new Vec3d(source[0], source[1], source[2])
+    : new Vec3d(source.x, source.y, source.z)
+  const dest3d = Array.isArray(dest)
+    ? new Vec3d(dest[0], dest[1], dest[2])
+    : new Vec3d(dest.x, dest.y, dest.z)
+  const relativeOffset = dest3d.subtract(source3d)
+  const lifetime = Math.ceil(relativeOffset.length() * 4)
+  scene.particles
+    .simple(5, 'minecraft:cloud', source)
+    .motion(relativeOffset.multiply(0.2, 0.2, 0.2))
+    .scale(0.5)
+    .density(2)
+    .lifetime(lifetime)
+    // Default Ars particle color
+    .color(Color.rgba(255, 25, 180, 0))
+  return lifetime
+}
