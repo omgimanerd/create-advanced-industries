@@ -47,7 +47,7 @@ const animateTank = (scene, position, fluid, from, to, step) => {
 const animateSourceJar = (scene, pos, from, to, delay) => {
   delay = delay === undefined ? 5 : delay
   while (from != to) {
-    setSourceJarFill(scene, pos, amount_, false)
+    setSourceJarFill(scene, pos, from, false)
     scene.idle(delay)
     from = to < from ? Math.max(to, from - 1) : Math.min(to, from + 1)
   }

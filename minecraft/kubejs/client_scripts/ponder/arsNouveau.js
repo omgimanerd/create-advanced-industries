@@ -4,6 +4,96 @@
 Ponder.registry((e) => {
   const DEFAULT_ARS_COLOR = Color.rgba(255, 25, 180, 0)
 
+  // Fluid Sourcelink
+  e.create('starbunclemania:fluid_sourcelink').scene(
+    'fluid_sourcelink',
+    'Fluid Sourcelink',
+    // kubejs/assets/kubejs/ponder/fluid_sourcelink.nbt
+    'kubejs:fluid_sourcelink',
+    (scene, util) => {
+      scene.showBasePlate()
+      const sourceMachines = util.select.fromTo(1, 1, 2, 2, 2, 2)
+      const fluidMachines = util.select.fromTo(4, 1, 0, 3, 2, 2)
+      const fluidSourcelink = util.grid.at(2, 2, 2)
+      const mechanicalPump = util.grid.at(4, 2, 1)
+      const sourceJar1 = util.grid.at(2, 1, 2)
+      const sourceJar2 = util.grid.at(1, 1, 2)
+
+      // Scene setup
+      scene.showBasePlate()
+      scene.world.showSection(sourceMachines, Facing.DOWN)
+      scene.idle(10)
+      scene.text(
+        40,
+        'Ars Nouveau requires source to be in its raw form inside source ' +
+          'jars for its machines and blocks.'
+      )
+      scene.idle(50)
+      scene.text(
+        40,
+        'The Fluid Sourcelink is the only way to get source into these jars ' +
+          'from its liquid form.',
+        fluidSourcelink
+      )
+      scene.idle(50)
+
+      // Pumping
+      scene.addKeyframe()
+      scene.world.showSection(fluidMachines, Facing.SOUTH)
+      scene.idle(10)
+      scene.text(
+        40,
+        'Pump liquid source into the fluid condenser and it will send it ' +
+          'into nearby Source Jars.',
+        fluidSourcelink
+      )
+      scene.idle(20)
+      scene.world.setKineticSpeed(fluidMachines, 96)
+      scene.idle(30)
+      scene.world.propagatePipeChange(mechanicalPump)
+      scene.idle(40)
+      scene.world.setKineticSpeed(fluidMachines, 0)
+      scene.idle(10)
+
+      // Fluid sourcelink distributing source
+      scene.addKeyframe()
+      scene.particles
+        .simple(5, 'minecraft:cloud', fluidSourcelink)
+        .motion([0, -0.15, 0])
+        .scale(0.5)
+        .density(2)
+        .lifetime(10)
+        .color(DEFAULT_ARS_COLOR)
+      scene.idle(10)
+      animateSourceJar(scene, sourceJar1, 0, 3, 5)
+      scene.particles
+        .simple(5, 'minecraft:cloud', fluidSourcelink)
+        .motion([-0.15, -0.15, 0])
+        .scale(0.5)
+        .density(2)
+        .lifetime(10)
+        .color(DEFAULT_ARS_COLOR)
+      scene.world.modifyBlockEntityNBT(fluidSourcelink, (nbt) => {
+        nbt.Amount = 0
+      })
+      scene.idle(10)
+      animateSourceJar(scene, sourceJar2, 0, 3, 5)
+    }
+  )
+
+  // Source Condenser
+  e.create('starbunclemania:source_condenser').scene(
+    'source_condenser',
+    'Source Condenser',
+    // kubejs/assets/kubejs/ponder/source_condenser.nbt
+    'kubejs:source_condenser',
+    (scene, util) => {
+      scene.showStructure()
+
+      // Scene setup
+    }
+  )
+
   // Imbuement Chamber
   e.create('ars_nouveau:imbuement_chamber')
     .scene(
@@ -13,7 +103,7 @@ Ponder.registry((e) => {
       'kubejs:imbuement_chamber',
       (scene, util) => {
         scene.showBasePlate()
-        const center = util.grid.at(2, 1, 2)
+        const imbuementChamber = util.grid.at(2, 1, 2)
         const sourceJar = util.grid.at(1, 1, 2)
         const pedestals = [
           util.grid.at(3, 1, 1),
@@ -23,12 +113,15 @@ Ponder.registry((e) => {
         ]
 
         // Scene setup
-        scene.world.showSection(util.select.position(center), Facing.DOWN)
+        scene.world.showSection(
+          util.select.position(imbuementChamber),
+          Facing.DOWN
+        )
         scene.idle(10)
         scene.text(
           40,
           'The Imbuement Chamber is one of the first magical crafting mechanics unlocked by Ars Nouveau.',
-          center
+          imbuementChamber
         )
         scene.idle(50)
 
@@ -59,30 +152,30 @@ Ponder.registry((e) => {
 
         // Crafting
         scene.addKeyframe()
-        setArsContainerItem(scene, center, 'ars_nouveau:source_gem')
+        setArsContainerItem(scene, imbuementChamber, 'ars_nouveau:source_gem')
         scene
-          .showControls(40, center, 'down')
+          .showControls(40, imbuementChamber, 'down')
           .rightClick()
           .withItem('ars_nouveau:source_gem')
         scene.text(
           40,
           'Right click the Imbuement Chamber with the recipe input to begin ' +
             'the craft.',
-          center
+          imbuementChamber
         )
         scene.idle(50)
         scene.text(
           40,
-          'After some time, the input item will be transformed!',
-          center
+          'After some time, the input item will be transformed.',
+          imbuementChamber
         )
         scene.idle(50)
-        setArsContainerItem(scene, center, 'ars_nouveau:fire_essence')
+        setArsContainerItem(scene, imbuementChamber, 'ars_nouveau:fire_essence')
         scene.particles
-          .simple(5, 'minecraft:poof', center)
+          .simple(5, 'minecraft:glow', imbuementChamber)
           .speed([0.2, 0.2, 0.2])
-          .density(1)
-          .lifetime(5)
+          .density(8)
+          .lifetime(8)
           .color(DEFAULT_ARS_COLOR)
         scene.idle(20)
         scene.text(
@@ -153,10 +246,10 @@ Ponder.registry((e) => {
         scene.idle(40)
         setArsContainerItem(scene, imbuementChamber, 'minecraft:air')
         scene.particles
-          .simple(5, 'minecraft:poof', imbuementChamber)
+          .simple(5, 'minecraft:glow', imbuementChamber)
           .speed([0.2, 0.2, 0.2])
-          .density(1)
-          .lifetime(5)
+          .density(8)
+          .lifetime(8)
           .color(DEFAULT_ARS_COLOR)
         scene.world.flapFunnel(exitFunnel, true)
         scene.world.createItemOnBelt(
@@ -167,4 +260,43 @@ Ponder.registry((e) => {
         scene.idle(20)
       }
     )
+
+  // Enchanting Apparatus, DOES NOT RENDER
+  // e.create('ars_nouveau:enchanting_apparatus')
+  //   .scene(
+  //     'ars_nouveau_enchanting_apparatus',
+  //     'The Enchanting Apparatus',
+  //     // kubejs/assets/kubejs/ponder/enchanting_apparatus.nbt
+  //     'kubejs:enchanting_apparatus',
+  //     (scene, util) => {
+  //       scene.showBasePlate()
+  //       const enchantingApparatus = util.grid.at(3, 2, 3)
+
+  //       const pedestals = [util.grid.at(1, 1, 1)]
+
+  //       // Scene setup
+  //       scene.world.setBlock(
+  //         util.grid.at(2, 1, 2),
+  //         'ars_nouveau:enchanting_apparatus',
+  //         false
+  //       )
+  //       scene.world.modifyBlockEntityNBT(
+  //         enchantingApparatus,
+  //         (/** @type {Internal.CompoundTag_} */ nbt) => {
+  //           nbt.itemStack.putByte('Count', 1)
+  //           console.log(nbt)
+  //         }
+  //       )
+  //       scene.world.showSection(util.select.everywhere(), Facing.DOWN)
+  //       scene.idle(10)
+  //       scene.idle(20)
+  //     }
+  //   )
+  //   .scene(
+  //     'ars_nouveau_enchanting_apparatus_automation',
+  //     'Automating The Enchanting Apparatus',
+  //     // kubejs
+  //     'kubejs:enchanting_apparatus_automation',
+  //     (scene, util) => {}
+  //   )
 })
