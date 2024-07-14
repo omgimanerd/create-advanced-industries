@@ -21,6 +21,32 @@ ServerEvents.recipes((e) => {
   // Rosin from resin
   create.mixing('thermal:rosin', Fluid.of('thermal:resin', 250)).heated()
 
+  // Recipes for the unobtainable sculk blocks.
+  e.shaped(
+    'minecraft:sculk_catalyst',
+    [
+      'S', //
+      'B', //
+    ],
+    { S: 'minecraft:sculk', B: 'minecraft:end_stone_bricks' }
+  )
+  e.shaped(
+    'minecraft:sculk_shrieker',
+    [
+      'B B', //
+      'SSS', //
+    ],
+    { S: 'minecraft:sculk', B: 'minecraft:end_stone_bricks' }
+  )
+  e.shaped(
+    'minecraft:sculk_sensor',
+    [
+      'T', //
+      'S', //
+    ],
+    { T: 'apotheosis:warden_tendril', S: 'minecraft:sculk' }
+  )
+
   // Syrup bottles can be energized into honey.
   create.energizing('minecraft:honey_bottle', 'thermal:syrup_bottle', 24000)
 
@@ -44,11 +70,7 @@ ServerEvents.recipes((e) => {
       ' ST', //
       'S H', //
     ],
-    {
-      S: 'minecraft:stick',
-      T: 'minecraft:string',
-      H: 'kubejs:fish_hook',
-    }
+    { S: 'minecraft:stick', T: 'minecraft:string', H: 'kubejs:fish_hook' }
   )
 
   // Leads can be recycled
