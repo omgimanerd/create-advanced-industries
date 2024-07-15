@@ -346,20 +346,21 @@ ServerEvents.recipes((e) => {
     'kubejs:remy_spawner'
   )
 
-  // Amethyst bud growth. The most expensive is sequenced filling, then
-  // Thermal crystallization, then manual spouting.
-  create
-    .SequencedAssembly('minecraft:small_amethyst_bud')
-    .fill(Fluid.of('kubejs:crystal_growth_accelerator', 1000))
-    .outputs('minecraft:medium_amethyst_bud')
-  create
-    .SequencedAssembly('minecraft:medium_amethyst_bud')
-    .fill(Fluid.of('kubejs:crystal_growth_accelerator', 1000))
-    .outputs('minecraft:large_amethyst_bud')
-  create
-    .SequencedAssembly('minecraft:large_amethyst_bud')
-    .fill(Fluid.of('kubejs:crystal_growth_accelerator', 1000))
-    .outputs('minecraft:amethyst_cluster')
+  // Amethyst bud growth. The most expensive is direct filling, then
+  // Thermal crystallization, and the least expensive is spouting while it is
+  // attached to budding amethyst.
+  create.filling('minecraft:medium_amethyst_bud', [
+    Fluid.of('kubejs:crystal_growth_accelerator', 1000),
+    'minecraft:small_amethyst_bud',
+  ])
+  create.filling('minecraft:large_amethyst_bud', [
+    Fluid.of('kubejs:crystal_growth_accelerator', 1000),
+    'minecraft:medium_amethyst_bud',
+  ])
+  create.filling('minecraft:amethyst_cluster', [
+    Fluid.of('kubejs:crystal_growth_accelerator', 1000),
+    'minecraft:large_amethyst_bud',
+  ])
   e.recipes.thermal
     .crystallizer('minecraft:medium_amethyst_bud', [
       'minecraft:small_amethyst_bud',
