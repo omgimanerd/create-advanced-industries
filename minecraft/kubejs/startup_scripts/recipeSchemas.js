@@ -142,20 +142,29 @@ StartupEvents.recipeSchemaRegistry((e) => {
       )
     )
     e.register(
+      'vintageimprovements:hammering',
+      new $RecipeSchema(
+        outputItem.asArray().key('results'),
+        inputItem.asArray().key('ingredients'),
+        intNumber.key('hammerBlows').optional(3)
+      )
+    )
+    e.register(
+      'vintageimprovements:laser_cutting',
+      new $RecipeSchema(
+        outputItem.asArray().key('results'),
+        inputItem.asArray().key('ingredients'),
+        intNumber.key('energy').alwaysWrite().optional(2000),
+        intNumber.key('maxChargeRate').alwaysWrite().optional(50)
+      )
+    )
+    e.register(
       'vintageimprovements:polishing',
       new $RecipeSchema(
         outputItem.asArray().key('results'),
         inputItem.asArray().key('ingredients'),
         intNumber.key('speed_limits').optional(1),
         intNumber.key('processingTime').optional(20)
-      )
-    )
-    e.register(
-      'vintageimprovements:hammering',
-      new $RecipeSchema(
-        outputItem.asArray().key('results'),
-        inputItem.asArray().key('ingredients'),
-        intNumber.key('hammerBlows').optional(3)
       )
     )
     e.register(

@@ -59,9 +59,9 @@ const defineCreateRecipes = (e) => {
     centrifuging: e.recipes.vintageimprovements.centrifugation,
     coiling: e.recipes.vintageimprovements.coiling,
     curving: e.recipes.vintageimprovements.curving,
-    polishing: e.recipes.vintageimprovements.polishing,
     hammering: e.recipes.vintageimprovements.hammering,
-
+    laser_cutting: e.recipes.vintageimprovements.laser_cutting,
+    polishing: e.recipes.vintageimprovements.polishing,
     /**
      * @callback CVIPressurizingWrapperCB
      * @param {($InputItem_|$InputFluid_)[]} inputs

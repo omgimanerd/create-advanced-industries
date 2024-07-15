@@ -216,11 +216,13 @@ ServerEvents.recipes((e) => {
   redefineRecipe(
     'pneumaticcraft:assembly_laser',
     [
-      'QNN', //
+      'LNN', //
       '  N', //
       'HPH',
     ],
-    Object.assign({}, pneumaticcraftKeys, { Q: 'create:polished_rose_quartz' })
+    Object.assign({}, pneumaticcraftKeys, {
+      Q: 'vintageimprovements:laser_item',
+    })
   )
   redefineRecipe(
     'pneumaticcraft:assembly_platform',

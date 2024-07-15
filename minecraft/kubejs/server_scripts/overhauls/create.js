@@ -731,7 +731,17 @@ ServerEvents.recipes((e) => {
         B: 'minecraft:copper_block',
       })
     )
-    e.remove({ output: 'create_new_age:electrical_connector' })
+    redefineRecipe(
+      'create_new_age:electrical_connector',
+      [
+        'CNC', //
+        'HHH', //
+      ],
+      Object.assign({}, createNewAgeKeys, {
+        C: 'create_new_age:copper_wire',
+        N: 'thermal:electrum_nugget',
+      })
+    )
     create
       .SequencedAssembly('tfmg:heavy_plate')
       .deploy('thermal:electrum_nugget')
@@ -1039,6 +1049,21 @@ ServerEvents.recipes((e) => {
       }
     )
     redefineRecipe(
+      'vintageimprovements:laser',
+      [
+        'CSC', //
+        'NMN', //
+        ' L ', //
+      ],
+      {
+        C: 'create:brass_casing',
+        S: 'create:shaft',
+        N: 'create_new_age:electrical_connector',
+        M: 'tfmg:steel_mechanism',
+        L: 'vintageimprovements:laser_item',
+      }
+    )
+    redefineRecipe(
       'vintageimprovements:grinder_belt',
       [
         'SSS', //
@@ -1046,6 +1071,20 @@ ServerEvents.recipes((e) => {
         'SSS', //
       ],
       { S: '#create:sandpaper', B: 'create:mechanical_belt' }
+    )
+    redefineRecipe(
+      'vintageimprovements:laser_item',
+      [
+        'HGH', //
+        'HEH', //
+        'HDH', //
+      ],
+      {
+        H: 'tfmg:heavy_plate',
+        G: 'minecraft:red_stained_glass',
+        E: 'create:electron_tube',
+        D: 'minecraft:glowstone_dust',
+      }
     )
 
     // Curving heads are made from steel on the lathe.

@@ -584,6 +584,10 @@ ServerEvents.recipes((e) => {
   // Ancient Debris processing
   e.remove({ id: /minecraft:netherite_scrap.*/ })
   e.remove({ id: 'minecraft:netherite_ingot' })
+  create
+    .laser_cutting('minecraft:netherite_scrap', 'minecraft:ancient_debris')
+    .energy(24000)
+    .maxChargeRate(4000)
   pneumaticcraft.assembly_laser(
     'minecraft:ancient_debris',
     'minecraft:netherite_scrap'
