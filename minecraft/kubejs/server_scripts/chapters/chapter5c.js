@@ -27,7 +27,7 @@ ServerEvents.recipes((e) => {
     .SequencedAssembly('create:brass_sheet')
     .deploy('vintageimprovements:signalum_wire')
     .fill(potionFluid('ars_elemental:shock_potion', 720))
-    .energize(8000)
+    .laser(8000, 250)
     .press()
     .outputs('create_connected:control_chip')
 
