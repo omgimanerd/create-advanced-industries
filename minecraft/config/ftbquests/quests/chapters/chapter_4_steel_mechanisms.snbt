@@ -352,7 +352,11 @@
 		}
 		{
 			dependencies: ["05659E1DE2D77A38"]
-			description: ["You should start this process off with a little bit of lava until you can get a superheated burner to make more."]
+			description: [
+				"You should start this process off with a little bit of lava until you can get a superheated burner to make more."
+				""
+				"Alternatively, you could pump lava from the Nether."
+			]
 			id: "662CE9859BE0F913"
 			tasks: [{
 				id: "4C25E37E0CE76135"
@@ -504,7 +508,11 @@
 		}
 		{
 			dependencies: ["27A1B10B3D3FD676"]
-			description: ["Cool down the magma blocks and you have automated obsidian."]
+			description: [
+				"Cool down the magma blocks and you have automated obsidian."
+				""
+				"You could also mix lava and water, but surely that's inefficient."
+			]
 			id: "5A4A984E4C6E0ADC"
 			tasks: [{
 				id: "4DE52C9A8596B777"
@@ -528,7 +536,7 @@
 		}
 		{
 			dependencies: ["5A4A984E4C6E0ADC"]
-			description: ["Obsidian can be crushed into dust, but it seems that crushing wheels aren't strong enough for this. However, powerful magics can perform this task without any loss."]
+			description: ["Obsidian can be crushed into powdered obsidian."]
 			id: "3A708FE87956300D"
 			tasks: [{
 				id: "289DDA3E205844A1"
