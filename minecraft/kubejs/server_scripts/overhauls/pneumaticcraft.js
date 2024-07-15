@@ -221,7 +221,7 @@ ServerEvents.recipes((e) => {
       'HPH',
     ],
     Object.assign({}, pneumaticcraftKeys, {
-      Q: 'vintageimprovements:laser_item',
+      L: 'vintageimprovements:laser_item',
     })
   )
   redefineRecipe(
