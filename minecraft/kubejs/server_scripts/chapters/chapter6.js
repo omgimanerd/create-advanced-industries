@@ -89,6 +89,8 @@ ServerEvents.recipes((e) => {
   const pneumaticcraft = definePneumaticcraftRecipes(e)
   const redefineRecipe = redefineRecipe_(e)
 
+  const MeltableItem = global.MeltableItem
+
   // Remove tier salvaging recipes and recycling recipes so apotheotic materials
   // are only available through the automation recipes below.
   e.remove({ id: /^apotheotic_additions:salvaging\/[a-z]+_to_[a-z]+$/ })
@@ -123,19 +125,11 @@ ServerEvents.recipes((e) => {
     '4x apotheosis:uncommon_material',
     'apotheotic_additions:timeworn_fancy'
   )
-  // TODO make this corundum farming
   create // Rare Material: Luminous Crystal Shard
-    .SequencedAssembly(CRYSTALLINE_MECHANISM)
-    .fill(Fluid.of('create_enchantment_industry:experience', 64))
-    .cut(2, 40)
-    .deploy('thermal:lumium_ingot')
-    .custom('Next: Crush with Crushing Wheels', (pre, post) => {
-      create.crushing(post, pre)
-    })
-    .outputs([
-      'apotheosis:rare_material',
-      Item.of('apotheosis:rare_material').withChance(0.25),
-    ])
+    .SequencedAssembly('quark:indigo_corundum_cluster')
+    .fill(Fluid.of('kubejs:molten_lumium', MeltableItem.DEFAULT_INGOT_FLUID))
+    .laser(8000, 1000)
+    .outputs('3x apotheosis:rare_material')
   create // Epic Material: Arcane Sands
     .SequencedAssembly('tfmg:limesand')
     .fill(Fluid.of('starbunclemania:source_fluid', 1000))

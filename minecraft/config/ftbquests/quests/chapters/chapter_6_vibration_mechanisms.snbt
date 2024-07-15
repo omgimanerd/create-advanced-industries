@@ -519,15 +519,11 @@
 		}
 		{
 			dependencies: ["368E09F5D73E4623"]
-			description: [
-				"Oh the misery!"
-				""
-				"Process and crush down our hard earned crystalline mechanisms to get luminous crystal shards."
-			]
+			description: ["You will need to either find or craft indigo corundum clusters to make luminous crystal shards. There are quite a few interesting ways you can go about this automation."]
 			id: "561F418F1FD38167"
 			tasks: [{
 				id: "1FFAB43FA1BA9FDE"
-				item: "kubejs:crystalline_mechanism"
+				item: "quark:indigo_corundum_cluster"
 				type: "item"
 			}]
 			x: 4.0d
