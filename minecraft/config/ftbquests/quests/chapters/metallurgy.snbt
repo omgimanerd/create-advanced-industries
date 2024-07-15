@@ -14,8 +14,8 @@
 		hover: [ ]
 		image: "kubejs:textures/metallurgy_bg.png"
 		rotation: 0.0d
-		width: 24.0d
-		x: 17.5d
+		width: 12.0d
+		x: 13.5d
 		y: 6.0d
 	}]
 	order_index: 4
@@ -33,8 +33,8 @@
 				type: "checkmark"
 			}]
 			title: "Ingots"
-			x: 0.0d
-			y: 12.0d
+			x: 0.5d
+			y: 10.0d
 		}
 		{
 			dependencies: ["679437D6962A8B73"]
@@ -53,12 +53,13 @@
 				}
 			]
 			title: "Crushing: 1.5x"
-			x: 0.0d
-			y: 2.0d
+			x: 0.5d
+			y: 4.0d
 		}
 		{
 			dependencies: ["4B33C79B447C78A6"]
 			description: ["Starting from raw ore, you can always smelt it to get the ingot for the least effort."]
+			hide_dependency_lines: true
 			icon: "minecraft:raw_copper"
 			id: "679437D6962A8B73"
 			tasks: [{
@@ -66,8 +67,8 @@
 				type: "checkmark"
 			}]
 			title: "Raw Ore"
-			x: 0.0d
-			y: 0.0d
+			x: 0.5d
+			y: 2.0d
 		}
 		{
 			dependencies: [
@@ -91,7 +92,7 @@
 				}
 			]
 			title: "Melting: 1-1.3x"
-			x: -4.0d
+			x: -2.5d
 			y: 6.0d
 		}
 		{
@@ -109,7 +110,7 @@
 				type: "checkmark"
 			}]
 			title: "Smelting: 1x"
-			x: 4.0d
+			x: 3.5d
 			y: 6.0d
 		}
 		{
@@ -129,8 +130,8 @@
 				}
 			]
 			title: "Vibrating: 1.5x"
-			x: 0.0d
-			y: 4.0d
+			x: 0.5d
+			y: 6.0d
 		}
 		{
 			dependencies: ["0BCB7FA490D47F49"]
@@ -149,8 +150,8 @@
 				}
 			]
 			title: "Washing: 1.1x"
-			x: 0.0d
-			y: 6.0d
+			x: 0.5d
+			y: 8.0d
 		}
 		{
 			dependencies: ["4B33C79B447C78A6"]
@@ -161,7 +162,7 @@
 				item: "minecraft:iron_ingot"
 				type: "item"
 			}]
-			x: 10.0d
+			x: 9.5d
 			y: 2.5d
 		}
 		{
@@ -173,7 +174,7 @@
 				item: "minecraft:copper_ingot"
 				type: "item"
 			}]
-			x: 12.0d
+			x: 10.5d
 			y: 2.5d
 		}
 		{
@@ -185,7 +186,7 @@
 				item: "minecraft:gold_ingot"
 				type: "item"
 			}]
-			x: 14.0d
+			x: 11.5d
 			y: 2.5d
 		}
 		{
@@ -197,7 +198,7 @@
 				item: "create:zinc_ingot"
 				type: "item"
 			}]
-			x: 16.0d
+			x: 12.5d
 			y: 2.5d
 		}
 		{
@@ -209,7 +210,7 @@
 				item: "thermal:tin_ingot"
 				type: "item"
 			}]
-			x: 18.0d
+			x: 13.5d
 			y: 2.5d
 		}
 		{
@@ -221,7 +222,7 @@
 				item: "thermal:lead_ingot"
 				type: "item"
 			}]
-			x: 20.0d
+			x: 14.5d
 			y: 2.5d
 		}
 		{
@@ -233,7 +234,7 @@
 				item: "thermal:silver_ingot"
 				type: "item"
 			}]
-			x: 22.0d
+			x: 15.5d
 			y: 2.5d
 		}
 		{
@@ -245,7 +246,7 @@
 				item: "thermal:nickel_ingot"
 				type: "item"
 			}]
-			x: 24.0d
+			x: 16.5d
 			y: 2.5d
 		}
 		{
@@ -257,7 +258,7 @@
 				item: "tfmg:steel_ingot"
 				type: "item"
 			}]
-			x: 15.0d
+			x: 12.0d
 			y: 5.0d
 		}
 		{
@@ -269,7 +270,7 @@
 				item: "thermal:bronze_ingot"
 				type: "item"
 			}]
-			x: 17.0d
+			x: 13.0d
 			y: 5.0d
 		}
 		{
@@ -281,7 +282,7 @@
 				item: "thermal:electrum_ingot"
 				type: "item"
 			}]
-			x: 19.0d
+			x: 14.0d
 			y: 5.0d
 		}
 		{
@@ -293,7 +294,7 @@
 				item: "thermal:invar_ingot"
 				type: "item"
 			}]
-			x: 21.0d
+			x: 15.0d
 			y: 5.0d
 		}
 		{
@@ -305,7 +306,7 @@
 				item: "thermal:constantan_ingot"
 				type: "item"
 			}]
-			x: 23.0d
+			x: 16.0d
 			y: 5.0d
 		}
 		{
@@ -317,7 +318,7 @@
 				item: "thermal:signalum_ingot"
 				type: "item"
 			}]
-			x: 15.0d
+			x: 12.0d
 			y: 7.5d
 		}
 		{
@@ -329,7 +330,7 @@
 				item: "thermal:lumium_ingot"
 				type: "item"
 			}]
-			x: 17.0d
+			x: 13.0d
 			y: 7.5d
 		}
 		{
@@ -341,7 +342,7 @@
 				item: "thermal:enderium_ingot"
 				type: "item"
 			}]
-			x: 19.0d
+			x: 14.0d
 			y: 7.5d
 		}
 		{
@@ -353,7 +354,7 @@
 				item: "createutilities:void_steel_ingot"
 				type: "item"
 			}]
-			x: 21.0d
+			x: 15.0d
 			y: 7.5d
 		}
 		{
@@ -365,7 +366,7 @@
 				item: "createcasing:chorium_ingot"
 				type: "item"
 			}]
-			x: 18.0d
+			x: 13.5d
 			y: 10.0d
 		}
 		{
@@ -377,7 +378,7 @@
 				item: "create:andesite_alloy"
 				type: "item"
 			}]
-			x: 26.0d
+			x: 17.5d
 			y: 2.5d
 		}
 		{
@@ -389,7 +390,7 @@
 				item: "create:brass_ingot"
 				type: "item"
 			}]
-			x: 13.0d
+			x: 11.0d
 			y: 5.0d
 		}
 		{
