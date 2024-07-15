@@ -146,6 +146,10 @@ if (Platform.isLoaded('create_new_age')) {
 }
 
 if (Platform.isLoaded('vintageimprovements')) {
+  /**
+   * @param {number|string} input
+   * @returns {SequencedAssembly}
+   */
   SequencedAssembly.prototype.curve = function (input) {
     let itemAsHead, mode
     if (typeof input === 'number') {
@@ -163,6 +167,21 @@ if (Platform.isLoaded('vintageimprovements')) {
   }
 
   /**
+   * @param {number} energy
+   * @param {number} maxChargeRate
+   * @returns { SequencedAssembly}
+   */
+  SequencedAssembly.prototype.laser = function (energy, maxChargeRate) {
+    this.steps_.push({
+      type: 'laser_cutting',
+      preItemText: Text.of('Cut with a laser'),
+      energy: energy,
+      maxChargeRate: maxChargeRate,
+    })
+    return this
+  }
+
+  /**
    * @param {number} processingTime
    * @returns {SequencedAssembly}
    */
@@ -170,7 +189,7 @@ if (Platform.isLoaded('vintageimprovements')) {
     this.steps_.push({
       type: 'vibrating',
       preItemText: Text.of(`Next: Pass through a vibrating table`),
-      processingTime: processingTime === undefined ? 20 : processingTime,
+      processingTime: processingTime,
     })
     return this
   }
@@ -311,11 +330,8 @@ SequencedAssembly.prototype.outputCustomSequence = function (output) {
           }
           break
         case 'vibrating':
-          r = this.e_.recipes.vintageimprovements.vibrating(
-            post,
-            pre,
-            data.processingTime
-          )
+          r = this.e_.recipes.vintageimprovements.vibrating(post, pre)
+          if (data.processingTime) r.processingTime(data.processingTime)
           break
         case 'custom':
           r = data.callback(preItem, postItem, json)
@@ -384,14 +400,28 @@ SequencedAssembly.prototype.outputNativeCreate = function (output) {
               curvingStep.mode(data.mode)
             }
             return curvingStep
+          case 'laser_cutting':
+            const laserCuttingStep =
+              this.e_.recipes.vintageimprovements.laser_cutting(
+                this.transitional_,
+                this.transitional_
+              )
+            if (data.energy) laserCuttingStep.energy(data.energy)
+            if (data.maxChargeRate) {
+              laserCuttingStep.maxChargeRate(data.maxChargeRate)
+            }
+            return laserCuttingStep
           case 'vibrating':
-            return this.e_.recipes.vintageimprovements.vibrating(
+            const vibratingStep = this.e_.recipes.vintageimprovements.vibrating(
               this.transitional_,
-              this.transitional_,
-              data.processingTime
+              this.transitional_
             )
+            if (data.processingTime) {
+              vibratingStep.processingTime(data.processingTime)
+            }
+            return vibratingStep
           default:
-            throw new Error(`Unknown assembly step ${data}`)
+            throw new Error(`Unknown assembly step ${JSON.stringify(data)}`)
         }
       })
     )

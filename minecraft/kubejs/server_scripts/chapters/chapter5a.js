@@ -331,10 +331,10 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'pneumaticcraft:printed_circuit_board' })
   create
     .SequencedAssembly('pneumaticcraft:unassembled_pcb')
+    .laser(800, 800)
     .deploy('pneumaticcraft:capacitor')
     .deploy('pneumaticcraft:transistor')
     .press()
-    .loops(4)
     .outputs('pneumaticcraft:printed_circuit_board')
 
   // Spool recipes for wire coils
@@ -661,7 +661,7 @@ ServerEvents.recipes((e) => {
   e.recipes.ars_nouveau.enchanting_apparatus(
     Array(8).fill(enchantedBook('minecraft:unbreaking', 8)),
     'kubejs:diamond_saw_blade',
-    'kubejs:unbreakable_diamond_saw_blade'
+    Item.of('kubejs:unbreakable_diamond_saw_blade', { Unbreakable: true })
   )
 
   // Diamond dust can be recrystallized into diamonds
