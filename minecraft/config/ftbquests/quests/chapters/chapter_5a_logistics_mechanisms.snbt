@@ -917,7 +917,7 @@
 				"52506B35EBD04BEF"
 				"4F5053EC6278DC86"
 			]
-			description: ["Ancient debris is so hard it cannot be processed by normal means. The only way of breaking it down is using the assembly laser."]
+			description: ["Ancient debris is so hard it cannot be processed by normal means. The only way of breaking it down is using the a laser."]
 			id: "4630AEF58B2E670F"
 			tasks: [{
 				id: "288AE5DEA959A3EC"
@@ -1117,7 +1117,7 @@
 				item: "createaddition:modular_accumulator"
 				type: "item"
 			}]
-			x: 8.0d
+			x: 10.0d
 			y: 2.0d
 		}
 		{
@@ -1133,7 +1133,7 @@
 				item: "create_new_age:generator_coil"
 				type: "item"
 			}]
-			x: 10.0d
+			x: 8.0d
 			y: 2.0d
 		}
 		{
@@ -1152,7 +1152,7 @@
 				item: "create_new_age:copper_wire"
 				type: "item"
 			}]
-			x: 10.0d
+			x: 6.0d
 			y: 4.0d
 		}
 		{
@@ -1168,10 +1168,7 @@
 			y: 4.0d
 		}
 		{
-			dependencies: [
-				"68FB63D0979FE43B"
-				"4C3E437A65D6858D"
-			]
+			dependencies: ["68FB63D0979FE43B"]
 			description: ["Redstone magnets are the first upgrade from magnetite."]
 			id: "3D6DFC9B34BD25CC"
 			tasks: [{
@@ -1529,7 +1526,7 @@
 				type: "item"
 			}]
 			x: 12.0d
-			y: 2.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["7DA3BAF3482B048B"]
