@@ -1,6 +1,13 @@
 // priority: 500
 // Recipe overhauls for Ars Nouveau and its addons
 
+ServerEvents.tags('minecraft:entity_type', (e) => {
+  // Prevent these mobs from being captured by the Ritual of Containment.
+  e.add('minecraft:ender_dragon', 'ars_nouveau:jar_blacklist')
+  e.add('minecraft:warden', 'ars_nouveau:jar_blacklist')
+  e.add('minecraft:wither', 'ars_nouveau:jar_blacklist')
+})
+
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
 
