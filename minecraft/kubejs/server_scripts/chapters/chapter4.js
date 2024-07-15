@@ -11,11 +11,28 @@ ServerEvents.recipes((e) => {
   const redefineRecipe = redefineRecipe_(e)
   const ingotFluid = global.MeltableItem.DEFAULT_INGOT_FLUID
 
-  // Dough must be made by combining it with eggs, with the original recipe
-  // less efficient.
+  // Dough can be made with water or eggs combined with flour, with the
+  // handcrafting recipes being less efficient.
   e.remove({ output: 'create:dough' })
-  create.mixing('create:dough', ['8x create:wheat_flour', Fluid.water(1000)])
-  e.shapeless('2x create:dough', [
+  e.shaped(
+    '4x create:dough',
+    [
+      'FFF', //
+      'FBF', //
+      'FFF', //
+    ],
+    { F: 'create:wheat_flour', B: 'minecraft:water_bucket' }
+  )
+    .replaceIngredient('minecraft:water_bucket', 'minecraft:bucket')
+    .id('kubejs:dough_with_water_manual_only')
+  e.shapeless('3x create:dough', [
+    'create:wheat_flour',
+    'create:wheat_flour',
+    'create:wheat_flour',
+    'minecraft:egg',
+  ]).id('kubejs:dough_with_egg_manual_only')
+  create.mixing('8x create:dough', ['8x create:wheat_flour', Fluid.water(1000)])
+  create.mixing('6x create:dough', [
     'create:wheat_flour',
     'create:wheat_flour',
     'create:wheat_flour',
