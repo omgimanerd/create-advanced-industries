@@ -212,7 +212,7 @@ ServerEvents.recipes((e) => {
   e.recipes.ars_nouveau.enchanting_apparatus(
     Array(8).fill(enchantedBook('minecraft:unbreaking', 8)),
     'tfmg:screwdriver',
-    'kubejs:unbreakable_screwdriver'
+    Item.of('kubejs:unbreakable_screwdriver', { Unbreakable: true })
   )
 
   // Steel mechanism overhaul
