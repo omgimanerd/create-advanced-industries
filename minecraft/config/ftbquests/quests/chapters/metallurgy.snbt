@@ -157,6 +157,11 @@
 			dependencies: ["4B33C79B447C78A6"]
 			hide_dependency_lines: true
 			id: "232DF7027B26AAE9"
+			rewards: [{
+				id: "7E909F9F6A97D710"
+				type: "xp"
+				xp: 100
+			}]
 			tasks: [{
 				id: "0927F6B87E36ABE2"
 				item: "minecraft:iron_ingot"
@@ -169,6 +174,11 @@
 			dependencies: ["4B33C79B447C78A6"]
 			hide_dependency_lines: true
 			id: "14275110BB7BB212"
+			rewards: [{
+				id: "3AB781C04EB2F1E1"
+				type: "xp"
+				xp: 100
+			}]
 			tasks: [{
 				id: "1B13E9E7EB5CC079"
 				item: "minecraft:copper_ingot"
@@ -181,6 +191,11 @@
 			dependencies: ["4B33C79B447C78A6"]
 			hide_dependency_lines: true
 			id: "390C3490927F7DD0"
+			rewards: [{
+				id: "13058D86AAB1C4D8"
+				type: "xp"
+				xp: 100
+			}]
 			tasks: [{
 				id: "0DC33E73A24E0105"
 				item: "minecraft:gold_ingot"
@@ -193,6 +208,11 @@
 			dependencies: ["4B33C79B447C78A6"]
 			hide_dependency_lines: true
 			id: "2FFB929A6A33AE6E"
+			rewards: [{
+				id: "0E265A61F2D02569"
+				type: "xp"
+				xp: 100
+			}]
 			tasks: [{
 				id: "60B473DC9FC286A8"
 				item: "create:zinc_ingot"
@@ -205,6 +225,11 @@
 			dependencies: ["4B33C79B447C78A6"]
 			hide_dependency_lines: true
 			id: "04B9307A3930E0EE"
+			rewards: [{
+				id: "15B2ABC7323F7682"
+				type: "xp"
+				xp: 100
+			}]
 			tasks: [{
 				id: "1ED3BB1B40A3C424"
 				item: "thermal:tin_ingot"
@@ -217,6 +242,11 @@
 			dependencies: ["4B33C79B447C78A6"]
 			hide_dependency_lines: true
 			id: "04C9485B2AC69D24"
+			rewards: [{
+				id: "400DBCB4994ABE67"
+				type: "xp"
+				xp: 100
+			}]
 			tasks: [{
 				id: "39523FC91B617AB4"
 				item: "thermal:lead_ingot"
@@ -229,6 +259,11 @@
 			dependencies: ["4B33C79B447C78A6"]
 			hide_dependency_lines: true
 			id: "2AD268874A9428E4"
+			rewards: [{
+				id: "0EDD0DAE9F39B702"
+				type: "xp"
+				xp: 100
+			}]
 			tasks: [{
 				id: "46900E5AFDD206D2"
 				item: "thermal:silver_ingot"
@@ -241,6 +276,11 @@
 			dependencies: ["4B33C79B447C78A6"]
 			hide_dependency_lines: true
 			id: "5A91B144697E8324"
+			rewards: [{
+				id: "57D1C02812E7C6CD"
+				type: "xp"
+				xp: 100
+			}]
 			tasks: [{
 				id: "43C79E9938524D03"
 				item: "thermal:nickel_ingot"
@@ -253,6 +293,11 @@
 			dependencies: ["4B33C79B447C78A6"]
 			hide_dependency_lines: true
 			id: "1BC78B00014FA6E0"
+			rewards: [{
+				id: "77A30F6B85F7B0E8"
+				type: "xp_levels"
+				xp_levels: 10
+			}]
 			tasks: [{
 				id: "1842E41DA78CB240"
 				item: "tfmg:steel_ingot"
@@ -265,6 +310,11 @@
 			dependencies: ["4B33C79B447C78A6"]
 			hide_dependency_lines: true
 			id: "342FBBE6CC3AFCB3"
+			rewards: [{
+				id: "3EBAF4D8AF07A6EF"
+				type: "xp_levels"
+				xp_levels: 10
+			}]
 			tasks: [{
 				id: "228B6F818B30E143"
 				item: "thermal:bronze_ingot"
@@ -277,6 +327,11 @@
 			dependencies: ["4B33C79B447C78A6"]
 			hide_dependency_lines: true
 			id: "0BD15C2756FCB15C"
+			rewards: [{
+				id: "18F7D1036C15A233"
+				type: "xp_levels"
+				xp_levels: 10
+			}]
 			tasks: [{
 				id: "331997FF3D21DD5D"
 				item: "thermal:electrum_ingot"
@@ -289,6 +344,11 @@
 			dependencies: ["4B33C79B447C78A6"]
 			hide_dependency_lines: true
 			id: "01D5D44C32E596B9"
+			rewards: [{
+				id: "45DC9477A2A724BE"
+				type: "xp_levels"
+				xp_levels: 10
+			}]
 			tasks: [{
 				id: "6965E4A7C30E117A"
 				item: "thermal:invar_ingot"
@@ -301,6 +361,11 @@
 			dependencies: ["4B33C79B447C78A6"]
 			hide_dependency_lines: true
 			id: "27F1D5BAECD76B1C"
+			rewards: [{
+				id: "4C9587A6B93DE5D6"
+				type: "xp_levels"
+				xp_levels: 10
+			}]
 			tasks: [{
 				id: "121357F4CF28BAB5"
 				item: "thermal:constantan_ingot"
@@ -313,6 +378,11 @@
 			dependencies: ["4B33C79B447C78A6"]
 			hide_dependency_lines: true
 			id: "3C5DF0E35EA5858C"
+			rewards: [{
+				id: "61C4E3BA91DB6B32"
+				type: "xp_levels"
+				xp_levels: 15
+			}]
 			tasks: [{
 				id: "2C218551FAC12072"
 				item: "thermal:signalum_ingot"
@@ -325,6 +395,11 @@
 			dependencies: ["4B33C79B447C78A6"]
 			hide_dependency_lines: true
 			id: "435B7E783206A732"
+			rewards: [{
+				id: "4F53894E7E681176"
+				type: "xp_levels"
+				xp_levels: 15
+			}]
 			tasks: [{
 				id: "6FEC71658FEE5958"
 				item: "thermal:lumium_ingot"
@@ -337,6 +412,11 @@
 			dependencies: ["4B33C79B447C78A6"]
 			hide_dependency_lines: true
 			id: "7B512AD2EBA7475C"
+			rewards: [{
+				id: "0C611376FDAD669B"
+				type: "xp_levels"
+				xp_levels: 15
+			}]
 			tasks: [{
 				id: "2828738DE42B95BF"
 				item: "thermal:enderium_ingot"
@@ -349,6 +429,11 @@
 			dependencies: ["4B33C79B447C78A6"]
 			hide_dependency_lines: true
 			id: "4682046C57A674C4"
+			rewards: [{
+				id: "5C7B26485A818720"
+				type: "xp_levels"
+				xp_levels: 15
+			}]
 			tasks: [{
 				id: "45C753AC07EA0DEA"
 				item: "createutilities:void_steel_ingot"
@@ -361,6 +446,11 @@
 			dependencies: ["4B33C79B447C78A6"]
 			hide_dependency_lines: true
 			id: "209B51A6D568975D"
+			rewards: [{
+				id: "3FB1BC22607B1457"
+				type: "xp_levels"
+				xp_levels: 100
+			}]
 			tasks: [{
 				id: "4075787394545143"
 				item: "createcasing:chorium_ingot"
@@ -373,6 +463,11 @@
 			dependencies: ["4B33C79B447C78A6"]
 			hide_dependency_lines: true
 			id: "5FE092FA33D4D5AF"
+			rewards: [{
+				id: "1BDD912DF7419AC7"
+				type: "xp"
+				xp: 100
+			}]
 			tasks: [{
 				id: "73BA115674A905DE"
 				item: "create:andesite_alloy"
@@ -385,6 +480,11 @@
 			dependencies: ["4B33C79B447C78A6"]
 			hide_dependency_lines: true
 			id: "5E90DF0BBD58BB3C"
+			rewards: [{
+				id: "12A3D1A4D637A004"
+				type: "xp_levels"
+				xp_levels: 10
+			}]
 			tasks: [{
 				id: "1CAFF5B53FF5E626"
 				item: "create:brass_ingot"
