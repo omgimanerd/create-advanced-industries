@@ -330,7 +330,7 @@ StartupEvents.recipeSchemaRegistry((e) => {
     e.register(
       'pneumaticcraft:heat_frame_cooling',
       new $RecipeSchema(
-        pncrFluidInput.key('input'),
+        pncrFluidInput.or(pncrItemInput).key('input'),
         outputItem.key('result'),
         intNumber.key('max_temp').optional(0),
         pncrBonusOutput.defaultOptional()

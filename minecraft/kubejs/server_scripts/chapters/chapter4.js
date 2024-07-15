@@ -104,24 +104,7 @@ ServerEvents.recipes((e) => {
     )
     .id('kubejs:custom_ars_nouveau_charcoal_block_transmutation')
 
-  // Obsidian overhaul for sturdy sheets
-  e.remove({ output: 'minecraft:magma_block' })
-  e.remove({ id: 'thermal:machines/press/packing2x2/press_magma_packing' })
-  create.filling('minecraft:magma_block', [
-    '#forge:cobblestone',
-    Fluid.lava(250),
-  ])
-  e.remove({ id: 'create:crushing/obsidian' })
-  e.recipes.ars_nouveau.crush('minecraft:obsidian', [
-    Item.of('create:powdered_obsidian').withChance(1),
-    Item.of('create:powdered_obsidian').withChance(0.1),
-  ])
-  create
-    .crushing(
-      Item.of('create:powdered_obsidian').withChance(0.5),
-      'minecraft:obsidian'
-    )
-    .processingTime(200)
+  // Obsidian overhaul in chapter4_obsidian.js
 
   // Fireclay ball recipe
   create
