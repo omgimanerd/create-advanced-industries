@@ -342,8 +342,6 @@ ServerEvents.recipes((e) => {
       .deploy('createarmory:impact_nade')
       .outputs('2x createarmory:rpg_rocket')
     e.remove({ id: 'createarmory:shotgun_shell_recipe' })
-    // TODO: similar sequenced assembly steps result in confusing intermediate
-    // items.
     create
       .SequencedAssembly(
         'create:brass_sheet',

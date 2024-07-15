@@ -1,8 +1,6 @@
 // priority: 900
 // Utility functions and classes used by the code to generate custom Ponders.
 
-// TODO add a custom ars enchanting ponder
-
 const $DeployerBlockEntity = Java.loadClass(
   'com.simibubi.create.content.kinetics.deployer.DeployerBlockEntity'
 )
