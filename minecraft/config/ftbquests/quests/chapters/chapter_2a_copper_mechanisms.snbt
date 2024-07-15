@@ -39,7 +39,11 @@
 		}
 		{
 			dependencies: ["58368DE8C5423BBE"]
-			description: ["You'll need to automate red dye. You can farm beetroot or rose bushes. No limits here!"]
+			description: [
+				"You'll need to automate red dye. You can farm a ton of different things to get it."
+				""
+				"No limits here!"
+			]
 			id: "41EA296A863B1FEC"
 			tasks: [{
 				id: "6477C86CF90F5B97"
