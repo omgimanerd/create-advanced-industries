@@ -2,7 +2,7 @@
 #Adaptive Performance Tweaks: Items
 [Items]
 	#Enable/Disable items optimization.
-	optimizeItems = true
+	optimizeItems = false
 	#Defines the max. number of items / item stacks per type which are allowed to lay around in the world.
 	#Range: 16 ~ 128
 	maxNumberOfItemsPerType = 128
