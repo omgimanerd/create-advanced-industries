@@ -21,6 +21,10 @@ ServerEvents.recipes((e) => {
     .compacting(Fluid.of('thermal:ender', 250), 'kubejs:resonant_ender_pearl')
     .superheated()
 
+  // Quantum fluid
+  e.remove({ id: 'createteleporters:quantum_fluid_recipe' })
+  e.remove({ id: 'createteleporters:tele_fluid_chorus' })
+
   // TODO quantum casing
 
   // Redstone pearls

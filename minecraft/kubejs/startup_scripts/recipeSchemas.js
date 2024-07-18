@@ -11,6 +11,7 @@ StartupEvents.recipeSchemaRegistry((e) => {
   // Input/output component types
   const Components = e.components
 
+  const anyFloatNumber = Components.get('anyFloatNumber')()
   const anyString = Components.get('anyString')()
   const blockTag = Components.get('blockTag')()
   const bool = Components.get('bool')()
@@ -191,7 +192,8 @@ StartupEvents.recipeSchemaRegistry((e) => {
       new $RecipeSchema(
         outputFluidOrItem.asArray().key('results'),
         inputFluidOrItem.asArray().key('ingredients'),
-        intNumber.key('processingTime').optional(20)
+        intNumber.key('processingTime').optional(20),
+        heatCondition.key('heatRequirement').optional('none')
       )
     )
     e.register(
@@ -369,7 +371,7 @@ StartupEvents.recipeSchemaRegistry((e) => {
         outputItem.key('item_output').defaultOptional(),
         pncrTempRange.defaultOptional(),
         bool.key('exothermic').alwaysWrite().optional(false),
-        floatNumber.key('pressure').optional(0),
+        anyFloatNumber.key('pressure').optional(0),
         floatNumber.key('air_use_multiplier').optional(0),
         floatNumber.key('speed').optional(0)
       ).addConstructor(() => {})
