@@ -1,0 +1,51 @@
+#Can cactus be bonemealed?
+cactus = true
+#Maximum amount that cactus can grow per bonemeal.
+#Range: 1 ~ 10
+cactus_growth = 5
+#Maximum height that cactus can grow when bonemealed.
+#Range: 3 ~ 256
+cactus_height = 5
+#Can chorus flowers and plants be bonemealed?
+chorus = true
+#Chance to grow a flower on each bonemeal.
+#Range: 0.0 ~ 1.0
+chorus_chance = 0.4
+#Maximum size in blocks that the chorus plant can grow to with bonemeal.
+#Range: 0 ~ 256
+chorus_size = 64
+#Can corals be bonemealed?
+coral = true
+#Can dead bushes be bonemealed?
+dead_bush = false
+#Can small flowers be bonemealed?
+flower = true
+#Can hanging roots be bonemealed?
+hanging_roots = true
+#Can leaves be bonemealed?
+leaves = false
+#Can mycelium be bonemealed?
+mycelium = true
+#Can nether sprouts be bonemealed?
+sprouts = true
+#Can nether wart be bonemealed?
+nether_wart = true
+#Can warped/nylium roots be bonemealed?
+roots = true
+#Can sponges be bonemealed?
+sponge = false
+#Can spore blossoms be bonemealed?
+spore_blossom = true
+#Can sugar cane be bonemealed?
+sugar_cane = true
+#Maximum amount that sugar cane can grow per bonemeal.
+#Range: 1 ~ 10
+sugar_cane_growth = 2
+#Maximum height that sugar cane can grow when bonemealed.
+#Range: 3 ~ 256
+sugar_cane_height = 5
+#Can vines be bonemealed?
+vine = true
+#Can lilypads be bonemealed?
+waterlily = true
+
