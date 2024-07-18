@@ -230,6 +230,19 @@ ServerEvents.recipes((e) => {
     '4x minecraft:string',
   ])
 
+  // Fermented spider eye alternative and yeast culture
+  create
+    .mixing(Fluid.of('pneumaticcraft:yeast_culture', 1000), [
+      Fluid.of('pneumaticcraft:yeast_culture', 500),
+      Fluid.water(500),
+      'minecraft:sugar',
+    ])
+    .id('kubejs:yeast_culture_deceptively_hard_to_automate')
+  create.mixing('minecraft:fermented_spider_eye', [
+    'minecraft:spider_eye',
+    Fluid.of('pneumaticcraft:yeast_culture', 125),
+  ])
+
   // Sawdust recipe, with benefits if you do it with ars nouveau.
   create.crushing(
     [
