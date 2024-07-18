@@ -519,7 +519,11 @@
 		}
 		{
 			dependencies: ["368E09F5D73E4623"]
-			description: ["You will need to either find or craft indigo corundum clusters to make luminous crystal shards. There are quite a few interesting ways you can go about this automation."]
+			description: [
+				"You will need to either find or craft indigo corundum clusters to make luminous crystal shards. There are quite a few interesting ways you can go about this automation."
+				""
+				"Once you unlock the ability to craft a beacon, there are ways to make this much easier."
+			]
 			id: "561F418F1FD38167"
 			tasks: [{
 				id: "1FFAB43FA1BA9FDE"
@@ -962,7 +966,11 @@
 				"0CE7E80FB2C2864E"
 				"73263EC95364E1E4"
 			]
-			description: ["End crystals require both nether stars and purpur slabs."]
+			description: [
+				"End crystals require both nether stars and purpur slabs."
+				""
+				"Being able to craft and end crystal also means you can craft a beacon."
+			]
 			id: "243F51DA64564519"
 			tasks: [{
 				id: "7561606C118A67DE"

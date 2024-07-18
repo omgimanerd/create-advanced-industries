@@ -256,8 +256,8 @@
 				item: "extrastorage:neural_processor"
 				type: "item"
 			}]
-			x: 6.5d
-			y: 3.5d
+			x: 3.5d
+			y: 5.0d
 		}
 		{
 			id: "56A24AF47C360AC9"
@@ -266,8 +266,8 @@
 				item: "extrastorage:raw_neural_processor"
 				type: "item"
 			}]
-			x: 3.5d
-			y: 3.5d
+			x: 1.5d
+			y: 4.5d
 		}
 		{
 			id: "3832D225F6D0C417"
@@ -278,6 +278,16 @@
 			}]
 			x: 9.5d
 			y: -2.5d
+		}
+		{
+			id: "0FD4E6E4734AB1D6"
+			tasks: [{
+				id: "36DA9970851824B0"
+				item: "createutilities:void_casing"
+				type: "item"
+			}]
+			x: 13.5d
+			y: 2.5d
 		}
 	]
 	title: "Chapter 7: Quantum Mechanisms"

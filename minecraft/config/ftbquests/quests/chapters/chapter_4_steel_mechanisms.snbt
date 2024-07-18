@@ -511,7 +511,7 @@
 			description: [
 				"Cool down the magma blocks and you have automated obsidian."
 				""
-				"You could also mix lava and water, but surely that's inefficient."
+				"There are several other ways to automate obsidian. The choice is yours."
 			]
 			id: "5A4A984E4C6E0ADC"
 			tasks: [{
