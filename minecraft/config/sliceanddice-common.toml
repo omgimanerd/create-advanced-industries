@@ -9,7 +9,7 @@
 
 [sprinkler]
 	#Range: 10 ~ 2048
-	fluid_capacity = 300
+	fluid_capacity = 1000
 	#Range: 0 ~ 2048
-	fluid_per_use = 25
+	fluid_per_use = 50
 
