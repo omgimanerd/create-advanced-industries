@@ -35,6 +35,12 @@ disableConversion = false
 	copycat_ladder = true
 	copycat_slope = true
 	copycat_vertical_slope = true
+	copycat_large_cogwheel = true
+	copycat_cogwheel = true
+	copycat_door = true
+	copycat_iron_door = true
+	copycat_fluid_pipe = true
+	copycat_iron_trapdoor = true
 
 #.
 #Enable/disable categories of features. Disabling a category hides all related features. Values on server override clients
@@ -52,4 +58,10 @@ disableConversion = false
 	#.
 	#All copycats that can emit a redstone signal
 	redstone = true
+	#.
+	#All copycats with extra functions/interactions
+	functional = true
+	#.
+	#All copycats mimicking blocks from Create
+	create = true
 

@@ -12,4 +12,6 @@
 	"Show 'Hold Shift for Details' Message" = true
 	#If TRUE, certain CoFH particles will dynamically emit light.
 	"Dynamically Light Particles" = true
+	#If TRUE, certain particles will use a stylized graphics pipeline on Fabulous graphics.
+	"Stylized Graphics" = true
 
