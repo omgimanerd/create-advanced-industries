@@ -2,28 +2,6 @@
 // Recipe overhauls for Chapter 5B progression.
 
 /**
- * Handler defined in startup_scripts/spoutHandlerRegistration.js
- * Defined here to allow for server side reload.
- * @type {Internal.SpecialSpoutHandlerEvent$SpoutHandler_}
- * @param {Internal.BlockContainerJS_} block
- * @param {Internal.FluidStackJS_} fluid
- * @param {boolean} simulate
- * @returns {number} The amount of fluid used by the spout
- */
-global.NetherWartSpoutHandlerCallback = (block, fluid, simulate) => {
-  const fluidConsumption = 250
-  const { properties } = block
-  const age = parseInt(properties.getOrDefault('age', 3), 10)
-  if (age == 3) return 0
-  if (fluid.id !== 'sliceanddice:fertilizer') return 0
-  if (fluid.amount < fluidConsumption) return 0
-  if (!simulate) {
-    block.set(block.id, { age: new String(age + 1) })
-  }
-  return fluidConsumption
-}
-
-/**
  * Callback handler for feeding and milking a blaze.
  */
 ItemEvents.entityInteracted((e) => {
