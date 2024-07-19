@@ -1,9 +1,24 @@
 .mixin.out/
 .probe/
 .vscode/
+
 backups/
+
+config/jei/world/
+
+config/embeddium-fingerprint.json
+config/packetfixer.properties
+config/quark-common.toml
+config/**/*.bak
+
 crash-reports/
 ESM/
+
+# KubeJS
+kubejs/**/__pycache__/
+kubejs/probe/
+kubejs/config/
+
 local/
 logs/
 mods/
@@ -16,6 +31,7 @@ server-resource-packs/
 shaderpacks/
 texturepacks/
 
+# Individual Files
 .qmenu_opened.marker
 hotbar.nbt
 options.txt
