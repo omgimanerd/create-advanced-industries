@@ -415,7 +415,7 @@
 			description: [
 				"Nether warts allow you to brew awkward potions, the basis of every other brewable potion."
 				""
-				"They seem quite difficult to farm, but you'll unlock a way to accelerate their growth later."
+				"They are bonemealable in this pack, and the sprinkler unlocked later in this chapter may come in handy for this."
 			]
 			hide_dependency_lines: true
 			id: "7F34979862617334"
