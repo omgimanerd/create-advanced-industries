@@ -1,5 +1,55 @@
 # Changelog
 
+## v0.0.11-playtest
+
+### New Mods / Major Updates
+- Add Bonemeal Config mod v1.0.0.
+- Update Apotheosis to v7.4.0.
+- Change Apotheosis overhauls to match the new sigils added in v7.4.0.
+- Update Create: Vintage Improvements to v0.1.6.0.
+- Update Create: Connected to v0.8.2.
+- Update Artifacts to v9.5.11.
+- Update Curios API to v5.9.1+.
+- Update Create: Copycats to v1.3.8+.
+- Disable item optimization from APTweaks: Items.
+- Add ponders explaining the Ars Nouveau blocks.
+- Fully implement energized beacon crafting with energy carrier items and
+  recipe processing.
+- Change all references of andesite mechanism to kinetic mechanism.
+
+### Tweaks and Changes
+- Add recipes for unobtainable sculk blocks.
+- Add a recipe alternative for yeast culture and fermented spider eye.
+- Add an energizing recipe for hearthstones.
+- Add recipes for reinforced deepslate and make it mineable and accessible with diamond tools.
+- Add a recipe for Thermal's hardened glass.
+- Integrate new laser machine from Create: Vintage Improvements.
+- Adjust coke oven recipe output yield.
+- Adjust Create: Slice and Dice bonemealing cost.
+- Adjust looped crystal growth recipes to use a single step instead.
+- Adjust obsidian overhaul to make obsidian dust easier to obtain. Add more
+  pathways to get obsidian.
+- Adjust dough recipes to yield more and be more forgiving.
+- Adjust SequencedAssembly filling recipe to single filling recipe for amethyst
+  buds.
+- Adjust wooden hand replacement overhaul.
+- Create a custom graphic to add to the metallurgy chapter.
+- Prevent the Ender Dragon, Wither, and Warden from being captured by the Ritual
+  of Containment.
+- Remove the code to screw the player.
+- Re-enable TFMG aluminum recipes, remove flarestack from JEI.
+- Change source relay warper to require quantum mechanisms.
+
+### Bugfixes
+- Add Unbreakable tag to unbreakable items so they don't get consumed by crafts.
+- Add IDs to thermal crystallizer recipes and fixed a recipe typo in lapis
+  crystallization.
+- Fix broken infused dragon's breath recipe.
+- Hide all colored Refined Storage blocks from JEI, minor recipe tweak.
+- Add a copy of the Refined Storage config to defaultconfigs/
+- Fix a typo in Refined Storage's recipe overhauls.
+
+
 ## v0.0.10-playtest
 
 ### New Mods / Major Updates
