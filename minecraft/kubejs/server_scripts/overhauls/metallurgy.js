@@ -118,21 +118,44 @@ ServerEvents.recipes((e) => {
       }
     })
 
-  // Slag and rich slag processing
+  // Slag melting and solidication.
+  e.remove({ id: 'tfmg:mixing/slag' })
   create
     .mixing(
       Fluid.of('tfmg:molten_slag', MeltableItem.DEFAULT_INGOT_FLUID),
       'thermal:slag'
     )
     .heated()
+  create.compacting(
+    'thermal:slag',
+    Fluid.of('tfmg:molten_slag', MeltableItem.DEFAULT_INGOT_FLUID)
+  )
   create
     .mixing(
       Fluid.of('tfmg:molten_slag', 4 * MeltableItem.DEFAULT_INGOT_FLUID),
       'thermal:slag_block'
     )
     .heated()
+  create.compacting(
+    'thermal:slag_block',
+    Fluid.of('tfmg:molten_slag', 4 * MeltableItem.DEFAULT_INGOT_FLUID)
+  )
+
+  // Slag processing as an alternate iron route.
+  create
+    .mixing(
+      [
+        Fluid.of('kubejs:molten_iron', 135),
+        '2x thermal:slag',
+        'minecraft:gravel',
+        Item.of('thermal:slag', 2).withChance(0.25),
+        Item.of('minecraft:gravel', 2).withChance(0.25),
+      ],
+      Fluid.of('tfmg:molten_slag', 900)
+    )
+    .heated()
+
   // TODO rich slag is the only way to get aluminum?
   // TODO molten slag can be centrifuged to crap?
-  // create.centrifuging('', Fluid.of())
   // TODO Rich slag + liquid = better?
 })
