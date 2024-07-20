@@ -8,13 +8,10 @@ global.VoidConversionRecipes = {}
  * @param {string} input
  */
 global.RegisterVoidConversionRecipe = (output, input) => {
-  // TODO custom ponder
-  // TODO custom JEI category
   if (global.VoidConversionRecipes[input]) {
     throw new Error(`Recipe already exists for input ${input}!`)
   }
-  global.VoidConversionRecipes[input] =
-    typeof output === 'string' ? Item.of(output) : output
+  global.VoidConversionRecipes[input] = output
 }
 
 /**
@@ -31,7 +28,7 @@ global.VoidConversionCallback = (e) => {
   const result = global.VoidConversionRecipes[item.id]
   if (result === undefined) return
   const resultEntity = block.createEntity('item')
-  resultEntity.item = result
+  resultEntity.item = Item.of(result)
   resultEntity.setPos(x, minBuildHeight - 20, z)
   resultEntity.spawn()
   resultEntity.setDeltaMovement(new Vec3d(0, 0.5, 0))
@@ -47,7 +44,8 @@ ForgeEvents.onEvent(
   }
 )
 
-StartupEvents.postInit((e) => {
+// Void conversion recipe registration.
+;(() => {
   // Void steel crafting with void conversion.
   global.RegisterVoidConversionRecipe(
     'createutilities:void_steel_ingot',
@@ -57,4 +55,4 @@ StartupEvents.postInit((e) => {
     'createutilities:void_steel_block',
     'tfmg:steel_block'
   )
-})
+})()
