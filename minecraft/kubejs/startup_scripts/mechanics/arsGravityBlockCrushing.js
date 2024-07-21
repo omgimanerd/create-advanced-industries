@@ -1,5 +1,7 @@
 // priority: 1000
 
+global.ARS_GRAVITY_BLOCK_CRUSHING = 'kubejs:ars_gravity_block_crushing'
+
 /**
  * @typedef {Object} ArsGravityBlockCrushingRecipe
  * @property {Internal.Block_} belowBlock
@@ -33,6 +35,7 @@ global.RegisterArsGravityBlockCrushingRecipe = (
   const ingredients_ = Array.isArray(ingredients) ? ingredients : [ingredients]
   const results_ = Array.isArray(results) ? results : [results]
   recipes.push({
+    fallingBlock: fallingBlock,
     belowBlock: belowBlock,
     minimumSpeed: minimumSpeed,
     ingredients: ingredients_,
@@ -87,8 +90,6 @@ global.ArsGravityBlockCrushingCallback = (e) => {
   })
 
   entity.playSound('minecraft:block.anvil.land', 5, 1)
-
-  // TODO custom JEI category
   // TODO custom ponder
 }
 
