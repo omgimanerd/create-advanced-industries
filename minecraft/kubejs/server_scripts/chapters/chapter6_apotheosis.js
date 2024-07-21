@@ -42,6 +42,8 @@ const getGemItem = (id, rarity) => {
   ]
 
   /**
+   * Gets the required number and tier of material required to upgrade a gem
+   * to the next tier. Matches the gem cutting table's material requirements.
    * @param {string} tier
    * @returns
    */
@@ -54,15 +56,6 @@ const getGemItem = (id, rarity) => {
       validMaterials.push(Item.of(material, quantity))
     }
     return validMaterials
-  }
-
-  /**
-   * @param {string} tier
-   * @returns
-   */
-  const getTierGemDustCost = (tier) => {
-    const index = tierOrder.indexOf(tier)
-    return 2 * index - 1
   }
 
   // Populated by ServerEvents.highPriorityData with all the apotheotic gems
@@ -148,10 +141,11 @@ const getGemItem = (id, rarity) => {
         let fromGem = getGemItem(gem, fromTier)
         let toTier = tiers[i + 1]
         let toGem = getGemItem(gem, toTier)
-        let gemDustCost = getTierGemDustCost(toTier)
-        let validMaterials = getTierUpgradeMaterialCost(toTier)
-
         let tierIndex = tierOrder.indexOf(toTier)
+
+        // Matches Apotheosis's existing gem cutting table recipes.
+        let gemDustCost = 2 * tierIndex - 1
+        let validMaterials = getTierUpgradeMaterialCost(toTier)
 
         for (let material of validMaterials) {
           // TODO maybe something more complicated than compacting
@@ -236,5 +230,54 @@ const getGemItem = (id, rarity) => {
         registerAutomatedInfusionEnchanting(recipe)
       }
     })
+
+    // Remove Create crushing recycling recipes so apotheotic materials are
+    // only available through the automation recipes.
+    e.forEachRecipe(
+      [
+        { mod: 'apotheosis', type: 'create:crushing' },
+        { mod: 'apotheotic_additions', type: 'create:crushing' },
+      ],
+      (r) => {
+        const json = JSON.parse(r.json)
+        if (json.ingredients.length !== 1) {
+          return
+        }
+        // Prepare the json to write to a custom datapack file.
+        // This code requires a double reload whenever it is changed.
+        if (json.conditions) {
+          delete json.conditions
+        }
+        const rarity = json.ingredients[0].rarity
+        const idPrefix = rarity.split(':')[1]
+        const tierIndex = tierOrder.indexOf(rarity)
+
+        // We have to store the recipes as datapack JSONs because they do not
+        // match the expected schema of Create's crushing recipes.
+        switch (json.ingredients[0].type) {
+          case 'apotheosis:affix_item':
+            let affixRecipe = Object.assign({}, json, {
+              results: [
+                Item.of('apotheosis:gem_dust', 2 * tierIndex + 1),
+                Item.of('create:experience_block', 2 * tierIndex + 1),
+              ].map((v) => JSON.parse(v.toJson())),
+            })
+            JsonIO.write(
+              `kubejs/data/kubejs/recipes/${idPrefix}_affix_item_crushing.json`,
+              affixRecipe
+            )
+            // Remove the original recipe.
+            r.remove()
+            break
+          case 'apotheosis:gem':
+            // Leave the gem recycling recipes as is.
+            break
+          default:
+            throw new Error(
+              `Unknown apotheosis ingredient type: ${json.ingredients}`
+            )
+        }
+      }
+    )
   })
 })()

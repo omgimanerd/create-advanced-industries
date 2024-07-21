@@ -1,0 +1,20 @@
+{
+	"type": "create:crushing",
+	"ingredients": [
+		{
+			"type": "apotheosis:affix_item",
+			"rarity": "apotheotic_additions:heirloom"
+		}
+	],
+	"processingTime": 150,
+	"results": [
+		{
+			"item": "apotheosis:gem_dust",
+			"count": 15
+		},
+		{
+			"item": "create:experience_block",
+			"count": 15
+		}
+	]
+}

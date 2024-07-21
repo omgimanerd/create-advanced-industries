@@ -91,25 +91,6 @@ ServerEvents.recipes((e) => {
 
   const MeltableItem = global.MeltableItem
 
-  // Remove tier salvaging recipes and recycling recipes so apotheotic materials
-  // are only available through the automation recipes below.
-  e.remove({ id: /^apotheotic_additions:salvaging\/[a-z]+_to_[a-z]+$/ })
-  e.forEachRecipe(
-    [
-      { mod: 'apotheosis', type: 'create:crushing' },
-      { mod: 'apotheotic_additions', type: 'create:crushing' },
-    ],
-    (r) => {
-      const json = JSON.parse(r.json)
-      if (
-        json.ingredients.length === 1 &&
-        json.ingredients[0].type === 'apotheosis:affix_item'
-      ) {
-        const rarity = json.ingredients[0].rarity
-        r.replaceOutput(`${rarity}_material`, 'create:experience_block')
-      }
-    }
-  )
   // Apotheosis material automation
   // Common Material: Mysterious Scrap Metal
   create.crushing('4x apotheosis:common_material', STEEL_MECHANISM)
