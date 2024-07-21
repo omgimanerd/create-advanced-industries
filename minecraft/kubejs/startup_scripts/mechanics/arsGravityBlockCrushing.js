@@ -4,16 +4,16 @@
  * @typedef {Object} ArsGravityBlockCrushingRecipe
  * @property {Internal.Block_} belowBlock
  * @property {number=} minimumSpeed
- * @property {Internal.ItemStack_} ingredients
- * @property {Internal.ItemStack_} results
+ * @property {string} ingredients
+ * @property {string} results
  *
  * @type {{string:ArsGravityBlockCrushingRecipe[]}}
  */
 global.ArsGravityBlockCrushingRecipes = {}
 
 /**
- * @param {Internal.Block_} fallingBlock
- * @param {Internal.Block_=} belowBlock
+ * @param {string} fallingBlock
+ * @param {string=} belowBlock
  * @param {number=} minimumSpeed
  * @param {Internal.ItemStack_|Internal.ItemStack_[]} fromItem
  * @param {Internal.ItemStack_|Internal.ItemStack_[]} toItem
@@ -30,14 +30,8 @@ global.RegisterArsGravityBlockCrushingRecipe = (
     global.ArsGravityBlockCrushingRecipes[fallingBlock] = []
     recipes = global.ArsGravityBlockCrushingRecipes[fallingBlock]
   }
-  const ingredients_ = (
-    Array.isArray(ingredients) ? ingredients : [ingredients]
-  ).map((v) => {
-    return typeof v === 'string' ? Ingredient.of(v) : v
-  })
-  const results_ = (Array.isArray(results) ? results : [results]).map((v) => {
-    return typeof v === 'string' ? Item.of(v, 1) : v
-  })
+  const ingredients_ = Array.isArray(ingredients) ? ingredients : [ingredients]
+  const results_ = Array.isArray(results) ? results : [results]
   recipes.push({
     belowBlock: belowBlock,
     minimumSpeed: minimumSpeed,
@@ -78,7 +72,12 @@ global.ArsGravityBlockCrushingCallback = (e) => {
   // Attempt to process each matching recipe.
   const processor = RecipeIngredientProcessor.fromItemEntities(itemEntities)
   for (const { ingredients, results } of matchingRecipes) {
-    while (processor.processIngredientList(ingredients, results)) {}
+    while (
+      processor.processIngredientList(
+        ingredients.map((v) => Ingredient.of(v)),
+        results.map((v) => Item.of(v))
+      )
+    ) {}
   }
 
   // Delete the item entities and pop new ones.
@@ -87,7 +86,8 @@ global.ArsGravityBlockCrushingCallback = (e) => {
     belowBlock.popItemFromFace(itemStack, 'up')
   })
 
-  // TODO play sound on successful craft.
+  entity.playSound('minecraft:block.anvil.land', 5, 1)
+
   // TODO custom JEI category
   // TODO custom ponder
 }
@@ -99,8 +99,13 @@ ForgeEvents.onEvent(
   }
 )
 
-StartupEvents.postInit((e) => {
-  // Recipe registration needs to happen here. If the item registry is not
-  // available, Item.of and Ingredient.of will return an empty item.
-  // TODO: maybe we could defer evaluation of that to the callback itself?
-})
+// Register recipes
+;(() => {
+  global.RegisterArsGravityBlockCrushingRecipe(
+    'createutilities:void_steel_block',
+    'createutilities:void_steel_block',
+    null,
+    'minecraft:obsidian',
+    '9x create:powdered_obsidian'
+  )
+})()
