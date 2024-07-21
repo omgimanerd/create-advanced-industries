@@ -89,7 +89,7 @@ global.ArsGravityBlockCrushingCallback = (e) => {
     belowBlock.popItemFromFace(itemStack, 'up')
   })
 
-  entity.playSound('minecraft:block.anvil.land', 5, 1)
+  entity.playSound('minecraft:block.anvil.land', 5, 0)
   // TODO custom ponder
 }
 
