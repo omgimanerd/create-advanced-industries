@@ -1,0 +1,13 @@
+filename = 'Create Sweets And Treats 1.1.1.jar'
+name = 'Create: Sweets & Treats'
+side = 'both'
+
+[download]
+hash = '60ac3dc98958d11043f15a877b03094835149f25'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 4974708
+project-id = 927187

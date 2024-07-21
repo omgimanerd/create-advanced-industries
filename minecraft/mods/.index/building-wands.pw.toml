@@ -1,0 +1,13 @@
+filename = 'BuildingWands-mc1.20.1-2.6.9-release.jar'
+name = 'Building Wands'
+side = 'both'
+
+[download]
+hash = '3fd4db6a9622a02a16c1ad191c2d79f8f8aacd7b'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 5119748
+project-id = 363392

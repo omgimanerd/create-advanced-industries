@@ -1,0 +1,13 @@
+filename = 'bellsandwhistles-0.4.3-1.20.x.jar'
+name = 'Create: Bells & Whistles'
+side = 'both'
+
+[download]
+hash = '7cb1e1dc365c43f08ee7616f1505759e547b11be'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 4860141
+project-id = 905040

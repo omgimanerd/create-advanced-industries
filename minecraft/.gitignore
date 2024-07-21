@@ -21,7 +21,8 @@ kubejs/config/
 
 local/
 logs/
-mods/
+mods/*.jar
+mods/*.jar.disabled
 patchouli_books/
 resourcepacks/
 saves/

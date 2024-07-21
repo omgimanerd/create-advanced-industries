@@ -1,0 +1,13 @@
+filename = 'capable_composters-1.20.1-1.2.0.3.jar'
+name = 'Capable Composters'
+side = 'both'
+
+[download]
+hash = 'bb4eb7e0f65d8d8754e5d5b1139d82514647d4f4'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 4970677
+project-id = 826696

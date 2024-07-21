@@ -1,0 +1,13 @@
+filename = 'morejs-forge-1.20.1-0.10.0.jar'
+name = 'MoreJS'
+side = 'both'
+
+[download]
+hash = 'fd67b55b6ccc00c38ab31403152f8be230c041da'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 5308267
+project-id = 666198

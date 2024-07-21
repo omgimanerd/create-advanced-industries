@@ -1,0 +1,13 @@
+filename = 'thermal_innovation-1.20.1-11.0.0.21.jar'
+name = 'Thermal Innovation'
+side = 'both'
+
+[download]
+hash = '0f49396765456ae5100760b067776a505f7d7085'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 4970704
+project-id = 291737

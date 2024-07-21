@@ -1,0 +1,13 @@
+filename = 'thermal_foundation-1.20.1-11.0.2.64.jar'
+name = 'Thermal Foundation'
+side = 'both'
+
+[download]
+hash = '8dc55a88ac3a5f03bd95faadafb2ef379d36c4f7'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 4979840
+project-id = 222880
