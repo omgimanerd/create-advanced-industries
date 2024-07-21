@@ -16,6 +16,13 @@ ServerEvents.tags('block', (e) => {
       e.add('create:wrench_pickup', id)
     }
   })
+
+  // Make Tom's Simple Storage Mod items wrenchable and rotatable.
+  Ingredient.of(/^toms_storage:.*$/).itemIds.forEach((id) => {
+    if (Item.of(id).block) {
+      e.add('create:wrench_pickup', id)
+    }
+  })
 })
 
 // Allow vanilla and modded blocks to be rotatable with the Create wrench.
