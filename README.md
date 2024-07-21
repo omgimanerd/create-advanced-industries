@@ -43,15 +43,6 @@ cp minecraft/configs/quark-common.toml.committed minecraft/configs/quark-common.
 ```
 
 
-## Packaging for release from Prism
-Notes mostly for me.
-
-- Tag release in git
-- Export as curseforge zip
-  - Tick `defaultconfigs/`, `kubejs/`, `icon.png`
-  - Untick `options.txt`, `config/jei/world`
-
-
 ## Author(s)
   - omgimanerd
 
