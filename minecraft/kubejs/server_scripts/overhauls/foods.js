@@ -179,12 +179,15 @@ ServerEvents.recipes((e) => {
     'createsweetsandtreets:unfinished_powdered_brownie',
     'kubejs:uncooked_brownie'
   )
-
   e.shapeless('createsweetsandtreets:sugar_cookie', [
     'minecraft:wheat',
     'minecraft:sugar',
     'minecraft:wheat',
   ])
+
+  // Remove broken recipes for raw dough
+  e.remove({ id: 'create:compacting/raw_donut' })
+  e.remove({ id: 'create:compacting/taco1' })
 
   // Pneumaticcraft foods
   e.remove({ id: 'pneumaticcraft:thermo_plant/chips' })
