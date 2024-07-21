@@ -147,7 +147,7 @@ ServerEvents.recipes((e) => {
       [
         Fluid.of('kubejs:molten_iron', 135),
         '2x thermal:slag',
-        'minecraft:gravel',
+        '2x minecraft:gravel',
         Item.of('thermal:slag', 2).withChance(0.25),
         Item.of('minecraft:gravel', 2).withChance(0.25),
       ],
