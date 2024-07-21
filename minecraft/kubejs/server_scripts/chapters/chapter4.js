@@ -122,7 +122,7 @@ ServerEvents.recipes((e) => {
 
   // Coke oven blocks
   redefineRecipe(
-    '8x tfmg:coke_oven',
+    '9x tfmg:coke_oven',
     [
       'BBB', //
       'BFB', //

@@ -620,7 +620,7 @@
 			description: ["See the Create ponder for how to set up a Coke Oven."]
 			id: "7607FF74026E97E8"
 			rewards: [{
-				count: 8
+				count: 9
 				id: "4C9D46CDACD5720A"
 				item: "tfmg:coke_oven"
 				type: "item"
