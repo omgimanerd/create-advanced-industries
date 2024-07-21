@@ -37,7 +37,7 @@ ServerEvents.recipes((e) => {
   })
 
   // Validate the log to stripped log mapping, and that all unstripped logs are
-  // present in #minecraft:logs. This will work as long as #minecraft.logs has
+  // present in #minecraft:logs. This will work as long as #minecraft:logs has
   // not been modified by KJS, again for tag/recipe load determinism reasons.
   Ingredient.of('#minecraft:logs').itemIds.forEach((id) => {
     if (id.endsWith('wood')) return

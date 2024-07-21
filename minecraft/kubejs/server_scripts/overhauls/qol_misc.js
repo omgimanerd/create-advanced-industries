@@ -51,7 +51,7 @@ ServerEvents.recipes((e) => {
   create.energizing('minecraft:honey_bottle', 'thermal:syrup_bottle', 24000)
 
   // Another source of green dye
-  e.blasting('minecraft:green_dye', 'minecraft:kelp')
+  create.crushing('minecraft:green_dye', 'minecraft:kelp')
 
   // Fish hooks and fishing rods.
   e.shaped(
