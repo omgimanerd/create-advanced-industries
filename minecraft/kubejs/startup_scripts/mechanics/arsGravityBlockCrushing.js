@@ -102,11 +102,22 @@ ForgeEvents.onEvent(
 
 // Register recipes
 ;(() => {
-  global.RegisterArsGravityBlockCrushingRecipe(
-    'createutilities:void_steel_block',
-    'createutilities:void_steel_block',
-    null,
-    'minecraft:obsidian',
-    '9x create:powdered_obsidian'
+  const registerVoidSteelCrushingRecipe = (output, input, minimumSpeed) => {
+    global.RegisterArsGravityBlockCrushingRecipe(
+      'createutilities:void_steel_block',
+      'createutilities:void_steel_block',
+      minimumSpeed,
+      input,
+      output
+    )
+  }
+
+  registerVoidSteelCrushingRecipe(
+    '9x create:powdered_obsidian',
+    'minecraft:obsidian'
+  )
+  registerVoidSteelCrushingRecipe(
+    'createutilities:void_steel_sheet',
+    'createutilities:void_steel_ingot'
   )
 })()
