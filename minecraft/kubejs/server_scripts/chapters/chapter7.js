@@ -7,6 +7,16 @@ ServerEvents.recipes((e) => {
   // sculk farming to make enderium
   // enderium recipe from liquid hyper exp
 
+  // Void steel sheets can only be made with void steel crushing
+  e.remove({ id: 'createutilities:pressing/void_steel_sheet' })
+
+  // Void casings require sheets instead
+  e.replaceInput(
+    { output: 'createutilities:void_casing' },
+    'createutilities:void_steel_ingot',
+    'createutilities:void_steel_sheet'
+  )
+
   // Thermal molten fluid components
   create
     .SequencedAssembly('minecraft:glowstone_dust')
