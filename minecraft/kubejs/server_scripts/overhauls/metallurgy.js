@@ -156,6 +156,5 @@ ServerEvents.recipes((e) => {
     .heated()
 
   // TODO rich slag is the only way to get aluminum?
-  // TODO molten slag can be centrifuged to crap?
   // TODO Rich slag + liquid = better?
 })

@@ -195,8 +195,8 @@ const getGemItem = (id, rarity) => {
     const registerAutomatedInfusionEnchanting = (recipe) => {
       const levels = recipe.requirements.eterna * 2
       // The eterna requirement is the minimum level you must be to perform the
-      // enchantment, and the enchantment costs 3 levels of XP, not the entire XP
-      // bar.
+      // enchantment, and the enchantment costs 3 levels of XP, not the entire
+      // XP bar.
       const xpCost = global.levelToXp(levels) - global.levelToXp(levels - 3)
       // Hyper XP is a 10:1 conversion to allow for higher experience levels.
       let hyperXp = global.roundToNearest(xpCost / 10, 5)
