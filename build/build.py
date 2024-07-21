@@ -28,6 +28,8 @@ EXCLUDE = [
 
 def generate_manifest(template_path: pathlib.Path, mods_path: pathlib.Path,
                       version: str):
+    '''Generates the manifest.json from the template manifest and mods
+    directory'''
     with open(template_path) as f:
         manifest = json.load(f)
     manifest['version'] = version
@@ -47,7 +49,7 @@ def generate_manifest(template_path: pathlib.Path, mods_path: pathlib.Path,
 if __name__ == '__main__':
     FILE_DIR = pathlib.Path(__file__).parent.absolute()
 
-    # Get the version from args.
+    # Get the version from args or git tag.
     if len(sys.argv) == 2:
         version = sys.argv[1]
     p = subprocess.run(
@@ -70,7 +72,7 @@ if __name__ == '__main__':
 
     MC_DIR = FILE_DIR.parent / 'minecraft'
 
-    # # Argument to shutil.copytree's ignore kwargs
+    # Argument to shutil.copytree's ignore kwargs
     def ignore_callback(path, names):
         # Resolve all paths relative to the minecraft directory
         path = pathlib.Path(path).relative_to(MC_DIR)
@@ -92,11 +94,11 @@ if __name__ == '__main__':
     manifest = generate_manifest(
         FILE_DIR / 'manifest_template.json', MC_DIR / 'mods/.index', version)
     with open(TMP_DIR / 'manifest.json', 'w+') as f:
-        json.dump(manifest, f, sort_keys=True)
+        json.dump(manifest, f, indent=2, sort_keys=True)
 
     # Build zip archive
     zipfile = f'create-advanced-industries-{version}'
     shutil.make_archive(
         OUTPUT_DIR / zipfile, 'zip', TMP_DIR.absolute(), '.')
 
-    print(f'Successfully packaged {zipfile}')
+    print(f'Successfully packaged {zipfile}.zip')
