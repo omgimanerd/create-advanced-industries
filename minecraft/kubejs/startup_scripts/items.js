@@ -38,6 +38,12 @@ StartupEvents.registry('item', (e) => {
     .fireResistant(true)
     .maxDamage(0)
 
+  // Intermediate item for wire spools
+  e.create('kubejs:intermediate_spool', 'create:sequenced_assembly')
+    .texture(getTextureLocation('createaddition:spool'))
+    .displayName('Unfinished Spool')
+    .maxStackSize(16)
+
   // Diamond sawblades for silicon cutting
   e.create('kubejs:diamond_saw_blade')
     .textureJson({
@@ -68,11 +74,13 @@ StartupEvents.registry('item', (e) => {
   // Intermediate item for transistors
   e.create('kubejs:intermediate_transistor', 'create:sequenced_assembly')
     .texture(getTextureLocation('pneumaticcraft:transistor'))
+    .displayName('Unfinished Transistor')
     .maxStackSize(16)
 
   // Intermediate item for capacitors
   e.create('kubejs:intermediate_capacitor', 'create:sequenced_assembly')
     .texture(getTextureLocation('pneumaticcraft:capacitor'))
+    .displayName('Unfinished Capacitor')
     .maxStackSize(16)
 
   // Intermediate item for pneumatic cylinders

@@ -744,7 +744,6 @@ ServerEvents.recipes((e) => {
       .SequencedAssembly('tfmg:heavy_plate')
       .deploy('thermal:electrum_nugget')
       .deploy('create_new_age:copper_wire')
-      .press()
       .outputs('create_new_age:electrical_connector')
     redefineRecipe(
       'create_new_age:basic_motor',

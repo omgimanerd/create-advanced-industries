@@ -344,7 +344,7 @@ ServerEvents.recipes((e) => {
     S: 'create:shaft',
   })
   create
-    .SequencedAssembly('tfmg:heavy_plate')
+    .SequencedAssembly('tfmg:heavy_plate', 'kubejs:intermediate_spool')
     .deploy('create:shaft')
     .deploy('tfmg:heavy_plate')
     .press()
