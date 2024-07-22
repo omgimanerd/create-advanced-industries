@@ -46,6 +46,12 @@ ServerEvents.tags('block', (e) => {
     'minecraft:dropper': true,
     'minecraft:hopper': true,
     'minecraft:observer': true,
+
+    'toms_storage:ts.inventory_cable_connector': true,
+    'toms_storage:ts.inventory_cable_connector_filtered': true,
+    'toms_storage:ts.inventory_cable_connector_framed': true,
+    'toms_storage:ts.level_emitter': true,
+    'toms_storage:ts.inventory_hopper_basic': true,
   }
 
   // This is only needed for the hopper, which will throw an error if we
