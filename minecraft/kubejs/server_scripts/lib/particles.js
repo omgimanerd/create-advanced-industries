@@ -113,17 +113,19 @@ const spawnEffectParticles = (level, pos, count, spread, color) => {
  * @param {BlockPos_} pos
  */
 const debugBlockPos = (level, pos) => {
-  repeat(level.server, 60, 10, () => {
-    spawnParticles(
-      level,
-      'minecraft:composter',
-      [pos.x + 0.5, pos.y + 0.5, pos.z + 0.5],
-      0.05,
-      5,
-      0.05,
-      true
-    )
-  })
+  ;((x, y, z) => {
+    repeat(level.server, 60, 10, () => {
+      spawnParticles(
+        level,
+        'minecraft:composter',
+        [x + 0.5, y + 0.5, z + 0.5],
+        0.05,
+        5,
+        0.05,
+        true
+      )
+    })
+  })(pos.x, pos.y, pos.z)
 }
 
 /**
