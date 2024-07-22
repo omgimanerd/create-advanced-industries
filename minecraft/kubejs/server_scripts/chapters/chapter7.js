@@ -35,12 +35,18 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'createteleporters:quantum_fluid_recipe' })
   e.remove({ id: 'createteleporters:tele_fluid_chorus' })
 
-  // TODO quantum casing
+  // Quantum casing
+  e.replaceInput(
+    { output: 'createteleporters:quantum_casing' },
+    'create:brass_casing',
+    'thermal:invar_block'
+  )
 
   // Redstone pearls
   e.remove({ id: 'createteleporters:redstone_pearl_recipe' })
   create
-    .SequencedAssembly('minecraft:ender_pearl')
+    .SequencedAssembly('kubejs:resonant_ender_pearl')
+    .fill(potionFluid('quark:resilience', 25))
     .fill(Fluid.of('kubejs:molten_redstone', 180))
     .energize(40000)
     .outputs('createteleporters:redstone_pearl')
