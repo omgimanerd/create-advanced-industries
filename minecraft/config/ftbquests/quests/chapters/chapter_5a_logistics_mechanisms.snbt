@@ -237,7 +237,7 @@
 			id: "2DD46A2CE3AE0160"
 			tasks: [{
 				id: "1ED5D57DCEE4B5E3"
-				item: "pneumaticcraft:oil_bucket"
+				item: "tfmg:crude_oil_fluid_bucket"
 				type: "item"
 			}]
 			x: 2.0d
