@@ -28,7 +28,7 @@ ServerEvents.recipes((e) => {
 
   // Make reinforced deepslate accessible.
   e.shaped(
-    '8x minecraft:reinforced_deepslate',
+    '4x minecraft:reinforced_deepslate',
     [
       'IDI', //
       'DDD', //
