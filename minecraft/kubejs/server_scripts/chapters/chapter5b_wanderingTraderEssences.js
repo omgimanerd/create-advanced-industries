@@ -6,14 +6,14 @@
  * trader when lightning strikes and emerald block.
  */
 EntityEvents.spawned('ars_nouveau:an_lightning', (e) => {
-  let { entity, level } = e
+  const { entity, level } = e
   for (const vec of global.getOffsetList(AABB.of(-1, -1, -1, 1, 1, 1))) {
     let block = entity.block.offset(vec.x, vec.y, vec.z)
-    if (block == 'minecraft:emerald_block') {
+    if (block.id === 'minecraft:emerald_block') {
       let pos = block.getPos()
       let trader = level.createEntity('minecraft:wandering_trader')
       // Center the wandering trader on the block
-      trader.setPos(pos.offset(0.5, 0, 0.5))
+      trader.setPos(pos.x + 0.5, pos.y, pos.z + 0.5)
       trader.spawn()
       level.destroyBlock(pos, false)
       // If this lightning entity spawned a trader, it should not do damage to
@@ -29,8 +29,10 @@ EntityEvents.spawned('ars_nouveau:an_lightning', (e) => {
  *
  * We cannot use EntityEvents.hurt() to cancel the damage event because the
  * source entity is not set to the actual lightning bolt.
+ *
+ * @param {Internal.EntityStruckByLightningEvent_} e
  */
-global.EntityStruckByLightningEventCallback = (e) => {
+global.WanderingTraderLightningCallback = (e) => {
   const { entity, lightning } = e
   // If lightning struck an emerald block and spawned a wandering trader, it
   // should not damage the newly spawned trader.

@@ -3,9 +3,9 @@
 ForgeEvents.onEvent(
   'net.minecraftforge.event.entity.EntityStruckByLightningEvent',
   (e) => {
-    // Callback defined in server_scripts
-    if (global.EntityStruckByLightningEventCallback) {
-      global.EntityStruckByLightningEventCallback(e)
+    // Callbacks defined in server_scripts
+    if (global.WanderingTraderLightningCallback) {
+      global.WanderingTraderLightningCallback(e)
     }
   }
 )
