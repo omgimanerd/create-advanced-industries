@@ -975,6 +975,8 @@
 			description: [
 				"Carbon brushes and generator coils are required in order to make a generator. You should probably take a peek at the right side of this chapter to find out how to make graphite for the carbon brushes."
 				""
+				"Magnetite blocks can be naturally found, so you'll either need to mine some, or &lstrike an iron block with lightning to make some&r."
+				""
 				"Ponder the carbon brushes to learn how to build a generator."
 				""
 				""
@@ -982,6 +984,7 @@
 			]
 			icon: "create_new_age:carbon_brushes"
 			id: "3DAFEBA27621ED6F"
+			min_width: 300
 			rewards: [{
 				count: 8
 				id: "0D4BA84CB9E1800D"
