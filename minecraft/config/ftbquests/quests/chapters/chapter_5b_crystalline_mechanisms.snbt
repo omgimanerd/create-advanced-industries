@@ -1241,6 +1241,8 @@
 				"You're going to make an example out of them to show them what happens to trespassers."
 				""
 				"&lStrike an emerald block with lightning to spawn a wandering trader.&r"
+				""
+				"Note that if you place down the No Soliciting sign, it will suppress wandering trader spawns in a large area around it!"
 			]
 			icon: {
 				Count: 1b
@@ -1250,6 +1252,7 @@
 				}
 			}
 			id: "2EEBA577A4E0E570"
+			min_width: 300
 			rewards: [{
 				id: "1CE8B1AE3F63C92C"
 				item: "gag:no_solicitors"
