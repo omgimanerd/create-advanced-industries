@@ -21,6 +21,7 @@ kubejs/config/
 
 local/
 logs/
+modernfix/
 mods/*.jar
 mods/*.jar.disabled
 patchouli_books/
