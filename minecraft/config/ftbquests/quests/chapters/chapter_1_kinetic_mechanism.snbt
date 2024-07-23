@@ -398,6 +398,7 @@
 		{
 			dependencies: ["79839708653EABAC"]
 			description: ["Cut the planks into slabs."]
+			icon: "minecraft:oak_slab"
 			id: "4850DF538DD8B5D9"
 			tasks: [{
 				id: "451FE5A772714F7C"
