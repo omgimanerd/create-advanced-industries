@@ -1,10 +1,6 @@
 // priority: 200
 // Recipe overhauls for Chapter 5A progression.
 
-const $DamageSources = Java.loadClass(
-  'net.minecraft.world.damagesource.DamageSources'
-)
-
 ServerEvents.tags('fluid', (e) => {
   e.add('forge:crude_oil', 'tfmg:crude_oil_fluid')
   e.add('forge:lpg', 'pneumaticcraft:lpg')
@@ -13,9 +9,29 @@ ServerEvents.tags('fluid', (e) => {
 ItemEvents.rightClicked('kubejs:diamond_saw_blade', (e) => {
   const { player, level } = e
   if (!player.isCreative()) {
-    player.attack(new $DamageSources(level.registryAccess()).cactus(), 1)
+    player.attack(level.damageSources().cactus(), 1)
     player.damageHeldItem()
     player.tell("Ouch, that's sharp!")
+  }
+})
+
+/**
+ * Alternative magnetite crafting via lightning strike.
+ */
+EntityEvents.spawned('ars_nouveau:an_lightning', (e) => {
+  const { entity, level } = e
+  if (level.isClientSide()) return
+  for (let offset of BlockPos.betweenClosed(-1, -1, -1, 1, 1, 1)) {
+    let block = entity.block.offset(offset.x, offset.y, offset.z)
+    if (block.id === 'minecraft:iron_block') {
+      block.set('create_new_age:magnetite_block')
+      // Wrap in a closure to bind the block position.
+      ;((pos) => {
+        repeat(level.server, 20, 5, () => {
+          spawnParticles(level, 'cofh_core:spark', pos, 1, 20, 0.2, true)
+        })
+      })(block.pos)
+    }
   }
 })
 
