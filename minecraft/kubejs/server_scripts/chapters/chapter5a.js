@@ -46,14 +46,14 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'tfmg:filling/hardened_wood_creosote' })
   create
     .pressurizing('#minecraft:planks')
-    .secondaryFluidInput(Fluid.of('tfmg:creosote', 125))
+    .secondaryFluidInput(Fluid.of('tfmg:creosote', 1000))
     .heated()
     .outputs('tfmg:hardened_planks')
   pneumaticcraft
     .thermo_plant()
     .item_input('#minecraft:planks')
-    .fluid_input(Fluid.of('tfmg:creosote', 100))
-    .pressure(9)
+    .fluid_input(Fluid.of('tfmg:creosote', 500))
+    .pressure(2)
     .temperature({ min_temp: 273 + 250 })
     .item_output('tfmg:hardened_planks')
 

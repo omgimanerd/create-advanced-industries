@@ -140,6 +140,7 @@ ServerEvents.recipes((e) => {
     processingTime: 1000,
     results: [
       { item: 'tfmg:coal_coke', count: 1 },
+      // Yields 1000 total creosote as a result of the processing time.
       { fluid: 'tfmg:creosote', amount: 1 },
     ],
   }).id('kubejs:coal_coking')
