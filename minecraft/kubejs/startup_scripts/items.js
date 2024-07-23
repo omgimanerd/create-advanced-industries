@@ -1,6 +1,10 @@
 // priority: 1000
 
 StartupEvents.registry('item', (e) => {
+  /**
+   * Registers an item whose id, display name, and texture location all match.
+   * @type {RegisterItemCallback}
+   */
   const registerItem = registerItem_(e)
   const registerMechanism = (name) => {
     registerItem(name)
@@ -146,6 +150,31 @@ StartupEvents.registry('item', (e) => {
     .displayName('Treasure Net')
     .glow(true)
     .unstackable()
+
+  // Intermediate Sigil Items
+  e.create('kubejs:unfinished_sigil_of_socketing', 'create:sequenced_assembly')
+    .texture(getTextureLocation('kubejs:intermediate_sigil'))
+    .displayName('Unfinished Sigil of Socketing')
+    .maxStackSize(16)
+  e.create('kubejs:unfinished_sigil_of_withdrawal', 'create:sequenced_assembly')
+    .texture(getTextureLocation('kubejs:intermediate_sigil'))
+    .displayName('Unfinished Sigil of Withdrawal')
+    .maxStackSize(16)
+  e.create('kubejs:unfinished_sigil_of_rebirth', 'create:sequenced_assembly')
+    .texture(getTextureLocation('kubejs:intermediate_sigil'))
+    .displayName('Unfinished Sigil of Rebirth')
+    .maxStackSize(16)
+  e.create(
+    'kubejs:unfinished_sigil_of_enhancement',
+    'create:sequenced_assembly'
+  )
+    .texture(getTextureLocation('kubejs:intermediate_sigil'))
+    .displayName('Unfinished Sigil of Enhancement')
+    .maxStackSize(16)
+  e.create('kubejs:unfinished_sigil_of_unnaming', 'create:sequenced_assembly')
+    .texture(getTextureLocation('kubejs:intermediate_sigil'))
+    .displayName('Unfinished Sigil of Unnaming')
+    .maxStackSize(16)
 
   // Totem of Undying Parts
   registerItem('kubejs:totem_body_casing')

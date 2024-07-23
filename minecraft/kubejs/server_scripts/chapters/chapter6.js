@@ -202,7 +202,7 @@ ServerEvents.recipes((e) => {
   // Apotheosis Gem Fused Slates
   e.remove({ id: 'apotheosis:gem_fused_slate' })
   e.shaped(
-    '8x apotheosis:gem_fused_slate',
+    '4x apotheosis:gem_fused_slate',
     [
       'DDD', //
       'DGD', //
@@ -215,7 +215,7 @@ ServerEvents.recipes((e) => {
     .cut()
     .deploy('apotheosis:gem_dust')
     .press()
-    .outputs('apotheosis:gem_fused_slate')
+    .outputs('2x apotheosis:gem_fused_slate')
 
   // Redefine each of the sigil recipes to only output 1 sigil.
   e.forEachRecipe({ id: /^apotheosis:sigil_of_.*$/ }, (r) => {
@@ -226,34 +226,49 @@ ServerEvents.recipes((e) => {
 
   // Sequenced Assemblies for each sigil.
   create
-    .SequencedAssembly('apotheosis:gem_fused_slate')
-    .deploy('apotheosis:gem_dust')
+    .SequencedAssembly(
+      'apotheosis:gem_fused_slate',
+      'kubejs:unfinished_sigil_of_socketing'
+    )
     .deploy('minecraft:amethyst_shard')
-    .fill(Fluid.of('create_central_kitchen:dragon_breath', 125))
+    .deploy('apotheosis:gem_dust')
+    .fill('create_central_kitchen:dragon_breath', 125)
     .press()
     .outputs('apotheosis:sigil_of_socketing')
   create
-    .SequencedAssembly('apotheosis:gem_fused_slate')
-    .deploy('apotheosis:gem_dust')
+    .SequencedAssembly(
+      'apotheosis:gem_fused_slate',
+      'kubejs:unfinished_sigil_of_withdrawal'
+    )
     .deploy('minecraft:ender_pearl')
+    .deploy('apotheosis:gem_dust')
     .deploy('minecraft:blaze_rod')
-    .fill(Fluid.lava(500))
+    .fill('minecraft:lava', 500)
     .press()
     .outputs('apotheosis:sigil_of_withdrawal')
   create
-    .SequencedAssembly('apotheosis:gem_fused_slate')
+    .SequencedAssembly(
+      'apotheosis:gem_fused_slate',
+      'kubejs:unfinished_sigil_of_rebirth'
+    )
     .deploy('apotheosis:gem_dust')
     .deploy('apotheosis:gem_dust')
     .press()
     .outputs('apotheosis:sigil_of_rebirth')
   create
-    .SequencedAssembly('apotheosis:gem_fused_slate')
-    .deploy('apotheosis:gem_dust')
+    .SequencedAssembly(
+      'apotheosis:gem_fused_slate',
+      'kubejs:unfinished_sigil_of_enhancement'
+    )
     .deploy('apotheosis:mythic_material')
+    .deploy('apotheosis:gem_dust')
     .press()
     .outputs('apotheosis:sigil_of_enhancement')
   create
-    .SequencedAssembly('apotheosis:gem_fused_slate')
+    .SequencedAssembly(
+      'apotheosis:gem_fused_slate',
+      'kubejs:unfinished_sigil_of_unnaming'
+    )
     .deploy('minecraft:flint')
     .press()
     .outputs('apotheosis:sigil_of_unnaming')
