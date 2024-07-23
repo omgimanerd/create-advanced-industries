@@ -139,10 +139,14 @@ ServerEvents.recipes((e) => {
     ingredients: [{ item: 'minecraft:coal', count: 1 }],
     processingTime: 1000,
     results: [
-      { item: 'tfmg:coal_coke', count: 4 },
+      { item: 'tfmg:coal_coke', count: 1 },
       { fluid: 'tfmg:creosote', amount: 1 },
     ],
   }).id('kubejs:coal_coking')
+  e.recipes.thermal.pyrolyzer(
+    ['tfmg:coal_coke', Fluid.of('tfmg:creosote', 1000)],
+    'minecraft:coal'
+  )
 
   // Steel overhaul
   e.remove({ id: 'tfmg:casting/steel' })
