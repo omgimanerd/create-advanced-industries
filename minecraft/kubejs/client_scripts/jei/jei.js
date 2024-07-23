@@ -81,6 +81,7 @@ JEIEvents.addFluids((e) => {
       Potion: 'minecraft:awkward',
     })
   )
+  e.add('create_central_kitchen:dragon_breath')
 })
 
 JEIEvents.hideFluids((e) => {
