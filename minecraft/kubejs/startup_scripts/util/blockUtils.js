@@ -1,24 +1,6 @@
 // priority: 1000
 
 /**
- * Generates a list of Vec3i objects containing all the integral coordinates
- * within the given AABB, max inclusive
- * @param {AABB_} aabb
- * @returns {Vec3i[]}
- */
-global.getOffsetList = (aabb) => {
-  const offsetList = []
-  for (let x = aabb.minX; x <= aabb.maxX; x++) {
-    for (let y = aabb.minY; y <= aabb.maxY; y++) {
-      for (let z = aabb.minZ; z <= aabb.maxZ; z++) {
-        offsetList.push(new Vec3i(x, y, z))
-      }
-    }
-  }
-  return offsetList
-}
-
-/**
  * Generates a list of Vec3i objects containing all the integral block
  * coordinates with the given AABB, max exclusive.
  * @param {AABB_} aabb

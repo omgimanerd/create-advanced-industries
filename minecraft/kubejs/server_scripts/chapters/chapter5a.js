@@ -20,7 +20,6 @@ ItemEvents.rightClicked('kubejs:diamond_saw_blade', (e) => {
  */
 EntityEvents.spawned('ars_nouveau:an_lightning', (e) => {
   const { entity, level } = e
-  if (level.isClientSide()) return
   for (let offset of BlockPos.betweenClosed(-1, -1, -1, 1, 1, 1)) {
     let block = entity.block.offset(offset.x, offset.y, offset.z)
     if (block.id === 'minecraft:iron_block') {

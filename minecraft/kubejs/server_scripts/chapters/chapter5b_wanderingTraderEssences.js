@@ -7,8 +7,8 @@
  */
 EntityEvents.spawned('ars_nouveau:an_lightning', (e) => {
   const { entity, level } = e
-  for (const vec of global.getOffsetList(AABB.of(-1, -1, -1, 1, 1, 1))) {
-    let block = entity.block.offset(vec.x, vec.y, vec.z)
+  for (const offset of BlockPos.betweenClosed(-1, -1, -1, 1, 1, 1)) {
+    let block = entity.block.offset(offset.x, offset.y, offset.z)
     if (block.id === 'minecraft:emerald_block') {
       let pos = block.getPos()
       let trader = level.createEntity('minecraft:wandering_trader')

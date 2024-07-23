@@ -287,8 +287,8 @@ global.NoteBlockEventHandler = (e) => {
 
   // Search the surrounding pedestals for matching items in the resonance
   // crafts.
-  for (let vec of global.getOffsetList(AABB.of(-2, 0, -2, 2, 1, 2))) {
-    let p = pos.offset(vec)
+  for (let offset of BlockPos.betweenClosed(-2, 0, -2, 2, 1, 2)) {
+    let p = pos.offset(offset)
     let block = level.getBlock(p)
     let blockId = block.getId()
     if (
