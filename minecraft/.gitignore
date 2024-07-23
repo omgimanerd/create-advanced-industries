@@ -24,7 +24,6 @@ logs/
 mods/*.jar
 mods/*.jar.disabled
 patchouli_books/
-resourcepacks/
 saves/
 schematics/
 screenshots/
