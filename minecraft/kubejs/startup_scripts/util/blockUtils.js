@@ -25,17 +25,3 @@ global.getBlockList = (aabb) => {
 global.getVolume = (aabb) => {
   return aabb.getXsize() * aabb.getYsize() * aabb.getZsize()
 }
-
-/**
- * @param {Internal.BlockContainerJS_} block
- */
-global.getSurroundingBlocks = (block) => {
-  return [
-    block.up,
-    block.down,
-    block.north,
-    block.south,
-    block.east,
-    block.west,
-  ]
-}

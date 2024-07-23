@@ -28,7 +28,8 @@ global.BuddingAmethystSpoutHandlerCallback = (block, fluid, simulate) => {
     'minecraft:large_amethyst_bud': 'minecraft:amethyst_cluster',
   }
   let growCandidates = []
-  for (const surroundingBlock of global.getSurroundingBlocks(block)) {
+  for (const dir of Direction.ALL.values()) {
+    let surroundingBlock = block.offset(dir)
     if (surroundingBlock.id in growthStates) {
       growCandidates.push(surroundingBlock)
     }
