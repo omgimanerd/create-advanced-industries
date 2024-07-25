@@ -62,7 +62,7 @@ Ponder.registry((e) => {
             /*beamRadius=*/ 0.25,
             /*glowRadius=*/ 0.25
           )
-          t1 = (t1 + 1) % 16
+          t1 = (t1 + 1) % 160
           poseStack.popPose()
         })
       }
