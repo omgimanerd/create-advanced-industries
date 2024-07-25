@@ -18,15 +18,14 @@ ServerEvents.recipes((e) => {
   )
 
   // Thermal molten fluid components
+  create.energizing(
+    'kubejs:energized_glowstone',
+    'minecraft:glowstone_dust',
+    8000
+  )
   create
-    .SequencedAssembly('minecraft:glowstone_dust')
-    .custom('', (pre, post) => {
-      e.recipes.create_new_age.energising(post, pre, 8000)
-    })
-    .custom('Next: Melt in a heated basin', (pre, post) => {
-      create.mixing(post, pre).heated()
-    })
-    .outputs(Fluid.of('thermal:glowstone', 250))
+    .mixing(Fluid.of('thermal:glowstone', 250), 'kubejs:energized_glowstone')
+    .heated()
   create
     .compacting(Fluid.of('thermal:ender', 250), 'kubejs:resonant_ender_pearl')
     .superheated()
