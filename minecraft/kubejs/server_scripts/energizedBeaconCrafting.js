@@ -132,54 +132,58 @@
     let delay = 1
 
     const origin = new Vec3i(0, 0, 0)
-    block.entity.getBeamSections().forEach((beam) => {
-      // Skip the first beam originating from the beacon itself.
-      if (beam.offset.equals(origin)) return
-      // The modifying block at this beacon beam's starting point.
-      const modifyingBlock = block.offset(
-        beam.offset.x,
-        beam.offset.y,
-        beam.offset.z
-      )
-      // Integer coordinates represent the north-west corner of a block. The
-      // start and end coordinates of the bounding box itself need to be
-      // computed differently depending on which direction the beam was facing.
-      // Each bounding box encapsulates the block modifying the beam and every
-      // block up to the next modifying block, end exclusive.
-      let start = redirectorBlock.pos
-      let end = modifyingBlock.pos
-      switch (direction) {
-        // POSITIVE axis direction
-        case 'up':
-        case 'east':
-        case 'south':
-          end = end.offset(direction.opposite.normal)
-          break
-        // NEGATIVE axis direction
-        case 'down':
-        case 'west':
-        case 'north':
-          start = start.offset(direction.opposite.normal)
-          break
-        default:
-          throw new Error(`Unexpected direction ${direction}`)
-      }
-      const beamCollisionBox = AABB.ofBlocks(start, end)
-      let blocksInCollisionBox = global.getBlockList(beamCollisionBox)
-      // The block list in the AABB is always sorted from lowest to highest
-      // coordinate, so the beam direction tells us what direction to iterate
-      // either forwards or backwards.
-      if (direction.axisDirection.step < 0) blocksInCollisionBox.reverse()
-      // Go through each block in the beam collision box
-      for (const block of blocksInCollisionBox) {
-        processEntitiesInBlock(block, redirectorBlock.id, delay)
-        delay++
-      }
+    block.entity
+      .getBeamSections()
+      .forEach(
+        (/** @type {Internal.BeaconBlockEntity$BeaconBeamSection} */ beam) => {
+          // Skip the first beam originating from the beacon itself.
+          if (beam.offset.equals(origin)) return
+          // The modifying block at this beacon beam's starting point.
+          const modifyingBlock = block.offset(
+            beam.offset.x,
+            beam.offset.y,
+            beam.offset.z
+          )
+          // Integer coordinates represent the north-west corner of a block. The
+          // start and end coordinates of the bounding box itself need to be
+          // computed differently depending on which direction the beam was facing.
+          // Each bounding box encapsulates the block modifying the beam and every
+          // block up to the next modifying block, end exclusive.
+          let start = redirectorBlock.pos
+          let end = modifyingBlock.pos
+          switch (direction) {
+            // POSITIVE axis direction
+            case 'up':
+            case 'east':
+            case 'south':
+              end = end.offset(direction.opposite.normal)
+              break
+            // NEGATIVE axis direction
+            case 'down':
+            case 'west':
+            case 'north':
+              start = start.offset(direction.opposite.normal)
+              break
+            default:
+              throw new Error(`Unexpected direction ${direction}`)
+          }
+          const beamCollisionBox = AABB.ofBlocks(start, end)
+          let blocksInCollisionBox = global.getBlockList(beamCollisionBox)
+          // The block list in the AABB is always sorted from lowest to highest
+          // coordinate, so the beam direction tells us what direction to iterate
+          // either forwards or backwards.
+          if (direction.axisDirection.step < 0) blocksInCollisionBox.reverse()
+          // Go through each block in the beam collision box
+          for (const block of blocksInCollisionBox) {
+            processEntitiesInBlock(block, redirectorBlock.id, delay)
+            delay++
+          }
 
-      // Set the previous redirector block and beam direction for the next beam.
-      redirectorBlock = modifyingBlock
-      direction = beam.dir
-    })
+          // Set the previous redirector block and beam direction for the next beam.
+          redirectorBlock = modifyingBlock
+          direction = beam.dir
+        }
+      )
 
     // Get the collision box for the final beam into the sky and process it.
     const finalCollisionBox = AABB.of(
