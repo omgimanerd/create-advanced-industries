@@ -36,7 +36,7 @@ StartupEvents.registry('block', (e) => {
       builder.shape(2, 0, 0, 0, 16, 11, 16)
       builder.shape(3, 0, 0, 0, 16, 13, 16)
     })
-    .lightLevel(12)
+    .lightLevel(11)
     .survive((_, /** @type {Internal.Level_} */ level, pos) => {
       const brightness = level.getMaxLocalRawBrightness(pos)
       const below = level.getBlockState(pos.below())
@@ -51,7 +51,7 @@ StartupEvents.registry('block', (e) => {
       return 0
     })
     .crop('apotheosis:warden_tendril')
-    .crop('apotheosis:warden_tendril', 0.25)
+    .crop('minecraft:ender_pearl')
     .crop('minecraft:ender_pearl', 0.5)
     .texture(0, 'kubejs:block/warden_tendril_vine_0')
     .texture(1, 'kubejs:block/warden_tendril_vine_1')
