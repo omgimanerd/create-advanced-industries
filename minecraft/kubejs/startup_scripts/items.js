@@ -198,6 +198,9 @@ StartupEvents.registry('item', (e) => {
 
   // Fish hook
   registerItem('kubejs:fish_hook')
+
+  // Energized glowstone
+  registerItem('kubejs:energized_glowstone')
 })
 
 ItemEvents.modification((e) => {

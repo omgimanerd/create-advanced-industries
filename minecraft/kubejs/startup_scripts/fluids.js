@@ -99,7 +99,7 @@ StartupEvents.registry('fluid', (e) => {
 
   // Infused Dragon's Breath
   registerFluid('kubejs:infused_dragon_breath')
-    .thickTexture(0xe7b7cd)
+    .stillTexture('kubejs:fluid/infused_dragon_breath')
     .noBlock()
     .noBucket()
 })

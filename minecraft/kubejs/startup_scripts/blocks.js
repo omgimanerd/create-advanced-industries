@@ -36,10 +36,11 @@ StartupEvents.registry('block', (e) => {
       builder.shape(2, 0, 0, 0, 16, 11, 16)
       builder.shape(3, 0, 0, 0, 16, 13, 16)
     })
+    .lightLevel(12)
     .survive((_, /** @type {Internal.Level_} */ level, pos) => {
       const brightness = level.getMaxLocalRawBrightness(pos)
       const below = level.getBlockState(pos.below())
-      return below.block.id === 'minecraft:sculk' && brightness < 1
+      return below.block.id === 'minecraft:sculk' && brightness < 5
     })
     .growTick(() => 0) // Does not grow naturally
     .bonemeal((randomTickCallback) => {
