@@ -154,4 +154,12 @@ global.CorundumClusterMapping = [
       energy: 500,
     })
   }
+
+  global.EnergizedBeaconCraftingRecipes.push({
+    ingredient: 'minecraft:glowstone_dust',
+    result: 'kubejs:energized_glowstone',
+    redirectorBlock: 'quark:white_corundum_cluster',
+    beaconColor: [1, 1, 1],
+    energy: 1000,
+  })
 })()
