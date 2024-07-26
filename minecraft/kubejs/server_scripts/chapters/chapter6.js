@@ -283,6 +283,16 @@ ServerEvents.recipes((e) => {
   )
 
   // Custom XP Crystal
+  e.remove({ id: 'thermal:tools/xp_crystal' })
+  e.shaped(
+    'kubejs:xp_crystal',
+    [
+      ' L ', //
+      'ERE', //
+      ' L ', //
+    ],
+    { L: 'minecraft:lapis_lazuli', E: 'minecraft:emerald', R: 'thermal:rosin' }
+  )
   e.replaceOutput(
     { id: 'thermal:tools/xp_crystal' },
     'thermal:xp_crystal',
@@ -290,7 +300,7 @@ ServerEvents.recipes((e) => {
   )
   e.replaceInput({ mod: 'thermal' }, 'thermal:xp_crystal', 'kubejs:xp_crystal')
   create
-    .SequencedAssembly('minecraft:experience_bottle')
+    .SequencedAssembly('thermal:rosin')
     .deploy('minecraft:emerald')
     .deploy('minecraft:lapis_lazuli')
     .fill(Fluid.of('create_enchantment_industry:experience', 100))
