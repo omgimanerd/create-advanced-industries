@@ -282,6 +282,17 @@
 			x: 0.0d
 			y: -2.0d
 		}
+		{
+			icon: "supplementaries:globe"
+			id: "152FF34490E1EE50"
+			tasks: [{
+				id: "4AE834531D9F93A5"
+				item: "supplementaries:globe"
+				type: "item"
+			}]
+			x: -2.0d
+			y: -2.0d
+		}
 	]
 	title: "QOL Mods"
 }

@@ -32,6 +32,8 @@ server-resource-packs/
 shaderpacks/
 texturepacks/
 
+XaeroWaypoints/
+
 # Individual Files
 .qmenu_opened.marker
 hotbar.nbt
