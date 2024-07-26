@@ -17,6 +17,23 @@ ServerEvents.recipes((e) => {
     'createutilities:void_steel_sheet'
   )
 
+  // Cloud in a bottle
+  e.shapeless('artifacts:cloud_in_a_bottle', 'quark:bottled_cloud')
+
+  // Graviton tube
+  e.remove({ id: 'createutilities:shaped/graviton_tube' })
+  create
+    .SequencedAssembly('createutilities:void_steel_sheet')
+    .deploy(
+      'quark:bottled_cloud',
+      false,
+      /*additionalOutputs*/ 'minecraft:glass_bottle'
+    )
+    .deploy('createutilities:polished_amethyst')
+    .fill(potionFluid('apotheosis:levitation', 100))
+    .energize(10000)
+    .outputs('createutilities:graviton_tube')
+
   // Thermal molten fluid components
   create.energizing(
     'kubejs:energized_glowstone',
