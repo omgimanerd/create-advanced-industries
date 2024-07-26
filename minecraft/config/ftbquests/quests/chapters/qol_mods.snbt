@@ -283,13 +283,21 @@
 			y: -2.0d
 		}
 		{
+			dependencies: ["76EA7D462C854493"]
+			description: ["Both Xaero's minimap and FTB's minimap are included in this pack. Press 'M' (by default) to configure FTB's minimap settings, and 'Y' (by default) to configure Xaero's minimap."]
 			icon: "supplementaries:globe"
 			id: "152FF34490E1EE50"
-			tasks: [{
-				id: "4AE834531D9F93A5"
-				item: "supplementaries:globe"
+			rewards: [{
+				count: 4
+				id: "0F2C5AE7F190B5AB"
+				item: "minecraft:bread"
 				type: "item"
 			}]
+			tasks: [{
+				id: "778B636DDD01648F"
+				type: "checkmark"
+			}]
+			title: "Minimap"
 			x: -2.0d
 			y: -2.0d
 		}
