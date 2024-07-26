@@ -20,6 +20,7 @@
 			y: 0.0d
 		}
 		{
+			dependencies: ["3675892BE1757F09"]
 			id: "23A0F081DF173BAF"
 			size: 2.0d
 			tasks: [{
@@ -76,24 +77,26 @@
 			y: -3.5d
 		}
 		{
+			dependencies: ["5118C68CFF84C19C"]
 			id: "6DBFC6E2B2B08D29"
 			tasks: [{
 				id: "489E09DEC0A9FB13"
 				item: "thermal:enderium_ingot"
 				type: "item"
 			}]
-			x: 6.0d
-			y: 0.0d
+			x: 9.5d
+			y: -2.5d
 		}
 		{
+			dependencies: ["1563709AEFE5968F"]
 			id: "29D5CED6D2FC7E91"
 			tasks: [{
 				id: "16E7D005A8E7AE87"
 				item: "thermal:lumium_ingot"
 				type: "item"
 			}]
-			x: 9.5d
-			y: 4.0d
+			x: 8.0d
+			y: 1.0d
 		}
 		{
 			id: "107558182C78B789"
@@ -102,8 +105,8 @@
 				item: "thermal:signalum_ingot"
 				type: "item"
 			}]
-			x: 10.5d
-			y: 4.0d
+			x: 8.0d
+			y: 2.0d
 		}
 		{
 			icon: "molten_vents:dormant_molten_asurine"
@@ -166,18 +169,22 @@
 				item: "createteleporters:quantum_fluid_bucket"
 				type: "item"
 			}]
-			x: 4.5d
-			y: 1.5d
+			x: 2.5d
+			y: 1.0d
 		}
 		{
+			dependencies: [
+				"640730CD734ED3E6"
+				"2903A856EA2DAA03"
+			]
 			id: "446AD2402AFE378C"
 			tasks: [{
 				id: "0A9059817812D0A2"
 				item: "createteleporters:quantum_casing"
 				type: "item"
 			}]
-			x: 2.5d
-			y: 1.5d
+			x: 5.0d
+			y: 2.5d
 		}
 		{
 			id: "06EBEF87B13AD4AC"
@@ -186,8 +193,8 @@
 				item: "thermal:invar_ingot"
 				type: "item"
 			}]
-			x: 7.5d
-			y: -5.5d
+			x: 1.5d
+			y: 2.5d
 		}
 		{
 			id: "1F39D804C476D822"
@@ -196,8 +203,8 @@
 				item: "thermal:bronze_ingot"
 				type: "item"
 			}]
-			x: 9.0d
-			y: -5.5d
+			x: 7.0d
+			y: -4.5d
 		}
 		{
 			id: "7996698D6208A153"
@@ -206,8 +213,8 @@
 				item: "thermal:constantan_ingot"
 				type: "item"
 			}]
-			x: 10.0d
-			y: -5.5d
+			x: 8.0d
+			y: -4.5d
 		}
 		{
 			id: "73E62C5DB2ADFC3B"
@@ -216,8 +223,8 @@
 				item: "thermal:electrum_ingot"
 				type: "item"
 			}]
-			x: 11.5d
-			y: -5.5d
+			x: 9.0d
+			y: -4.5d
 		}
 		{
 			id: "177A034E2C455510"
@@ -226,68 +233,163 @@
 				item: "createutilities:void_steel_ingot"
 				type: "item"
 			}]
-			x: 7.0d
-			y: 1.5d
+			x: 1.5d
+			y: 6.5d
 		}
 		{
+			dependencies: ["5BA8FDECCF51342E"]
 			id: "3699DD3B91E59D8D"
 			tasks: [{
 				id: "67C45BF54A7FC751"
 				item: "createteleporters:redstone_pearl"
 				type: "item"
 			}]
-			x: 8.0d
-			y: -0.5d
+			x: 8.5d
+			y: -1.0d
 		}
 		{
+			dependencies: [
+				"107558182C78B789"
+				"29D5CED6D2FC7E91"
+			]
 			id: "76A6A184D9C43C1B"
 			tasks: [{
 				id: "05CDF1770D28BF12"
 				item: "createteleporters:advanced_part"
 				type: "item"
 			}]
-			x: 10.5d
-			y: 2.0d
+			x: 9.5d
+			y: 1.5d
 		}
 		{
+			dependencies: ["56A24AF47C360AC9"]
 			id: "3675892BE1757F09"
 			tasks: [{
 				id: "0C00C561F21E7E4A"
 				item: "extrastorage:neural_processor"
 				type: "item"
 			}]
-			x: 3.5d
-			y: 5.0d
+			x: 12.0d
+			y: 6.5d
 		}
 		{
+			dependencies: ["3832D225F6D0C417"]
 			id: "56A24AF47C360AC9"
 			tasks: [{
 				id: "2618A40AE1A2362E"
 				item: "extrastorage:raw_neural_processor"
 				type: "item"
 			}]
-			x: 1.5d
-			y: 4.5d
+			x: 9.0d
+			y: 6.5d
 		}
 		{
+			dependencies: ["6A59EF7246F87789"]
 			id: "3832D225F6D0C417"
 			tasks: [{
 				id: "56DC5A9D67327A49"
 				item: "createutilities:graviton_tube"
 				type: "item"
 			}]
-			x: 9.5d
-			y: -2.5d
+			x: 7.0d
+			y: 6.5d
 		}
 		{
+			dependencies: ["6A59EF7246F87789"]
 			id: "0FD4E6E4734AB1D6"
 			tasks: [{
 				id: "36DA9970851824B0"
 				item: "createutilities:void_casing"
 				type: "item"
 			}]
-			x: 13.5d
+			x: 4.5d
+			y: 5.0d
+		}
+		{
+			dependencies: ["177A034E2C455510"]
+			id: "554804ECF1EC02C8"
+			tasks: [{
+				id: "6B136F94CCAD4221"
+				item: "createutilities:void_steel_block"
+				type: "item"
+			}]
+			x: 3.0d
+			y: 6.5d
+		}
+		{
+			dependencies: ["554804ECF1EC02C8"]
+			id: "6A59EF7246F87789"
+			tasks: [{
+				id: "7175A401858CE874"
+				item: "createutilities:void_steel_sheet"
+				type: "item"
+			}]
+			x: 4.5d
+			y: 6.5d
+		}
+		{
+			id: "1563709AEFE5968F"
+			tasks: [{
+				id: "598B89F42BECD7C7"
+				item: "minecraft:glowstone_dust"
+				type: "item"
+			}]
+			x: 6.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["1648D1E853C0A4C8"]
+			id: "2D68C948FA0CB936"
+			tasks: [{
+				id: "61ABB803A451C82A"
+				item: "minecraft:ender_pearl"
+				type: "item"
+			}]
+			x: 4.5d
+			y: -1.0d
+		}
+		{
+			dependencies: ["2D68C948FA0CB936"]
+			id: "5BA8FDECCF51342E"
+			tasks: [{
+				id: "276FE7969CC16A14"
+				item: "kubejs:resonant_ender_pearl"
+				type: "item"
+			}]
+			x: 6.5d
+			y: -1.0d
+		}
+		{
+			dependencies: ["5BA8FDECCF51342E"]
+			id: "5118C68CFF84C19C"
+			tasks: [{
+				id: "737F41B13A210D62"
+				item: "kubejs:steel_ingot_cast_molten_enderium"
+				type: "item"
+			}]
+			x: 7.5d
+			y: -2.5d
+		}
+		{
+			dependencies: ["06EBEF87B13AD4AC"]
+			id: "640730CD734ED3E6"
+			tasks: [{
+				id: "368B33701A317C1D"
+				item: "thermal:invar_block"
+				type: "item"
+			}]
+			x: 3.0d
 			y: 2.5d
+		}
+		{
+			id: "1648D1E853C0A4C8"
+			tasks: [{
+				id: "0E5532B41365959B"
+				item: "kubejs:warden_tendril_vine_seed"
+				type: "item"
+			}]
+			x: 3.0d
+			y: -0.5d
 		}
 	]
 	title: "Chapter 7: Quantum Mechanisms"

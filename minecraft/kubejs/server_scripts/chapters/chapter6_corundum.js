@@ -3,8 +3,9 @@
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
 
-  // Corundum clusters are tagged by a datapack file.
+  // TODO corundum automation
 
+  // Corundum clusters are tagged by a datapack file.
   for (const { color, cluster } of global.CorundumClusterMapping) {
     let dye = `minecraft:${color}_dye`
 

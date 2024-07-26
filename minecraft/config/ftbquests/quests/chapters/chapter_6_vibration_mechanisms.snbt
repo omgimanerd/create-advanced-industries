@@ -51,27 +51,20 @@
 			}
 			id: "75A7D7288DF25E12"
 			size: 2.0d
-			tasks: [
-				{
-					icon: {
-						Count: 1b
-						id: "ftbquests:custom_icon"
-						tag: {
-							Icon: "ftbchunks:textures/faces/minecraft/warden.png"
-						}
+			tasks: [{
+				icon: {
+					Count: 1b
+					id: "ftbquests:custom_icon"
+					tag: {
+						Icon: "ftbchunks:textures/faces/minecraft/warden.png"
 					}
-					id: "02B389D758BBE8D4"
-					observe_type: 5
-					timer: 0L
-					to_observe: "minecraft:warden"
-					type: "observation"
 				}
-				{
-					id: "3C5FB599134C748A"
-					item: "apotheosis:warden_tendril"
-					type: "item"
-				}
-			]
+				id: "02B389D758BBE8D4"
+				observe_type: 5
+				timer: 0L
+				to_observe: "minecraft:warden"
+				type: "observation"
+			}]
 			title: "Defeat the Warden"
 			x: 12.0d
 			y: -2.0d
@@ -311,7 +304,7 @@
 				item: "create_enchantment_industry:hyper_experience_bottle"
 				type: "item"
 			}]
-			x: 26.0d
+			x: 20.0d
 			y: -2.0d
 		}
 		{
@@ -329,7 +322,7 @@
 				item: "minecraft:dragon_breath"
 				type: "item"
 			}]
-			x: 18.0d
+			x: 16.0d
 			y: 0.0d
 		}
 		{
@@ -348,7 +341,7 @@
 				item: "apotheosis:infused_breath"
 				type: "item"
 			}]
-			x: 26.0d
+			x: 20.0d
 			y: 0.0d
 		}
 		{
@@ -360,7 +353,7 @@
 				item: "kubejs:xp_condenser"
 				type: "item"
 			}]
-			x: 24.0d
+			x: 18.0d
 			y: -2.0d
 		}
 		{
@@ -406,7 +399,7 @@
 				item: "minecraft:wither_skeleton_skull"
 				type: "item"
 			}]
-			x: 18.0d
+			x: 14.0d
 			y: 4.0d
 		}
 		{
@@ -686,7 +679,7 @@
 				}
 				type: "item"
 			}]
-			x: 28.0d
+			x: 22.0d
 			y: -10.0d
 		}
 		{
@@ -728,7 +721,7 @@
 				type: "item"
 			}]
 			title: "Complete: Vibration Mechanisms"
-			x: 28.0d
+			x: 22.0d
 			y: 0.0d
 		}
 		{
@@ -743,15 +736,15 @@
 				item: "minecraft:nether_star"
 				type: "item"
 			}]
-			x: 18.0d
+			x: 14.0d
 			y: 2.0d
 		}
 		{
 			dependencies: ["34CBF7A7AD9BF9D8"]
 			description: [
-				"Resonance Crafting is a new crafting mechanic introduced in this chapter. Ponder the note block to see how it works."
+				"Resonance Crafting is a new crafting mechanic introduced in this chapter."
 				""
-				"[Ponder WIP]"
+				"Ponder the note block to see how it works."
 			]
 			id: "15B159D7F4360A0D"
 			tasks: [{
@@ -771,8 +764,8 @@
 				item: "kubejs:inert_xp_condenser"
 				type: "item"
 			}]
-			x: 22.0d
-			y: -2.0d
+			x: 18.0d
+			y: -4.0d
 		}
 		{
 			dependencies: [
@@ -796,7 +789,7 @@
 				}
 				type: "item"
 			}]
-			x: 28.0d
+			x: 22.0d
 			y: 10.0d
 		}
 		{
@@ -812,7 +805,7 @@
 				item: "minecraft:phantom_membrane"
 				type: "item"
 			}]
-			x: 28.0d
+			x: 22.0d
 			y: 12.0d
 		}
 		{
@@ -829,7 +822,7 @@
 		}
 		{
 			dependencies: ["6651B17B190DD8F4"]
-			description: ["WIP"]
+			description: ["Got a rare saturated honeycomb? They can be centrifuged for a ton of honey."]
 			id: "3C447206C2554E96"
 			invisible: true
 			tasks: [{
@@ -920,7 +913,7 @@
 		{
 			dependencies: ["589AA35E84EB3568"]
 			description: [
-				"Warden tendril seeds can only be planted on sculk, and only grow in complete darkness. They are extremely fragile, and since sculk does not provide any nutrients, you'll need to bonemeal the heck out of them."
+				"Warden tendril seeds can only be planted on sculk, and only grow in darkness. They are extremely fragile, and since sculk does not provide any nutrients, you'll need to bonemeal the heck out of them."
 				""
 				"Once they are grown though, you can harvest them for a renewable source of ender pearls."
 			]
@@ -930,13 +923,13 @@
 				item: "minecraft:ender_pearl"
 				type: "item"
 			}]
-			x: 18.0d
-			y: -2.0d
+			x: 16.0d
+			y: -4.0d
 		}
 		{
-			dependencies: ["75A7D7288DF25E12"]
+			dependencies: ["786D27A5FFD7DF2F"]
 			description: [
-				"Once you have your first warden tendril, you can craft a seed from it with resonance crafting."
+				"You can craft a seed from the warden tendril with resonance crafting."
 				""
 				"As a reminder, ponder the note block for an explanation of this mechanic."
 			]
@@ -958,8 +951,8 @@
 				item: "kubejs:resonant_ender_pearl"
 				type: "item"
 			}]
-			x: 18.0d
-			y: -4.0d
+			x: 16.0d
+			y: -6.0d
 		}
 		{
 			dependencies: [
@@ -977,7 +970,7 @@
 				item: "minecraft:end_crystal"
 				type: "item"
 			}]
-			x: 26.0d
+			x: 20.0d
 			y: 2.0d
 		}
 		{
@@ -1003,7 +996,7 @@
 				item: "minecraft:purpur_slab"
 				type: "item"
 			}]
-			x: 26.0d
+			x: 20.0d
 			y: 8.0d
 		}
 		{
@@ -1015,8 +1008,8 @@
 				item: "apotheosis:mythic_material"
 				type: "item"
 			}]
-			x: 20.0d
-			y: -2.0d
+			x: 18.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["7CB4CC65BC442750"]
@@ -1079,7 +1072,7 @@
 				type: "item"
 			}]
 			title: "Potion of Regeneration II"
-			x: 16.0d
+			x: 14.0d
 			y: 0.0d
 		}
 		{
@@ -1148,6 +1141,18 @@
 			}]
 			x: 6.0d
 			y: 12.0d
+		}
+		{
+			dependencies: ["75A7D7288DF25E12"]
+			description: ["The warden will drop a tendril when defeated. You might want to grab a few of these."]
+			id: "786D27A5FFD7DF2F"
+			tasks: [{
+				id: "0E6EDB6AEA72C72D"
+				item: "apotheosis:warden_tendril"
+				type: "item"
+			}]
+			x: 14.0d
+			y: -2.0d
 		}
 	]
 	title: "Chapter 6: Vibration Mechanisms"
