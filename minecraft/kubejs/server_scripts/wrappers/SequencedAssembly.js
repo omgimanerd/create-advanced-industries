@@ -105,9 +105,11 @@ SequencedAssembly.prototype.fill = function (fluid, qty_mb, fluidTextLabel) {
 SequencedAssembly.prototype.deploy = function (
   item,
   keepHeldItem,
+  additionalOutputs,
   itemTextLabel
 ) {
   const itemStack = typeof item === 'string' ? Item.of(item) : item
+  additionalOutputs = additionalOutputs === undefined ? [] : additionalOutputs
   let label = null
   if (itemTextLabel !== undefined) {
     label = Text.of(itemTextLabel)
@@ -122,6 +124,9 @@ SequencedAssembly.prototype.deploy = function (
     type: 'deploying',
     preItemText: Text.of(`Next: Deploy `).append(label),
     item: item,
+    additionalOutputs: Array.isArray(additionalOutputs)
+      ? additionalOutputs
+      : [additionalOutputs],
     keepHeldItem: !!keepHeldItem,
   })
   return this
@@ -378,7 +383,7 @@ SequencedAssembly.prototype.outputNativeCreate = function (output) {
             ])
           case 'deploying':
             const deployingStep = this.e_.recipes.createDeploying(
-              this.transitional_,
+              [this.transitional_].concat(data.additionalOutputs),
               [this.transitional_, data.item]
             )
             if (data.keepHeldItem) deployingStep.keepHeldItem()

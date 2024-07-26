@@ -511,9 +511,7 @@ ServerEvents.recipes((e) => {
       getGemItem(
         'apotheotic_additions:modded/ars_mana',
         'apotheotic_additions:esoteric'
-      ),
-      false,
-      'Cosmic Source Jewel'
+      )
     )
     .deploy('create_things_and_misc:rose_quartz_sheet')
     .fill(potionFluid('apotheosis:extra_long_flying', 250))
