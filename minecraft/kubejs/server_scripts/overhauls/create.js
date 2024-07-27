@@ -984,6 +984,53 @@ ServerEvents.recipes((e) => {
       'minecraft:amethyst_shard',
       POLISHING_HIGH_SPEED
     )
+    let createUtilitiesKeys = {
+      V: 'createutilities:void_steel_ingot',
+      S: 'createutilities:void_steel_sheet',
+      C: 'createutilities:void_casing',
+      G: 'createutilities:graviton_tube',
+      Q: QUANTUM_MECHANISM,
+    }
+    redefineRecipe(
+      'createutilities:void_motor',
+      [
+        'VGV', //
+        'QMQ', //
+        'VCV', //
+      ],
+      Object.assign({}, createUtilitiesKeys, {
+        M: 'create_new_age:reinforced_motor',
+      })
+    )
+    redefineRecipe(
+      'createutilities:void_chest',
+      [
+        'VGV', //
+        'QEQ', //
+        'VCV', //
+      ],
+      Object.assign({}, createUtilitiesKeys, { E: 'minecraft:ender_chest' })
+    )
+    redefineRecipe(
+      'createutilities:void_tank',
+      [
+        'VGV', //
+        'QTQ', //
+        'VCV', //
+      ],
+      Object.assign({}, createUtilitiesKeys, { T: 'create:fluid_tank' })
+    )
+    redefineRecipe(
+      'createutilities:void_battery',
+      [
+        'VGV', //
+        'QBQ', //
+        'VCV', //
+      ],
+      Object.assign({}, createUtilitiesKeys, {
+        B: 'createaddition:modular_accumulator',
+      })
+    )
   }
 
   //////////////////////////////////
