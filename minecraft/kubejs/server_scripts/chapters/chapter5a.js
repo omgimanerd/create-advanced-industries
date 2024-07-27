@@ -451,16 +451,6 @@ ServerEvents.recipes((e) => {
     }
   )
 
-  // Red alloy overhaul
-  e.remove({ id: 'morered:red_alloy_ingot_from_jumbo_smelting' })
-  create.filling('morered:red_alloy_ingot', [
-    'create_new_age:overcharged_iron',
-    Fluid.of('kubejs:molten_redstone', 360),
-  ])
-
-  // Rolling red alloy into wire
-  create.rolling('6x morered:red_alloy_wire', 'morered:red_alloy_ingot')
-
   // Overhaul Create: New Age's magnetic blocks
   // Magnetite block crafting recipe
   create.energizing(

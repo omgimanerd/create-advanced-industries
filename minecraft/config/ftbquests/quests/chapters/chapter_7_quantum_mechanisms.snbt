@@ -5,7 +5,7 @@
 	group: "5B3547AEADCBC841"
 	icon: "createteleporters:quantum_mechanism"
 	id: "565035A1584BCCAE"
-	order_index: 9
+	order_index: 8
 	quest_links: [ ]
 	quests: [
 		{
@@ -20,7 +20,10 @@
 			y: 0.0d
 		}
 		{
-			dependencies: ["3675892BE1757F09"]
+			dependencies: [
+				"3675892BE1757F09"
+				"76A6A184D9C43C1B"
+			]
 			id: "23A0F081DF173BAF"
 			size: 2.0d
 			tasks: [{
@@ -29,8 +32,8 @@
 				type: "item"
 			}]
 			title: "Complete: Quantum Mechanisms"
-			x: 13.0d
-			y: 0.0d
+			x: 17.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["52C4538635906B7E"]
@@ -95,8 +98,8 @@
 				item: "thermal:lumium_ingot"
 				type: "item"
 			}]
-			x: 8.0d
-			y: 1.0d
+			x: 19.0d
+			y: -3.0d
 		}
 		{
 			id: "107558182C78B789"
@@ -105,8 +108,8 @@
 				item: "thermal:signalum_ingot"
 				type: "item"
 			}]
-			x: 8.0d
-			y: 2.0d
+			x: 17.5d
+			y: -0.5d
 		}
 		{
 			icon: "molten_vents:dormant_molten_asurine"
@@ -258,8 +261,8 @@
 				item: "createteleporters:advanced_part"
 				type: "item"
 			}]
-			x: 9.5d
-			y: 1.5d
+			x: 20.5d
+			y: -2.5d
 		}
 		{
 			dependencies: ["56A24AF47C360AC9"]
@@ -284,7 +287,10 @@
 			y: 6.5d
 		}
 		{
-			dependencies: ["6A59EF7246F87789"]
+			dependencies: [
+				"6A59EF7246F87789"
+				"7776DA8092FA0B59"
+			]
 			id: "3832D225F6D0C417"
 			tasks: [{
 				id: "56DC5A9D67327A49"
@@ -334,8 +340,8 @@
 				item: "minecraft:glowstone_dust"
 				type: "item"
 			}]
-			x: 6.0d
-			y: 1.0d
+			x: 17.0d
+			y: -3.0d
 		}
 		{
 			dependencies: ["1648D1E853C0A4C8"]
@@ -390,6 +396,83 @@
 			}]
 			x: 3.0d
 			y: -0.5d
+		}
+		{
+			dependencies: ["6A59EF7246F87789"]
+			id: "7776DA8092FA0B59"
+			tasks: [{
+				id: "034D6C847A03F3ED"
+				item: "quark:bottled_cloud"
+				type: "item"
+			}]
+			x: 6.0d
+			y: 7.5d
+		}
+		{
+			id: "2F70978FF48B905A"
+			tasks: [{
+				id: "7562314AAF4A6D80"
+				item: "minecraft:redstone"
+				type: "item"
+			}]
+			x: 9.5d
+			y: 2.0d
+		}
+		{
+			id: "2C8BDCCE49CD6DBC"
+			tasks: [{
+				id: "1AC407487B2AF994"
+				item: "kubejs:molten_redstone_bucket"
+				type: "item"
+			}]
+			x: 10.5d
+			y: 1.0d
+		}
+		{
+			id: "4667FF99D0ED1BE1"
+			tasks: [{
+				id: "31C23F1C022E8AA2"
+				item: "thermal:redstone_bucket"
+				type: "item"
+			}]
+			x: 11.5d
+			y: 0.5d
+		}
+		{
+			id: "181130507B8EAB31"
+			tasks: [{
+				id: "429FE521C8699D98"
+				item: "kubejs:steel_ingot_cast_molten_signalum"
+				type: "item"
+			}]
+			x: 13.5d
+			y: -0.5d
+		}
+		{
+			id: "0B8142C492A37CAB"
+			tasks: [{
+				id: "55721D63531A330F"
+				item: {
+					Count: 1b
+					id: "minecraft:potion"
+					tag: {
+						Potion: "quark:resilience"
+					}
+				}
+				type: "item"
+			}]
+			x: 11.5d
+			y: 2.0d
+		}
+		{
+			id: "33EBE2D7B0D8BBA0"
+			tasks: [{
+				id: "34D07E7B38C1AF4F"
+				item: "create_connected:control_chip"
+				type: "item"
+			}]
+			x: 17.0d
+			y: 1.0d
 		}
 	]
 	title: "Chapter 7: Quantum Mechanisms"

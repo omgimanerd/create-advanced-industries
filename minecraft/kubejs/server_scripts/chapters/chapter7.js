@@ -17,9 +17,6 @@ ServerEvents.recipes((e) => {
     'createutilities:void_steel_sheet'
   )
 
-  // Cloud in a bottle
-  e.shapeless('artifacts:cloud_in_a_bottle', 'quark:bottled_cloud')
-
   // Graviton tube
   e.remove({ id: 'createutilities:shaped/graviton_tube' })
   create
@@ -46,6 +43,32 @@ ServerEvents.recipes((e) => {
   create
     .compacting(Fluid.of('thermal:ender', 250), 'kubejs:resonant_ender_pearl')
     .superheated()
+
+  // Making destabilized redstone
+  create
+    .centrifuging(
+      [Fluid.of('thermal:redstone', 500), potionFluid('quark:resilience', 500)],
+      Fluid.of('kubejs:molten_redstone', 1000)
+    )
+    .minimalRPM(256)
+    .processingTime(100)
+  create
+    .mixing(Fluid.of('kubejs:molten_redstone', 1000), [
+      Fluid.of('thermal:redstone', 500),
+      potionFluid('quark:resilience', 500),
+      'minecraft:glowstone_dust',
+    ])
+    .superheated()
+
+  // Control chip overhaul
+  e.remove({ id: 'create_connected:sequenced_assembly/control_chip' })
+  create
+    .SequencedAssembly('create:brass_sheet')
+    .deploy('vintageimprovements:signalum_wire')
+    .fill(potionFluid('ars_elemental:shock_potion', 720))
+    .laser(8000, 250)
+    .press()
+    .outputs('create_connected:control_chip')
 
   // Quantum fluid
   e.remove({ id: 'createteleporters:quantum_fluid_recipe' })

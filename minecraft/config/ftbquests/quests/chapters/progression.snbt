@@ -156,22 +156,6 @@
 			x: 12.5d
 			y: 0.0d
 		}
-		{
-			dependencies: [
-				"11BA49A842F724F6"
-				"54C9E8883DD2F25A"
-			]
-			icon: "vintageimprovements:redstone_module"
-			id: "43300D7923D22328"
-			tasks: [{
-				id: "3866FEAEAADBD0FE"
-				title: "Start Chapter"
-				type: "checkmark"
-			}]
-			title: "Chapter 5c: Redstone Mechanisms"
-			x: 10.0d
-			y: -4.0d
-		}
 	]
 	title: "Progression"
 }

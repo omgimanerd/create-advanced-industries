@@ -43,7 +43,6 @@
 			dependencies: [
 				"60A20508A7E35CB9"
 				"5AD35DACB2A50EF1"
-				"5A6D0D76D241A75E"
 				"578CB2BBDDEC16F1"
 			]
 			description: [
@@ -71,12 +70,6 @@
 					item: "refinedstorage:improved_processor"
 					type: "item"
 				}
-				{
-					count: 8
-					id: "64596B9502BC3BAD"
-					item: "refinedstorage:advanced_processor"
-					type: "item"
-				}
 			]
 			size: 2.0d
 			tasks: [{
@@ -86,7 +79,7 @@
 				type: "item"
 			}]
 			title: "Complete: Logistics Mechanisms"
-			x: 34.0d
+			x: 30.0d
 			y: -4.0d
 		}
 		{
@@ -442,7 +435,7 @@
 				item: "pneumaticcraft:capacitor"
 				type: "item"
 			}]
-			x: 38.0d
+			x: 32.0d
 			y: -10.0d
 		}
 		{
@@ -462,7 +455,7 @@
 				item: "pneumaticcraft:transistor"
 				type: "item"
 			}]
-			x: 36.0d
+			x: 30.0d
 			y: -8.0d
 		}
 		{
@@ -591,7 +584,7 @@
 				item: "minecraft:ancient_debris"
 				type: "item"
 			}]
-			x: 26.0d
+			x: 10.0d
 			y: 8.0d
 		}
 		{
@@ -669,14 +662,23 @@
 				"3F6AC2F3372B28E3"
 				"4F5053EC6278DC86"
 			]
-			description: ["The raw processor must be finished with an assembly laser."]
+			description: ["The raw processors must be finished with an assembly laser."]
+			icon: "refinedstorage:basic_processor"
 			id: "5AD35DACB2A50EF1"
-			tasks: [{
-				id: "7A060253361ADDC6"
-				item: "refinedstorage:basic_processor"
-				type: "item"
-			}]
-			x: 30.0d
+			tasks: [
+				{
+					id: "7A060253361ADDC6"
+					item: "refinedstorage:basic_processor"
+					type: "item"
+				}
+				{
+					id: "1062E0102DA5BBF9"
+					item: "refinedstorage:improved_processor"
+					type: "item"
+				}
+			]
+			title: "Basic and Improved Processors"
+			x: 28.0d
 			y: -4.0d
 		}
 		{
@@ -684,45 +686,24 @@
 				"300B315823283E7E"
 				"750D19E2D333CD2A"
 			]
-			description: ["Raw basic processors are a requirement for both Logistics Mechanisms and Refined Storage."]
+			description: ["Raw basic and improved processors are requirements for both Logistics Mechanisms and Refined Storage."]
+			icon: "refinedstorage:raw_basic_processor"
 			id: "3F6AC2F3372B28E3"
-			tasks: [{
-				id: "588A8EDBFFDCD729"
-				item: "refinedstorage:raw_basic_processor"
-				type: "item"
-			}]
-			x: 30.0d
-			y: -2.0d
-		}
-		{
-			dependencies: [
-				"4000234461168668"
-				"4F5053EC6278DC86"
+			tasks: [
+				{
+					id: "588A8EDBFFDCD729"
+					item: "refinedstorage:raw_basic_processor"
+					type: "item"
+				}
+				{
+					id: "1B956E5230EA9C09"
+					item: "refinedstorage:raw_improved_processor"
+					type: "item"
+				}
 			]
-			description: ["The raw processor must be finished with an assembly laser."]
-			id: "5A6D0D76D241A75E"
-			tasks: [{
-				id: "582148641DC7B8FF"
-				item: "refinedstorage:improved_processor"
-				type: "item"
-			}]
-			x: 32.0d
+			title: "Raw Processors"
+			x: 28.0d
 			y: -2.0d
-		}
-		{
-			dependencies: [
-				"300B315823283E7E"
-				"750D19E2D333CD2A"
-			]
-			description: ["Raw improved processors are a requirement of Logistics Mechanisms and Refined Storage."]
-			id: "4000234461168668"
-			tasks: [{
-				id: "4A41926815397360"
-				item: "refinedstorage:raw_improved_processor"
-				type: "item"
-			}]
-			x: 30.0d
-			y: 0.0d
 		}
 		{
 			dependencies: ["5978BE35C75966ED"]
@@ -739,8 +720,8 @@
 				type: "checkmark"
 			}]
 			title: "Molten Silicon Bucket"
-			x: 42.0d
-			y: 0.0d
+			x: 36.0d
+			y: -2.0d
 		}
 		{
 			dependencies: [
@@ -754,8 +735,8 @@
 				item: "kubejs:silicon_wafer"
 				type: "item"
 			}]
-			x: 38.0d
-			y: 0.0d
+			x: 32.0d
+			y: -2.0d
 		}
 		{
 			dependencies: ["5AAAFF9CC002EB70"]
@@ -766,8 +747,8 @@
 				item: "refinedstorage:silicon"
 				type: "item"
 			}]
-			x: 40.0d
-			y: 0.0d
+			x: 34.0d
+			y: -2.0d
 		}
 		{
 			dependencies: [
@@ -834,8 +815,8 @@
 				}
 				type: "item"
 			}]
-			x: 40.0d
-			y: 2.0d
+			x: 32.0d
+			y: 0.0d
 		}
 		{
 			dependencies: [
@@ -850,14 +831,11 @@
 				item: "refinedstorage:raw_advanced_processor"
 				type: "item"
 			}]
-			x: 30.0d
-			y: 2.0d
+			x: 28.0d
+			y: 0.0d
 		}
 		{
-			dependencies: [
-				"09D7F859EC4C42E6"
-				"4F5053EC6278DC86"
-			]
+			dependencies: ["09D7F859EC4C42E6"]
 			description: ["The raw processor must be finished with an assembly laser."]
 			id: "06A3BB4120EA86F8"
 			optional: true
@@ -884,7 +862,7 @@
 		{
 			dependencies: [
 				"4C5481815C938E67"
-				"750D19E2D333CD2A"
+				"2EDD47F79BFDE8F0"
 			]
 			description: ["Apply red alloy ingots, glue, and copper wire to the blank circuit to make a copper circuit."]
 			id: "097A84D100994B26"
@@ -913,19 +891,16 @@
 			y: -8.0d
 		}
 		{
-			dependencies: [
-				"52506B35EBD04BEF"
-				"4F5053EC6278DC86"
-			]
-			description: ["Ancient debris is so hard it cannot be processed by normal means. The only way of breaking it down is using the a laser."]
+			dependencies: ["52506B35EBD04BEF"]
+			description: ["Ancient debris is so hard it cannot be processed by normal means. The only way of breaking it down is using a laser."]
 			id: "4630AEF58B2E670F"
 			tasks: [{
 				id: "288AE5DEA959A3EC"
 				item: "minecraft:netherite_scrap"
 				type: "item"
 			}]
-			x: 26.0d
-			y: 4.0d
+			x: 12.0d
+			y: 8.0d
 		}
 		{
 			dependencies: ["36A1FC9D04780F5B"]
@@ -936,8 +911,8 @@
 				item: "minecraft:netherite_ingot"
 				type: "item"
 			}]
-			x: 22.0d
-			y: 4.0d
+			x: 16.0d
+			y: 8.0d
 		}
 		{
 			dependencies: ["0EBC7AF9C3657B63"]
@@ -948,8 +923,8 @@
 				item: "thermal:netherite_nugget"
 				type: "item"
 			}]
-			x: 20.0d
-			y: 4.0d
+			x: 18.0d
+			y: 8.0d
 		}
 		{
 			dependencies: [
@@ -1207,7 +1182,7 @@
 				item: "thermal:silver_ingot"
 				type: "item"
 			}]
-			x: 44.0d
+			x: 38.0d
 			y: 10.0d
 		}
 		{
@@ -1219,7 +1194,7 @@
 				item: "thermal:silver_plate"
 				type: "item"
 			}]
-			x: 44.0d
+			x: 38.0d
 			y: -10.0d
 		}
 		{
@@ -1283,7 +1258,7 @@
 				item: "kubejs:graphite"
 				type: "item"
 			}]
-			x: 38.0d
+			x: 32.0d
 			y: 7.0d
 		}
 		{
@@ -1321,7 +1296,7 @@
 				item: "thermal:diamond_dust"
 				type: "item"
 			}]
-			x: 38.0d
+			x: 32.0d
 			y: 2.0d
 		}
 		{
@@ -1336,8 +1311,8 @@
 				type: "item"
 			}]
 			title: "Recrystallizing Diamond Dust"
-			x: 36.0d
-			y: 4.0d
+			x: 34.0d
+			y: 0.0d
 		}
 		{
 			dependencies: ["4940E876A0E00E4E"]
@@ -1423,7 +1398,7 @@
 				type: "checkmark"
 			}]
 			title: "Netherite Magnets"
-			x: 34.0d
+			x: 30.0d
 			y: 6.0d
 		}
 		{
@@ -1594,7 +1569,7 @@
 				type: "checkmark"
 			}]
 			title: "Super Glue"
-			x: 18.0d
+			x: 26.0d
 			y: -2.0d
 		}
 		{
@@ -1641,19 +1616,35 @@
 		{
 			dependencies: ["097A84D100994B26"]
 			description: [
-				"With copper circuits unlocked, you can also make redstone mechanisms to make it easier to build complex redstone logic."
+				"Unlocking red alloy ingots gives you access to Redstone Mechanisms."
 				""
-				"This will become very helpful in controlling parts of your factory, especially for some of the more complex production chains."
+				"These will become very helpful in controlling parts of your factory, especially for some of the more complex production chains."
 				""
-				"See Chapter 5c to learn how to produce these."
+				"They're a side product of this chapter, but useful to have nonetheless."
 			]
 			icon: "vintageimprovements:redstone_module"
 			id: "54C9E8883DD2F25A"
+			rewards: [
+				{
+					count: 16
+					id: "2F378A6AAA7983F6"
+					item: "vintageimprovements:redstone_module"
+					type: "item"
+				}
+				{
+					count: 16
+					id: "57F32211961C31C8"
+					item: "morered:red_alloy_ingot"
+					type: "item"
+				}
+			]
 			shape: "gear"
 			size: 2.0d
 			tasks: [{
-				id: "195C15A3B8C0C1DB"
-				type: "checkmark"
+				count: 16L
+				id: "659EEC7D6A731D76"
+				item: { Count: 16b, id: "vintageimprovements:redstone_module" }
+				type: "item"
 			}]
 			title: "Redstone Mechanisms"
 			x: 18.0d
@@ -1668,8 +1659,8 @@
 				item: "kubejs:steel_ingot_cast_molten_netherite"
 				type: "item"
 			}]
-			x: 24.0d
-			y: 4.0d
+			x: 14.0d
+			y: 8.0d
 		}
 		{
 			dependencies: ["053341B7FCB8D85A"]
@@ -1696,7 +1687,7 @@
 				item: "morered:red_alloy_wire"
 				type: "item"
 			}]
-			x: 16.0d
+			x: 18.0d
 			y: -2.0d
 		}
 	]
