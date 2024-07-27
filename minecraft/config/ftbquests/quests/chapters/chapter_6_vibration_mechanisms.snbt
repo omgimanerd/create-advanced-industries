@@ -745,8 +745,14 @@
 				"Resonance Crafting is a new crafting mechanic introduced in this chapter."
 				""
 				"Ponder the note block to see how it works."
+				""
+				"(If you automate and this and it starts to get annoying, you can place anchors with ESM to mute sounds!)"
+				""
+				""
+				"{image:kubejs:textures/gui/esm_button.png width:100 height:100 align:1}"
 			]
 			id: "15B159D7F4360A0D"
+			min_width: 300
 			tasks: [{
 				id: "27F2BA4515132EF1"
 				item: "minecraft:note_block"
