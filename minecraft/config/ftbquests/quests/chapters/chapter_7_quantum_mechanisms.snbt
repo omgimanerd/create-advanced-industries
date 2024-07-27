@@ -3,7 +3,7 @@
 	default_quest_shape: ""
 	filename: "chapter_7_quantum_mechanisms"
 	group: "5B3547AEADCBC841"
-	icon: "createteleporters:quantum_mechanism"
+	icon: "kubejs:quantum_mechanism"
 	id: "565035A1584BCCAE"
 	order_index: 8
 	quest_links: [ ]
@@ -28,13 +28,14 @@
 			id: "23A0F081DF173BAF"
 			size: 2.0d
 			tasks: [{
+				count: 16L
 				id: "489303C19E48BFFA"
-				item: "createteleporters:quantum_mechanism"
+				item: "kubejs:quantum_mechanism"
 				type: "item"
 			}]
 			title: "Complete: Quantum Mechanisms"
-			x: 21.0d
-			y: 8.0d
+			x: 16.0d
+			y: 10.0d
 		}
 		{
 			dependencies: ["5118C68CFF84C19C"]
@@ -44,13 +45,13 @@
 				item: "thermal:enderium_ingot"
 				type: "item"
 			}]
-			x: 9.5d
-			y: 0.0d
+			x: 10.0d
+			y: 6.0d
 		}
 		{
 			dependencies: [
-				"69D09EB30178ABF9"
 				"47959ED668B51DD0"
+				"52089EF528A92F00"
 			]
 			id: "29D5CED6D2FC7E91"
 			tasks: [{
@@ -58,8 +59,8 @@
 				item: "thermal:lumium_ingot"
 				type: "item"
 			}]
-			x: 14.5d
-			y: -7.5d
+			x: 16.0d
+			y: -10.0d
 		}
 		{
 			dependencies: ["181130507B8EAB31"]
@@ -69,10 +70,11 @@
 				item: "thermal:signalum_ingot"
 				type: "item"
 			}]
-			x: 17.5d
-			y: 0.0d
+			x: 10.0d
+			y: 4.0d
 		}
 		{
+			dependencies: ["271A91265ACE5851"]
 			icon: "molten_vents:dormant_molten_asurine"
 			id: "5EA0A56E4C6E4C4F"
 			tasks: [{
@@ -84,7 +86,7 @@
 				type: "observation"
 			}]
 			title: "Find a Dormant Vent"
-			x: 1.5d
+			x: 0.0d
 			y: -10.0d
 		}
 		{
@@ -101,17 +103,21 @@
 			}]
 			title: "Activating a Molten Vent"
 			x: 2.0d
-			y: -8.0d
+			y: -10.0d
 		}
 		{
+			dependencies: [
+				"758B001ECA60BFB0"
+				"76C010E5A0F1D3B8"
+			]
 			id: "2903A856EA2DAA03"
 			tasks: [{
 				id: "3F741E721BA82668"
-				item: "createteleporters:quantum_fluid_bucket"
+				item: "kubejs:quantum_fluid_bucket"
 				type: "item"
 			}]
-			x: -4.5d
-			y: -8.5d
+			x: 4.0d
+			y: -4.0d
 		}
 		{
 			dependencies: [
@@ -121,11 +127,11 @@
 			id: "446AD2402AFE378C"
 			tasks: [{
 				id: "0A9059817812D0A2"
-				item: "createteleporters:quantum_casing"
+				item: "kubejs:quantum_casing"
 				type: "item"
 			}]
-			x: -4.0d
-			y: -5.0d
+			x: 6.0d
+			y: -2.0d
 		}
 		{
 			id: "1F39D804C476D822"
@@ -134,8 +140,8 @@
 				item: "thermal:bronze_ingot"
 				type: "item"
 			}]
-			x: 22.0d
-			y: -5.0d
+			x: 18.0d
+			y: -6.0d
 		}
 		{
 			id: "7996698D6208A153"
@@ -144,8 +150,8 @@
 				item: "thermal:constantan_ingot"
 				type: "item"
 			}]
-			x: 23.0d
-			y: -5.0d
+			x: 19.0d
+			y: -6.0d
 		}
 		{
 			id: "73E62C5DB2ADFC3B"
@@ -154,8 +160,8 @@
 				item: "thermal:electrum_ingot"
 				type: "item"
 			}]
-			x: 24.0d
-			y: -5.0d
+			x: 20.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["6293CBBC76D73F05"]
@@ -165,34 +171,34 @@
 				item: "createutilities:void_steel_ingot"
 				type: "item"
 			}]
-			x: 7.0d
-			y: 11.0d
+			x: 2.0d
+			y: 12.0d
 		}
 		{
 			dependencies: ["5BA8FDECCF51342E"]
 			id: "3699DD3B91E59D8D"
 			tasks: [{
 				id: "67C45BF54A7FC751"
-				item: "createteleporters:redstone_pearl"
+				item: "kubejs:redstone_pearl"
 				type: "item"
 			}]
-			x: 8.5d
-			y: 1.5d
+			x: 6.0d
+			y: 8.0d
 		}
 		{
 			dependencies: [
-				"107558182C78B789"
 				"29D5CED6D2FC7E91"
 				"33EBE2D7B0D8BBA0"
+				"09B4A6A4CBE56493"
 			]
 			id: "76A6A184D9C43C1B"
 			tasks: [{
 				id: "05CDF1770D28BF12"
-				item: "createteleporters:advanced_part"
+				item: "kubejs:quantum_chip"
 				type: "item"
 			}]
-			x: 20.5d
-			y: -2.5d
+			x: 16.0d
+			y: 2.0d
 		}
 		{
 			dependencies: ["56A24AF47C360AC9"]
@@ -202,8 +208,8 @@
 				item: "extrastorage:neural_processor"
 				type: "item"
 			}]
-			x: 17.5d
-			y: 11.0d
+			x: 10.0d
+			y: 10.0d
 		}
 		{
 			dependencies: ["3832D225F6D0C417"]
@@ -213,8 +219,8 @@
 				item: "extrastorage:raw_neural_processor"
 				type: "item"
 			}]
-			x: 14.5d
-			y: 11.0d
+			x: 8.0d
+			y: 10.0d
 		}
 		{
 			dependencies: [
@@ -227,8 +233,8 @@
 				item: "createutilities:graviton_tube"
 				type: "item"
 			}]
-			x: 12.5d
-			y: 11.0d
+			x: 6.0d
+			y: 10.0d
 		}
 		{
 			dependencies: ["6A59EF7246F87789"]
@@ -238,8 +244,8 @@
 				item: "createutilities:void_casing"
 				type: "item"
 			}]
-			x: 10.0d
-			y: 9.5d
+			x: 8.0d
+			y: 12.0d
 		}
 		{
 			dependencies: ["177A034E2C455510"]
@@ -249,8 +255,8 @@
 				item: "createutilities:void_steel_block"
 				type: "item"
 			}]
-			x: 8.5d
-			y: 11.0d
+			x: 4.0d
+			y: 12.0d
 		}
 		{
 			dependencies: ["554804ECF1EC02C8"]
@@ -260,18 +266,19 @@
 				item: "createutilities:void_steel_sheet"
 				type: "item"
 			}]
-			x: 10.0d
-			y: 11.0d
+			x: 6.0d
+			y: 12.0d
 		}
 		{
+			dependencies: ["271A91265ACE5851"]
 			id: "1563709AEFE5968F"
 			tasks: [{
 				id: "598B89F42BECD7C7"
 				item: "minecraft:glowstone_dust"
 				type: "item"
 			}]
-			x: 12.0d
-			y: -3.5d
+			x: 2.0d
+			y: 0.0d
 		}
 		{
 			dependencies: ["1648D1E853C0A4C8"]
@@ -281,8 +288,8 @@
 				item: "minecraft:ender_pearl"
 				type: "item"
 			}]
-			x: 4.5d
-			y: 1.5d
+			x: 4.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["2D68C948FA0CB936"]
@@ -292,8 +299,8 @@
 				item: "kubejs:resonant_ender_pearl"
 				type: "item"
 			}]
-			x: 6.5d
-			y: 1.5d
+			x: 6.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["5BA8FDECCF51342E"]
@@ -303,39 +310,41 @@
 				item: "kubejs:steel_ingot_cast_molten_enderium"
 				type: "item"
 			}]
-			x: 7.5d
-			y: 0.0d
+			x: 8.0d
+			y: 6.0d
 		}
 		{
+			dependencies: ["271A91265ACE5851"]
 			id: "1648D1E853C0A4C8"
 			tasks: [{
 				id: "0E5532B41365959B"
 				item: "kubejs:warden_tendril_vine_seed"
 				type: "item"
 			}]
-			x: 3.0d
-			y: 2.0d
+			x: 2.0d
+			y: 6.0d
 		}
 		{
-			dependencies: ["6A59EF7246F87789"]
+			dependencies: ["271A91265ACE5851"]
 			id: "7776DA8092FA0B59"
 			tasks: [{
 				id: "034D6C847A03F3ED"
 				item: "quark:bottled_cloud"
 				type: "item"
 			}]
-			x: 11.5d
-			y: 12.0d
+			x: 2.0d
+			y: 10.0d
 		}
 		{
+			dependencies: ["271A91265ACE5851"]
 			id: "2F70978FF48B905A"
 			tasks: [{
 				id: "7562314AAF4A6D80"
 				item: "minecraft:redstone"
 				type: "item"
 			}]
-			x: 13.0d
-			y: 0.0d
+			x: 2.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["2F70978FF48B905A"]
@@ -345,8 +354,8 @@
 				item: "kubejs:molten_redstone_bucket"
 				type: "item"
 			}]
-			x: 14.0d
-			y: 0.0d
+			x: 4.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["2C8BDCCE49CD6DBC"]
@@ -356,8 +365,8 @@
 				item: "thermal:redstone_bucket"
 				type: "item"
 			}]
-			x: 15.5d
-			y: 0.0d
+			x: 6.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["4667FF99D0ED1BE1"]
@@ -367,11 +376,11 @@
 				item: "kubejs:steel_ingot_cast_molten_signalum"
 				type: "item"
 			}]
-			x: 16.5d
-			y: 0.0d
+			x: 8.0d
+			y: 4.0d
 		}
 		{
-			dependencies: ["2F70978FF48B905A"]
+			dependencies: ["2C8BDCCE49CD6DBC"]
 			id: "0B8142C492A37CAB"
 			tasks: [{
 				id: "55721D63531A330F"
@@ -384,8 +393,8 @@
 				}
 				type: "item"
 			}]
-			x: 13.5d
-			y: 1.5d
+			x: 4.0d
+			y: 2.0d
 		}
 		{
 			dependencies: [
@@ -398,7 +407,7 @@
 				item: "create_connected:control_chip"
 				type: "item"
 			}]
-			x: 19.0d
+			x: 14.0d
 			y: 2.0d
 		}
 		{
@@ -409,8 +418,8 @@
 				item: "kubejs:inert_potion_residue"
 				type: "item"
 			}]
-			x: 14.5d
-			y: 1.5d
+			x: 6.0d
+			y: 2.0d
 		}
 		{
 			dependencies: ["09550BF1249B9570"]
@@ -420,8 +429,8 @@
 				item: "ars_nouveau:abjuration_essence"
 				type: "item"
 			}]
-			x: 16.0d
-			y: 1.5d
+			x: 8.0d
+			y: 2.0d
 		}
 		{
 			dependencies: ["24C1F849823D87CB"]
@@ -437,7 +446,7 @@
 				}
 				type: "item"
 			}]
-			x: 17.5d
+			x: 10.0d
 			y: 2.0d
 		}
 		{
@@ -449,7 +458,7 @@
 				type: "item"
 			}]
 			x: 14.0d
-			y: -4.5d
+			y: 0.0d
 		}
 		{
 			dependencies: ["107558182C78B789"]
@@ -459,8 +468,8 @@
 				item: "vintageimprovements:signalum_sheet"
 				type: "item"
 			}]
-			x: 18.0d
-			y: 0.5d
+			x: 12.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["36CAB20DE512A370"]
@@ -470,8 +479,8 @@
 				item: "vintageimprovements:signalum_wire"
 				type: "item"
 			}]
-			x: 19.0d
-			y: 1.0d
+			x: 14.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["029D7DEF789032E4"]
@@ -481,7 +490,7 @@
 				item: "tfmg:aluminum_block"
 				type: "item"
 			}]
-			x: -2.5d
+			x: 8.0d
 			y: -4.0d
 		}
 		{
@@ -492,8 +501,8 @@
 				item: "tfmg:aluminum_ingot"
 				type: "item"
 			}]
-			x: -3.5d
-			y: -3.5d
+			x: 10.0d
+			y: -4.0d
 		}
 		{
 			dependencies: [
@@ -506,18 +515,19 @@
 				item: "create_things_and_misc:crushed_magma"
 				type: "item"
 			}]
-			x: -1.5d
+			x: 6.0d
 			y: -6.0d
 		}
 		{
+			dependencies: ["271A91265ACE5851"]
 			id: "4C6BCD93DEA0B7DC"
 			tasks: [{
 				id: "184EFF914D0DA940"
 				item: "minecraft:lava_bucket"
 				type: "item"
 			}]
-			x: -0.5d
-			y: -9.5d
+			x: 2.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["4C6BCD93DEA0B7DC"]
@@ -527,14 +537,13 @@
 				item: "minecraft:magma_block"
 				type: "item"
 			}]
-			x: -1.5d
-			y: -8.0d
+			x: 4.0d
+			y: -6.0d
 		}
 		{
 			dependencies: [
 				"4C6BCD93DEA0B7DC"
 				"52C4538635906B7E"
-				"2582523C7629E8F4"
 			]
 			icon: "create:asurine"
 			id: "19F1809E10BAAC61"
@@ -550,21 +559,23 @@
 				type: "item"
 			}]
 			title: "Create Stones"
-			x: 0.5d
-			y: -6.0d
+			x: 4.0d
+			y: -10.0d
 		}
 		{
+			dependencies: ["04F20036D8172501"]
 			id: "2582523C7629E8F4"
 			tasks: [{
 				id: "6C5B0A5721A8E2E1"
 				item: "thermal:rich_slag"
 				type: "item"
 			}]
-			x: -0.5d
-			y: -4.0d
+			x: 8.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["19F1809E10BAAC61"]
+			icon: "minecraft:raw_iron"
 			id: "47959ED668B51DD0"
 			tasks: [{
 				id: "42E91BA854E0C990"
@@ -575,11 +586,12 @@
 						"ftbfiltersystem:filter": "item_tag(forge:raw_materials)"
 					}
 				}
+				title: "Any #forge:raw_material"
 				type: "item"
 			}]
 			title: "Raw Ores"
-			x: 2.5d
-			y: -6.0d
+			x: 8.0d
+			y: -10.0d
 		}
 		{
 			dependencies: ["2582523C7629E8F4"]
@@ -589,18 +601,89 @@
 				item: "create:crushed_raw_aluminum"
 				type: "item"
 			}]
-			x: -2.0d
-			y: -2.5d
+			x: 12.0d
+			y: -4.0d
 		}
 		{
+			dependencies: ["271A91265ACE5851"]
 			id: "6293CBBC76D73F05"
 			tasks: [{
 				id: "555F1424D0E045EF"
 				item: "tfmg:steel_ingot"
 				type: "item"
 			}]
-			x: 2.5d
-			y: 8.0d
+			x: 0.0d
+			y: 12.0d
+		}
+		{
+			dependencies: ["6DBFC6E2B2B08D29"]
+			id: "09B4A6A4CBE56493"
+			tasks: [{
+				id: "634E5E6044836873"
+				item: "vintageimprovements:enderium_sheet"
+				type: "item"
+			}]
+			x: 14.0d
+			y: 6.0d
+		}
+		{
+			dependencies: ["271A91265ACE5851"]
+			id: "76C010E5A0F1D3B8"
+			tasks: [{
+				id: "46471ECC9DCB8124"
+				item: "starbunclemania:source_fluid_bucket"
+				type: "item"
+			}]
+			x: 2.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["271A91265ACE5851"]
+			id: "758B001ECA60BFB0"
+			tasks: [{
+				id: "4E0C2D8CCAA2EFEC"
+				item: {
+					Count: 1b
+					id: "minecraft:potion"
+					tag: {
+						Potion: "ars_elemental:enderference_potion"
+					}
+				}
+				type: "item"
+			}]
+			x: 2.0d
+			y: -4.0d
+		}
+		{
+			dependencies: ["19F1809E10BAAC61"]
+			id: "04F20036D8172501"
+			tasks: [{
+				icon: "kubejs:crushed_asurine"
+				id: "4DB9220A468F5EB7"
+				item: {
+					Count: 1b
+					id: "ftbfiltersystem:smart_filter"
+					tag: {
+						"ftbfiltersystem:filter": "item_tag(kubejs:crushed_create_stones)"
+					}
+				}
+				title: "Any #kubejs:crushed_create_stones"
+				type: "item"
+			}]
+			title: "Crushed Create Stones"
+			x: 8.0d
+			y: -8.0d
+		}
+		{
+			dependencies: ["69D09EB30178ABF9"]
+			id: "52089EF528A92F00"
+			tasks: [{
+				id: "3A84464D019CAD1E"
+				item: "kubejs:steel_ingot_cast_molten_lumium"
+				type: "item"
+			}]
+			x: 14.0d
+			y: -8.0d
 		}
 	]
 	title: "Chapter 7: Quantum Mechanisms"

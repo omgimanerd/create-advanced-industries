@@ -127,7 +127,7 @@
 				"4D63CE15F77DBB4D"
 				"7D45EDB6BB83E369"
 			]
-			icon: "createteleporters:quantum_mechanism"
+			icon: "kubejs:quantum_mechanism"
 			id: "12D9ACDA50B38FCA"
 			tasks: [{
 				id: "7488AE35BAEE8695"

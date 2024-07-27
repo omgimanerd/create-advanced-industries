@@ -1,5 +1,10 @@
 // priority: 500
 
+// Levitating item crafting
+ItemEvents.dropped('placeholder', (e) => {})
+
+// TODO enderman liquid harvesting?
+
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
   const pneumaticcraft = definePneumaticcraftRecipes(e)
@@ -61,31 +66,30 @@ ServerEvents.recipes((e) => {
     .superheated()
 
   // Quantum fluid
-  e.remove({ id: 'createteleporters:quantum_fluid_recipe' })
-  e.remove({ id: 'createteleporters:tele_fluid_chorus' })
-  create
-    .mixing(Fluid.of('createteleporters:quantum_fluid', 1000), [
-      Fluid.of('starbunclemania:source_fluid', 500),
-      potionFluid('ars_elemental:enderference_potion', 500),
-    ])
-    .superheated()
+  // e.remove({ id: 'createteleporters:quantum_fluid_recipe' })
+  // e.remove({ id: 'createteleporters:tele_fluid_chorus' })
+  // create
+  //   .mixing(Fluid.of('createteleporters:quantum_fluid', 1000), [
+  //     Fluid.of('starbunclemania:source_fluid', 500),
+  //     potionFluid('ars_elemental:enderference_potion', 500),
+  //   ])
+  //   .superheated()
 
   // Quantum casing
-  e.remove({ id: 'createteleporters:quantum_casing_recipe' })
-  create.filling('createteleporters:quantum_casing', [
-    'tfmg:aluminum_block',
-    Fluid.of('createteleporters:quantum_fluid', 1000),
-  ])
+  // e.remove({ id: 'createteleporters:quantum_casing_recipe' })
+  // create.filling('createteleporters:quantum_casing', [
+  //   'tfmg:aluminum_block',
+  //   Fluid.of('createteleporters:quantum_fluid', 1000),
+  // ])
 
   // Redstone pearls, which have a chance to shatter the ender pearl.
-  e.remove({ id: 'createteleporters:redstone_pearl_recipe' })
   create
     .SequencedAssembly('kubejs:resonant_ender_pearl')
     .fill(potionFluid('quark:resilience', 25))
     .fill(Fluid.of('kubejs:molten_redstone', 180))
     .energize(40000)
     .outputs([
-      Item.of('createteleporters:redstone_pearl').withChance(4),
+      Item.of('kubejs:redstone_pearl').withChance(4),
       Item.of('kubejs:shattered_ender_pearl').withChance(1),
     ])
   // Glueing the shattered ender pearl back together.
@@ -108,18 +112,17 @@ ServerEvents.recipes((e) => {
     .press()
     .outputs('create_connected:control_chip')
 
-  // Advanced component overhaul
-  e.remove({ id: 'createteleporters:advanced_part_recipe' })
+  // Quantum chips
   create
     .SequencedAssembly(
       'vintageimprovements:enderium_sheet',
-      'createteleporters:incomplete_advanced_part'
+      'kubejs:incomplete_quantum_chip'
     )
     .deploy('create_connected:control_chip')
     .deploy('create:sturdy_sheet')
     .deploy('vintageimprovements:signalum_sheet')
     .deploy('vintageimprovements:lumium_wire')
-    .outputs('createteleporters:advanced_part')
+    .outputs('kubejs:quantum_chip')
 
   // Neural processors, similar to regular processors in chapter 5a
   e.remove({ id: 'extrastorage:raw_neural_processor' })
@@ -142,13 +145,11 @@ ServerEvents.recipes((e) => {
   )
 
   // Quantum Mechanism
-  e.remove({ id: 'createteleporters:quantum_mechanism_recipe' })
   create
     .SequencedAssembly(VIBRATION_MECHANISM, INCOMPLETE_QUANTUM_MECHANISM)
     .fill(potionFluid('quark:resilience', 250))
-    .fill(Fluid.of('createteleporters:quantum_fluid', 1000))
-    .deploy('createteleporters:advanced_part')
-    .deploy('createteleporters:redstone_pearl')
+    .deploy('kubejs:quantum_chip')
+    .deploy('kubejs:redstone_pearl')
     .deploy('extrastorage:neural_processor')
     .energize(100000)
     .outputs(QUANTUM_MECHANISM)

@@ -17,7 +17,6 @@ ClientEvents.lang('en_us', (e) => {
   e.renameItem('createaddition:seed_oil_bucket', 'Seed Oil Bucket')
   e.renameItem('createaddition:bioethanol_bucket', 'Biofuel Bucket')
   e.renameItem('sliceanddice:fertilizer_bucket', 'Liquid Fertilizer Bucket')
-  e.renameItem('createteleporters:quantum_fluid_bucket', 'Quantum Fluid Bucket')
 
   // Name this a mechanism instead of a module.
   e.renameItem('vintageimprovements:redstone_module', 'Redstone Mechanism')

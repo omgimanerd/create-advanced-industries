@@ -22,11 +22,6 @@ ItemEvents.tooltip((e) => {
     baseText: Text.gray('You can also bind the quest window to a keybind'),
   })
 
-  // Remove the weird 'Complete' text from the Quantum mechanism tooltip.
-  tooltipHelper(e, 'createteleporters:quantum_mechanism', {
-    clear: true,
-  })
-
   // Add a Create-style tooltip to the glass shaft.
   const glassCasingShiftText = $TooltipHelper.cutStringTextComponent(
     'Breaks when the system is overstressed.',

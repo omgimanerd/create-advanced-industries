@@ -30,5 +30,5 @@ const VIBRATION_MECHANISM = 'create_things_and_misc:vibration_mechanism'
 const INCOMPLETE_VIBRATION_MECHANISM =
   'create_things_and_misc:incomplete_vibration_mechanism'
 
-const QUANTUM_MECHANISM = 'createteleporters:quantum_mechanism'
-const INCOMPLETE_QUANTUM_MECHANISM = 'createteleporters:incomplete_q_mechanism'
+const QUANTUM_MECHANISM = 'kubejs:quantum_mechanism'
+const INCOMPLETE_QUANTUM_MECHANISM = 'kubejs:incomplete_quantum_mechanism'

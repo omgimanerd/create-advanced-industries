@@ -45,13 +45,14 @@ JEIEvents.hideItems((e) => {
     e.hide(`${fluid}_bucket`)
   })
 
-  // Hide intermediate mechanism items.
+  // Hide intermediate sequenced assembly items.
   e.hide('kubejs:incomplete_kinetic_mechanism')
   e.hide('kubejs:incomplete_copper_mechanism')
   e.hide('kubejs:incomplete_source_mechanism')
   e.hide('kubejs:incomplete_logistics_mechanism')
   e.hide('kubejs:incomplete_crystalline_mechanism')
-  e.hide('createteleporters:incomplete_q_mechanism')
+  e.hide('kubejs:incomplete_quantum_chip')
+  e.hide('kubejs:incomplete_quantum_mechanism')
 
   // Hide the colored Refined Storage items. Dark blue is the default.
   const colors = [

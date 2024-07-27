@@ -26,9 +26,10 @@ StartupEvents.registry('item', (e) => {
   registerMechanism('kubejs:logistics_mechanism')
   // Chapter 5b: Crystalline Mechanism
   registerMechanism('kubejs:crystalline_mechanism')
-  // Redstone Mechanisms defined by Create: Vintage Improvements
-  // Vibrational Mechanisms defined by Create: Misc and Things
-  // Quantum mechanisms defined by Create: Teleporters
+  // Chapter 5b: Redstone Mechanisms defined by Create: Vintage Improvements
+  // Chapter 6: Vibration Mechanisms defined by Create: Misc and Things
+  // Chapter 7: Quantum Mechanisms, texture from Create: Teleporters
+  registerMechanism('kubejs:quantum_mechanism')
 
   // Wooden hand used for crafting deployers
   registerItem('kubejs:wooden_hand')
@@ -95,7 +96,7 @@ StartupEvents.registry('item', (e) => {
     .texture(getTextureLocation('pneumaticcraft:pneumatic_cylinder'))
     .maxStackSize(16)
 
-  // Wire variant of Create: New Age charged items
+  // Diamond wire variant of Create: New Age charged items
   e.create('kubejs:overcharged_diamond_wire')
     .textureJson({
       layer0: getTextureLocation('createaddition:iron_wire'),
@@ -212,6 +213,10 @@ StartupEvents.registry('item', (e) => {
 
   // Shattered ender pearl
   registerItem('kubejs:shattered_ender_pearl')
+  registerItem('kubejs:redstone_pearl')
+
+  registerItem('kubejs:quantum_chip')
+  registerItem('kubejs:incomplete_quantum_chip', 'create:sequenced_assembly')
 })
 
 ItemEvents.modification((e) => {
