@@ -32,7 +32,7 @@ server-resource-packs/
 shaderpacks/
 texturepacks/
 
-XaeroWaypoints/
+XaeroWaypoints*
 
 # Individual Files
 .qmenu_opened.marker
