@@ -53,8 +53,8 @@ StartupEvents.registry('item', (e) => {
   registerItem('kubejs:steel_dust').tag('forge:dusts').tag('forge:dusts/steel')
 
   // Crushed forms of Create stones as item intermediates
-  registerItem('kubejs:crushed_crimsite')
-  registerItem('kubejs:crushed_veridium')
-  registerItem('kubejs:crushed_ochrum')
-  registerItem('kubejs:crushed_asurine')
+  registerItem('kubejs:crushed_crimsite').tag('kubejs:crushed_create_stones')
+  registerItem('kubejs:crushed_veridium').tag('kubejs:crushed_create_stones')
+  registerItem('kubejs:crushed_ochrum').tag('kubejs:crushed_create_stones')
+  registerItem('kubejs:crushed_asurine').tag('kubejs:crushed_create_stones')
 })
