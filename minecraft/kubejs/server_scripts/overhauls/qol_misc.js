@@ -148,8 +148,10 @@ ServerEvents.recipes((e) => {
   // Energized hearthstones.
   create.energizing('gag:energized_hearthstone', 'gag:hearthstone', 20000)
 
+  // Cloud in a bottle to artifact
+  e.shapeless('artifacts:cloud_in_a_bottle', 'quark:bottled_cloud')
+
   // smithing template netherite upgrade duping
 
-  // neural processor
   // drop ascended coins into a well?
 })
