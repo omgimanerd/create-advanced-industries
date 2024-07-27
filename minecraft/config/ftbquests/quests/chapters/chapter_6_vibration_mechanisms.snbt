@@ -753,6 +753,12 @@
 			]
 			id: "15B159D7F4360A0D"
 			min_width: 300
+			rewards: [{
+				count: 16
+				id: "620731E44B6211D1"
+				item: "minecraft:note_block"
+				type: "item"
+			}]
 			tasks: [{
 				id: "27F2BA4515132EF1"
 				item: "minecraft:note_block"
