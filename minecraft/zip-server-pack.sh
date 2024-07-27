@@ -14,4 +14,5 @@ zip server-pack-$(git describe --tags --abbrev=0).zip \
   '*config/jei/world/*' \
   '*kubejs/assets/kubejs/textures/fluid/__pycache__/*' \
   '*kubejs/probe*' \
-  '*mods/probejs*'
+  '*mods/probejs*' \
+  '*mods/Xaeros*'
