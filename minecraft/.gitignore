@@ -9,6 +9,7 @@ config/jei/world/
 config/embeddium-fingerprint.json
 config/packetfixer.properties
 config/quark-common.toml
+config/xaeropatreon.txt
 config/xaerominimap*
 config/xaeroworldmap*
 config/**/*.bak
