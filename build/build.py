@@ -20,6 +20,8 @@ EXCLUDE = [
     'kubejs/probe*',
     'config/jei/world*',
     'config/embeddium-fingerprint.json',
+    'config/xaerominimap*',
+    'config/xaeroworldmap*',
     '*__pycache__',
     '*.committed',
     '*.bak'
