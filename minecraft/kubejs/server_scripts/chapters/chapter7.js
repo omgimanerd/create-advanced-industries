@@ -71,11 +71,11 @@ ServerEvents.recipes((e) => {
     .superheated()
 
   // Quantum casing
-  e.replaceInput(
-    { output: 'createteleporters:quantum_casing' },
-    'create:brass_casing',
-    'tfmg:aluminum_block'
-  )
+  e.remove({ id: 'createteleporters:quantum_casing_recipe' })
+  create.filling('createteleporters:quantum_casing', [
+    'tfmg:aluminum_block',
+    Fluid.of('createteleporters:quantum_fluid', 1000),
+  ])
 
   // Redstone pearls, which have a chance to shatter the ender pearl.
   e.remove({ id: 'createteleporters:redstone_pearl_recipe' })
@@ -111,7 +111,10 @@ ServerEvents.recipes((e) => {
   // Advanced component overhaul
   e.remove({ id: 'createteleporters:advanced_part_recipe' })
   create
-    .SequencedAssembly('refinedstorage:advanced_processor')
+    .SequencedAssembly(
+      'vintageimprovements:enderium_sheet',
+      'createteleporters:incomplete_advanced_part'
+    )
     .deploy('create_connected:control_chip')
     .deploy('create:sturdy_sheet')
     .deploy('vintageimprovements:signalum_sheet')
