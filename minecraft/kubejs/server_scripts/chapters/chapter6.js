@@ -273,6 +273,9 @@ ServerEvents.recipes((e) => {
     .press()
     .outputs('apotheosis:sigil_of_unnaming')
 
+  // Syrup bottles can be energized into honey.
+  create.energizing('minecraft:honey_bottle', 'thermal:syrup_bottle', 24000)
+
   // Saturated honeycomb usage
   create.centrifuging(
     [
@@ -281,6 +284,25 @@ ServerEvents.recipes((e) => {
     ],
     'kubejs:saturated_honeycomb'
   )
+
+  // Rosin from resin
+  create
+    .mixing(
+      ['thermal:rosin', Fluid.of('thermal:latex', 50)],
+      Fluid.of('thermal:resin', 250)
+    )
+    .heated()
+  e.recipes.thermal.refinery(
+    [Item.of('thermal:rosin').withChance(0.75), Fluid.of('thermal:latex', 100)],
+    Fluid.of('thermal:resin', 200)
+  )
+  pneumaticcraft
+    .thermo_plant()
+    .fluid_input(Fluid.of('thermal:resin', 200))
+    .item_output('thermal:rosin')
+    .fluid_output(Fluid.of('thermal:latex', 100))
+    .temperature({ min_temp: 273 + 100 })
+    .pressure(1)
 
   // Custom XP Crystal
   e.remove({ id: 'thermal:tools/xp_crystal' })

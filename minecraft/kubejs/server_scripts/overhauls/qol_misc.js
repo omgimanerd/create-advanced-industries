@@ -18,9 +18,6 @@ ServerEvents.recipes((e) => {
   // Haunting cobblestone to get infested cobblestone.
   create.haunting('minecraft:infested_cobblestone', 'minecraft:cobblestone')
 
-  // Rosin from resin
-  create.mixing('thermal:rosin', Fluid.of('thermal:resin', 250)).heated()
-
   // Recipes for the unobtainable sculk blocks.
   e.shaped(
     'minecraft:sculk_catalyst',
@@ -46,9 +43,6 @@ ServerEvents.recipes((e) => {
     ],
     { T: 'apotheosis:warden_tendril', S: 'minecraft:sculk' }
   )
-
-  // Syrup bottles can be energized into honey.
-  create.energizing('minecraft:honey_bottle', 'thermal:syrup_bottle', 24000)
 
   // Another source of green dye
   create.crushing('minecraft:green_dye', 'minecraft:kelp')

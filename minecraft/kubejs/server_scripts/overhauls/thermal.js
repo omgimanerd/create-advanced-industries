@@ -280,17 +280,6 @@ ServerEvents.recipes((e) => {
   // Also add a PNCR/Create alternatives.
   e.remove({ type: 'thermal:refinery' })
   e.recipes.thermal.refinery(
-    [Item.of('thermal:rosin').withChance(0.5), Fluid.of('thermal:latex', 100)],
-    Fluid.of('thermal:resin', 200)
-  )
-  pneumaticcraft
-    .thermo_plant()
-    .fluid_input(Fluid.of('thermal:resin', 200))
-    .item_output('thermal:rosin')
-    .fluid_output(Fluid.of('thermal:latex', 100))
-    .temperature({ min_temp: 273 + 100 })
-    .pressure(1)
-  e.recipes.thermal.refinery(
     [Fluid.water(750), Fluid.of('thermal:syrup', 250)],
     Fluid.of('thermal:sap', 1000)
   )
