@@ -32,7 +32,7 @@ Ponder.registry((e) => {
        * @param {number} color
        */
       const setupBeacon = (pos, direction, height, color) => {
-        let t1 = 0
+        let t = 0
         /** @type {Internal.Direction_} */
         direction = direction === null ? Direction.UP : direction
         // Add 0.5 to the y to make the beacon beam end at the halfway point
@@ -44,27 +44,31 @@ Ponder.registry((e) => {
             .add(0.5, 0.5, 0.5)
             .relative(direction.clockWise, 0.5)
         }
-        scene.world.addElement().onRenderFirst((ctx) => {
-          const { buffer, poseStack, partialTicks } = ctx
-          poseStack.pushPose()
-          poseStack.translate(translation)
-          poseStack.mulPose(direction.rotation)
-          $BeaconRenderer.renderBeaconBeam(
-            /*poseStack=*/ poseStack,
-            /*bufferSource=*/ buffer,
-            /*beamLocation=*/ 'textures/entity/beacon_beam.png',
-            /*partialTick=*/ partialTicks,
-            /*textureScale=*/ 1,
-            /*gameTime=*/ Math.round(t1 / 4),
-            /*yOffset=*/ 0,
-            /*height=*/ height,
-            /*colors=*/ color,
-            /*beamRadius=*/ 0.25,
-            /*glowRadius=*/ 0.25
-          )
-          t1 = (t1 + 1) % 160
-          poseStack.popPose()
-        })
+        scene.world
+          .addElement()
+          .onRenderFirst((ctx) => {
+            const { buffer, poseStack, partialTicks } = ctx
+            poseStack.pushPose()
+            poseStack.translate(translation)
+            poseStack.mulPose(direction.rotation)
+            $BeaconRenderer.renderBeaconBeam(
+              /*poseStack=*/ poseStack,
+              /*bufferSource=*/ buffer,
+              /*beamLocation=*/ 'textures/entity/beacon_beam.png',
+              /*partialTick=*/ partialTicks,
+              /*textureScale=*/ 1,
+              /*gameTime=*/ t,
+              /*yOffset=*/ 0,
+              /*height=*/ height,
+              /*colors=*/ color,
+              /*beamRadius=*/ 0.25,
+              /*glowRadius=*/ 0.25
+            )
+            poseStack.popPose()
+          })
+          .onTick(() => {
+            t = (t + 1) % 80
+          })
       }
       // Set up the beacon beams to render.
       setupBeacon(beacon, null, 2, [1, 1, 1])
