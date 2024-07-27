@@ -12,7 +12,7 @@
 		dev: false
 		height: 12.0d
 		hover: [ ]
-		image: "kubejs:textures/metallurgy_bg.png"
+		image: "kubejs:textures/gui/metallurgy_bg.png"
 		rotation: 0.0d
 		width: 12.0d
 		x: 13.5d
