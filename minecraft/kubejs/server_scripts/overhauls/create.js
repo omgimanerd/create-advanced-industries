@@ -36,8 +36,8 @@ ServerEvents.recipes((e) => {
   const redefineMechanismRecipe = redefineMechanismRecipe_(e)
 
   /**
-   * IMPORTANT NOTE: const is broken inside statement blocks because Rhino does
-   * not parse it correctly!
+   * IMPORTANT NOTE: const is broken inside statement blocks because of a bug in
+   * Rhino.
    */
   ////////////////////////////////
   // Create Advanced Industries //
@@ -56,6 +56,13 @@ ServerEvents.recipes((e) => {
       }
     )
     e.replaceInput({}, 'create:brass_hand', 'kubejs:wooden_hand')
+
+    // Iron oxide dust.
+    create.splashing('kubejs:iron_oxide_dust', 'thermal:iron_dust')
+    create.mixing('thermal:iron_dust', [
+      'kubejs:iron_oxide_dust',
+      '#minecraft:coals',
+    ])
   }
 
   ////////////
@@ -941,6 +948,29 @@ ServerEvents.recipes((e) => {
     )
     e.replaceInput({ mod: 'tfmg' }, 'tfmg:slag', 'thermal:slag')
     e.replaceOutput({ mod: 'tfmg' }, 'tfmg:slag', 'thermal:slag')
+
+    // Thermite powder
+    e.remove({ id: 'tfmg:compacting/thermite_powder' })
+    e.shapeless('tfmg:thermite_powder', [
+      'kubejs:aluminum_dust',
+      'kubejs:iron_oxide_dust',
+    ])
+
+    // Thermite grenade.
+    redefineRecipe('tfmg:thermite_grenade', [
+      'createarmory:impact_nade',
+      'tfmg:thermite_powder',
+    ])
+    // Zinc grenade.
+    redefineRecipe('tfmg:zinc_grenade', [
+      'createarmory:impact_nade',
+      'kubejs:zinc_dust',
+    ])
+    // Copper grenade.
+    redefineRecipe('tfmg:copper_grenade', [
+      'createarmory:impact_nade',
+      'thermal:copper_dust',
+    ])
 
     // TODO: add efficient liquid concrete overhaul + cement
   }

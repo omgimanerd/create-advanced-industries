@@ -33,18 +33,4 @@ ServerEvents.recipes((e) => {
   // Manually added recipes for aluminum dust
   create.crushing('kubejs:aluminum_dust', 'tfmg:aluminum_ingot')
   e.smelting('tfmg:aluminum_ingot', 'kubejs:aluminum_dust')
-
-  // All recipe products of aluminum.
-
-  // Thermite powder and its prerequisite iron oxide.
-  create.splashing('kubejs:iron_oxide_dust', 'thermal:iron_dust')
-  create.mixing('thermal:iron_dust', [
-    'kubejs:iron_oxide_dust',
-    '#minecraft:coals',
-  ])
-  e.remove({ id: 'tfmg:compacting/thermite_powder' })
-  e.shapeless('tfmg:thermite_powder', [
-    'kubejs:aluminum_dust',
-    'kubejs:iron_oxide_dust',
-  ])
 })
