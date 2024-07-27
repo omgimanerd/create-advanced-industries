@@ -1,0 +1,50 @@
+// priority: 500
+
+ServerEvents.recipes((e) => {
+  const create = defineCreateRecipes(e)
+  const pneumaticcraft = definePneumaticcraftRecipes(e)
+
+  const MeltableItem = global.MeltableItem
+
+  // Aluminum overhaul
+  e.remove({ id: 'tfmg:crushing/bauxite_recycling' })
+  create
+    .pressurizing('thermal:rich_slag')
+    .secondaryFluidInput(
+      Fluid.of('tfmg:molten_slag', MeltableItem.DEFAULT_INGOT_FLUID * 4)
+    )
+    .heated()
+    .processingTime(200)
+    .outputs('create:crushed_raw_aluminum')
+  e.recipes.thermal
+    .crystallizer('create:crushed_raw_aluminum', [
+      'thermal:rich_slag',
+      Fluid.of('tfmg:molten_slag', MeltableItem.DEFAULT_INGOT_FLUID * 2),
+    ])
+    .energy(36000)
+  pneumaticcraft
+    .thermo_plant()
+    .item_input('thermal:rich_slag')
+    .fluid_input(Fluid.of('tfmg:molten_slag', MeltableItem.DEFAULT_INGOT_FLUID))
+    .temperature({ min_temp: 273 + 250 })
+    .pressure(4)
+    .item_output('create:crushed_raw_aluminum')
+
+  // Manually added recipes for aluminum dust
+  create.crushing('kubejs:aluminum_dust', 'tfmg:aluminum_ingot')
+  e.smelting('tfmg:aluminum_ingot', 'kubejs:aluminum_dust')
+
+  // All recipe products of aluminum.
+
+  // Thermite powder and its prerequisite iron oxide.
+  create.splashing('kubejs:iron_oxide_dust', 'thermal:iron_dust')
+  create.mixing('thermal:iron_dust', [
+    'kubejs:iron_oxide_dust',
+    '#minecraft:coals',
+  ])
+  e.remove({ id: 'tfmg:compacting/thermite_powder' })
+  e.shapeless('tfmg:thermite_powder', [
+    'kubejs:aluminum_dust',
+    'kubejs:iron_oxide_dust',
+  ])
+})

@@ -60,16 +60,6 @@ ServerEvents.recipes((e) => {
     ])
     .superheated()
 
-  // Control chip overhaul
-  e.remove({ id: 'create_connected:sequenced_assembly/control_chip' })
-  create
-    .SequencedAssembly('create:brass_sheet')
-    .deploy('vintageimprovements:signalum_wire')
-    .fill(potionFluid('ars_elemental:shock_potion', 720))
-    .laser(8000, 250)
-    .press()
-    .outputs('create_connected:control_chip')
-
   // Quantum fluid
   e.remove({ id: 'createteleporters:quantum_fluid_recipe' })
   e.remove({ id: 'createteleporters:tele_fluid_chorus' })
@@ -90,10 +80,21 @@ ServerEvents.recipes((e) => {
     .energize(40000)
     .outputs('createteleporters:redstone_pearl')
 
+  // Control chip overhaul
+  e.remove({ id: 'create_connected:sequenced_assembly/control_chip' })
+  create
+    .SequencedAssembly('create:brass_sheet')
+    .deploy('vintageimprovements:signalum_wire')
+    .fill(potionFluid('ars_elemental:shock_potion', 720))
+    .laser(8000, 250)
+    .press()
+    .outputs('create_connected:control_chip')
+
   // Advanced component overhaul
   e.remove({ id: 'createteleporters:advanced_part_recipe' })
   create
     .SequencedAssembly('refinedstorage:advanced_processor')
+    .deploy('create_connected:control_chip')
     .deploy('create:sturdy_sheet')
     .deploy('vintageimprovements:signalum_sheet')
     .deploy('vintageimprovements:lumium_wire')

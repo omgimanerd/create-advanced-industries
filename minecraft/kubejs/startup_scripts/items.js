@@ -201,6 +201,14 @@ StartupEvents.registry('item', (e) => {
 
   // Energized glowstone
   registerItem('kubejs:energized_glowstone')
+
+  // Iron oxide dust
+  registerItem('kubejs:iron_oxide_dust').tag('forge:dusts')
+
+  // Aluminum dust
+  registerItem('kubejs:aluminum_dust')
+    .tag('forge:dusts')
+    .tag('forge:dusts/aluminum')
 })
 
 ItemEvents.modification((e) => {
