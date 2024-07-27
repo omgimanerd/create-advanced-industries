@@ -1472,8 +1472,9 @@
 			icon: "pneumaticcraft:etching_acid_bucket"
 			id: "59A963F58BC7A631"
 			tasks: [{
-				id: "13DF592F9E07A7B3"
-				type: "checkmark"
+				id: "75A980D71F052CC5"
+				item: "pneumaticcraft:etching_acid_bucket"
+				type: "item"
 			}]
 			title: "Etching Acid Bucket"
 			x: 24.0d
