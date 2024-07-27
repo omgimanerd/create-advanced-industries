@@ -35,7 +35,7 @@ ServerEvents.recipes((e) => {
   create.energizing(
     'kubejs:energized_glowstone',
     'minecraft:glowstone_dust',
-    8000
+    64000
   )
   create
     .mixing(Fluid.of('thermal:glowstone', 250), 'kubejs:energized_glowstone')
@@ -63,29 +63,47 @@ ServerEvents.recipes((e) => {
   // Quantum fluid
   e.remove({ id: 'createteleporters:quantum_fluid_recipe' })
   e.remove({ id: 'createteleporters:tele_fluid_chorus' })
+  create
+    .mixing(Fluid.of('createteleporters:quantum_fluid', 1000), [
+      Fluid.of('starbunclemania:source_fluid', 500),
+      potionFluid('ars_elemental:enderference_potion', 500),
+    ])
+    .superheated()
 
   // Quantum casing
   e.replaceInput(
     { output: 'createteleporters:quantum_casing' },
     'create:brass_casing',
-    'thermal:invar_block'
+    'tfmg:aluminum_block'
   )
 
-  // Redstone pearls
+  // Redstone pearls, which have a chance to shatter the ender pearl.
   e.remove({ id: 'createteleporters:redstone_pearl_recipe' })
   create
     .SequencedAssembly('kubejs:resonant_ender_pearl')
     .fill(potionFluid('quark:resilience', 25))
     .fill(Fluid.of('kubejs:molten_redstone', 180))
     .energize(40000)
-    .outputs('createteleporters:redstone_pearl')
+    .outputs([
+      Item.of('createteleporters:redstone_pearl').withChance(4),
+      Item.of('kubejs:shattered_ender_pearl').withChance(1),
+    ])
+  // Glueing the shattered ender pearl back together.
+  create.deploying('minecraft:ender_pearl', [
+    'kubejs:shattered_ender_pearl',
+    'create:super_glue',
+  ])
+  create.filling('minecraft:ender_pearl', [
+    'kubejs:shattered_ender_pearl',
+    Fluid.of('create_things_and_misc:slime', 5),
+  ])
 
   // Control chip overhaul
   e.remove({ id: 'create_connected:sequenced_assembly/control_chip' })
   create
     .SequencedAssembly('create:brass_sheet')
     .deploy('vintageimprovements:signalum_wire')
-    .fill(potionFluid('ars_elemental:shock_potion', 720))
+    .fill(potionFluid('ars_elemental:shock_potion', 250))
     .laser(8000, 250)
     .press()
     .outputs('create_connected:control_chip')

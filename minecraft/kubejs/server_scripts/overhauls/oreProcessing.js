@@ -14,6 +14,13 @@ ServerEvents.tags('block', (e) => {
   }
 })
 
+ServerEvents.tags('item', (e) => {
+  e.add('kubejs:create_stone_ore_processing', 'create:asurine')
+  e.add('kubejs:create_stone_ore_processing', 'create:veridium')
+  e.add('kubejs:create_stone_ore_processing', 'create:crimsite')
+  e.add('kubejs:create_stone_ore_processing', 'create:ochrum')
+})
+
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
 

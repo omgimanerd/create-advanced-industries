@@ -196,10 +196,10 @@ StartupEvents.registry('item', (e) => {
     .glow(true)
     .displayName('Saturated Honeycomb')
 
-  // Fish hook
+  // Fish hook, fishing rod component
   registerItem('kubejs:fish_hook')
 
-  // Energized glowstone
+  // Energized glowstone, for melting to Thermal's fluid
   registerItem('kubejs:energized_glowstone')
 
   // Iron oxide dust
@@ -209,6 +209,9 @@ StartupEvents.registry('item', (e) => {
   registerItem('kubejs:aluminum_dust')
     .tag('forge:dusts')
     .tag('forge:dusts/aluminum')
+
+  // Shattered ender pearl
+  registerItem('kubejs:shattered_ender_pearl')
 })
 
 ItemEvents.modification((e) => {
