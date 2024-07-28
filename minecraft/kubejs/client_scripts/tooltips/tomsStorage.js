@@ -9,7 +9,7 @@ ItemEvents.tooltip((e) => {
       'Required to connect terminals.',
       'Linking to other cable connectors is disabled.',
     ],
-    unShiftText: '<gray><italic>Hold SHIFT for more info.</italic><gray>',
+    unShiftText: '<gray><italic>Hold SHIFT for more info.</italic></gray>',
     clear: true,
   })
   tooltipHelper(e, 'toms_storage:ts.adv_wireless_terminal', {
