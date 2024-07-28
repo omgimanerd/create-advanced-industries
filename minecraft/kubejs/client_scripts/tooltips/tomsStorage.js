@@ -20,7 +20,7 @@ ItemEvents.tooltip((e) => {
       'of the bound terminal to make it accessible from ',
       'anywhere in the same dimension.',
     ],
-    unShiftText: '<gray><italic>Hold SHIFT for more info.</italic><gray>',
+    unShiftText: '<gray><italic>Hold SHIFT for more info.</italic></gray>',
     clear: true,
   })
 })
