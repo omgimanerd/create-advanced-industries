@@ -38,57 +38,49 @@ global.EnergizedBeaconItems = {
 }
 
 // Direct from java/org/violetmoon/quark/base/util/CorundumColor.java
-global.CorundumClusterMapping = [
-  {
-    color: 'red',
+global.CorundumClusterMapping = {
+  red: {
     cluster: 'quark:red_corundum_cluster',
     beaconColor: [1, 0, 0],
   },
-  {
-    color: 'orange',
+  orange: {
     cluster: 'quark:orange_corundum_cluster',
     beaconColor: [1, 0.5, 0],
   },
-  {
-    color: 'yellow',
+  yellow: {
     cluster: 'quark:yellow_corundum_cluster',
     beaconColor: [1, 1, 0],
   },
-  {
-    color: 'lime',
+  lime: {
     cluster: 'quark:green_corundum_cluster',
     beaconColor: [0, 1, 0],
   },
-  {
-    color: 'light_blue',
+  light_blue: {
     cluster: 'quark:blue_corundum_cluster',
     beaconColor: [0, 1, 1],
   },
-  {
-    color: 'blue',
+  blue: {
     cluster: 'quark:indigo_corundum_cluster',
     beaconColor: [0, 0, 1],
   },
-  {
-    color: 'magenta',
+  magenta: {
     cluster: 'quark:violet_corundum_cluster',
     beaconColor: [1, 0, 1],
   },
-  {
-    color: 'white',
+  white: {
     cluster: 'quark:white_corundum_cluster',
     beaconColor: [1, 1, 1],
   },
-  {
-    color: 'black',
+  black: {
     cluster: 'quark:black_corundum_cluster',
     beaconColor: [0, 0, 0],
   },
-]
+}
 
 // Register the actual beacon crafting recipes.
 ;(() => {
-  for (const { color, cluster, beaconColor } of global.CorundumClusterMapping) {
+  for (const [color, data] of Object.entries(global.CorundumClusterMapping)) {
+    const { cluster, beaconColor } = data
     // Recipes for glass blocks.
     global.EnergizedBeaconCraftingRecipes.push({
       ingredient: '#forge:glass/silica',
