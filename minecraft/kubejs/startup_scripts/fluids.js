@@ -1,16 +1,5 @@
 // priority: 100
 
-/**
- *
- * @param {Internal.FoodEatenEventJS_} e
- */
-global.BlazeMilkEaten = (e) => {
-  e.item.count--
-  if (e.player) {
-    e.player.addItem('minecraft:bucket')
-  }
-}
-
 StartupEvents.registry('fluid', (e) => {
   /**
    * @param {string} id
@@ -40,20 +29,7 @@ StartupEvents.registry('fluid', (e) => {
     .thickTexture(0xbe4d25)
     .bucketColor(0xbe4d25)
     .noBlock()
-  blazeMilk.bucketItem
-    .food((food) => {
-      food
-        .hunger(1)
-        .saturation(1)
-        .effect('minecraft:fire_resistance', 300, 0, 1)
-        .alwaysEdible()
-        .fastToEat()
-        .eaten((e) => {
-          global.BlazeMilkEaten(e)
-        })
-    })
-    .tooltip(Text.gold('Where did you even milk this from?'))
-    .useAnimation('drink')
+  blazeMilk.bucketItem.tooltip(Text.gold('Where did you even milk this from?'))
 
   // Arboreal Extractors used on Ars Nouveau archwood
   registerFluid('kubejs:flourishing_archwood_sap') // Green tree
@@ -102,4 +78,7 @@ StartupEvents.registry('fluid', (e) => {
     .stillTexture('kubejs:fluid/infused_dragon_breath')
     .noBlock()
     .noBucket()
+
+  // Fluid to be extracted when enderman teleport.
+  registerFluid('kubejs:teleportation_juice').thinTexture(0x105d50).noBlock()
 })
