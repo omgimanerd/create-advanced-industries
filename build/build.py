@@ -2,6 +2,7 @@
 
 import fnmatch
 import json
+import os
 import pathlib
 import shutil
 import subprocess
@@ -14,10 +15,12 @@ INCLUDE = [
     'defaultconfigs',
     'kubejs',
     'resourcepacks',
+    'icon.png'
 ]
 
 EXCLUDE = [
     'kubejs/probe*',
+    'kubejs/startup_scripts/@recipes',
     'config/jei/world*',
     'config/embeddium-fingerprint.json',
     'config/xaerominimap*',
@@ -84,13 +87,17 @@ if __name__ == '__main__':
                 if fnmatch.fnmatch(path / name, pattern):
                     return True
             return False
-
         return list(filter(should_exclude, names))
 
-    # Copy over all necessary directories for the modpack.
-    for folder in INCLUDE:
-        shutil.copytree((MC_DIR / folder).absolute(),
-                        (OVERRIDES_DIR / folder).absolute(), ignore=ignore_callback, dirs_exist_ok=True)
+    # Copy over all necessary files for the modpack.
+    for pattern in INCLUDE:
+        target = MC_DIR / pattern
+        if target.is_dir():
+            shutil.copytree(target.absolute(),
+                            (OVERRIDES_DIR / pattern).absolute(), ignore=ignore_callback, dirs_exist_ok=True)
+        else:
+            os.makedirs((OVERRIDES_DIR / pattern).parent, exist_ok=True)
+            shutil.copyfile(target.absolute(), OVERRIDES_DIR / pattern)
 
     # Generate manifest.json
     manifest = generate_manifest(
