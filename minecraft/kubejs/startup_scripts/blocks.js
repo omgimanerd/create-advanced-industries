@@ -60,4 +60,14 @@ StartupEvents.registry('block', (e) => {
     .item((/** @type {Internal.BlockItemBuilder_} */ item) => {
       item.displayName('Warden Tendril Seed')
     })
+
+  // Register a custom block for the ender inhibitor, used in Chapter 7.
+  e.create('kubejs:ender_inhibitor')
+    .displayName('Ender Inhibitor')
+    .model('kubejs:block/ender_inhibitor')
+    .notSolid()
+    .tagBlock('create:wrench_pickup')
+    .tagBlock('minecraft:mineable/pickaxe')
+    .requiresTool(true)
+    .fullBlock(false)
 })
