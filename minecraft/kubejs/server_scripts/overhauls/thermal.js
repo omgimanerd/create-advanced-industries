@@ -229,7 +229,7 @@ ServerEvents.recipes((e) => {
       S: 'create:brass_sheet',
       Q: 'minecraft:quartz',
       T: 'create:electron_tube',
-      M: 'create:precision_mechanism',
+      M: PRECISION_MECHANISM,
     }
   )
   redefineRecipe(

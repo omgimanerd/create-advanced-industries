@@ -305,6 +305,7 @@ global.NoteBlockEventHandler = (e) => {
     if (craftingResult === undefined) continue
 
     // Successful match, replace the item on the pedestal
+    // TODO: play a different sound and display particles on the final step.
     nbt.put('itemStack', craftingResult)
     block.setEntityData(nbt)
     block.getEntity().updateBlock()

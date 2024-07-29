@@ -1133,7 +1133,7 @@ ServerEvents.recipes((e) => {
         C: 'create:brass_casing',
         S: 'create:shaft',
         N: 'create_new_age:electrical_connector',
-        M: 'tfmg:steel_mechanism',
+        M: STEEL_MECHANISM,
         L: 'vintageimprovements:laser_item',
       }
     )
