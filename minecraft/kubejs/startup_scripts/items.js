@@ -215,8 +215,20 @@ StartupEvents.registry('item', (e) => {
   registerItem('kubejs:shattered_ender_pearl')
   registerItem('kubejs:redstone_pearl')
 
+  // Quantum chips
   registerItem('kubejs:quantum_chip')
   registerItem('kubejs:incomplete_quantum_chip', 'create:sequenced_assembly')
+
+  // Magnetic Confinement Unit and Antimatter
+  e.create('kubejs:antimatter')
+    .displayName('Antimatter')
+    .parentModel('kubejs:item/antimatter')
+  e.create('kubejs:magnetic_confinement_unit')
+    .displayName('Magnetic Confinement Unit')
+    .parentModel('kubejs:item/magnetic_confinement_unit')
+  e.create('kubejs:magnetic_confinement_unit_filled')
+    .displayName('Magnetic Confinement Unit (Filled)')
+    .parentModel('kubejs:model/magnetic_confinement_unit')
 })
 
 ItemEvents.modification((e) => {

@@ -1,10 +1,5 @@
 // priority: 500
 
-// Levitating item crafting
-ItemEvents.dropped('placeholder', (e) => {})
-
-// TODO enderman liquid harvesting?
-
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
   const pneumaticcraft = definePneumaticcraftRecipes(e)

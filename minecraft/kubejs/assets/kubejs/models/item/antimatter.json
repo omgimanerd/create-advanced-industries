@@ -1,0 +1,91 @@
+{
+  "credit": "Made with Blockbench",
+  "texture_size": [64, 64],
+  "textures": {
+    "0": "kubejs:item/magnetic_confinement_unit",
+    "particle": "kubejs:item/magnetic_confinement_unit"
+  },
+  "elements": [
+    {
+      "name": "vertical",
+      "from": [8, 6, 3],
+      "to": [8, 10, 13],
+      "faces": {
+        "north": { "uv": [0, 0, 0, 1], "texture": "#0" },
+        "east": { "uv": [3, 0, 5.5, 1], "texture": "#0" },
+        "south": { "uv": [0, 0, 0, 1], "texture": "#0" },
+        "west": { "uv": [3, 1, 5.5, 2], "texture": "#0" },
+        "up": { "uv": [0, 2.5, 0, 0], "texture": "#0" },
+        "down": { "uv": [0, 0, 0, 2.5], "texture": "#0" }
+      }
+    },
+    {
+      "name": "horizontal",
+      "from": [6, 8, 3],
+      "to": [10, 8, 13],
+      "faces": {
+        "north": { "uv": [0, 0, 1, 0], "texture": "#0" },
+        "east": { "uv": [0, 0, 2.5, 0], "texture": "#0" },
+        "south": { "uv": [0, 0, 1, 0], "texture": "#0" },
+        "west": { "uv": [0, 0, 2.5, 0], "texture": "#0" },
+        "up": { "uv": [4, 4.5, 3, 2], "texture": "#0" },
+        "down": { "uv": [5, 2, 4, 4.5], "texture": "#0" }
+      }
+    },
+    {
+      "name": "diag1",
+      "from": [6, 8, 3],
+      "to": [10, 8, 13],
+      "faces": {
+        "north": { "uv": [0, 0, 1, 0], "texture": "#0" },
+        "east": { "uv": [0, 0, 2.5, 0], "texture": "#0" },
+        "south": { "uv": [0, 0, 1, 0], "texture": "#0" },
+        "west": { "uv": [0, 0, 2.5, 0], "texture": "#0" },
+        "up": { "uv": [1, 2.5, 0, 0], "texture": "#0" },
+        "down": { "uv": [2, 0, 1, 2.5], "texture": "#0" }
+      }
+    },
+    {
+      "name": "diag2",
+      "from": [8, 6, 3],
+      "to": [8, 10, 13],
+      "faces": {
+        "north": { "uv": [0, 0, 0, 1], "texture": "#0" },
+        "east": { "uv": [3, 4.5, 5.5, 5.5], "texture": "#0" },
+        "south": { "uv": [0, 0, 0, 1], "texture": "#0" },
+        "west": { "uv": [0, 5, 2.5, 6], "texture": "#0" },
+        "up": { "uv": [0, 2.5, 0, 0], "texture": "#0" },
+        "down": { "uv": [0, 0, 0, 2.5], "texture": "#0" }
+      }
+    }
+  ],
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [-177.12, -89.62, -62.48],
+      "translation": [0, -0.5, -2],
+      "scale": [0.75, 0.75, 0.75]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [-177.12, -89.62, -62.48],
+      "translation": [0, -0.5, -2],
+      "scale": [0.75, 0.75, 0.75]
+    },
+    "firstperson_righthand": {
+      "rotation": [89.63, -89.62, -62.48],
+      "translation": [0, 0.5, -2],
+      "scale": [0.75, 0.75, 0.75]
+    },
+    "firstperson_lefthand": {
+      "rotation": [89.63, -89.62, -62.48],
+      "translation": [0, 0.5, -2],
+      "scale": [0.75, 0.75, 0.75]
+    },
+    "gui": {
+      "rotation": [12.5, 125, 0]
+    },
+    "fixed": {
+      "rotation": [0, 90, 0],
+      "translation": [0, 0, -1.5]
+    }
+  }
+}
