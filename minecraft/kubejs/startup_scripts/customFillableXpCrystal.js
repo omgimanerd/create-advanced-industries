@@ -21,6 +21,17 @@ global.levelToXp = (level) => {
 
 /**
  * https://minecraft.fandom.com/wiki/Experience#Leveling_up
+ * @param {number} xp
+ * @returns {number}
+ */
+global.xpToLevel = (xp) => {
+  if (xp <= 352) return Math.sqrt(xp + 9) - 3
+  if (xp <= 1507) return 8.1 + Math.sqrt(0.4 * (xp - 7839 / 40))
+  return 325 / 18 + Math.sqrt((2 / 9) * (xp - 54215 / 72))
+}
+
+/**
+ * https://minecraft.fandom.com/wiki/Experience#Leveling_up
  * @param {number} level
  * @returns {number}
  */
@@ -48,7 +59,7 @@ global.customXpCrystalCapacity = (itemStack) => {
  */
 global.customXpCrystalContents = (itemStack) => {
   if (itemStack.nbt === null) return 0
-  return itemStack.nbt.getInt('Xp') ?? 0
+  return itemStack.nbt.getInt('Xp')
 }
 
 StartupEvents.postInit(() => {
