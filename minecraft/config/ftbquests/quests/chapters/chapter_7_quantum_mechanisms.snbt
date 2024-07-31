@@ -34,8 +34,8 @@
 				type: "item"
 			}]
 			title: "Complete: Quantum Mechanisms"
-			x: 16.0d
-			y: 10.0d
+			x: 14.0d
+			y: -2.0d
 		}
 		{
 			dependencies: ["5118C68CFF84C19C"]
@@ -45,8 +45,8 @@
 				item: "thermal:enderium_ingot"
 				type: "item"
 			}]
-			x: 10.0d
-			y: 6.0d
+			x: 12.0d
+			y: -4.0d
 		}
 		{
 			dependencies: [
@@ -59,8 +59,8 @@
 				item: "thermal:lumium_ingot"
 				type: "item"
 			}]
-			x: 16.0d
-			y: -10.0d
+			x: 18.0d
+			y: 8.0d
 		}
 		{
 			dependencies: ["181130507B8EAB31"]
@@ -71,7 +71,7 @@
 				type: "item"
 			}]
 			x: 10.0d
-			y: 4.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["271A91265ACE5851"]
@@ -87,7 +87,7 @@
 			}]
 			title: "Find a Dormant Vent"
 			x: 0.0d
-			y: -10.0d
+			y: 8.0d
 		}
 		{
 			dependencies: ["5EA0A56E4C6E4C4F"]
@@ -103,65 +103,40 @@
 			}]
 			title: "Activating a Molten Vent"
 			x: 2.0d
-			y: -10.0d
+			y: 8.0d
 		}
 		{
-			dependencies: [
-				"758B001ECA60BFB0"
-				"76C010E5A0F1D3B8"
-			]
-			id: "2903A856EA2DAA03"
-			tasks: [{
-				id: "3F741E721BA82668"
-				item: "kubejs:quantum_fluid_bucket"
-				type: "item"
-			}]
-			x: 4.0d
-			y: -4.0d
-		}
-		{
-			dependencies: [
-				"2903A856EA2DAA03"
-				"2BD524B38AA8658C"
-			]
-			id: "446AD2402AFE378C"
-			tasks: [{
-				id: "0A9059817812D0A2"
-				item: "kubejs:quantum_casing"
-				type: "item"
-			}]
-			x: 6.0d
-			y: -2.0d
-		}
-		{
+			dependencies: ["2A407653C768CC06"]
 			id: "1F39D804C476D822"
 			tasks: [{
 				id: "7D8734C51909CB1D"
 				item: "thermal:bronze_ingot"
 				type: "item"
 			}]
-			x: 18.0d
-			y: -6.0d
+			x: 19.5d
+			y: 4.0d
 		}
 		{
+			dependencies: ["2A407653C768CC06"]
 			id: "7996698D6208A153"
 			tasks: [{
 				id: "03B54D9FF4060B3F"
 				item: "thermal:constantan_ingot"
 				type: "item"
 			}]
-			x: 19.0d
-			y: -6.0d
+			x: 20.5d
+			y: 4.0d
 		}
 		{
+			dependencies: ["2A407653C768CC06"]
 			id: "73E62C5DB2ADFC3B"
 			tasks: [{
 				id: "73AF65CD38AB3DF6"
 				item: "thermal:electrum_ingot"
 				type: "item"
 			}]
-			x: 20.0d
-			y: -6.0d
+			x: 21.5d
+			y: 4.0d
 		}
 		{
 			dependencies: ["6293CBBC76D73F05"]
@@ -171,8 +146,8 @@
 				item: "createutilities:void_steel_ingot"
 				type: "item"
 			}]
-			x: 2.0d
-			y: 12.0d
+			x: 4.0d
+			y: 2.0d
 		}
 		{
 			dependencies: ["5BA8FDECCF51342E"]
@@ -182,8 +157,8 @@
 				item: "kubejs:redstone_pearl"
 				type: "item"
 			}]
-			x: 6.0d
-			y: 8.0d
+			x: 10.0d
+			y: -2.0d
 		}
 		{
 			dependencies: [
@@ -198,7 +173,7 @@
 				type: "item"
 			}]
 			x: 16.0d
-			y: 2.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["56A24AF47C360AC9"]
@@ -208,8 +183,8 @@
 				item: "extrastorage:neural_processor"
 				type: "item"
 			}]
-			x: 10.0d
-			y: 10.0d
+			x: 14.0d
+			y: 0.0d
 		}
 		{
 			dependencies: ["3832D225F6D0C417"]
@@ -219,8 +194,8 @@
 				item: "extrastorage:raw_neural_processor"
 				type: "item"
 			}]
-			x: 8.0d
-			y: 10.0d
+			x: 10.0d
+			y: 0.0d
 		}
 		{
 			dependencies: [
@@ -233,8 +208,8 @@
 				item: "createutilities:graviton_tube"
 				type: "item"
 			}]
-			x: 6.0d
-			y: 10.0d
+			x: 8.0d
+			y: 0.0d
 		}
 		{
 			dependencies: ["6A59EF7246F87789"]
@@ -244,8 +219,8 @@
 				item: "createutilities:void_casing"
 				type: "item"
 			}]
-			x: 8.0d
-			y: 12.0d
+			x: 10.0d
+			y: 2.0d
 		}
 		{
 			dependencies: ["177A034E2C455510"]
@@ -255,8 +230,8 @@
 				item: "createutilities:void_steel_block"
 				type: "item"
 			}]
-			x: 4.0d
-			y: 12.0d
+			x: 6.0d
+			y: 2.0d
 		}
 		{
 			dependencies: ["554804ECF1EC02C8"]
@@ -266,8 +241,8 @@
 				item: "createutilities:void_steel_sheet"
 				type: "item"
 			}]
-			x: 6.0d
-			y: 12.0d
+			x: 8.0d
+			y: 2.0d
 		}
 		{
 			dependencies: ["271A91265ACE5851"]
@@ -277,8 +252,8 @@
 				item: "minecraft:glowstone_dust"
 				type: "item"
 			}]
-			x: 2.0d
-			y: 0.0d
+			x: 0.0d
+			y: -10.0d
 		}
 		{
 			dependencies: ["1648D1E853C0A4C8"]
@@ -289,7 +264,7 @@
 				type: "item"
 			}]
 			x: 4.0d
-			y: 6.0d
+			y: -2.0d
 		}
 		{
 			dependencies: ["2D68C948FA0CB936"]
@@ -300,7 +275,7 @@
 				type: "item"
 			}]
 			x: 6.0d
-			y: 6.0d
+			y: -2.0d
 		}
 		{
 			dependencies: ["5BA8FDECCF51342E"]
@@ -311,7 +286,7 @@
 				type: "item"
 			}]
 			x: 8.0d
-			y: 6.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["271A91265ACE5851"]
@@ -322,7 +297,7 @@
 				type: "item"
 			}]
 			x: 2.0d
-			y: 6.0d
+			y: -2.0d
 		}
 		{
 			dependencies: ["271A91265ACE5851"]
@@ -333,7 +308,7 @@
 				type: "item"
 			}]
 			x: 2.0d
-			y: 10.0d
+			y: 0.0d
 		}
 		{
 			dependencies: ["271A91265ACE5851"]
@@ -344,7 +319,7 @@
 				type: "item"
 			}]
 			x: 2.0d
-			y: 4.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["2F70978FF48B905A"]
@@ -355,7 +330,7 @@
 				type: "item"
 			}]
 			x: 4.0d
-			y: 4.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["2C8BDCCE49CD6DBC"]
@@ -366,7 +341,7 @@
 				type: "item"
 			}]
 			x: 6.0d
-			y: 4.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["4667FF99D0ED1BE1"]
@@ -377,7 +352,7 @@
 				type: "item"
 			}]
 			x: 8.0d
-			y: 4.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["2C8BDCCE49CD6DBC"]
@@ -394,7 +369,7 @@
 				type: "item"
 			}]
 			x: 4.0d
-			y: 2.0d
+			y: -8.0d
 		}
 		{
 			dependencies: [
@@ -407,8 +382,8 @@
 				item: "create_connected:control_chip"
 				type: "item"
 			}]
-			x: 14.0d
-			y: 2.0d
+			x: 16.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["0B8142C492A37CAB"]
@@ -419,7 +394,7 @@
 				type: "item"
 			}]
 			x: 6.0d
-			y: 2.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["09550BF1249B9570"]
@@ -430,7 +405,7 @@
 				type: "item"
 			}]
 			x: 8.0d
-			y: 2.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["24C1F849823D87CB"]
@@ -447,7 +422,7 @@
 				type: "item"
 			}]
 			x: 10.0d
-			y: 2.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["1563709AEFE5968F"]
@@ -457,8 +432,8 @@
 				item: "kubejs:energized_glowstone"
 				type: "item"
 			}]
-			x: 14.0d
-			y: 0.0d
+			x: 10.0d
+			y: -10.0d
 		}
 		{
 			dependencies: ["107558182C78B789"]
@@ -469,7 +444,7 @@
 				type: "item"
 			}]
 			x: 12.0d
-			y: 4.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["36CAB20DE512A370"]
@@ -480,18 +455,7 @@
 				type: "item"
 			}]
 			x: 14.0d
-			y: 4.0d
-		}
-		{
-			dependencies: ["029D7DEF789032E4"]
-			id: "2BD524B38AA8658C"
-			tasks: [{
-				id: "73FA2B5ABDBAAF73"
-				item: "tfmg:aluminum_block"
-				type: "item"
-			}]
-			x: 8.0d
-			y: -4.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["1ED09B0DF667E2FB"]
@@ -501,8 +465,8 @@
 				item: "tfmg:aluminum_ingot"
 				type: "item"
 			}]
-			x: 10.0d
-			y: -4.0d
+			x: 12.0d
+			y: 4.0d
 		}
 		{
 			dependencies: [
@@ -516,7 +480,7 @@
 				type: "item"
 			}]
 			x: 6.0d
-			y: -6.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["271A91265ACE5851"]
@@ -527,7 +491,7 @@
 				type: "item"
 			}]
 			x: 2.0d
-			y: -8.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["4C6BCD93DEA0B7DC"]
@@ -538,7 +502,7 @@
 				type: "item"
 			}]
 			x: 4.0d
-			y: -6.0d
+			y: 4.0d
 		}
 		{
 			dependencies: [
@@ -559,8 +523,8 @@
 				type: "item"
 			}]
 			title: "Create Stones"
-			x: 4.0d
-			y: -10.0d
+			x: 2.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["04F20036D8172501"]
@@ -571,7 +535,7 @@
 				type: "item"
 			}]
 			x: 8.0d
-			y: -6.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["19F1809E10BAAC61"]
@@ -590,8 +554,8 @@
 				type: "item"
 			}]
 			title: "Raw Ores"
-			x: 8.0d
-			y: -10.0d
+			x: 4.0d
+			y: 8.0d
 		}
 		{
 			dependencies: ["2582523C7629E8F4"]
@@ -601,8 +565,8 @@
 				item: "create:crushed_raw_aluminum"
 				type: "item"
 			}]
-			x: 12.0d
-			y: -4.0d
+			x: 10.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["271A91265ACE5851"]
@@ -612,8 +576,8 @@
 				item: "tfmg:steel_ingot"
 				type: "item"
 			}]
-			x: 0.0d
-			y: 12.0d
+			x: 2.0d
+			y: 2.0d
 		}
 		{
 			dependencies: ["6DBFC6E2B2B08D29"]
@@ -624,21 +588,10 @@
 				type: "item"
 			}]
 			x: 14.0d
-			y: 6.0d
+			y: -4.0d
 		}
 		{
-			dependencies: ["271A91265ACE5851"]
-			id: "76C010E5A0F1D3B8"
-			tasks: [{
-				id: "46471ECC9DCB8124"
-				item: "starbunclemania:source_fluid_bucket"
-				type: "item"
-			}]
-			x: 2.0d
-			y: -2.0d
-		}
-		{
-			dependencies: ["271A91265ACE5851"]
+			dependencies: ["2A407653C768CC06"]
 			id: "758B001ECA60BFB0"
 			tasks: [{
 				id: "4E0C2D8CCAA2EFEC"
@@ -651,8 +604,8 @@
 				}
 				type: "item"
 			}]
-			x: 2.0d
-			y: -4.0d
+			x: 20.5d
+			y: 5.0d
 		}
 		{
 			dependencies: ["19F1809E10BAAC61"]
@@ -672,7 +625,7 @@
 			}]
 			title: "Crushed Create Stones"
 			x: 8.0d
-			y: -8.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["69D09EB30178ABF9"]
@@ -682,8 +635,89 @@
 				item: "kubejs:steel_ingot_cast_molten_lumium"
 				type: "item"
 			}]
+			x: 18.0d
+			y: -10.0d
+		}
+		{
+			dependencies: ["3699DD3B91E59D8D"]
+			id: "74EA73860D823AD9"
+			tasks: [{
+				id: "14C49AA9D803759F"
+				item: "kubejs:shattered_ender_pearl"
+				type: "item"
+			}]
+			x: 10.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"0FD4E6E4734AB1D6"
+				"029D7DEF789032E4"
+				"6DBFC6E2B2B08D29"
+			]
+			id: "5C74FBA414C21479"
+			tasks: [{
+				id: "4B586B3A097CD63D"
+				item: "kubejs:ender_inhibitor"
+				type: "item"
+			}]
+			x: 12.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["533ED73E97389A6A"]
+			id: "2A407653C768CC06"
+			tasks: [{
+				id: "5A54F6DAEE3A4D19"
+				item: "tfmg:thermite_powder"
+				type: "item"
+			}]
 			x: 14.0d
-			y: -8.0d
+			y: 6.0d
+		}
+		{
+			dependencies: ["5C74FBA414C21479"]
+			id: "58B39574A3117D0D"
+			tasks: [{
+				id: "6EAE0B554B01EF0D"
+				item: "kubejs:teleportation_juice_bucket"
+				type: "item"
+			}]
+			x: 14.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["029D7DEF789032E4"]
+			id: "533ED73E97389A6A"
+			tasks: [{
+				id: "5E7C9866654C26E3"
+				item: "kubejs:aluminum_dust"
+				type: "item"
+			}]
+			x: 12.0d
+			y: 6.0d
+		}
+		{
+			dependencies: ["228C3290FC55C851"]
+			id: "7309AC13830BCDE1"
+			tasks: [{
+				id: "2A0C7216C830FC65"
+				item: "kubejs:magnetic_confinement_unit_filled"
+				type: "item"
+			}]
+			x: 16.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["029D7DEF789032E4"]
+			id: "228C3290FC55C851"
+			tasks: [{
+				id: "6A3F102BA6056FE2"
+				item: "kubejs:magnetic_confinement_unit"
+				type: "item"
+			}]
+			x: 14.0d
+			y: 4.0d
 		}
 	]
 	title: "Chapter 7: Quantum Mechanisms"
