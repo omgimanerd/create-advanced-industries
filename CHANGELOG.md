@@ -1,5 +1,63 @@
 # Changelog
 
+## v0.0.12-playtest
+
+### New Mods / Major Changes
+  - Added a placeholder and WIP Chapter 7.
+  - Add Xaero's World Map mod.
+  - Add Xaero's Minimap mod.
+  - Removed Create: Teleporters.
+  - Remove Chapter 5c and vastly simplify Redstone Mechanisms. Move complex
+    signalum recipe to chapter 7.
+  - Add Integrated Dungeons and Structure v1.10.1
+  - Update JEI to latest version 15.8.0.16
+  - Migrated all mod to curseforge.
+
+### Tweaks and Changes
+- Overhaul Void items from Create Utilities.
+- Make etching acid quest require a bucket of etching acid.
+- Add a graphic for ESM and note block resonance crafting.
+- Move thermite recipe overhauls and adjust TFMG grenade recipes.
+- Add items for iron oxide dust and aluminum dust and recipes for aluminum
+  processing.
+- Add qol recipe for cloud in a bottle artifact.
+- Add overhaul for Graviton tubes.
+- Adjust XP crystal recipe to use rosin instead.
+- Add an energized beacon crafting recipe alternative for energized glowstone.
+- Change loot and light level requirement of warden tendril seeds.
+- Adjust hardened planks recipe to consume far more creosote oil.
+- Add a pyrolyzer recipe for coal coking.
+- Add alternative pathway via lightning strike to get magnetite blocks.
+- Show Create Central Kitchen Dragon's breath in JEI.
+- Adjust reinforced deepslate recipe to reward automation more.
+- Make the Tom's Simple Storage connectors rotatable via the Create wrench.
+- Make Tom's Simple Storage blocks wrenchable.
+- Overhaul void steel and void steel sheet recipes.
+- Fix scaling of automated salvaging recipes. Add back manual salvaging recipes.
+- Tweak coke oven recipe to yield 9 ovens.
+- Implement custom JEI category for Void Steel gravity crushing.
+- Adjust sourceberry recipe to yield slightly more source.
+
+### Bugfixes
+- Fix multiple bugs with the custom experience crystal where it wouldn't
+  correctly level the player and allowed a filled crystal to dupe XP.
+- Disable ash drops from mobs.
+- Remove faulty blaze milk drinking code and add teleportation juice fluid.
+- Fix typo in toms storage tooltip.
+- Fix error in invocation of parseTextFormat
+- Add note block quest reward to chapter 6
+- Add intermediate item for gem slates to fix conflicting sequenced assembly
+  recipes.
+- Fix electrical connector recipe conflicts by adding an intermediate item for
+  spool crafting and removing common end sequence step from electrical
+  connectors.
+- Fix Chapter 5A's oil bucket quest requirement.
+- Change green dye recipe to kelp crushing since blasting recipes don't work.
+- Remove broken recipes for raw dough compacting.
+- Disable mixin.perf.dynamic_resources modern fix setting since it breaks
+  Refined Storage's cable covers.
+
+
 ## v0.0.11-playtest
 
 ### New Mods / Major Updates
@@ -172,4 +230,3 @@
 ## v0.0.5-playtest
 
 - Overhauled metallurgy with custom metal casting molds.
-- Added WIP Chapter 6 content
