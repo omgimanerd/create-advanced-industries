@@ -35,18 +35,19 @@ global.customXpCrystalOnDrain = (itemStack, resource, simulate) => {
 /**
  * Right click event handler for the XP crystal.
  *
- * There are several key nuances for this function to work. The ONLY reliable
- * information about the player level is what Minecraft stores:
- *   - player.experienceLevel: the numerical level on the exp  bar
+ * There are several key nuances about the player's experience bar. The ONLY
+ * reliable information about the player level is what Minecraft stores:
+ *   - player.experienceLevel: the numerical level on the exp bar
  *   - player.experienceProgress: a float representing the fullness of the bar
- * Because of this adding and subtracting integer XP points may not level the
- * player even if the total XP point value equals the XP required at that level.
+ * Because of this, adding and subtracting integer XP points may not level the
+ * player correctly even if the total XP point value equals the XP required at
+ * that level.
  *
  * A key example is the following commands, run with an empty XP bar
  *   /xp add @a 20 points
  *   /xp add @a -4 points
- * At 16 points, the player should be at level 2, but this will put the player
- * with a numerical level of 1, but with the XP bar filled due to floating point
+ * At 16 points, the player should be at level 2, but this will set the player
+ * to a numerical level of 1 with the XP bar fully filled due to floating point
  * error.
  *
  * Additionally, KubeJS attempts to store values like player.xp, which should
@@ -56,9 +57,9 @@ global.customXpCrystalOnDrain = (itemStack, resource, simulate) => {
  *
  * As a consequence of this, the only reliable way to get the player's total XP
  * is to compute it yourself from player.experienceLevel and
- * player.experienceProgress. The only reliable way to set the player's level
- * and XP is to convert the given integral XP point value to the player level +
- * remaining XP.
+ * player.experienceProgress using the experience conversion formulas. The only
+ * reliable way to set the player's level and XP is to convert the given
+ * integral XP point value to the player level + remaining XP.
  *
  * @param {Internal.ItemClickedEventJS_}
  */
