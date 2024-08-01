@@ -33,11 +33,6 @@ ItemEvents.tooltip((e) => {
     unShiftText: holdShift(false),
   })
 
-  // TODO: Resolve when Create: Encased updates and fixes the bug.
-  tooltipHelper(e, 'create:fluid_pipe', {
-    baseText: Text.red('Known Issue: Do not Ponder or your game will crash'),
-  })
-
   // Neat utility to display NBT in the tooltip, debug only, remove for the 1.0
   // release.
   e.addAdvancedToAll((item, _, text) => {
