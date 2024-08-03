@@ -1,11 +1,6 @@
 // priority: 100
 // Recipe overhauls for Chapter 4 progression.
 
-ServerEvents.tags('item', (e) => {
-  e.add('kubejs:screwdriver', 'tfmg:screwdriver')
-  e.add('kubejs:screwdriver', 'kubejs:unbreakable_screwdriver')
-})
-
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
   const redefineRecipe = redefineRecipe_(e)
@@ -213,13 +208,6 @@ ServerEvents.recipes((e) => {
     .turning(['64x tfmg:screw', 'kubejs:steel_dust'], 'tfmg:steel_block')
     .processingTime(100)
 
-  // Unbreakable screwdriver, only easily accessible with Chapter 5b automation
-  e.recipes.ars_nouveau.enchanting_apparatus(
-    Array(8).fill(enchantedBook('minecraft:unbreaking', 8)),
-    'tfmg:screwdriver',
-    Item.of('kubejs:unbreakable_screwdriver', { Unbreakable: true })
-  )
-
   // Steel mechanism overhaul
   e.remove({ id: 'tfmg:sequenced_assembly/steel_mechanism' })
   create
@@ -228,7 +216,7 @@ ServerEvents.recipes((e) => {
     .deploy('create:sturdy_sheet')
     .press()
     .deploy('tfmg:screw')
-    .deploy('#kubejs:screwdriver')
+    .deploy('tfmg:screwdriver')
     .loops(2)
     .outputs(STEEL_MECHANISM)
 })

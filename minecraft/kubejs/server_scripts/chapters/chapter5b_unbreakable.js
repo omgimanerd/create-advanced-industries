@@ -2,6 +2,7 @@
 // Crafting the unbreakable charm.
 
 ServerEvents.recipes((e) => {
+  //  Whitelisted items that can be made unbreaking with the Codex Indestructia
   const whitelisted = {
     'tfmg:screwdriver': true,
     'kubejs:diamond_saw_blade': true,
@@ -39,4 +40,20 @@ ServerEvents.recipes((e) => {
       })
     }
   })
+
+  e.recipes.ars_nouveau.enchanting_apparatus(
+    [
+      'minecraft:netherite_upgrade_smithing_template',
+      enchantedBook('minecraft:unbreaking', 8),
+      'minecraft:netherite_ingot',
+      enchantedBook('minecraft:unbreaking', 8),
+      'minecraft:netherite_upgrade_smithing_template',
+      enchantedBook('minecraft:unbreaking', 8),
+      'minecraft:netherite_ingot',
+      enchantedBook('minecraft:unbreaking', 8),
+    ],
+    'minecraft:book',
+    'kubejs:codex_indestructia',
+    8000
+  )
 })

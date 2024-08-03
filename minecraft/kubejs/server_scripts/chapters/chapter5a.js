@@ -662,21 +662,14 @@ ServerEvents.recipes((e) => {
     { D: 'thermal:diamond_dust', S: 'thermal:saw_blade' }
   )
 
-  // The unbreakable diamond saw blade is not easily accessible until chapter 5b
-  e.recipes.ars_nouveau.enchanting_apparatus(
-    Array(8).fill(enchantedBook('minecraft:unbreaking', 8)),
-    'kubejs:diamond_saw_blade',
-    Item.of('kubejs:unbreakable_diamond_saw_blade', { Unbreakable: true })
-  )
-
   // Diamond dust can be recrystallized into diamonds
   // Recipe defined in overhauls/thermal.js
 
   // Silicon wafer cutting
   create
     .SequencedAssembly('refinedstorage:silicon')
-    .deploy('#kubejs:diamond_saw_blade')
-    .fill(Fluid.of('pneumaticcraft:lubricant', 100))
+    .deploy('kubejs:diamond_saw_blade')
+    .fill(Fluid.of('pneumaticcraft:lubricant', 25))
     .loops(4)
     .outputs('4x kubejs:silicon_wafer')
 

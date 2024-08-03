@@ -2094,44 +2094,6 @@
 			y: 28.5d
 		}
 		{
-			dependencies: ["4B227421760445CA"]
-			id: "0DBFA5FED47F56BE"
-			invisible: true
-			optional: true
-			rewards: [{
-				count: 64
-				id: "4FA73349D2B773BF"
-				item: "create:experience_nugget"
-				type: "item"
-			}]
-			tasks: [{
-				id: "3B85C4E49CC7B42D"
-				item: "kubejs:unbreakable_screwdriver"
-				type: "item"
-			}]
-			x: 12.0d
-			y: 19.0d
-		}
-		{
-			dependencies: ["4B227421760445CA"]
-			id: "151287E41879C60B"
-			invisible: true
-			optional: true
-			rewards: [{
-				count: 64
-				id: "39F68AF47217241D"
-				item: "create:experience_nugget"
-				type: "item"
-			}]
-			tasks: [{
-				id: "2750DA2E7FF523C1"
-				item: "kubejs:unbreakable_diamond_saw_blade"
-				type: "item"
-			}]
-			x: 14.0d
-			y: 21.0d
-		}
-		{
 			dependencies: ["05ED3720FD924A0F"]
 			description: ["Run the amethyst shards through a belt grinder to get polished amethyst."]
 			id: "641E68BA777D6548"
@@ -2142,6 +2104,32 @@
 			}]
 			x: -6.0d
 			y: 23.0d
+		}
+		{
+			dependencies: ["4B227421760445CA"]
+			description: ["Combining the Codex Indestructia with an item in any crafting grid will make that item indestructible."]
+			id: "0668F7B070828954"
+			invisible: true
+			optional: true
+			rewards: [{
+				id: "466DA06471948534"
+				item: {
+					Count: 1b
+					id: "tfmg:screwdriver"
+					tag: {
+						Damage: 0
+						Unbreakable: 1b
+					}
+				}
+				type: "item"
+			}]
+			tasks: [{
+				id: "18C5506C3E6D44A3"
+				item: "kubejs:codex_indestructia"
+				type: "item"
+			}]
+			x: 14.0d
+			y: 21.0d
 		}
 	]
 	title: "Chapter 5b: Crystalline Mechanisms"

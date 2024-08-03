@@ -34,15 +34,6 @@ StartupEvents.registry('item', (e) => {
   // Wooden hand used for crafting deployers
   registerItem('kubejs:wooden_hand')
 
-  // Unbreakable screwdriver for crafting steel mechanisms
-  e.create('kubejs:unbreakable_screwdriver')
-    .texture(getTextureLocation('tfmg:screwdriver'))
-    .displayName('Unbreakable Screwdriver')
-    .tooltip(Text.green('An unbreakable screwdriver!'))
-    .glow(true)
-    .fireResistant(true)
-    .maxDamage(0)
-
   // Intermediate item for wire spools
   e.create('kubejs:intermediate_spool', 'create:sequenced_assembly')
     .texture(getTextureLocation('createaddition:spool'))
@@ -58,19 +49,6 @@ StartupEvents.registry('item', (e) => {
     .displayName('Diamond Saw Blade')
     .fireResistant(true)
     .maxDamage(64)
-    .tag('kubejs:diamond_saw_blade')
-    .unstackable()
-  e.create('kubejs:unbreakable_diamond_saw_blade')
-    .textureJson({
-      layer0: getTextureLocation('thermal:saw_blade'),
-    })
-    .color(0xaffffa)
-    .displayName('Unbreakable Diamond Saw Blade')
-    .tooltip(Text.green("An unbreakable diamond saw blade. It's quite sharp."))
-    .fireResistant(true)
-    .glow(true)
-    .maxDamage(0)
-    .tag('kubejs:diamond_saw_blade')
     .unstackable()
 
   // Silicon wafers produced from cutting silicon
@@ -128,7 +106,7 @@ StartupEvents.registry('item', (e) => {
     .texture(getTextureLocation('quark:ancient_tome'))
     .glow(true)
     .displayName('Codex Indestructia')
-    .tooltip(Text.green('Craft together with a tool to make it indestructible'))
+    .tooltip(Text.green('Craft together with a tool to make it unbreakable.'))
 
   // Elemental air gem
   registerItem('kubejs:topaz')
