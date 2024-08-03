@@ -12,11 +12,19 @@ StartupEvents.registry('enchantment', (e) => {
     .maxLevel(5) // This is overridden by Apotheosis's enchantments.cfg
     .category(
       $EnchantmentCategory.create('food', (i) => {
-        return i.isEdible() && i.id !== 'artifacts:eternal_steak'
+        return (
+          i.isEdible() &&
+          i.id !== 'artifacts:eternal_steak' &&
+          i.id !== 'artifacts:everlasting_beef'
+        )
       })
     )
     .canEnchant((/** @type {Internal.ItemStack_} */ i) => {
-      return i.isEdible() && i.id !== 'artifacts:eternal_steak'
+      return (
+        i.isEdible() &&
+        i.id !== 'artifacts:eternal_steak' &&
+        i.id !== 'artifacts:everlasting_beef'
+      )
     })
     .displayName('Nutrient Infusion')
 })

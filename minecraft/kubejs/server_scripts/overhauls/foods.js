@@ -18,6 +18,7 @@ ServerEvents.tags('item', (e) => {
   // Tag all enchantable foods.
   for (const food of Utils.getRegistryIds('item')) {
     if (food === 'artifacts:eternal_steak') continue
+    if (food === 'artifacts:everlasting_beef') continue
     if (Item.of(food).isEdible()) {
       e.add('kubejs:enchantable_foods', food)
     }

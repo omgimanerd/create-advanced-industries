@@ -84,7 +84,11 @@ JEIAddedEvents.registerRecipes((e) => {
   const recipes = ingredientManager.allItemStacks
     .stream()
     .filter((itemStack) => {
-      return itemStack.isEdible() && itemStack.id !== 'artifacts:eternal_steak'
+      return (
+        itemStack.isEdible() &&
+        itemStack.id !== 'artifacts:eternal_steak' &&
+        itemStack.id !== 'artifacts:everlasting_beef'
+      )
     })
     .map((itemStack) => {
       return createAnvilRecipe(

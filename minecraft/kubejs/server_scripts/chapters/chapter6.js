@@ -450,7 +450,11 @@ ServerEvents.recipes((e) => {
     'kubejs:xp_condenser'
   )
 
-  // Provide a way to get Eternal Steak with a level 100 enchant
+  // Provide a way to get Everlasting Beef / Eternal Steak with a level 100
+  // enchantment.
+  e.recipes.apotheosis
+    .enchanting('minecraft:beef', 'artifacts:everlasting_beef')
+    .requirements({ eterna: 50, quanta: 60, arcana: 60 })
   e.recipes.apotheosis
     .enchanting('minecraft:cooked_beef', 'artifacts:eternal_steak')
     .requirements({ eterna: 50, quanta: 60, arcana: 60 })
