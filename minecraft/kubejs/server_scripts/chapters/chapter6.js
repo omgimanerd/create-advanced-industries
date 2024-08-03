@@ -181,16 +181,22 @@ ServerEvents.recipes((e) => {
   create.haunting('minecraft:phantom_membrane', 'minecraft:honeycomb')
 
   // Overhauled recipe for Temporal Pouch
-  e.remove({ id: 'gag:time_sand_pouch' })
-  create
-    .SequencedAssembly('thermal:satchel')
-    .deploy(CRYSTALLINE_MECHANISM)
-    .fill(Fluid.of('create_enchantment_industry:experience', 1000))
-    .energize(20000)
-    .loops(4)
-    .outputs('gag:time_sand_pouch')
+  redefineRecipe(
+    'gag:time_sand_pouch',
+    [
+      'MGM', //
+      'GSG', //
+      'MGM', //
+    ],
+    {
+      M: CRYSTALLINE_MECHANISM,
+      G: 'kubejs:energized_glowstone',
+      S: 'thermal:satchel',
+    }
+  )
   // The output item for this recipe does not matter since .modifyResult will
-  // dynamically add 1000 to the input item's nbt value.
+  // dynamically add 1000 to the input item's nbt value. It is only for display
+  // in JEI.
   e.shapeless(Item.of('gag:time_sand_pouch', { grains: 1000 }), [
     'gag:time_sand_pouch',
     'ars_nouveau:glyph_extend_time',

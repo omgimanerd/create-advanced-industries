@@ -588,9 +588,8 @@ ServerEvents.recipes((e) => {
         )
       }
     )
+    // TODO chorium ingot might be useful?
   }
-
-  // TODO chorium ingot might be useful?
 
   //////////////////////////////////
   // Create: Enchantment Industry //
