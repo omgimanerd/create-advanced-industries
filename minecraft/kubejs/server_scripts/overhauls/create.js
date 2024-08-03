@@ -59,10 +59,12 @@ ServerEvents.recipes((e) => {
 
     // Iron oxide dust.
     create.splashing('kubejs:iron_oxide_dust', 'thermal:iron_dust')
-    create.mixing('thermal:iron_dust', [
-      'kubejs:iron_oxide_dust',
-      '#minecraft:coals',
-    ])
+    create
+      .mixing('thermal:iron_dust', [
+        'kubejs:iron_oxide_dust',
+        '#minecraft:coals',
+      ])
+      .heated()
   }
 
   ////////////
