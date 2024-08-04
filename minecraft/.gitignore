@@ -45,5 +45,7 @@ options.txt
 patchouli_data.json
 rhino.local.properties
 server-pack*.zip
+servers.dat
+servers.dat_old
 usercache.json
 usernamecache.json
