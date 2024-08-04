@@ -43,6 +43,11 @@ ServerEvents.recipes((e) => {
     ],
     { T: 'apotheosis:warden_tendril', S: 'minecraft:sculk' }
   )
+  pneumaticcraft.pressure_chamber(
+    'minecraft:sculk',
+    'minecraft:echo_shard',
+    4.5
+  )
 
   // Another source of green dye
   create.crushing('minecraft:green_dye', 'minecraft:kelp')
