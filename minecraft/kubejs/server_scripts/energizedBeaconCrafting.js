@@ -5,42 +5,40 @@
   // a tag, it is expanded into all matching items for fast lookup in this
   // object.
   let recipeLookup = {}
-  ServerEvents.loaded((e) => {
-    // This is a crazy hack because it seems like the first time
-    // server.scheduleInTicks is called, it executes the callback instantly.
-    // Call it once here so that when we schedule the beacon block processing
-    // it doesn't all execute in the same tick.
-    e.server.scheduleInTicks(1, () => {})
-    for (const {
-      ingredient,
-      result,
-      redirectorBlock,
-      energy,
-    } of global.EnergizedBeaconCraftingRecipes) {
-      let items = ingredient.startsWith('#')
-        ? Ingredient.of(ingredient).itemIds
-        : [ingredient]
-      items.forEach((id) => {
-        const itemIdLookup = recipeLookup[id] || {}
-        const redirectorLookup = itemIdLookup[redirectorBlock]
-        if (redirectorLookup !== undefined) {
-          throw new Error(
-            `${id} with redirector ${redirectorBlock} already has a recipe!`
-          )
-        }
-        itemIdLookup[redirectorBlock] = {
-          result: result,
-          energy: energy,
-        }
-        recipeLookup[id] = itemIdLookup
-      })
-    }
-    console.log(
-      `Successfully processed ${
-        Object.keys(recipeLookup).length
-      } beacon crafting recipes`
-    )
-  })
+  // Iterate through all the energized beacon crafting recipes and preprocess
+  // them into a map for fast lookup.
+  for (let {
+    ingredient,
+    results,
+    redirectorBlock,
+    energy,
+  } of global.EnergizedBeaconCraftingRecipes) {
+    let items = ingredient.startsWith('#')
+      ? Ingredient.of(ingredient).itemIds
+      : [ingredient]
+    results = (Array.isArray(results) ? results : [results]).map((v) => {
+      return Item.of(v)
+    })
+    items.forEach((id) => {
+      const itemIdLookup = recipeLookup[id] || {}
+      const redirectorLookup = itemIdLookup[redirectorBlock]
+      if (redirectorLookup !== undefined) {
+        throw new Error(
+          `${id} with redirector ${redirectorBlock} already has a recipe!`
+        )
+      }
+      itemIdLookup[redirectorBlock] = {
+        results: results,
+        energy: energy,
+      }
+      recipeLookup[id] = itemIdLookup
+    })
+  }
+  console.log(
+    `Successfully processed ${
+      Object.keys(recipeLookup).length
+    } beacon crafting recipes`
+  )
 
   /**
    * Define the actual block right click handler on the beacon that will handle
@@ -77,12 +75,22 @@
       if (itemLookup === undefined) return
       const redirectorLookup = itemLookup[redirectorBlock]
       if (redirectorLookup === undefined) return
-      let result = redirectorLookup.result
+      let results = redirectorLookup.results
       let energyCost = redirectorLookup.energy
       // There is a recipe match, so process it as many times as possible.
       const numCrafts = Math.min(count, Math.floor(energy / energyCost))
       itemEntity.item.shrink(numCrafts)
-      itemEntity.block.popItem(Item.of(result, numCrafts))
+      for (const { id, count } of results) {
+        let totalCount = numCrafts * count
+        let stackSize = Item.of(id).stackSize
+        while (totalCount > stackSize) {
+          itemEntity.block.popItem(Item.of(id, stackSize))
+          totalCount -= stackSize
+        }
+        if (totalCount > 0) {
+          itemEntity.block.popItem(Item.of(id, totalCount))
+        }
+      }
       energy -= numCrafts * energyCost
     }
 

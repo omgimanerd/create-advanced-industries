@@ -68,23 +68,10 @@ ServerEvents.recipes((e) => {
     .deploy('simplemagnets:advancedmagnet')
     .deploy('pneumaticcraft:printed_circuit_board')
     .outputs('kubejs:magnetic_confinement_unit')
-
-  // Quantum fluid
-  // e.remove({ id: 'createteleporters:quantum_fluid_recipe' })
-  // e.remove({ id: 'createteleporters:tele_fluid_chorus' })
-  // create
-  //   .mixing(Fluid.of('createteleporters:quantum_fluid', 1000), [
-  //     Fluid.of('starbunclemania:source_fluid', 500),
-  //     potionFluid('ars_elemental:enderference_potion', 500),
-  //   ])
-  //   .superheated()
-
-  // Quantum casing
-  // e.remove({ id: 'createteleporters:quantum_casing_recipe' })
-  // create.filling('createteleporters:quantum_casing', [
-  //   'tfmg:aluminum_block',
-  //   Fluid.of('createteleporters:quantum_fluid', 1000),
-  // ])
+  create
+    .SequencedAssembly('kubejs:magnetic_confinement_unit')
+    .energize(100000)
+    .outputs('kubejs:magnetic_confinement_unit_filled')
 
   // Redstone pearls, which have a chance to shatter the ender pearl.
   create

@@ -80,11 +80,11 @@ global.CorundumClusterMapping = {
 // Register the actual beacon crafting recipes.
 ;(() => {
   for (const [color, data] of Object.entries(global.CorundumClusterMapping)) {
-    const { cluster, beaconColor } = data
+    let { cluster, beaconColor } = data
     // Recipes for glass blocks.
     global.EnergizedBeaconCraftingRecipes.push({
       ingredient: '#forge:glass/silica',
-      result: `minecraft:${color}_stained_glass`,
+      results: `minecraft:${color}_stained_glass`,
       redirectorBlock: cluster,
       beaconColor: beaconColor,
       energy: 100,
@@ -93,7 +93,7 @@ global.CorundumClusterMapping = {
     // Recipes for glass panes.
     global.EnergizedBeaconCraftingRecipes.push({
       ingredient: '#forge:glass_panes',
-      result: `minecraft:${color}_stained_glass_pane`,
+      results: `minecraft:${color}_stained_glass_pane`,
       redirectorBlock: cluster,
       beaconColor: beaconColor,
       energy: 50,
@@ -102,7 +102,7 @@ global.CorundumClusterMapping = {
     // Recipes for framed glass panes.
     global.EnergizedBeaconCraftingRecipes.push({
       ingredient: '#quark:framed_glasses',
-      result: `quark:${color}_framed_glass_pane`,
+      results: `quark:${color}_framed_glass_pane`,
       redirectorBlock: cluster,
       beaconColor: beaconColor,
       energy: 50,
@@ -111,7 +111,7 @@ global.CorundumClusterMapping = {
     // Recipes for glass shards.
     global.EnergizedBeaconCraftingRecipes.push({
       ingredient: '#quark:shards',
-      result: `quark:${color}_shard`,
+      results: `quark:${color}_shard`,
       redirectorBlock: cluster,
       beaconColor: beaconColor,
       energy: 25,
@@ -120,7 +120,7 @@ global.CorundumClusterMapping = {
     // Recipes for wool.
     global.EnergizedBeaconCraftingRecipes.push({
       ingredient: '#minecraft:wool',
-      result: `minecraft:${color}_wool`,
+      results: `minecraft:${color}_wool`,
       redirectorBlock: cluster,
       beaconColor: beaconColor,
       energy: 200,
@@ -129,7 +129,7 @@ global.CorundumClusterMapping = {
     // Recipes for terracotta.
     global.EnergizedBeaconCraftingRecipes.push({
       ingredient: '#minecraft:terracotta',
-      result: `minecraft:${color}_terracotta`,
+      results: `minecraft:${color}_terracotta`,
       redirectorBlock: cluster,
       beaconColor: beaconColor,
       energy: 400,
@@ -140,7 +140,7 @@ global.CorundumClusterMapping = {
       // This tag is added via datapack json so that it can be resolved in the
       // client scripts with Ingredient.of.
       ingredient: '#kubejs:corundum_cluster',
-      result: cluster,
+      results: cluster,
       redirectorBlock: cluster,
       beaconColor: beaconColor,
       energy: 500,
@@ -149,9 +149,17 @@ global.CorundumClusterMapping = {
 
   global.EnergizedBeaconCraftingRecipes.push({
     ingredient: 'minecraft:glowstone_dust',
-    result: 'kubejs:energized_glowstone',
+    results: 'kubejs:energized_glowstone',
     redirectorBlock: 'quark:white_corundum_cluster',
-    beaconColor: [1, 1, 1],
+    beaconColor: global.CorundumClusterMapping.white.beaconColor,
     energy: 1000,
+  })
+
+  global.EnergizedBeaconCraftingRecipes.push({
+    ingredient: 'kubejs:magnetic_confinement_unit_filled',
+    results: ['kubejs:magnetic_confinement_unit', 'kubejs:antimatter'],
+    redirectorBlock: 'quark:white_corundum_cluster',
+    beaconColor: global.CorundumClusterMapping.white.beaconColor,
+    energy: 2000,
   })
 })()
