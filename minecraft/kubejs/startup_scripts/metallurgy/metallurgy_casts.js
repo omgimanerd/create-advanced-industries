@@ -10,12 +10,12 @@
 const registerCast = (e, id, displayName, modelJson) => {
   /** @type {Internal.BasicBlockJS$Builder_} */
   const block = e
-    .create(id)
+    .create(id, 'cardinal')
     .displayName(displayName)
     .stoneSoundType()
     .fullBlock(false)
-    .box(5, 0, 3, 11, 4, 13)
-    .box(6, 3, 1, 10, 4, 15)
+    .box(3, 0, 5, 13, 4, 11)
+    .box(1, 3, 6, 15, 4, 10)
     .notSolid()
     .requiresTool(true)
     .tagBlock('minecraft:mineable/pickaxe')
