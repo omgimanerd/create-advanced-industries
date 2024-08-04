@@ -181,7 +181,7 @@ if (Platform.isLoaded('vintageimprovements')) {
       type: 'laser_cutting',
       preItemText: Text.of('Cut with a laser'),
       energy: energy,
-      maxChargeRate: maxChargeRate,
+      maxChargeRate: maxChargeRate === undefined ? energy : maxChargeRate,
     })
     return this
   }

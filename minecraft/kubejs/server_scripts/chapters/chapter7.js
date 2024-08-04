@@ -60,6 +60,15 @@ ServerEvents.recipes((e) => {
     ])
     .superheated()
 
+  // Magnetic confinement units and antimatter
+  create
+    .SequencedAssembly('#forge:plates/aluminum')
+    .laser(10000)
+    .curve(CONVEX_CURVING_HEAD)
+    .deploy('simplemagnets:advancedmagnet')
+    .deploy('pneumaticcraft:printed_circuit_board')
+    .outputs('kubejs:magnetic_confinement_unit')
+
   // Quantum fluid
   // e.remove({ id: 'createteleporters:quantum_fluid_recipe' })
   // e.remove({ id: 'createteleporters:tele_fluid_chorus' })
