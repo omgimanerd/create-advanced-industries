@@ -96,13 +96,13 @@ ServerEvents.recipes((e) => {
   )
 
   create
-    .SequencedAssembly('create:powdered_obsidian')
+    .SequencedAssembly('create:sturdy_sheet')
     .deploy('#forge:glass_panes')
     .deploy('pneumaticcraft:plastic')
     .deploy('#forge:glass_panes')
     .deploy('pneumaticcraft:plastic')
     .loops(2)
-    .outputs('2x thermal:obsidian_glass')
+    .outputs('4x thermal:obsidian_glass')
 
   const thermalDeviceKeys = {
     P: '#minecraft:planks',

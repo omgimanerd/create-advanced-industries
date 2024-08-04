@@ -471,7 +471,6 @@ ServerEvents.recipes((e) => {
     .SequencedAssembly('minecraft:skeleton_skull')
     .fill(Fluid.of('create_enchantment_industry:ink', 100))
     .fill(potionFluid('apotheosis:strong_wither', 100))
-    .energize(40000)
     .outputs('minecraft:wither_skeleton_skull')
 
   // Chorus fruit alternative pathways

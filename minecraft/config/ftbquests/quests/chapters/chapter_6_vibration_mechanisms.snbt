@@ -317,6 +317,20 @@
 				"Ponder the dragon head for an example."
 			]
 			id: "509B4F9E047728B6"
+			rewards: [
+				{
+					count: 16
+					id: "00CCCB137E87396C"
+					item: "minecraft:glass_bottle"
+					type: "item"
+				}
+				{
+					count: 16
+					id: "5C461690CB5C0B5E"
+					item: "minecraft:dragon_breath"
+					type: "item"
+				}
+			]
 			tasks: [{
 				id: "45DEB4EA69ED76CB"
 				item: "minecraft:dragon_breath"
@@ -394,6 +408,12 @@
 				"Good thing the previous quest gave you one!"
 			]
 			id: "33C97AA4A311E69E"
+			rewards: [{
+				count: 16
+				id: "0583145F1F6EADE7"
+				item: "minecraft:wither_skeleton_skull"
+				type: "item"
+			}]
 			tasks: [{
 				id: "36A2F5F8042A0CD9"
 				item: "minecraft:wither_skeleton_skull"
@@ -410,11 +430,6 @@
 				"As a reminder, ponder the note block for an explanation of this mechanic."
 			]
 			id: "4953FDEB278D7D6D"
-			rewards: [{
-				id: "43471A673F7860E7"
-				item: "minecraft:wither_skeleton_skull"
-				type: "item"
-			}]
 			tasks: [{
 				id: "2F2B98D0A39D8CE4"
 				item: "minecraft:skeleton_skull"
@@ -731,6 +746,11 @@
 			]
 			description: ["Once you have a steady source of wither skeleton skulls, you can summon the wither in an automated fashion. There's a ton of different ways to do this with or without Create, so we'll leave this one up to you."]
 			id: "0CE7E80FB2C2864E"
+			rewards: [{
+				id: "2FFA75485892F245"
+				type: "xp_levels"
+				xp_levels: 20
+			}]
 			tasks: [{
 				id: "5ADFEAA86A43CBA1"
 				item: "minecraft:nether_star"
@@ -769,7 +789,7 @@
 		}
 		{
 			dependencies: ["7B5467831BDED907"]
-			description: ["To get your first XP Condenser, you'll need a level 100 enchant."]
+			description: ["To get your first XP Condenser, you'll need a level 100 enchanting setup."]
 			id: "27B9B80E471D7E0A"
 			tasks: [{
 				id: "0C849E1A576A258A"
@@ -842,7 +862,7 @@
 				item: "kubejs:saturated_honeycomb"
 				type: "item"
 			}]
-			x: 10.0d
+			x: 16.0d
 			y: 14.0d
 		}
 		{
@@ -854,7 +874,7 @@
 				item: "minecraft:honeycomb"
 				type: "item"
 			}]
-			x: 12.0d
+			x: 18.0d
 			y: 12.0d
 		}
 		{
@@ -895,7 +915,7 @@
 					type: "observation"
 				}
 			]
-			x: 10.0d
+			x: 16.0d
 			y: 12.0d
 		}
 		{
@@ -971,11 +991,7 @@
 				"0CE7E80FB2C2864E"
 				"73263EC95364E1E4"
 			]
-			description: [
-				"End crystals require both nether stars and purpur slabs."
-				""
-				"Being able to craft and end crystal also means you can craft a beacon."
-			]
+			description: ["Being able to craft an end crystal also means you can craft a beacon."]
 			id: "243F51DA64564519"
 			tasks: [{
 				id: "7561606C118A67DE"
@@ -1002,6 +1018,7 @@
 		}
 		{
 			dependencies: ["4EA372BB98EA4567"]
+			description: ["Cut the purpur blocks into slabs."]
 			id: "73263EC95364E1E4"
 			tasks: [{
 				id: "00CE61FEDBD8B475"
@@ -1063,13 +1080,16 @@
 			y: -10.0d
 		}
 		{
-			dependencies: ["7F0A4231CA344359"]
+			dependencies: [
+				"7F0A4231CA344359"
+				"2A360AA28408A776"
+			]
 			description: [
 				"You'll need a Potion of Regeneration II for the next step."
 				""
 				"By now, automated brewing should be a familiar process."
 				""
-				"The ghast tears required can also be produced with resonance crafting."
+				"The ghast tears required can be produced with resonance crafting."
 			]
 			id: "2B05BB13A47507C0"
 			tasks: [{
@@ -1146,6 +1166,12 @@
 			dependencies: ["36C487052DC00979"]
 			description: ["Gem dust, which you should have from Chapter 5b, can be combined with reinforced deepslate to get gem-fused slates."]
 			id: "03E1D7E6F6A7AA78"
+			rewards: [{
+				count: 16
+				id: "3486F72465C984BE"
+				item: "apotheosis:gem_fused_slate"
+				type: "item"
+			}]
 			tasks: [{
 				id: "5EF34582C39D81AE"
 				item: "apotheosis:gem_fused_slate"
@@ -1165,6 +1191,55 @@
 			}]
 			x: 14.0d
 			y: -2.0d
+		}
+		{
+			dependencies: ["33C97AA4A311E69E"]
+			description: ["Hardened glass is witherproof. You may want something like this to contain the wither for a nether star farm."]
+			id: "055FC0C8E2A59FAB"
+			optional: true
+			rewards: [{
+				count: 16
+				id: "682AFC5ECD47C9B6"
+				item: "thermal:obsidian_glass"
+				type: "item"
+			}]
+			tasks: [{
+				id: "2F834FE033A228A6"
+				item: "thermal:obsidian_glass"
+				type: "item"
+			}]
+			x: 14.0d
+			y: 6.0d
+		}
+		{
+			dependencies: ["6651B17B190DD8F4"]
+			description: ["This isn't the only way to get honey bottles, but it is pretty convenient if you've automated beehives."]
+			id: "110CE9CD242228F7"
+			rewards: [{
+				count: 16
+				id: "3D0B5CD573ECE1E6"
+				item: "minecraft:honey_block"
+				type: "item"
+			}]
+			tasks: [{
+				id: "2B8249F6FBEC64A2"
+				item: "minecraft:honey_bottle"
+				type: "item"
+			}]
+			x: 16.0d
+			y: 6.0d
+		}
+		{
+			dependencies: ["110CE9CD242228F7"]
+			description: ["Resonance crafting allows you to get ghast tears from honey bottles."]
+			id: "2A360AA28408A776"
+			tasks: [{
+				id: "33D565A05B8DAF94"
+				item: "minecraft:ghast_tear"
+				type: "item"
+			}]
+			x: 16.0d
+			y: 4.0d
 		}
 	]
 	title: "Chapter 6: Vibration Mechanisms"
