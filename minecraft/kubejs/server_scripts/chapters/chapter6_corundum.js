@@ -44,7 +44,7 @@ ServerEvents.recipes((e) => {
 
   // Corundum clusters are tagged by a datapack file.
   for (const [color, data] of Object.entries(global.CorundumClusterMapping)) {
-    let { cluster } = data
+    let { cluster, block } = data
     let dye = `minecraft:${color}_dye`
 
     // Make manual dyeing recipes
@@ -58,6 +58,18 @@ ServerEvents.recipes((e) => {
       {
         D: dye,
         C: '#kubejs:corundum_cluster',
+      }
+    )
+    e.shaped(
+      block,
+      [
+        'DDD', //
+        'DBD', //
+        'DDD', //
+      ],
+      {
+        D: dye,
+        B: '#quark:corundum',
       }
     )
 

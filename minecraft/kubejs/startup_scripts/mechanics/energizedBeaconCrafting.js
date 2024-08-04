@@ -40,38 +40,47 @@ global.EnergizedBeaconItems = {
 // Direct from java/org/violetmoon/quark/base/util/CorundumColor.java
 global.CorundumClusterMapping = {
   red: {
+    block: 'quark:red_corundum',
     cluster: 'quark:red_corundum_cluster',
     beaconColor: [1, 0, 0],
   },
   orange: {
+    block: 'quark:orange_corundum',
     cluster: 'quark:orange_corundum_cluster',
     beaconColor: [1, 0.5, 0],
   },
   yellow: {
+    block: 'quark:yellow_corundum',
     cluster: 'quark:yellow_corundum_cluster',
     beaconColor: [1, 1, 0],
   },
   lime: {
+    block: 'quark:green_corundum',
     cluster: 'quark:green_corundum_cluster',
     beaconColor: [0, 1, 0],
   },
   light_blue: {
+    block: 'quark:blue_corundum',
     cluster: 'quark:blue_corundum_cluster',
     beaconColor: [0, 1, 1],
   },
   blue: {
+    block: 'quark:indigo_corundum',
     cluster: 'quark:indigo_corundum_cluster',
     beaconColor: [0, 0, 1],
   },
   magenta: {
+    block: 'quark:violet_corundum',
     cluster: 'quark:violet_corundum_cluster',
     beaconColor: [1, 0, 1],
   },
   white: {
+    block: 'quark:white_corundum',
     cluster: 'quark:white_corundum_cluster',
     beaconColor: [1, 1, 1],
   },
   black: {
+    block: 'quark:black_corundum',
     cluster: 'quark:black_corundum_cluster',
     beaconColor: [0, 0, 0],
   },
