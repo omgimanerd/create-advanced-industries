@@ -95,7 +95,7 @@ ServerEvents.recipes((e) => {
   create
     .SequencedAssembly('kubejs:magnetic_confinement_unit')
     .fill(Fluid.of('kubejs:teleportation_juice', 250))
-    .fill(potionFluid('ars_elemental:enderference', 250))
+    .fill(potionFluid('ars_elemental:enderference_potion_long', 250))
     .energize(100000)
     .outputs('kubejs:magnetic_confinement_unit_filled')
 })
