@@ -135,7 +135,7 @@ global.CorundumClusterMapping = {
       energy: 400,
     })
 
-    // Recipes for the corundum clusters.
+    // Recipes for corundum clusters.
     global.EnergizedBeaconCraftingRecipes.push({
       // This tag is added via datapack json so that it can be resolved in the
       // client scripts with Ingredient.of.
@@ -144,6 +144,15 @@ global.CorundumClusterMapping = {
       redirectorBlock: cluster,
       beaconColor: beaconColor,
       energy: 500,
+    })
+
+    // Recipes for corundum blocks.
+    global.EnergizedBeaconCraftingRecipes.push({
+      ingredient: '#quark:corundum',
+      results: `quark:${color}_corundum`,
+      redirectorBlock: cluster,
+      beaconColor: beaconColor,
+      energy: 1000, // One corundum block is technically 2.66 clusters
     })
   }
 

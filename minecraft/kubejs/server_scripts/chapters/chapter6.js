@@ -109,8 +109,16 @@ ServerEvents.recipes((e) => {
   create // Rare Material: Luminous Crystal Shard
     .SequencedAssembly('quark:indigo_corundum_cluster')
     .fill(Fluid.of('kubejs:molten_lumium', MeltableItem.DEFAULT_INGOT_FLUID))
-    .laser(8000, 1000)
+    .laser(8000, 1000) // 8 ticks to craft
     .outputs('3x apotheosis:rare_material')
+  // 3x yield from the block, one block = 2.66 corundum clusters
+  create
+    .SequencedAssembly('quark:indigo_corundum')
+    .fill(
+      Fluid.of('kubejs:molten_lumium', MeltableItem.DEFAULT_INGOT_FLUID * 2)
+    )
+    .laser(16000, 800) // 20 ticks to craft
+    .outputs('9x apotheosis:rare_material')
   create // Epic Material: Arcane Sands
     .SequencedAssembly('tfmg:limesand')
     .fill(Fluid.of('starbunclemania:source_fluid', 1000))
