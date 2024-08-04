@@ -202,7 +202,6 @@
 			]
 			id: "4103B7F4B1A13FA6"
 			invisible: true
-			optional: true
 			rewards: [
 				{
 					count: 8

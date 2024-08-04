@@ -59,7 +59,7 @@
 				item: "thermal:lumium_ingot"
 				type: "item"
 			}]
-			x: 18.0d
+			x: 24.0d
 			y: 8.0d
 		}
 		{
@@ -114,7 +114,7 @@
 				type: "item"
 			}]
 			x: 19.5d
-			y: 4.0d
+			y: 5.0d
 		}
 		{
 			dependencies: ["2A407653C768CC06"]
@@ -124,8 +124,8 @@
 				item: "thermal:constantan_ingot"
 				type: "item"
 			}]
-			x: 20.5d
-			y: 4.0d
+			x: 17.5d
+			y: 5.0d
 		}
 		{
 			dependencies: ["2A407653C768CC06"]
@@ -135,8 +135,8 @@
 				item: "thermal:electrum_ingot"
 				type: "item"
 			}]
-			x: 21.5d
-			y: 4.0d
+			x: 18.5d
+			y: 6.0d
 		}
 		{
 			dependencies: ["6293CBBC76D73F05"]
@@ -264,7 +264,7 @@
 				type: "item"
 			}]
 			x: 4.0d
-			y: -2.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["2D68C948FA0CB936"]
@@ -275,7 +275,7 @@
 				type: "item"
 			}]
 			x: 6.0d
-			y: -2.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["5BA8FDECCF51342E"]
@@ -297,7 +297,7 @@
 				type: "item"
 			}]
 			x: 2.0d
-			y: -2.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["271A91265ACE5851"]
@@ -469,10 +469,7 @@
 			y: 4.0d
 		}
 		{
-			dependencies: [
-				"35C77AF9EEF326C9"
-				"2582523C7629E8F4"
-			]
+			dependencies: ["35C77AF9EEF326C9"]
 			id: "4F438C24128D042B"
 			tasks: [{
 				id: "4DC0966EC82CF9D5"
@@ -527,7 +524,10 @@
 			y: 6.0d
 		}
 		{
-			dependencies: ["04F20036D8172501"]
+			dependencies: [
+				"04F20036D8172501"
+				"4F438C24128D042B"
+			]
 			id: "2582523C7629E8F4"
 			tasks: [{
 				id: "6C5B0A5721A8E2E1"
@@ -539,7 +539,7 @@
 		}
 		{
 			dependencies: ["19F1809E10BAAC61"]
-			icon: "minecraft:raw_iron"
+			icon: "thermal:raw_tin"
 			id: "47959ED668B51DD0"
 			tasks: [{
 				id: "42E91BA854E0C990"
@@ -591,7 +591,7 @@
 			y: -4.0d
 		}
 		{
-			dependencies: ["2A407653C768CC06"]
+			dependencies: ["58B39574A3117D0D"]
 			id: "758B001ECA60BFB0"
 			tasks: [{
 				id: "4E0C2D8CCAA2EFEC"
@@ -604,8 +604,8 @@
 				}
 				type: "item"
 			}]
-			x: 20.5d
-			y: 5.0d
+			x: 16.0d
+			y: 2.0d
 		}
 		{
 			dependencies: ["19F1809E10BAAC61"]
@@ -635,19 +635,20 @@
 				item: "kubejs:steel_ingot_cast_molten_lumium"
 				type: "item"
 			}]
-			x: 18.0d
+			x: 24.0d
 			y: -10.0d
 		}
 		{
 			dependencies: ["3699DD3B91E59D8D"]
 			id: "74EA73860D823AD9"
+			invisible: true
 			tasks: [{
 				id: "14C49AA9D803759F"
 				item: "kubejs:shattered_ender_pearl"
 				type: "item"
 			}]
-			x: 10.0d
-			y: -3.0d
+			x: 8.0d
+			y: -2.0d
 		}
 		{
 			dependencies: [
@@ -705,15 +706,26 @@
 				item: "kubejs:magnetic_confinement_unit_filled"
 				type: "item"
 			}]
+			x: 18.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["573A0CF01DCF191C"]
+			id: "228C3290FC55C851"
+			tasks: [{
+				id: "6A3F102BA6056FE2"
+				item: "kubejs:magnetic_confinement_unit"
+				type: "item"
+			}]
 			x: 16.0d
 			y: 4.0d
 		}
 		{
 			dependencies: ["029D7DEF789032E4"]
-			id: "228C3290FC55C851"
+			id: "573A0CF01DCF191C"
 			tasks: [{
-				id: "6A3F102BA6056FE2"
-				item: "kubejs:magnetic_confinement_unit"
+				id: "24A21C9345F6EDFC"
+				item: "vintageimprovements:aluminum_sheet"
 				type: "item"
 			}]
 			x: 14.0d

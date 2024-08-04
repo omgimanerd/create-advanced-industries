@@ -68,6 +68,12 @@
 					item: "create:brass_ingot"
 					type: "item"
 				}
+				{
+					count: 16
+					id: "44974A820AC0FE91"
+					item: "create:electron_tube"
+					type: "item"
+				}
 			]
 			size: 2.0d
 			tasks: [{
@@ -143,7 +149,7 @@
 		}
 		{
 			dependencies: ["16096B10FDF70979"]
-			description: ["Rose quartz can be polished with a grinder."]
+			description: ["Rose quartz can be polished with sandpaper or a grinder."]
 			id: "7D237B5C30B4AECC"
 			tasks: [{
 				id: "5F710035892313B3"
@@ -193,7 +199,6 @@
 			description: ["Did you notice melting the redstone and pouring it on the nether quartz is more efficient?"]
 			id: "3053435FE174AD3C"
 			invisible: true
-			optional: true
 			tasks: [{
 				id: "5BF4CE9148F5DCE3"
 				item: "kubejs:molten_redstone_bucket"
@@ -434,7 +439,6 @@
 			]
 			id: "6B79A03DFFD8B049"
 			invisible: true
-			optional: true
 			rewards: [{
 				id: "31D00C9515A7AC0E"
 				type: "xp"
@@ -537,7 +541,6 @@
 			dependencies: ["75DF00BC8C5543BB"]
 			description: ["Incidentally, access to the nether unlocks access to the Mage's Spell Book, giving us access to tier 2 spells from Ars Nouveau."]
 			id: "03E657E184865D19"
-			optional: true
 			rewards: [{
 				id: "066FC4D159E07613"
 				type: "xp"
@@ -569,24 +572,17 @@
 				"71FAA310DA3D588D"
 			]
 			description: [
-				"You'll need a blaze burner for the next step."
+				"You'll need a blaze burner for the next step. You can use a deployer to automatically fuel the blaze burner."
 				""
-				"That tree farm that you &odefinitely&r have by now should be able to supply you with an infinite source of charcoal to fuel them with. You can use a deployer to automatically fuel the blaze burner."
+				"That tree farm that you &odefinitely&r have by now should be able to supply you with an infinite source of charcoal to fuel them with. Of course, it's not the only way to fuel them either."
 			]
 			icon: "create:blaze_burner"
 			id: "28140460D3E700F5"
-			tasks: [
-				{
-					id: "58A97B9E28BB1988"
-					item: "create:blaze_burner"
-					type: "item"
-				}
-				{
-					id: "2AB5A3A95324D589"
-					item: "minecraft:charcoal"
-					type: "item"
-				}
-			]
+			tasks: [{
+				id: "58A97B9E28BB1988"
+				item: "create:blaze_burner"
+				type: "item"
+			}]
 			x: 4.0d
 			y: 8.0d
 		}

@@ -151,7 +151,6 @@
 				"See the Ponders for more information."
 			]
 			id: "7929E375AF5FD000"
-			optional: true
 			rewards: [
 				{
 					id: "34F663DDC73A729D"
@@ -216,7 +215,6 @@
 			dependencies: ["7929E375AF5FD000"]
 			description: ["You can move liquid source around with pipes, or with source relays if you've already converted it with the fluid sourcelink."]
 			id: "20FCD1A3AC667575"
-			optional: true
 			rewards: [
 				{
 					id: "4DF545D5CED5A04C"
@@ -245,6 +243,23 @@
 			}]
 			x: 2.5d
 			y: -10.0d
+		}
+		{
+			dependencies: ["39E20F0E25618A92"]
+			description: ["Did you make yourself a spellbook? Here's a free glyph!"]
+			id: "55EA259C79123D5E"
+			rewards: [{
+				id: "219A2A751F42B2C1"
+				item: "ars_nouveau:glyph_light"
+				type: "item"
+			}]
+			tasks: [{
+				id: "31F8F23B0650ADF6"
+				item: "ars_nouveau:novice_spell_book"
+				type: "item"
+			}]
+			x: 5.0d
+			y: -7.5d
 		}
 	]
 	title: "Chapter 2b: Source Mechanisms"

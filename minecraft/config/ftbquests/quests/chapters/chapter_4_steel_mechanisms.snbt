@@ -411,17 +411,10 @@
 			]
 			id: "05659E1DE2D77A38"
 			tasks: [{
-				id: "49C9389AC6929A70"
-				item: {
-					Count: 1b
-					id: "ftbfiltersystem:smart_filter"
-					tag: {
-						"ftbfiltersystem:filter": "or(item_tag(forge:cobblestone))"
-					}
-				}
+				id: "06046987164CBD89"
+				item: "minecraft:cobblestone"
 				type: "item"
 			}]
-			title: "Any #forge:cobblestone"
 			x: 0.0d
 			y: 2.0d
 		}
@@ -444,6 +437,12 @@
 			]
 			description: ["Coal coke, aside from being a requirement to smelt steel, is also a high quality solid fuel."]
 			id: "32945248A0491741"
+			rewards: [{
+				count: 16
+				id: "67E790FBE17ADE52"
+				item: "tfmg:coal_coke"
+				type: "item"
+			}]
 			tasks: [{
 				id: "1D97BDA3057DF19F"
 				item: "tfmg:coal_coke"
@@ -454,7 +453,11 @@
 		}
 		{
 			dependencies: ["3D4E029D6ECC3F90"]
-			description: ["You can enchant charcoal to transmute it into coal."]
+			description: [
+				"You can enchant charcoal to transmute it into coal."
+				""
+				"For now, you'll have to use this pathway to make coal coke until you unlock better technology."
+			]
 			id: "3AE6CA0134B44049"
 			rewards: [
 				{
@@ -642,7 +645,6 @@
 			]
 			icon: "create:steam_engine"
 			id: "28D76BDC9F8E5E85"
-			optional: true
 			rewards: [
 				{
 					count: 64
@@ -670,7 +672,6 @@
 			dependencies: ["79B63BFC11E77382"]
 			description: ["With steel unlocked, you can now make reusable casts for all your metallurgy needs."]
 			id: "319612B4B3D441C1"
-			optional: true
 			rewards: [{
 				count: 16
 				id: "25033B91F31F44D2"
@@ -690,7 +691,6 @@
 			dependencies: ["32945248A0491741"]
 			description: ["Creosote Oil is a byproduct of coal coking. It'll be useful later, but it can also be burned for fuel."]
 			id: "366F518195117AF6"
-			optional: true
 			tasks: [{
 				id: "1A8207AA9C962E6F"
 				item: "tfmg:creosote_bucket"
@@ -755,7 +755,6 @@
 			dependencies: ["56194FBB8BFDBC86"]
 			description: ["Sturdy sheets unlock train casings, which are a great way to move things around in the overworld. Totally optional, but might become useful later."]
 			id: "270B943E49104B85"
-			optional: true
 			rewards: [
 				{
 					count: 64
@@ -787,7 +786,6 @@
 			]
 			id: "36093FCF2B2D947C"
 			invisible: true
-			optional: true
 			rewards: [{
 				count: 32
 				id: "757BAB87067E0107"

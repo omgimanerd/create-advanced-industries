@@ -33,7 +33,7 @@
 			]
 			icon: "minecraft:cobblestone"
 			id: "1846D065B001B15F"
-			min_width: 350
+			min_width: 300
 			rewards: [{
 				count: 8
 				id: "1F4EF1E167FB3F1C"
@@ -242,6 +242,12 @@
 			]
 			icon: "minecraft:oak_log"
 			id: "6FA4151E4E653522"
+			rewards: [{
+				count: 64
+				id: "46CE727EF742A4DF"
+				item: "minecraft:oak_log"
+				type: "item"
+			}]
 			tasks: [
 				{
 					icon: "create:mechanical_saw"
@@ -417,10 +423,13 @@
 		}
 		{
 			dependencies: ["05DB2A211C1BB3C1"]
-			description: ["Functional storage drawers are good early game filtering tools before you have brass logistics. Since they only accept a specific item, funnels will only insert matching items into them."]
+			description: [
+				"Functional storage drawers are good early game filtering tools before you have brass logistics. Since they only accept a specific item, funnels will only insert matching items into them."
+				""
+				"(You should check out the Storage chapter for a reward!)"
+			]
 			icon: "functionalstorage:oak_4"
 			id: "19AB88EFFCE07498"
-			optional: true
 			tasks: [{
 				id: "0C2A6342159FA53F"
 				item: {

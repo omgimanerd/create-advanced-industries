@@ -183,7 +183,12 @@
 			description: ["Did you notice sawing a block of cured rubber nets you double the yield?"]
 			id: "595B0928142C3067"
 			invisible: true
-			optional: true
+			rewards: [{
+				count: 16
+				id: "3AB77AFB236F7050"
+				item: "thermal:cured_rubber_block"
+				type: "item"
+			}]
 			tasks: [{
 				id: "5A8384E34B50F79D"
 				item: "thermal:cured_rubber_block"
