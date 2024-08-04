@@ -143,6 +143,7 @@ ServerEvents.recipes((e) => {
     ['tfmg:coal_coke', Fluid.of('tfmg:creosote', 1000)],
     'minecraft:coal'
   )
+  create.burnableFluid('tfmg:creosote', 2400) // 2 minutes
 
   // Steel overhaul
   e.remove({ id: 'tfmg:casting/steel' })
