@@ -81,4 +81,21 @@ ItemEvents.dropped('kubejs:antimatter', (e) => {
   )
 })
 
-ServerEvents.recipes((e) => {})
+ServerEvents.recipes((e) => {
+  const create = defineCreateRecipes(e)
+
+  // Magnetic confinement units and antimatter
+  create
+    .SequencedAssembly('#forge:plates/aluminum')
+    .laser(10000)
+    .curve(CONVEX_CURVING_HEAD)
+    .deploy('simplemagnets:advancedmagnet')
+    .deploy('pneumaticcraft:printed_circuit_board')
+    .outputs('kubejs:magnetic_confinement_unit')
+  create
+    .SequencedAssembly('kubejs:magnetic_confinement_unit')
+    .fill(Fluid.of('kubejs:teleportation_juice', 250))
+    .fill(potionFluid('ars_elemental:enderference', 250))
+    .energize(100000)
+    .outputs('kubejs:magnetic_confinement_unit_filled')
+})

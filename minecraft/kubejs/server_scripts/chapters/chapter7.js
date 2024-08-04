@@ -60,19 +60,6 @@ ServerEvents.recipes((e) => {
     ])
     .superheated()
 
-  // Magnetic confinement units and antimatter
-  create
-    .SequencedAssembly('#forge:plates/aluminum')
-    .laser(10000)
-    .curve(CONVEX_CURVING_HEAD)
-    .deploy('simplemagnets:advancedmagnet')
-    .deploy('pneumaticcraft:printed_circuit_board')
-    .outputs('kubejs:magnetic_confinement_unit')
-  create
-    .SequencedAssembly('kubejs:magnetic_confinement_unit')
-    .energize(100000)
-    .outputs('kubejs:magnetic_confinement_unit_filled')
-
   // Redstone pearls, which have a chance to shatter the ender pearl.
   create
     .SequencedAssembly('kubejs:resonant_ender_pearl')

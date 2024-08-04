@@ -27,6 +27,15 @@ JEIAddedEvents.registerCategories((e) => {
     Item.of(id)
   )
 
+  // Hardcoded locations to draw the results, recipes that exceed this many
+  // outputs will throw an error.
+  const resultOffsets = [
+    [135, 35],
+    [154, 35],
+    [135, 54],
+    [154, 54],
+  ]
+
   e.custom(global.ENERGIZED_BEACON_CRAFTING, (category) => {
     category
       .title('Energized Beacon')
@@ -34,7 +43,7 @@ JEIAddedEvents.registerCategories((e) => {
       .icon(doubleItemIcon('minecraft:beacon', 'quark:red_corundum_cluster'))
       .isRecipeHandled(() => true) // Only relevant recipes are registered
       .handleLookup((builder, recipe) => {
-        const { ingredient, result, redirectorBlock, energy } = recipe.data
+        let { ingredient, results, redirectorBlock, energy } = recipe.data
         const corundumName = Block.getBlock(redirectorBlock).name.gold()
 
         // Add the beacon as an invisible ingredient to every recipe.
@@ -70,7 +79,7 @@ JEIAddedEvents.registerCategories((e) => {
 
         // Add all the possible input items for this recipe.
         const input = builder
-          .addSlot('input', 122, 10)
+          .addSlot('input', 111, 11)
           .setBackground(slotDrawable, -1, -1)
           .addTooltipCallback((_, list) => {
             list.add(
@@ -89,13 +98,21 @@ JEIAddedEvents.registerCategories((e) => {
         }
 
         // Add the output recipe and a tooltip for the energy cost.
-        builder
-          .addSlot('output', 143, 36)
-          .addItemStack(result)
-          .setBackground(slotDrawable, -1, -1)
-          .addTooltipCallback((_, list) => {
-            list.add(1, Text.gold(`Costs ${energy}RF per craft.`))
-          })
+        results = Array.isArray(results) ? results : [results]
+        let i = 0
+        if (results.length > resultOffsets.length) {
+          throw new Error(`Too many outputs for recipe with results ${results}`)
+        }
+        for (const result of results) {
+          let [x, y] = resultOffsets[i++]
+          builder
+            .addSlot('output', x, y)
+            .addItemStack(result)
+            .setBackground(slotDrawable, -1, -1)
+            .addTooltipCallback((_, list) => {
+              list.add(1, Text.gold(`Costs ${energy}RF per craft.`))
+            })
+        }
       })
       .setDrawHandler((recipe, _, guiGraphics) => {
         const { redirectorBlock, beaconColor } = recipe.data
@@ -134,7 +151,7 @@ JEIAddedEvents.registerCategories((e) => {
           pose.popPose()
         }
         renderBeaconBeam(34, 24, 4, null, [1, 1, 1])
-        renderBeaconBeam(45, 24, 6, -90, beaconColor)
+        renderBeaconBeam(45, 24, 5, -90, beaconColor)
 
         /**
          * Internal helper to draw a down right arrow.
@@ -155,7 +172,7 @@ JEIAddedEvents.registerCategories((e) => {
           )
         }
         renderDownRightArrow(14, 65) // Item to right click the beacon with
-        renderDownRightArrow(126, 27) // Crafting output
+        renderDownRightArrow(116, 28) // Crafting output
 
         // Draw a shadow for the beacon block block
         $AllGuiTextures.JEI_SHADOW.render(guiGraphics, 17, 81)
