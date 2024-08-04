@@ -8,6 +8,7 @@
  * @returns {Internal.BasicBlockJS$Builder_}
  */
 const registerCast = (e, id, displayName, modelJson) => {
+  /** @type {Internal.BasicBlockJS$Builder_} */
   const block = e
     .create(id)
     .displayName(displayName)
@@ -22,6 +23,16 @@ const registerCast = (e, id, displayName, modelJson) => {
     .item((item) => {
       item.modelJson(modelJson).maxStackSize(8)
     })
+  // let variants = {}
+  // for (let rotation = 0; rotation < 16; ++rotation) {
+  //   variants[`rotation=${rotation}`] = {
+  //     model: 'kubejs:block/base_ingot_cast',
+  //     y: (rotation * 360) / 16,
+  //   }
+  // }
+  // block.blockstateJson = {
+  //   variants: variants,
+  // }
   block.modelJson = modelJson
   return block
 }

@@ -1,0 +1,68 @@
+{
+  "variants": {
+    "rotation=0": {
+      "model": "kubejs:block/base_ingot_cast",
+      "y": 11.25
+    },
+    "rotation=1": {
+      "model": "kubejs:block/base_ingot_cast",
+      "y": 22.5
+    },
+    "rotation=2": {
+      "model": "kubejs:block/base_ingot_cast",
+      "y": 33.75
+    },
+    "rotation=3": {
+      "model": "kubejs:block/base_ingot_cast",
+      "y": 45
+    },
+    "rotation=4": {
+      "model": "kubejs:block/base_ingot_cast",
+      "y": 56.25
+    },
+    "rotation=5": {
+      "model": "kubejs:block/base_ingot_cast",
+      "y": 67.5
+    },
+    "rotation=6": {
+      "model": "kubejs:block/base_ingot_cast",
+      "y": 78.75
+    },
+    "rotation=7": {
+      "model": "kubejs:block/base_ingot_cast",
+      "y": 78.75
+    },
+    "rotation=8": {
+      "model": "kubejs:block/base_ingot_cast",
+      "y": 78.75
+    },
+    "rotation=9": {
+      "model": "kubejs:block/base_ingot_cast",
+      "y": 78.75
+    },
+    "rotation=10": {
+      "model": "kubejs:block/base_ingot_cast",
+      "y": 78.75
+    },
+    "rotation=11": {
+      "model": "kubejs:block/base_ingot_cast",
+      "y": 78.75
+    },
+    "rotation=12": {
+      "model": "kubejs:block/base_ingot_cast",
+      "y": 78.75
+    },
+    "rotation=13": {
+      "model": "kubejs:block/base_ingot_cast",
+      "y": 78.75
+    },
+    "rotation=14": {
+      "model": "kubejs:block/base_ingot_cast",
+      "y": 78.75
+    },
+    "rotation=15": {
+      "model": "kubejs:block/base_ingot_cast",
+      "y": 78.75
+    }
+  }
+}
