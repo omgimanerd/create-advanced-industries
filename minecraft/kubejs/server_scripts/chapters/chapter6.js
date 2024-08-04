@@ -144,7 +144,7 @@ ServerEvents.recipes((e) => {
     })
     .outputs('apotheotic_additions:artifact_material')
   // Heirloom Material: Core of the Family
-  create.mixing('apotheotic_additions:heirloom_material', [
+  create.filling('apotheotic_additions:heirloom_material', [
     'quark:diamond_heart',
     Fluid.of('thermal:ender', 250),
   ])
@@ -163,11 +163,11 @@ ServerEvents.recipes((e) => {
   create.mechanical_crafting(
     'quark:diamond_heart',
     [
-      'AAAAA', //
-      'ADDDA', //
+      'A A A', //
+      ' DDD ', //
       'ADMDA', //
-      'ADDDA', //
-      'AAAAA', //
+      ' DDD ', //
+      'A A A', //
     ],
     {
       A: 'createutilities:polished_amethyst',
