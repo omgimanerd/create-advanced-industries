@@ -1,10 +1,11 @@
 // priority: 0
 
 ;(() => {
-  // Populated on first load with the beacon crafting recipes. If a recipe uses
-  // a tag, it is expanded into all matching items for fast lookup in this
-  // object.
   let recipeLookup = {}
+  // Preprocess all the energized beacon crafting recipes into this dictionary
+  // for fast lookup. This is ONLY possible because we force a reload the first
+  // time the world is loaded. This ensures that tag lookups will work properly
+  // in this event.
   ServerEvents.lowPriorityData(() => {
     // Iterate through all the energized beacon crafting recipes and preprocess
     // them into a map for fast lookup.
@@ -21,6 +22,9 @@
         return Item.of(v)
       })
       items.forEach((id) => {
+        if (id === 'minecraft:barrier') {
+          throw new Error('Unable to resolve tags!')
+        }
         const itemIdLookup = recipeLookup[id] || {}
         const redirectorLookup = itemIdLookup[redirectorBlock]
         if (redirectorLookup !== undefined) {

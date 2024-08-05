@@ -1,4 +1,4 @@
-// priority: 1001
+// priority: 10000
 
 ServerEvents.recipes(() => {
   const server = Utils.getServer()
