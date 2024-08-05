@@ -1,15 +1,21 @@
-// priority: 1000
+// priority: 1001
 
 ServerEvents.recipes(() => {
   const server = Utils.getServer()
   global.WORLD_SEED =
-    server === null ? -1 : server.worldData.worldGenOptions().seed()
+    server === null ? null : server.worldData.worldGenOptions().seed()
+  if (global.WORLD_SEED !== null) {
+    console.log(`Successfully got world seed: ${global.WORLD_SEED}`)
+  } else {
+    throw new Error('Forced reload was not triggered! World seed unavailable!')
+  }
 })
 
+// This only fires the first time a world is loaded into. Logging out and in
+// does not trigger the event.
 ServerEvents.loaded((e) => {
   // Reloads the server on the first world load to ensure the world seed is
-  // available for recipe registration.
-  if (global.WORLD_SEED === -1) {
-    e.server.runCommandSilent('reload')
-  }
+  // available for recipe registration. This also ensures tags are available
+  // in many of the server events.
+  e.server.runCommandSilent('reload')
 })
