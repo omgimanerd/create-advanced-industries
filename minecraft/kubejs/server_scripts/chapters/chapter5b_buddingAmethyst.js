@@ -11,10 +11,9 @@ LootJS.modifiers((e) => {
 
 /**
  * Handler defined in startup_scripts/spoutHandlerRegistration.js
- * Defined here to allow for server side reload
  * @type {Internal.SpecialSpoutHandlerEvent$SpoutHandler_}
  * @param {Internal.BlockContainerJS_} block
- * @param {Internal.FluidStackJS_} fluid
+ * @param {Internal.FluidStackJS} fluid
  * @param {boolean} simulate
  * @returns {number} The amount of fluid used by the spout
  */
@@ -27,13 +26,11 @@ global.BuddingAmethystSpoutHandlerCallback = (block, fluid, simulate) => {
     'minecraft:medium_amethyst_bud': 'minecraft:large_amethyst_bud',
     'minecraft:large_amethyst_bud': 'minecraft:amethyst_cluster',
   }
-  let growCandidates = []
-  for (const dir of Direction.ALL.values()) {
-    let surroundingBlock = block.offset(dir)
-    if (surroundingBlock.id in growthStates) {
-      growCandidates.push(surroundingBlock)
-    }
-  }
+  const growCandidates = Direction.ALL.values()
+    .stream()
+    .map((dir) => block.offset(dir))
+    .filter((block) => block.id in growthStates)
+    .toArray()
   /** @type {Internal.BlockContainerJS_} */
   const candidate = global.choice(growCandidates)
   if (candidate === null) return 0

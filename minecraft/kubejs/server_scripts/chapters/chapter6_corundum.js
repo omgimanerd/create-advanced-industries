@@ -1,5 +1,42 @@
 // priority: 500
 
+/**
+ * Handler defined in startup_scripts/spoutHandlerRegistration.js
+ * @type {Internal.SpecialSpoutHandlerEvent$SpoutHandler_}
+ * @param {Internal.BlockContainerJS_} block
+ * @param {Internal.FluidStackJS} fluid
+ * @param {boolean} simulate
+ * @returns {number}
+ */
+global.CorundumBlockSpoutHandlerCallback = (block, fluid, simulate) => {
+  const fluidConsumption = 125
+  if (fluid.id !== 'kubejs:crystal_growth_accelerator') return 0
+  if (block.up.id !== 'minecraft:air') return 0
+  if (fluid.amount < fluidConsumption) return 0
+  const growCandidates = Direction.ALL.values()
+    .stream()
+    .map((dir) => {
+      return { block: block.offset(dir), dir: dir }
+    })
+    .filter((data) => {
+      return data.block.id === 'minecraft:air'
+    })
+    .toArray()
+  if (growCandidates.length === 0) return 0
+  const candidate = global.choice(growCandidates)
+  // Each spouting has a 25% chance of growing a corundum cluster.
+  if (Math.random() >= 0.25) return 0
+  // All checks passed, perform the growth if we are not simulating.
+  if (!simulate) {
+    // Set the corresponding corundum cluster.
+    let corundumCluster = `${block.id}_cluster`
+    candidate.block.set(corundumCluster, {
+      facing: candidate.dir,
+    })
+  }
+  return fluidConsumption
+}
+
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
 

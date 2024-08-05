@@ -116,7 +116,8 @@
       // 1) they are atomic with respect to each other and cannot run across
       //    ticks, we do not have to worry about data races when reading
       //    the energy variable.
-      // 2) they must execute relatively fast or the game will lag
+      // 2) they must execute relatively fast or the game will lag and TPS will
+      //    drop.
       server.scheduleInTicks(delay, () => {
         // If we have no energy remaining, do not perform the entity processing.
         if (energy > 0) {
