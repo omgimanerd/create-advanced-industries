@@ -72,7 +72,7 @@ SequencedAssembly.prototype.press = function (repeats) {
 }
 
 /**
- * @param {Internal.FluidStackJS_|string} fluid
+ * @param {Internal.FluidStackJS|string} fluid
  * @param {number=} qty_mb
  * @param {string=} fluidTextLabel Text used for the fluid in the item lore
  * @returns {SequencedAssembly}

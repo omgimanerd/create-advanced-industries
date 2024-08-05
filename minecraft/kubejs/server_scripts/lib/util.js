@@ -118,7 +118,7 @@ const setIfValid = (o, key, value) => {
 /**
  * @param {Internal.Potion_} potionId
  * @param {number} quantity
- * @returns {Internal.FluidStackJS_}
+ * @returns {Internal.FluidStackJS}
  */
 const potionFluid = (
   /** @type {Internal.Potion_} */ potionId,

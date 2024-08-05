@@ -15,7 +15,7 @@ ServerEvents.recipes((e) => {
   /**
    * @param {Internal.Potion_} potionId
    * @param {string} bottle
-   * @returns {Internal.FluidStackJS_}
+   * @returns {Internal.FluidStackJS}
    */
   const getPotionFluid = (potionId, bottle) => {
     if (bottle === undefined) bottle = 'REGULAR'
