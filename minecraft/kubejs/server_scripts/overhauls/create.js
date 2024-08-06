@@ -537,6 +537,21 @@ ServerEvents.recipes((e) => {
     'create_connected:vertical_parallel_gearbox',
     'create:large_cogwheel',
   ])
+  // Fluid vessel recipe should match the tank overhaul
+  e.remove({ id: 'create_connected:crafting/kinetics/fluid_vessel' })
+  e.shaped(
+    '2x create_connected:fluid_vessel',
+    [
+      ' M ', //
+      'SBS', //
+      ' M ', //
+    ],
+    {
+      M: 'kubejs:copper_mechanism',
+      S: 'create:copper_sheet',
+      B: 'minecraft:barrel',
+    }
+  )
 
   /////////////////////
   // Create: Encased //
