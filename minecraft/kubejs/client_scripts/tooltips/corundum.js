@@ -5,7 +5,7 @@ ItemEvents.tooltip((e) => {
     tooltipHelper(e, id, {
       unShiftText: 'Hold [<green>SHIFT</green>] for more info',
       shiftText: [
-        'Place below Y=24 and it will naturally grow.',
+        'Place below <red>Y=24</red> and it will naturally grow.',
         'Or spout crystal growth accelerator on it...',
       ],
     })

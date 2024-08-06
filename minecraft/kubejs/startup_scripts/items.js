@@ -30,6 +30,8 @@ StartupEvents.registry('item', (e) => {
   // Chapter 6: Vibration Mechanisms defined by Create: Misc and Things
   // Chapter 7: Quantum Mechanisms, texture from Create: Teleporters
   registerMechanism('kubejs:quantum_mechanism')
+  // Chapter 8: Creative Mechanisms
+  registerMechanism('kubejs:creative_mechanism')
 
   // Wooden hand used for crafting deployers
   registerItem('kubejs:wooden_hand')

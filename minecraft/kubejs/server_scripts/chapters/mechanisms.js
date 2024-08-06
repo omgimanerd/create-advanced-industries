@@ -32,3 +32,6 @@ const INCOMPLETE_VIBRATION_MECHANISM =
 
 const QUANTUM_MECHANISM = 'kubejs:quantum_mechanism'
 const INCOMPLETE_QUANTUM_MECHANISM = 'kubejs:incomplete_quantum_mechanism'
+
+const CREATIVE_MECHANISM = 'kubejs:creative_mechanism'
+const INCOMPLETE_CREATIVE_MECHANISM = 'kubejs:incomplete_creative_mechanism'
