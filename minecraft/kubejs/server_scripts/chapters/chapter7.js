@@ -31,20 +31,37 @@ ServerEvents.recipes((e) => {
     .energize(10000)
     .outputs('createutilities:graviton_tube')
 
-  // Thermal molten fluid components
+  // Energized glowstone
   create.energizing(
     'kubejs:energized_glowstone',
     'minecraft:glowstone_dust',
     64000
   )
   create
+    .SequencedAssembly('minecraft:glowstone_dust')
+    .fill(potionFluid('ars_elemental:shock_potion', 100))
+    .energize(16000)
+    .outputs('4x kubejs:energized_glowstone')
+  create
     .mixing(Fluid.of('thermal:glowstone', 250), 'kubejs:energized_glowstone')
     .heated()
-  create
-    .compacting(Fluid.of('thermal:ender', 250), 'kubejs:resonant_ender_pearl')
-    .superheated()
 
-  // Making destabilized redstone
+  // Resonant Ender
+  create
+    .compacting(Fluid.of('thermal:ender', 100), 'kubejs:resonant_ender_pearl')
+    .superheated()
+  create
+    .compacting(Fluid.of('thermal:ender', 100), 'minecraft:echo_shard')
+    .superheated()
+  create
+    .pressurizing(['kubejs:resonant_ender_pearl', 'minecraft:echo_shard'])
+    .secondaryFluidInput(
+      Fluid.of('create_enchantment_industry:hyper_experience', 100)
+    )
+    .superheated()
+    .outputs(Fluid.of('thermal:ender', 1000))
+
+  // Destabilized Redstone
   create
     .centrifuging(
       [Fluid.of('thermal:redstone', 500), potionFluid('quark:resilience', 500)],
@@ -56,7 +73,6 @@ ServerEvents.recipes((e) => {
     .mixing(Fluid.of('kubejs:molten_redstone', 1000), [
       Fluid.of('thermal:redstone', 500),
       potionFluid('quark:resilience', 500),
-      'minecraft:glowstone_dust',
     ])
     .superheated()
 

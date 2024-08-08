@@ -13,7 +13,7 @@ const repeat = (server, duration, interval, cb, done) => {
     const currentTime = server.getTickCount()
     cb(c)
     if (currentTime >= endTime) {
-      if (typeof done === 'function') done()
+      if (done !== undefined && typeof done === 'function') done()
       c.clear()
     } else {
       c.reschedule(interval)
