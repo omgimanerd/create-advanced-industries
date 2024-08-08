@@ -447,14 +447,12 @@ ServerEvents.recipes((e) => {
     .requirements({ eterna: 50, quanta: 80, arcana: 80 })
   // Hyper Experience condensing requires an inert XP condenser
   create
-    .SequencedAssembly(
-      'kubejs:inert_xp_condenser',
-      'kubejs:incomplete_xp_condenser'
+    .pressurizing('kubejs:inert_xp_condenser')
+    .secondaryFluidInput(
+      Fluid.of('create_enchantment_industry:experience', 1000)
     )
-    .fill(Fluid.of('create_enchantment_industry:experience', 1000))
-    .custom('Next: Compact in a superheated basin', (pre, post) => {
-      create.compacting(post, pre).superheated()
-    })
+    .superheated()
+    .processingTime(200)
     .outputs('kubejs:xp_condenser')
   create.emptying(
     [
