@@ -382,7 +382,6 @@
 				}
 			}
 			id: "0FB26F7E9A99AE65"
-			optional: true
 			tasks: [
 				{
 					id: "2F0F9E8348170C2C"
@@ -1457,7 +1456,6 @@
 				"The resulting azalea can still be composted to continue the cycle."
 			]
 			id: "426703177D8740C7"
-			optional: true
 			tasks: [{
 				id: "235B863D9C7345DF"
 				item: "minecraft:flowering_azalea"
@@ -1582,9 +1580,12 @@
 			id: "36407A48939066C9"
 			min_width: 250
 			tasks: [{
-				id: "319CF41F80BA0260"
-				item: "kubejs:arcane_portal"
-				type: "item"
+				icon: "kubejs:arcane_portal"
+				id: "0080188B3D03B147"
+				observe_type: 0
+				timer: 0L
+				to_observe: "kubejs:arcane_portal"
+				type: "observation"
 			}]
 			x: 8.0d
 			y: 17.0d
@@ -1912,7 +1913,6 @@
 				"With enough of these, you might even be able to make something ... &ounbreakable.&r"
 			]
 			id: "4B227421760445CA"
-			optional: true
 			tasks: [{
 				id: "769B4D851196E75C"
 				item: {
@@ -2110,7 +2110,6 @@
 			description: ["Combining the Codex Indestructia with an item in any crafting grid will make that item indestructible."]
 			id: "0668F7B070828954"
 			invisible: true
-			optional: true
 			rewards: [{
 				id: "466DA06471948534"
 				item: {

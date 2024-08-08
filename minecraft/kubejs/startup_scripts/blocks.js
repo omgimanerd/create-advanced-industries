@@ -11,6 +11,10 @@ BlockEvents.modification((e) => {
 StartupEvents.registry('block', (e) => {
   // Register a portal block to be used in Chapter 5b
   e.create('kubejs:arcane_portal')
+    .stoneSoundType()
+    .lightLevel(13)
+    .noDrops()
+    .hardness(50) // same as obsidian
     .texture('up', 'kubejs:block/arcane_portal_top')
     .texture('down', 'kubejs:block/arcane_portal_side')
     .texture('north', 'kubejs:block/arcane_portal_side')
