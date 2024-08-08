@@ -23,7 +23,6 @@
 			dependencies: [
 				"3675892BE1757F09"
 				"76A6A184D9C43C1B"
-				"3699DD3B91E59D8D"
 			]
 			id: "23A0F081DF173BAF"
 			size: 2.0d
@@ -34,8 +33,8 @@
 				type: "item"
 			}]
 			title: "Complete: Quantum Mechanisms"
-			x: 14.0d
-			y: -2.0d
+			x: 20.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["5118C68CFF84C19C"]
@@ -50,8 +49,8 @@
 		}
 		{
 			dependencies: [
-				"47959ED668B51DD0"
 				"52089EF528A92F00"
+				"00FA56AC3A227ED8"
 			]
 			id: "29D5CED6D2FC7E91"
 			tasks: [{
@@ -60,7 +59,7 @@
 				type: "item"
 			}]
 			x: 24.0d
-			y: 8.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["181130507B8EAB31"]
@@ -124,8 +123,8 @@
 				item: "thermal:constantan_ingot"
 				type: "item"
 			}]
-			x: 17.5d
-			y: 5.0d
+			x: 20.5d
+			y: 3.0d
 		}
 		{
 			dependencies: ["2A407653C768CC06"]
@@ -157,14 +156,13 @@
 				item: "kubejs:redstone_pearl"
 				type: "item"
 			}]
-			x: 10.0d
+			x: 6.0d
 			y: -2.0d
 		}
 		{
 			dependencies: [
-				"29D5CED6D2FC7E91"
-				"33EBE2D7B0D8BBA0"
 				"09B4A6A4CBE56493"
+				"29D5CED6D2FC7E91"
 			]
 			id: "76A6A184D9C43C1B"
 			tasks: [{
@@ -183,7 +181,7 @@
 				item: "extrastorage:neural_processor"
 				type: "item"
 			}]
-			x: 14.0d
+			x: 20.0d
 			y: 0.0d
 		}
 		{
@@ -253,7 +251,7 @@
 				type: "item"
 			}]
 			x: 0.0d
-			y: -10.0d
+			y: -12.0d
 		}
 		{
 			dependencies: ["1648D1E853C0A4C8"]
@@ -285,7 +283,7 @@
 				item: "kubejs:steel_ingot_cast_molten_enderium"
 				type: "item"
 			}]
-			x: 8.0d
+			x: 10.0d
 			y: -4.0d
 		}
 		{
@@ -368,21 +366,7 @@
 				}
 				type: "item"
 			}]
-			x: 4.0d
-			y: -8.0d
-		}
-		{
-			dependencies: [
-				"33BEB6B1E1A35FCE"
-				"63324DE399A2DFB3"
-			]
-			id: "33EBE2D7B0D8BBA0"
-			tasks: [{
-				id: "34D07E7B38C1AF4F"
-				item: "create_connected:control_chip"
-				type: "item"
-			}]
-			x: 16.0d
+			x: 6.0d
 			y: -8.0d
 		}
 		{
@@ -394,7 +378,7 @@
 				type: "item"
 			}]
 			x: 6.0d
-			y: -8.0d
+			y: -10.0d
 		}
 		{
 			dependencies: ["09550BF1249B9570"]
@@ -405,7 +389,7 @@
 				type: "item"
 			}]
 			x: 8.0d
-			y: -8.0d
+			y: -10.0d
 		}
 		{
 			dependencies: ["24C1F849823D87CB"]
@@ -422,10 +406,13 @@
 				type: "item"
 			}]
 			x: 10.0d
-			y: -8.0d
+			y: -10.0d
 		}
 		{
-			dependencies: ["1563709AEFE5968F"]
+			dependencies: [
+				"1563709AEFE5968F"
+				"33BEB6B1E1A35FCE"
+			]
 			id: "69D09EB30178ABF9"
 			tasks: [{
 				id: "2B94CD6778A29DF8"
@@ -433,28 +420,20 @@
 				type: "item"
 			}]
 			x: 10.0d
-			y: -10.0d
+			y: -12.0d
 		}
 		{
-			dependencies: ["107558182C78B789"]
+			dependencies: [
+				"107558182C78B789"
+				"76A6A184D9C43C1B"
+			]
 			id: "36CAB20DE512A370"
 			tasks: [{
 				id: "55B0923B7EBD242A"
 				item: "vintageimprovements:signalum_sheet"
 				type: "item"
 			}]
-			x: 12.0d
-			y: -6.0d
-		}
-		{
-			dependencies: ["36CAB20DE512A370"]
-			id: "63324DE399A2DFB3"
-			tasks: [{
-				id: "6EF0D1575C43E80C"
-				item: "vintageimprovements:signalum_wire"
-				type: "item"
-			}]
-			x: 14.0d
+			x: 16.0d
 			y: -6.0d
 		}
 		{
@@ -636,7 +615,7 @@
 				type: "item"
 			}]
 			x: 24.0d
-			y: -10.0d
+			y: -12.0d
 		}
 		{
 			dependencies: ["3699DD3B91E59D8D"]
@@ -647,7 +626,7 @@
 				item: "kubejs:shattered_ender_pearl"
 				type: "item"
 			}]
-			x: 8.0d
+			x: 4.0d
 			y: -2.0d
 		}
 		{
@@ -699,7 +678,10 @@
 			y: 6.0d
 		}
 		{
-			dependencies: ["228C3290FC55C851"]
+			dependencies: [
+				"228C3290FC55C851"
+				"758B001ECA60BFB0"
+			]
 			id: "7309AC13830BCDE1"
 			tasks: [{
 				id: "2A0C7216C830FC65"
@@ -707,7 +689,7 @@
 				type: "item"
 			}]
 			x: 18.0d
-			y: 4.0d
+			y: 2.0d
 		}
 		{
 			dependencies: ["573A0CF01DCF191C"]
@@ -730,6 +712,50 @@
 			}]
 			x: 14.0d
 			y: 4.0d
+		}
+		{
+			dependencies: ["0B8142C492A37CAB"]
+			id: "11EC45B2AF0743C5"
+			tasks: [{
+				id: "38542C64842C7C72"
+				item: {
+					Count: 1b
+					id: "minecraft:splash_potion"
+					tag: {
+						Potion: "quark:strong_resilience"
+					}
+				}
+				type: "item"
+			}]
+			title: "Splash Potion of Stability II"
+			x: 18.0d
+			y: -8.0d
+		}
+		{
+			dependencies: ["47959ED668B51DD0"]
+			id: "00FA56AC3A227ED8"
+			tasks: [{
+				id: "13C4A03C2513D060"
+				item: "thermal:tin_ingot"
+				type: "item"
+			}]
+			x: 24.0d
+			y: 8.0d
+		}
+		{
+			dependencies: [
+				"11EC45B2AF0743C5"
+				"3699DD3B91E59D8D"
+				"7309AC13830BCDE1"
+			]
+			id: "279AB7E33B8A36AF"
+			tasks: [{
+				id: "18F97374F532EDF6"
+				item: "kubejs:antimatter"
+				type: "item"
+			}]
+			x: 18.0d
+			y: -2.0d
 		}
 	]
 	title: "Chapter 7: Quantum Mechanisms"

@@ -139,7 +139,7 @@
 				type: "item"
 			}]
 			x: 0.0d
-			y: -10.0d
+			y: -12.0d
 		}
 		{
 			dependencies: [
@@ -153,7 +153,7 @@
 				type: "item"
 			}]
 			x: 2.0d
-			y: -10.0d
+			y: -12.0d
 		}
 		{
 			dependencies: [
@@ -167,7 +167,7 @@
 				type: "item"
 			}]
 			x: 4.0d
-			y: -10.0d
+			y: -12.0d
 		}
 		{
 			dependencies: [
@@ -181,7 +181,7 @@
 				type: "item"
 			}]
 			x: 6.0d
-			y: -10.0d
+			y: -12.0d
 		}
 		{
 			dependencies: [
@@ -195,7 +195,7 @@
 				type: "item"
 			}]
 			x: 8.0d
-			y: -10.0d
+			y: -12.0d
 		}
 		{
 			dependencies: [
@@ -209,7 +209,7 @@
 				type: "item"
 			}]
 			x: 12.0d
-			y: -10.0d
+			y: -12.0d
 		}
 		{
 			dependencies: [
@@ -223,7 +223,7 @@
 				type: "item"
 			}]
 			x: 10.0d
-			y: -10.0d
+			y: -12.0d
 		}
 		{
 			dependencies: [
@@ -237,7 +237,7 @@
 				type: "item"
 			}]
 			x: 14.0d
-			y: -10.0d
+			y: -12.0d
 		}
 		{
 			dependencies: [
@@ -251,11 +251,15 @@
 				type: "item"
 			}]
 			x: 16.0d
-			y: -10.0d
+			y: -12.0d
 		}
 		{
 			dependencies: ["6DC625AE49A9B01A"]
-			description: ["Go to the end and defeat the ender dragon."]
+			description: [
+				"Go to the end and defeat the ender dragon."
+				""
+				"The ender dragon will always drop its head when defeated."
+			]
 			id: "7F0A4231CA344359"
 			size: 2.0d
 			tasks: [{
@@ -305,7 +309,7 @@
 				type: "item"
 			}]
 			x: 18.0d
-			y: -2.0d
+			y: -1.5d
 		}
 		{
 			dependencies: ["2B05BB13A47507C0"]
@@ -332,6 +336,7 @@
 				}
 			]
 			tasks: [{
+				count: 16L
 				id: "45DEB4EA69ED76CB"
 				item: "minecraft:dragon_breath"
 				type: "item"
@@ -360,7 +365,7 @@
 		}
 		{
 			dependencies: ["27B9B80E471D7E0A"]
-			description: ["Fill the XP Condenser and compact it, and then drain out the condensed hyper experience."]
+			description: ["Fill the XP Condenser with experience under high pressure and heat, then drain out the hyper experience from it."]
 			id: "57F92618AAF3CAD1"
 			tasks: [{
 				id: "0CFB6FC1C0BAD7E7"
@@ -368,7 +373,7 @@
 				type: "item"
 			}]
 			x: 18.0d
-			y: -4.0d
+			y: -3.0d
 		}
 		{
 			dependencies: ["6DD93F52A87B6B32"]
@@ -507,7 +512,7 @@
 				type: "item"
 			}]
 			x: 0.0d
-			y: -8.0d
+			y: -10.0d
 		}
 		{
 			dependencies: ["368E09F5D73E4623"]
@@ -523,14 +528,14 @@
 				type: "item"
 			}]
 			x: 2.0d
-			y: -8.0d
+			y: -10.0d
 		}
 		{
 			dependencies: ["368E09F5D73E4623"]
 			description: [
-				"You will need to either find or craft indigo corundum clusters to make luminous crystal shards. There are quite a few interesting ways you can go about this automation."
+				"You will need to either find or craft indigo corundum clusters to make luminous crystal shards. "
 				""
-				"Once you unlock the ability to craft a beacon, there are ways to make this much easier."
+				"There are quite a few interesting ways you can go about this automation. Corundum blocks and clusters will grow if placed deep underground, or you can craft it with either gem dust or aluminum oxide."
 			]
 			id: "561F418F1FD38167"
 			tasks: [{
@@ -539,7 +544,7 @@
 				type: "item"
 			}]
 			x: 4.0d
-			y: -8.0d
+			y: -10.0d
 		}
 		{
 			dependencies: ["368E09F5D73E4623"]
@@ -551,7 +556,7 @@
 				type: "item"
 			}]
 			x: 6.0d
-			y: -8.0d
+			y: -10.0d
 		}
 		{
 			dependencies: ["368E09F5D73E4623"]
@@ -563,7 +568,7 @@
 				type: "item"
 			}]
 			x: 8.0d
-			y: -8.0d
+			y: -10.0d
 		}
 		{
 			dependencies: ["368E09F5D73E4623"]
@@ -575,7 +580,7 @@
 				type: "item"
 			}]
 			x: 10.0d
-			y: -8.0d
+			y: -10.0d
 		}
 		{
 			dependencies: ["368E09F5D73E4623"]
@@ -591,7 +596,7 @@
 				type: "item"
 			}]
 			x: 12.0d
-			y: -8.0d
+			y: -10.0d
 		}
 		{
 			dependencies: ["368E09F5D73E4623"]
@@ -603,7 +608,7 @@
 				type: "item"
 			}]
 			x: 14.0d
-			y: -8.0d
+			y: -10.0d
 		}
 		{
 			dependencies: ["368E09F5D73E4623"]
@@ -620,7 +625,7 @@
 				type: "item"
 			}]
 			x: 16.0d
-			y: -8.0d
+			y: -10.0d
 		}
 		{
 			dependencies: ["6DC625AE49A9B01A"]
@@ -674,7 +679,7 @@
 				type: "item"
 			}]
 			x: 8.0d
-			y: -4.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["440B300027FC2527"]
@@ -695,7 +700,7 @@
 				type: "item"
 			}]
 			x: 20.0d
-			y: -10.0d
+			y: -12.0d
 		}
 		{
 			dependencies: [
@@ -797,7 +802,7 @@
 				type: "item"
 			}]
 			x: 18.0d
-			y: -6.0d
+			y: -4.5d
 		}
 		{
 			dependencies: [
@@ -943,7 +948,10 @@
 			y: 10.0d
 		}
 		{
-			dependencies: ["589AA35E84EB3568"]
+			dependencies: [
+				"589AA35E84EB3568"
+				"7B0F9FD48A27FBBE"
+			]
 			description: [
 				"Warden tendril seeds can only be planted on sculk, and only grow in darkness. They are extremely fragile, and since sculk does not provide any nutrients, you'll need to bonemeal the heck out of them."
 				""
@@ -983,8 +991,8 @@
 				item: "kubejs:resonant_ender_pearl"
 				type: "item"
 			}]
-			x: 14.0d
-			y: -4.0d
+			x: 16.0d
+			y: -6.0d
 		}
 		{
 			dependencies: [
@@ -1037,7 +1045,7 @@
 				item: "apotheosis:mythic_material"
 				type: "item"
 			}]
-			x: 16.0d
+			x: 18.0d
 			y: -6.0d
 		}
 		{
@@ -1077,7 +1085,7 @@
 				type: "item"
 			}]
 			x: 18.0d
-			y: -10.0d
+			y: -12.0d
 		}
 		{
 			dependencies: [
@@ -1196,7 +1204,6 @@
 			dependencies: ["33C97AA4A311E69E"]
 			description: ["Hardened glass is witherproof. You may want something like this to contain the wither for a nether star farm."]
 			id: "055FC0C8E2A59FAB"
-			optional: true
 			rewards: [{
 				count: 16
 				id: "682AFC5ECD47C9B6"
@@ -1240,6 +1247,60 @@
 			}]
 			x: 16.0d
 			y: 4.0d
+		}
+		{
+			dependencies: ["75A7D7288DF25E12"]
+			description: ["It might also be helpful to harvest some sculk. It's useful in a few recipes, and can be pressurized into echo shards."]
+			id: "7B0F9FD48A27FBBE"
+			tasks: [{
+				id: "2AF1A27FB0CA9542"
+				item: "minecraft:sculk"
+				type: "item"
+			}]
+			x: 12.0d
+			y: -4.0d
+		}
+		{
+			dependencies: ["7B0F9FD48A27FBBE"]
+			description: ["Compressing sculk in a pressure chamber yields echo shards."]
+			id: "03ABBBFAF9B2B133"
+			tasks: [{
+				id: "5E43D4B8B27F4FAC"
+				item: "minecraft:echo_shard"
+				type: "item"
+			}]
+			x: 12.0d
+			y: -6.0d
+		}
+		{
+			dependencies: [
+				"053EDF3FC60882BD"
+				"03ABBBFAF9B2B133"
+			]
+			dependency_requirement: "one_completed"
+			description: ["Resonant ender is required for this chapter, and can be produced in several ways with differing efficiency. You don't need to fulfill both prerequisites to complete this quest."]
+			id: "44FB86C2B3C8EF0D"
+			rewards: [
+				{
+					count: 16
+					id: "27B097D540FA92F0"
+					item: "kubejs:resonant_ender_pearl"
+					type: "item"
+				}
+				{
+					count: 16
+					id: "2B2765A723FB0326"
+					item: "minecraft:echo_shard"
+					type: "item"
+				}
+			]
+			tasks: [{
+				id: "4255C9395C8CF684"
+				item: "thermal:ender_bucket"
+				type: "item"
+			}]
+			x: 14.0d
+			y: -6.0d
 		}
 	]
 	title: "Chapter 6: Vibration Mechanisms"
