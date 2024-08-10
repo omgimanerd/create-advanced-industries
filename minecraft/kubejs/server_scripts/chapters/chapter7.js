@@ -46,6 +46,19 @@ ServerEvents.recipes((e) => {
     .mixing(Fluid.of('thermal:glowstone', 250), 'kubejs:energized_glowstone')
     .heated()
 
+  // Alternate ways to get Potions of Static Charge.
+  for (const type of [
+    'minecraft:potion',
+    'minecraft:splash_potion',
+    'minecraft:lingering_potion',
+  ]) {
+    create.energizing(
+      Item.of(type, { Potion: 'ars_elemental:shock_potion' }),
+      Item.of(type, { Potion: 'minecraft:awkward' }).weakNBT(),
+      1000
+    )
+  }
+
   // Resonant Ender
   create
     .compacting(Fluid.of('thermal:ender', 100), 'kubejs:resonant_ender_pearl')

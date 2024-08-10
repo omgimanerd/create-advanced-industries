@@ -1,5 +1,9 @@
 // priority: 5000
 
+ItemEvents.canPickUp('kubejs:antimatter', (e) => {
+  e.cancel()
+})
+
 EntityEvents.spawned('minecraft:item', (e) => {
   const { entity, level } = e
   if (!entity.item || entity.item.id !== 'kubejs:antimatter') return
@@ -37,6 +41,28 @@ EntityEvents.spawned('minecraft:item', (e) => {
           return
         }
       }
+
+      // If we are not ready to be discarded, perform the check for a stability
+      // potion.
+      const matching = level
+        .getEntitiesWithin(AABB.ofBlock(block.pos))
+        .filter((nearbyEntity) => {
+          const item = nearbyEntity.item
+          if (item === null) return false
+          return item.equalsIgnoringCount(
+            Item.of('minecraft:splash_potion', {
+              Potion: 'quark:strong_resilience',
+            })
+          )
+        })
+
+      // If we find a match, discard the entities and pop the results.
+      if (matching.isEmpty()) return
+      matching.get(0).discard()
+      discard()
+
+      block.popItem('minecraft:glass_bottle')
+      block.popItem('kubejs:energized_glowstone')
     },
     discard
   )
