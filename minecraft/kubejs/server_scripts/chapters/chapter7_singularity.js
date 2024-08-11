@@ -1,12 +1,13 @@
-// priority: 5000
+// priority: 500
 
-ItemEvents.canPickUp('kubejs:antimatter', (e) => {
+// Disable unstable singularities from being picked up.
+ItemEvents.canPickUp('kubejs:unstable_singularity', (e) => {
   e.cancel()
 })
 
 EntityEvents.spawned('minecraft:item', (e) => {
   const { entity, level } = e
-  if (!entity.item || entity.item.id !== 'kubejs:antimatter') return
+  if (!entity.item || entity.item.id !== 'kubejs:unstable_singularity') return
 
   // Spawn particles when the item entity is discarded.
   const discard = () => {
@@ -49,11 +50,7 @@ EntityEvents.spawned('minecraft:item', (e) => {
         .filter((nearbyEntity) => {
           const item = nearbyEntity.item
           if (item === null) return false
-          return item.equalsIgnoringCount(
-            Item.of('minecraft:splash_potion', {
-              Potion: 'quark:strong_resilience',
-            })
-          )
+          return item.equalsIgnoringCount(Item.of('kubejs:redstone_pearl'))
         })
 
       // If we find a match, discard the entities and pop the results.
@@ -61,8 +58,7 @@ EntityEvents.spawned('minecraft:item', (e) => {
       matching.get(0).discard()
       discard()
 
-      block.popItem('minecraft:glass_bottle')
-      block.popItem('kubejs:energized_glowstone')
+      block.popItem('kubejs:singularity')
     },
     discard
   )
@@ -71,7 +67,7 @@ EntityEvents.spawned('minecraft:item', (e) => {
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
 
-  // Magnetic confinement units and antimatter
+  // Magnetic confinement units and singularities
   create
     .SequencedAssembly('#forge:plates/aluminum')
     .laser(10000)

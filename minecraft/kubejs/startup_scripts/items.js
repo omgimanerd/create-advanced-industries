@@ -206,9 +206,10 @@ StartupEvents.registry('item', (e) => {
   registerItem('kubejs:incomplete_quantum_chip', 'create:sequenced_assembly')
 
   // Magnetic Confinement Unit and Antimatter
-  e.create('kubejs:antimatter')
-    .displayName('Antimatter')
-    .parentModel('kubejs:item/antimatter')
+  e.create('kubejs:unstable_singularity')
+    .displayName('Unstable Singularity')
+    .parentModel('kubejs:item/unstable_singularity')
+  registerItem('kubejs:singularity')
   e.create('kubejs:magnetic_confinement_unit')
     .displayName('Magnetic Confinement Unit')
     .parentModel('kubejs:item/magnetic_confinement_unit')

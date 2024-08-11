@@ -41,7 +41,7 @@ ServerEvents.recipes((e) => {
     .SequencedAssembly('minecraft:glowstone_dust')
     .fill(potionFluid('ars_elemental:shock_potion', 100))
     .energize(16000)
-    .outputs('4x kubejs:energized_glowstone')
+    .outputs('2x kubejs:energized_glowstone')
   create
     .mixing(Fluid.of('thermal:glowstone', 250), 'kubejs:energized_glowstone')
     .heated()
@@ -110,14 +110,14 @@ ServerEvents.recipes((e) => {
   ])
 
   // Control chip overhaul
-  e.remove({ id: 'create_connected:sequenced_assembly/control_chip' })
-  create
-    .SequencedAssembly('create:brass_sheet')
-    .deploy('vintageimprovements:signalum_wire')
-    .fill(potionFluid('ars_elemental:shock_potion', 250))
-    .laser(8000, 250)
-    .press()
-    .outputs('create_connected:control_chip')
+  // e.remove({ id: 'create_connected:sequenced_assembly/control_chip' })
+  // create
+  //   .SequencedAssembly('create:brass_sheet')
+  //   .deploy('vintageimprovements:signalum_wire')
+  //   .fill(potionFluid('ars_elemental:shock_potion', 250))
+  //   .laser(8000, 250)
+  //   .press()
+  //   .outputs('create_connected:control_chip')
 
   // Quantum chips
   create
@@ -125,10 +125,10 @@ ServerEvents.recipes((e) => {
       'vintageimprovements:enderium_sheet',
       'kubejs:incomplete_quantum_chip'
     )
-    .deploy('create_connected:control_chip')
     .deploy('create:sturdy_sheet')
     .deploy('vintageimprovements:signalum_sheet')
     .deploy('vintageimprovements:lumium_wire')
+    .laser(16000)
     .outputs('kubejs:quantum_chip')
 
   // Neural processors, similar to regular processors in chapter 5a
