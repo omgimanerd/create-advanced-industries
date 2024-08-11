@@ -971,6 +971,10 @@ ServerEvents.recipes((e) => {
       'kubejs:aluminum_dust',
       'kubejs:iron_oxide_dust',
     ])
+    create.centrifuging(
+      ['kubejs:aluminum_dust', 'kubejs:iron_oxide_dust'],
+      'tfmg:thermite_powder'
+    )
 
     // Thermite grenade.
     redefineRecipe('tfmg:thermite_grenade', [
