@@ -173,8 +173,8 @@ if (Platform.isLoaded('vintageimprovements')) {
 
   /**
    * @param {number} energy
-   * @param {number} maxChargeRate
-   * @returns { SequencedAssembly}
+   * @param {number=} maxChargeRate
+   * @returns {SequencedAssembly}
    */
   SequencedAssembly.prototype.laser = function (energy, maxChargeRate) {
     this.steps_.push({
