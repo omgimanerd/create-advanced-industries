@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "kubejs:block/arcane_portal_side",
+    "up": "kubejs:block/arcane_portal_top",
+    "north": "kubejs:block/arcane_portal_side",
+    "south": "kubejs:block/arcane_portal_side",
+    "west": "kubejs:block/arcane_portal_side",
+    "east": "kubejs:block/arcane_portal_side",
+    "particle": "kubejs:block/arcane_portal_side"
+  }
+}

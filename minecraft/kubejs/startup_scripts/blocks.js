@@ -12,15 +12,9 @@ StartupEvents.registry('block', (e) => {
   // Register a portal block to be used in Chapter 5b
   e.create('kubejs:arcane_portal')
     .stoneSoundType()
-    .lightLevel(13)
+    .lightLevel(5)
+    .unbreakable()
     .noDrops()
-    .hardness(50) // same as obsidian
-    .texture('up', 'kubejs:block/arcane_portal_top')
-    .texture('down', 'kubejs:block/arcane_portal_side')
-    .texture('north', 'kubejs:block/arcane_portal_side')
-    .texture('south', 'kubejs:block/arcane_portal_side')
-    .texture('east', 'kubejs:block/arcane_portal_side')
-    .texture('west', 'kubejs:block/arcane_portal_side')
     .blockEntity((c) => {
       c.serverTick(20, 0, (blockEntity) => {
         if (global.PortalBlockTickingCallback) {
@@ -68,7 +62,6 @@ StartupEvents.registry('block', (e) => {
   // Register a custom block for the ender inhibitor, used in Chapter 7.
   e.create('kubejs:ender_inhibitor')
     .displayName('Ender Inhibitor')
-    .model('kubejs:block/ender_inhibitor')
     .notSolid()
     .tagBlock('create:wrench_pickup')
     .tagBlock('minecraft:mineable/pickaxe')
