@@ -10,7 +10,17 @@
 	quests: [
 		{
 			dependencies: ["12D9ACDA50B38FCA"]
+			description: [
+				"Chapter 7."
+				""
+				"Quantum mechanisms allow interdimensional logistics, enabling you to transport items, fluids, energy, and stress units. This chapter introduces builds upon all the automations you've already unlocked."
+			]
 			id: "271A91265ACE5851"
+			rewards: [{
+				id: "5B0928375B73C22D"
+				item: "farmersdelight:roasted_mutton_chops"
+				type: "item"
+			}]
 			tasks: [{
 				id: "7454746B3D16F6B0"
 				title: "Start"
@@ -23,8 +33,30 @@
 			dependencies: [
 				"3675892BE1757F09"
 				"76A6A184D9C43C1B"
+				"4AEAEC45012EFD59"
 			]
+			description: ["Deploy on all of these ingredients onto a stabilized Vibration Mechanism and you have yourself a Quantum Mechanism!"]
 			id: "23A0F081DF173BAF"
+			rewards: [
+				{
+					count: 16
+					id: "0B05AA232D01D21B"
+					item: "kubejs:quantum_mechanism"
+					type: "item"
+				}
+				{
+					count: 16
+					id: "4054BCE7B56190D2"
+					item: "createutilities:graviton_tube"
+					type: "item"
+				}
+				{
+					count: 16
+					id: "3ADC1321625B6AC3"
+					item: "extrastorage:neural_processor"
+					type: "item"
+				}
+			]
 			size: 2.0d
 			tasks: [{
 				count: 16L
@@ -33,11 +65,12 @@
 				type: "item"
 			}]
 			title: "Complete: Quantum Mechanisms"
-			x: 20.0d
-			y: -6.0d
+			x: 16.0d
+			y: -2.0d
 		}
 		{
 			dependencies: ["5118C68CFF84C19C"]
+			description: ["You can then cast this into Enderium Ingots."]
 			id: "6DBFC6E2B2B08D29"
 			tasks: [{
 				id: "489E09DEC0A9FB13"
@@ -45,24 +78,26 @@
 				type: "item"
 			}]
 			x: 12.0d
-			y: -4.0d
+			y: -2.0d
 		}
 		{
 			dependencies: [
 				"52089EF528A92F00"
 				"00FA56AC3A227ED8"
 			]
+			description: ["Cast the molten lumium back into an ingot."]
 			id: "29D5CED6D2FC7E91"
 			tasks: [{
 				id: "16E7D005A8E7AE87"
 				item: "thermal:lumium_ingot"
 				type: "item"
 			}]
-			x: 24.0d
-			y: -4.0d
+			x: 20.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["181130507B8EAB31"]
+			description: ["Cast the molten signalum back into an ingot."]
 			id: "107558182C78B789"
 			tasks: [{
 				id: "7F563467911F8F7C"
@@ -74,6 +109,7 @@
 		}
 		{
 			dependencies: ["271A91265ACE5851"]
+			description: ["Dormant vents are often found in subsea veins."]
 			icon: "molten_vents:dormant_molten_asurine"
 			id: "5EA0A56E4C6E4C4F"
 			tasks: [{
@@ -86,10 +122,11 @@
 			}]
 			title: "Find a Dormant Vent"
 			x: 0.0d
-			y: 8.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["5EA0A56E4C6E4C4F"]
+			description: ["Blow it up with some TNT to activate it."]
 			icon: "molten_vents:active_molten_asurine"
 			id: "52C4538635906B7E"
 			tasks: [{
@@ -102,43 +139,11 @@
 			}]
 			title: "Activating a Molten Vent"
 			x: 2.0d
-			y: 8.0d
-		}
-		{
-			dependencies: ["2A407653C768CC06"]
-			id: "1F39D804C476D822"
-			tasks: [{
-				id: "7D8734C51909CB1D"
-				item: "thermal:bronze_ingot"
-				type: "item"
-			}]
-			x: 19.5d
-			y: 5.0d
-		}
-		{
-			dependencies: ["2A407653C768CC06"]
-			id: "7996698D6208A153"
-			tasks: [{
-				id: "03B54D9FF4060B3F"
-				item: "thermal:constantan_ingot"
-				type: "item"
-			}]
-			x: 20.5d
-			y: 3.0d
-		}
-		{
-			dependencies: ["2A407653C768CC06"]
-			id: "73E62C5DB2ADFC3B"
-			tasks: [{
-				id: "73AF65CD38AB3DF6"
-				item: "thermal:electrum_ingot"
-				type: "item"
-			}]
-			x: 18.5d
 			y: 6.0d
 		}
 		{
 			dependencies: ["6293CBBC76D73F05"]
+			description: ["Drop the steel ingot into the void and a void steel ingot will float back up."]
 			id: "177A034E2C455510"
 			tasks: [{
 				id: "0A44E1CDB1C860B7"
@@ -149,7 +154,11 @@
 			y: 2.0d
 		}
 		{
-			dependencies: ["5BA8FDECCF51342E"]
+			dependencies: [
+				"5BA8FDECCF51342E"
+				"2C8BDCCE49CD6DBC"
+			]
+			description: ["Stabilize the resonant pearl again and add redstone and energy to make a redstone pearl. This will serve as a housing for unstable singularities."]
 			id: "3699DD3B91E59D8D"
 			tasks: [{
 				id: "67C45BF54A7FC751"
@@ -157,35 +166,38 @@
 				type: "item"
 			}]
 			x: 6.0d
-			y: -2.0d
+			y: -4.0d
 		}
 		{
 			dependencies: [
 				"09B4A6A4CBE56493"
-				"29D5CED6D2FC7E91"
+				"0C1CC21E9F31F589"
 			]
+			description: ["With all of these combined, you can craft quantum chips."]
 			id: "76A6A184D9C43C1B"
 			tasks: [{
 				id: "05CDF1770D28BF12"
 				item: "kubejs:quantum_chip"
 				type: "item"
 			}]
-			x: 16.0d
-			y: -4.0d
+			x: 14.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["56A24AF47C360AC9"]
+			description: ["Like the other processors, they'll need pneumatic assembly to finish."]
 			id: "3675892BE1757F09"
 			tasks: [{
 				id: "0C00C561F21E7E4A"
 				item: "extrastorage:neural_processor"
 				type: "item"
 			}]
-			x: 20.0d
+			x: 16.0d
 			y: 0.0d
 		}
 		{
 			dependencies: ["3832D225F6D0C417"]
+			description: ["Raw Neural Processors are more advanced processors that unlock better crafters for refined storage."]
 			id: "56A24AF47C360AC9"
 			tasks: [{
 				id: "2618A40AE1A2362E"
@@ -200,6 +212,7 @@
 				"6A59EF7246F87789"
 				"7776DA8092FA0B59"
 			]
+			description: ["Graviton tubes are a necessary component for quantum mechanisms and the machines that are crafted with them. "]
 			id: "3832D225F6D0C417"
 			tasks: [{
 				id: "56DC5A9D67327A49"
@@ -211,6 +224,7 @@
 		}
 		{
 			dependencies: ["6A59EF7246F87789"]
+			description: ["With void steel, you can craft void casings."]
 			id: "0FD4E6E4734AB1D6"
 			tasks: [{
 				id: "36DA9970851824B0"
@@ -222,6 +236,7 @@
 		}
 		{
 			dependencies: ["177A034E2C455510"]
+			description: ["Craft it into a block of void steel. You can also obtain these by dropping steel blocks into the void."]
 			id: "554804ECF1EC02C8"
 			tasks: [{
 				id: "6B136F94CCAD4221"
@@ -233,6 +248,11 @@
 		}
 		{
 			dependencies: ["554804ECF1EC02C8"]
+			description: [
+				"Void steel sheets are a little special, they can only be crafted by dropping a void steel block on it."
+				""
+				"Place a void steel block above another void steel block and cast Gravity on it to make it fall. Any items caught in between will be crushed."
+			]
 			id: "6A59EF7246F87789"
 			tasks: [{
 				id: "7175A401858CE874"
@@ -244,6 +264,7 @@
 		}
 		{
 			dependencies: ["271A91265ACE5851"]
+			description: ["You'll need a steady supply of glowstone dust."]
 			id: "1563709AEFE5968F"
 			tasks: [{
 				id: "598B89F42BECD7C7"
@@ -251,10 +272,11 @@
 				type: "item"
 			}]
 			x: 0.0d
-			y: -12.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["1648D1E853C0A4C8"]
+			description: ["Make an ender pearl farm with the warden tendril seeds."]
 			id: "2D68C948FA0CB936"
 			tasks: [{
 				id: "61ABB803A451C82A"
@@ -262,10 +284,11 @@
 				type: "item"
 			}]
 			x: 4.0d
-			y: -4.0d
+			y: -2.0d
 		}
 		{
 			dependencies: ["2D68C948FA0CB936"]
+			description: ["Automate resonant ender pearls."]
 			id: "5BA8FDECCF51342E"
 			tasks: [{
 				id: "276FE7969CC16A14"
@@ -273,21 +296,24 @@
 				type: "item"
 			}]
 			x: 6.0d
-			y: -4.0d
+			y: -2.0d
 		}
 		{
-			dependencies: ["5BA8FDECCF51342E"]
+			dependencies: ["54D083CDD9336399"]
+			description: ["Resonant Ender is alloyed into Molten Enderium."]
+			icon: "kubejs:steel_ingot_cast_molten_enderium"
 			id: "5118C68CFF84C19C"
 			tasks: [{
-				id: "737F41B13A210D62"
+				id: "74F42D154319B7CE"
 				item: "kubejs:steel_ingot_cast_molten_enderium"
 				type: "item"
 			}]
 			x: 10.0d
-			y: -4.0d
+			y: -2.0d
 		}
 		{
 			dependencies: ["271A91265ACE5851"]
+			description: ["You should already know how to make warden tendril seeds from Chapter 6. As a reminder, these are crafted with resonance crafting and warden tendrils."]
 			id: "1648D1E853C0A4C8"
 			tasks: [{
 				id: "0E5532B41365959B"
@@ -295,10 +321,11 @@
 				type: "item"
 			}]
 			x: 2.0d
-			y: -4.0d
+			y: -2.0d
 		}
 		{
 			dependencies: ["271A91265ACE5851"]
+			description: ["Right click any block with a glass bottle at the cloud Y level. In addition to being a crafting ingredient, this cloud can be placed anywhere, even in midair, functioning essentially like an angel block."]
 			id: "7776DA8092FA0B59"
 			tasks: [{
 				id: "034D6C847A03F3ED"
@@ -310,6 +337,7 @@
 		}
 		{
 			dependencies: ["271A91265ACE5851"]
+			description: ["You'll need a steady supply of redstone dust."]
 			id: "2F70978FF48B905A"
 			tasks: [{
 				id: "7562314AAF4A6D80"
@@ -321,6 +349,7 @@
 		}
 		{
 			dependencies: ["2F70978FF48B905A"]
+			description: ["Melt the redstone in a heated basin."]
 			id: "2C8BDCCE49CD6DBC"
 			tasks: [{
 				id: "1AC407487B2AF994"
@@ -332,6 +361,7 @@
 		}
 		{
 			dependencies: ["2C8BDCCE49CD6DBC"]
+			description: ["Centrifuge the molten redstone into Potion of Stability and Destabilized Redstone."]
 			id: "4667FF99D0ED1BE1"
 			tasks: [{
 				id: "31C23F1C022E8AA2"
@@ -343,6 +373,11 @@
 		}
 		{
 			dependencies: ["4667FF99D0ED1BE1"]
+			description: [
+				"Destabilized redstone is used to alloy into molten signalum."
+				""
+				"You may want to investigate the other side of this chapter for more sustainable ore processing."
+			]
 			id: "181130507B8EAB31"
 			tasks: [{
 				id: "429FE521C8699D98"
@@ -354,6 +389,11 @@
 		}
 		{
 			dependencies: ["2C8BDCCE49CD6DBC"]
+			description: [
+				"Potions of Stability are a byproduct of destabilized redstone production."
+				""
+				"They are used as ingredients in several other recipes in this chapter, but you can always recycle it with a centrifuge."
+			]
 			id: "0B8142C492A37CAB"
 			tasks: [{
 				id: "55721D63531A330F"
@@ -366,11 +406,12 @@
 				}
 				type: "item"
 			}]
-			x: 6.0d
-			y: -8.0d
+			x: 4.0d
+			y: -7.0d
 		}
 		{
 			dependencies: ["0B8142C492A37CAB"]
+			description: ["Centrifuging a potion returns you inert potion residue, which can be recycled back into potions."]
 			id: "09550BF1249B9570"
 			tasks: [{
 				id: "09A455B307649527"
@@ -378,10 +419,11 @@
 				type: "item"
 			}]
 			x: 6.0d
-			y: -10.0d
+			y: -7.0d
 		}
 		{
 			dependencies: ["09550BF1249B9570"]
+			description: ["With a little bit of source, you can reactivate the inert potion residue back into abjuration essence."]
 			id: "24C1F849823D87CB"
 			tasks: [{
 				id: "15F177B95CD61C3E"
@@ -389,10 +431,11 @@
 				type: "item"
 			}]
 			x: 8.0d
-			y: -10.0d
+			y: -7.0d
 		}
 		{
 			dependencies: ["24C1F849823D87CB"]
+			description: ["Potions of Static Charge can be crafted with flashpines, or by energizing an awkward potion."]
 			id: "33BEB6B1E1A35FCE"
 			tasks: [{
 				id: "3083E36F8B5375E5"
@@ -406,12 +449,18 @@
 				type: "item"
 			}]
 			x: 10.0d
-			y: -10.0d
+			y: -7.0d
 		}
 		{
 			dependencies: [
 				"1563709AEFE5968F"
 				"33BEB6B1E1A35FCE"
+			]
+			dependency_requirement: "one_completed"
+			description: [
+				"Energized glowstone can be crafted in several different ways. While Potions of Static Charge aren't required, they do increase the yield."
+				""
+				"You probably already automated some of this in Chapter 6, but you can use this to increase the yield."
 			]
 			id: "69D09EB30178ABF9"
 			tasks: [{
@@ -420,24 +469,26 @@
 				type: "item"
 			}]
 			x: 10.0d
-			y: -12.0d
+			y: -8.0d
 		}
 		{
 			dependencies: [
 				"107558182C78B789"
 				"76A6A184D9C43C1B"
 			]
+			description: ["Then press it into sheets."]
 			id: "36CAB20DE512A370"
 			tasks: [{
 				id: "55B0923B7EBD242A"
 				item: "vintageimprovements:signalum_sheet"
 				type: "item"
 			}]
-			x: 16.0d
+			x: 12.0d
 			y: -6.0d
 		}
 		{
 			dependencies: ["1ED09B0DF667E2FB"]
+			description: ["Process the raw aluminum into ingots."]
 			id: "029D7DEF789032E4"
 			tasks: [{
 				id: "52A6609D2EFA12D1"
@@ -449,6 +500,7 @@
 		}
 		{
 			dependencies: ["35C77AF9EEF326C9"]
+			description: ["Crushing a magma block yields crushed magma."]
 			id: "4F438C24128D042B"
 			tasks: [{
 				id: "4DC0966EC82CF9D5"
@@ -460,6 +512,7 @@
 		}
 		{
 			dependencies: ["271A91265ACE5851"]
+			description: ["By now you should have tons of lava, either from automation or by pumping it from the nether."]
 			id: "4C6BCD93DEA0B7DC"
 			tasks: [{
 				id: "184EFF914D0DA940"
@@ -471,6 +524,7 @@
 		}
 		{
 			dependencies: ["4C6BCD93DEA0B7DC"]
+			description: ["Magma blocks should be familiar from Chapter 4."]
 			id: "35C77AF9EEF326C9"
 			tasks: [{
 				id: "4DE0893148D64E5C"
@@ -484,6 +538,11 @@
 			dependencies: [
 				"4C6BCD93DEA0B7DC"
 				"52C4538635906B7E"
+			]
+			description: [
+				"Lava placed near an activated molten vent will turn into Crimsite, Asurine, Ochrum, Veridium, Scoria, or Schorcia based on the vent type."
+				""
+				"You'll want to find vents that outputs one of the first four."
 			]
 			icon: "create:asurine"
 			id: "19F1809E10BAAC61"
@@ -499,7 +558,7 @@
 				type: "item"
 			}]
 			title: "Create Stones"
-			x: 2.0d
+			x: 4.0d
 			y: 6.0d
 		}
 		{
@@ -507,6 +566,7 @@
 				"04F20036D8172501"
 				"4F438C24128D042B"
 			]
+			description: ["Crushed magma is a catalyst used in the crushed stone processing that guarantees rich slag in the output."]
 			id: "2582523C7629E8F4"
 			tasks: [{
 				id: "6C5B0A5721A8E2E1"
@@ -517,7 +577,12 @@
 			y: 4.0d
 		}
 		{
-			dependencies: ["19F1809E10BAAC61"]
+			dependencies: ["04F20036D8172501"]
+			description: [
+				"The crushed stones can be processed in a multitude of ways to get raw ores. You mostly need a sustainable way to get raw tin for this chapter."
+				""
+				"See the Metallurgy chapter for the different ways to process raw ore once you get it."
+			]
 			icon: "thermal:raw_tin"
 			id: "47959ED668B51DD0"
 			tasks: [{
@@ -533,11 +598,12 @@
 				type: "item"
 			}]
 			title: "Raw Ores"
-			x: 4.0d
-			y: 8.0d
+			x: 10.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["2582523C7629E8F4"]
+			description: ["Rich slag can then be infused with molten slag to get chunks of raw aluminum."]
 			id: "1ED09B0DF667E2FB"
 			tasks: [{
 				id: "5A0DE611B90CB096"
@@ -549,6 +615,7 @@
 		}
 		{
 			dependencies: ["271A91265ACE5851"]
+			description: ["You'll need to ramp up your steel production, you might want to investigate alternative sources of iron and coal coke."]
 			id: "6293CBBC76D73F05"
 			tasks: [{
 				id: "555F1424D0E045EF"
@@ -560,6 +627,7 @@
 		}
 		{
 			dependencies: ["6DBFC6E2B2B08D29"]
+			description: ["Press the ingots into sheets."]
 			id: "09B4A6A4CBE56493"
 			tasks: [{
 				id: "634E5E6044836873"
@@ -567,7 +635,7 @@
 				type: "item"
 			}]
 			x: 14.0d
-			y: -4.0d
+			y: -2.0d
 		}
 		{
 			dependencies: ["58B39574A3117D0D"]
@@ -588,6 +656,7 @@
 		}
 		{
 			dependencies: ["19F1809E10BAAC61"]
+			description: ["Harvesting the stone and crush it."]
 			id: "04F20036D8172501"
 			tasks: [{
 				icon: "kubejs:crushed_asurine"
@@ -607,18 +676,20 @@
 			y: 6.0d
 		}
 		{
-			dependencies: ["69D09EB30178ABF9"]
+			dependencies: ["54EC972BADC3BEFA"]
+			description: ["Energized glowstone is a component in alloying lumium, which you'll need for the next step."]
 			id: "52089EF528A92F00"
 			tasks: [{
 				id: "3A84464D019CAD1E"
 				item: "kubejs:steel_ingot_cast_molten_lumium"
 				type: "item"
 			}]
-			x: 24.0d
-			y: -12.0d
+			x: 20.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["3699DD3B91E59D8D"]
+			description: ["Did you break an ender pearl during this process? Not to worry, they can be glued back together for you to try again."]
 			id: "74EA73860D823AD9"
 			invisible: true
 			tasks: [{
@@ -627,13 +698,18 @@
 				type: "item"
 			}]
 			x: 4.0d
-			y: -2.0d
+			y: -4.0d
 		}
 		{
 			dependencies: [
 				"0FD4E6E4734AB1D6"
 				"029D7DEF789032E4"
 				"6DBFC6E2B2B08D29"
+			]
+			description: [
+				"One of the first void casing machines you'll need to make is an Ender Inhibitor."
+				""
+				"Place this on top of a tank and it will inhibit nearby teleporting entities."
 			]
 			id: "5C74FBA414C21479"
 			tasks: [{
@@ -643,17 +719,6 @@
 			}]
 			x: 12.0d
 			y: 2.0d
-		}
-		{
-			dependencies: ["533ED73E97389A6A"]
-			id: "2A407653C768CC06"
-			tasks: [{
-				id: "5A54F6DAEE3A4D19"
-				item: "tfmg:thermite_powder"
-				type: "item"
-			}]
-			x: 14.0d
-			y: 6.0d
 		}
 		{
 			dependencies: ["5C74FBA414C21479"]
@@ -667,22 +732,17 @@
 			y: 2.0d
 		}
 		{
-			dependencies: ["029D7DEF789032E4"]
-			id: "533ED73E97389A6A"
-			tasks: [{
-				id: "5E7C9866654C26E3"
-				item: "kubejs:aluminum_dust"
-				type: "item"
-			}]
-			x: 12.0d
-			y: 6.0d
-		}
-		{
 			dependencies: [
 				"228C3290FC55C851"
 				"758B001ECA60BFB0"
 			]
+			description: [
+				"Fill the magnetic confinement unit with teleportation juice and Potions of Enderference. With some energy, the resulting mixture will collapse into a singularity."
+				""
+				"For the next step, you will need to use energized beacon crafting to extract the unstable singularity. Beware, once freed the singularity will rapidly decay. If it touches any block, it will instantly decay. Can you figure out how to process this item?"
+			]
 			id: "7309AC13830BCDE1"
+			min_width: 280
 			tasks: [{
 				id: "2A0C7216C830FC65"
 				item: "kubejs:magnetic_confinement_unit_filled"
@@ -693,6 +753,7 @@
 		}
 		{
 			dependencies: ["573A0CF01DCF191C"]
+			description: ["Aluminum is light and strong, making it the perfect housing for magnetic confinement units."]
 			id: "228C3290FC55C851"
 			tasks: [{
 				id: "6A3F102BA6056FE2"
@@ -704,6 +765,7 @@
 		}
 		{
 			dependencies: ["029D7DEF789032E4"]
+			description: ["Press the ingots into sheets."]
 			id: "573A0CF01DCF191C"
 			tasks: [{
 				id: "24A21C9345F6EDFC"
@@ -714,48 +776,86 @@
 			y: 4.0d
 		}
 		{
-			dependencies: ["0B8142C492A37CAB"]
-			id: "11EC45B2AF0743C5"
-			tasks: [{
-				id: "38542C64842C7C72"
-				item: {
-					Count: 1b
-					id: "minecraft:splash_potion"
-					tag: {
-						Potion: "quark:strong_resilience"
-					}
-				}
-				type: "item"
-			}]
-			title: "Splash Potion of Stability II"
-			x: 18.0d
-			y: -8.0d
-		}
-		{
 			dependencies: ["47959ED668B51DD0"]
+			description: ["Tin is a requirement to make lumium."]
 			id: "00FA56AC3A227ED8"
 			tasks: [{
 				id: "13C4A03C2513D060"
 				item: "thermal:tin_ingot"
 				type: "item"
 			}]
-			x: 24.0d
-			y: 8.0d
+			x: 20.0d
+			y: 6.0d
 		}
 		{
 			dependencies: [
-				"11EC45B2AF0743C5"
-				"3699DD3B91E59D8D"
 				"7309AC13830BCDE1"
+				"3699DD3B91E59D8D"
 			]
-			id: "279AB7E33B8A36AF"
+			description: ["After you free the unstable singularity, drop a redstone pearl into it and it will stabilize."]
+			id: "4AEAEC45012EFD59"
+			rewards: [{
+				count: 16
+				id: "50FDA525D491DE59"
+				item: "kubejs:singularity"
+				type: "item"
+			}]
 			tasks: [{
-				id: "18F97374F532EDF6"
-				item: "kubejs:antimatter"
+				id: "3308E0C540288C02"
+				item: "kubejs:singularity"
 				type: "item"
 			}]
 			x: 18.0d
+			y: -4.0d
+		}
+		{
+			dependencies: ["29D5CED6D2FC7E91"]
+			description: ["Press it into sheets."]
+			id: "63309E3BF39A0E24"
+			tasks: [{
+				id: "172BC625D2EFE96D"
+				item: "vintageimprovements:lumium_sheet"
+				type: "item"
+			}]
+			x: 18.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["63309E3BF39A0E24"]
+			description: ["And roll it into wires."]
+			id: "0C1CC21E9F31F589"
+			tasks: [{
+				id: "4D553B63F4EB64A3"
+				item: "vintageimprovements:lumium_wire"
+				type: "item"
+			}]
+			x: 16.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["5BA8FDECCF51342E"]
+			description: ["Melt down the resonant ender pearls. I won't make you get a bucket of resonant ender since you've already done this in Chapter 6."]
+			icon: "thermal:ender_bucket"
+			id: "54D083CDD9336399"
+			tasks: [{
+				id: "510E649BBAB22EF3"
+				type: "checkmark"
+			}]
+			title: "Molten Resonant Ender"
+			x: 8.0d
 			y: -2.0d
+		}
+		{
+			dependencies: ["69D09EB30178ABF9"]
+			description: ["Melt down the energized glowstone."]
+			id: "54EC972BADC3BEFA"
+			tasks: [{
+				id: "5F7C982605B70CB3"
+				item: "thermal:glowstone_bucket"
+				type: "item"
+			}]
+			x: 18.0d
+			y: -8.0d
 		}
 	]
 	title: "Chapter 7: Quantum Mechanisms"
