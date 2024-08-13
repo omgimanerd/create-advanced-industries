@@ -43,7 +43,8 @@
 - Add corundum cluster automation pathways and corundum block beacon crafting.
 - Fix energized beacon crafting recipe to display multiple outputs correctly in
   JEI.
-- Remove the unbreakable screwdriver and diamond saw blade items in favor of using an item crafted with the Codex - Indestructia
+- Remove the unbreakable screwdriver and diamond saw blade items in favor of
+  using an item crafted with the Codex - Indestructia
 
 
 ## v0.0.12-playtest
@@ -125,7 +126,8 @@
 - Add recipes for unobtainable sculk blocks.
 - Add a recipe alternative for yeast culture and fermented spider eye.
 - Add an energizing recipe for hearthstones.
-- Add recipes for reinforced deepslate and make it mineable and accessible with diamond tools.
+- Add recipes for reinforced deepslate and make it mineable and accessible with
+  diamond tools.
 - Add a recipe for Thermal's hardened glass.
 - Integrate new laser machine from Create: Vintage Improvements.
 - Adjust coke oven recipe output yield.
