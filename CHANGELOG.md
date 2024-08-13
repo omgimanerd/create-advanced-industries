@@ -1,5 +1,51 @@
 # Changelog
 
+## v0.0.13-playtest
+
+### New Mods / Major Changes
+- Update PonderJS to v1.4.0 to include new custom entity render code to for
+  beacon ponder.
+- Updated Create Encased to v1.6.1-fix1 to fix the pipe ponder crash, removed
+  tooltip warning.
+- Added Chapter 7: Quantum Mechanisms. Added recipes for machines used by
+  Quantum Mechanisms.
+
+### Tweaks and Adjustments
+- Remove XP Condenser intermediate item in favor of pressurizing recipe.
+- Add a centrifuging recipe to revert thermite powder.
+- Make arcane portal unbreakable. Adjust arcane portal to have no drops, fix
+  quest to only require an observation instead of the block.
+- Adjust fluid vessel recipe to match the regular create fluid tank recipe.
+- Add logic for corundum clusters to be grown with crystal spouting. Add
+  tooltips for corundum blocks.
+- Add manual dyeing recipes for corundum blocks.
+- Slightly adjust apotheosis material recipes.
+- Add a pressure chamber recipe for echo shards.
+- Add a burnable fluid recipe for TFMG Creosote oil
+- Remove all optional quests to prevent chapter completion toast from appearing
+  over and over. Disable toasts for - non-progression based chapters.
+- Add quest for hardened glass and adjust chapter 6 quests with intermediate
+  rewards.
+- Minor adjustments to ingot cast models, allow for cardinal placement.
+- Change Time Pouch recipe to a shaped craft instead of a sequenced assembly.
+- Add the Codex Indestructia item to make items unbreakable.
+- Exempt everlasting beef from nutrient infusion and add apotheosis enchanting
+  recipe.
+
+### Bugfixes
+- Fix iron oxide smelting recipe.
+- Remove homo file.
+- Move model declarations to automatic model path for arcane portal.
+- Increase world seed script priority, add an error message of beacon crafting
+  recipes fail to parse.
+- Fix a bug with worldSeed.js. ServerEvents.loaded only fires once during the
+  initial world load.
+- Add corundum cluster automation pathways and corundum block beacon crafting.
+- Fix energized beacon crafting recipe to display multiple outputs correctly in
+  JEI.
+- Remove the unbreakable screwdriver and diamond saw blade items in favor of using an item crafted with the Codex - Indestructia
+
+
 ## v0.0.12-playtest
 
 ### New Mods / Major Changes
@@ -13,7 +59,7 @@
   - Update JEI to latest version 15.8.0.16
   - Migrated all mod to curseforge.
 
-### Tweaks and Changes
+### Tweaks and Adjustments
 - Overhaul Void items from Create Utilities.
 - Make etching acid quest require a bucket of etching acid.
 - Add a graphic for ESM and note block resonance crafting.
@@ -75,7 +121,7 @@
   recipe processing.
 - Change all references of andesite mechanism to kinetic mechanism.
 
-### Tweaks and Changes
+### Tweaks and Adjustments
 - Add recipes for unobtainable sculk blocks.
 - Add a recipe alternative for yeast culture and fermented spider eye.
 - Add an energizing recipe for hearthstones.
@@ -119,7 +165,7 @@
   crafts.
 - Implemented a block crushing mechanic with the Gravity spell from Ars Nouveau.
 
-### Tweaks and Changes
+### Tweaks and Adjustments
 - Add a crushing recipe for basalt to cobblestone.
 - Add convenience recipes for vertical gearbox conversion.
 - Add an Ars enchanting recipe to make Nutrient Infusion obtainable.
@@ -175,7 +221,7 @@
 - Standardize all ore processing and melting recipes and organize hierarchy of
   ores and materials.
 
-### Tweaks and Changes
+### Tweaks and Adjustments
 - Added custom textures for dirty metal dusts, steel dust, and zinc dust.
 - Add a recipe for rubberwood to be centrifuged.
 - Update quest text for tuff from playtester feedback, move around sleeping bag
