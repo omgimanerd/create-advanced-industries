@@ -175,7 +175,10 @@ global.CorundumClusterMapping = {
 
   global.EnergizedBeaconCraftingRecipes.push({
     ingredient: 'kubejs:magnetic_confinement_unit_filled',
-    results: ['kubejs:magnetic_confinement_unit', 'kubejs:antimatter'],
+    results: [
+      'kubejs:magnetic_confinement_unit',
+      'kubejs:unstable_singularity',
+    ],
     redirectorBlock: 'quark:white_corundum_cluster',
     beaconColor: global.CorundumClusterMapping.white.beaconColor,
     energy: 2000,

@@ -55,7 +55,7 @@ ServerEvents.recipes((e) => {
     create.energizing(
       Item.of(type, { Potion: 'ars_elemental:shock_potion' }),
       Item.of(type, { Potion: 'minecraft:awkward' }).weakNBT(),
-      1000
+      24000
     )
   }
 
@@ -156,7 +156,7 @@ ServerEvents.recipes((e) => {
     .SequencedAssembly(VIBRATION_MECHANISM, INCOMPLETE_QUANTUM_MECHANISM)
     .fill(potionFluid('quark:resilience', 250))
     .deploy('kubejs:quantum_chip')
-    .deploy('kubejs:redstone_pearl')
+    .deploy('kubejs:singularity')
     .deploy('extrastorage:neural_processor')
     .energize(100000)
     .outputs(QUANTUM_MECHANISM)

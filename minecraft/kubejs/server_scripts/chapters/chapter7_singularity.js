@@ -55,7 +55,7 @@ EntityEvents.spawned('minecraft:item', (e) => {
 
       // If we find a match, discard the entities and pop the results.
       if (matching.isEmpty()) return
-      matching.get(0).discard()
+      matching.get(0).item.shrink(1)
       discard()
 
       block.popItem('kubejs:singularity')
