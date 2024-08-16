@@ -209,7 +209,9 @@ StartupEvents.registry('item', (e) => {
   e.create('kubejs:unstable_singularity')
     .displayName('Unstable Singularity')
     .parentModel('kubejs:item/unstable_singularity')
-  registerItem('kubejs:singularity')
+  registerItem('kubejs:singularity').tooltip(
+    'Cannot be picked up. Decays rapidly once in the world.'
+  )
   e.create('kubejs:magnetic_confinement_unit')
     .displayName('Magnetic Confinement Unit')
     .parentModel('kubejs:item/magnetic_confinement_unit')
