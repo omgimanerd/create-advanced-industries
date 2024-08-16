@@ -17,13 +17,6 @@ ServerEvents.recipes((e) => {
     e.remove(r)
   })
 
-  /////////////////
-  // Ars Nouveau //
-  /////////////////
-  e.remove({ id: /ars_nouveau:manipulation_essence_to_[a-z]+ite/ })
-  e.remove({ id: 'ars_nouveau:manipulation_essence_to_tuff' })
-  e.remove({ id: 'ars_nouveau:manipulation_essence_to_deepslate' })
-
   ////////////
   // Create //
   ////////////

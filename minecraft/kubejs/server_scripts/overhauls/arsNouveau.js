@@ -40,6 +40,10 @@ ServerEvents.recipes((e) => {
   /////////////////
   // Ars Nouveau //
   /////////////////
+
+  // Disallow stone transmutation recipes.
+  e.remove({ id: /ars_nouveau:manipulation_essence_to_[a-z]+ite/ })
+
   redefineRecipe(
     'ars_nouveau:novice_spell_book',
     [

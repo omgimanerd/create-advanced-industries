@@ -17,6 +17,9 @@ ServerEvents.tags('block', (e) => {
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
 
+  // Remove Ars recipe for deepslate
+  e.remove({ id: 'ars_nouveau:manipulation_essence_to_deepslate' })
+
   // Regular deepslate has a small nickel yield when melted, making it a
   // viable but inefficient way to get invar.
   create

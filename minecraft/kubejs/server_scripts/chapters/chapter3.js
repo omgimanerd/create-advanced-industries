@@ -81,6 +81,7 @@ ServerEvents.recipes((e) => {
   e.blasting('kubejs:ceramic_ingot_cast', 'kubejs:unfired_ingot_cast')
 
   // Tuff recipe overhaul
+  e.remove({ id: 'ars_nouveau:manipulation_essence_to_tuff' })
   e.recipes.ars_nouveau
     .imbuement(
       'minecraft:cobblestone',
