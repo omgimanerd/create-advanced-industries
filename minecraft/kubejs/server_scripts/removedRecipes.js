@@ -1,6 +1,6 @@
 // priority: 500
 
-// Recipes that are removed for balance or duplication reasons.
+// Recipes that are removed for duplication reasons.
 ServerEvents.recipes((e) => {
   // Debug logging
   // global.removedRecipes.forEach((r) => {
@@ -48,8 +48,7 @@ ServerEvents.recipes((e) => {
   ///////////////////////////////////
   // PneumaticCraft: Repressurized //
   ///////////////////////////////////
-  e.remove({ id: /^pneumaticcraft:[a-z_/]+compressed_iron_block$/ })
-  e.remove({ id: /^pneumaticcraft:[a-z_/]+compressed_iron_ingot$/ })
+  e.remove({ type: 'pneumaticcraft:explosion_crafting' })
   e.remove({ id: 'pneumaticcraft:thermo_plant/compressed_iron_drill_bit' })
   e.remove({ id: 'pneumaticcraft:copper_ingot_from_nugget' })
 

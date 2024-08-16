@@ -32,7 +32,9 @@ global.removedRecipes = [
   { output: /^createdeco:[a-z_]+_coin$/ },
   { output: /^createdeco:[a-z_]+_coinstack$/ },
   { output: 'createdeco:netherite_nugget' },
-  { output: /^createcasing:.*creative.*$/ },
+  { output: 'createcasing:creative_mixer' },
+  { output: 'createcasing:creative_press' },
+  { output: 'createcasing:creative_depot' },
   // Conflicts with Create: Connected's brass gearboxes
   { output: /^createcasing:(vertical_)*brass_gearbox$/ },
   { output: 'createcasing:brass_shaft' },
@@ -49,10 +51,12 @@ global.removedRecipes = [
   { output: /.*jumbo_smelting/ },
   { output: 'morered:soldering_table' },
   { output: /^morered:.*stone_plate/ },
-  { output: /^pneumaticcraft:compressed_iron.*/ },
+  {
+    output:
+      /^pneumaticcraft:compressed_iron_(boots|chestplate|helmet|leggings)$/,
+  },
   { output: 'pneumaticcraft:pneumatic_dynamo' },
   { output: 'pneumaticcraft:copper_nugget' },
-  { output: 'pneumaticcraft:ingot_iron_compressed' },
   { output: 'pneumaticcraft:drill_bit_compressed_iron' },
   { output: 'pneumaticcraft:logistics_core' },
   { output: 'pneumaticcraft:wheat_flour' },
