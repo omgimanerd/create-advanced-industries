@@ -34,9 +34,7 @@ screenshots/
 server-resource-packs/
 shaderpacks/
 texturepacks/
-
-XaeroWaypoints*
-XaeroWorldMap*
+xaero/
 
 # Individual Files
 .qmenu_opened.marker
