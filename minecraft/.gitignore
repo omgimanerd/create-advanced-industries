@@ -36,6 +36,9 @@ shaderpacks/
 texturepacks/
 xaero/
 
+XaeroWaypoints*
+XaeroWorldMap*
+
 # Individual Files
 .qmenu_opened.marker
 hotbar.nbt
