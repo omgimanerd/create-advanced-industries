@@ -62,7 +62,10 @@ StartupEvents.registry('block', (e) => {
   // Register a custom block for the ender inhibitor, used in Chapter 7.
   e.create('kubejs:ender_inhibitor')
     .displayName('Ender Inhibitor')
+    .stoneSoundType()
     .notSolid()
+    .box(0, 0, 0, 16, 4, 16)
+    .box(2, 0, 2, 14, 12, 14)
     .tagBlock('create:wrench_pickup')
     .tagBlock('minecraft:mineable/pickaxe')
     .requiresTool(true)
