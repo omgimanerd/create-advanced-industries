@@ -57,8 +57,8 @@ EntityEvents.spawned('minecraft:item', (e) => {
       if (matching.isEmpty()) return
       matching.get(0).item.shrink(1)
       discard()
-
       block.popItem('kubejs:singularity')
+      c.clear()
     },
     discard
   )
