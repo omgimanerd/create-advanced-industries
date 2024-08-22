@@ -68,13 +68,20 @@ ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
 
   // Magnetic confinement units and singularities
-  create
-    .SequencedAssembly('#forge:plates/aluminum')
-    .laser(10000)
-    .curve(CONVEX_CURVING_HEAD)
-    .deploy('simplemagnets:advancedmagnet')
-    .deploy('pneumaticcraft:printed_circuit_board')
-    .outputs('kubejs:magnetic_confinement_unit')
+  create.mechanical_crafting(
+    'kubejs:magnetic_confinement_unit',
+    [
+      'PAAAAAP', //
+      'LAM MAL', //
+      'PAAAAAP', //
+    ],
+    {
+      P: 'pneumaticcraft:printed_circuit_board',
+      A: '#forge:plates/aluminum',
+      L: 'kubejs:logistics_mechanism',
+      M: 'create_new_age:netherite_magnet',
+    }
+  )
   create
     .SequencedAssembly('kubejs:magnetic_confinement_unit')
     .fill(Fluid.of('kubejs:teleportation_juice', 250))
