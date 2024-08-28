@@ -221,7 +221,7 @@ StartupEvents.registry('item', (e) => {
 
   // Empty music discs and disc fragment
   registerItem('kubejs:empty_disc_fragment').maxStackSize(16)
-  registerItem('kubejs:empty_music_disc').tag('minecraft:music_discs')
+  registerItem('kubejs:empty_music_disc')
 })
 
 ItemEvents.modification((e) => {
