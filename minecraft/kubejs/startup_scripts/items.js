@@ -218,6 +218,10 @@ StartupEvents.registry('item', (e) => {
   e.create('kubejs:magnetic_confinement_unit_filled')
     .displayName('Magnetic Confinement Unit (Filled)')
     .parentModel('kubejs:model/magnetic_confinement_unit')
+
+  // Empty music discs and disc fragment
+  registerItem('kubejs:empty_disc_fragment').maxStackSize(16)
+  registerItem('kubejs:empty_music_disc').tag('minecraft:music_discs')
 })
 
 ItemEvents.modification((e) => {
