@@ -51,13 +51,13 @@ ServerEvents.recipes((e) => {
         'MIM', //
         'MMM', //
       ],
-      { M: 'kubejs:creative_mechanism', I: input }
+      { M: CREATIVE_MECHANISM, I: input }
     )
   }
 
   // Creative Spellbook
   e.recipes.ars_nouveau.enchanting_apparatus(
-    Array(8).fill(SOURCE_MECHANISM),
+    Array(8).fill(CREATIVE_MECHANISM),
     'ars_nouveau:archmage_spell_book',
     'ars_nouveau:creative_spell_book',
     24000,
@@ -65,13 +65,12 @@ ServerEvents.recipes((e) => {
   )
 
   // Creative Source Jar
-  create
-    .SequencedAssembly('ars_nouveau:source_jar')
-    .fill(Fluid.of('starbunclemania:source_fluid', 1000))
-    .fill(Fluid.of('starbunclemania:source_fluid', 1000))
-    .deploy('kubejs:creative_mechanism')
-    .loops(8)
-    .outputs('ars_nouveau:creative_source_jar')
+  e.recipes.ars_nouveau.enchanting_apparatus(
+    Array(8).fill(CREATIVE_MECHANISM),
+    'ars_nouveau:source_jar',
+    'ars_nouveau:creative_source_jar',
+    24000
+  )
 
   // Creative Building Wand
   e.smithing(
@@ -79,7 +78,7 @@ ServerEvents.recipes((e) => {
     // Todo make custom smithing template
     'minecraft:netherite_upgrade_smithing_template',
     'wands:netherite_wand',
-    'kubejs:creative_mechanism'
+    CREATIVE_MECHANISM
   )
 
   // Creative Worldshaper
@@ -117,7 +116,8 @@ ServerEvents.recipes((e) => {
     'create:creative_fluid_tank'
   )
 
-  // creative crate
+  // Creative Crate
+  wrappedCreativeRecipe('create:creative_crate', 'minecraft:barrel')
 
   // Creative Blaze Cake
   wrappedCreativeRecipe('create:creative_blaze_cake', 'create:blaze_cake')
@@ -131,32 +131,21 @@ ServerEvents.recipes((e) => {
   // creative vending upgrade
 
   // Creative Compressed Iron Block
-  const r = pneumaticcraft.pressure_chamber(
-    [Item.of('pneumaticcraft:compressed_iron_block', 64)],
+  pneumaticcraft.pressure_chamber(
+    [
+      CREATIVE_MECHANISM,
+      CREATIVE_MECHANISM,
+      CREATIVE_MECHANISM,
+      CREATIVE_MECHANISM,
+      '8x pneumaticcraft:compressed_iron_block',
+      CREATIVE_MECHANISM,
+      CREATIVE_MECHANISM,
+      CREATIVE_MECHANISM,
+      CREATIVE_MECHANISM,
+    ],
     'pneumaticcraft:creative_compressed_iron_block',
-    4.5
+    4.75
   )
-  r.createRecipe()
-  console.log(r.json)
-
-  const a = e.custom({
-    type: 'pneumaticcraft:pressure_chamber',
-    inputs: [
-      {
-        type: 'pneumaticcraft:stacked_item',
-        count: 64,
-        item: 'pneumaticcraft:ingot_iron_compressed',
-      },
-    ],
-    pressure: 4,
-    results: [
-      {
-        item: 'minecraft:stone',
-      },
-    ],
-  })
-  a.createRecipe()
-  console.log(a.json)
 
   // Creative Compressor
   create.mechanical_crafting(
@@ -179,7 +168,19 @@ ServerEvents.recipes((e) => {
     }
   )
 
-  // creative supply upgrade
+  // Creative Vending Upgrade
+  wrappedCreativeRecipe(
+    'functionalstorage:creative_vending_upgrade',
+    'functionalstorage:netherite_upgrade'
+  )
+  e.shapeless(
+    'functionalstorage:creative_vending_upgrade',
+    'functionalstorage:max_storage_upgrade'
+  )
+  e.shapeless(
+    'functionalstorage:max_storage_upgrade',
+    'functionalstorage:creative_vending_upgrade'
+  )
 
   // creative storage disk
   // creative fluid storage disk

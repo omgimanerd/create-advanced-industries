@@ -271,7 +271,9 @@ StartupEvents.recipeSchemaRegistry((e) => {
         json.getAsJsonObject().addProperty('type', 'pneumaticcraft:fluid')
         return json
       })
-    let pncrItemInput = inputItem.mapOut((json) => {
+    // This is not a typo. We must use an outputItem here since inputItem does
+    // not support item counts.
+    let pncrItemInput = outputItem.mapOut((json) => {
       json.getAsJsonObject().addProperty('type', 'pneumaticcraft:stacked_item')
       return json
     })
