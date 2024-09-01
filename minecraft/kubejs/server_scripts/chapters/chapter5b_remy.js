@@ -16,7 +16,7 @@ BlockEvents.rightClicked((e) => {
   golem.setCustomNameVisible(true)
   golem.persistentData.legitimatelySpawned = true
   golem.spawn()
-  item.count--
+  item.shrink(1)
 })
 
 /**
@@ -140,13 +140,12 @@ ItemEvents.entityInteracted((e) => {
   const { x, y, z } = target
   // A manually named amethyst golem will be smited
   if (!target.persistentData.legitimatelySpawned) {
-    let lightning = level
-      .getBlock(x, y, z)
-      .createEntity('minecraft:lightning_bolt')
-    lightning.spawn()
+    level.getBlock(x, y, z).createEntity('minecraft:lightning_bolt').spawn()
     target.kill()
-    player.tell('Thou shalt not worship false idols!')
-    item.count--
+    server.tell(
+      Text.of(player.name).append(' was smited for worshipping a false idol!')
+    )
+    item.shrink(1)
     return
   }
   const currentTime = level.getTime()
@@ -181,7 +180,7 @@ ItemEvents.entityInteracted((e) => {
       item.getFoodProperties(null),
       0.95 ** penaltyExponent
     )
-  item.count--
+  item.shrink(1)
   target.persistentData.nextFeedableTime = currentTime + feedCooldown
   target.playSound('entity.item.pickup', /*volume=*/ 2, /*pitch=*/ 1)
   target.playSound(item.getEatingSound(), /*volume=*/ 2, /*pitch=*/ 1)
@@ -191,6 +190,7 @@ ItemEvents.entityInteracted((e) => {
 
   // If the fed item returns a bowl or other item, return it to the player
   player.addItem(item.getCraftingRemainingItem())
+  player.swing()
 
   // Spawn the relevant particle effects
   if (hasHarmfulEffect) {
@@ -200,4 +200,22 @@ ItemEvents.entityInteracted((e) => {
   } else {
     spawnParticles(level, 'minecraft:heart', target, 0.4, 10, 0.1)
   }
+})
+
+ServerEvents.recipes((e) => {
+  // Remy spawner charm
+  e.recipes.ars_nouveau.enchanting_apparatus(
+    [
+      'pneumaticcraft:salmon_tempura',
+      'farmersdelight:fried_rice',
+      'farmersdelight:squid_ink_pasta',
+      'farmersdelight:apple_pie_slice',
+      'farmersdelight:melon_juice',
+      'farmersdelight:hamburger',
+      'farmersdelight:roast_chicken',
+      'farmersdelight:stuffed_potato',
+    ],
+    'ars_nouveau:amethyst_golem_charm',
+    'kubejs:remy_spawner'
+  )
 })

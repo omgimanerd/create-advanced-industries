@@ -96,7 +96,7 @@ StartupEvents.registry('item', (e) => {
   registerItem('kubejs:debilitation_essence').glow(true)
   registerItem('kubejs:mutilation_essence').glow(true)
 
-  // Custom amethyst golem charm to spawn a special golem named Remy.
+  // Custom amethyst golem charm to spawn a special golem named Remy
   e.create('kubejs:remy_spawner')
     .texture(getTextureLocation('ars_nouveau:amethyst_golem_charm'))
     .glow(true)
@@ -222,6 +222,13 @@ StartupEvents.registry('item', (e) => {
   // Empty music discs and disc fragment
   registerItem('kubejs:empty_disc_fragment').maxStackSize(16)
   registerItem('kubejs:empty_music_disc')
+
+  // Custom amethyst golem charm to spawn a special golem rockstar
+  e.create('kubejs:lenny_spawner')
+    .texture(getTextureLocation('ars_nouveau:amethyst_golem_charm'))
+    .glow(true)
+    .displayName('Lenny Spawner')
+    .tooltip(Text.green('Summons a rockstar named Lenny!'))
 })
 
 ItemEvents.modification((e) => {

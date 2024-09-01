@@ -378,4 +378,10 @@ StartupEvents.postInit(() => {
       { note: 'G4', instrument: 'banjo' },
     ]
   )
+
+  global.RegisterResonanceCraftingRecipe(
+    'ars_nouveau:amethyst_golem_charm',
+    'kubejs:lenny_charm',
+    [{ note: 'C4', instrument: 'guitar' }]
+  )
 })

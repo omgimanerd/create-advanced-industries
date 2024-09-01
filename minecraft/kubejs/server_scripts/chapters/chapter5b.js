@@ -321,22 +321,6 @@ ServerEvents.recipes((e) => {
     .fill(Fluid.of('kubejs:crystal_growth_accelerator', 1000))
     .outputs('minecraft:budding_amethyst')
 
-  // Remy spawner charm
-  e.recipes.ars_nouveau.enchanting_apparatus(
-    [
-      'pneumaticcraft:salmon_tempura',
-      'farmersdelight:fried_rice',
-      'farmersdelight:squid_ink_pasta',
-      'farmersdelight:apple_pie_slice',
-      'farmersdelight:melon_juice',
-      'farmersdelight:hamburger',
-      'farmersdelight:roast_chicken',
-      'farmersdelight:stuffed_potato',
-    ],
-    'ars_nouveau:amethyst_golem_charm',
-    'kubejs:remy_spawner'
-  )
-
   // Amethyst bud growth. The most expensive is direct filling, then
   // Thermal crystallization, and the least expensive is spouting while it is
   // attached to budding amethyst.
