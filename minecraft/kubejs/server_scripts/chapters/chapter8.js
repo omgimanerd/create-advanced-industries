@@ -5,16 +5,6 @@ ServerEvents.tags('item', (e) => {
   e.add('kubejs:disc_fragment', 'idas:disc_fragment_slither')
 })
 
-// EntityEvents.hurt((e) => {
-//   if (e.entity.type !== 'minecraft:sheep') return
-
-//   console.log(e.entity.nbt.getByte('Color'))
-
-//   let nbt = e.entity.nbt
-//   nbt.putByte('Color', (nbt.getByte('Color') + 1) % 16)
-//   e.entity.setNbt(nbt)
-// })
-
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
 

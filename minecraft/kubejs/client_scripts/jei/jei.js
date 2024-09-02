@@ -27,7 +27,10 @@ const hiddenFluids = [
 
 JEIEvents.addItems((e) => {
   e.add('apotheosis:ancient_material')
+  e.add('create:chromatic_compound')
   e.add('create:crushed_raw_aluminum')
+  e.add('create:refined_radiance')
+  e.add('create:shadow_steel')
   e.add('thermal:drill_head')
   e.add('thermal:saw_blade')
 })

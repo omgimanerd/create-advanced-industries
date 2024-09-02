@@ -81,4 +81,9 @@ StartupEvents.registry('fluid', (e) => {
 
   // Fluid to be extracted when enderman teleport.
   registerFluid('kubejs:teleportation_juice').thinTexture(0x105d50).noBlock()
+
+  // Chromatic Fluid
+  registerFluid('kubejs:chromatic_fluid')
+    .thinTexture(0x6d3065)
+    .bucketColor(0x6d3065)
 })
