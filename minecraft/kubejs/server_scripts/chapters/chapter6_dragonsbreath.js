@@ -3,14 +3,22 @@
 // collecting it with a glass bottle.
 
 BlockEvents.rightClicked('minecraft:dragon_head', (e) => {
-  const { item, hand, player, block } = e
+  const { block, hand, item, player, server } = e
+  if (hand !== 'main_hand') return
   const requiredPotion = Item.of('minecraft:potion').withNBT({
     Potion: 'minecraft:strong_regeneration',
   })
-  if (hand !== 'main_hand') return
   if (!item.equalsIgnoringCount(requiredPotion)) return
+
+  // Replace the item with a glass bottle and perform the player swing action.
   item.shrink(1)
-  player.give('minecraft:glass_bottle')
+  // If we do not delay the give action by 1 tick, then the right click actions
+  // for the bottling behavior below will instantly trigger with the glass
+  // bottle, resulting in the right click on the dragon head turning the potion
+  // into a dragon's breath instantly.
+  server.scheduleInTicks(1, () => {
+    player.give('minecraft:glass_bottle')
+  })
   player.swing()
 
   // Dragon head has a rotation property from 0-16 with 0 being North increasing
@@ -51,10 +59,40 @@ BlockEvents.rightClicked('minecraft:dragon_head', (e) => {
  *
  * @param {Internal.ItemStack_} item
  * @param {Internal.Player_} player
- * @param {Internal.RayTraceResultJS_|{type:string, hit:$BlockPos_}} target
+ * @param {Vec3d_|Vec3f_} target
  * @param {Internal.Level_} level
  */
 const customDragonsBreathBottling = (item, player, target, level) => {
+  const searchBoxSize = 0.5
+  const clickSearchArea = AABB.of(
+    target.x() - searchBoxSize,
+    target.y() - 0.8,
+    target.z() - searchBoxSize,
+    target.x() + searchBoxSize,
+    target.y() + 1,
+    target.z() + searchBoxSize
+  )
+  for (const entity of level.getEntitiesWithin(clickSearchArea)) {
+    if (entity.persistentData.fromDragonHead) {
+      player.swing()
+      player.give('minecraft:dragon_breath')
+      item.shrink(1)
+      entity.discard()
+      break
+    }
+  }
+}
+
+BlockEvents.rightClicked((e) => {
+  const { block, hand, item, level, player } = e
+  if (hand !== 'main_hand') return
+  if (item.id !== 'minecraft:glass_bottle') return
+  customDragonsBreathBottling(item, player, block.pos.getCenter(), level)
+})
+
+ItemEvents.rightClicked('minecraft:glass_bottle', (e) => {
+  const { hand, item, level, player, target } = e
+  if (hand !== 'main_hand') return
   let clickLocation
   switch (target.type) {
     case 'MISS':
@@ -72,42 +110,7 @@ const customDragonsBreathBottling = (item, player, target, level) => {
     default:
       throw new Error(`Unknown type: ${target.type}`)
   }
-  const searchBoxSize = 1
-  const clickSearchArea = AABB.of(
-    clickLocation.x() - searchBoxSize,
-    clickLocation.y() - 0.8,
-    clickLocation.z() - searchBoxSize,
-    clickLocation.x() + searchBoxSize,
-    clickLocation.y() + 1,
-    clickLocation.z() + searchBoxSize
-  )
-  for (const entity of level.getEntitiesWithin(clickSearchArea)) {
-    if (entity.persistentData.fromDragonHead) {
-      item.count--
-      player.give('minecraft:dragon_breath')
-      entity.discard()
-      break
-    }
-  }
-}
-
-BlockEvents.rightClicked((e) => {
-  const { item, player, block, level } = e
-  if (item.id !== 'minecraft:glass_bottle') return
-  customDragonsBreathBottling(
-    item,
-    player,
-    {
-      type: 'BLOCK',
-      hit: block.pos.getCenter(),
-    },
-    level
-  )
-})
-
-ItemEvents.rightClicked('minecraft:glass_bottle', (e) => {
-  const { item, player, target, level } = e
-  customDragonsBreathBottling(item, player, target, level)
+  customDragonsBreathBottling(item, player, clickLocation, level)
 })
 
 ServerEvents.recipes((e) => {
