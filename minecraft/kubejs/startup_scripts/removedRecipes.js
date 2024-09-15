@@ -55,6 +55,7 @@ global.removedRecipes = [
     output:
       /^pneumaticcraft:compressed_iron_(boots|chestplate|helmet|leggings)$/,
   },
+  { output: 'pneumaticcraft:compressed_iron_gear' },
   { output: 'pneumaticcraft:pneumatic_dynamo' },
   { output: 'pneumaticcraft:copper_nugget' },
   { output: 'pneumaticcraft:drill_bit_compressed_iron' },
@@ -144,4 +145,6 @@ global.removedRecipes = [
   { output: 'vintageimprovements:cast_iron_sheet' },
   { output: 'vintageimprovements:netherite_sheet' },
   { output: 'vintageimprovements:zinc_sheet' },
+  //
+  { output: 'vintageimprovements:steel_rod' },
 ]
