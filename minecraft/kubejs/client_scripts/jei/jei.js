@@ -56,6 +56,18 @@ JEIEvents.hideItems((e) => {
   e.hide('kubejs:incomplete_crystalline_mechanism')
   e.hide('kubejs:incomplete_quantum_chip')
   e.hide('kubejs:incomplete_quantum_mechanism')
+  e.hide('kubejs:incomplete_creative_mechanism')
+
+  e.hide('kubejs:intermediate_transistor')
+  e.hide('kubejs:intermediate_capacitor')
+  e.hide('kubejs:intermediate_pneumatic_cylinder')
+  e.hide('kubejs:unfinished_sigil_of_socketing')
+  e.hide('kubejs:unfinished_sigil_of_withdrawal')
+  e.hide('kubejs:unfinished_sigil_of_rebirth')
+  e.hide('kubejs:unfinished_sigil_of_enhancement')
+  e.hide('kubejs:unfinished_sigil_of_unnaming')
+  e.hide('kubejs:incomplete_totem_body')
+  e.hide('kubejs:incomplete_totem_head')
 
   // Hide the colored Refined Storage items. Dark blue is the default.
   const colors = [
