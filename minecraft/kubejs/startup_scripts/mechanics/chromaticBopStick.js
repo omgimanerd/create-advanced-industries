@@ -1,8 +1,11 @@
 // priority: 500
-// Library code for the Chromatic Bop Stick
+// Globals constants for the Chromatic Bop Stick
 
 // Ordered list of colors, indexed by the data value that would be present in
 // a sheep of this color.
+//
+// The Chromatic Bop Stick will not allow a white charge, but it is present in
+// this data list because a sheep with Color NBT 0 will be white.
 global.CHROMATIC_BOP_STICK_COLORS = [
   'white',
   'orange',
@@ -22,6 +25,8 @@ global.CHROMATIC_BOP_STICK_COLORS = [
   'black',
 ]
 
+// Colors sampled from the colored wool textures, used to color the squares in
+// the Chromatic Bop Stick's dynamic tooltip.
 global.CHROMATIC_BOP_STICK_COLOR_MAP = {
   white: 0xdde1e1,
   orange: 0xe46606,

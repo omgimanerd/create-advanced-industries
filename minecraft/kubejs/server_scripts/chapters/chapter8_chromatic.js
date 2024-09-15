@@ -1,16 +1,13 @@
 // priority: 500
 
-// Logic to drain chromatic fluid from a colored sheep.
+// Logic to drain chromatic fluid from a colored sheep using a Chromatic Bop
+// Stick
 EntityEvents.hurt((e) => {
   const { entity, source } = e
 
   const player = source?.player
   const mainHandItem = player?.mainHandItem
-  if (
-    mainHandItem === null ||
-    mainHandItem === undefined ||
-    mainHandItem.id !== 'kubejs:chromatic_bop_stick'
-  ) {
+  if (!mainHandItem || mainHandItem.id !== 'kubejs:chromatic_bop_stick') {
     return
   }
   if (e.entity.type !== 'minecraft:sheep') return
