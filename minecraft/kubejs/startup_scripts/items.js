@@ -219,6 +219,14 @@ StartupEvents.registry('item', (e) => {
     .displayName('Magnetic Confinement Unit (Filled)')
     .parentModel('kubejs:model/magnetic_confinement_unit')
 
+  // Chromatic Bop Stick
+  e.create('kubejs:chromatic_bop_stick')
+    .displayName(Text.lightPurple('Chromatic Bop Stick'))
+    .unstackable()
+  e.create('kubejs:chromatic_bop_stick_empty')
+    .displayName('Chromatic Bop Stick (empty)')
+    .unstackable()
+
   // Empty music discs and disc fragment
   registerItem('kubejs:empty_disc_fragment').maxStackSize(16)
   registerItem('kubejs:empty_music_disc')
