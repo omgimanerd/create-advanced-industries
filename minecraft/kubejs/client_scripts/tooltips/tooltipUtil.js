@@ -70,3 +70,29 @@ const tooltipHelper = (e, item, options) => {
     }
   })
 }
+
+/**
+ * Takes the given string or string array argument and truncates each element
+ * such that none exceed the argument width.
+ * @param {string[]} text
+ * @param {number} width
+ * @returns {string[]}
+ */
+const textWrap = (text, width) => {
+  const elements = []
+  for (let t of Array.isArray(text) ? text : [text]) {
+    let currentString = ''
+    for (const word of t.split(' ')) {
+      if (currentString.length + word.length + 1 > width) {
+        elements.push(currentString)
+        currentString = word
+      } else if (currentString === '') {
+        currentString = word
+      } else {
+        currentString += ` ${word}`
+      }
+    }
+    elements.push(currentString)
+  }
+  return elements
+}
