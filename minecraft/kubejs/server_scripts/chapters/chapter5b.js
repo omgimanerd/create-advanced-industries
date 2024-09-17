@@ -102,21 +102,6 @@ BlockEvents.rightClicked('minecraft:moss_block', (e) => {
   decayedSpread(block, 1, 0.5, global.randRange(10))
 })
 
-/**
- * Event handler to handle spawning spiders with Anima Essence.
- */
-BlockEvents.rightClicked('minecraft:cobweb', (e) => {
-  const { item, hand, block, level } = e
-  if (hand !== 'main_hand') return
-  if (item.id !== 'ars_elemental:anima_essence') return
-  const spider = block.createEntity('minecraft:spider')
-  // Center the spider on the block
-  spider.setPos(block.pos.center)
-  spider.spawn()
-  level.destroyBlock(block, false)
-  item.count--
-})
-
 ServerEvents.compostableRecipes((e) => {
   // Edit compostable chances
   e.remove('minecraft:flowering_azalea')
