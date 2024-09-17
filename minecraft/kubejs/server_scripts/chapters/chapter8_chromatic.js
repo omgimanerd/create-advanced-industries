@@ -55,6 +55,13 @@ EntityEvents.hurt((e) => {
   }
 })
 
+ItemEvents.entityInteracted('minecraft:sheep', (e) => {
+  const { item, hand, player } = e
+  if (hand !== 'main_hand') return
+  if (item.id !== 'kubejs:chromatic_bop_stick') return
+  player.tell("Don't be shy, give him a good smack...")
+})
+
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
 
