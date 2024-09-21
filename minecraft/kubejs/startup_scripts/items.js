@@ -237,6 +237,16 @@ StartupEvents.registry('item', (e) => {
     .glow(true)
     .displayName('Lenny Spawner')
     .tooltip(Text.green('Summons a rockstar named Lenny!'))
+
+  // Custom amethyst golem charm to spawn a depressed artist
+  e.create('kubejs:pembi_spawner')
+    .texture(getTextureLocation('ars_nouveau:amethyst_golem_charm'))
+    .glow(true)
+    .displayName('Pembi Spawner')
+    .tooltip(Text.green('Summons a depressed artist named Pembi!'))
+
+  // From giving paint and dye to Pembi
+  registerItem('kubejs:unframed_canvas')
 })
 
 ItemEvents.modification((e) => {

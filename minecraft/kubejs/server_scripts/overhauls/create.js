@@ -331,6 +331,18 @@ ServerEvents.recipes((e) => {
       'minecraft:dried_kelp',
       'thermal:cured_rubber'
     )
+    // Crafting Blueprints can't use paintings since they're overhauled.
+    e.remove({ id: 'create:crafting/appliances/crafting_blueprint' })
+    e.shaped(
+      'create:crafting_blueprint',
+      [
+        'AAA', //
+        'ACA', //
+        'AAA', //
+      ],
+      { A: 'create:andesite_alloy', C: 'minecraft:crafting_table' }
+    )
+
     // Tree Fertilizer
     e.remove({ id: 'create:crafting/appliances/tree_fertilizer' })
     create.filling('create:tree_fertilizer', [
