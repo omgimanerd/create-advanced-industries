@@ -40,6 +40,8 @@ ItemEvents.entityInteracted((e) => {
 
   if (item.id === 'farmersdelight:canvas') {
     // TODO add conditions
+    // Pembi requires a filled canvas
+
     item.shrink(1)
     target.block.popItemFromFace('kubejs:unframed_canvas', 'up')
     repeat(server, 5, 1, () => {
@@ -59,7 +61,27 @@ ItemEvents.entityInteracted((e) => {
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
 
-  // TODO overhaul canvas
+  // Crafting a Palette to give to Pembi
+  create
+    .SequencedAssembly('#minecraft:wooden_slabs')
+    .cut(1, 40)
+    .fill(Fluid.of('create_enchantment_industry:ink', 100))
+    .deploy('#forge:dyes/red')
+    .deploy('#forge:dyes/blue')
+    .deploy('#forge:dyes/green')
+    .outputs('kubejs:palette')
+
+  // Alternative sources of Straw
+  e.recipes.farmersdelight.cutting(
+    'minecraft:grass',
+    ['farmersdelight:straw', Item.of('farmersdelight:straw').withChance(0.5)],
+    '#farmersdelight:tools/knives'
+  )
+  e.recipes.farmersdelight.cutting(
+    'minecraft:tall_grass',
+    ['farmersdelight:straw', Item.of('farmersdelight:straw').withChance(0.5)],
+    '#farmersdelight:tools/knives'
+  )
 
   // Paintings can only be made through Unframed Canvas and Pembi
   e.remove({ output: 'minecraft:painting' })
@@ -73,6 +95,7 @@ ServerEvents.recipes((e) => {
     { S: 'minecraft:stick', U: 'kubejs:unframed_canvas' }
   )
 
+  // Crafting the Pembi Spawner
   create
     .SequencedAssembly('ars_nouveau:amethyst_golem_charm')
     .fill(Fluid.of('create_enchantment_industry:ink', 1000))
