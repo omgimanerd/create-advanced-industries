@@ -42,6 +42,17 @@ ItemEvents.entityInteracted((e) => {
     // TODO add conditions
     item.shrink(1)
     target.block.popItemFromFace('kubejs:unframed_canvas', 'up')
+    repeat(server, 5, 1, () => {
+      spawnParticles(
+        level,
+        'minecraft:electric_spark',
+        target.position().add(0, 0.4, 0),
+        0.4,
+        10,
+        0.1
+      )
+    })
+    player.swing()
   }
 })
 
