@@ -1,6 +1,8 @@
 // priority: 100
 // Chapter 8: Spawning Pembi the Artist and giving them paintings to paint.
 
+const PEMBI_THE_ARTIST = 'Pembi the Artist'
+
 /**
  * Event handler to handle spawning Pembi the Artist
  */
@@ -12,11 +14,32 @@ BlockEvents.rightClicked((e) => {
   const golem = block.createEntity('ars_nouveau:amethyst_golem')
   // Center Pembi on the top of the block
   golem.setPos(block.pos.center.add(0, 1, 0))
-  golem.setCustomName('Pembi the Artist')
+  golem.setCustomName(PEMBI_THE_ARTIST)
   golem.setCustomNameVisible(true)
   golem.persistentData.legitimatelySpawned = true
+  golem.setItemSlot('mainhand', 'toms_storage:ts.paint_kit')
   golem.spawn()
   item.shrink(1)
+})
+
+/**
+ * Amethyst golems have their charm drop when killed. This is hardcoded into the
+ * source code of Ars Nouveau. If a custom golem is killed, it should drop its
+ * crafting ingredients.
+ */
+LootJS.modifiers((e) => {
+  e.addEntityLootModifier('ars_nouveau:amethyst_golem')
+    .entityPredicate((entity) => {
+      return (
+        !!entity.persistentData.legitimatelySpawned &&
+        entity.name.getString() === PEMBI_THE_ARTIST
+      )
+    })
+    .addWeightedLoot([2, 4], [Item.of('kubejs:suffering_essence')])
+    .addWeightedLoot([2, 4], [Item.of('toms_storage:ts.paint_kit')])
+    .playerAction((player) => {
+      player.tell('Oh, the horror!')
+    })
 })
 
 /**
@@ -58,18 +81,47 @@ ItemEvents.entityInteracted((e) => {
   }
 })
 
+ServerEvents.tags('item', (e) => {
+  // Bales that can be smoked into straw
+  e.add('kubejs:bales_to_straw', 'minecraft:hay_block')
+  e.add('kubejs:bales_to_straw', 'farmersdelight:rice_bale')
+  e.add('kubejs:bales_to_straw', 'supplementaries:flax_block')
+
+  // Valid ingredients for brush tips
+  e.add('kubejs:brush_heads', 'minecraft:feather')
+  e.add('kubejs:brush_heads', 'farmersdelight:straw')
+  e.add('kubejs:brush_heads', 'minecraft:white_wool')
+})
+
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
 
-  // Crafting a Palette to give to Pembi
+  // Minecraft Brush overhaul
+  e.remove({ id: 'minecraft:brush' })
+  e.shaped(
+    'minecraft:brush',
+    [
+      '  H', //
+      ' C ', //
+      'S  ', //
+    ],
+    {
+      H: '#kubejs:brush_heads',
+      C: 'createaddition:copper_wire',
+      S: 'minecraft:stick',
+    }
+  )
+
+  // Paint Kits (from Tom's Storage)
+  e.remove({ id: 'toms_storage:paint_kit' })
   create
-    .SequencedAssembly('#minecraft:wooden_slabs')
-    .cut(1, 40)
-    .fill(Fluid.of('create_enchantment_industry:ink', 100))
+    .SequencedAssembly('create_enchantment_industry:ink_bucket')
     .deploy('#forge:dyes/red')
-    .deploy('#forge:dyes/blue')
     .deploy('#forge:dyes/green')
-    .outputs('kubejs:palette')
+    .deploy('#forge:dyes/blue')
+    .deploy('#forge:dyes/black')
+    .deploy('minecraft:brush')
+    .outputs('toms_storage:ts.paint_kit')
 
   // Alternative sources of Straw
   e.recipes.farmersdelight.cutting(
@@ -82,6 +134,7 @@ ServerEvents.recipes((e) => {
     ['farmersdelight:straw', Item.of('farmersdelight:straw').withChance(0.5)],
     '#farmersdelight:tools/knives'
   )
+  e.smoking('farmersdelight:straw_bale', '#kubejs:bales_to_straw')
 
   // Paintings can only be made through Unframed Canvas and Pembi
   e.remove({ output: 'minecraft:painting' })
@@ -96,11 +149,18 @@ ServerEvents.recipes((e) => {
   )
 
   // Crafting the Pembi Spawner
-  create
-    .SequencedAssembly('ars_nouveau:amethyst_golem_charm')
-    .fill(Fluid.of('create_enchantment_industry:ink', 1000))
-    .deploy('#forge:dyes/red')
-    .deploy('#forge:dyes/green')
-    .deploy('#forge:dyes/blue')
-    .outputs('kubejs:pembi_spawner')
+  e.recipes.ars_nouveau.enchanting_apparatus(
+    [
+      'toms_storage:ts.paint_kit',
+      'kubejs:suffering_essence',
+      'toms_storage:ts.paint_kit',
+      'kubejs:suffering_essence',
+      'toms_storage:ts.paint_kit',
+      'kubejs:suffering_essence',
+      'toms_storage:ts.paint_kit',
+      'kubejs:suffering_essence',
+    ],
+    'ars_nouveau:amethyst_golem_charm',
+    'kubejs:pembi_spawner'
+  )
 })

@@ -231,13 +231,6 @@ StartupEvents.registry('item', (e) => {
   registerItem('kubejs:empty_disc_fragment').maxStackSize(16)
   registerItem('kubejs:empty_music_disc')
 
-  // Custom amethyst golem charm to spawn a special golem rockstar
-  e.create('kubejs:lenny_spawner')
-    .texture(getTextureLocation('ars_nouveau:amethyst_golem_charm'))
-    .glow(true)
-    .displayName('Lenny Spawner')
-    .tooltip(Text.green('Summons a rockstar named Lenny!'))
-
   // Custom amethyst golem charm to spawn a depressed artist
   e.create('kubejs:pembi_spawner')
     .texture(getTextureLocation('ars_nouveau:amethyst_golem_charm'))
@@ -251,7 +244,7 @@ StartupEvents.registry('item', (e) => {
   )
 
   // Palettes for Pembi the Artist
-  registerItem('kubejs:palette')
+  // registerItem('kubejs:palette').maxDamage(16)
 })
 
 ItemEvents.modification((e) => {

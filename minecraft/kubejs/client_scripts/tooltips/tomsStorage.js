@@ -23,4 +23,16 @@ ItemEvents.tooltip((e) => {
     unShiftText: '<gray><italic>Hold SHIFT for more info.</italic></gray>',
     clear: true,
   })
+
+  tooltipHelper(e, 'toms_storage:ts.paint_kit', {
+    shiftText: [
+      'Shift right click on a block to select it.',
+      "Right click on a Tom's Storage block to paint",
+      'it with the selected block.',
+      '',
+      'Can also be used to paint dye-able blocks.',
+    ],
+    unShiftText: '<gray><italic>Hold SHIFT for more info.</italic></gray>',
+    clear: true,
+  })
 })
