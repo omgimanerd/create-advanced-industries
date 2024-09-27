@@ -1,6 +1,8 @@
 // priority: 100
 // Chapter 5B: Spawning Remy the Epicure and feeding him to get amethyst.
 
+const REMY_THE_EPICURE = 'Remy the Epicure'
+
 /**
  * Event handler to handle spawning Remy the Epicure
  */
@@ -12,11 +14,37 @@ BlockEvents.rightClicked((e) => {
   const golem = block.createEntity('ars_nouveau:amethyst_golem')
   // Center Remy on the top of the block
   golem.setPos(block.pos.center.add(0, 1, 0))
-  golem.setCustomName('Remy the Epicure')
+  golem.setCustomName(REMY_THE_EPICURE)
   golem.setCustomNameVisible(true)
   golem.persistentData.legitimatelySpawned = true
+  golem.setItemSlot('mainhand', 'farmersdelight:cooking_pot')
   golem.spawn()
   item.shrink(1)
+})
+
+/**
+ * Amethyst golems have their charm drop when killed. This is hardcoded into the
+ * source code of Ars Nouveau. If a custom golem is killed, it should drop its
+ * crafting ingredients.
+ */
+LootJS.modifiers((e) => {
+  e.addEntityLootModifier('ars_nouveau:amethyst_golem')
+    .entityPredicate((entity) => {
+      return (
+        !!entity.persistentData.legitimatelySpawned &&
+        entity.name.getString() === REMY_THE_EPICURE
+      )
+    })
+    .addLoot(LootEntry.of('farmersdelight:fried_rice').withChance(0.8))
+    .addLoot(LootEntry.of('farmersdelight:squid_ink_pasta').withChance(0.8))
+    .addLoot(LootEntry.of('farmersdelight:apple_pie_slice').withChance(0.8))
+    .addLoot(LootEntry.of('farmersdelight:melon_juice').withChance(0.8))
+    .addLoot(LootEntry.of('farmersdelight:hamburger').withChance(0.8))
+    .addLoot(LootEntry.of('farmersdelight:roast_chicken').withChance(0.8))
+    .addLoot(LootEntry.of('farmersdelight:stuffed_potato').withChance(0.8))
+    .playerAction((player) => {
+      player.tell('Mamma mia!')
+    })
 })
 
 /**
@@ -135,7 +163,7 @@ ItemEvents.entityInteracted((e) => {
   const { item, hand, target, level, player, server } = e
   if (hand !== 'main_hand') return
   if (target.type !== 'ars_nouveau:amethyst_golem') return
-  if (target.name.getString() !== 'Remy the Epicure') return
+  if (target.name.getString() !== REMY_THE_EPICURE) return
   if (!item.isEdible()) return
   const { x, y, z } = target
   // A manually named amethyst golem will be smited
@@ -206,7 +234,7 @@ ServerEvents.recipes((e) => {
   // Remy spawner charm
   e.recipes.ars_nouveau.enchanting_apparatus(
     [
-      'pneumaticcraft:salmon_tempura',
+      'farmersdelight:cooking_pot',
       'farmersdelight:fried_rice',
       'farmersdelight:squid_ink_pasta',
       'farmersdelight:apple_pie_slice',
