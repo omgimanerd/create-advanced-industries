@@ -239,12 +239,7 @@ StartupEvents.registry('item', (e) => {
     .tooltip(Text.green('Summons a depressed artist named Pembi!'))
 
   // From giving paint and dye to Pembi
-  registerItem('kubejs:unframed_canvas').tooltip(
-    Text.green('Give Pembi the Artist an unpainted canvas!')
-  )
-
-  // Palettes for Pembi the Artist
-  // registerItem('kubejs:palette').maxDamage(16)
+  registerItem('kubejs:unframed_canvas')
 })
 
 ItemEvents.modification((e) => {

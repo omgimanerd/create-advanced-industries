@@ -94,35 +94,6 @@ ServerEvents.tags('item', (e) => {
 })
 
 ServerEvents.recipes((e) => {
-  const create = defineCreateRecipes(e)
-
-  // Minecraft Brush overhaul
-  e.remove({ id: 'minecraft:brush' })
-  e.shaped(
-    'minecraft:brush',
-    [
-      '  H', //
-      ' C ', //
-      'S  ', //
-    ],
-    {
-      H: '#kubejs:brush_heads',
-      C: 'createaddition:copper_wire',
-      S: 'minecraft:stick',
-    }
-  )
-
-  // Paint Kits (from Tom's Storage)
-  e.remove({ id: 'toms_storage:paint_kit' })
-  create
-    .SequencedAssembly('create_enchantment_industry:ink_bucket')
-    .deploy('#forge:dyes/red')
-    .deploy('#forge:dyes/green')
-    .deploy('#forge:dyes/blue')
-    .deploy('#forge:dyes/black')
-    .deploy('minecraft:brush')
-    .outputs('toms_storage:ts.paint_kit')
-
   // Alternative sources of Straw
   e.recipes.farmersdelight.cutting(
     'minecraft:grass',
@@ -136,7 +107,18 @@ ServerEvents.recipes((e) => {
   )
   e.smoking('farmersdelight:straw_bale', '#kubejs:bales_to_straw')
 
-  // Paintings can only be made through Unframed Canvas and Pembi
+  // Manual recipes for Unframed Canvases that cost a lot more durability
+  e.shaped(
+    '8x kubejs:unframed_canvas',
+    [
+      'CCC', //
+      'CPC', //
+      'CCC', //
+    ],
+    { C: 'farmersdelight:canvas', P: 'toms_storage:ts.paint_kit' }
+  ).replaceIngredient('toms_storage:ts.paint_kit', 'minecraft:bucket')
+
+  // Paintings can only be made through Unframed Canvas
   e.remove({ output: 'minecraft:painting' })
   e.shaped(
     'minecraft:painting',
