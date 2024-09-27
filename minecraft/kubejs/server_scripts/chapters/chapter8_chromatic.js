@@ -55,10 +55,10 @@ EntityEvents.hurt('minecraft:sheep', (e) => {
   }
 })
 
-ItemEvents.entityInteracted('minecraft:sheep', (e) => {
-  const { item, hand, player } = e
+ItemEvents.entityInteracted('kubejs:chromatic_bop_stick', (e) => {
+  const { hand, player, target } = e
   if (hand !== 'main_hand') return
-  if (item.id !== 'kubejs:chromatic_bop_stick') return
+  if (target.type !== 'minecraft:sheep') return
   player.tell("Don't be shy, give him a good smack...")
 })
 

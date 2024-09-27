@@ -17,6 +17,7 @@ BlockEvents.rightClicked((e) => {
   golem.setCustomName(PEMBI_THE_ARTIST)
   golem.setCustomNameVisible(true)
   golem.persistentData.legitimatelySpawned = true
+  golem.persistentData.paintLevel = -1
   golem.setItemSlot('mainhand', 'toms_storage:ts.paint_kit')
   golem.spawn()
   item.shrink(1)
@@ -61,10 +62,22 @@ ItemEvents.entityInteracted((e) => {
     return
   }
 
-  if (item.id === 'farmersdelight:canvas') {
-    // TODO add conditions
-    // Pembi requires a filled canvas
-
+  const paintLevel = target.persistentData.getInt('paintLevel')
+  // Refilling Pembi's paints
+  if (item.id === 'toms_storage:ts.paint_kit') {
+    if (paintLevel !== -1) {
+      target.block.popItemFromFace('minecraft:bucket', 'up')
+    }
+    target.persistentData.putInt('paintLevel', 4)
+    item.shrink(1)
+    player.swing()
+  } else if (item.id === 'farmersdelight:canvas') {
+    // Giving Pembi a blank canvas
+    if (paintLevel <= 0) {
+      return
+    } else {
+      target.persistentData.putInt('paintLevel', paintLevel - 1)
+    }
     item.shrink(1)
     target.block.popItemFromFace('kubejs:unframed_canvas', 'up')
     repeat(server, 5, 1, () => {
@@ -107,16 +120,13 @@ ServerEvents.recipes((e) => {
   )
   e.smoking('farmersdelight:straw_bale', '#kubejs:bales_to_straw')
 
-  // Manual recipes for Unframed Canvases that cost a lot more durability
-  e.shaped(
-    '8x kubejs:unframed_canvas',
-    [
-      'CCC', //
-      'CPC', //
-      'CCC', //
-    ],
-    { C: 'farmersdelight:canvas', P: 'toms_storage:ts.paint_kit' }
-  ).replaceIngredient('toms_storage:ts.paint_kit', 'minecraft:bucket')
+  // Manual recipes for Unframed Canvases
+  e.shapeless('kubejs:unframed_canvas', [
+    'farmersdelight:canvas',
+    'toms_storage:ts.paint_kit',
+  ])
+    .replaceIngredient('toms_storage:ts.paint_kit', 'minecraft:bucket')
+    .id('kubejs:unframed_canvas_manual_only')
 
   // Paintings can only be made through Unframed Canvas
   e.remove({ output: 'minecraft:painting' })

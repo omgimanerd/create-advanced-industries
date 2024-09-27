@@ -65,10 +65,10 @@ BlockEvents.rightClicked((e) => {
 })
 
 // The paint kit can also paint sheep a random color
-ItemEvents.entityInteracted('minecraft:sheep', (e) => {
+ItemEvents.entityInteracted('toms_storage:ts.paint_kit', (e) => {
   const { hand, item, player, target } = e
   if (hand !== 'main_hand') return
-  if (item.id !== 'toms_storage:ts.paint_kit') return
+  if (target.type !== 'minecraft:sheep') return
 
   // Recolor the sheep a random color
   const nbt = target.nbt
