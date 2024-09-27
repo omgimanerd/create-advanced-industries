@@ -10,9 +10,8 @@ ItemEvents.tooltip((e) => {
     }
 
     const colorText = Text.empty()
-    for (const color of global.CHROMATIC_BOP_STICK_COLORS) {
-      // Skip white as an allowed color
-      if (color === 'white') continue
+    // slice(1) to exclude white
+    for (const color of global.CHROMATIC_BOP_STICK_COLORS.slice(1)) {
       if (item.nbt && item.nbt.getBoolean(color)) {
         colorText.append(
           Text.of('█').color(global.CHROMATIC_BOP_STICK_COLOR_MAP[color])

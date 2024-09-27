@@ -2,7 +2,7 @@
 
 // Logic to drain chromatic fluid from a colored sheep using a Chromatic Bop
 // Stick
-EntityEvents.hurt((e) => {
+EntityEvents.hurt('minecraft:sheep', (e) => {
   const { entity, source } = e
 
   const player = source?.player
@@ -10,7 +10,7 @@ EntityEvents.hurt((e) => {
   if (!mainHandItem || mainHandItem.id !== 'kubejs:chromatic_bop_stick') {
     return
   }
-  if (e.entity.type !== 'minecraft:sheep') return
+
   const entityNbt = entity.nbt
   const color = entityNbt.getByte('Color')
   if (color === 0) return
@@ -24,8 +24,8 @@ EntityEvents.hurt((e) => {
 
   // If the Bop Stick is fully empty, switch it with the empty version.
   let hasCharge = false
-  for (const color of global.CHROMATIC_BOP_STICK_COLORS) {
-    if (color === 'white') continue
+  // slice(1) to exclude white
+  for (const color of global.CHROMATIC_BOP_STICK_COLORS.slice(1)) {
     if (mainHandItem.nbt.getBoolean(color)) {
       hasCharge = true
       break
@@ -51,7 +51,7 @@ EntityEvents.hurt((e) => {
   // Clear the color of the sheep's wool if we successfully drained some fluid.
   if (fluidDrained !== 0) {
     entityNbt.putByte('Color', 0)
-    e.entity.setNbt(entityNbt)
+    entity.setNbt(entityNbt)
   }
 })
 
@@ -67,8 +67,8 @@ ServerEvents.recipes((e) => {
 
   // Chromatic Bop Stick
   const nbt = {}
-  for (const color of global.CHROMATIC_BOP_STICK_COLORS) {
-    if (color === 'white') continue
+  // slice(1) to exclude white
+  for (const color of global.CHROMATIC_BOP_STICK_COLORS.slice(1)) {
     nbt[color] = true
   }
   const filledBopStick = Item.of('kubejs:chromatic_bop_stick', nbt)
