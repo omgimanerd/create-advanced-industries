@@ -186,7 +186,11 @@
 		}
 		{
 			dependencies: ["56A24AF47C360AC9"]
-			description: ["Like the other processors, they'll need pneumatic assembly to finish."]
+			description: [
+				"Like the other processors, they'll need pneumatic assembly to finish."
+				""
+				"Raw Neural Processors are more advanced processors that unlock better crafters for Refined Storage."
+			]
 			id: "3675892BE1757F09"
 			tasks: [{
 				id: "0C00C561F21E7E4A"
@@ -198,7 +202,7 @@
 		}
 		{
 			dependencies: ["3832D225F6D0C417"]
-			description: ["Raw Neural Processors are more advanced processors that unlock better crafters for refined storage."]
+			description: ["Fabricate a raw neural processor."]
 			id: "56A24AF47C360AC9"
 			tasks: [{
 				id: "2618A40AE1A2362E"
@@ -750,7 +754,7 @@
 				type: "item"
 			}]
 			x: 18.0d
-			y: 2.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["573A0CF01DCF191C"]
@@ -802,6 +806,7 @@
 				type: "item"
 			}]
 			tasks: [{
+				count: 16L
 				id: "3308E0C540288C02"
 				item: "kubejs:singularity"
 				type: "item"
