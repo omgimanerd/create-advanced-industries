@@ -2,6 +2,7 @@
 	autofocus_id: "0A1CEFA45C20D991"
 	default_hide_dependency_lines: false
 	default_quest_shape: ""
+	disable_toast: true
 	filename: "chapter_1_kinetic_mechanism"
 	group: "5B3547AEADCBC841"
 	icon: "kubejs:kinetic_mechanism"

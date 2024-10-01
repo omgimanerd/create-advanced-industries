@@ -2,6 +2,7 @@
 	autofocus_id: "256AB7BB1AE145A6"
 	default_hide_dependency_lines: false
 	default_quest_shape: ""
+	disable_toast: true
 	filename: "chapter_3_precision_mechanisms"
 	group: "5B3547AEADCBC841"
 	icon: "create:precision_mechanism"
@@ -204,6 +205,7 @@
 				item: "kubejs:molten_redstone_bucket"
 				type: "item"
 			}]
+			title: "Molten Redstone"
 			x: 6.0d
 			y: -8.0d
 		}
@@ -212,11 +214,19 @@
 			description: ["Melt down the copper in a heated basin with a mixer."]
 			icon: "kubejs:molten_copper_bucket"
 			id: "3383144C6D0FBAD4"
-			tasks: [{
-				id: "7855B6EAAD716E4A"
-				type: "checkmark"
-			}]
-			title: "Molten Copper Bucket"
+			tasks: [
+				{
+					id: "7855B6EAAD716E4A"
+					type: "checkmark"
+				}
+				{
+					id: "7A5EC41F1B7A038D"
+					item: "kubejs:molten_copper_bucket"
+					optional_task: true
+					type: "item"
+				}
+			]
+			title: "Molten Copper"
 			x: 6.0d
 			y: 8.0d
 		}
@@ -229,11 +239,19 @@
 			]
 			icon: "kubejs:molten_zinc_bucket"
 			id: "5581B367614EA274"
-			tasks: [{
-				id: "735E559153FA626F"
-				type: "checkmark"
-			}]
-			title: "Molten Zinc Bucket"
+			tasks: [
+				{
+					id: "735E559153FA626F"
+					type: "checkmark"
+				}
+				{
+					id: "6A018DFA22A5EA19"
+					item: "kubejs:molten_zinc_bucket"
+					optional_task: true
+					type: "item"
+				}
+			]
+			title: "Molten Zinc"
 			x: 6.0d
 			y: 6.0d
 		}
@@ -397,11 +415,19 @@
 			description: ["I hope you automated this from chapter 2b."]
 			icon: "starbunclemania:source_fluid_bucket"
 			id: "519D022ECB5F6F42"
-			tasks: [{
-				id: "2613983C4B64DA5D"
-				type: "checkmark"
-			}]
-			title: "Liquefied Source Bucket"
+			tasks: [
+				{
+					id: "2613983C4B64DA5D"
+					type: "checkmark"
+				}
+				{
+					id: "053BF24742FBA0CF"
+					item: "starbunclemania:source_fluid_bucket"
+					optional_task: true
+					type: "item"
+				}
+			]
+			title: "Liquefied Source"
 			x: 0.0d
 			y: -6.0d
 		}
@@ -417,11 +443,19 @@
 			]
 			icon: "kubejs:molten_brass_bucket"
 			id: "66C109F90DAEFFAD"
-			tasks: [{
-				id: "371EFAA2911066B5"
-				type: "checkmark"
-			}]
-			title: "Molten Brass Bucket"
+			tasks: [
+				{
+					id: "371EFAA2911066B5"
+					type: "checkmark"
+				}
+				{
+					id: "50B18CFD640E64CB"
+					item: "kubejs:molten_brass_bucket"
+					optional_task: true
+					type: "item"
+				}
+			]
+			title: "Molten Brass"
 			x: 10.0d
 			y: 8.0d
 		}

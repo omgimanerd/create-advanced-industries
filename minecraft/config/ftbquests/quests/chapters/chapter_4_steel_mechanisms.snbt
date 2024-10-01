@@ -2,6 +2,7 @@
 	autofocus_id: "61A87B555F6F736C"
 	default_hide_dependency_lines: false
 	default_quest_shape: ""
+	disable_toast: true
 	filename: "chapter_4_steel_mechanisms"
 	group: "5B3547AEADCBC841"
 	icon: "tfmg:steel_mechanism"
@@ -109,12 +110,24 @@
 			]
 			icon: "tfmg:molten_steel_bucket"
 			id: "565A7C5F6646857A"
-			tasks: [{
-				id: "7F9C46DCA336E6D2"
-				item: "tfmg:molten_steel_bucket"
-				type: "item"
-			}]
-			title: "Molten Steel Bucket"
+			tasks: [
+				{
+					id: "7F9C46DCA336E6D2"
+					item: "tfmg:molten_steel_bucket"
+					type: "item"
+				}
+				{
+					id: "1314D5A8D8166CD3"
+					type: "checkmark"
+				}
+				{
+					id: "7415FC5D03EF6177"
+					item: "tfmg:molten_steel_bucket"
+					optional_task: true
+					type: "item"
+				}
+			]
+			title: "Molten Steel"
 			x: 14.0d
 			y: -6.0d
 		}
@@ -123,11 +136,19 @@
 			description: ["Melt down the iron that you automated in Chapter 1."]
 			icon: "kubejs:molten_iron_bucket"
 			id: "1DB7690FA91A5285"
-			tasks: [{
-				id: "551EDE90FC0B5A6E"
-				type: "checkmark"
-			}]
-			title: "Molten Iron Bucket"
+			tasks: [
+				{
+					id: "551EDE90FC0B5A6E"
+					type: "checkmark"
+				}
+				{
+					id: "0AE7980CEDF233C4"
+					item: "kubejs:molten_iron_bucket"
+					optional_task: true
+					type: "item"
+				}
+			]
+			title: "Molten Iron"
 			x: 2.0d
 			y: -6.0d
 		}
@@ -199,7 +220,7 @@
 				item: "minecraft:milk_bucket"
 				type: "item"
 			}]
-			title: "Milk Bucket"
+			title: "Milk"
 			x: 2.0d
 			y: -4.0d
 		}
@@ -270,11 +291,19 @@
 				item: "createaddition:straw"
 				type: "item"
 			}]
-			tasks: [{
-				id: "192107D45A1D013A"
-				type: "checkmark"
-			}]
-			title: "Bucket of Biofuel"
+			tasks: [
+				{
+					id: "192107D45A1D013A"
+					type: "checkmark"
+				}
+				{
+					id: "50F4BDD8E19F160C"
+					item: "createaddition:bioethanol_bucket"
+					optional_task: true
+					type: "item"
+				}
+			]
+			title: "Biofuel"
 			x: 12.0d
 			y: 0.0d
 		}
@@ -363,6 +392,7 @@
 				item: "minecraft:lava_bucket"
 				type: "item"
 			}]
+			title: "Lava"
 			x: 0.0d
 			y: 6.0d
 		}
@@ -689,13 +719,15 @@
 		}
 		{
 			dependencies: ["32945248A0491741"]
-			description: ["Creosote Oil is a byproduct of coal coking. It'll be useful later, but it can also be burned for fuel."]
+			description: ["Creosote oil is a byproduct of coal coking. It will be useful later, but it can also be burned for fuel."]
 			id: "366F518195117AF6"
+			optional: true
 			tasks: [{
 				id: "1A8207AA9C962E6F"
 				item: "tfmg:creosote_bucket"
 				type: "item"
 			}]
+			title: "Creosote"
 			x: 12.0d
 			y: -10.0d
 		}

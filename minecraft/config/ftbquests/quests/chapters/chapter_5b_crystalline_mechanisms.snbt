@@ -2,6 +2,7 @@
 	autofocus_id: "6D72A451CEF56252"
 	default_hide_dependency_lines: false
 	default_quest_shape: ""
+	disable_toast: true
 	filename: "chapter_5b_crystalline_mechanisms"
 	group: "5B3547AEADCBC841"
 	icon: "kubejs:crystalline_mechanism"
@@ -304,11 +305,18 @@
 			description: ["Combining the alchemical powders with liquid fertilizer gets you crystal growth accelerator."]
 			icon: "kubejs:crystal_growth_accelerator_bucket"
 			id: "18466D2CC4D667FD"
-			tasks: [{
-				id: "33D31825DD54A081"
-				item: "kubejs:crystal_growth_accelerator_bucket"
-				type: "item"
-			}]
+			tasks: [
+				{
+					id: "48CCA3DEF1E76D0E"
+					type: "checkmark"
+				}
+				{
+					id: "4DF64D60829E1E07"
+					item: "kubejs:crystal_growth_accelerator_bucket"
+					optional_task: true
+					type: "item"
+				}
+			]
 			title: "Crystal Growth Accelerator Bucket"
 			x: -10.5d
 			y: 29.0d
@@ -318,11 +326,18 @@
 			description: ["Dissolving the organic compost in water gets you liquid fertilizer."]
 			icon: "sliceanddice:fertilizer_bucket"
 			id: "5EB25E223B212790"
-			tasks: [{
-				id: "1965177E082EF886"
-				item: "sliceanddice:fertilizer_bucket"
-				type: "item"
-			}]
+			tasks: [
+				{
+					id: "79C3FF2F8CDDE04D"
+					type: "checkmark"
+				}
+				{
+					id: "6833DCBE30A8E268"
+					item: "sliceanddice:fertilizer_bucket"
+					optional_task: true
+					type: "item"
+				}
+			]
 			title: "Bucket of Liquid Fertilizer"
 			x: -10.5d
 			y: 31.0d
@@ -483,11 +498,18 @@
 			dependencies: ["7430C94A25FE9972"]
 			description: ["Evaporate the blaze milk in a heated mixer to get blaze powder."]
 			id: "40CC93D0C0DA8A23"
-			tasks: [{
-				id: "1B8BA68B69221571"
-				item: "kubejs:blaze_milk_bucket"
-				type: "item"
-			}]
+			tasks: [
+				{
+					id: "0B8A396CE725BE41"
+					type: "checkmark"
+				}
+				{
+					id: "33E53D703E65C4F3"
+					item: "kubejs:blaze_milk_bucket"
+					optional_task: true
+					type: "item"
+				}
+			]
 			x: 0.0d
 			y: 6.0d
 		}
@@ -861,11 +883,18 @@
 			description: ["You can heat archwood sap to refine it, breaking it down into liquid essence and some byproducts."]
 			icon: "kubejs:flourishing_archwood_sap_bucket"
 			id: "07A1E7CF68BEF269"
-			tasks: [{
-				id: "43880AFA3E06ECC6"
-				item: "kubejs:flourishing_archwood_sap_bucket"
-				type: "item"
-			}]
+			tasks: [
+				{
+					id: "1FB73C1A9BB546B8"
+					type: "checkmark"
+				}
+				{
+					id: "4CEA4548E104D656"
+					item: "kubejs:flourishing_archwood_sap_bucket"
+					optional_task: true
+					type: "item"
+				}
+			]
 			title: "Flourishing Archwood Sap Bucket"
 			x: 2.0d
 			y: 32.0d
@@ -875,11 +904,18 @@
 			description: ["You can heat archwood sap to refine it, breaking it down into liquid essence and some byproducts."]
 			icon: "kubejs:blazing_archwood_sap_bucket"
 			id: "01FC22A5FB8B77CF"
-			tasks: [{
-				id: "33E8DC6F26F67B77"
-				item: "kubejs:blazing_archwood_sap_bucket"
-				type: "item"
-			}]
+			tasks: [
+				{
+					id: "0C4D9187D114448E"
+					type: "checkmark"
+				}
+				{
+					id: "096A99B800381F1D"
+					item: "kubejs:blazing_archwood_sap_bucket"
+					optional_task: true
+					type: "item"
+				}
+			]
 			title: "Blazing Archwood Sap Bucket"
 			x: -2.0d
 			y: 32.0d
@@ -889,11 +925,18 @@
 			description: ["You can heat archwood sap to refine it, breaking it down into liquid essence and some byproducts."]
 			icon: "kubejs:cascading_archwood_sap_bucket"
 			id: "0A050DEE89467675"
-			tasks: [{
-				id: "47DBA8DB03D14974"
-				item: "kubejs:cascading_archwood_sap_bucket"
-				type: "item"
-			}]
+			tasks: [
+				{
+					id: "0641E1D024E90743"
+					type: "checkmark"
+				}
+				{
+					id: "6D457FBDCD6896B0"
+					item: "kubejs:cascading_archwood_sap_bucket"
+					optional_task: true
+					type: "item"
+				}
+			]
 			title: "Cascading Archwood Sap Bucket"
 			x: 4.0d
 			y: 32.0d
@@ -903,11 +946,18 @@
 			description: ["You can heat archwood sap to refine it, breaking it down into liquid essence and some byproducts."]
 			icon: "kubejs:flashing_archwood_sap_bucket"
 			id: "4237CC27AD794E7A"
-			tasks: [{
-				id: "7E5D60380B2205AC"
-				item: "kubejs:flashing_archwood_sap_bucket"
-				type: "item"
-			}]
+			tasks: [
+				{
+					id: "4DC677DD64D09370"
+					type: "checkmark"
+				}
+				{
+					id: "10FFB661B5532DFF"
+					item: "kubejs:flashing_archwood_sap_bucket"
+					optional_task: true
+					type: "item"
+				}
+			]
 			title: "Flashing Archwood Sap Bucket"
 			x: -4.0d
 			y: 32.0d
@@ -2042,11 +2092,18 @@
 			icon: "kubejs:vexing_archwood_sap_bucket"
 			id: "5C866601176B0F76"
 			optional: true
-			tasks: [{
-				id: "0C2E4CA8D11A5B27"
-				item: "kubejs:vexing_archwood_sap_bucket"
-				type: "item"
-			}]
+			tasks: [
+				{
+					id: "10CF502F2B97E68B"
+					type: "checkmark"
+				}
+				{
+					id: "40F534E569457626"
+					item: "kubejs:vexing_archwood_sap_bucket"
+					optional_task: true
+					type: "item"
+				}
+			]
 			title: "Vexing Archwood Sap Bucket"
 			x: 0.0d
 			y: 32.0d

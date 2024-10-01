@@ -1,0 +1,328 @@
+{
+	autofocus_id: "4069BFCE7C742DAD"
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	disable_toast: true
+	filename: "chapter_8_creative_mechanisms"
+	group: "5B3547AEADCBC841"
+	id: "77BC80845733BF38"
+	order_index: 9
+	quest_links: [ ]
+	quests: [
+		{
+			dependencies: ["153FD9A28FA6A841"]
+			id: "4069BFCE7C742DAD"
+			tasks: [{
+				id: "33F6D729239CB1E3"
+				title: "Start"
+				type: "checkmark"
+			}]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			id: "11F54CD0E5709EF8"
+			tasks: [{
+				id: "449978E9B64F8D7D"
+				item: "createcasing:chorium_ingot"
+				type: "item"
+			}]
+			x: 9.0d
+			y: -3.5d
+		}
+		{
+			dependencies: ["11F54CD0E5709EF8"]
+			id: "7765615953317C7E"
+			size: 2.0d
+			tasks: [{
+				id: "2AD09FA92A6C2A10"
+				item: "kubejs:creative_mechanism"
+				type: "item"
+			}]
+			x: 12.0d
+			y: -3.5d
+		}
+		{
+			dependencies: ["26A153012F13D271"]
+			id: "2AD39A88E707A885"
+			tasks: [{
+				id: "0C3DA09354A1AA59"
+				item: {
+					Count: 1b
+					id: "create:chromatic_compound"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: 2.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["2AD39A88E707A885"]
+			id: "5ECA2EB53C7BA239"
+			tasks: [{
+				id: "1397CD295510CA50"
+				item: "create:shadow_steel"
+				type: "item"
+			}]
+			x: 4.0d
+			y: -5.0d
+		}
+		{
+			dependencies: ["2AD39A88E707A885"]
+			id: "6DEED6CF2A933B68"
+			tasks: [{
+				id: "3E2BD37C4823577D"
+				item: "create:refined_radiance"
+				type: "item"
+			}]
+			x: 4.0d
+			y: -6.0d
+		}
+		{
+			dependencies: [
+				"19C4086752C5E343"
+				"2BBBC9DE78CBB47B"
+			]
+			icon: "kubejs:chromatic_fluid_bucket"
+			id: "26A153012F13D271"
+			tasks: [
+				{
+					id: "39FFA8218B3DC401"
+					type: "checkmark"
+				}
+				{
+					id: "7410B8199E695539"
+					item: "kubejs:chromatic_fluid_bucket"
+					optional_task: true
+					type: "item"
+				}
+			]
+			title: "Chromatic Fluid"
+			x: 0.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["442E76A8E99688F9"]
+			id: "1AD127B4B828B2BB"
+			tasks: [{
+				icon: "minecraft:sheep_spawn_egg"
+				id: "7BC8A3F8B98731C7"
+				observe_type: 5
+				timer: 0L
+				to_observe: "minecraft:sheep"
+				type: "observation"
+			}]
+			x: 4.0d
+			y: -4.0d
+		}
+		{
+			id: "3B2B73F0536813B2"
+			tasks: [{
+				id: "3D6C6D236AF9CE0F"
+				item: "kubejs:empty_music_disc"
+				type: "item"
+			}]
+			x: 7.5d
+			y: -2.0d
+		}
+		{
+			id: "3F6311178AADCB8E"
+			tasks: [{
+				id: "6C64DF261D8ADEE0"
+				item: "kubejs:empty_disc_fragment"
+				type: "item"
+			}]
+			x: 7.5d
+			y: -1.0d
+		}
+		{
+			dependencies: ["2AD39A88E707A885"]
+			id: "442E76A8E99688F9"
+			tasks: [{
+				id: "05CBB16F315508AB"
+				item: "kubejs:chromatic_bop_stick"
+				type: "item"
+			}]
+			x: 2.0d
+			y: -4.0d
+		}
+		{
+			dependencies: [
+				"02A6FEC4CF21D2A8"
+				"4786498A2E13B4D6"
+			]
+			id: "0997250298CBFB8F"
+			tasks: [{
+				id: "1114B5476E3EDCF2"
+				item: "kubejs:pembi_spawner"
+				type: "item"
+			}]
+			x: 4.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["4069BFCE7C742DAD"]
+			id: "2BBBC9DE78CBB47B"
+			tasks: [{
+				id: "4BD87570448BDB4C"
+				item: {
+					Count: 1b
+					id: "ftbfiltersystem:smart_filter"
+					tag: {
+						"ftbfiltersystem:filter": "item_tag(forge:dyes)"
+					}
+				}
+				type: "item"
+			}]
+			x: 2.0d
+			y: -2.0d
+		}
+		{
+			dependencies: [
+				"0997250298CBFB8F"
+				"1CD12A052C65190A"
+			]
+			id: "2595F91A5F57A63B"
+			tasks: [{
+				id: "1E74AC8167A91BBD"
+				item: "kubejs:unframed_canvas"
+				type: "item"
+			}]
+			x: 4.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["55033B2BBF898840"]
+			id: "1CD12A052C65190A"
+			tasks: [{
+				id: "5ECA71370792CF00"
+				item: "farmersdelight:canvas"
+				type: "item"
+			}]
+			x: 2.0d
+			y: 4.0d
+		}
+		{
+			dependencies: [
+				"153FC6A5ACD6148D"
+				"2BBBC9DE78CBB47B"
+				"3B58D984466057A1"
+			]
+			id: "02A6FEC4CF21D2A8"
+			tasks: [{
+				id: "6474E3BE0729AADA"
+				item: {
+					Count: 1b
+					id: "toms_storage:ts.paint_kit"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: 4.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["4069BFCE7C742DAD"]
+			id: "153FC6A5ACD6148D"
+			tasks: [{
+				id: "6253487AC240E7C3"
+				item: {
+					Count: 1b
+					id: "minecraft:brush"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			id: "4F876B31FA1CC881"
+			tasks: [{
+				id: "69CA85091858EF24"
+				item: "minecraft:jukebox"
+				type: "item"
+			}]
+			x: 6.5d
+			y: -1.5d
+		}
+		{
+			dependencies: ["2595F91A5F57A63B"]
+			id: "73F5B4664D8238C4"
+			tasks: [{
+				id: "13C32142A3A9AA1F"
+				item: "minecraft:painting"
+				type: "item"
+			}]
+			x: 6.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["4069BFCE7C742DAD"]
+			id: "55033B2BBF898840"
+			tasks: [{
+				id: "3FA281198BAACABD"
+				item: "farmersdelight:straw"
+				type: "item"
+			}]
+			x: 0.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["4069BFCE7C742DAD"]
+			id: "4786498A2E13B4D6"
+			tasks: [{
+				id: "696D684FD94BA329"
+				item: "kubejs:suffering_essence"
+				type: "item"
+			}]
+			x: 2.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["2BBBC9DE78CBB47B"]
+			id: "3B58D984466057A1"
+			tasks: [
+				{
+					id: "086B7B598ABBC821"
+					type: "checkmark"
+				}
+				{
+					id: "5459AB0958F30569"
+					item: "create_enchantment_industry:ink_bucket"
+					optional_task: true
+					type: "item"
+				}
+			]
+			title: "Ink"
+			x: 4.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["4069BFCE7C742DAD"]
+			icon: "vintageimprovements:sulfuric_acid_bucket"
+			id: "19C4086752C5E343"
+			tasks: [
+				{
+					id: "4B6A4BEB40285AC4"
+					type: "checkmark"
+				}
+				{
+					id: "35420E887D781F42"
+					item: "vintageimprovements:sulfuric_acid_bucket"
+					optional_task: true
+					type: "item"
+				}
+			]
+			title: "Sulfuric Acid"
+			x: 0.0d
+			y: -4.0d
+		}
+	]
+	title: "Chapter 8: Creative Mechanisms"
+}

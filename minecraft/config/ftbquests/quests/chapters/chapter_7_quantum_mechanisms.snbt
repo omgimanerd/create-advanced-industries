@@ -2,6 +2,7 @@
 	autofocus_id: "271A91265ACE5851"
 	default_hide_dependency_lines: false
 	default_quest_shape: ""
+	disable_toast: true
 	filename: "chapter_7_quantum_mechanisms"
 	group: "5B3547AEADCBC841"
 	icon: "kubejs:quantum_mechanism"
@@ -355,24 +356,40 @@
 		{
 			dependencies: ["2F70978FF48B905A"]
 			description: ["Melt the redstone in a heated basin."]
+			icon: "kubejs:molten_redstone_bucket"
 			id: "2C8BDCCE49CD6DBC"
-			tasks: [{
-				id: "1AC407487B2AF994"
-				item: "kubejs:molten_redstone_bucket"
-				type: "item"
-			}]
+			tasks: [
+				{
+					id: "651408664009AC40"
+					type: "checkmark"
+				}
+				{
+					id: "78E8FE6A90F7334C"
+					item: "kubejs:molten_redstone_bucket"
+					optional_task: true
+					type: "item"
+				}
+			]
 			x: 4.0d
 			y: -6.0d
 		}
 		{
 			dependencies: ["2C8BDCCE49CD6DBC"]
 			description: ["Centrifuge the molten redstone into Potion of Stability and Destabilized Redstone."]
+			icon: "thermal:redstone_bucket"
 			id: "4667FF99D0ED1BE1"
-			tasks: [{
-				id: "31C23F1C022E8AA2"
-				item: "thermal:redstone_bucket"
-				type: "item"
-			}]
+			tasks: [
+				{
+					id: "35ED6F6FEFAF44E0"
+					type: "checkmark"
+				}
+				{
+					id: "2E2D262501C0BC38"
+					item: "thermal:redstone_bucket"
+					optional_task: true
+					type: "item"
+				}
+			]
 			x: 6.0d
 			y: -6.0d
 		}
@@ -727,12 +744,20 @@
 		}
 		{
 			dependencies: ["5C74FBA414C21479"]
+			icon: "kubejs:teleportation_juice_bucket"
 			id: "58B39574A3117D0D"
-			tasks: [{
-				id: "6EAE0B554B01EF0D"
-				item: "kubejs:teleportation_juice_bucket"
-				type: "item"
-			}]
+			tasks: [
+				{
+					id: "6C1BF59C04088318"
+					type: "checkmark"
+				}
+				{
+					id: "1949454A94A6D3FB"
+					item: "kubejs:teleportation_juice_bucket"
+					optional_task: true
+					type: "item"
+				}
+			]
 			x: 14.0d
 			y: 2.0d
 		}
@@ -843,10 +868,18 @@
 			description: ["Melt down the resonant ender pearls. I won't make you get a bucket of resonant ender since you've already done this in Chapter 6."]
 			icon: "thermal:ender_bucket"
 			id: "54D083CDD9336399"
-			tasks: [{
-				id: "510E649BBAB22EF3"
-				type: "checkmark"
-			}]
+			tasks: [
+				{
+					id: "510E649BBAB22EF3"
+					type: "checkmark"
+				}
+				{
+					id: "4BAB6C03BA6A8C70"
+					item: "thermal:ender_bucket"
+					optional_task: true
+					type: "item"
+				}
+			]
 			title: "Molten Resonant Ender"
 			x: 8.0d
 			y: -2.0d
@@ -854,12 +887,20 @@
 		{
 			dependencies: ["69D09EB30178ABF9"]
 			description: ["Melt down the energized glowstone."]
+			icon: "thermal:glowstone_bucket"
 			id: "54EC972BADC3BEFA"
-			tasks: [{
-				id: "5F7C982605B70CB3"
-				item: "thermal:glowstone_bucket"
-				type: "item"
-			}]
+			tasks: [
+				{
+					id: "28E5DA5D9B2494E1"
+					type: "checkmark"
+				}
+				{
+					id: "33BCA93DCB1E5EEA"
+					item: "thermal:glowstone_bucket"
+					optional_task: true
+					type: "item"
+				}
+			]
 			x: 18.0d
 			y: -8.0d
 		}

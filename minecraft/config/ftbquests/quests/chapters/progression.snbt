@@ -157,6 +157,22 @@
 			x: 12.5d
 			y: 0.0d
 		}
+		{
+			dependencies: [
+				"12D9ACDA50B38FCA"
+				"23A0F081DF173BAF"
+			]
+			icon: "kubejs:creative_mechanism"
+			id: "4191E656B6D34409"
+			tasks: [{
+				id: "153FD9A28FA6A841"
+				title: "Start Chapter"
+				type: "checkmark"
+			}]
+			title: "Chapter 8: Creative Mechanisms"
+			x: 17.5d
+			y: 0.0d
+		}
 	]
 	title: "Progression"
 }
