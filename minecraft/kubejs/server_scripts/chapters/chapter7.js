@@ -59,6 +59,13 @@ ServerEvents.recipes((e) => {
     )
   }
 
+  // Echo Shards
+  pneumaticcraft.pressure_chamber(
+    'minecraft:sculk',
+    'minecraft:echo_shard',
+    4.5
+  )
+
   // Resonant Ender
   create
     .compacting(Fluid.of('thermal:ender', 100), 'kubejs:resonant_ender_pearl')
