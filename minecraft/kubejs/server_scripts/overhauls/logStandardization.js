@@ -86,7 +86,7 @@ ServerEvents.recipes((e) => {
       if (log === null || hollowLog === null) {
         console.error(`Unknown log recipe ${recipe}`)
       }
-      create.turning([hollowLog, '4x thermal:sawdust'], log, 80)
+      create.turning([hollowLog, '3x thermal:sawdust'], log, 80)
     }
   )
 })
