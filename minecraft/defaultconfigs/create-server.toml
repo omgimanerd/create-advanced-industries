@@ -53,7 +53,7 @@
 	lightSourceCountForRefinedRadiance = 10
 	#.
 	#Allow the standard in-world Refined Radiance recipes.
-	enableRefinedRadianceRecipe = true
+	enableRefinedRadianceRecipe = false
 	#.
 	#Allow the standard in-world Shadow Steel recipe.
 	enableShadowSteelRecipe = true

@@ -8,6 +8,15 @@ ServerEvents.tags('item', (e) => {
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
 
+  // Refined Radiance overhaul, in-world crafting disabled.
+  create
+    .SequencedAssembly('create:chromatic_compound')
+    .energize(100000)
+    .outputs([
+      Item.of('create:refined_radiance').withChance(8),
+      Item.of('create:chromatic_compound').withChance(2),
+    ])
+
   // Empty music discs
   create
     .SequencedAssembly('pneumaticcraft:plastic')
@@ -15,6 +24,8 @@ ServerEvents.recipes((e) => {
     .fill(Fluid.of('kubejs:molten_silver', 125))
     .laser(8000, 1000)
     .outputs('kubejs:empty_music_disc')
+
+  // TODO: right clickable inspiration item
 
   // Disc fragment cutting and recycling
   // create.cutting(
