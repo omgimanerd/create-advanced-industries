@@ -55,4 +55,9 @@ ForgeEvents.onEvent(
     'createutilities:void_steel_block',
     'tfmg:steel_block'
   )
+  // Shadow Steel
+  global.RegisterVoidConversionRecipe(
+    'create:chromatic_compound',
+    'create:shadow_steel'
+  )
 })()
