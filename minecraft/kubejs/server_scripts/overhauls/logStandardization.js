@@ -72,4 +72,21 @@ ServerEvents.recipes((e) => {
       .polishing([id, Item.of('thermal:sawdust', 3)], log)
       .speed_limits(POLISHING_MEDIUM_SPEED)
   })
+
+  // Add a lathing recipe for hollow logs
+  e.forEachRecipe(
+    {
+      type: 'minecraft:crafting_shaped',
+      id: /^quark:building\/crafting\/hollowlogs.*/,
+    },
+    (r) => {
+      const recipe = JSON.parse(r.json)
+      const log = recipe?.key?.L?.item
+      const hollowLog = recipe?.result?.item
+      if (log === null || hollowLog === null) {
+        console.error(`Unknown log recipe ${recipe}`)
+      }
+      create.turning([hollowLog, '4x thermal:sawdust'], log, 80)
+    }
+  )
 })

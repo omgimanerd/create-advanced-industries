@@ -206,7 +206,7 @@ ServerEvents.recipes((e) => {
     Fluid.of('pneumaticcraft:yeast_culture', 125),
   ])
 
-  // Sawdust recipe, with benefits if you do it with ars nouveau.
+  // Sawdust recipe, with benefits if you do it with Ars Nouveau.
   create.crushing(
     [
       Item.of('thermal:sawdust', 9).withChance(1),
@@ -219,6 +219,7 @@ ServerEvents.recipes((e) => {
     Item.of('thermal:sawdust', 9).withChance(1),
     Item.of('thermal:sawdust', 9).withChance(0.5),
   ])
+  create.crushing('thermal:sawdust', '#minecraft:planks')
 
   // Blasting recipe for sawdust to charcoal dust.
   e.remove({ id: 'create:milling/charcoal' })
