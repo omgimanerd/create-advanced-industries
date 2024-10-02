@@ -370,6 +370,7 @@
 					type: "item"
 				}
 			]
+			title: "Molten Redstone"
 			x: 4.0d
 			y: -6.0d
 		}
@@ -390,6 +391,7 @@
 					type: "item"
 				}
 			]
+			title: "Destabilized Redstone"
 			x: 6.0d
 			y: -6.0d
 		}
@@ -541,6 +543,7 @@
 				item: "minecraft:lava_bucket"
 				type: "item"
 			}]
+			title: "Lava"
 			x: 2.0d
 			y: 4.0d
 		}
@@ -758,6 +761,7 @@
 					type: "item"
 				}
 			]
+			title: "Teleportation Juice"
 			x: 14.0d
 			y: 2.0d
 		}
@@ -880,7 +884,7 @@
 					type: "item"
 				}
 			]
-			title: "Molten Resonant Ender"
+			title: "Resonant Ender"
 			x: 8.0d
 			y: -2.0d
 		}
@@ -901,6 +905,7 @@
 					type: "item"
 				}
 			]
+			title: "Energized Glowstone"
 			x: 18.0d
 			y: -8.0d
 		}

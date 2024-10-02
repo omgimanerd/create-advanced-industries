@@ -317,7 +317,7 @@
 					type: "item"
 				}
 			]
-			title: "Crystal Growth Accelerator Bucket"
+			title: "Crystal Growth Accelerator"
 			x: -10.5d
 			y: 29.0d
 		}
@@ -338,7 +338,7 @@
 					type: "item"
 				}
 			]
-			title: "Bucket of Liquid Fertilizer"
+			title: "Liquid Fertilizer"
 			x: -10.5d
 			y: 31.0d
 		}
@@ -497,6 +497,7 @@
 		{
 			dependencies: ["7430C94A25FE9972"]
 			description: ["Evaporate the blaze milk in a heated mixer to get blaze powder."]
+			icon: "kubejs:blaze_milk_bucket"
 			id: "40CC93D0C0DA8A23"
 			tasks: [
 				{
@@ -510,6 +511,7 @@
 					type: "item"
 				}
 			]
+			title: "Blaze Milk"
 			x: 0.0d
 			y: 6.0d
 		}
@@ -895,7 +897,7 @@
 					type: "item"
 				}
 			]
-			title: "Flourishing Archwood Sap Bucket"
+			title: "Flourishing Archwood Sap"
 			x: 2.0d
 			y: 32.0d
 		}
@@ -916,7 +918,7 @@
 					type: "item"
 				}
 			]
-			title: "Blazing Archwood Sap Bucket"
+			title: "Blazing Archwood Sap"
 			x: -2.0d
 			y: 32.0d
 		}
@@ -937,7 +939,7 @@
 					type: "item"
 				}
 			]
-			title: "Cascading Archwood Sap Bucket"
+			title: "Cascading Archwood Sap"
 			x: 4.0d
 			y: 32.0d
 		}
@@ -958,7 +960,7 @@
 					type: "item"
 				}
 			]
-			title: "Flashing Archwood Sap Bucket"
+			title: "Flashing Archwood Sap"
 			x: -4.0d
 			y: 32.0d
 		}
@@ -1360,6 +1362,7 @@
 				""
 				"All of the resulting moss can be composted back into more fertilizer!"
 			]
+			icon: "thermal:compost"
 			id: "4D7BE1939A8BEA96"
 			tasks: [{
 				id: "6BDBDDC4C2377093"
@@ -1372,6 +1375,7 @@
 				}
 				type: "item"
 			}]
+			title: "Fertilizer"
 			x: 4.0d
 			y: 4.0d
 		}
@@ -2104,7 +2108,7 @@
 					type: "item"
 				}
 			]
-			title: "Vexing Archwood Sap Bucket"
+			title: "Vexing Archwood Sap"
 			x: 0.0d
 			y: 32.0d
 		}

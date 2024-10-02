@@ -143,7 +143,7 @@
 					type: "item"
 				}
 			]
-			title: "Bucket of Molten Plastic"
+			title: "Molten Plastic"
 			x: 12.0d
 			y: -10.0d
 		}
@@ -184,7 +184,7 @@
 					type: "item"
 				}
 			]
-			title: "LPG Bucket"
+			title: "LPG"
 			x: 10.0d
 			y: -10.0d
 		}
@@ -208,7 +208,7 @@
 					type: "item"
 				}
 			]
-			title: "Kerosene Bucket"
+			title: "Kerosene"
 			x: 6.0d
 			y: -10.0d
 		}
@@ -232,7 +232,7 @@
 					type: "item"
 				}
 			]
-			title: "Diesel Bucket"
+			title: "Diesel"
 			x: 4.0d
 			y: -10.0d
 		}
@@ -256,7 +256,7 @@
 					type: "item"
 				}
 			]
-			title: "Gasoline Bucket"
+			title: "Gasoline"
 			x: 8.0d
 			y: -10.0d
 		}
@@ -274,6 +274,7 @@
 				item: "tfmg:crude_oil_fluid_bucket"
 				type: "item"
 			}]
+			title: "Crude Oil"
 			x: 2.0d
 			y: -10.0d
 		}
@@ -294,7 +295,7 @@
 					type: "item"
 				}
 			]
-			title: "Lubricant Bucket"
+			title: "Lubricant"
 			x: 8.0d
 			y: -4.0d
 		}
@@ -524,7 +525,7 @@
 		}
 		{
 			dependencies: ["5978BE35C75966ED"]
-			description: ["I hope you kept some of the Creosote Oil around."]
+			description: ["I hope you kept some of the Creosote oil around."]
 			icon: "tfmg:creosote_bucket"
 			id: "1DB3C79C5873426A"
 			tasks: [
@@ -539,7 +540,7 @@
 					type: "item"
 				}
 			]
-			title: "Creosote Bucket"
+			title: "Creosote"
 			x: 0.0d
 			y: -2.0d
 		}
@@ -783,7 +784,7 @@
 					type: "item"
 				}
 			]
-			title: "Molten Silicon Bucket"
+			title: "Molten Silicon"
 			x: 36.0d
 			y: -2.0d
 		}
@@ -1547,7 +1548,7 @@
 					type: "item"
 				}
 			]
-			title: "Etching Acid Bucket"
+			title: "Etching Acid"
 			x: 24.0d
 			y: -6.0d
 		}
@@ -1661,7 +1662,7 @@
 					type: "item"
 				}
 			]
-			title: "Sulfuric Acid Bucket"
+			title: "Sulfuric Acid"
 			x: 16.0d
 			y: -6.0d
 		}

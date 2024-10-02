@@ -112,11 +112,6 @@
 			id: "565A7C5F6646857A"
 			tasks: [
 				{
-					id: "7F9C46DCA336E6D2"
-					item: "tfmg:molten_steel_bucket"
-					type: "item"
-				}
-				{
 					id: "1314D5A8D8166CD3"
 					type: "checkmark"
 				}
