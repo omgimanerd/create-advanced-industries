@@ -717,6 +717,12 @@
 			description: ["Did you break an ender pearl during this process? Not to worry, they can be glued back together for you to try again."]
 			id: "74EA73860D823AD9"
 			invisible: true
+			rewards: [{
+				count: 16
+				id: "58E8E9C21A8DDADC"
+				item: "minecraft:ender_pearl"
+				type: "item"
+			}]
 			tasks: [{
 				id: "14C49AA9D803759F"
 				item: "kubejs:shattered_ender_pearl"

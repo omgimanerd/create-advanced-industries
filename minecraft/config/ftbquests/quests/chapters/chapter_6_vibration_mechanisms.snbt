@@ -1279,7 +1279,7 @@
 				"03ABBBFAF9B2B133"
 			]
 			dependency_requirement: "one_completed"
-			description: ["Resonant ender is required for this chapter, and can be produced in several ways with differing efficiency. You don't need to fulfill both prerequisites to complete this quest."]
+			description: ["Resonant ender is required for this chapter, and can be produced in several ways with differing efficiency."]
 			icon: "thermal:ender_bucket"
 			id: "44FB86C2B3C8EF0D"
 			rewards: [
