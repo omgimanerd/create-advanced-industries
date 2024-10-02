@@ -4,8 +4,8 @@ ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
   const pneumaticcraft = definePneumaticcraftRecipes(e)
 
-  // sculk farming to make enderium
-  // enderium recipe from liquid hyper exp
+  // Void Steel's regular recipe is removed.
+  e.remove({ id: 'createutilities:mixing/void_steel_ingot' })
 
   // Void steel sheets can only be made with void steel crushing
   e.remove({ id: 'createutilities:pressing/void_steel_sheet' })
