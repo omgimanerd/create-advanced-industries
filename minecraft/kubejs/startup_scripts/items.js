@@ -206,18 +206,14 @@ StartupEvents.registry('item', (e) => {
   registerItem('kubejs:incomplete_quantum_chip', 'create:sequenced_assembly')
 
   // Magnetic Confinement Unit and Antimatter
-  e.create('kubejs:unstable_singularity')
-    .displayName('Unstable Singularity')
-    .parentModel('kubejs:item/unstable_singularity')
-  registerItem('kubejs:singularity').tooltip(
+  registerItem('kubejs:unstable_singularity').tooltip(
     'Cannot be picked up. Decays rapidly once in the world.'
   )
-  e.create('kubejs:magnetic_confinement_unit')
-    .displayName('Magnetic Confinement Unit')
-    .parentModel('kubejs:item/magnetic_confinement_unit')
-  e.create('kubejs:magnetic_confinement_unit_filled')
-    .displayName('Magnetic Confinement Unit (Filled)')
-    .parentModel('kubejs:model/magnetic_confinement_unit')
+  registerItem('kubejs:singularity')
+  registerItem('kubejs:magnetic_confinement_unit')
+  e.create('kubejs:magnetic_confinement_unit_filled').displayName(
+    'Magnetic Confinement Unit (Filled)'
+  )
 
   // Chromatic Bop Stick
   e.create('kubejs:chromatic_bop_stick')

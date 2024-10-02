@@ -90,7 +90,6 @@ global.ArsGravityBlockCrushingCallback = (e) => {
   })
 
   entity.playSound('minecraft:block.anvil.land', 5, 0)
-  // TODO custom ponder
 }
 
 ForgeEvents.onEvent(
