@@ -1,11 +1,17 @@
 // priority: 999
+// See https://minecraft.fandom.com/wiki/Note_Block for the hardcoded data
+// values in the constants.
 
 const $CompoundTag = Java.loadClass('net.minecraft.nbt.CompoundTag')
 const $ItemStack = Java.loadClass('net.minecraft.world.item.ItemStack')
 
 global.RESONANCE_CRAFTING = 'kubejs:resonance_crafting'
 
-/** @type {string} */
+/**
+ * Global constants for the notes, with their index in the array corresponding
+ * to the numerical pitch on the note block.
+ * @type {string}
+ */
 global.NOTES = [
   'F#3', // 0
   'G3', // 1
@@ -35,6 +41,8 @@ global.NOTES = [
 ]
 
 /**
+ * A mapping of the string identifier for the notes back to their numerical
+ * pitch ID. A reverse lookup for global.NOTES.
  * @type {string:number}
  */
 global.NOTE_TO_ID = {
@@ -65,7 +73,11 @@ global.NOTE_TO_ID = {
   'F#5': 24,
 }
 
-/** @type {string:Internal.Color_} */
+/**
+ * A mapping of the notes to the color the note is rendered as when played from
+ * a note block.
+ * @type {string:Internal.Color_}
+ */
 global.NOTE_TO_COLOR = {
   'F#3': Color.rgba(119, 210, 5, 0), // #77D700
   G3: Color.rgba(149, 192, 0, 0), // #95C000
@@ -96,6 +108,9 @@ global.NOTE_TO_COLOR = {
 }
 
 /**
+ * A rough mapping of the instruments that a note block can play to the blocks
+ * that must be placed underneath it. Not exhaustive since Minecraft uses
+ * material types and not IDs or tags.
  * @type {Internal.Instrument_:string[]}
  */
 global.INSTRUMENTS = {
@@ -124,16 +139,25 @@ global.INSTRUMENTS = {
 }
 
 /**
+ * Lookup table for all the transformations assigned to a note when it is played
+ * by a note block.
+ *
  * Example object format, keyed by instrument and vanilla note id:
  * {
  *   'harp:24': {
- *     [ItemStack as CompoundTag]: [ItemStack as CompoundTag],
+ *     [ItemStack as CompoundTag]: {
+ *       result: [ItemStack as CompoundTag],
+ *       final: true,
+ *     }
  *   }
  * }
  */
 global.ResonanceCraftingRecipes = {}
 
 /**
+ * Information about all the registered resonance crafting recipes, optimized
+ * for processing by the JEI recipe category code.
+ *
  * Example object format stored in this array.
  * {
  *   type: 'kubejs:resonance_crafting',
@@ -234,7 +258,8 @@ global.RegisterResonanceCraftingRecipe = (
       transitionalItem(i).save(inputTag)
     }
     // If this is the last step of the recipe, use the output item.
-    if (i == notes.length - 1) {
+    let finalStep = i === notes.length - 1
+    if (finalStep) {
       output.save(outputTag)
     } else {
       transitionalItem(i + 1).save(outputTag)
@@ -243,7 +268,10 @@ global.RegisterResonanceCraftingRecipe = (
     if (global.ResonanceCraftingRecipes[recipeKey] === undefined) {
       global.ResonanceCraftingRecipes[recipeKey] = {}
     }
-    global.ResonanceCraftingRecipes[recipeKey][inputTag] = outputTag
+    global.ResonanceCraftingRecipes[recipeKey][inputTag] = {
+      result: outputTag,
+      final: finalStep,
+    }
   }
 
   // Make the recipe data available to JEI.
@@ -300,29 +328,55 @@ global.NoteBlockEventHandler = (e) => {
 
     let nbt = block.getEntityData()
     let itemStackCompoundTag = nbt.itemStack
-    let craftingResult = resonanceCrafts[itemStackCompoundTag]
+    let resonanceCraft = resonanceCrafts[itemStackCompoundTag]
     // No crafting recipe matching this particular item
-    if (craftingResult === undefined) continue
+    if (resonanceCraft === undefined) continue
+    let { result, final } = resonanceCraft
 
     // Successful match, replace the item on the pedestal
-    // TODO: play a different sound and display particles on the final step.
-    nbt.put('itemStack', craftingResult)
+    nbt.put('itemStack', result)
     block.setEntityData(nbt)
     block.getEntity().updateBlock()
+
     let particlePos = p.getCenter().add(0, 0.3, 0)
-    let count = 10
-    for (let i = 0; i < count; ++i) {
+    if (!final) {
+      let count = 10
+      for (let i = 0; i < count; ++i) {
+        level.spawnParticles(
+          'minecraft:note',
+          true, // overrideLimiter
+          particlePos.x() + randomSpread(), // x position
+          particlePos.y() + randomSpread(), // y position
+          particlePos.z() + randomSpread(), // z position
+          vanillaNoteId / 24, // vx, used as pitch when count is 0
+          0, // vy, unused
+          0, // vz, unused
+          0, // count, must be 0 for pitch argument to work
+          1 // speed, must be 1 for pitch argument to work
+        )
+      }
+    } else {
       level.spawnParticles(
-        'minecraft:note',
-        true, // overrideLimiter
-        particlePos.x() + randomSpread(), // x position
-        particlePos.y() + randomSpread(), // y position
-        particlePos.z() + randomSpread(), // z position
-        vanillaNoteId / 24, // vx, used as pitch when count is 0
-        0, // vy, unused
-        0, // vz, unused
-        0, // count, must be 0 for pitch argument to work
-        1 // speed, must be 1 for pitch argument to work
+        'minecraft:end_rod',
+        true, //overrideLimiter
+        particlePos.x(),
+        particlePos.y() + 0.25,
+        particlePos.z(),
+        0.2, // vx, affects the spread around the position
+        0.2, // vy, affects the spread around the position
+        0.2, // vz, affects the spread around the position
+        25, // count
+        0.15 // speed
+      )
+      level.playSound(
+        null, // player
+        p.x, // x
+        p.y, // y
+        p.z, // z
+        'ars_nouveau:ea_finish', // soundEvent
+        'blocks', // soundSource
+        3, // volume
+        0 // pitch
       )
     }
   }
@@ -332,7 +386,13 @@ ForgeEvents.onEvent('net.minecraftforge.event.level.NoteBlockEvent', (e) => {
   global.NoteBlockEventHandler(e)
 })
 
-// Recipe registrations must happen here.
+/**
+ * Recipe registrations must happen here. Item registries must be loaded for
+ * resonance crafts to work.
+ *
+ * For debugging, since the registries are already available, comment out
+ * StartupEvents.postInit() and just directly execute the registrations.
+ */
 StartupEvents.postInit(() => {
   // Recipes used in Chapter 6
   global.RegisterResonanceCraftingRecipe(
