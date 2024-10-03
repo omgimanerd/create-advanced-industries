@@ -33,6 +33,7 @@ JEIEvents.addItems((e) => {
   e.add('create:shadow_steel')
   e.add('thermal:drill_head')
   e.add('thermal:saw_blade')
+  e.add('vintageimprovements:shadow_steel_sheet')
 })
 
 JEIEvents.hideItems((e) => {

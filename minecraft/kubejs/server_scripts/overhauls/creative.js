@@ -40,11 +40,25 @@ ServerEvents.recipes((e) => {
     24000
   )
 
+  // Creative Upgrade Smithing Template
+  e.shaped(
+    'kubejs:creative_upgrade_smithing_template',
+    [
+      'PMP', //
+      'PTP', //
+      'PPP', //
+    ],
+    {
+      P: '#forge:plates/shadow_steel',
+      M: CREATIVE_MECHANISM,
+      T: 'minecraft:netherite_upgrade_smithing_template',
+    }
+  )
+
   // Creative Building Wand
   e.smithing(
     'wands:creative_wand',
-    // Todo make custom smithing template
-    'minecraft:netherite_upgrade_smithing_template',
+    'kubejs:creative_upgrade_smithing_template',
     'wands:netherite_wand',
     CREATIVE_MECHANISM
   )

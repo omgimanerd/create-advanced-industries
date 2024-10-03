@@ -234,12 +234,17 @@ StartupEvents.registry('item', (e) => {
     .displayName('Pembi Spawner')
     .tooltip(Text.green('Summons a depressed artist named Pembi!'))
 
-  // From giving paint and dye to Pembi
+  // From giving paint and dye to Pembi, painting prerequisite.
   registerItem('kubejs:unframed_canvas')
+
+  // Creative Smithing Template
+  e.create('kubejs:creative_upgrade_smithing_template')
+    .displayName('Smithing Template')
+    .fireResistant()
 })
 
 ItemEvents.modification((e) => {
-  // Change stack size of grenades.
+  // Change maximum stack size of grenades.
   e.modify('createarmory:impact_nade', (i) => {
     i.setMaxStackSize(16)
   })

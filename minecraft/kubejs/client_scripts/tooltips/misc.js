@@ -33,6 +33,18 @@ ItemEvents.tooltip((e) => {
     unShiftText: holdShift(false),
   })
 
+  // Add the upgrade template style tooltip to the Creative Upgrade Template.
+  tooltipHelper(e, 'kubejs:creative_upgrade_smithing_template', {
+    baseText: [
+      '<gray>Creative Upgrade</gray>',
+      '',
+      '<gray>Applies to:</gray>',
+      '<blue> Valid Netherite Tools</blue>',
+      '<gray>Ingredients:</gray>',
+      '<blue> Creative Mechanism</blue>',
+    ],
+  })
+
   // Neat utility to display NBT in the tooltip, debug only, remove for the 1.0
   // release.
   e.addAdvancedToAll((item, _, text) => {

@@ -146,7 +146,16 @@ ServerEvents.recipes((e) => {
   // Cloud in a bottle to artifact
   e.shapeless('artifacts:cloud_in_a_bottle', 'quark:bottled_cloud')
 
-  // smithing template netherite upgrade duping
+  // Netherite Upgrade Smithing Templates
+  e.remove({ id: 'minecraft:netherite_upgrade_smithing_template' })
+  create
+    .SequencedAssembly('minecraft:nether_brick')
+    .press(2)
+    .deploy('functionalstorage:diamond_upgrade')
+    .fill(
+      Fluid.of('kubejs:molten_diamond', global.MeltableItem.DEFAULT_INGOT_FLUID)
+    )
+    .outputs('minecraft:netherite_upgrade_smithing_template')
 
-  // drop ascended coins into a well?
+  // TODO drop ascended coins into a well?
 })
