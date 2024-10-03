@@ -771,7 +771,10 @@
 			]
 			hide_dependency_lines: true
 			icon: "kubejs:molten_silicon_bucket"
+			icon_scale: 0.5d
 			id: "5AAAFF9CC002EB70"
+			shape: "gear"
+			size: 2.0d
 			tasks: [
 				{
 					id: "21FBF8E19D4A0CBC"
@@ -819,6 +822,7 @@
 			dependencies: [
 				"67DC36BAC10B5C18"
 				"60A20508A7E35CB9"
+				"159CA764F4A63265"
 			]
 			description: ["After you've unlocked PCBs, you can make an assembly platform. They require pressure to operate, and are necessary to manufacture processors."]
 			icon: "pneumaticcraft:assembly_controller"
@@ -1642,7 +1646,7 @@
 				type: "checkmark"
 			}]
 			title: "Super Glue"
-			x: 26.0d
+			x: 24.0d
 			y: -2.0d
 		}
 		{
@@ -1770,6 +1774,69 @@
 			}]
 			x: 18.0d
 			y: -2.0d
+		}
+		{
+			dependencies: ["5978BE35C75966ED"]
+			description: [
+				"This quest is unlocked as soon as you start this chapter."
+				""
+				"Completing Steel automation should give you access to lots of slag. It's a useful byproduct but you can use it for making concrete."
+				""
+				"The discovery and industrialization of modern concrete revolutionized the world by providing a strong and durable building foundation that was also easy to transport and use. So too will it revolutionize your builds."
+			]
+			hide_dependency_lines: true
+			icon: "thermal:slag"
+			icon_scale: 0.5d
+			id: "17C3227611441BB1"
+			shape: "gear"
+			size: 2.0d
+			tasks: [{
+				id: "2B01CE3D4356A8A9"
+				item: "thermal:slag"
+				type: "item"
+			}]
+			title: "Slag"
+			x: 22.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["17C3227611441BB1"]
+			description: [
+				"Manufacturing concrete will left as an exercise to the reader. There's a few ways to go about this."
+				""
+				"More specifically, you'll need gray concrete."
+				""
+				"You don't need to mass produce it unless you want to use it as a building material, but it is a pretty darn cool looking material."
+			]
+			icon: "minecraft:light_gray_concrete"
+			id: "0ADD15CFC08E5149"
+			tasks: [{
+				id: "1DCCC76426083DBA"
+				item: {
+					Count: 1b
+					id: "ftbfiltersystem:smart_filter"
+					tag: {
+						"ftbfiltersystem:filter": "item_tag(forge:concrete)"
+					}
+				}
+				title: "Concrete"
+				type: "item"
+			}]
+			title: "Concrete"
+			x: 26.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["0ADD15CFC08E5149"]
+			description: ["Make some gray concrete and cut it into slabs."]
+			id: "159CA764F4A63265"
+			tasks: [{
+				id: "4AAAB4D6B325BB22"
+				item: "tfmg:gray_concrete_slab"
+				type: "item"
+			}]
+			x: 26.0d
+			y: 0.0d
 		}
 	]
 	title: "Chapter 5a: Logistics Mechanisms"

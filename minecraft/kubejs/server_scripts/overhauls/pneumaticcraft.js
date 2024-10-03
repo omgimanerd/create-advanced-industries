@@ -133,6 +133,7 @@ ServerEvents.recipes((e) => {
     N: 'pneumaticcraft:pneumatic_cylinder',
     T: 'pneumaticcraft:pressure_tube',
     P: 'pneumaticcraft:printed_circuit_board',
+    O: 'tfmg:gray_concrete_slab',
   }
   // The advanced compressors require custom registration in order to preserve
   // the nbt data in the ingredient compressor.
@@ -195,7 +196,7 @@ ServerEvents.recipes((e) => {
     [
       ' P ', //
       'TPP', //
-      'HMH', //
+      'OMO', //
     ],
     pneumaticcraftKeys
   )
@@ -204,21 +205,21 @@ ServerEvents.recipes((e) => {
     [
       'DNN', //
       '  N', //
-      'HPH', //
+      'OPO', //
     ],
     Object.assign({}, pneumaticcraftKeys, { D: 'thermal:drill_head' })
   )
   e.replaceInput(
     { id: /^pneumaticcraft:assembly_io_unit_(im|ex)port$/ },
     'tfmg:steel_ingot',
-    'tfmg:heavy_plate'
+    'tfmg:gray_concrete_slab'
   )
   redefineRecipe(
     'pneumaticcraft:assembly_laser',
     [
       'LNN', //
       '  N', //
-      'HPH',
+      'OPO',
     ],
     Object.assign({}, pneumaticcraftKeys, {
       L: 'vintageimprovements:laser_item',
@@ -229,7 +230,7 @@ ServerEvents.recipes((e) => {
     [
       'NDN', //
       'LLL', //
-      'HPH', //
+      'OPO', //
     ],
     Object.assign({}, pneumaticcraftKeys, { D: 'create:depot' })
   )
