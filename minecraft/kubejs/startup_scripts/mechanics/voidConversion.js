@@ -19,28 +19,40 @@ global.RegisterVoidConversionRecipe = (output, input) => {
  */
 global.VoidConversionCallback = (e) => {
   const { entity, level } = e
-  const minBuildHeight = level.getMinBuildHeight()
-  if (level.isClientSide()) return
-  const { type, block, item, x, y, z } = entity
-  if (type !== 'minecraft:item') return
-  if (y > minBuildHeight) return
-  if (item === undefined) return
+  if (level.clientSide || !entity.item || entity.y > level.minBuildHeight) {
+    return
+  }
+  const { block, item, x, z } = entity
   const result = global.VoidConversionRecipes[item.id]
   if (result === undefined) return
+
+  const spawnY = level.minBuildHeight - 10
   const resultEntity = block.createEntity('item')
-  resultEntity.item = Item.of(result)
-  resultEntity.setPos(x, minBuildHeight - 20, z)
+  resultEntity.item = Item.of(result, item.count)
+  resultEntity.setPos(x, level.minBuildHeight - 10, z)
   resultEntity.spawn()
-  resultEntity.setDeltaMovement(new Vec3d(0, 0.5, 0))
+  resultEntity.setDeltaMovement(new Vec3d(0, 0.6, 0))
   resultEntity.setNoGravity(true)
   resultEntity.setGlowing(true)
+  level.spawnParticles(
+    'minecraft:end_rod',
+    true, // overrideLimiter
+    x,
+    spawnY,
+    z,
+    0.2, // vx, affects the spread around the position
+    0.2, // vy, affects the spread around the position
+    0.2, // vz, affects the spread around the position
+    25, // count
+    0.2 // speed
+  )
   // No need to discard the original entity.
 }
 
 ForgeEvents.onEvent(
   'net.minecraftforge.event.entity.EntityLeaveLevelEvent',
   (e) => {
-    global.ArsGravityBlockCrushingCallback(e)
+    global.VoidConversionCallback(e)
   }
 )
 
@@ -57,7 +69,7 @@ ForgeEvents.onEvent(
   )
   // Shadow Steel
   global.RegisterVoidConversionRecipe(
-    'create:chromatic_compound',
-    'create:shadow_steel'
+    'create:shadow_steel',
+    'create:chromatic_compound'
   )
 })()

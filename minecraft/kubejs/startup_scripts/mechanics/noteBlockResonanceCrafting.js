@@ -358,7 +358,7 @@ global.NoteBlockEventHandler = (e) => {
     } else {
       level.spawnParticles(
         'minecraft:end_rod',
-        true, //overrideLimiter
+        true, // overrideLimiter
         particlePos.x(),
         particlePos.y() + 0.25,
         particlePos.z(),
