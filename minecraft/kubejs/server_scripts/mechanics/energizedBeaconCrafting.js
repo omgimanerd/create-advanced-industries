@@ -1,4 +1,10 @@
 // priority: 0
+//
+// Energized Beacon Crafting is a mechanic that allows an active beacon with
+// colored and redirected beams (via Quark Corundum) to be "energized".
+//
+// Energizing a beacon beam sends a pulse of energy through the beam segments,
+// transforming any items sitting in the beam segments.
 
 ;(() => {
   let recipeLookup = {}
@@ -215,13 +221,16 @@
     }
 
     // Play the beacon power selection sound.
-    block.getPlayersInRadius(48).forEach((p) => {
-      // https://minecraft.fandom.com/wiki/Commands/playsound
-      Utils.server.runCommandSilent(
-        'playsound minecraft:block.beacon.power_select block ' +
-          `${p.displayName.string} ${block.x} ${block.y} ${block.z} 3 1`
-      )
-    })
+    level.playSound(
+      null, // player
+      block.x,
+      block.y,
+      block.z,
+      'minecraft:block.beacon.power_select',
+      'blocks',
+      3, // volume
+      0 // pitch
+    )
 
     // Cancel the event so the beacon UI doesn't open.
     e.cancel()

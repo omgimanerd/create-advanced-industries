@@ -370,11 +370,11 @@ global.NoteBlockEventHandler = (e) => {
       )
       level.playSound(
         null, // player
-        p.x, // x
-        p.y, // y
-        p.z, // z
-        'ars_nouveau:ea_finish', // soundEvent
-        'blocks', // soundSource
+        p.x,
+        p.y,
+        p.z,
+        'ars_nouveau:ea_finish',
+        'blocks',
         3, // volume
         0 // pitch
       )
@@ -414,6 +414,7 @@ StartupEvents.postInit(() => {
     ]
   )
 
+  // TODO: this makes no sense
   global.RegisterResonanceCraftingRecipe(
     'minecraft:honey_bottle',
     'minecraft:ghast_tear',

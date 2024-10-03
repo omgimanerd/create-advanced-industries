@@ -2,7 +2,8 @@
 
 BlockEvents.rightClicked('minecraft:note_block', (e) => {
   const { player, item, block, level } = e
-  // Only works if shift clicking with an empty hand.
+  // Only works if shift clicking with an empty hand. Otherwise, if the player
+  // is holding a block it will place the block for an instant.
   if (!player.isCrouching() || item.id !== 'minecraft:air') return
 
   // Set the block note to the previous note
@@ -16,21 +17,19 @@ BlockEvents.rightClicked('minecraft:note_block', (e) => {
     powered: new String(bp.getOrDefault('powered', false)),
   })
 
-  // Helper to play sounds to players nearby
-  const playSound = (sound, pitch) => {
-    block.getPlayersInRadius(48).forEach((p) => {
-      // https://minecraft.fandom.com/wiki/Commands/playsound
-      Utils.server.runCommandSilent(
-        `playsound ${sound} block ${p.displayName.string} ${block.x} ` +
-          `${block.y} ${block.z} 3 ${pitch}`
-      )
-    })
-  }
-
-  // Display the note particle like how the normal right click event
+  // Display the note particle like the normal right click event
   const soundEvent = `block.note_block.${instrument}`
   const pitch = Math.pow(2, (newNote - 12) / 12)
-  playSound(soundEvent, pitch)
+  level.playSound(
+    null, // player
+    block.x,
+    block.y,
+    block.z,
+    soundEvent,
+    'blocks', // soundSource
+    3, // volume
+    pitch
+  )
   const particlePos = block.pos.getCenter().add(0, 0.7, 0)
   level.spawnParticles(
     'minecraft:note',
