@@ -156,6 +156,4 @@ ServerEvents.recipes((e) => {
       Fluid.of('kubejs:molten_diamond', global.MeltableItem.DEFAULT_INGOT_FLUID)
     )
     .outputs('minecraft:netherite_upgrade_smithing_template')
-
-  // TODO drop ascended coins into a well?
 })

@@ -615,7 +615,6 @@ ServerEvents.recipes((e) => {
         )
       }
     )
-    // TODO chorium ingot might be useful?
   }
 
   //////////////////////////////////

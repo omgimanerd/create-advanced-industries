@@ -420,7 +420,7 @@ ServerEvents.recipes((e) => {
       'kubejs:totem_head_casing',
       'kubejs:incomplete_totem_head'
     )
-    .deploy('minecraft:end_crystal') // TODO end crystals are expensive
+    .deploy('minecraft:end_crystal')
     .deploy('create:brass_sheet')
     .energize(50000)
     .outputs('kubejs:totem_head')

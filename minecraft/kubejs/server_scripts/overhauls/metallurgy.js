@@ -154,7 +154,4 @@ ServerEvents.recipes((e) => {
       Fluid.of('tfmg:molten_slag', 900)
     )
     .heated()
-
-  // TODO rich slag is the only way to get aluminum?
-  // TODO Rich slag + liquid = better?
 })
