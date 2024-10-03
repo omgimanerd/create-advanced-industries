@@ -125,7 +125,8 @@ JEIAddedEvents.registerCategories((e) => {
 
         // Draw the floating item.
         const itemRenderer = Client.getItemRenderer()
-        // TODO this will not handle tag inputs correctly
+        // This will not handle tag inputs correctly, but for now we aren't
+        // registered any tags as ingredients so this should be fine for now.
         const displayedItem = Item.of(ingredients[step % ingredients.length])
         const FULL_BRIGHT = 15728880
         const NO_OVERLAY = 655360
