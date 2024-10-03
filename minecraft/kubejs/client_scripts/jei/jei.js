@@ -21,6 +21,7 @@ const hiddenFluids = [
   'tfmg:kerosene',
   'tfmg:naphtha',
   'tfmg:heavy_oil',
+  'tfmg:liquid_concrete',
   'tfmg:lubrication_oil',
   'tfmg:cooling_fluid',
 ]

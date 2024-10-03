@@ -57,7 +57,7 @@ ServerEvents.recipes((e) => {
     )
     e.replaceInput({}, 'create:brass_hand', 'kubejs:wooden_hand')
 
-    // Iron oxide dust.
+    // Iron oxide dust
     create.splashing('kubejs:iron_oxide_dust', 'thermal:iron_dust')
     create
       .mixing('thermal:iron_dust', [
@@ -984,23 +984,54 @@ ServerEvents.recipes((e) => {
       'tfmg:thermite_powder'
     )
 
-    // Thermite grenade.
+    // Thermite grenade
     redefineRecipe('tfmg:thermite_grenade', [
       'createarmory:impact_nade',
       'tfmg:thermite_powder',
     ])
-    // Zinc grenade.
+    // Zinc grenade
     redefineRecipe('tfmg:zinc_grenade', [
       'createarmory:impact_nade',
       'kubejs:zinc_dust',
     ])
-    // Copper grenade.
+    // Copper grenade
     redefineRecipe('tfmg:copper_grenade', [
       'createarmory:impact_nade',
       'thermal:copper_dust',
     ])
 
-    // TODO: add efficient liquid concrete overhaul + cement
+    // Liquid Concrete is removed
+    e.remove({ id: /tfmg:mixing\/liquid_concrete.*/ })
+
+    // Concrete Mixture overhaul, Cement is removed
+    e.remove({ output: 'tfmg:concrete_mixture' })
+    create.mixing('4x tfmg:concrete_mixture', [
+      'tfmg:limesand',
+      'minecraft:clay',
+      'minecraft:sand',
+      'minecraft:gravel',
+    ])
+    create.mixing('6x tfmg:concrete_mixture', [
+      'tfmg:limesand',
+      'minecraft:clay',
+      'minecraft:sand',
+      'thermal:slag',
+    ])
+
+    // Concrete Powder and solid Concrete from Concrete Mixture
+    Ingredient.of('#forge:concrete_powders').itemIds.forEach((powder) => {
+      const match = powder.match(/^[a-z]+:([a-z_]+)_concrete_powder$/)
+      if (match.length < 2) return
+      const dye = Item.of(`minecraft:${match[1]}_dye`)
+      create.mixing(Item.of(powder, 16), [dye, '16x tfmg:concrete_mixture'])
+
+      const concrete = powder.replace('_powder', '')
+      create.mixing(Item.of(concrete, 16), [
+        dye,
+        '16x tfmg:concrete_mixture',
+        Fluid.water(1000),
+      ])
+    })
   }
 
   //////////////////////
