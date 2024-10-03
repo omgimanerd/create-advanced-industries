@@ -212,8 +212,19 @@ ServerEvents.recipes((e) => {
       N: 'thermal:enderium_ingot',
     }
   )
-  // TODO gate behind quantum mechanism
-  e.remove({ id: 'rsinfinitybooster:dimension_card' })
+  redefineRecipe(
+    'rsinfinitybooster:dimension_card',
+    [
+      'UQU', //
+      'QSQ', //
+      'UQU', //
+    ],
+    {
+      U: 'rsinfinitybooster:infinity_card',
+      Q: QUANTUM_MECHANISM,
+      S: 'minecraft:nether_star',
+    }
+  )
 
   //////////////////
   // RSRequestify //
