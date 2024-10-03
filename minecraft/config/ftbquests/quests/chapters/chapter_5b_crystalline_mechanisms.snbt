@@ -1347,6 +1347,7 @@
 						"ftbfiltersystem:filter": "or(item(minecraft:brown_mushroom_block)item(minecraft:red_mushroom_block))"
 					}
 				}
+				title: "Mushroom Blocks"
 				type: "item"
 			}]
 			title: "Mushroom Blocks"
@@ -1373,6 +1374,7 @@
 						"ftbfiltersystem:filter": "or(item(minecraft:bone_meal)item(thermal:compost))"
 					}
 				}
+				title: "Fertilizer"
 				type: "item"
 			}]
 			title: "Fertilizer"

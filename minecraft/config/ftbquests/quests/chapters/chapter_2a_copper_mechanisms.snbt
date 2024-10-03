@@ -212,6 +212,7 @@
 						"ftbfiltersystem:filter": "item_tag(minecraft:leaves)"
 					}
 				}
+				title: "Leaves"
 				type: "item"
 			}]
 			title: "Leaves"

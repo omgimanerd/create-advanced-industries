@@ -48,7 +48,7 @@
 						"ftbfiltersystem:filter": "or(item(buildinggadgets2:gadget_building)item(buildinggadgets2:gadget_exchanging)item(buildinggadgets2:gadget_copy_paste)item(buildinggadgets2:gadget_cut_paste)item(buildinggadgets2:gadget_destruction))"
 					}
 				}
-				optional_task: true
+				title: "Building Gadgets"
 				type: "item"
 			}]
 			title: "Building Gadgets"
@@ -68,7 +68,6 @@
 						Damage: 0
 					}
 				}
-				optional_task: true
 				type: "item"
 			}]
 			title: "Building Wands"
@@ -169,6 +168,7 @@
 						"ftbfiltersystem:filter": "or(item(sophisticatedbackpacks:backpack)item(sophisticatedbackpacks:copper_backpack)item(sophisticatedbackpacks:iron_backpack)item(sophisticatedbackpacks:gold_backpack)item(sophisticatedbackpacks:diamond_backpack)item(sophisticatedbackpacks:netherite_backpack))"
 					}
 				}
+				title: "Backpacks"
 				type: "item"
 			}]
 			title: "Sophisticated Backpacks"

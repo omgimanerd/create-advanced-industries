@@ -70,6 +70,7 @@
 						"ftbfiltersystem:filter": "item_tag(functionalstorage:drawer)"
 					}
 				}
+				title: "Storage Drawers"
 				type: "item"
 			}]
 			title: "Functional Storage"
@@ -110,6 +111,7 @@
 						"ftbfiltersystem:filter": "mod(toms_storage)"
 					}
 				}
+				title: "Tom's Simple Storage Mod"
 				type: "item"
 			}]
 			title: "Tom's Simple Storage Mod"

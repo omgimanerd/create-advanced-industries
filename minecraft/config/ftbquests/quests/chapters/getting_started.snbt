@@ -489,6 +489,7 @@
 				""
 				"Ponder them to see the full range of ways they can be used."
 			]
+			icon: "create:belt_connector"
 			id: "20C3862B1AC49C29"
 			rewards: [
 				{
@@ -613,6 +614,7 @@
 						"ftbfiltersystem:filter": "or(item(create:mechanical_piston)item(create:sticky_mechanical_piston)item(create:gantry_carriage)item(create:mechanical_bearing)item(create:rope_pulley)item(create:cart_assembler)item(create:windmill_bearing))"
 					}
 				}
+				title: "Mechanical Contraptions"
 				type: "item"
 			}]
 			title: "Create Contraptions"

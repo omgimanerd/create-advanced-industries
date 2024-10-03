@@ -580,6 +580,7 @@
 						"ftbfiltersystem:filter": "item_tag(kubejs:create_stone_ore_processing)"
 					}
 				}
+				title: "Crimsite, Asurine, Ochrum, or Veridium"
 				type: "item"
 			}]
 			title: "Create Stones"
@@ -619,7 +620,7 @@
 						"ftbfiltersystem:filter": "item_tag(forge:raw_materials)"
 					}
 				}
-				title: "Any #forge:raw_material"
+				title: "Raw Ores"
 				type: "item"
 			}]
 			title: "Raw Ores"
@@ -693,7 +694,7 @@
 						"ftbfiltersystem:filter": "item_tag(kubejs:crushed_create_stones)"
 					}
 				}
-				title: "Any #kubejs:crushed_create_stones"
+				title: "Crushed Crimsite, Asurine, Ochrum, or Veridium"
 				type: "item"
 			}]
 			title: "Crushed Create Stones"

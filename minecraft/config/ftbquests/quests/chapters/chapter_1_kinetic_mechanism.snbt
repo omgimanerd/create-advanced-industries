@@ -268,11 +268,11 @@
 							"ftbfiltersystem:filter": "ftbfiltersystem:item_tag(minecraft:logs)"
 						}
 					}
-					title: "Any #minecraft:logs"
+					title: "Logs"
 					type: "item"
 				}
 			]
-			title: "Any #minecraft:logs"
+			title: "Logs"
 			x: 2.5d
 			y: 0.0d
 		}
@@ -300,11 +300,11 @@
 							"ftbfiltersystem:filter": "ftbfiltersystem:item_tag(forge:stripped_logs)"
 						}
 					}
-					title: "Any #forge:stripped_logs"
+					title: "Stripped Logs"
 					type: "item"
 				}
 			]
-			title: "Any #forge:stripped_logs"
+			title: "Stripped Logs"
 			x: 5.0d
 			y: 0.0d
 		}
@@ -332,11 +332,11 @@
 							"ftbfiltersystem:filter": "ftbfiltersystem:item_tag(minecraft:planks)"
 						}
 					}
-					title: "Any #minecraft:planks"
+					title: "Wooden Planks"
 					type: "item"
 				}
 			]
-			title: "Any #minecraft:planks"
+			title: "Wooden Planks"
 			x: 7.5d
 			y: 0.0d
 		}
@@ -416,9 +416,10 @@
 						"ftbfiltersystem:filter": "or(item_tag(minecraft:wooden_slabs))"
 					}
 				}
+				title: "Wooden Slabs"
 				type: "item"
 			}]
-			title: "Any #minecraft:wooden_slabs"
+			title: "Wooden Slabs"
 			x: 10.0d
 			y: 0.0d
 		}
@@ -440,8 +441,9 @@
 						"ftbfiltersystem:filter": "item_tag(functionalstorage:drawer)"
 					}
 				}
-				title: "Storage Drawer"
+				title: "Storage Drawers"
 				type: "item"
+				weak_nbt_match: true
 			}]
 			title: "Functional Storage"
 			x: -2.5d
