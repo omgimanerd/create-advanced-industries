@@ -1,5 +1,4 @@
 // priority: 0
-
 // Chapter 6: Apotheosis recipe overhauls
 // It is important that this recipe priority is low so that this runs after
 // all Apotheosis custom enchanting recipes.
@@ -58,10 +57,14 @@ const getGemItem = (id, rarity) => {
     return validMaterials
   }
 
-  // Populated by ServerEvents.highPriorityData with all the apotheotic gems
-  // available in the pack and their accessible tiers. Used in
-  // ServerEvents.recipes below to define automation recipes for combining the
-  // gems.
+  /**
+   * Populated by ServerEvents.highPriorityData with all the apotheotic gems
+   * available in the pack and their accessible tiers. Used in
+   * ServerEvents.recipes below to define automation recipes for combining the
+   * gems.
+   *
+   * @type {{string:string[]}}
+   */
   let apotheoticGems = {}
 
   ServerEvents.highPriorityData(() => {
@@ -133,14 +136,16 @@ const getGemItem = (id, rarity) => {
       return
     }
     // Define automatable upgrade recipes for all the apotheotic gems.
-    let i = 0
+    let numRecipes = 0
     for (let [gem, tiers] of gemData) {
       // Generate upgrade recipes for each tier of gem.
       for (let i = 0; i < tiers.length - 1; ++i) {
-        let fromTier = tiers[i]
+        let fromTier = tiers[i] // string name for tier
         let fromGem = getGemItem(gem, fromTier)
-        let toTier = tiers[i + 1]
+        let toTier = tiers[i + 1] // string name for upgraded tier
         let toGem = getGemItem(gem, toTier)
+        // Numerical index for the tier, not every gem starts from common as the
+        // lowest tier.
         let tierIndex = tierOrder.indexOf(toTier)
 
         // Matches Apotheosis's existing gem cutting table recipes.
@@ -148,7 +153,7 @@ const getGemItem = (id, rarity) => {
         let validMaterials = getTierUpgradeMaterialCost(toTier)
 
         for (let material of validMaterials) {
-          // TODO maybe something more complicated than compacting
+          // Compacting with heating
           let recipe = create.compacting(toGem, [
             material,
             Item.of('apotheosis:gem_dust', gemDustCost),
@@ -156,6 +161,13 @@ const getGemItem = (id, rarity) => {
           ])
           if (tierIndex >= 4) recipe.superheated()
           else if (tierIndex >= 2) recipe.heated()
+
+          // Pressure Chamber
+          pneumaticcraft.pressure_chamber(
+            [material, Item.of('apotheosis:gem_dust', gemDustCost), fromGem],
+            [toGem],
+            global.lerp(tierIndex, 0, tierOrder.length, 0, 5)
+          )
         }
       }
 
@@ -167,7 +179,7 @@ const getGemItem = (id, rarity) => {
         'ABBBA', //
         ' AAA ', //
       ]
-      positions[i].forEach((idx) => {
+      positions[numRecipes].forEach((idx) => {
         let x = (idx % 3) + 1
         let y = Math.floor(idx / 3) + 1
         const rowstring = pattern[x]
@@ -179,7 +191,7 @@ const getGemItem = (id, rarity) => {
         B: 'create:experience_nugget',
         M: CRYSTALLINE_MECHANISM,
       })
-      ++i
+      ++numRecipes
     }
 
     /**
