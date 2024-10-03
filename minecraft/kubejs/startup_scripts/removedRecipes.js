@@ -28,6 +28,8 @@ global.removedRecipes = [
   { output: 'create_central_kitchen:passionfruit_pie_slice' },
   { output: 'create_central_kitchen:pumpkin_cake_slice' },
   { output: 'create_central_kitchen:sweet_berry_cake_slice' },
+  // TODO maybe useful as an intermediate somewhere else?
+  { output: 'create_connected:control_chip' },
   { output: /^create_connected:copycat_[a-z_]+$/ },
   { output: /^createdeco:[a-z_]+_coin$/ },
   { output: /^createdeco:[a-z_]+_coinstack$/ },
@@ -56,6 +58,7 @@ global.removedRecipes = [
       /^pneumaticcraft:compressed_iron_(boots|chestplate|helmet|leggings)$/,
   },
   { output: 'pneumaticcraft:compressed_iron_gear' },
+  { output: /^pneumaticcraft:drill_bit_.*/ },
   { output: 'pneumaticcraft:pneumatic_dynamo' },
   { output: 'pneumaticcraft:copper_nugget' },
   { output: 'pneumaticcraft:drill_bit_compressed_iron' },
@@ -145,6 +148,6 @@ global.removedRecipes = [
   { output: 'vintageimprovements:cast_iron_sheet' },
   { output: 'vintageimprovements:netherite_sheet' },
   { output: 'vintageimprovements:zinc_sheet' },
-  //
+  // Remove CVI Steel Rod in favor of using TFMG's rebar
   { output: 'vintageimprovements:steel_rod' },
 ]
