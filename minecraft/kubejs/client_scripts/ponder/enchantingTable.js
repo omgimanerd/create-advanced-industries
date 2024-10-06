@@ -25,14 +25,14 @@ Ponder.registry((e) => {
       scene.idle(50)
       scene
         .text(
-          40,
+          100,
           'Blocks placed around the enchanting table affect four attributes ' +
             'called Eterna, Quanta, Arcana, and Rectification. Refer to the ' +
             'Chronicle of Shadows for details about what they do.',
           center
         )
         .placeNearTarget()
-      scene.idle(40)
+      scene.idle(110)
 
       // Basic enchanting setup
       const bookShelfArea = util.select
@@ -48,24 +48,24 @@ Ponder.registry((e) => {
       scene.idle(20)
       scene
         .text(
-          60,
+          100,
           'Your vanilla enchanting setup gives you an Eterna level of 15, ' +
             'unlocking access to level 30 enchantments. The maximum ' +
             'enchanting power of any setup is twice the Eterna level.',
           center
         )
         .placeNearTarget()
-      scene.idle(70)
+      scene.idle(110)
       scene
         .text(
-          40,
+          100,
           'Apotheosis adds advanced bookshelves that let you modify the ' +
             'enchanting attributes in almost any way you desire, leading to ' +
             'extremely powerful enchantments.',
           center
         )
         .placeNearTarget()
-      scene.idle(50)
+      scene.idle(110)
 
       // Hellshelf setup
       scene.addKeyframe()
