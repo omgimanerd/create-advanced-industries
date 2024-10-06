@@ -24,8 +24,8 @@ Ponder.registry((e) => {
 
       // Expelling pests
       scene.addKeyframe()
-      scene.text(20, 'Infested stone is full of pests!', center)
-      scene.idle(30)
+      scene.text(40, 'Infested stone is full of pests!', center)
+      scene.idle(50)
       scene.text(
         40,
         'You can expel the silverfish out of infested stone with a ' +
