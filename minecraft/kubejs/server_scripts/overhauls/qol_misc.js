@@ -19,7 +19,6 @@ ServerEvents.recipes((e) => {
   create.haunting('minecraft:infested_cobblestone', 'minecraft:cobblestone')
 
   // Recipes for the unobtainable sculk blocks.
-  // TODO add ponder for sculk
   e.shaped(
     'minecraft:sculk_catalyst',
     [
