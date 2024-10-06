@@ -81,7 +81,7 @@ Ponder.registry((e) => {
         'kubejs:arcane_portal',
         true
       )
-      scene.world.createEntity('lightning_bolt', [2, 2, 2])
+      scene.world.createEntity('lightning_bolt', [2.5, 2, 2.5])
       scene.idleSeconds(3)
 
       // Supplying the portal with source.
