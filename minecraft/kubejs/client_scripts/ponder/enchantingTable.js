@@ -113,59 +113,41 @@ Ponder.registry((e) => {
       scene.world.hideSection(tableModifierArea, Facing.SOUTH)
       scene.idle(20)
       scene.world.setBlocks(bookShelfArea, 'minecraft:air', false)
-      scene.world.setBlocks(
-        util.grid.at(5, 1, 3),
-        'apotheosis:draconic_endshelf',
-        false
-      )
-      scene.world.setBlocks(
-        util.grid.at(5, 1, 4),
-        'apotheosis:draconic_endshelf',
-        false
-      )
-      scene.world.setBlocks(
-        util.grid.at(5, 1, 5),
-        'apotheosis:draconic_endshelf',
-        false
-      )
-      scene.world.setBlocks(
-        util.grid.at(4, 1, 5),
-        'apotheosis:draconic_endshelf',
-        false
-      )
-      scene.world.setBlocks(
-        util.grid.at(3, 1, 5),
-        'apotheosis:draconic_endshelf',
-        false
-      )
-      scene.world.setBlocks(
-        util.grid.at(2, 1, 5),
-        'apotheosis:treasure_shelf',
-        false
-      )
-      scene.world.setBlocks(
-        util.grid.at(5, 2, 3),
-        Block.id('minecraft:purple_candle')
-          .with('candles', '3')
-          .with('lit', true),
-        false
-      )
-      scene.world.setBlocks(
-        util.grid.at(5, 2, 4),
-        Block.id('minecraft:wither_skeleton_skull').with('rotation', '13'),
-        false
-      )
-      scene.world.setBlocks(
-        util.grid.at(4, 2, 5),
-        Block.id('minecraft:black_candle').with('lit', true),
-        false
-      )
+      const miscSetup = [
+        { pos: [5, 1, 3], block: 'apotheosis:draconic_endshelf' },
+        { pos: [5, 1, 4], block: 'apotheosis:draconic_endshelf' },
+        { pos: [5, 1, 5], block: 'apotheosis:draconic_endshelf' },
+        { pos: [4, 1, 5], block: 'apotheosis:draconic_endshelf' },
+        { pos: [3, 1, 5], block: 'apotheosis:draconic_endshelf' },
+        { pos: [2, 1, 5], block: 'apotheosis:treasure_shelf' },
+        {
+          pos: [5, 2, 3],
+          block: Block.id('minecraft:purple_candle', {
+            candles: '3',
+            lit: 'true',
+          }),
+        },
+        {
+          pos: [5, 2, 4],
+          block: Block.id('minecraft:wither_skeleton_skull', {
+            rotation: '13',
+          }),
+        },
+        {
+          pos: [4, 2, 5],
+          block: Block.id('minecraft:black_candle', { lit: 'true' }),
+        },
+      ]
+      for (const { pos, block } of miscSetup) {
+        scene.world.setBlock(pos, block, false)
+      }
       scene.world.showSection(tableModifierArea, Facing.SOUTH)
       scene.idle(20)
       scene
         .text(
           40,
-          "Experiment with different setups! There's no single best way to do it!",
+          "Experiment with different setups! There's no single best way to " +
+            'do it!',
           center
         )
         .placeNearTarget()

@@ -7,7 +7,7 @@ Ponder.tags((e) => {
     'Custom Mechanics', // Tag title
     // Tag description
     'All the custom crafting and interaction mechanics in this modpack',
-    // Ponder IDs that belong in this tag.
+    // Blocks that ponders are attached to that belong in this tag.
     [
       'kubejs:arcane_portal',
       'minecraft:beehive',

@@ -37,6 +37,11 @@ Ponder.registry((e) => {
       scene.addKeyframe()
       scene.world.setKineticSpeed(deployer, 24)
       let silverfish
+      const silverFishLerpedMovement = [
+        { x: 3.5, y: 2.2, z: 2.5, yRot: -90, xRot: 0, steps: 3 },
+        { x: 3.5, y: 1.2, z: 2.5, steps: 3 },
+        { x: 5.5, y: 1.2, z: 2.5, steps: 10 },
+      ]
       cycleDeployerMovement(scene, deployer, 20, false, () => {
         silverfish = scene.world.createEntity(
           'minecraft:silverfish',
@@ -44,12 +49,7 @@ Ponder.registry((e) => {
         )
         scene.particles.simple(5, 'minecraft:poof', center.above()).density(5)
       })
-      scene.world.setKineticSpeed(deployer, 0)
-      lerpEntityMovement(scene, silverfish, [
-        [3.5, 2.2, 2.5, -90, 0, 3],
-        [3.5, 1.2, 2.5, null, null, 3],
-        [5.5, 1.2, 2.5, null, null, 10],
-      ])
+      lerpEntityMovement(scene, silverfish, silverFishLerpedMovement)
       scene.world.removeEntity(silverfish)
       scene.particles.simple(5, 'minecraft:poof', [5, 1, 2]).density(5)
       scene.idle(20)
@@ -61,7 +61,6 @@ Ponder.registry((e) => {
         'If you expel all the silverfish, the infested stone will turn into end stone.',
         center
       )
-      scene.world.setKineticSpeed(deployer, 24)
       // Expel two more silverfish
       cycleDeployerMovement(scene, deployer, 20, false, () => {
         silverfish = scene.world.createEntity(
@@ -70,13 +69,10 @@ Ponder.registry((e) => {
         )
         scene.particles.simple(5, 'minecraft:poof', center.above()).density(5)
       })
-      lerpEntityMovement(scene, silverfish, [
-        [3.5, 2.2, 2.5, -90, 0, 3],
-        [3.5, 1.2, 2.5, null, null, 3],
-        [5.5, 1.2, 2.5, null, null, 10],
-      ])
+      lerpEntityMovement(scene, silverfish, silverFishLerpedMovement)
       scene.world.removeEntity(silverfish)
       scene.particles.simple(5, 'minecraft:poof', [5, 1, 2]).density(5)
+      scene.idle(20)
 
       cycleDeployerMovement(scene, deployer, 20, false, () => {
         // On the second boop, turn it into end stone.
@@ -87,11 +83,7 @@ Ponder.registry((e) => {
         )
         scene.particles.simple(5, 'minecraft:poof', center.above()).density(5)
       })
-      lerpEntityMovement(scene, silverfish, [
-        [3.5, 2.2, 2.5, -90, 0, 3],
-        [3.5, 1.2, 2.5, null, null, 3],
-        [5.5, 1.2, 2.5, null, null, 10],
-      ])
+      lerpEntityMovement(scene, silverfish, silverFishLerpedMovement)
       scene.world.removeEntity(silverfish)
       scene.particles.simple(5, 'minecraft:poof', [5, 1, 2]).density(5)
       scene.world.setKineticSpeed(deployer, 0)

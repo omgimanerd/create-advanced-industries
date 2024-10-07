@@ -2,7 +2,8 @@
 
 Ponder.registry((e) => {
   /**
-   * Helper method for the Arcane Portal ponder
+   * Helper method for the Arcane Portal ponder. Used instead of a schematic
+   * to set up multiple scenes.
    * @param {Internal.ExtendedSceneBuilder_} scene
    * @param {BlockPos_} center
    */

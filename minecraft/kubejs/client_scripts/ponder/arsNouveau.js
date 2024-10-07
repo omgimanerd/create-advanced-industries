@@ -627,7 +627,7 @@ Ponder.tags((e) => {
     'ars_nouveau:archmage_spell_book', // Tag icon
     'Ars Nouveau', // Tag title
     'Ponders for Ars Nouveau in this modpack', // Tag description
-    // Ponder IDs that belong in this tag.
+    // Blocks that ponders are attached to that belong in this tag.
     [
       'starbunclemania:fluid_sourcelink',
       'starbunclemania:source_condenser',

@@ -12,7 +12,8 @@ Ponder.registry((e) => {
   e.create('minecraft:beacon').scene(
     'beacon_usage',
     'Energized Crafting with Beacons',
-    'beacon',
+    // kubejs/assets/kubejs/ponder/beacon.nbt
+    'kubejs:beacon',
     (scene, util) => {
       const beacon = util.grid.at(3, 2, 3)
       const redCorundumCluster = beacon.above(2)

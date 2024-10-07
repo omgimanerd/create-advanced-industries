@@ -129,9 +129,17 @@ const cycleDeployerMovement = (scene, pos, ticks, clearHand, onDeploy) => {
 }
 
 /**
+ * @typedef {Object} LerpedEntityMovement
+ * @property {number} x
+ * @property {number} y
+ * @property {number} z
+ * @property {number} yRot
+ * @property {number} xRot
+ * @property {number} steps *
+ *
  * @param {Internal.ExtendedSceneBuilder_} scene
  * @param {Internal.Entity_} entity
- * @param {(number[])[]} movement
+ * @param {LerpedEntityMovement[]} movements
  */
 const lerpEntityMovement = (scene, entity, movements) => {
   let prevX = entity.x
@@ -140,10 +148,7 @@ const lerpEntityMovement = (scene, entity, movements) => {
   let prevYRot = entity.yRot || 0
   let prevXRot = entity.xRot || 0
   for (const movement of movements) {
-    if (movement.length !== 6) {
-      console.error(`Unknown movement command ${movement}`)
-    }
-    let [x, y, z, yRot, xRot, steps] = movement
+    let { x, y, z, yRot, xRot, steps } = movement
     x = x === null || x === undefined ? prevX : x
     y = y === null || y === undefined ? prevY : y
     z = z === null || z === undefined ? prevZ : z

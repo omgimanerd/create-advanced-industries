@@ -33,7 +33,7 @@ Ponder.registry((e) => {
         Block.id('minecraft:small_amethyst_bud').with('facing', 'west'),
         false
       )
-      scene.world.showIndependentSectionImmediately(util.select.everywhere())
+      scene.world.showIndependentSectionImmediately(util.select.layers(1, 3))
       scene.idleSeconds(1)
 
       // First keyframe explanation
@@ -73,34 +73,21 @@ Ponder.registry((e) => {
         )
         .placeNearTarget()
       scene.idle(20)
-      scene.world.modifyBlockEntityNBT(spoutPos, (nbt) => {
-        nbt.ProcessingTicks = 20
-      })
-      scene.idleSeconds(1)
-      scene.world.replaceBlocks(
-        center.west(),
-        Block.id('minecraft:medium_amethyst_bud').with('facing', 'west'),
-        false
-      )
-      scene.world.modifyBlockEntityNBT(spoutPos, (nbt) => {
-        nbt.ProcessingTicks = 20
-      })
-      scene.idleSeconds(1)
-      scene.world.replaceBlocks(
-        center.west(),
-        Block.id('minecraft:large_amethyst_bud').with('facing', 'west'),
-        false
-      )
-      scene.world.modifyBlockEntityNBT(spoutPos, (nbt) => {
-        nbt.ProcessingTicks = 20
-      })
-      scene.idleSeconds(1)
-      scene.world.replaceBlocks(
-        center.west(),
-        Block.id('minecraft:amethyst_cluster').with('facing', 'west'),
-        false
-      )
-      scene.idleSeconds(1)
+      for (const amethystStage of [
+        'minecraft:medium_amethyst_bud',
+        'minecraft:large_amethyst_bud',
+        'minecraft:amethyst_cluster',
+      ]) {
+        scene.world.modifyBlockEntityNBT(spoutPos, (nbt) => {
+          nbt.ProcessingTicks = 20
+        })
+        scene.idle(20)
+        scene.world.replaceBlocks(
+          center.west(),
+          Block.id(amethystStage, { facing: 'west' }),
+          false
+        )
+      }
     }
   )
 })

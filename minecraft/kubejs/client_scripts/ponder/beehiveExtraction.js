@@ -51,6 +51,7 @@ Ponder.registry((e) => {
         .showControls(20, beehive, 'right')
         .rightClick()
         .withItem('minecraft:shears')
+      scene.idle(10)
       setBeehive(0)
       let honeycombs = [
         scene.world.createItemEntity(

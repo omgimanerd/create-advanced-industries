@@ -17,20 +17,14 @@ Ponder.registry((e) => {
   e.create('minecraft:moss_block').scene(
     'moss_block_seeding',
     'Moss Blocks and You',
+    'kubejs:moss_block', // kubejs/assets/kubejs/ponder/moss.nbt
     (scene, util) => {
-      scene.showBasePlate()
-      const center = new BlockPos(2, 1, 2)
+      scene.showStructure()
+      const center = new BlockPos(2, 0, 2)
       const deployerPos = center.above(2)
 
       // Scene setup
-      scene.world.setBlock(
-        deployerPos,
-        Block.id('create:deployer').with('facing', 'down'),
-        false
-      )
       scene.world.setKineticSpeed(deployerPos, 24)
-      scene.world.setBlocks(util.select.layer(1), 'minecraft:stone', false)
-      scene.world.showIndependentSectionImmediately(util.select.everywhere())
       scene.idleSeconds(1)
 
       // Getting the first moss block
@@ -77,15 +71,15 @@ Ponder.registry((e) => {
       cycleDeployerMovement(scene, deployerPos)
       spawnGrowthParticles(scene, util, center)
       const newBlocks = [
-        [util.select.fromTo(1, 1, 1, 3, 1, 3), 'minecraft:moss_block'],
-        [util.select.fromTo(0, 1, 1, 0, 1, 2), 'minecraft:moss_block'],
-        [[4, 1, 1], 'minecraft:moss_block'],
-        [[1, 1, 4], 'minecraft:moss_block'],
-        [util.select.fromTo(3, 1, 0, 2, 1, 0), 'minecraft:moss_block'],
-        [[3, 2, 2], 'minecraft:moss_carpet'],
-        [util.select.fromTo(1, 2, 2, 1, 2, 3), 'minecraft:moss_carpet'],
-        [util.select.fromTo(2, 2, 1, 2, 2, 2), 'minecraft:grass'],
-        [[1, 2, 4], 'minecraft:flowering_azalea'],
+        [util.select.fromTo(1, 0, 1, 3, 0, 3), 'minecraft:moss_block'],
+        [util.select.fromTo(0, 0, 0, 0, 0, 2), 'minecraft:moss_block'],
+        [[4, 0, 1], 'minecraft:moss_block'],
+        [[1, 0, 4], 'minecraft:moss_block'],
+        [util.select.fromTo(3, 0, 0, 2, 0, 0), 'minecraft:moss_block'],
+        [[3, 1, 2], 'minecraft:moss_carpet'],
+        [util.select.fromTo(1, 1, 2, 1, 1, 3), 'minecraft:moss_carpet'],
+        [util.select.fromTo(2, 1, 1, 2, 1, 2), 'minecraft:grass'],
+        [[1, 1, 4], 'minecraft:flowering_azalea'],
       ]
       newBlocks.forEach((data) => {
         const [selection, block] = data
@@ -102,11 +96,11 @@ Ponder.registry((e) => {
 
       // Mushroom farming
       scene.addKeyframe()
-      scene.world.hideSection(util.select.fromTo(0, 1, 0, 4, 2, 4), Facing.DOWN)
+      scene.world.hideSection(util.select.fromTo(0, 0, 0, 4, 1, 4), Facing.DOWN)
       scene.idle(25)
-      scene.world.setBlocks(util.select.layer(1), 'minecraft:moss_block', false)
-      scene.world.setBlocks(util.select.layer(2), 'minecraft:air', false)
-      scene.world.showSection(util.select.fromTo(0, 1, 0, 4, 2, 4), Facing.UP)
+      scene.world.setBlocks(util.select.layer(0), 'minecraft:moss_block', false)
+      scene.world.setBlocks(util.select.layer(1), 'minecraft:air', false)
+      scene.world.showSection(util.select.fromTo(0, 0, 0, 4, 1, 4), Facing.UP)
       scene.idle(25)
       setDeployerFilter(scene, deployerPos, 'minecraft:red_mushroom')
       scene.text(
@@ -134,17 +128,16 @@ Ponder.registry((e) => {
       scene.idleSeconds(1)
       cycleDeployerMovement(scene, deployerPos)
       const mushroomGrowth = [
-        [center, 10],
-        [center.west(), 8],
-        [center.west().north(), 1],
-        [center.west().south(), 3],
+        { pos: center, delay: 10 },
+        { pos: center.west(), delay: 8 },
+        { pos: center.west().north(), delay: 1 },
+        { pos: center.west().south(), delay: 3 },
       ]
-      mushroomGrowth.forEach((data) => {
-        const [blockPos, delay] = data
-        scene.world.setBlocks(blockPos, 'minecraft:red_mushroom_block', true)
-        spawnGrowthParticles(scene, util, blockPos)
+      for (const { pos, delay } of mushroomGrowth) {
+        scene.world.setBlocks(pos, 'minecraft:red_mushroom_block', true)
+        spawnGrowthParticles(scene, util, pos)
         scene.idle(delay)
-      })
+      }
     }
   )
 })
