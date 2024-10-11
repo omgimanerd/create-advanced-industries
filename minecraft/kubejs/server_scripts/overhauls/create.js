@@ -1132,6 +1132,20 @@ ServerEvents.recipes((e) => {
         P: 'create:mechanical_pump',
       }
     )
+    redefineRecipe(
+      'vintageimprovements:vibrating_table',
+      [
+        'WWW', //
+        'SPS', //
+        'SMS', //
+      ],
+      {
+        W: '#minecraft:wooden_slabs',
+        S: 'vintageimprovements:steel_spring',
+        P: 'create:mechanical_piston',
+        M: KINETIC_MECHANISM,
+      }
+    )
     e.replaceInput(
       { id: 'vintageimprovements:craft/vibrating_table' },
       'vintageimprovements:iron_spring',

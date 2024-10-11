@@ -550,7 +550,7 @@ ServerEvents.recipes((e) => {
         'apotheotic_additions:esoteric'
       )
     )
-    .deploy('create_things_and_misc:rose_quartz_sheet')
+    .deploy('create:rose_quartz')
     .fill(potionFluid('apotheosis:extra_long_flying', 250))
     .fill(Fluid.of('kubejs:infused_dragon_breath', 250))
     .vibrate(200)

@@ -151,4 +151,5 @@ global.removedRecipes = [
   { output: 'vintageimprovements:zinc_sheet' },
   // Remove CVI Steel Rod in favor of using TFMG's rebar
   { output: 'vintageimprovements:steel_rod' },
+  { output: /^vintageimprovements:small_[a-z_]+_spring$/ },
 ]
