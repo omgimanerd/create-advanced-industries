@@ -415,6 +415,7 @@ StartupEvents.postInit(() => {
   )
 
   // TODO: this makes no sense
+  // Should be a centrifuging recipe with intermediates or blasting potion?
   global.RegisterResonanceCraftingRecipe(
     'minecraft:honey_bottle',
     'minecraft:ghast_tear',

@@ -7,6 +7,27 @@ ServerEvents.tags('item', (e) => {
 
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
+  const redefineRecipe = redefineRecipe_(e)
+
+  // Radiant Grenade
+  redefineRecipe(
+    '8x thermal:glowstone_grenade',
+    [
+      'GGG', //
+      'GRG', //
+      'GGG', //
+    ],
+    { G: 'kubejs:energized_glowstone', R: 'createarmory:impact_nade' }
+  )
+  redefineRecipe(
+    '8x thermal:glowstone_tnt',
+    [
+      'GGG', //
+      'GTG', //
+      'GGG', //
+    ],
+    { G: 'kubejs:energized_glowstone', T: 'minecraft:tnt' }
+  )
 
   // Refined Radiance overhaul, in-world crafting disabled.
   create

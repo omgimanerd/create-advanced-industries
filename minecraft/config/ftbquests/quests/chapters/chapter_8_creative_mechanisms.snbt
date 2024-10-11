@@ -123,8 +123,8 @@
 				item: "kubejs:empty_music_disc"
 				type: "item"
 			}]
-			x: 7.5d
-			y: -2.0d
+			x: 9.0d
+			y: -1.5d
 		}
 		{
 			id: "3F6311178AADCB8E"
@@ -133,8 +133,8 @@
 				item: "kubejs:empty_disc_fragment"
 				type: "item"
 			}]
-			x: 7.5d
-			y: -1.0d
+			x: 9.0d
+			y: -0.5d
 		}
 		{
 			dependencies: ["2AD39A88E707A885"]
@@ -248,8 +248,8 @@
 				item: "minecraft:jukebox"
 				type: "item"
 			}]
-			x: 6.5d
-			y: -1.5d
+			x: 9.0d
+			y: 0.5d
 		}
 		{
 			dependencies: ["2595F91A5F57A63B"]
@@ -286,6 +286,7 @@
 		}
 		{
 			dependencies: ["2BBBC9DE78CBB47B"]
+			icon: "create_enchantment_industry:ink_bucket"
 			id: "3B58D984466057A1"
 			tasks: [
 				{

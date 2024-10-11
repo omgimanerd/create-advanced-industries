@@ -24,13 +24,13 @@ ItemEvents.modification((e) => {
   const foodOverrides = {
     // Default hunger of 2, saturation = 2 * 0.5 = 1
     'createsweetsandtreets:sugar_cookie': { saturation: 0.5 },
-    // Defualt hunger of 8, saturation = 8 * 0.66 = 6.33
+    // Default hunger of 8, saturation = 8 * 0.66 = 6.33
     'createsweetsandtreets:donut': { saturation: 0.66 },
-    // Defualt hunger of 8, saturation = 8 * 1 = 8
+    // Default hunger of 8, saturation = 8 * 1 = 8
     'createsweetsandtreets:apple_donut': { saturation: 1 },
-    // Defualt hunger of 8, saturation = 8 * 1 = 8
+    // Default hunger of 8, saturation = 8 * 1 = 8
     'createsweetsandtreets:chocolatedonut': { saturation: 1 },
-    // Defualt hunger of 8, saturation = 8 * 1 = 8
+    // Default hunger of 8, saturation = 8 * 1 = 8
     'createsweetsandtreets:sweet_donut': { saturation: 1 },
     // Default hunger of 6, saturation = 6 * 1 = 6
     'createsweetsandtreets:apple_pie': { saturation: 1 },

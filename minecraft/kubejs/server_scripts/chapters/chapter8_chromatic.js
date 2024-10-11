@@ -1,4 +1,5 @@
 // priority: 500
+// Chapter 8's chromatic compound logic for processing chromatic fluid.
 
 // Logic to drain chromatic fluid from a colored sheep using a Chromatic Bop
 // Stick
@@ -65,6 +66,23 @@ ItemEvents.entityInteracted('kubejs:chromatic_bop_stick', (e) => {
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
 
+  // Inefficient way to get Chromatic Fluid
+  create
+    .pressurizing('#forge:dyes')
+    .secondaryFluidInput(Fluid.of('vintageimprovements:sulfuric_acid', 50))
+    .heated()
+    .outputs(Fluid.of('kubejs:chromatic_fluid', 1))
+
+  // Chromatic Compound Crafting
+  //
+  // Since each bop with the Chromatic Bop Stick yields 40, 5 uses of its
+  // charges are required to break even.
+  create
+    .pressurizing(Fluid.of('kubejs:chromatic_fluid', 200))
+    .superheated()
+    .processingTime(100)
+    .outputs('create:chromatic_compound')
+
   // Chromatic Bop Stick
   const nbt = {}
   // slice(1) to exclude white
@@ -101,21 +119,8 @@ ServerEvents.recipes((e) => {
     'kubejs:chromatic_bop_stick_empty',
     'create:chromatic_compound',
   ])
-
-  // Inefficient way to get Chromatic Fluid
-  create
-    .pressurizing('#forge:dyes')
-    .secondaryFluidInput(Fluid.of('vintageimprovements:sulfuric_acid', 100))
-    .heated()
-    .outputs(Fluid.of('kubejs:chromatic_fluid', 1))
-
-  // Chromatic Compound Crafting
-  //
-  // Since each bop with the Chromatic Bop Stick yields 40, 5 uses of its
-  // charges are required to break even.
-  create
-    .pressurizing(Fluid.of('kubejs:chromatic_fluid', 200))
-    .superheated()
-    .processingTime(100)
-    .outputs('create:chromatic_compound')
+  create.deploying(filledBopStick, [
+    'kubejs:chromatic_bop_stick_empty',
+    'create:chromatic_compound',
+  ])
 })

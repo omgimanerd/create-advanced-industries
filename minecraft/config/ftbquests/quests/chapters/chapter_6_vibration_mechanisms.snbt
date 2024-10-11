@@ -321,6 +321,7 @@
 				""
 				"Ponder the dragon head for an example."
 			]
+			icon: "minecraft:dragon_breath"
 			id: "509B4F9E047728B6"
 			rewards: [
 				{
@@ -336,12 +337,21 @@
 					type: "item"
 				}
 			]
-			tasks: [{
-				count: 16L
-				id: "45DEB4EA69ED76CB"
-				item: "minecraft:dragon_breath"
-				type: "item"
-			}]
+			tasks: [
+				{
+					count: 16L
+					id: "45DEB4EA69ED76CB"
+					item: "minecraft:dragon_breath"
+					type: "item"
+				}
+				{
+					id: "6ADBDB43FC00201B"
+					item: "minecraft:dragon_head"
+					optional_task: true
+					type: "item"
+				}
+			]
+			title: "Dragon's Breath"
 			x: 16.0d
 			y: 0.0d
 		}
@@ -1311,6 +1321,26 @@
 			title: "Resonant Ender"
 			x: 14.0d
 			y: -6.0d
+		}
+		{
+			id: "7CD8718292BC72E7"
+			tasks: [{
+				id: "2607AB08BC965B41"
+				item: "vintageimprovements:invar_spring"
+				type: "item"
+			}]
+			x: 2.0d
+			y: 6.0d
+		}
+		{
+			id: "3825C2EEC485CADF"
+			tasks: [{
+				id: "6FEA0CCBA72B4A77"
+				item: "vintageimprovements:invar_rod"
+				type: "item"
+			}]
+			x: 2.0d
+			y: 8.0d
 		}
 	]
 	title: "Chapter 6: Vibration Mechanisms"
