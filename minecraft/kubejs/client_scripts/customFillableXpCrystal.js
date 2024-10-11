@@ -82,7 +82,7 @@ JEIAddedEvents.registerRecipes((e) => {
   }
 
   e.register(
-    e.data.jeiHelpers.getRecipeType('anvil').get(),
+    'minecraft:anvil',
     wrapList(
       createAnvilRecipe(
         Item.of('kubejs:xp_crystal'),

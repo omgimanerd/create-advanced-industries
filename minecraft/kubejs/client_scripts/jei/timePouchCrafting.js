@@ -113,5 +113,7 @@ JEIAddedEvents.registerRecipes((e) => {
 })
 
 JEIAddedEvents.registerRecipeCatalysts((e) => {
-  e.data.addRecipeCatalyst('gag:time_sand_pouch', 'kubejs:time_pouch_crafting')
+  e.data[
+    'addRecipeCatalyst(net.minecraft.world.item.ItemStack,mezz.jei.api.recipe.RecipeType[])'
+  ]('gag:time_sand_pouch', global.TIME_POUCH_CRAFTING)
 })

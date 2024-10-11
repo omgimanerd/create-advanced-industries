@@ -124,7 +124,7 @@
 			}]
 			title: "Find a Dormant Vent"
 			x: 0.0d
-			y: 6.0d
+			y: 8.0d
 		}
 		{
 			dependencies: ["5EA0A56E4C6E4C4F"]
@@ -141,7 +141,7 @@
 			}]
 			title: "Activating a Molten Vent"
 			x: 2.0d
-			y: 6.0d
+			y: 8.0d
 		}
 		{
 			dependencies: ["6293CBBC76D73F05"]
@@ -153,7 +153,7 @@
 				type: "item"
 			}]
 			x: 4.0d
-			y: 2.0d
+			y: 4.0d
 		}
 		{
 			dependencies: [
@@ -217,6 +217,7 @@
 			dependencies: [
 				"6A59EF7246F87789"
 				"7776DA8092FA0B59"
+				"49036FC3D53A59D9"
 			]
 			description: ["Graviton tubes are a necessary component for quantum mechanisms and the machines that are crafted with them. "]
 			id: "3832D225F6D0C417"
@@ -238,7 +239,7 @@
 				type: "item"
 			}]
 			x: 10.0d
-			y: 2.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["177A034E2C455510"]
@@ -250,7 +251,7 @@
 				type: "item"
 			}]
 			x: 6.0d
-			y: 2.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["554804ECF1EC02C8"]
@@ -266,7 +267,7 @@
 				type: "item"
 			}]
 			x: 8.0d
-			y: 2.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["271A91265ACE5851"]
@@ -520,7 +521,7 @@
 				type: "item"
 			}]
 			x: 12.0d
-			y: 4.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["35C77AF9EEF326C9"]
@@ -532,7 +533,7 @@
 				type: "item"
 			}]
 			x: 6.0d
-			y: 4.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["271A91265ACE5851"]
@@ -545,7 +546,7 @@
 			}]
 			title: "Lava"
 			x: 2.0d
-			y: 4.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["4C6BCD93DEA0B7DC"]
@@ -557,7 +558,7 @@
 				type: "item"
 			}]
 			x: 4.0d
-			y: 4.0d
+			y: 6.0d
 		}
 		{
 			dependencies: [
@@ -585,7 +586,7 @@
 			}]
 			title: "Create Stones"
 			x: 4.0d
-			y: 6.0d
+			y: 8.0d
 		}
 		{
 			dependencies: [
@@ -600,7 +601,7 @@
 				type: "item"
 			}]
 			x: 8.0d
-			y: 4.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["04F20036D8172501"]
@@ -625,7 +626,7 @@
 			}]
 			title: "Raw Ores"
 			x: 10.0d
-			y: 6.0d
+			y: 8.0d
 		}
 		{
 			dependencies: ["2582523C7629E8F4"]
@@ -637,7 +638,7 @@
 				type: "item"
 			}]
 			x: 10.0d
-			y: 4.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["271A91265ACE5851"]
@@ -649,7 +650,7 @@
 				type: "item"
 			}]
 			x: 2.0d
-			y: 2.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["6DBFC6E2B2B08D29"]
@@ -678,7 +679,7 @@
 				type: "item"
 			}]
 			x: 16.0d
-			y: 2.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["19F1809E10BAAC61"]
@@ -699,7 +700,7 @@
 			}]
 			title: "Crushed Create Stones"
 			x: 8.0d
-			y: 6.0d
+			y: 8.0d
 		}
 		{
 			dependencies: ["54EC972BADC3BEFA"]
@@ -750,7 +751,7 @@
 				type: "item"
 			}]
 			x: 12.0d
-			y: 2.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["5C74FBA414C21479"]
@@ -770,7 +771,7 @@
 			]
 			title: "Teleportation Juice"
 			x: 14.0d
-			y: 2.0d
+			y: 4.0d
 		}
 		{
 			dependencies: [
@@ -790,7 +791,7 @@
 				type: "item"
 			}]
 			x: 18.0d
-			y: 4.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["573A0CF01DCF191C"]
@@ -802,7 +803,7 @@
 				type: "item"
 			}]
 			x: 16.0d
-			y: 4.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["029D7DEF789032E4"]
@@ -814,7 +815,7 @@
 				type: "item"
 			}]
 			x: 14.0d
-			y: 4.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["47959ED668B51DD0"]
@@ -826,7 +827,7 @@
 				type: "item"
 			}]
 			x: 20.0d
-			y: 6.0d
+			y: 8.0d
 		}
 		{
 			dependencies: [
@@ -915,6 +916,30 @@
 			title: "Energized Glowstone"
 			x: 18.0d
 			y: -8.0d
+		}
+		{
+			dependencies: ["152684990B13910F"]
+			description: ["Polish the amethysts using sandpaper or a belt grinder."]
+			id: "49036FC3D53A59D9"
+			tasks: [{
+				id: "1DEBD61A5DC3433E"
+				item: "createutilities:polished_amethyst"
+				type: "item"
+			}]
+			x: 6.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["271A91265ACE5851"]
+			description: ["Amethysts should be stockpiled through the automation methods in Chapter 5b."]
+			id: "152684990B13910F"
+			tasks: [{
+				id: "436F37F09EB645F2"
+				item: "minecraft:amethyst_shard"
+				type: "item"
+			}]
+			x: 2.0d
+			y: 2.0d
 		}
 	]
 	title: "Chapter 7: Quantum Mechanisms"

@@ -9,29 +9,42 @@ JEIAddedEvents.registerCategories((e) => {
 
   // RecipeType and the actual underlying processing recipe. Needed to create a
   // RecipeType for the custom category registration.
-  const $RecipeType = Java.loadClass('mezz.jei.api.recipe.RecipeType')
-  const $IJeiAnvilRecipe = Java.loadClass(
-    'mezz.jei.api.recipe.vanilla.IJeiAnvilRecipe'
-  )
-  const nutrientInfusionRecipeType = $RecipeType.create(
-    'kubejs',
-    'nutrient_infusion',
-    $IJeiAnvilRecipe
-  )
+  // const $RecipeType = Java.loadClass('mezz.jei.api.recipe.RecipeType')
+  // const $IJeiAnvilRecipe = Java.loadClass(
+  //   'mezz.jei.api.recipe.vanilla.IJeiAnvilRecipe'
+  // )
+  // const nutrientInfusionRecipeType = $RecipeType.create(
+  //   'kubejs',
+  //   'nutrient_infusion',
+  //   $IJeiAnvilRecipe
+  // )
 
   const guiHelper = e.data.jeiHelpers.guiHelper
   // Create an concrete instance of the anvil recipe category and defer our
   // custom category to use its render code.
   const anvilRecipeCategory = new $AnvilRecipeCategory(guiHelper)
 
-  e.wrap(nutrientInfusionRecipeType, anvilRecipeCategory, (category) => {
+  e.custom('kubejs:nutrient_infusion', (category) => {
     category
       .title('Nutrient Infusion')
-      .background(anvilRecipeCategory.getBackground())
+      .background(
+        guiHelper.createBlankDrawable(
+          anvilRecipeCategory.getWidth(),
+          anvilRecipeCategory.getHeight()
+        )
+      )
       .icon(
         doubleItemIcon('minecraft:anvil', 'minecraft:enchanted_golden_apple')
       )
-      .isRecipeHandled(() => true) // Only relevant recipes are registered
+      .isRecipeHandled(() => true)
+      .handleLookup((builder, recipe, focuses) => {
+        // TODO currently broken: anvilRecipeCategory.createRecipeExtras needs
+        // to be called in order to draw the arrow and experience costs.
+        anvilRecipeCategory.setRecipe(builder, recipe, focuses)
+      })
+      .setDrawHandler((recipe, slots, graphics, mouseX, mouseY) => {
+        anvilRecipeCategory.draw(recipe, slots, graphics, mouseX, mouseY)
+      })
   })
 })
 
@@ -104,7 +117,7 @@ JEIAddedEvents.registerRecipes((e) => {
 JEIAddedEvents.onRuntimeAvailable((e) => {
   // Get nutrient infusion anvil recipes that are in the default minecraft
   // anvil section and hide them. These are automatically generated for food
-  // items that do have a durability.
+  // items that have a durability.
   const { recipeManager } = e.data
   const matchingAnvilRecipes = recipeManager
     .createRecipeLookup('minecraft:anvil')
@@ -125,11 +138,14 @@ JEIAddedEvents.onRuntimeAvailable((e) => {
 })
 
 JEIAddedEvents.registerRecipeCatalysts((e) => {
-  for (let level = 5; level >= 1; --level) {
-    e.data.addRecipeCatalyst(
-      Item.of('enchanted_book').enchant('kubejs:nutrient_infusion', level),
-      'kubejs:nutrient_infusion'
-    )
-  }
-  e.data.addRecipeCatalyst('minecraft:anvil', 'kubejs:nutrient_infusion')
+  e.data[
+    'addRecipeCatalysts(mezz.jei.api.recipe.RecipeType,net.minecraft.world.item.ItemStack[])'
+  ]('kubejs:nutrient_infusion', [
+    'minecraft:anvil',
+    Item.of('minecraft:enchanted_book').enchant('kubejs:nutrient_infusion', 1),
+    Item.of('minecraft:enchanted_book').enchant('kubejs:nutrient_infusion', 2),
+    Item.of('minecraft:enchanted_book').enchant('kubejs:nutrient_infusion', 3),
+    Item.of('minecraft:enchanted_book').enchant('kubejs:nutrient_infusion', 4),
+    Item.of('minecraft:enchanted_book').enchant('kubejs:nutrient_infusion', 5),
+  ])
 })

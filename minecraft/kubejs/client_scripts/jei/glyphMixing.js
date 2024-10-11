@@ -60,7 +60,11 @@ JEIAddedEvents.onRuntimeAvailable((e) => {
 })
 
 JEIAddedEvents.registerRecipeCatalysts((e) => {
-  e.data.addRecipeCatalyst('create:mechanical_mixer', 'kubejs:glyph_mixing')
-  e.data.addRecipeCatalyst('create:basin', 'kubejs:glyph_mixing')
-  e.data.addRecipeCatalyst('ars_nouveau:scribes_table', 'kubejs:glyph_mixing')
+  // e.data[
+  //   'addRecipeCatalysts(mezz.jei.api.recipe.RecipeType,net.minecraft.world.item.ItemStack[])'
+  // ]('kubejs:glyph_mixing', [
+  //   'create:mechanical_mixer',
+  //   'create:basin',
+  //   'ars_nouveau:scribes_table',
+  // ])
 })

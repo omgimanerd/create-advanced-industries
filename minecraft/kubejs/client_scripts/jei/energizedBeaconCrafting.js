@@ -217,5 +217,7 @@ JEIAddedEvents.registerRecipes((e) => {
 })
 
 JEIAddedEvents.registerRecipeCatalysts((e) => {
-  e.data.addRecipeCatalyst('minecraft:beacon', global.ENERGIZED_BEACON_CRAFTING)
+  e.data[
+    'addRecipeCatalyst(net.minecraft.world.item.ItemStack,mezz.jei.api.recipe.RecipeType[])'
+  ]('minecraft:beacon', global.ENERGIZED_BEACON_CRAFTING)
 })

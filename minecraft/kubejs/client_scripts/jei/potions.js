@@ -85,9 +85,10 @@ JEIAddedEvents.onRuntimeAvailable((e) => {
 })
 
 JEIAddedEvents.registerRecipeCatalysts((e) => {
-  e.data.addRecipeCatalyst(
-    'vintageimprovements:centrifuge',
-    'kubejs:potion_centrifuging'
-  )
-  e.data.addRecipeCatalyst('create:basin', 'kubejs:potion_centrifuging')
+  // e.data[
+  //   'addRecipeCatalysts(mezz.jei.api.recipe.RecipeType,net.minecraft.world.item.ItemStack[])'
+  // ]('kubejs:potion_centrifuging', [
+  //   'vintageimprovements:centrifuge',
+  //   'create:basin',
+  // ])
 })

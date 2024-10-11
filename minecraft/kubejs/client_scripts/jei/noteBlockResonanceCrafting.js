@@ -100,13 +100,11 @@ JEIAddedEvents.registerRecipes((e) => {
 })
 
 JEIAddedEvents.registerRecipeCatalysts((e) => {
-  e.data.addRecipeCatalyst('minecraft:note_block', global.RESONANCE_CRAFTING)
-  e.data.addRecipeCatalyst(
+  e.data[
+    'addRecipeCatalysts(mezz.jei.api.recipe.RecipeType,net.minecraft.world.item.ItemStack[])'
+  ](global.RESONANCE_CRAFTING, [
+    'minecraft:note_block',
     'ars_nouveau:arcane_platform',
-    global.RESONANCE_CRAFTING
-  )
-  e.data.addRecipeCatalyst(
     'ars_nouveau:arcane_pedestal',
-    global.RESONANCE_CRAFTING
-  )
+  ])
 })

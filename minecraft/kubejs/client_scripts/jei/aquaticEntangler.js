@@ -161,6 +161,7 @@ JEIAddedEvents.registerRecipes((e) => {
 })
 
 JEIAddedEvents.registerRecipeCatalysts((e) => {
-  e.data.addRecipeCatalyst('thermal:device_fisher', 'thermal:device_fisher')
-  e.data.addRecipeCatalyst('minecraft:fishing_rod', 'thermal:device_fisher')
+  e.data[
+    'addRecipeCatalysts(mezz.jei.api.recipe.RecipeType,net.minecraft.world.item.ItemStack[])'
+  ]('thermal:device_fisher', ['thermal:device_fisher', 'minecraft:fishing_rod'])
 })
