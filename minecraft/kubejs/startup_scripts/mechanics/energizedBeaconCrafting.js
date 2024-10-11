@@ -89,7 +89,7 @@ global.CorundumClusterMapping = {
 // Register the actual beacon crafting recipes.
 ;(() => {
   for (const [color, data] of Object.entries(global.CorundumClusterMapping)) {
-    let { cluster, beaconColor } = data
+    let { block, cluster, beaconColor } = data
     // Recipes for glass blocks.
     global.EnergizedBeaconCraftingRecipes.push({
       ingredient: '#forge:glass/silica',
@@ -158,13 +158,14 @@ global.CorundumClusterMapping = {
     // Recipes for corundum blocks.
     global.EnergizedBeaconCraftingRecipes.push({
       ingredient: '#quark:corundum',
-      results: `quark:${color}_corundum`,
+      results: block,
       redirectorBlock: cluster,
       beaconColor: beaconColor,
       energy: 1000, // One corundum block is technically 2.66 clusters
     })
   }
 
+  // Energized Glowstone
   global.EnergizedBeaconCraftingRecipes.push({
     ingredient: 'minecraft:glowstone_dust',
     results: 'kubejs:energized_glowstone',
@@ -173,6 +174,7 @@ global.CorundumClusterMapping = {
     energy: 1000,
   })
 
+  // Magnetic Confinement Units for Antimatter
   global.EnergizedBeaconCraftingRecipes.push({
     ingredient: 'kubejs:magnetic_confinement_unit_filled',
     results: [
