@@ -27,7 +27,6 @@ ServerEvents.recipes((e) => {
       /*additionalOutputs*/ 'minecraft:glass_bottle'
     )
     .deploy('createutilities:polished_amethyst')
-    .fill(potionFluid('apotheosis:levitation', 100))
     .energize(10000)
     .outputs('createutilities:graviton_tube')
 
