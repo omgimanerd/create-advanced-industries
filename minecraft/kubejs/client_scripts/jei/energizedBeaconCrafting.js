@@ -38,7 +38,7 @@ JEIAddedEvents.registerCategories((e) => {
 
   e.custom(global.ENERGIZED_BEACON_CRAFTING, (category) => {
     category
-      .title('Energized Beacon')
+      .title('Energized Beacon Crafting')
       .background(guiHelper.createBlankDrawable(177, 100))
       .icon(doubleItemIcon('minecraft:beacon', 'quark:red_corundum_cluster'))
       .isRecipeHandled(() => true) // Only relevant recipes are registered
@@ -50,6 +50,10 @@ JEIAddedEvents.registerCategories((e) => {
         builder
           .addInvisibleIngredients('input')
           .addItemStack('minecraft:beacon')
+
+        // Add the corundum redirector block as an invisible ingredient to every
+        // recipe.
+        builder.addInvisibleIngredients('input').addItemStack(redirectorBlock)
 
         // Add the precomputed beacon energy carriers and a tooltip for the
         // energy that they will provide the beacon.

@@ -161,15 +161,26 @@ global.CorundumClusterMapping = {
       results: block,
       redirectorBlock: cluster,
       beaconColor: beaconColor,
-      energy: 1000, // One corundum block is technically 2.66 clusters
+      // One corundum block is technically 2.66 clusters, but doesn't cost 2.66x
+      // the energy to color.
+      energy: 1000,
     })
   }
+
+  // Ghast Tears
+  global.EnergizedBeaconCraftingRecipes.push({
+    ingredient: 'kubejs:honey_droplet',
+    results: 'minecraft:ghast_tear',
+    redirectorBlock: global.CorundumClusterMapping.white.cluster,
+    beaconColor: global.CorundumClusterMapping.white.beaconColor,
+    energy: 1000,
+  })
 
   // Energized Glowstone
   global.EnergizedBeaconCraftingRecipes.push({
     ingredient: 'minecraft:glowstone_dust',
     results: 'kubejs:energized_glowstone',
-    redirectorBlock: 'quark:white_corundum_cluster',
+    redirectorBlock: global.CorundumClusterMapping.white.cluster,
     beaconColor: global.CorundumClusterMapping.white.beaconColor,
     energy: 1000,
   })
@@ -181,7 +192,7 @@ global.CorundumClusterMapping = {
       'kubejs:magnetic_confinement_unit',
       'kubejs:unstable_singularity',
     ],
-    redirectorBlock: 'quark:white_corundum_cluster',
+    redirectorBlock: global.CorundumClusterMapping.white.cluster,
     beaconColor: global.CorundumClusterMapping.white.beaconColor,
     energy: 2000,
   })

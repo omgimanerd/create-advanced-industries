@@ -414,19 +414,6 @@ StartupEvents.postInit(() => {
     ]
   )
 
-  // TODO: this makes no sense
-  // Should be a centrifuging recipe with intermediates or blasting potion?
-  global.RegisterResonanceCraftingRecipe(
-    'minecraft:honey_bottle',
-    'minecraft:ghast_tear',
-    [
-      { note: 'E4', instrument: 'bell' },
-      { note: 'C4', instrument: 'bell' },
-      { note: 'D4', instrument: 'bell' },
-      { note: 'G3', instrument: 'bell' },
-    ]
-  )
-
   global.RegisterResonanceCraftingRecipe(
     'apotheosis:warden_tendril',
     'kubejs:warden_tendril_vine_seed',
