@@ -1,12 +1,6 @@
 // priority: 500
 // Recipe overhauls for Chapter 6 progression.
 
-// Call the method to register time pouch crafting recipes.
-if (global.RegisterTimePouchCraftingEventHandlers) {
-  global.RegisterTimePouchCraftingEventHandlers()
-  console.log('Successfully registered time pouch crafting recipes.')
-}
-
 /**
  * Event handler for expelling the silverfish from infested stone to generate
  * end stone.
@@ -32,56 +26,6 @@ BlockEvents.rightClicked('minecraft:infested_stone', (e) => {
       item.count--
     }
   }
-})
-
-/**
- * Event handler for extracting honeycombs and saturated honeycombs from
- * beehives.
- */
-BlockEvents.rightClicked('minecraft:beehive', (e) => {
-  const { item, hand, block, level } = e
-  if (hand !== 'main_hand') return
-  if (item.id !== 'apotheosis:sigil_of_extraction') return
-  const honeyLevel = block.properties.getOrDefault('honey_level', 0)
-  // Each usage will reset the honey level and create an explosion.
-  block.set('minecraft:beehive', {
-    facing: block.properties.facing,
-    honey_level: '0',
-  })
-  const pos = block.pos.getCenter()
-  for (let i = 0; i < 5; ++i) {
-    level
-      .createExplosion(
-        pos.x() + global.randRange(-1.5, 1.5),
-        pos.y() + global.randRange(0, 1.5),
-        pos.z() + global.randRange(-1.5, 1.5)
-      )
-      .strength(1)
-      .explode()
-  }
-  // Only if the honey level is 5 will there be loot returned. Using this has
-  // a chance to double or triple the amount of honeycombs returned.
-  if (honeyLevel < 5) return
-  const honeyCombs = Math.floor(honeyLevel * global.randRange(2, 3))
-  block.popItemFromFace(Item.of('minecraft:honeycomb', honeyCombs), 'up')
-  // There is a 50% chance to return a saturated honeycomb.
-  if (Math.random() < 0.5) {
-    block.popItemFromFace(
-      Item.of('kubejs:saturated_honeycomb', global.randRangeInt(3)),
-      'up'
-    )
-  }
-  // There is a 5% chance to consume the sigil.
-  if (Math.random() < 0.05) {
-    item.count--
-  }
-})
-
-LootJS.modifiers((e) => {
-  // Make the ender dragon drop its head regardless of death condition.
-  e.addEntityLootModifier('minecraft:ender_dragon').addLoot(
-    'minecraft:dragon_head'
-  )
 })
 
 ServerEvents.recipes((e) => {
@@ -167,7 +111,7 @@ ServerEvents.recipes((e) => {
     1000000
   )
 
-  // Heart of Diamond from quark
+  // Heart of Diamond from Quark
   create.mechanical_crafting(
     'quark:diamond_heart',
     [
@@ -183,10 +127,6 @@ ServerEvents.recipes((e) => {
       M: CRYSTALLINE_MECHANISM,
     }
   )
-
-  // Phantom membranes
-  e.remove({ id: 'minecraft:honey_block' })
-  create.haunting('minecraft:phantom_membrane', 'minecraft:honeycomb')
 
   // Overhauled recipe for Temporal Pouch
   redefineRecipe(
@@ -299,7 +239,16 @@ ServerEvents.recipes((e) => {
     'kubejs:saturated_honeycomb'
   )
 
-  // Rosin from resin
+  // Honey droplets
+  create
+    .mixing('kubejs:honey_droplet', [Fluid.of('create:honey', 250)])
+    .heated()
+
+  // Phantom membranes
+  e.remove({ id: 'minecraft:honey_block' })
+  create.haunting('minecraft:phantom_membrane', 'minecraft:honeycomb')
+
+  // Rosin from resin, for use in the custom XP Crystal
   create
     .mixing(
       ['thermal:rosin', Fluid.of('thermal:latex', 50)],

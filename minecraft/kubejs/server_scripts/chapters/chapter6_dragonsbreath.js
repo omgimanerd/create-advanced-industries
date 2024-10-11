@@ -2,6 +2,13 @@
 // Defines the logic for spewing dragon's breath from a dragon head and
 // collecting it with a glass bottle.
 
+// Make the ender dragon drop its head when killed.
+LootJS.modifiers((e) => {
+  e.addEntityLootModifier('minecraft:ender_dragon').addLoot(
+    'minecraft:dragon_head'
+  )
+})
+
 BlockEvents.rightClicked('minecraft:dragon_head', (e) => {
   const { block, hand, item, player, server } = e
   if (hand !== 'main_hand') return
