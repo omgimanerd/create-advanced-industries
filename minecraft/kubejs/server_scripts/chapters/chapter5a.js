@@ -10,7 +10,14 @@ ItemEvents.rightClicked('kubejs:diamond_saw_blade', (e) => {
   const { player, level } = e
   if (!player.isCreative()) {
     player.attack(level.damageSources().cactus(), 1)
-    player.damageHeldItem()
+    player.damageHeldItem('main_hand', 1, () => {
+      player.playNotifySound(
+        'minecraft:entity.item.break',
+        'players',
+        /*volume=*/ 2,
+        /*pitch=*/ 1
+      )
+    })
     player.tell("Ouch, that's sharp!")
   }
 })

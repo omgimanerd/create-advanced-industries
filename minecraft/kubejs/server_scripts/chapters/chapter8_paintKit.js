@@ -45,16 +45,14 @@ BlockEvents.rightClicked((e) => {
   const newBlock = global.choice(repaintedBlocks)
   block.set(newBlock, block.properties)
   player.swing()
-  item.setDamageValue(item.damageValue + 1)
-  if (item.damageValue >= item.maxDamage) {
-    item.shrink(1)
+  player.damageHeldItem('main_hand', 1, () => {
     player.playNotifySound(
       'minecraft:entity.item.break',
       'players',
       /*volume=*/ 2,
       /*pitch=*/ 1
     )
-  }
+  })
   player.playNotifySound(
     'minecraft:entity.slime.squish',
     'blocks',
@@ -66,7 +64,7 @@ BlockEvents.rightClicked((e) => {
 
 // The paint kit can also paint sheep a random color
 ItemEvents.entityInteracted('toms_storage:ts.paint_kit', (e) => {
-  const { hand, item, player, target } = e
+  const { hand, player, target } = e
   if (hand !== 'main_hand') return
   if (target.type !== 'minecraft:sheep') return
 
@@ -81,16 +79,14 @@ ItemEvents.entityInteracted('toms_storage:ts.paint_kit', (e) => {
   target.setNbt(nbt)
 
   player.swing()
-  item.setDamageValue(item.damageValue + 1)
-  if (item.damageValue >= item.maxDamage) {
-    item.shrink(1)
+  player.damageHeldItem('main_hand', 1, () => {
     player.playNotifySound(
       'minecraft:entity.item.break',
       'players',
       /*volume=*/ 2,
       /*pitch=*/ 1
     )
-  }
+  })
   player.playNotifySound(
     'minecraft:entity.slime.squish',
     'blocks',
