@@ -171,15 +171,13 @@ ServerEvents.recipes((e) => {
     .curving('createsweetsandtreets:brass_cake_pan', 'create:brass_sheet')
     .mode(CONVEX_CURVING_HEAD)
 
+  // Remove the Create: Sweets and Treats brownie and replace with our own.
   e.remove({ id: 'create:filling/powderedbrownie1' })
   create.filling('kubejs:uncooked_brownie', [
     'createsweetsandtreets:brass_cake_pan',
     Fluid.of('create:chocolate', 250),
   ])
-  e.smoking(
-    'createsweetsandtreets:unfinished_powdered_brownie',
-    'kubejs:uncooked_brownie'
-  )
+  e.smoking('kubejs:brownie', 'kubejs:uncooked_brownie')
   e.shapeless('createsweetsandtreets:sugar_cookie', [
     'minecraft:wheat',
     'minecraft:sugar',

@@ -183,6 +183,17 @@ StartupEvents.registry('item', (e) => {
     .glow(true)
     .displayName('Saturated Honeycomb')
 
+  // Honey droplets
+  registerItem('kubejs:honey_droplet').food((builder) => {
+    // Hunger of 1, saturation of 0.5 (multiplier of hunger)
+    builder.fastToEat(true).hunger(1).saturation(0.5).effect(
+      'minecraft:speed',
+      /*duration=*/ 200, // ticks
+      /*amplifier=*/ 1,
+      /*probability=*/ 0.25
+    )
+  })
+
   // Fish hook, fishing rod component
   registerItem('kubejs:fish_hook')
 

@@ -46,6 +46,7 @@ global.removedRecipes = [
   { output: 'create_new_age:nuclear_fuel' },
   { output: /^create_new_age:.[a-z_]*solar_heating_plate/ },
   { output: /^create_new_age:.*thorium.*/ },
+  { output: 'createsweetsandtreets:unfinished_powdered_brownie' },
   { output: 'create_things_and_misc:sprinkler' },
   { output: 'create_things_and_misc:sprinkler_head' },
   { output: 'createutilities:gearcube' },
