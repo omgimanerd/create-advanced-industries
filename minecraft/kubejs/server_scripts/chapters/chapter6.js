@@ -492,16 +492,16 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'create_things_and_misc:vibration_mecanism_craft' })
   create
     .SequencedAssembly(CRYSTALLINE_MECHANISM, INCOMPLETE_VIBRATION_MECHANISM)
-    .deploy('createutilities:polished_amethyst')
     .deploy(
       getGemItem(
         'apotheotic_additions:modded/ars_mana',
         'apotheotic_additions:esoteric'
       )
     )
-    .deploy('create:rose_quartz')
     .fill(potionFluid('apotheosis:extra_long_flying', 250))
+    .deploy('create:rose_quartz')
     .fill(Fluid.of('kubejs:infused_dragon_breath', 250))
+    .deploy('vintageimprovements:invar_spring')
     .vibrate(200)
     .outputs(VIBRATION_MECHANISM)
 

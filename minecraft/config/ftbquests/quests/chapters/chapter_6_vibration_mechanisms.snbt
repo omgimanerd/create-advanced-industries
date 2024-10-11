@@ -435,7 +435,7 @@
 				item: "minecraft:wither_skeleton_skull"
 				type: "item"
 			}]
-			x: 14.0d
+			x: 12.0d
 			y: 4.0d
 		}
 		{
@@ -452,7 +452,7 @@
 				type: "item"
 			}]
 			x: 12.0d
-			y: 4.0d
+			y: 6.0d
 		}
 		{
 			dependencies: [
@@ -718,7 +718,7 @@
 				"16B375C5FB372B05"
 				"5D5CDD8A20C12CD2"
 				"79B15D4E12B329B9"
-				"243F51DA64564519"
+				"31BB3592850ECACD"
 			]
 			description: [
 				"Vibration Mechanisms complete!"
@@ -873,13 +873,26 @@
 			description: ["Got a rare saturated honeycomb? They can be centrifuged for a ton of honey."]
 			id: "3C447206C2554E96"
 			invisible: true
+			rewards: [
+				{
+					id: "1FC845317722BE00"
+					item: "vintageimprovements:centrifuge"
+					type: "item"
+				}
+				{
+					count: 4
+					id: "33492A2946239884"
+					item: "create:basin"
+					type: "item"
+				}
+			]
 			tasks: [{
 				id: "7DD56D9AF7B8CEE7"
 				item: "kubejs:saturated_honeycomb"
 				type: "item"
 			}]
-			x: 16.0d
-			y: 14.0d
+			x: 18.0d
+			y: 11.0d
 		}
 		{
 			dependencies: ["6651B17B190DD8F4"]
@@ -1017,8 +1030,8 @@
 				item: "minecraft:end_crystal"
 				type: "item"
 			}]
-			x: 18.0d
-			y: 2.0d
+			x: 16.0d
+			y: 4.0d
 		}
 		{
 			dependencies: [
@@ -1044,7 +1057,7 @@
 				item: "minecraft:purpur_slab"
 				type: "item"
 			}]
-			x: 18.0d
+			x: 16.0d
 			y: 8.0d
 		}
 		{
@@ -1107,8 +1120,6 @@
 				"You'll need a Potion of Regeneration II for the next step."
 				""
 				"By now, automated brewing should be a familiar process."
-				""
-				"The ghast tears required can be produced with resonance crafting."
 			]
 			id: "2B05BB13A47507C0"
 			tasks: [{
@@ -1156,8 +1167,8 @@
 		}
 		{
 			dependencies: [
-				"16DE2DD8FDA03A48"
 				"730B64754B0BFC9D"
+				"3825C2EEC485CADF"
 			]
 			description: ["Reinforced deepslate is made from deepslate and invar."]
 			id: "36C487052DC00979"
@@ -1171,15 +1182,19 @@
 		}
 		{
 			dependencies: ["730B64754B0BFC9D"]
-			description: ["Compacting deepslate in a superheated basin yields small quantities of nickel. This is one way to automate invar, but it has extremely low yields, so you may want to look for a better way to get nickel."]
+			description: [
+				"Compacting deepslate in a superheated basin yields small quantities of molten nickel."
+				""
+				"This is one way to automate invar, but it has extremely low yields, so you may want to look for a better way to get nickel."
+			]
 			id: "16DE2DD8FDA03A48"
 			tasks: [{
 				id: "08B4F99A39EDE01E"
 				item: "thermal:invar_ingot"
 				type: "item"
 			}]
-			x: 2.0d
-			y: 10.0d
+			x: 0.0d
+			y: 14.0d
 		}
 		{
 			dependencies: ["36C487052DC00979"]
@@ -1231,7 +1246,7 @@
 		}
 		{
 			dependencies: ["6651B17B190DD8F4"]
-			description: ["This isn't the only way to get honey bottles, but it is pretty convenient if you've automated beehives."]
+			description: ["This isn't the only way to get honey bottles, but it &ois&r pretty convenient if you've automated beehives."]
 			id: "110CE9CD242228F7"
 			rewards: [{
 				count: 16
@@ -1244,20 +1259,23 @@
 				item: "minecraft:honey_bottle"
 				type: "item"
 			}]
-			x: 16.0d
-			y: 6.0d
+			x: 18.0d
+			y: 8.0d
 		}
 		{
-			dependencies: ["110CE9CD242228F7"]
-			description: ["Resonance crafting allows you to get ghast tears from honey bottles."]
+			dependencies: [
+				"20E38F96B83B9491"
+				"56176D126878352C"
+			]
+			description: ["With energized beacon crafting, you can turn honey droplets into ghast tears."]
 			id: "2A360AA28408A776"
 			tasks: [{
 				id: "33D565A05B8DAF94"
 				item: "minecraft:ghast_tear"
 				type: "item"
 			}]
-			x: 16.0d
-			y: 4.0d
+			x: 18.0d
+			y: 2.0d
 		}
 		{
 			dependencies: ["75A7D7288DF25E12"]
@@ -1323,24 +1341,75 @@
 			y: -6.0d
 		}
 		{
+			dependencies: ["3825C2EEC485CADF"]
+			description: ["Coil the invar rods into springs."]
 			id: "7CD8718292BC72E7"
 			tasks: [{
 				id: "2607AB08BC965B41"
 				item: "vintageimprovements:invar_spring"
 				type: "item"
 			}]
-			x: 2.0d
-			y: 6.0d
+			x: 22.0d
+			y: 14.0d
 		}
 		{
+			dependencies: ["16DE2DD8FDA03A48"]
+			description: ["Roll the invar into rods, which is needed for both reinforced deepslate and springs."]
 			id: "3825C2EEC485CADF"
 			tasks: [{
 				id: "6FEA0CCBA72B4A77"
 				item: "vintageimprovements:invar_rod"
 				type: "item"
 			}]
-			x: 2.0d
-			y: 8.0d
+			x: 4.0d
+			y: 14.0d
+		}
+		{
+			dependencies: ["243F51DA64564519"]
+			description: [
+				"A beacon is required to perform energized beacon crafting."
+				""
+				"This mechanic is useful for several types of crafts."
+				""
+				"Ponder the beacon to understand how it works."
+			]
+			id: "56176D126878352C"
+			tasks: [{
+				id: "62C870E4E2A7D277"
+				item: "minecraft:beacon"
+				type: "item"
+			}]
+			x: 16.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["110CE9CD242228F7"]
+			description: ["Honey droplets can be cooked out from raw honey with a little bit of heat."]
+			id: "20E38F96B83B9491"
+			tasks: [{
+				id: "4B8CDFA925A200DA"
+				item: "kubejs:honey_droplet"
+				type: "item"
+			}]
+			x: 18.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["7CD8718292BC72E7"]
+			description: ["Nothing to see here. Just a convenience quest to straighten out the quest dependency lines."]
+			id: "31BB3592850ECACD"
+			rewards: [{
+				count: 4
+				id: "375E7C05AE345025"
+				item: "farmersdelight:roast_chicken"
+				type: "item"
+			}]
+			tasks: [{
+				id: "4278FF6D22AA9126"
+				type: "checkmark"
+			}]
+			x: 22.0d
+			y: 0.0d
 		}
 	]
 	title: "Chapter 6: Vibration Mechanisms"
