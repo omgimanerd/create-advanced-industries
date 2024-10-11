@@ -154,20 +154,20 @@
 		"Blaze Lantern Fuel Time" = 24000
 		#Allowed values: [0,)
 		"Stick Block Fuel Time" = 900
-		"Enable Charcoal Block" = false
-		"Enable Sugar Cane Block" = false
+		"Enable Charcoal Block" = true
+		"Enable Sugar Cane Block" = true
 		"Enable Cactus Block" = true
 		"Enable Chorus Fruit Block" = true
 		"Enable Stick Block" = true
-		"Enable Apple Crate" = false
-		"Enable Golden Apple Crate" = false
-		"Enable Potato Crate" = false
-		"Enable Carrot Crate" = false
-		"Enable Golden Carrot Crate" = false
-		"Enable Beetroot Crate" = false
+		"Enable Apple Crate" = true
+		"Enable Golden Apple Crate" = true
+		"Enable Potato Crate" = true
+		"Enable Carrot Crate" = true
+		"Enable Golden Carrot Crate" = true
+		"Enable Beetroot Crate" = true
 		"Enable Cocoa Bean Sack" = true
 		"Enable Nether Wart Sack" = true
-		"Enable Gunpowder Sack" = false
+		"Enable Gunpowder Sack" = true
 		"Enable Berry Sack" = true
 		"Enable Glow Berry Sack" = true
 		"Enable Blaze Lantern" = true
@@ -540,7 +540,7 @@
 	"Safer Creatures" = true
 	"Shulker Packing" = true
 	"Simple Harvest" = true
-	"Slabs To Blocks" = false
+	"Slabs To Blocks" = true
 	"Slimes To Magma Cubes" = true
 	"Snow Golem Player Heads" = true
 	"Utility Recipes" = true
@@ -667,7 +667,7 @@
 		#If `petAllMobs` is set, these mobs still can't be pet
 		"Pettable Denylist" = ["minecraft:ender_dragon", "minecraft:wither", "minecraft:armor_stand"]
 		#Even if `petAllMobs` is not set, these mobs can be pet
-		"Pettable Allowlist" = ["quark:shiba"]
+		"Pettable Allowlist" = []
 
 	[tweaks.pig_litters]
 		#Allowed values: [1,)
