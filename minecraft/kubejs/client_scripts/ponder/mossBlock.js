@@ -17,7 +17,7 @@ Ponder.registry((e) => {
   e.create('minecraft:moss_block').scene(
     'moss_block_seeding',
     'Moss Blocks and You',
-    'kubejs:moss_block', // kubejs/assets/kubejs/ponder/moss.nbt
+    'kubejs:moss_block', // kubejs/assets/kubejs/ponder/moss_block.nbt
     (scene, util) => {
       scene.showStructure()
       const center = new BlockPos(2, 0, 2)
