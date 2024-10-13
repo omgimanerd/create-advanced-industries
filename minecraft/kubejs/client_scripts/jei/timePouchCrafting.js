@@ -114,6 +114,9 @@ JEIAddedEvents.registerRecipes((e) => {
 
 JEIAddedEvents.registerRecipeCatalysts((e) => {
   e.data[
-    'addRecipeCatalyst(net.minecraft.world.item.ItemStack,mezz.jei.api.recipe.RecipeType[])'
-  ]('gag:time_sand_pouch', global.TIME_POUCH_CRAFTING)
+    'addRecipeCatalysts(mezz.jei.api.recipe.RecipeType,net.minecraft.world.item.ItemStack[])'
+  ](global.TIME_POUCH_CRAFTING, [
+    'gag:time_sand_pouch',
+    'ars_nouveau:glyph_extend_time',
+  ])
 })

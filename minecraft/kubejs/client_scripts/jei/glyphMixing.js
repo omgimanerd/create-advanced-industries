@@ -2,6 +2,8 @@
 // Recategorizes the custom mixing recipes for Ars Nouveau glyph crafting so
 // that they don't clutter JEI.
 
+const GLYPH_MIXING = 'kubejs:glyph_mixing'
+
 JEIAddedEvents.registerCategories((e) => {
   // The Mixing recipe category, contains the code that performs the actual
   // rendering of the recipe inputs and outputs in JEI
@@ -29,8 +31,9 @@ JEIAddedEvents.registerCategories((e) => {
     // MixingCategory to call its lookup and draw handler.
     new $Info(null, null, background, null, null, null)
   )
+  const [rl, id] = GLYPH_MIXING.split(':')
   e.wrap(
-    $RecipeType.create('kubejs', 'glyph_mixing', $MixingRecipe),
+    $RecipeType.create(rl, id, $MixingRecipe),
     mixingCategory,
     (category) => {
       category
@@ -56,15 +59,15 @@ JEIAddedEvents.onRuntimeAvailable((e) => {
     })
     .toList()
   recipeManager.hideRecipes('create:mixing', glyphMixingRecipes)
-  recipeManager.addRecipes('kubejs:glyph_mixing', glyphMixingRecipes)
+  recipeManager.addRecipes(GLYPH_MIXING, glyphMixingRecipes)
 })
 
 JEIAddedEvents.registerRecipeCatalysts((e) => {
-  // e.data[
-  //   'addRecipeCatalysts(mezz.jei.api.recipe.RecipeType,net.minecraft.world.item.ItemStack[])'
-  // ]('kubejs:glyph_mixing', [
-  //   'create:mechanical_mixer',
-  //   'create:basin',
-  //   'ars_nouveau:scribes_table',
-  // ])
+  e.data[
+    'addRecipeCatalysts(mezz.jei.api.recipe.RecipeType,net.minecraft.world.item.ItemStack[])'
+  ](GLYPH_MIXING, [
+    'create:mechanical_mixer',
+    'create:basin',
+    'ars_nouveau:scribes_table',
+  ])
 })

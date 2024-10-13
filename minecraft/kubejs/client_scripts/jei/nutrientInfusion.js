@@ -1,5 +1,7 @@
 // priority: 0
 
+const NUTRIENT_INFUSION = 'kubejs:nutrient_infusion'
+
 JEIAddedEvents.registerCategories((e) => {
   // The vanilla Anvil recipe category, contains the code that performs the
   // actual rendering of the recipe inputs and outputs in JEI.
@@ -24,7 +26,7 @@ JEIAddedEvents.registerCategories((e) => {
   // custom category to use its render code.
   const anvilRecipeCategory = new $AnvilRecipeCategory(guiHelper)
 
-  e.custom('kubejs:nutrient_infusion', (category) => {
+  e.custom(NUTRIENT_INFUSION, (category) => {
     category
       .title('Nutrient Infusion')
       .background(
@@ -111,7 +113,7 @@ JEIAddedEvents.registerRecipes((e) => {
       )
     })
     .toList()
-  e.register('kubejs:nutrient_infusion', recipes)
+  e.register(NUTRIENT_INFUSION, recipes)
 })
 
 JEIAddedEvents.onRuntimeAvailable((e) => {
@@ -140,7 +142,7 @@ JEIAddedEvents.onRuntimeAvailable((e) => {
 JEIAddedEvents.registerRecipeCatalysts((e) => {
   e.data[
     'addRecipeCatalysts(mezz.jei.api.recipe.RecipeType,net.minecraft.world.item.ItemStack[])'
-  ]('kubejs:nutrient_infusion', [
+  ](NUTRIENT_INFUSION, [
     'minecraft:anvil',
     Item.of('minecraft:enchanted_book').enchant('kubejs:nutrient_infusion', 1),
     Item.of('minecraft:enchanted_book').enchant('kubejs:nutrient_infusion', 2),

@@ -2,6 +2,8 @@
 // Recategorizes the custom brewing and centrifugation recipes so that potion
 // recipes don't clutter JEI.
 
+const POTION_CENTRIFUGING = 'kubejs:potion_centrifuging'
+
 JEIAddedEvents.registerCategories((e) => {
   // The Centrifugation recipe category, contains the code that performs the
   // actual rendering of the recipe inputs and outputs in JEI
@@ -29,8 +31,9 @@ JEIAddedEvents.registerCategories((e) => {
     new $Info(null, null, background, null, null, null)
   )
 
+  const [rl, id] = POTION_CENTRIFUGING.split(':')
   e.wrap(
-    $RecipeType.create('kubejs', 'potion_centrifuging', $CentrifugationRecipe),
+    $RecipeType.create(rl, id, $CentrifugationRecipe),
     centrifugationCategory,
     (category) => {
       category
@@ -78,17 +81,11 @@ JEIAddedEvents.onRuntimeAvailable((e) => {
     'vintageimprovements:centrifugation',
     customCentrifugationRecipes
   )
-  recipeManager.addRecipes(
-    'kubejs:potion_centrifuging',
-    customCentrifugationRecipes
-  )
+  recipeManager.addRecipes(POTION_CENTRIFUGING, customCentrifugationRecipes)
 })
 
 JEIAddedEvents.registerRecipeCatalysts((e) => {
-  // e.data[
-  //   'addRecipeCatalysts(mezz.jei.api.recipe.RecipeType,net.minecraft.world.item.ItemStack[])'
-  // ]('kubejs:potion_centrifuging', [
-  //   'vintageimprovements:centrifuge',
-  //   'create:basin',
-  // ])
+  e.data[
+    'addRecipeCatalysts(mezz.jei.api.recipe.RecipeType,net.minecraft.world.item.ItemStack[])'
+  ](POTION_CENTRIFUGING, ['vintageimprovements:centrifuge', 'create:basin'])
 })

@@ -1,5 +1,7 @@
 // priority: 0
 
+const DEVICE_FISHER = 'thermal:device_fisher'
+
 JEIAddedEvents.registerCategories((e) => {
   const guiHelper = e.data.jeiHelpers.guiHelper
 
@@ -7,7 +9,7 @@ JEIAddedEvents.registerCategories((e) => {
   const xBaseOffset = 64
   const yBaseOffset = 2
 
-  e.custom('thermal:device_fisher', (category) => {
+  e.custom(DEVICE_FISHER, (category) => {
     category
       .title('Aquatic Entangler')
       .background(guiHelper.createBlankDrawable(160, 60))
@@ -97,7 +99,7 @@ JEIAddedEvents.registerCategories((e) => {
 
 JEIAddedEvents.registerRecipes((e) => {
   if (!global.AquaticEntanglerRecipes) return
-  const r = e.custom('thermal:device_fisher')
+  const r = e.custom(DEVICE_FISHER)
 
   /**
    * Internal helper to condense a loot table biome condition list to a single
@@ -163,5 +165,5 @@ JEIAddedEvents.registerRecipes((e) => {
 JEIAddedEvents.registerRecipeCatalysts((e) => {
   e.data[
     'addRecipeCatalysts(mezz.jei.api.recipe.RecipeType,net.minecraft.world.item.ItemStack[])'
-  ]('thermal:device_fisher', ['thermal:device_fisher', 'minecraft:fishing_rod'])
+  ](DEVICE_FISHER, ['thermal:device_fisher', 'minecraft:fishing_rod'])
 })

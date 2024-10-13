@@ -167,6 +167,6 @@ JEIAddedEvents.registerRecipes((e) => {
 
 JEIAddedEvents.registerRecipeCatalysts((e) => {
   e.data[
-    'addRecipeCatalyst(net.minecraft.world.item.ItemStack,mezz.jei.api.recipe.RecipeType[])'
-  ]('createutilities:void_steel_block', global.ARS_GRAVITY_BLOCK_CRUSHING)
+    'addRecipeCatalysts(mezz.jei.api.recipe.RecipeType,net.minecraft.world.item.ItemStack[])'
+  ](global.ARS_GRAVITY_BLOCK_CRUSHING, 'createutilities:void_steel_block')
 })
