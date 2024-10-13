@@ -12,6 +12,7 @@ ItemEvents.tooltip((e) => {
       '  Shulker Box: Shulker Box',
       '  Bone Block: Skeleton',
       '  Slime Block: Slime',
+      '  Blue Ice: Blizz',
     ],
   })
 })

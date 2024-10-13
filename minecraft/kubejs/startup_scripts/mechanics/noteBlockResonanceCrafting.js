@@ -413,7 +413,6 @@ StartupEvents.postInit(() => {
       { note: 'B3', instrument: 'xylophone' },
     ]
   )
-
   global.RegisterResonanceCraftingRecipe(
     'apotheosis:warden_tendril',
     'kubejs:warden_tendril_vine_seed',
@@ -425,6 +424,21 @@ StartupEvents.postInit(() => {
       { note: 'A4', instrument: 'banjo' },
       { note: 'A4', instrument: 'banjo' },
       { note: 'G4', instrument: 'banjo' },
+    ]
+  )
+
+  // Blue Ice transmutation to dye
+  global.RegisterResonanceCraftingRecipe(
+    'minecraft:blue_ice',
+    'minecraft:blue_dye',
+    [
+      { note: 'C4', instrument: 'flute' },
+      { note: 'E4', instrument: 'flute' },
+      { note: 'E4', instrument: 'flute' },
+      { note: 'E4', instrument: 'flute' },
+      { note: 'D4', instrument: 'flute' },
+      { note: 'C4', instrument: 'flute' },
+      { note: 'G4', instrument: 'flute' },
     ]
   )
 })

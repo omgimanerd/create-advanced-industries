@@ -2,6 +2,7 @@
 // Standardize all recipes for ice and snow.
 
 ServerEvents.recipes((e) => {
+  const create = defineCreateRecipes(e)
   const pneumaticcraft = definePneumaticcraftRecipes(e)
 
   // Ice
@@ -45,4 +46,19 @@ ServerEvents.recipes((e) => {
   pneumaticcraft
     .heat_frame_cooling('minecraft:packed_ice', 'minecraft:blue_ice')
     .max_temp(blueIceTemperature)
+
+  // Snow Blocks
+  create.mixing(
+    'minecraft:snow_block',
+    [Fluid.water(1000), 'thermal:blizz_powder'],
+    400
+  )
+
+  // Powdered Snow Buckets
+  e.remove({ id: 'ars_nouveau:air_essence_to_snow_bucket' })
+  create
+    .SequencedAssembly('minecraft:water_bucket')
+    .deploy('thermal:blizz_powder')
+    .vibrate(100)
+    .outputs('minecraft:powder_snow_bucket')
 })

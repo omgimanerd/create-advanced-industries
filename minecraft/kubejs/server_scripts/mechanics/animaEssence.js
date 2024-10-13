@@ -42,4 +42,6 @@
   registerAnimaEssenceSpawn('minecraft:slime_block', 'minecraft:slime', {
     Size: 2,
   })
+
+  registerAnimaEssenceSpawn('minecraft:blue_ice', 'thermal:blizz')
 })()
