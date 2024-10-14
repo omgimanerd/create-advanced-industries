@@ -1,12 +1,17 @@
 // priority: 500
 
 ServerEvents.tags('item', (e) => {
+  // Missing plate tags for void steel
+  e.add('forge:plates', 'createutilities:void_steel_sheet')
+  e.add('forge:plates/void_steel', 'createutilities:void_steel_sheet')
+
   e.add('kubejs:disc_fragment', 'minecraft:disc_fragment_5')
   e.add('kubejs:disc_fragment', 'idas:disc_fragment_slither')
 })
 
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
+  const pneumaticcraft = definePneumaticcraftRecipes(e)
   const redefineRecipe = redefineRecipe_(e)
 
   // Radiant Grenade
@@ -29,7 +34,7 @@ ServerEvents.recipes((e) => {
     { G: 'kubejs:energized_glowstone', T: 'minecraft:tnt' }
   )
 
-  // Refined Radiance overhaul, in-world crafting disabled.
+  // Refined Radiance overhaul, in-world crafting disabled in Create config.
   create
     .SequencedAssembly('create:chromatic_compound')
     .energize(100000)
@@ -37,6 +42,49 @@ ServerEvents.recipes((e) => {
       Item.of('create:refined_radiance').withChance(8),
       Item.of('create:chromatic_compound').withChance(2),
     ])
+
+  // Cooling Fluid
+  create.mixing(Fluid.of('tfmg:cooling_fluid', 250), [
+    Fluid.of('createaddition:seed_oil', 250),
+    'thermal:blizz_powder',
+  ])
+  pneumaticcraft
+    .thermo_plant()
+    .fluid_input(Fluid.of('createaddition:seed_oil', 150))
+    .item_input('thermal:blizz_powder')
+    .pressure(2)
+    .temperature({ max_temp: 273 - 200 })
+    .fluid_output(Fluid.of('tfmg:cooling_fluid', 250))
+
+  // Tri-Steel Plating to Chorium Ingot Forging
+  create
+    .SequencedAssembly('#forge:plates/shadow_steel')
+    .deploy('#forge:plates/steel')
+    .deploy('#forge:plates/void_steel')
+    .curve(V_SHAPED_CURVING_HEAD)
+    .press(2)
+    .outputs('kubejs:tri_steel_plating')
+  create
+    .compacting('kubejs:tri_steel_plating_heated', ['kubejs:tri_steel_plating'])
+    .superheated()
+  create
+    .SequencedAssembly('kubejs:tri_steel_plating_heated')
+    .press(3)
+    .curve(V_SHAPED_CURVING_HEAD)
+    .loops(10)
+    .outputs('kubejs:tri_steel_plating_semiforged')
+  create
+    .compacting('kubejs:tri_steel_plating_semiforged_heated', [
+      'kubejs:tri_steel_plating_semiforged',
+    ])
+    .superheated()
+  create
+    .SequencedAssembly('kubejs:tri_steel_plating_semiforged_heated')
+    .fill(Fluid.of('tfmg:cooling_fluid', 250))
+    .fill(Fluid.of('kubejs:chromatic_fluid', 250))
+    .loops(4)
+    .outputs('createcasing:chorium_ingot')
+  e.remove({ output: 'createcasing:chorium_ingot' })
 
   // Empty music discs
   create

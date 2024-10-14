@@ -9,6 +9,7 @@ const hiddenFluids = [
   'create_things_and_misc:diluted_bonemeal',
   'pneumaticcraft:oil',
   'pneumaticcraft:memory_essence',
+  'pneumaticcraft:vegetable_oil',
   'sophisticatedcore:xp_still',
   'thermal:creosote',
   'thermal:crude_oil',
@@ -23,7 +24,6 @@ const hiddenFluids = [
   'tfmg:heavy_oil',
   'tfmg:liquid_concrete',
   'tfmg:lubrication_oil',
-  'tfmg:cooling_fluid',
 ]
 
 JEIEvents.addItems((e) => {

@@ -252,6 +252,39 @@ StartupEvents.registry('item', (e) => {
   e.create('kubejs:creative_upgrade_smithing_template')
     .displayName('Smithing Template')
     .fireResistant()
+
+  // Tri-Steel Plating
+  const baseName = global.parseTextFormat(
+    '<darkAqua>T</darkAqua><gray>r</gray><darkGray>i</darkGray>-Steel Plating'
+  )
+  e.create('kubejs:tri_steel_plating')
+    .formattedDisplayName(baseName)
+    .fireResistant()
+  e.create('kubejs:tri_steel_plating_heated')
+    .formattedDisplayName(
+      baseName.copy().append(global.parseTextFormat(' (<red>heated</red>)'))
+    )
+    .glow(true)
+    .fireResistant()
+  e.create('kubejs:tri_steel_plating_semiforged').formattedDisplayName(
+    baseName
+      .copy()
+      .append(
+        global.parseTextFormat(' (<lightPurple>semi-forged</lightPurple>)')
+      )
+  )
+  e.create('kubejs:tri_steel_plating_semiforged_heated')
+    .formattedDisplayName(
+      baseName
+        .copy()
+        .append(
+          global.parseTextFormat(
+            ' (<lightPurple>semi-forged</lightPurple>, <red>heated</red>)'
+          )
+        )
+    )
+    .glow(true)
+    .fireResistant()
 })
 
 ItemEvents.modification((e) => {
