@@ -18,7 +18,7 @@
  */
 global.parseTextFormat = (t) => {
   let modifiers = {}
-  let component = null
+  let component = Text.empty()
   const parts = t.split(/(<\/{0,1}[a-zA-Z]+>)/)
   for (const /** @type {string} */ part of parts) {
     let openMatch = part.match(/^<([a-zA-Z]+)>$/)
@@ -51,13 +51,8 @@ global.parseTextFormat = (t) => {
         }
         newComponent = modifierCall.call(newComponent)
       }
-
-      if (component === null) {
-        component = newComponent
-      } else {
-        component = component.append(newComponent)
-      }
+      component.append(newComponent)
     }
   }
-  return component === null ? Text.empty() : component
+  return component
 }
