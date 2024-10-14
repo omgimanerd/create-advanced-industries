@@ -162,9 +162,107 @@ ServerEvents.recipes((e) => {
     }
   )
 
-  // creative storage disk
-  // creative fluid storage disk
-  // creative storage block
+  // Creative Storage Parts (custom)
+  e.shaped(
+    'kubejs:creative_storage_part',
+    [
+      'NIN', //
+      'PMP', //
+      'NPN', //
+    ],
+    {
+      N: 'extrastorage:neural_processor',
+      I: 'createcasing:chorium_ingot',
+      P: 'extrastorage:storagepart_16384k',
+      M: CREATIVE_MECHANISM,
+    }
+  )
+  e.shaped(
+    'kubejs:creative_fluid_storage_part',
+    [
+      'NIN', //
+      'PMP', //
+      'NPN', //
+    ],
+    {
+      N: 'extrastorage:neural_processor',
+      I: 'createcasing:chorium_ingot',
+      P: 'extrastorage:storagepart_1048576k_fluid',
+      M: CREATIVE_MECHANISM,
+    }
+  )
+
+  // Creative Storage Disk
+  e.shapeless('refinedstorage:creative_storage_disk', [
+    'refinedstorage:storage_housing',
+    'kubejs:creative_storage_part',
+  ])
+  e.shaped(
+    'refinedstorage:creative_storage_disk',
+    [
+      'GRG', //
+      'RPR', //
+      'QQQ', //
+    ],
+    {
+      G: '#forge:glass',
+      R: 'minecraft:redstone',
+      P: 'kubejs:creative_storage_part',
+      Q: 'refinedstorage:quartz_enriched_iron',
+    }
+  )
+
+  // Creative Fluid Storage Disk
+  e.shapeless('refinedstorage:creative_fluid_storage_disk', [
+    'refinedstorage:storage_housing',
+    'kubejs:creative_fluid_storage_part',
+  ])
+  e.shaped(
+    'refinedstorage:creative_fluid_storage_disk',
+    [
+      'GRG', //
+      'RPR', //
+      'QQQ', //
+    ],
+    {
+      G: '#forge:glass',
+      R: 'minecraft:redstone',
+      P: 'kubejs:creative_fluid_storage_part',
+      Q: 'refinedstorage:quartz_enriched_iron',
+    }
+  )
+
+  // Creative Storage Block
+  e.shaped(
+    'refinedstorage:creative_storage_block',
+    [
+      'QPQ', //
+      'QCQ', //
+      'QRQ', //
+    ],
+    {
+      Q: 'refinedstorage:quartz_enriched_iron',
+      P: 'kubejs:creative_storage_part',
+      C: 'refinedstorage:machine_casing',
+      R: 'minecraft:redstone',
+    }
+  )
+
+  // Creative Fluid Storage Block
+  e.shaped(
+    'refinedstorage:creative_fluid_storage_block',
+    [
+      'QPQ', //
+      'QCQ', //
+      'QRQ', //
+    ],
+    {
+      Q: 'refinedstorage:quartz_enriched_iron',
+      P: 'kubejs:creative_fluid_storage_part',
+      C: 'refinedstorage:machine_casing',
+      R: 'minecraft:redstone',
+    }
+  )
 
   // Creative Controller
   wrappedCreativeRecipe(

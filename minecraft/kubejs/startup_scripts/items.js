@@ -285,6 +285,10 @@ StartupEvents.registry('item', (e) => {
     )
     .glow(true)
     .fireResistant()
+
+  // Creative Storage Part
+  registerItem('kubejs:creative_storage_part')
+  registerItem('kubejs:creative_fluid_storage_part')
 })
 
 ItemEvents.modification((e) => {
