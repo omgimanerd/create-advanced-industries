@@ -781,7 +781,9 @@
 			description: [
 				"Fill the magnetic confinement unit with teleportation juice and Potions of Enderference. With some energy, the resulting mixture will collapse into a singularity."
 				""
-				"For the next step, you will need to use energized beacon crafting to extract the unstable singularity. Beware, once freed the singularity will rapidly decay. If it touches any block, it will instantly decay. Can you figure out how to process this item?"
+				"For the next step, you will need to use energized beacon crafting to extract the unstable singularity. Beware, once freed the singularity will rapidly decay."
+				""
+				"If it touches any block, it will instantly decay. Can you figure out how to process this item?"
 			]
 			id: "7309AC13830BCDE1"
 			min_width: 280

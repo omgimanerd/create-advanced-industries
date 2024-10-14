@@ -21,14 +21,18 @@
 			y: 0.0d
 		}
 		{
+			dependencies: [
+				"28A495EA82777749"
+				"48E2BD9DA3164BFD"
+			]
 			id: "11F54CD0E5709EF8"
 			tasks: [{
 				id: "449978E9B64F8D7D"
 				item: "createcasing:chorium_ingot"
 				type: "item"
 			}]
-			x: 9.0d
-			y: -3.5d
+			x: 12.0d
+			y: -10.0d
 		}
 		{
 			dependencies: ["11F54CD0E5709EF8"]
@@ -39,8 +43,8 @@
 				item: "kubejs:creative_mechanism"
 				type: "item"
 			}]
-			x: 12.0d
-			y: -3.5d
+			x: 16.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["26A153012F13D271"]
@@ -54,8 +58,8 @@
 				}
 				type: "item"
 			}]
-			x: 2.0d
-			y: -6.0d
+			x: 0.0d
+			y: -10.0d
 		}
 		{
 			dependencies: ["2AD39A88E707A885"]
@@ -65,8 +69,8 @@
 				item: "create:shadow_steel"
 				type: "item"
 			}]
-			x: 4.0d
-			y: -5.0d
+			x: 2.0d
+			y: -10.0d
 		}
 		{
 			dependencies: ["2AD39A88E707A885"]
@@ -76,14 +80,11 @@
 				item: "create:refined_radiance"
 				type: "item"
 			}]
-			x: 4.0d
-			y: -6.0d
+			x: 2.0d
+			y: -8.0d
 		}
 		{
-			dependencies: [
-				"19C4086752C5E343"
-				"2BBBC9DE78CBB47B"
-			]
+			dependencies: ["19C4086752C5E343"]
 			icon: "kubejs:chromatic_fluid_bucket"
 			id: "26A153012F13D271"
 			tasks: [
@@ -100,7 +101,7 @@
 			]
 			title: "Chromatic Fluid"
 			x: 0.0d
-			y: -6.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["442E76A8E99688F9"]
@@ -114,27 +115,29 @@
 				type: "observation"
 			}]
 			x: 4.0d
-			y: -4.0d
+			y: -6.0d
 		}
 		{
+			dependencies: ["4069BFCE7C742DAD"]
 			id: "3B2B73F0536813B2"
 			tasks: [{
 				id: "3D6C6D236AF9CE0F"
 				item: "kubejs:empty_music_disc"
 				type: "item"
 			}]
-			x: 9.0d
-			y: -1.5d
+			x: 2.0d
+			y: -2.0d
 		}
 		{
+			dependencies: ["4F876B31FA1CC881"]
 			id: "3F6311178AADCB8E"
 			tasks: [{
 				id: "6C64DF261D8ADEE0"
 				item: "kubejs:empty_disc_fragment"
 				type: "item"
 			}]
-			x: 9.0d
-			y: -0.5d
+			x: 6.0d
+			y: -2.0d
 		}
 		{
 			dependencies: ["2AD39A88E707A885"]
@@ -145,7 +148,7 @@
 				type: "item"
 			}]
 			x: 2.0d
-			y: -4.0d
+			y: -6.0d
 		}
 		{
 			dependencies: [
@@ -159,7 +162,7 @@
 				type: "item"
 			}]
 			x: 4.0d
-			y: 2.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["4069BFCE7C742DAD"]
@@ -176,7 +179,7 @@
 				type: "item"
 			}]
 			x: 2.0d
-			y: -2.0d
+			y: 0.0d
 		}
 		{
 			dependencies: [
@@ -190,7 +193,7 @@
 				type: "item"
 			}]
 			x: 4.0d
-			y: 4.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["55033B2BBF898840"]
@@ -201,7 +204,7 @@
 				type: "item"
 			}]
 			x: 2.0d
-			y: 4.0d
+			y: 6.0d
 		}
 		{
 			dependencies: [
@@ -222,7 +225,7 @@
 				type: "item"
 			}]
 			x: 4.0d
-			y: 0.0d
+			y: 2.0d
 		}
 		{
 			dependencies: ["4069BFCE7C742DAD"]
@@ -239,17 +242,18 @@
 				type: "item"
 			}]
 			x: 2.0d
-			y: 0.0d
+			y: 2.0d
 		}
 		{
+			dependencies: ["3B2B73F0536813B2"]
 			id: "4F876B31FA1CC881"
 			tasks: [{
 				id: "69CA85091858EF24"
 				item: "minecraft:jukebox"
 				type: "item"
 			}]
-			x: 9.0d
-			y: 0.5d
+			x: 4.0d
+			y: -2.0d
 		}
 		{
 			dependencies: ["2595F91A5F57A63B"]
@@ -260,7 +264,7 @@
 				type: "item"
 			}]
 			x: 6.0d
-			y: 4.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["4069BFCE7C742DAD"]
@@ -271,7 +275,7 @@
 				type: "item"
 			}]
 			x: 0.0d
-			y: 4.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["4069BFCE7C742DAD"]
@@ -282,7 +286,7 @@
 				type: "item"
 			}]
 			x: 2.0d
-			y: 2.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["2BBBC9DE78CBB47B"]
@@ -302,7 +306,7 @@
 			]
 			title: "Ink"
 			x: 4.0d
-			y: -2.0d
+			y: 0.0d
 		}
 		{
 			dependencies: ["4069BFCE7C742DAD"]
@@ -322,6 +326,105 @@
 			]
 			title: "Sulfuric Acid"
 			x: 0.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["4069BFCE7C742DAD"]
+			id: "6D5FF2F1C1775AF6"
+			tasks: [{
+				id: "138D446A057F92F1"
+				item: "minecraft:ice"
+				type: "item"
+			}]
+			x: 2.0d
+			y: -4.0d
+		}
+		{
+			dependencies: ["6D5FF2F1C1775AF6"]
+			id: "5C7522587633095B"
+			tasks: [{
+				id: "7DC018E2C073FAD1"
+				item: "minecraft:packed_ice"
+				type: "item"
+			}]
+			x: 4.0d
+			y: -4.0d
+		}
+		{
+			dependencies: ["5C7522587633095B"]
+			id: "72A9B400051E9C47"
+			tasks: [{
+				id: "4F6B7396E8BD7AF0"
+				item: "minecraft:blue_ice"
+				type: "item"
+			}]
+			x: 6.0d
+			y: -4.0d
+		}
+		{
+			dependencies: ["1FE86472FA2F13A3"]
+			id: "28A495EA82777749"
+			tasks: [{
+				id: "21C957B7F691A848"
+				item: "kubejs:tri_steel_plating_semiforged_heated"
+				type: "item"
+			}]
+			x: 10.0d
+			y: -10.0d
+		}
+		{
+			dependencies: ["2465D87B63720747"]
+			id: "1FE86472FA2F13A3"
+			tasks: [{
+				id: "179BE5E3E3C69A76"
+				item: "kubejs:tri_steel_plating_semiforged"
+				type: "item"
+			}]
+			x: 8.0d
+			y: -10.0d
+		}
+		{
+			dependencies: ["5BC492F12DD24AB9"]
+			id: "2465D87B63720747"
+			tasks: [{
+				id: "12F2F63B50BA9B31"
+				item: "kubejs:tri_steel_plating_heated"
+				type: "item"
+			}]
+			x: 6.0d
+			y: -10.0d
+		}
+		{
+			dependencies: ["5ECA2EB53C7BA239"]
+			id: "5BC492F12DD24AB9"
+			tasks: [{
+				id: "7C92EE88E6B0AF6F"
+				item: "kubejs:tri_steel_plating"
+				type: "item"
+			}]
+			x: 4.0d
+			y: -10.0d
+		}
+		{
+			dependencies: ["6CC626B69B8397C3"]
+			id: "48E2BD9DA3164BFD"
+			tasks: [{
+				id: "6CDE2AE3C399F8FF"
+				item: "tfmg:cooling_fluid_bucket"
+				type: "item"
+			}]
+			x: 12.0d
+			y: -4.0d
+		}
+		{
+			dependencies: ["72A9B400051E9C47"]
+			id: "6CC626B69B8397C3"
+			tasks: [{
+				id: "44BEC6CCF56E1D9A"
+				item: "minecraft:snow_block"
+				type: "item"
+			}]
+			x: 8.0d
 			y: -4.0d
 		}
 	]
