@@ -1,4 +1,82 @@
 # Changelog
+Use `git log --format='format:%s' {version}..HEAD | reverse` to generate.
+
+## v0.0.14-playtest
+
+### New Mods / Major Changes
+- Update JEI to v15.20.0.104 to fix incompatibility with AppleSkin.
+- Update Xaero's Minimap to 24.5.0.
+
+### Tweaks and Adjustments
+- Added recipes and items for crafting Creative Storage components from Refined
+  Storage/ExtraStorage.
+- Add textures and recipes for Tri-Steel Plating, a prerequisite item for
+  Creative Mechanisms.
+- Add a mechanic to allow anima essence to spawn mobs when right clicked on the
+  relevant block.
+- Add some alternative recipes for blue ice, snow, and powdered snow.
+- Turn ghast tear recipe into an energized beacon craft instead of a resonance
+  craft.
+- Remove levitation potion ingredient from quantum mechanisms.
+- Add invar spring dependency to vibrational mechanisms.
+- Disable Quark's food tooltip to avoid doubled tooltips with AppleSkin.
+- Add a breaking sound when a diamond saw blade breaks.
+- Overhaul vibrating table recipe and remove all small springs from
+  JEI/crafting.
+- Code health fixes and minor tweaks to make ponders higher quality. Increased
+  text delay time for readability, improved fade in animations.
+- Add a Ponder explaining the vanilla sculk mechanic.
+- Refactor and get rid of all calls to Utils.server.runCommandSilent for sound
+  playing code in favor of level.playSound.
+- Add a pressure chamber alternative to gem upgrade crafting.
+- Add a concrete dependency to logistics mechanisms and update pneumatic
+  assembly platform recipes to require it.
+- Remove TFMG Cement and overhaul concrete mixture recipe to make minecraft
+  concrete.
+- Add a custom Creative Upgrade Smithing Template.
+- Improve note block resonance crafting to have the final craft use different
+  particles and play a the Ars Nouveau enchanting completion noise.
+- Remove control chip and pneumaticcraft drill bits from JEI.
+- Add Dimension Card recipe with quantum mechanism.
+- Add lathing recipe for hollow logs and sawdust recipe from planks. Tweak
+  hollow log recipe to yield 3 sawdust.
+- Remove the regular void steel crafting recipe.
+- Disable spammy chapter completion toasts, add fluid buckets as optional tasks
+  in fluid related quests.
+- Implement Tom's Storage Paint Kit right clicking logic for sheep and blocks.
+- Update Remy the Epicure to also drop his crafting components on death.
+- Minor adjustments to aluminum dust, iron oxide, and dust textures.
+- Add initial scripts and items for Pembi the Artist and painting crafting.
+- Update textures for ender inhibitor, unstable singularity, and magnetic
+  confinement unit.
+- Remove Vintage Improvement's steel rod recipe.
+- Make singularity crafting more energy intensive and add a tooltip to unstable
+  singularities.
+- Add an implement a new item, the Chromatic Bop-Stick, to drain chromatic fluid
+  from colored sheep for Chromatic Compound Crafting.
+
+### Bugfixes
+- Fix a bug in parseTextFormat() that caused the first style to be applied onto
+  all subsequent text.
+- Update recipe catalyst registrations for all custom JEI categories to work
+  with updated JEI version.
+- Fix a bug in energized beacon crafting that made violet corundum crafting
+  impossible.
+- Fix quest titles that use a smart filter as a task prerequisite.
+- Fix some enormously stupid typos that broke void conversion recipes. Fix a bug
+  in void conversion that made stacks of items not convert correctly. Add a
+  particle effect to void conversion.
+- Disable Create's shadow steel in favor of custom void conversion.
+- Disable Create's refined radiance recipe in favor of energizing recipe.
+- Fix liquid bucket quest names.
+- Fix bug in nbt data tooltip for paint kit.
+- Fix typos in all ItemEvents.entityInteracted calls.
+- Fix sound type and hitbox for ender inhibitor.
+- Fix a bug with dragon's breath bottling that resulted in the right click
+  action instantly bottling the dragon's breath.
+- Add a custom honey droplet and edible brownie item to replace the broken one
+  in Create: Sweets and Treats.
+
 
 ## v0.0.13-playtest
 
