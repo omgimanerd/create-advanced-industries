@@ -34,9 +34,9 @@ ServerEvents.recipes((e) => {
         id,
         'kubejs:codex_indestructia',
       ]).modifyResult((grid) => {
-        const outputItem = grid.find(id)
-        outputItem.nbt.putBoolean('Unbreakable', true)
-        return outputItem
+        const inputItem = grid.find(id)
+        inputItem.nbt.putBoolean('Unbreakable', true)
+        return inputItem
       })
     }
   })
