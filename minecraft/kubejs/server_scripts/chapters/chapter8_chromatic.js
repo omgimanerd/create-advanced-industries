@@ -96,7 +96,7 @@ ServerEvents.recipes((e) => {
       ' S', //
       'R ', //
     ],
-    { R: 'tfmg:rebar', S: '#forge:plates/electrum' }
+    { R: 'tfmg:rebar', S: 'createaddition:electrum_sheet' }
   )
   e.shaped(
     filledBopStick,
@@ -107,7 +107,7 @@ ServerEvents.recipes((e) => {
     ],
     {
       R: 'tfmg:rebar',
-      S: '#forge:plates/electrum',
+      S: 'createaddition:electrum_sheet',
       C: 'create:chromatic_compound',
     }
   )

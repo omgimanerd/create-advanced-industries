@@ -43,6 +43,13 @@ ServerEvents.recipes((e) => {
       Item.of('create:chromatic_compound').withChance(2),
     ])
 
+  // Wand of Symmetry requires Refined Radiance
+  e.replaceInput(
+    'create:mechanical_crafting/wand_of_symmetry',
+    'minecraft:ender_pearl',
+    'create:refined_radiance'
+  )
+
   // Cooling Fluid
   create.mixing(Fluid.of('tfmg:cooling_fluid', 250), [
     Fluid.of('createaddition:seed_oil', 250),
@@ -58,9 +65,9 @@ ServerEvents.recipes((e) => {
 
   // Tri-Steel Plating to Chorium Ingot Forging
   create
-    .SequencedAssembly('#forge:plates/shadow_steel')
-    .deploy('#forge:plates/steel')
-    .deploy('#forge:plates/void_steel')
+    .SequencedAssembly('vintageimprovements:shadow_steel_sheet')
+    .deploy('tfmg:heavy_plate')
+    .deploy('createutilities:void_steel_sheet')
     .curve(V_SHAPED_CURVING_HEAD)
     .press(2)
     .outputs('kubejs:tri_steel_plating')

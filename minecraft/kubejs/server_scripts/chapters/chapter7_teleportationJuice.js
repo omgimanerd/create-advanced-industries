@@ -69,7 +69,7 @@ ServerEvents.recipes((e) => {
       R: 'kubejs:resonant_ender_pearl',
       E: '#forge:rods/enderium',
       M: VIBRATION_MECHANISM,
-      A: '#forge:plates/aluminum',
+      A: 'vintageimprovements:aluminum_sheet',
       V: 'createutilities:void_casing',
     }
   )

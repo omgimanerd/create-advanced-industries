@@ -77,7 +77,7 @@ ServerEvents.recipes((e) => {
     ],
     {
       P: 'pneumaticcraft:printed_circuit_board',
-      A: '#forge:plates/aluminum',
+      A: 'vintageimprovements:aluminum_sheet',
       L: 'kubejs:logistics_mechanism',
       M: 'create_new_age:netherite_magnet',
     }

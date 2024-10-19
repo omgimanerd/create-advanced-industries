@@ -694,9 +694,9 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'pneumaticcraft:pressure_chamber/capacitor' })
   create
     .SequencedAssembly('kubejs:silicon_wafer', 'kubejs:intermediate_capacitor')
-    .deploy('#forge:plates/silver')
+    .deploy('vintageimprovements:silver_sheet')
     .deploy('pneumaticcraft:plastic')
-    .deploy('#forge:plates/silver')
+    .deploy('vintageimprovements:silver_sheet')
     .press()
     .outputs('4x pneumaticcraft:capacitor')
 

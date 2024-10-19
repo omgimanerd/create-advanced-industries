@@ -49,7 +49,7 @@ ServerEvents.recipes((e) => {
       'PPP', //
     ],
     {
-      P: '#forge:plates/shadow_steel',
+      P: 'vintageimprovements:shadow_steel_sheet',
       M: CREATIVE_MECHANISM,
       T: 'minecraft:netherite_upgrade_smithing_template',
     }
