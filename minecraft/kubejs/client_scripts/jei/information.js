@@ -47,9 +47,9 @@ JEIEvents.information((e) => {
     )
   )
 
-  // Unframed Canvas
+  // Paintings
   e.addItem(
-    'kubejs:unframed_canvas',
-    Text.of('Can also be obtained by giving canvas to Pembi the Artist.')
+    'minecraft:painting',
+    Text.of('Give paint kits and canvas to Pembi the Artist.')
   )
 })
