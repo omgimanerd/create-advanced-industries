@@ -267,7 +267,7 @@ ServerEvents.recipes((e) => {
       'SQS', //
     ],
     {
-      S: '#forge:plates/netherite',
+      S: 'vintageimprovements:netherite_sheet',
       M: LOGISTICS_MECHANISM,
       T: 'toms_storage:ts.wireless_terminal',
       Q: QUANTUM_MECHANISM,

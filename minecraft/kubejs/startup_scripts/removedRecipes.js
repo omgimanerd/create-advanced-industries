@@ -34,6 +34,7 @@ global.removedRecipes = [
   { output: /^createdeco:[a-z_]+_coin$/ },
   { output: /^createdeco:[a-z_]+_coinstack$/ },
   { output: 'createdeco:netherite_nugget' },
+  { output: 'createdeco:netherite_sheet' },
   { output: 'createcasing:creative_mixer' },
   { output: 'createcasing:creative_press' },
   { output: 'createcasing:creative_depot' },
@@ -148,7 +149,6 @@ global.removedRecipes = [
   // Duplicated sheets that aren't needed
   { output: 'vintageimprovements:andesite_sheet' },
   { output: 'vintageimprovements:cast_iron_sheet' },
-  { output: 'vintageimprovements:netherite_sheet' },
   { output: 'vintageimprovements:zinc_sheet' },
   // Remove CVI Steel Rod in favor of using TFMG's rebar
   { output: 'vintageimprovements:steel_rod' },
