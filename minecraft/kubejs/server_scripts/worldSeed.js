@@ -11,6 +11,13 @@ ServerEvents.recipes(() => {
   }
 })
 
+// Send the world seed to players when they log in.
+PlayerEvents.loggedIn((e) => {
+  e.player.sendData('worldSeed', {
+    worldSeed: global.WORLD_SEED,
+  })
+})
+
 // This only fires the first time a world is loaded into. Logging out and in
 // does not trigger the event.
 ServerEvents.loaded((e) => {
