@@ -96,7 +96,7 @@ ServerEvents.recipes((e) => {
       ' S', //
       'R ', //
     ],
-    { R: 'tfmg:rebar', S: '#forge:sheets/electrum' }
+    { R: 'tfmg:rebar', S: '#forge:plates/electrum' }
   )
   e.shaped(
     filledBopStick,
