@@ -1,0 +1,13 @@
+filename = 'portfolio-1.20.1-1.4.0-forge.jar'
+name = 'Portfolio'
+side = 'both'
+
+[download]
+hash = 'a81944099b81d3872199073b018c2db8fa435890'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 5654124
+project-id = 851131
