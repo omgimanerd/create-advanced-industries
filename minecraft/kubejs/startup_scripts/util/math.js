@@ -79,6 +79,81 @@ global.exponential = (a, b, c, d) => {
 }
 
 /**
+ * Generates an alias table using the Vose Alias method and returns a closure
+ * that returns a random key from the given table at the given probability each
+ * time it is called.
+ *
+ * https://www.keithschwarz.com/darts-dice-coins/
+ *
+ * Transcribed from Java implementation:
+ * https://www.keithschwarz.com/interesting/code/?dir=alias-method
+ *
+ * @param {{ any : number }} m A mapping of values to integral selection weights
+ * @returns {() => any}
+ */
+global.getVoseAliasSampler = (m) => {
+  // Depends on the deterministic iteration order across object m
+  const keys = Object.keys(m)
+  const weights = Object.values(m)
+  const size = keys.length
+  const weightSum = weights.reduce((acc, v) => acc + v)
+  // Convert the weights to fractional probabilities
+  const probabilities = weights.map((v) => v / weightSum)
+
+  // Create empty probability and alias lookup tables
+  const probability = Array(size)
+  const alias = Array(size)
+
+  // Compute the average probability with size discrete buckets
+  const average = 1 / size
+
+  // Small and large worktables for the Vose Alias method, push the index of the
+  // probability
+  const small = []
+  const large = []
+  probabilities.forEach((p, i) => {
+    if (p >= average) {
+      large.push(i)
+    } else {
+      small.push(i)
+    }
+  })
+
+  // Pair together small and large elements to populate the probability table
+  while (small.length > 0 && large.length > 0) {
+    let less = small.pop()
+    let more = large.pop()
+    // Scale the probability up by the number of probabilities such that 1 /
+    // size has weight 1.0 in the distribution
+    probability[less] *= size
+    alias[less] = more
+    // Decrease the probability of the larger bucket by the amount allocated to
+    // the alias table.
+    probabilities[more] += probabilities[less] - average
+    // Add the new probability to the correct list.
+    if (probabilities[more] >= average) {
+      large.push(more)
+    } else {
+      small.push(more)
+    }
+  }
+
+  // Floating point precision leaves entries in one list, meaning the remaining
+  // probabilities are 1 / n. Add the remaining values to the probability
+  // lookup table.
+  small.concat(large).forEach((v) => {
+    probability[v] = 1
+  })
+
+  // Return a closure that will return a key with the correct probability
+  return () => {
+    const column = Math.floor(Math.random() * size)
+    const coinToss = Math.random() < probability[column]
+    return keys[coinToss ? column : alias[column]]
+  }
+}
+
+/**
  * Returns the linear interpolation of a given value from one range to another.
  * @param {number} x The value to interpolate
  * @param {number} min The min value of the range to lerp from
