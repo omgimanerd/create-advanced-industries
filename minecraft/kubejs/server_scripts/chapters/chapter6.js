@@ -150,7 +150,7 @@ ServerEvents.recipes((e) => {
     'ars_nouveau:glyph_extend_time',
   ]).modifyResult((grid) => {
     const currentGrains = grid.find('gag:time_sand_pouch').nbt.getInt('grains')
-    return Item.of('gag:time_sand_pouch', `{grains:${currentGrains + 1000}}`)
+    return Item.of('gag:time_sand_pouch', { grains: currentGrains + 1000 })
   })
 
   // Apotheosis Gem Fused Slates
