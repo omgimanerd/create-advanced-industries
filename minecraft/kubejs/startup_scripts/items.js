@@ -104,11 +104,9 @@ StartupEvents.registry('item', (e) => {
     .tooltip(Text.green('Summons a epicure named Remy!'))
 
   // Tome for making items unbreakable.
-  e.create('kubejs:codex_indestructia')
-    .texture(getTextureLocation('quark:ancient_tome'))
-    .glow(true)
-    .displayName('Codex Indestructia')
-    .tooltip(Text.green('Craft together with a tool to make it unbreakable.'))
+  registerItem('kubejs:codex_indestructia').tooltip(
+    Text.green('Craft together with a tool to make it unbreakable.')
+  )
 
   // Elemental air gem
   registerItem('kubejs:topaz')
