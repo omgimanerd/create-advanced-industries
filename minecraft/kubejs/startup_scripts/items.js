@@ -249,37 +249,48 @@ StartupEvents.registry('item', (e) => {
     .fireResistant()
 
   // Tri-Steel Plating
-  const baseName = global.parseTextFormat(
-    '<darkAqua>T</darkAqua><gray>r</gray><darkGray>i</darkGray>-Steel Plating'
-  )
-  e.create('kubejs:tri_steel_plating')
-    .formattedDisplayName(baseName)
-    .fireResistant()
-  e.create('kubejs:tri_steel_plating_heated')
-    .formattedDisplayName(
-      baseName.copy().append(global.parseTextFormat(' (<red>heated</red>)'))
-    )
-    .glow(true)
-    .fireResistant()
-  e.create('kubejs:tri_steel_plating_semiforged').formattedDisplayName(
-    baseName
-      .copy()
-      .append(
-        global.parseTextFormat(' (<lightPurple>semi-forged</lightPurple>)')
+  {
+    let triSteelColors = ['darkAqua', 'gray', 'darkGray']
+    let baseNameText = ''
+    let i = 0
+    for (const char of 'Tri-Steel Plating'.split('')) {
+      if (char === ' ') {
+        baseNameText += char
+        continue
+      }
+      let color = triSteelColors[i++ % triSteelColors.length]
+      baseNameText += `<${color}>${char}</${color}>`
+    }
+    let baseName = global.parseTextFormat(baseNameText)
+    e.create('kubejs:tri_steel_plating')
+      .formattedDisplayName(baseName)
+      .fireResistant()
+    e.create('kubejs:tri_steel_plating_heated')
+      .formattedDisplayName(
+        baseName.copy().append(global.parseTextFormat(' (<red>heated</red>)'))
       )
-  )
-  e.create('kubejs:tri_steel_plating_semiforged_heated')
-    .formattedDisplayName(
+      .glow(true)
+      .fireResistant()
+    e.create('kubejs:tri_steel_plating_semiforged').formattedDisplayName(
       baseName
         .copy()
         .append(
-          global.parseTextFormat(
-            ' (<lightPurple>semi-forged</lightPurple>, <red>heated</red>)'
-          )
+          global.parseTextFormat(' (<lightPurple>semi-forged</lightPurple>)')
         )
     )
-    .glow(true)
-    .fireResistant()
+    e.create('kubejs:tri_steel_plating_semiforged_heated')
+      .formattedDisplayName(
+        baseName
+          .copy()
+          .append(
+            global.parseTextFormat(
+              ' (<lightPurple>semi-forged</lightPurple>, <red>heated</red>)'
+            )
+          )
+      )
+      .glow(true)
+      .fireResistant()
+  }
 
   // Creative Storage Part
   registerItem('kubejs:creative_storage_part')
