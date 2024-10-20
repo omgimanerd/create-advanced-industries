@@ -51,6 +51,7 @@ ServerEvents.recipes((e) => {
   )
 
   // Cooling Fluid
+  e.remove({ id: 'tfmg:mixing/cooling_fluid' })
   create.mixing(Fluid.of('tfmg:cooling_fluid', 250), [
     Fluid.of('createaddition:seed_oil', 250),
     'thermal:blizz_powder',
