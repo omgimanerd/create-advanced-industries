@@ -46,16 +46,16 @@ const tooltipHelper = (e, item, options) => {
   }
 
   e.addAdvanced(item, (itemstack, advanced, text) => {
-    let last = []
+    let advancedTooltips = []
     // Last element is the id if advanced tooltips are enabled. Store this and
     // add it back on at the end.
     if (advanced) {
       // If the itemstack has nbt data, then the number of tags will be present
       // in the tooltip.
       if (itemstack.nbt !== null) {
-        last.push(text.remove(text.size() - 1))
+        advancedTooltips.push(text.remove(text.size() - 1))
       }
-      last.push(text.remove(text.size() - 1))
+      advancedTooltips.push(text.remove(text.size() - 1))
     }
 
     // If enabled, remove all tooltip elements except the first, which is the
@@ -70,9 +70,8 @@ const tooltipHelper = (e, item, options) => {
     addText(text, e.shift ? shiftText : unShiftText)
     addText(text, e.alt ? altText : unAltText)
 
-    for (const element of last.reverse()) {
-      text.add(element)
-    }
+    // Add back the advanced tooltips.
+    advancedTooltips.reverse().forEach((tooltip) => text.add(tooltip))
   })
 }
 
