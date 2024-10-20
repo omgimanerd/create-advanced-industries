@@ -59,6 +59,7 @@
   /**
    * Event handler for interacting with Pembi the Artist
    */
+  let paintingVariantGenerator = null
   ItemEvents.entityInteracted((e) => {
     const { item, hand, level, player, server, target } = e
     if (hand !== 'main_hand') return
@@ -92,9 +93,11 @@
         target.persistentData.putInt('paintLevel', paintLevel - 1)
       }
       // Select a painting variant.
-      let paintingVariant = global.choice(
-        Utils.getRegistryIds('painting_variant')
-      )
+      if (paintingVariantGenerator === null) {
+        let distribution = global.getPaintingWeightDistribution()
+        paintingVariantGenerator = global.getVoseAliasSampler(distribution)
+      }
+      let paintingVariant = paintingVariantGenerator()
       item.shrink(1)
       target.block.popItemFromFace(getPainting(paintingVariant), 'up')
       repeat(server, 5, 1, () => {
