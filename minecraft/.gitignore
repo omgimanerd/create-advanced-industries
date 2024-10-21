@@ -3,9 +3,10 @@
 .vscode/
 
 backups/
+fancymenu_data/
 
-config/jei/world/*
-config/fancymenu/fancymenu_data/*
+config/jei/world/
+config/fancymenu/fancymenu_data/
 
 config/embeddium-fingerprint.json
 config/packetfixer.properties
