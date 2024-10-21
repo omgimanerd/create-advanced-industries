@@ -4,7 +4,8 @@
 
 backups/
 
-config/jei/world/
+config/jei/world/*
+config/fancymenu/fancymenu_data/*
 
 config/embeddium-fingerprint.json
 config/packetfixer.properties
