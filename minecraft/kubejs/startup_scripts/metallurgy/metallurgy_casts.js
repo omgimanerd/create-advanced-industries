@@ -21,18 +21,9 @@ const registerCast = (e, id, displayName, modelJson) => {
     .tagBlock('minecraft:mineable/pickaxe')
     .tagBlock('create:wrench_pickup')
     .item((item) => {
+      // Do not tag this create:upright_on_belt or create:upright_on_deployer
       item.modelJson(modelJson).maxStackSize(8)
     })
-  // let variants = {}
-  // for (let rotation = 0; rotation < 16; ++rotation) {
-  //   variants[`rotation=${rotation}`] = {
-  //     model: 'kubejs:block/base_ingot_cast',
-  //     y: (rotation * 360) / 16,
-  //   }
-  // }
-  // block.blockstateJson = {
-  //   variants: variants,
-  // }
   block.modelJson = modelJson
   return block
 }
