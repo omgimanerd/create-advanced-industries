@@ -5,6 +5,7 @@
 	disable_toast: true
 	filename: "chapter_8_creative_mechanisms"
 	group: "5B3547AEADCBC841"
+	icon: "kubejs:creative_mechanism"
 	id: "77BC80845733BF38"
 	order_index: 9
 	quest_links: [ ]
@@ -182,20 +183,6 @@
 			y: 0.0d
 		}
 		{
-			dependencies: [
-				"0997250298CBFB8F"
-				"1CD12A052C65190A"
-			]
-			id: "2595F91A5F57A63B"
-			tasks: [{
-				id: "1E74AC8167A91BBD"
-				item: "kubejs:unframed_canvas"
-				type: "item"
-			}]
-			x: 4.0d
-			y: 6.0d
-		}
-		{
 			dependencies: ["55033B2BBF898840"]
 			id: "1CD12A052C65190A"
 			tasks: [{
@@ -256,14 +243,17 @@
 			y: -2.0d
 		}
 		{
-			dependencies: ["2595F91A5F57A63B"]
+			dependencies: [
+				"0997250298CBFB8F"
+				"1CD12A052C65190A"
+			]
 			id: "73F5B4664D8238C4"
 			tasks: [{
 				id: "13C32142A3A9AA1F"
 				item: "minecraft:painting"
 				type: "item"
 			}]
-			x: 6.0d
+			x: 4.0d
 			y: 6.0d
 		}
 		{

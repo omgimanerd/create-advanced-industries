@@ -68,7 +68,7 @@
 			}]
 			title: "Complete: Quantum Mechanisms"
 			x: 16.0d
-			y: -2.0d
+			y: 0.0d
 		}
 		{
 			dependencies: ["5118C68CFF84C19C"]
@@ -80,7 +80,7 @@
 				type: "item"
 			}]
 			x: 12.0d
-			y: -2.0d
+			y: 0.0d
 		}
 		{
 			dependencies: [
@@ -95,7 +95,7 @@
 				type: "item"
 			}]
 			x: 20.0d
-			y: -6.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["181130507B8EAB31"]
@@ -107,7 +107,7 @@
 				type: "item"
 			}]
 			x: 10.0d
-			y: -6.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["271A91265ACE5851"]
@@ -124,7 +124,7 @@
 			}]
 			title: "Find a Dormant Vent"
 			x: 0.0d
-			y: 8.0d
+			y: 10.0d
 		}
 		{
 			dependencies: ["5EA0A56E4C6E4C4F"]
@@ -141,7 +141,7 @@
 			}]
 			title: "Activating a Molten Vent"
 			x: 2.0d
-			y: 8.0d
+			y: 10.0d
 		}
 		{
 			dependencies: ["6293CBBC76D73F05"]
@@ -153,7 +153,7 @@
 				type: "item"
 			}]
 			x: 4.0d
-			y: 4.0d
+			y: 6.0d
 		}
 		{
 			dependencies: [
@@ -168,7 +168,7 @@
 				type: "item"
 			}]
 			x: 6.0d
-			y: -4.0d
+			y: -2.0d
 		}
 		{
 			dependencies: [
@@ -183,7 +183,7 @@
 				type: "item"
 			}]
 			x: 14.0d
-			y: -6.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["56A24AF47C360AC9"]
@@ -199,7 +199,7 @@
 				type: "item"
 			}]
 			x: 16.0d
-			y: 0.0d
+			y: 2.0d
 		}
 		{
 			dependencies: ["3832D225F6D0C417"]
@@ -211,7 +211,7 @@
 				type: "item"
 			}]
 			x: 10.0d
-			y: 0.0d
+			y: 2.0d
 		}
 		{
 			dependencies: [
@@ -227,7 +227,7 @@
 				type: "item"
 			}]
 			x: 8.0d
-			y: 0.0d
+			y: 2.0d
 		}
 		{
 			dependencies: ["6A59EF7246F87789"]
@@ -239,7 +239,7 @@
 				type: "item"
 			}]
 			x: 10.0d
-			y: 4.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["177A034E2C455510"]
@@ -251,7 +251,7 @@
 				type: "item"
 			}]
 			x: 6.0d
-			y: 4.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["554804ECF1EC02C8"]
@@ -267,7 +267,7 @@
 				type: "item"
 			}]
 			x: 8.0d
-			y: 4.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["271A91265ACE5851"]
@@ -291,7 +291,7 @@
 				type: "item"
 			}]
 			x: 4.0d
-			y: -2.0d
+			y: 0.0d
 		}
 		{
 			dependencies: ["2D68C948FA0CB936"]
@@ -303,7 +303,7 @@
 				type: "item"
 			}]
 			x: 6.0d
-			y: -2.0d
+			y: 0.0d
 		}
 		{
 			dependencies: ["54D083CDD9336399"]
@@ -316,7 +316,7 @@
 				type: "item"
 			}]
 			x: 10.0d
-			y: -2.0d
+			y: 0.0d
 		}
 		{
 			dependencies: ["271A91265ACE5851"]
@@ -328,7 +328,7 @@
 				type: "item"
 			}]
 			x: 2.0d
-			y: -2.0d
+			y: 0.0d
 		}
 		{
 			dependencies: ["271A91265ACE5851"]
@@ -340,7 +340,7 @@
 				type: "item"
 			}]
 			x: 2.0d
-			y: 0.0d
+			y: 2.0d
 		}
 		{
 			dependencies: ["271A91265ACE5851"]
@@ -352,7 +352,7 @@
 				type: "item"
 			}]
 			x: 2.0d
-			y: -6.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["2F70978FF48B905A"]
@@ -373,7 +373,7 @@
 			]
 			title: "Molten Redstone"
 			x: 4.0d
-			y: -6.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["2C8BDCCE49CD6DBC"]
@@ -394,7 +394,7 @@
 			]
 			title: "Destabilized Redstone"
 			x: 6.0d
-			y: -6.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["4667FF99D0ED1BE1"]
@@ -410,7 +410,7 @@
 				type: "item"
 			}]
 			x: 8.0d
-			y: -6.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["2C8BDCCE49CD6DBC"]
@@ -431,8 +431,8 @@
 				}
 				type: "item"
 			}]
-			x: 4.0d
-			y: -7.0d
+			x: 6.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["0B8142C492A37CAB"]
@@ -443,8 +443,8 @@
 				item: "kubejs:inert_potion_residue"
 				type: "item"
 			}]
-			x: 6.0d
-			y: -7.0d
+			x: 8.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["09550BF1249B9570"]
@@ -455,8 +455,8 @@
 				item: "ars_nouveau:abjuration_essence"
 				type: "item"
 			}]
-			x: 8.0d
-			y: -7.0d
+			x: 10.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["24C1F849823D87CB"]
@@ -473,8 +473,8 @@
 				}
 				type: "item"
 			}]
-			x: 10.0d
-			y: -7.0d
+			x: 12.0d
+			y: -6.0d
 		}
 		{
 			dependencies: [
@@ -493,7 +493,7 @@
 				item: "kubejs:energized_glowstone"
 				type: "item"
 			}]
-			x: 10.0d
+			x: 14.0d
 			y: -8.0d
 		}
 		{
@@ -509,7 +509,7 @@
 				type: "item"
 			}]
 			x: 12.0d
-			y: -6.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["1ED09B0DF667E2FB"]
@@ -521,7 +521,7 @@
 				type: "item"
 			}]
 			x: 12.0d
-			y: 6.0d
+			y: 8.0d
 		}
 		{
 			dependencies: ["35C77AF9EEF326C9"]
@@ -533,7 +533,7 @@
 				type: "item"
 			}]
 			x: 6.0d
-			y: 6.0d
+			y: 8.0d
 		}
 		{
 			dependencies: ["271A91265ACE5851"]
@@ -546,7 +546,7 @@
 			}]
 			title: "Lava"
 			x: 2.0d
-			y: 6.0d
+			y: 8.0d
 		}
 		{
 			dependencies: ["4C6BCD93DEA0B7DC"]
@@ -558,7 +558,7 @@
 				type: "item"
 			}]
 			x: 4.0d
-			y: 6.0d
+			y: 8.0d
 		}
 		{
 			dependencies: [
@@ -586,7 +586,7 @@
 			}]
 			title: "Create Stones"
 			x: 4.0d
-			y: 8.0d
+			y: 10.0d
 		}
 		{
 			dependencies: [
@@ -601,7 +601,7 @@
 				type: "item"
 			}]
 			x: 8.0d
-			y: 6.0d
+			y: 8.0d
 		}
 		{
 			dependencies: ["04F20036D8172501"]
@@ -626,7 +626,7 @@
 			}]
 			title: "Raw Ores"
 			x: 10.0d
-			y: 8.0d
+			y: 10.0d
 		}
 		{
 			dependencies: ["2582523C7629E8F4"]
@@ -638,7 +638,7 @@
 				type: "item"
 			}]
 			x: 10.0d
-			y: 6.0d
+			y: 8.0d
 		}
 		{
 			dependencies: ["271A91265ACE5851"]
@@ -650,7 +650,7 @@
 				type: "item"
 			}]
 			x: 2.0d
-			y: 4.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["6DBFC6E2B2B08D29"]
@@ -662,7 +662,7 @@
 				type: "item"
 			}]
 			x: 14.0d
-			y: -2.0d
+			y: 0.0d
 		}
 		{
 			dependencies: ["58B39574A3117D0D"]
@@ -679,7 +679,7 @@
 				type: "item"
 			}]
 			x: 16.0d
-			y: 4.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["19F1809E10BAAC61"]
@@ -700,7 +700,7 @@
 			}]
 			title: "Crushed Create Stones"
 			x: 8.0d
-			y: 8.0d
+			y: 10.0d
 		}
 		{
 			dependencies: ["54EC972BADC3BEFA"]
@@ -731,7 +731,7 @@
 				type: "item"
 			}]
 			x: 4.0d
-			y: -4.0d
+			y: -2.0d
 		}
 		{
 			dependencies: [
@@ -751,7 +751,7 @@
 				type: "item"
 			}]
 			x: 12.0d
-			y: 4.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["5C74FBA414C21479"]
@@ -771,7 +771,7 @@
 			]
 			title: "Teleportation Juice"
 			x: 14.0d
-			y: 4.0d
+			y: 6.0d
 		}
 		{
 			dependencies: [
@@ -793,7 +793,7 @@
 				type: "item"
 			}]
 			x: 18.0d
-			y: 6.0d
+			y: 8.0d
 		}
 		{
 			dependencies: ["573A0CF01DCF191C"]
@@ -805,7 +805,7 @@
 				type: "item"
 			}]
 			x: 16.0d
-			y: 6.0d
+			y: 8.0d
 		}
 		{
 			dependencies: ["029D7DEF789032E4"]
@@ -817,7 +817,7 @@
 				type: "item"
 			}]
 			x: 14.0d
-			y: 6.0d
+			y: 8.0d
 		}
 		{
 			dependencies: ["47959ED668B51DD0"]
@@ -829,7 +829,7 @@
 				type: "item"
 			}]
 			x: 20.0d
-			y: 8.0d
+			y: 10.0d
 		}
 		{
 			dependencies: [
@@ -851,7 +851,7 @@
 				type: "item"
 			}]
 			x: 18.0d
-			y: -4.0d
+			y: -2.0d
 		}
 		{
 			dependencies: ["29D5CED6D2FC7E91"]
@@ -863,7 +863,7 @@
 				type: "item"
 			}]
 			x: 18.0d
-			y: -6.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["63309E3BF39A0E24"]
@@ -875,7 +875,7 @@
 				type: "item"
 			}]
 			x: 16.0d
-			y: -6.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["5BA8FDECCF51342E"]
@@ -896,7 +896,7 @@
 			]
 			title: "Resonant Ender"
 			x: 8.0d
-			y: -2.0d
+			y: 0.0d
 		}
 		{
 			dependencies: ["69D09EB30178ABF9"]
@@ -929,7 +929,7 @@
 				type: "item"
 			}]
 			x: 6.0d
-			y: 2.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["271A91265ACE5851"]
@@ -941,7 +941,7 @@
 				type: "item"
 			}]
 			x: 2.0d
-			y: 2.0d
+			y: 4.0d
 		}
 	]
 	title: "Chapter 7: Quantum Mechanisms"
