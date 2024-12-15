@@ -35,6 +35,7 @@ JEIEvents.addItems((e) => {
   e.add('thermal:drill_head')
   e.add('thermal:saw_blade')
   e.add('vintageimprovements:refined_radiance_rod')
+  e.add('vintageimprovements:refined_radiance_sheet')
   e.add('vintageimprovements:shadow_steel_sheet')
 })
 

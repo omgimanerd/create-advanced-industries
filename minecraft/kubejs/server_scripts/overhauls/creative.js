@@ -67,12 +67,13 @@ ServerEvents.recipes((e) => {
   create.mechanical_crafting(
     'create:handheld_worldshaper',
     [
-      '  SSS', //
+      '  SRS', //
       'MCB  ', //
-      'I SSS', //
+      'I SRS', //
     ],
     {
-      S: 'tfmg:steel_ingot',
+      S: 'tfmg:heavy_plate',
+      R: 'vintageimprovements:refined_radiance_sheet',
       M: 'create:creative_motor',
       C: 'create:creative_crate',
       B: 'minecraft:beacon',
@@ -232,6 +233,24 @@ ServerEvents.recipes((e) => {
     }
   )
 
+  // Creative Grids
+  wrappedCreativeRecipe(
+    'refinedstorage:creative_portable_grid',
+    'refinedstorage:portable_grid'
+  )
+  wrappedCreativeRecipe(
+    'refinedstorage:creative_wireless_grid',
+    'refinedstorage:wireless_grid'
+  )
+  wrappedCreativeRecipe(
+    'refinedstorage:creative_wireless_fluid_grid',
+    'refinedstorage:wireless_fluid_grid'
+  )
+  wrappedCreativeRecipe(
+    'refinedstorage:creative_wireless_crafting_monitor',
+    'refinedstorage:wireless_crafting_monitor'
+  )
+
   // Creative Storage Block
   e.shaped(
     'refinedstorage:creative_storage_block',
@@ -270,23 +289,8 @@ ServerEvents.recipes((e) => {
     'refinedstorage:controller'
   )
 
-  // Creative Grids
-  wrappedCreativeRecipe(
-    'refinedstorage:creative_portable_grid',
-    'refinedstorage:portable_grid'
-  )
-  wrappedCreativeRecipe(
-    'refinedstorage:creative_wireless_grid',
-    'refinedstorage:wireless_grid'
-  )
-  wrappedCreativeRecipe(
-    'refinedstorage:creative_wireless_fluid_grid',
-    'refinedstorage:wireless_fluid_grid'
-  )
-  wrappedCreativeRecipe(
-    'refinedstorage:creative_wireless_crafting_monitor',
-    'refinedstorage:wireless_crafting_monitor'
-  )
+  // Creative Flux Efficiency
+  // Creative Reclamation Chamber
 
   // Creative Wireless Universal Grid
   wrappedCreativeRecipe(

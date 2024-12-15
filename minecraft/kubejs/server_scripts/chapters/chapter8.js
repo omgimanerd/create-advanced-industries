@@ -89,6 +89,7 @@ ServerEvents.recipes((e) => {
   create
     .SequencedAssembly('kubejs:tri_steel_plating_semiforged_heated')
     .fill(Fluid.of('tfmg:cooling_fluid', 250))
+    .fill(Fluid.of('kubejs:infused_dragon_breath', 250))
     .fill(Fluid.of('kubejs:chromatic_fluid', 250))
     .loops(4)
     .outputs('createcasing:chorium_ingot')
