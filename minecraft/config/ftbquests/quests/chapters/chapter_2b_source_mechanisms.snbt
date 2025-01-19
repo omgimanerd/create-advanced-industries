@@ -272,7 +272,11 @@
 		}
 		{
 			dependencies: ["2D631BA672D51409"]
-			description: ["Did you notice that sourceberries can be turned into purple dye?"]
+			description: [
+				"Did you notice that sourceberries can be turned into purple dye?"
+				""
+				"This seems like it'll be useful for something else."
+			]
 			id: "28C447E9EC8688EC"
 			invisible: true
 			rewards: [{
