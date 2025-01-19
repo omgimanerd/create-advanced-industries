@@ -22,6 +22,9 @@ ServerEvents.recipes((e) => {
     )
   }
 
+  // Sourceberries can also be mixed into purple dye.
+  create.mixing('minecraft:purple_dye', 'ars_nouveau:sourceberry_bush')
+
   // Source fluid to source conversion should be 1:1
   e.remove({ type: 'starbunclemania:fluid_sourcelink' })
   e.custom({

@@ -270,6 +270,25 @@
 			x: 5.0d
 			y: -7.5d
 		}
+		{
+			dependencies: ["2D631BA672D51409"]
+			description: ["Did you notice that sourceberries can be turned into purple dye?"]
+			id: "28C447E9EC8688EC"
+			invisible: true
+			rewards: [{
+				count: 4
+				id: "085E50B76560DA1B"
+				item: "create:millstone"
+				type: "item"
+			}]
+			tasks: [{
+				id: "583BA28FD4BABA87"
+				item: "minecraft:purple_dye"
+				type: "item"
+			}]
+			x: 2.5d
+			y: 0.0d
+		}
 	]
 	title: "Chapter 2b: Source Mechanisms"
 }
