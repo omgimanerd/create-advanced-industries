@@ -27,7 +27,7 @@ EntityEvents.spawned('minecraft:item', (e) => {
     level.server,
     /*duration*/ 100,
     /*interval*/ 2,
-    (/** @type {Internal.ScheduledEvents$ScheduledEvent} */ c) => {
+    /*cb*/ (/** @type {Internal.ScheduledEvents$ScheduledEvent} */ c) => {
       const block = entity.block
       // Check the block space
       if (block.id !== 'minecraft:air') {
@@ -60,7 +60,7 @@ EntityEvents.spawned('minecraft:item', (e) => {
       block.popItem('kubejs:singularity')
       c.clear()
     },
-    discard
+    /*done*/ discard
   )
 })
 
