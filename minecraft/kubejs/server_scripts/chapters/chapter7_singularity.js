@@ -72,7 +72,7 @@ ServerEvents.recipes((e) => {
     'kubejs:magnetic_confinement_unit',
     [
       'PAAAAAP', //
-      'LAM MAL', //
+      'LMBTBML', //
       'PAAAAAP', //
     ],
     {
@@ -80,6 +80,8 @@ ServerEvents.recipes((e) => {
       A: 'vintageimprovements:aluminum_sheet',
       L: 'kubejs:logistics_mechanism',
       M: 'create_new_age:netherite_magnet',
+      B: 'minecraft:beacon',
+      T: 'kubejs:tesseract',
     }
   )
   create

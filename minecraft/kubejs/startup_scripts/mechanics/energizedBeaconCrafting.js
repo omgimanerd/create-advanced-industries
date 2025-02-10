@@ -185,6 +185,15 @@ global.CorundumClusterMapping = {
     energy: 1000,
   })
 
+  // Tesseracts
+  global.EnergizedBeaconCraftingRecipes.push({
+    ingredient: 'minecraft:end_crystal',
+    results: 'kubejs:tesseract',
+    redirectorBlock: global.CorundumClusterMapping.white.cluster,
+    beaconColor: global.CorundumClusterMapping.white.beaconColor,
+    energy: 5000,
+  })
+
   // Magnetic Confinement Units for Antimatter
   global.EnergizedBeaconCraftingRecipes.push({
     ingredient: 'kubejs:magnetic_confinement_unit_filled',

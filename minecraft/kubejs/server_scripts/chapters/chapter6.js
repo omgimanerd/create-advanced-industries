@@ -487,6 +487,13 @@ ServerEvents.recipes((e) => {
     .deploy('minecraft:diamond_block')
     .deploy('minecraft:glass')
     .outputs('minecraft:beacon')
+  create
+    .SequencedAssembly('minecraft:obsidian')
+    .press()
+    .deploy('kubejs:tesseract')
+    .deploy('minecraft:diamond_block')
+    .deploy('minecraft:glass')
+    .outputs('4x minecraft:beacon')
 
   // Final Vibration Mechanism craft
   e.remove({ id: 'create_things_and_misc:vibration_mecanism_craft' })
@@ -504,6 +511,4 @@ ServerEvents.recipes((e) => {
     .deploy('vintageimprovements:invar_spring')
     .vibrate(200)
     .outputs(VIBRATION_MECHANISM)
-
-  // TODO alternative uses for infused dragon's breath
 })

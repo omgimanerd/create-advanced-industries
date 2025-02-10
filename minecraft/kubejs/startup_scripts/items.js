@@ -192,6 +192,9 @@ StartupEvents.registry('item', (e) => {
     )
   })
 
+  // Tesseracts
+  registerItem('kubejs:tesseract')
+
   // Fish hook, fishing rod component
   registerItem('kubejs:fish_hook')
 
@@ -209,9 +212,6 @@ StartupEvents.registry('item', (e) => {
   // Shattered ender pearl
   registerItem('kubejs:shattered_ender_pearl')
   registerItem('kubejs:redstone_pearl')
-
-  // Tesseracts
-  registerItem('kubejs:tesseract')
 
   // Quantum chips
   registerItem('kubejs:quantum_chip')
