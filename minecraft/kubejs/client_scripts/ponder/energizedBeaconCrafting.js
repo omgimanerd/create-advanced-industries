@@ -1,4 +1,4 @@
-// priority: 100
+// priority: 0
 
 Ponder.registry((e) => {
   // Native Minecraft rendering logic for the beacon beam.

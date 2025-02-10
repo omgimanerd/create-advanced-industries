@@ -1,4 +1,4 @@
-// priority: 100
+// priority: 0
 
 Ponder.registry((e) => {
   e.create('minecraft:sculk').scene(
