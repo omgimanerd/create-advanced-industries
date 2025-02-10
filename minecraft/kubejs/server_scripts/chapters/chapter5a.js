@@ -33,9 +33,14 @@ EntityEvents.spawned('ars_nouveau:an_lightning', (e) => {
       block.set('create_new_age:magnetite_block')
       // Wrap in a closure to bind the block position.
       ;((pos) => {
-        repeat(level.server, 20, 5, () => {
-          spawnParticles(level, 'cofh_core:spark', pos, 1, 20, 0.2, true)
-        })
+        repeat(
+          /*server*/ level.server,
+          /*duration*/ 20,
+          /*interval*/ 5,
+          /*cb*/ () => {
+            spawnParticles(level, 'cofh_core:spark', pos, 1, 20, 0.2, true)
+          }
+        )
       })(block.pos)
     }
   }

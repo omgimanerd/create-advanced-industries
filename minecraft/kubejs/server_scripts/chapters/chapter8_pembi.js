@@ -100,16 +100,21 @@
       let paintingVariant = paintingVariantGenerator()
       item.shrink(1)
       target.block.popItemFromFace(getPainting(paintingVariant), 'up')
-      repeat(server, 5, 1, () => {
-        spawnParticles(
-          level,
-          'minecraft:electric_spark',
-          target.position().add(0, 0.4, 0),
-          0.4,
-          10,
-          0.1
-        )
-      })
+      repeat(
+        /*server*/ server,
+        /*duration*/ 5,
+        /*interval*/ 1,
+        /*cb*/ () => {
+          spawnParticles(
+            level,
+            'minecraft:electric_spark',
+            target.position().add(0, 0.4, 0),
+            0.4,
+            10,
+            0.1
+          )
+        }
+      )
       player.swing()
     }
   })

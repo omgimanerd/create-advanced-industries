@@ -222,9 +222,14 @@ ItemEvents.entityInteracted((e) => {
 
   // Spawn the relevant particle effects
   if (hasHarmfulEffect) {
-    repeat(server, feedCooldown, 10, () => {
-      spawnEffectParticles(level, target, 15, 0.4, [0.1, 0.5, 0, 1])
-    })
+    repeat(
+      /*server*/ server,
+      /*duration*/ feedCooldown,
+      /*interval*/ 10,
+      /*cb*/ () => {
+        spawnEffectParticles(level, target, 15, 0.4, [0.1, 0.5, 0, 1])
+      }
+    )
   } else {
     spawnParticles(level, 'minecraft:heart', target, 0.4, 10, 0.1)
   }

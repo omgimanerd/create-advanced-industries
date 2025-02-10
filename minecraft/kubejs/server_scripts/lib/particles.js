@@ -114,17 +114,22 @@ const spawnEffectParticles = (level, pos, count, spread, color) => {
  */
 const debugBlockPos = (level, pos) => {
   ;((x, y, z) => {
-    repeat(level.server, 60, 10, () => {
-      spawnParticles(
-        level,
-        'minecraft:composter',
-        [x + 0.5, y + 0.5, z + 0.5],
-        0.05,
-        5,
-        0.05,
-        true
-      )
-    })
+    repeat(
+      /*server*/ level.server,
+      /*duration*/ 60,
+      /*interval*/ 10,
+      /*cb*/ () => {
+        spawnParticles(
+          level,
+          'minecraft:composter',
+          [x + 0.5, y + 0.5, z + 0.5],
+          0.05,
+          5,
+          0.05,
+          true
+        )
+      }
+    )
   })(pos.x, pos.y, pos.z)
 }
 
@@ -153,19 +158,24 @@ const debugAABB = (level, aabb) => {
     [new Vec3f(x1, y1, z2), new Vec3f(x1, y2, z2)],
     [new Vec3f(x2, y1, z1), new Vec3f(x2, y2, z1)],
   ]
-  repeat(level.server, 60, 10, () => {
-    for (let [from, to] of edges) {
-      for (let i = 0; i < 1; i += 0.1) {
-        spawnParticles(
-          level,
-          'minecraft:composter',
-          from.clone().lerp(to, i),
-          0.01,
-          5,
-          0.01,
-          true
-        )
+  repeat(
+    /*server*/ level.server,
+    /*duration*/ 60,
+    /*interval*/ 10,
+    /*cb*/ () => {
+      for (let [from, to] of edges) {
+        for (let i = 0; i < 1; i += 0.1) {
+          spawnParticles(
+            level,
+            'minecraft:composter',
+            from.clone().lerp(to, i),
+            0.01,
+            5,
+            0.01,
+            true
+          )
+        }
       }
     }
-  })
+  )
 }

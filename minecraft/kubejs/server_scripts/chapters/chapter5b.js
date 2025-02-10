@@ -20,9 +20,14 @@ ItemEvents.entityInteracted((e) => {
   // Feeding a blaze cake to the blaze.
   if (item.id === 'create:blaze_cake') {
     item.count--
-    repeat(server, 10, 3, () => {
-      target.playSound('entity.generic.eat', /*volume=*/ 3, /*pitch=*/ 0)
-    })
+    repeat(
+      /*server*/ server,
+      /*duration*/ 10,
+      /*interval*/ 3,
+      /*cb*/ () => {
+        target.playSound('entity.generic.eat', /*volume=*/ 3, /*pitch=*/ 0)
+      }
+    )
     remainingMilks = Math.max(10, remainingMilks)
   }
 
