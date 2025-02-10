@@ -22,10 +22,23 @@ JEIAddedEvents.registerCategories((e) => {
   const guiHelper = e.data.jeiHelpers.guiHelper
   const slotDrawable = guiHelper.getSlotDrawable()
 
-  // Preprocess the list of beacon items into a list.
-  const beaconItems = Object.keys(global.EnergizedBeaconItems).map((id) =>
-    Item.of(id)
-  )
+  /**
+   * Given the minimum amount of energy required per craft, returns the list
+   * of valid items that can be used to energize a beacon to perform the craft.
+   * @param {number} minEnergy
+   * @returns {Internal.ItemStack_[]}
+   */
+  const getValidEnergizers = (minEnergy) => {
+    return Object.entries(global.EnergizedBeaconItems)
+      .filter((kv) => {
+        const [_, data] = kv
+        return data.energy >= minEnergy
+      })
+      .map((kv) => {
+        const [id, _] = kv
+        return Item.of(id)
+      })
+  }
 
   // Hardcoded locations to draw the results, recipes that exceed this many
   // outputs will throw an error.
@@ -59,7 +72,7 @@ JEIAddedEvents.registerCategories((e) => {
         // energy that they will provide the beacon.
         builder
           .addSlot('input', 10, 46)
-          .addItemStacks(beaconItems)
+          .addItemStacks(getValidEnergizers(energy))
           .setBackground(slotDrawable, -1, -1)
           .addTooltipCallback((recipeSlotView, list) => {
             const displayedIngredientOpt = recipeSlotView.displayedItemStack
