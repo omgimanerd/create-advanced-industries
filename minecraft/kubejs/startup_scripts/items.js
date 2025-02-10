@@ -210,6 +210,9 @@ StartupEvents.registry('item', (e) => {
   registerItem('kubejs:shattered_ender_pearl')
   registerItem('kubejs:redstone_pearl')
 
+  // Tesseracts
+  registerItem('kubejs:tesseract')
+
   // Quantum chips
   registerItem('kubejs:quantum_chip')
   registerItem('kubejs:incomplete_quantum_chip', 'create:sequenced_assembly')
