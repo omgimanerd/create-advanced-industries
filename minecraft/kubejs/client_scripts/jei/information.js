@@ -2,6 +2,22 @@
 // Information Recipe categories for nontrivial recipes.
 
 JEIEvents.information((e) => {
+  // Amethyst Buds
+  ;[
+    'minecraft:small_amethyst_bud',
+    'minecraft:medium_amethyst_bud',
+    'minecraft:large_amethyst_bud',
+    'minecraft:amethyst_cluster',
+  ].forEach((v) => {
+    e.addItem(
+      v,
+      Text.of(
+        'Can also be grown on budding amethyst. Ponder a block of budding ' +
+          'amethyst to learn more.'
+      )
+    )
+  })
+
   // Chromatic Fluid
   e.addFluid(
     'kubejs:chromatic_fluid',
@@ -12,11 +28,11 @@ JEIEvents.information((e) => {
 
   // Wandering Trader Essences.
   ;[
-    ('kubejs:agony_essence',
+    'kubejs:agony_essence',
     'kubejs:suffering_essence',
     'kubejs:torment_essence',
     'kubejs:debilitation_essence',
-    'kubejs:mutilation_essence'),
+    'kubejs:mutilation_essence',
   ].forEach((v) => {
     e.addItem(v, Text.of('Obtained by murdering a Wandering Trader.'))
   })
