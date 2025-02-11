@@ -12,8 +12,8 @@ ForgeEvents.onEvent(
 ForgeEvents.onEvent(
   'net.minecraftforge.event.entity.EntityTeleportEvent',
   (e) => {
-    if (global.EndermanTeleportCallback) {
-      global.EndermanTeleportCallback(e)
+    if (global.EntityTeleportEventCallback) {
+      global.EntityTeleportEventCallback(e)
     }
   }
 )

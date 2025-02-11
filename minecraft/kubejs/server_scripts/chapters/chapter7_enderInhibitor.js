@@ -3,7 +3,7 @@
 /**
  * @param {Internal.EntityTeleportEvent_} e
  */
-global.EndermanTeleportCallback = (e) => {
+global.EntityTeleportEventCallback = (e) => {
   const { entity } = e
   const level = entity.level
   if (
