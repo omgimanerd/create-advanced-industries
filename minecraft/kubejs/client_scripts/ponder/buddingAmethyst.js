@@ -5,12 +5,11 @@ Ponder.registry((e) => {
     'budding_amethyst_spouting',
     'Budding Amethyst',
     (scene, util) => {
-      scene.showBasePlate()
-      const center = new BlockPos(2, 1, 2)
+      const center = util.grid.at(2, 1, 2)
+      const spoutPos = center.above(2)
 
       // Scene setup
       scene.world.setBlock(center, 'minecraft:budding_amethyst', false)
-      const spoutPos = center.above(2)
       scene.world.setBlock(spoutPos, 'create:spout', false)
       scene.world.modifyBlockEntityNBT(spoutPos, (nbt) => {
         nbt.Tanks = [
@@ -30,10 +29,10 @@ Ponder.registry((e) => {
       })
       scene.world.setBlock(
         center.west(),
-        Block.id('minecraft:small_amethyst_bud').with('facing', 'west'),
+        Block.id('minecraft:small_amethyst_bud', { facing: 'west' }),
         false
       )
-      scene.world.showIndependentSectionImmediately(util.select.layers(1, 3))
+      scene.world.showSection(util.select.everywhere(), Facing.UP)
       scene.idleSeconds(1)
 
       // First keyframe explanation

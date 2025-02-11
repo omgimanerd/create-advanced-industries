@@ -6,6 +6,7 @@ Ponder.registry((e) => {
     'Beehive Extraction',
     'kubejs:beehive', // kubejs/assets/kubejs/ponder/beehive.nbt
     (scene, util) => {
+      const basePlate = util.select.layer(0)
       const comparatorSection = util.select.fromTo(2, 1, 1, 2, 2, 1)
       const comparator = util.grid.at(2, 2, 1)
       const pumpTank = util.select.fromTo(1, 3, 2, 0, 1, 2)
@@ -21,22 +22,21 @@ Ponder.registry((e) => {
       const setBeehive = (honey_level) => {
         scene.world.setBlock(
           beehive,
-          Block.id('minecraft:beehive')
-            .with('facing', 'north')
-            .with('honey_level', `${honey_level}`),
+          Block.id('minecraft:beehive', {
+            facing: 'north',
+            honey_level: `${honey_level}`,
+          }),
           false
         )
       }
 
       // Scene setup
-      scene.showBasePlate()
-      // Dirt block from being covered
-      scene.world.setBlock([2, 0, 1], 'minecraft:grass_block', false)
       setBeehive(5)
-      scene.world.showIndependentSectionImmediately(
-        util.select.fromTo(2, 1, 2, 2, 2, 2)
+      scene.world.showSection(
+        basePlate.add(util.select.fromTo(2, 1, 2, 2, 2, 2)),
+        Facing.UP
       )
-      scene.idle(20)
+      scene.idleSeconds(1)
 
       // Basic shearing
       scene.addKeyframe()
@@ -72,7 +72,7 @@ Ponder.registry((e) => {
       scene.addKeyframe()
       scene.world.setBlock(
         beehive,
-        Block.id('minecraft:beehive').with('facing', 'north'),
+        Block.id('minecraft:beehive', { facing: 'north' }),
         false
       )
       scene.world.showSection(pumpTank, Facing.EAST)
@@ -116,8 +116,8 @@ Ponder.registry((e) => {
       scene.text(
         60,
         'Be careful when doing it! The Sigil of Withdrawal is so powerful ' +
-          'that it will cause an explosion when it is used! Make ' +
-          "sure there aren't any bees nearby",
+          'that it will cause an explosion when it is used! Make sure there ' +
+          "aren't any bees nearby.",
         deployer
       )
       scene.world.setKineticSpeed(deployer, 24)
@@ -168,12 +168,14 @@ Ponder.registry((e) => {
       scene.world.toggleRedstonePower(comparator)
       scene.idle(60)
       scene.world.hideSection(comparatorSection, Facing.NORTH)
-      scene.text(
-        40,
-        "Don't block the front of the beehive though, or the bees won't be " +
-          'able to come out!',
-        beehive
-      )
+      scene
+        .text(
+          40,
+          "Don't block the front of the beehive though, or the bees won't be " +
+            'able to come out!',
+          beehive
+        )
+        .placeNearTarget()
       scene.idle(50)
     }
   )

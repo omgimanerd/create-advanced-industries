@@ -19,11 +19,11 @@ Ponder.registry((e) => {
     'Moss Blocks and You',
     'kubejs:moss_block', // kubejs/assets/kubejs/ponder/moss_block.nbt
     (scene, util) => {
-      scene.showStructure()
-      const center = new BlockPos(2, 0, 2)
+      const center = util.grid.at(2, 0, 2)
       const deployerPos = center.above(2)
 
       // Scene setup
+      scene.showStructure()
       scene.world.setKineticSpeed(deployerPos, 24)
       scene.idleSeconds(1)
 
@@ -115,15 +115,16 @@ Ponder.registry((e) => {
         .withItem('minecraft:red_mushroom')
       scene.idle(40)
       scene.text(
-        30,
-        'This works with both red and brown mushrooms',
+        40,
+        'This works with both red and brown mushrooms, and it will ' +
+          'automatically spread.',
         deployerPos
       )
       scene
         .showControls(20, center, 'right')
         .rightClick()
         .withItem('minecraft:brown_mushroom')
-      scene.idle(40)
+      scene.idle(50)
       setDeployerHeldItem(scene, deployerPos, 'minecraft:red_mushroom')
       scene.idleSeconds(1)
       cycleDeployerMovement(scene, deployerPos)

@@ -5,22 +5,23 @@ Ponder.registry((e) => {
     'remy_the_epicure',
     'Remy The Epicure',
     (scene, util) => {
-      scene.showBasePlate()
-      const center = new BlockPos(2, 1, 2)
+      const basePlate = util.select.layer(0)
+      const center = util.grid.at(2, 1, 2)
+      const deployerPos = util.grid.at(2, 2, 4)
 
       // Scene setup
       scene.world.setBlock(center, 'create:white_seat', false)
-      const deployerPos = new BlockPos(2, 2, 4)
       scene.world.setBlock(
         deployerPos,
-        Block.id('create:deployer')
-          .with('facing', 'north')
-          .with('axis_along_first', 'false'),
+        Block.id('create:deployer', {
+          facing: 'north',
+          axis_along_first: 'false',
+        }),
         false
       )
       scene.world.setBlock(
         deployerPos.below(),
-        Block.id('create:gearbox').with('axis', 'z'),
+        Block.id('create:gearbox', { axis: 'z' }),
         false
       )
       scene.world.setBlocks(
@@ -28,9 +29,9 @@ Ponder.registry((e) => {
           deployerPos.below().east(),
           deployerPos.below().east(2)
         ),
-        Block.id('create:shaft').with('axis', 'x')
+        Block.id('create:shaft', { axis: 'x' })
       )
-      scene.world.showIndependentSectionImmediately(center)
+      scene.world.showSection(basePlate.add(center), Facing.UP)
       scene.idleSeconds(1)
 
       // Spawning Remy
@@ -85,7 +86,7 @@ Ponder.registry((e) => {
       buds.forEach((b) => scene.world.removeEntity(b))
 
       // Automation
-      const slice = util.select.fromTo(0, 0, 4, 4, 2, 4)
+      const slice = util.select.fromTo(0, 1, 4, 4, 2, 4)
       scene.addKeyframe()
       scene.world.showSection(slice, Facing.NORTH)
       scene.world.setKineticSpeed(slice, 24)

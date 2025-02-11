@@ -4,7 +4,7 @@ Ponder.registry((e) => {
   e.create('minecraft:dragon_head').scene(
     'dragons_breath_bottling',
     "Dragon's Breath Bottling",
-    'kubejs:dragons_breath', //
+    'kubejs:dragons_breath', // kubejs/assets/kubejs/ponder/dragons_breath.nbt
     (scene, util) => {
       const bottlingDeployer = util.grid.at(2, 3, 2)
       const bottlingFunnel = util.grid.at(1, 3, 2)
@@ -16,9 +16,8 @@ Ponder.registry((e) => {
       const dragonHeadDeployer = util.grid.at(4, 4, 2)
 
       // Scene setup
-      scene.showBasePlate()
-      scene.world.showIndependentSectionImmediately(baseSection)
-      scene.idle(20)
+      scene.world.showSection(baseSection, Facing.UP)
+      scene.idleSeconds(1)
 
       // Trigger dragon's breath
       const strongRegenPotion = Item.of('minecraft:potion').withNBT({
@@ -73,9 +72,10 @@ Ponder.registry((e) => {
       )
       scene.idle(50)
       scene
-        .showControls(20, bottlingDeployer, 'right')
+        .showControls(20, bottlingDeployer, 'down')
         .rightClick()
         .withItem('minecraft:glass_bottle')
+      scene.idle(10)
       setDeployerFilter(scene, bottlingDeployer, 'minecraft:glass_bottle')
       setDeployerHeldItem(scene, bottlingDeployer, 'minecraft:glass_bottle')
       scene.world.setKineticSpeed(bottlingDeployer, 24)

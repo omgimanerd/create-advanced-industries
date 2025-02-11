@@ -23,7 +23,7 @@ Ponder.registry((e) => {
     // kubejs/assets/kubejs/ponder/fluid_sourcelink.nbt
     'kubejs:fluid_sourcelink',
     (scene, util) => {
-      scene.showBasePlate()
+      const basePlate = util.select.layer(0)
       const sourceMachines = util.select.fromTo(1, 1, 2, 2, 2, 2)
       const fluidMachines = util.select.fromTo(4, 1, 0, 3, 2, 2)
       const fluidSourcelink = util.grid.at(2, 2, 2)
@@ -32,9 +32,8 @@ Ponder.registry((e) => {
       const sourceJar2 = util.grid.at(1, 1, 2)
 
       // Scene setup
-      scene.showBasePlate()
-      scene.world.showSection(sourceMachines, Facing.DOWN)
-      scene.idle(10)
+      scene.world.showSection(basePlate.add(sourceMachines), Facing.UP)
+      scene.idleSeconds(1)
       scene.text(
         40,
         'Ars Nouveau requires source to be in its raw form inside source ' +
@@ -88,15 +87,14 @@ Ponder.registry((e) => {
     // kubejs/assets/kubejs/ponder/source_condenser.nbt
     'kubejs:source_condenser',
     (scene, util) => {
-      scene.showBasePlate()
       const sourceCondenser = util.grid.at(3, 2, 2)
       const fluidTank = util.grid.at(3, 1, 2)
       const sourceJar = util.grid.at(1, 1, 2)
 
       // Scene setup
       setSourceJarFill(scene, sourceJar, 4)
-      scene.world.showSection(util.select.layers(1, 2), Facing.DOWN)
-      scene.idle(10)
+      scene.world.showSection(util.select.layers(0, 3), Facing.UP)
+      scene.idleSeconds(1)
       scene.text(
         40,
         'Souce Condensers perform the opposite function of fluid ' +
@@ -138,7 +136,7 @@ Ponder.registry((e) => {
       // kubejs/assets/kubejs/ponder/imbuement_chamber.nbt
       'kubejs:imbuement_chamber',
       (scene, util) => {
-        scene.showBasePlate()
+        const basePlate = util.select.layer(0)
         const imbuementChamber = util.grid.at(2, 1, 2)
         const sourceJar = util.grid.at(1, 1, 2)
         const pedestals = [
@@ -149,11 +147,8 @@ Ponder.registry((e) => {
         ]
 
         // Scene setup
-        scene.world.showSection(
-          util.select.position(imbuementChamber),
-          Facing.DOWN
-        )
-        scene.idle(10)
+        scene.world.showSection(basePlate.add(imbuementChamber), Facing.UP)
+        scene.idleSeconds(1)
         scene.text(
           40,
           'The Imbuement Chamber is one of the first magical crafting mechanics unlocked by Ars Nouveau.',
@@ -242,6 +237,7 @@ Ponder.registry((e) => {
       // kubejs/assets/kubejs/ponder/imbuement_chamber_automation.nbt
       'kubejs:imbuement_chamber_automation',
       (scene, util) => {
+        // Scene setup
         scene.showStructure()
         const imbuementChamber = util.grid.at(2, 2, 2)
         const pedestals = [
@@ -252,9 +248,10 @@ Ponder.registry((e) => {
         const beltStart = util.grid.at(4, 1, 2)
         const exitFunnel = util.grid.at(1, 2, 2)
         const resultEssence = 'ars_nouveau:water_essence'
-
-        scene.idle(10)
         setFunnelFilter(scene, exitFunnel, resultEssence)
+        scene.idleSeconds(1)
+
+        // Text explanation
         scene.text(
           40,
           'Like any inventory, Imbuement Chambers can be inserted into ' +
@@ -263,6 +260,7 @@ Ponder.registry((e) => {
         )
         scene.idle(50)
 
+        // Fill the pedestals
         setArsContainerItem(scene, pedestals[0], 'minecraft:water_bucket')
         scene.idle(10)
         setArsContainerItem(scene, pedestals[1], 'minecraft:kelp')
@@ -345,9 +343,8 @@ Ponder.registry((e) => {
     'ars_nouveau:relay_collector',
   ])
     .scene('ars_nouveau_relay', 'Source Relays', (scene, util) => {
-      scene.showBasePlate()
-
       // Scene setup
+      const basePlate = util.select.layer(0)
       let fromSourceJar = util.grid.at(1, 1, 3)
       let sourceRelay = util.grid.at(2, 1, 2)
       let toSourceJar = util.grid.at(3, 1, 1)
@@ -361,12 +358,13 @@ Ponder.registry((e) => {
       )
       scene.world.setBlock(sourceRelay, 'ars_nouveau:relay', false)
       scene.world.setBlock(toSourceJar, 'ars_nouveau:source_jar', false)
-      scene.world.showSection(util.select.position(fromSourceJar), Facing.DOWN)
-      scene.world.showSection(util.select.position(sourceRelay), Facing.DOWN)
-      scene.world.showSection(util.select.position(toSourceJar), Facing.DOWN)
+      scene.world.showSection(
+        basePlate.add(fromSourceJar).add(sourceRelay).add(toSourceJar),
+        Facing.UP
+      )
+      scene.idleSeconds(1)
 
       // Dominion wand binding
-      scene.idle(10)
       scene.text(
         30,
         'Source Relays move raw source from jar to jar.',
@@ -461,6 +459,9 @@ Ponder.registry((e) => {
         sourceRelay
       )
       scene.idle(50)
+
+      // Animate binding more source jars
+      scene.addKeyframe()
       let bindings = [
         [fromSourceJar, sourceRelay],
         [fromSourceJar2, sourceRelay],
@@ -504,8 +505,6 @@ Ponder.registry((e) => {
       'ars_nouveay_relay_collector_depositor',
       'Types of Source Relays',
       (scene, util) => {
-        scene.showBasePlate()
-
         // Scene setup
         const sourceJar1 = util.grid.at(4, 1, 3)
         const sourceJar2 = util.grid.at(4, 1, 2)
@@ -521,8 +520,8 @@ Ponder.registry((e) => {
         )
         scene.world.setBlock(destSourceJar, 'ars_nouveau:source_jar', false)
         scene.world.setBlock(sourceRelay, 'ars_nouveau:relay_collector', false)
-        scene.world.showSection(util.select.layer(1), Facing.DOWN)
-        scene.idle(20)
+        scene.world.showSection(util.select.everywhere(), Facing.DOWN)
+        scene.idleSeconds(1)
 
         // Collector relay explanation
         scene.text(

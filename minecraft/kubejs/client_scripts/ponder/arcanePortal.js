@@ -9,7 +9,7 @@ Ponder.registry((e) => {
    */
   const setupArcanePortalBlockScene = (scene, center) => {
     // Set up all blocks in scene.
-    scene.world.setBlock(center, 'minecraft:crying_obsidian', true)
+    scene.world.setBlock(center, 'minecraft:crying_obsidian', false)
     const fluidSpots = [
       center.north(),
       center.south(),
@@ -28,7 +28,7 @@ Ponder.registry((e) => {
     for (const [pumpDirection, pumpSpot] of Object.entries(pumps)) {
       scene.world.setBlock(
         pumpSpot,
-        Block.id('create:mechanical_pump').with('facing', pumpDirection),
+        Block.id('create:mechanical_pump', { facing: pumpDirection }),
         false
       )
       scene.world.setKineticSpeed(pumpSpot, 24)
@@ -57,11 +57,10 @@ Ponder.registry((e) => {
 
   e.create('kubejs:arcane_portal')
     .scene('arcane_portal_open', 'Opening The Arcane Portal', (scene, util) => {
-      scene.showBasePlate()
-
       // First segment before keyframe to show scene.
+      const basePlate = util.select.layer(0)
       const { pumps } = setupArcanePortalBlockScene(scene, center)
-      scene.world.showIndependentSectionImmediately(center)
+      scene.world.showSection(basePlate.add(center), Facing.UP)
       scene.idleSeconds(1)
 
       // Opening the portal.
@@ -144,10 +143,9 @@ Ponder.registry((e) => {
     })
     .scene('arcane_portal_usage', 'Using the Arcane Portal', (scene, util) => {
       // First segment before keyframe to show scene.
-      scene.showBasePlate()
       setupArcanePortalBlockScene(scene, center)
       scene.world.setBlock(center, 'kubejs:arcane_portal', false)
-      scene.world.showSection(util.select.layer(1), Facing.DOWN)
+      scene.world.showSection(util.select.layers(0, 2), Facing.DOWN)
       scene.idleSeconds(1)
 
       // Wandering Traders being consumed.

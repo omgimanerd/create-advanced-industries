@@ -12,19 +12,17 @@ Ponder.registry((e) => {
   e.create('minecraft:beacon').scene(
     'beacon_usage',
     'Energized Crafting with Beacons',
-    // kubejs/assets/kubejs/ponder/beacon.nbt
-    'kubejs:beacon',
+    'kubejs:beacon', // kubejs/assets/kubejs/ponder/beacon.nbt
     (scene, util) => {
       const beacon = util.grid.at(3, 2, 3)
       const redCorundumCluster = beacon.above(2)
       const greenCorundumCluster = redCorundumCluster.west(2)
       const funnel = util.grid.at(2, 5, 3)
-
       const itemDropSection = util.select.fromTo(2, 3, 3, 2, 5, 4)
       const firstSection = util.select.everywhere().substract(itemDropSection)
 
       // Scene setup
-      scene.world.showSection(firstSection, Facing.DOWN)
+      scene.world.showSection(firstSection, Facing.UP)
 
       /**
        * @param {BlockPos_} pos
@@ -79,9 +77,9 @@ Ponder.registry((e) => {
         4,
         GREEN_CORUNDUM_CLUSTER_COLOR
       )
+      scene.idleSeconds(1)
 
       // Explanation of beacon beam redirection.
-      scene.idle(20)
       scene.text(
         40,
         'Beacons have some interesting additional behavior in this pack.',
@@ -89,12 +87,12 @@ Ponder.registry((e) => {
       )
       scene.idle(50)
       scene.text(
-        40,
+        60,
         'The beam of an active beacon can be redirected by corundum ' +
           'clusters, which also changes the color of the beam.',
         redCorundumCluster
       )
-      scene.idle(50)
+      scene.idle(70)
       scene.text(
         40,
         'The final crystal cluster must still point towards the sky.',

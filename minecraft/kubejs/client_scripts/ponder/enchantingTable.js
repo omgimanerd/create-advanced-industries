@@ -7,7 +7,7 @@ Ponder.registry((e) => {
     'kubejs:baseplate7', // kubejs/assets/kubejs/ponder/baseplate7.nbt
     (scene, util) => {
       scene.showStructure()
-      const center = new BlockPos(3, 1, 3)
+      const center = util.grid.at(3, 1, 3)
       const tableModifierArea = util.select
         .fromTo(1, 1, 1, 5, 2, 5)
         .substract(util.select.fromTo(2, 1, 2, 4, 2, 4))

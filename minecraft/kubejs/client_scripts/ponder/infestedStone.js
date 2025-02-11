@@ -5,7 +5,6 @@ Ponder.registry((e) => {
     'infested_stone_expulsion',
     'Getting rid of Pests',
     (scene, util) => {
-      scene.showBasePlate()
       const center = util.grid.at(2, 1, 2)
       const deployer = center.above(2)
       const sigil = 'apotheosis:sigil_of_withdrawal'
@@ -14,17 +13,19 @@ Ponder.registry((e) => {
       scene.world.setBlock(center, 'minecraft:infested_stone', false)
       scene.world.setBlock(
         deployer,
-        Block.id('create:deployer').with('facing', 'down'),
+        Block.id('create:deployer', { facing: 'down' }),
         false
       )
       setDeployerFilter(scene, deployer, sigil)
       setDeployerHeldItem(scene, deployer, sigil)
-      scene.world.showSection(util.select.everywhere(), Facing.SOUTH)
-      scene.idle(20)
+      scene.world.showSection(util.select.everywhere(), Facing.UP)
+      scene.idleSeconds(1)
 
       // Expelling pests
       scene.addKeyframe()
-      scene.text(40, 'Infested stone is full of pests!', center)
+      scene
+        .text(40, 'Infested stone is full of pests!', center)
+        .placeNearTarget()
       scene.idle(50)
       scene.text(
         40,
