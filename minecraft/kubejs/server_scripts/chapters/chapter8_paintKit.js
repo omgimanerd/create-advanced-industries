@@ -113,6 +113,11 @@ ServerEvents.recipes((e) => {
       S: 'minecraft:stick',
     }
   )
+  create
+    .SequencedAssembly('minecraft:stick')
+    .deploy('createaddition:copper_wire')
+    .deploy('#kubejs:brush_heads')
+    .outputs('2x minecraft:brush')
 
   // Paint Kits (from Tom's Storage)
   e.remove({ id: 'toms_storage:paint_kit' })
