@@ -12,7 +12,8 @@ global.EntityTeleportEventCallback = (e) => {
   ) {
     return
   }
-  for (const offset of BlockPos.betweenClosed(-4, -1, -4, 4, 2, 4)) {
+  const r = global.ENDER_INHIBITOR_RANGE
+  for (const offset of BlockPos.betweenClosed(-r, -1, -r, r, 2, r)) {
     let { x, y, z } = global.getXYZ(offset)
     let block = entity.block.offset(x, y, z)
     if (block.id !== 'kubejs:ender_inhibitor') continue
