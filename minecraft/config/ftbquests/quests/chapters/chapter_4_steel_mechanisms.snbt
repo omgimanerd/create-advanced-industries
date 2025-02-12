@@ -346,6 +346,20 @@
 			dependencies: ["68104DF3A66FB0DC"]
 			description: ["Then haunt the dough to get an egg. You can cycle this to produce more dough from wheat."]
 			id: "746D63075D3BB1BE"
+			rewards: [{
+				id: "0D2F6951E78A54BA"
+				item: {
+					Count: 1b
+					id: "minecraft:ocelot_spawn_egg"
+					tag: {
+						RepairCost: 0
+						display: {
+							Name: "{\"text\":\"Chat, J'ai Pété\"}"
+						}
+					}
+				}
+				type: "item"
+			}]
 			tasks: [{
 				id: "267E0DA42E9FFCE8"
 				item: "minecraft:egg"

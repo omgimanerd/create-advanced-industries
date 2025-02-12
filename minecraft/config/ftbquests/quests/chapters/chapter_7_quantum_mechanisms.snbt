@@ -259,6 +259,8 @@
 				"Void steel sheets are a little special, they can only be crafted by dropping a void steel block on it."
 				""
 				"Place a void steel block above another void steel block and cast Gravity on it to make it fall. Any items caught in between will be crushed."
+				""
+				"Items that are too weak to be processed like this will be destroyed!"
 			]
 			id: "6A59EF7246F87789"
 			tasks: [{
@@ -666,6 +668,7 @@
 		}
 		{
 			dependencies: ["58B39574A3117D0D"]
+			description: ["For the next quest, you will need to brew Potions of Enderference as well."]
 			id: "758B001ECA60BFB0"
 			tasks: [{
 				id: "4E0C2D8CCAA2EFEC"
@@ -745,6 +748,12 @@
 				"Place this on top of a tank and it will inhibit nearby teleporting entities."
 			]
 			id: "5C74FBA414C21479"
+			rewards: [{
+				count: 4
+				id: "2CE31AAC586FCC66"
+				item: "minecraft:enderman_spawn_egg"
+				type: "item"
+			}]
 			tasks: [{
 				id: "4B586B3A097CD63D"
 				item: "kubejs:ender_inhibitor"
@@ -755,6 +764,7 @@
 		}
 		{
 			dependencies: ["5C74FBA414C21479"]
+			description: ["Inhibiting teleporting entities with the Ender Inhibitor will produce teleportation juice."]
 			icon: "kubejs:teleportation_juice_bucket"
 			id: "58B39574A3117D0D"
 			tasks: [
@@ -797,7 +807,11 @@
 		}
 		{
 			dependencies: ["573A0CF01DCF191C"]
-			description: ["Aluminum is light and strong, making it the perfect housing for magnetic confinement units."]
+			description: [
+				"Aluminum is light and strong, making it the perfect housing for magnetic confinement units."
+				""
+				"You don't &oreally&r need to automate making more of these, as they are reusable."
+			]
 			id: "228C3290FC55C851"
 			tasks: [{
 				id: "6A3F102BA6056FE2"
@@ -941,6 +955,25 @@
 				type: "item"
 			}]
 			x: 2.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["3675892BE1757F09"]
+			description: ["Big Crafters!"]
+			id: "06E5FD8E84323D57"
+			invisible: true
+			rewards: [{
+				count: 16
+				id: "2E0B3AF1DBF6387F"
+				item: "refinedstorage:pattern"
+				type: "item"
+			}]
+			tasks: [{
+				id: "346DAEF83D655492"
+				item: "extrastorage:netherite_crafter"
+				type: "item"
+			}]
+			x: 16.0d
 			y: 4.0d
 		}
 	]

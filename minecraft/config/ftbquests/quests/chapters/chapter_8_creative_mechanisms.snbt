@@ -12,6 +12,11 @@
 	quests: [
 		{
 			dependencies: ["153FD9A28FA6A841"]
+			description: [
+				"Chapter 8."
+				""
+				"This is the last chapter in this modpack, and once you finish it, you pretty much unlock Creative mode."
+			]
 			id: "4069BFCE7C742DAD"
 			tasks: [{
 				id: "33F6D729239CB1E3"
@@ -25,6 +30,11 @@
 			dependencies: [
 				"28A495EA82777749"
 				"48E2BD9DA3164BFD"
+			]
+			description: [
+				"Before finally being cooled."
+				""
+				"Voila, you have obtained a chorium ingot."
 			]
 			id: "11F54CD0E5709EF8"
 			tasks: [{
@@ -49,6 +59,7 @@
 		}
 		{
 			dependencies: ["26A153012F13D271"]
+			description: ["Pressurize the Chromatic Fluid under high heat to produce Chromatic Compound."]
 			id: "2AD39A88E707A885"
 			tasks: [{
 				id: "0C3DA09354A1AA59"
@@ -64,6 +75,7 @@
 		}
 		{
 			dependencies: ["2AD39A88E707A885"]
+			description: ["This process should be familiar, drop the Chromatic Compound into the void to make Shadow Steel."]
 			id: "5ECA2EB53C7BA239"
 			tasks: [{
 				id: "1397CD295510CA50"
@@ -75,6 +87,7 @@
 		}
 		{
 			dependencies: ["2AD39A88E707A885"]
+			description: ["Energizing the Chromatic Compound yields Refined Radiance."]
 			id: "6DEED6CF2A933B68"
 			tasks: [{
 				id: "3E2BD37C4823577D"
@@ -86,6 +99,7 @@
 		}
 		{
 			dependencies: ["19C4086752C5E343"]
+			description: ["Before you get your first Chromatic Compound, you need to make enough Chromatic Fluid. Without later technology, this is a slow and painful process involving lots of sulfuric acid."]
 			icon: "kubejs:chromatic_fluid_bucket"
 			id: "26A153012F13D271"
 			tasks: [
@@ -106,6 +120,7 @@
 		}
 		{
 			dependencies: ["442E76A8E99688F9"]
+			description: ["Having fun whacking that sheep?"]
 			id: "1AD127B4B828B2BB"
 			tasks: [{
 				icon: "minecraft:sheep_spawn_egg"
@@ -120,6 +135,7 @@
 		}
 		{
 			dependencies: ["4069BFCE7C742DAD"]
+			description: ["Craft an empty music disc with plastic sheets."]
 			id: "3B2B73F0536813B2"
 			tasks: [{
 				id: "3D6C6D236AF9CE0F"
@@ -142,7 +158,17 @@
 		}
 		{
 			dependencies: ["2AD39A88E707A885"]
+			description: [
+				"Make a Chromatic Bop Stick with your first piece of Chromatic Compound to automate the process of making more."
+				""
+				"(Please share your builds!)"
+			]
 			id: "442E76A8E99688F9"
+			rewards: [{
+				id: "51AB583290460BD6"
+				item: "minecraft:sheep_spawn_egg"
+				type: "item"
+			}]
 			tasks: [{
 				id: "05CBB16F315508AB"
 				item: "kubejs:chromatic_bop_stick"
@@ -167,6 +193,11 @@
 		}
 		{
 			dependencies: ["4069BFCE7C742DAD"]
+			description: [
+				"No specific dye is needed, but you need a fair amount of any dye."
+				""
+				"(You also need it for another part of this chapter!)"
+			]
 			id: "2BBBC9DE78CBB47B"
 			tasks: [{
 				id: "4BD87570448BDB4C"
@@ -179,11 +210,13 @@
 				}
 				type: "item"
 			}]
+			title: "Dye"
 			x: 2.0d
 			y: 0.0d
 		}
 		{
 			dependencies: ["55033B2BBF898840"]
+			description: ["Weave the straw into canvas."]
 			id: "1CD12A052C65190A"
 			tasks: [{
 				id: "5ECA71370792CF00"
@@ -199,6 +232,7 @@
 				"2BBBC9DE78CBB47B"
 				"3B58D984466057A1"
 			]
+			description: ["Craft a Paint Kit with dyes, brushes, and ink. Paint kits can be used to &orecolor most dye-able things&r."]
 			id: "02A6FEC4CF21D2A8"
 			tasks: [{
 				id: "6474E3BE0729AADA"
@@ -216,6 +250,7 @@
 		}
 		{
 			dependencies: ["4069BFCE7C742DAD"]
+			description: ["The ingredients for brushes should be simple enough."]
 			id: "153FC6A5ACD6148D"
 			tasks: [{
 				id: "6253487AC240E7C3"
@@ -247,6 +282,11 @@
 				"0997250298CBFB8F"
 				"1CD12A052C65190A"
 			]
+			description: [
+				"And combine with a Paint Kits to unleash your creativity."
+				""
+				"If you give Paint Kits and canvases to Pembi the Artist, they might create a masterpiece. Keep an eye out for these."
+			]
 			id: "73F5B4664D8238C4"
 			tasks: [{
 				id: "13C32142A3A9AA1F"
@@ -258,6 +298,7 @@
 		}
 		{
 			dependencies: ["4069BFCE7C742DAD"]
+			description: ["Straw can be obtained from wheat, rice, or grass."]
 			id: "55033B2BBF898840"
 			tasks: [{
 				id: "3FA281198BAACABD"
@@ -269,6 +310,12 @@
 		}
 		{
 			dependencies: ["4069BFCE7C742DAD"]
+			description: [
+				"Hello, it's me again."
+				""
+				"&oSuffer...&r"
+				"- Someone in history, probably"
+			]
 			id: "4786498A2E13B4D6"
 			tasks: [{
 				id: "696D684FD94BA329"
@@ -280,6 +327,7 @@
 		}
 		{
 			dependencies: ["2BBBC9DE78CBB47B"]
+			description: ["Ink can be made by dissolving black dye in water."]
 			icon: "create_enchantment_industry:ink_bucket"
 			id: "3B58D984466057A1"
 			tasks: [
@@ -300,6 +348,11 @@
 		}
 		{
 			dependencies: ["4069BFCE7C742DAD"]
+			description: [
+				"Do you remember how to make sulfuric acid?"
+				""
+				"If you didn't automate this in Chapter 5a, JEI is your friend."
+			]
 			icon: "vintageimprovements:sulfuric_acid_bucket"
 			id: "19C4086752C5E343"
 			tasks: [
@@ -320,6 +373,7 @@
 		}
 		{
 			dependencies: ["4069BFCE7C742DAD"]
+			description: ["Ice is needed to make cooling fluid."]
 			id: "6D5FF2F1C1775AF6"
 			tasks: [{
 				id: "138D446A057F92F1"
@@ -331,6 +385,7 @@
 		}
 		{
 			dependencies: ["6D5FF2F1C1775AF6"]
+			description: ["Pack the ice into ... well ... packed ice."]
 			id: "5C7522587633095B"
 			tasks: [{
 				id: "7DC018E2C073FAD1"
@@ -342,6 +397,7 @@
 		}
 		{
 			dependencies: ["5C7522587633095B"]
+			description: ["Further compaction yields blue ice."]
 			id: "72A9B400051E9C47"
 			tasks: [{
 				id: "4F6B7396E8BD7AF0"
@@ -353,6 +409,7 @@
 		}
 		{
 			dependencies: ["1FE86472FA2F13A3"]
+			description: ["And superheated again..."]
 			id: "28A495EA82777749"
 			tasks: [{
 				id: "21C957B7F691A848"
@@ -364,6 +421,7 @@
 		}
 		{
 			dependencies: ["2465D87B63720747"]
+			description: ["And forged again..."]
 			id: "1FE86472FA2F13A3"
 			tasks: [{
 				id: "179BE5E3E3C69A76"
@@ -375,6 +433,7 @@
 		}
 		{
 			dependencies: ["5BC492F12DD24AB9"]
+			description: ["After forging, it needs to be superheated."]
 			id: "2465D87B63720747"
 			tasks: [{
 				id: "12F2F63B50BA9B31"
@@ -386,6 +445,7 @@
 		}
 		{
 			dependencies: ["5ECA2EB53C7BA239"]
+			description: ["Tri-Steel Plating is a mix of the three super hard steels that you've discovered. It requires a significant amount of forging though."]
 			id: "5BC492F12DD24AB9"
 			tasks: [{
 				id: "7C92EE88E6B0AF6F"
@@ -396,7 +456,8 @@
 			y: -10.0d
 		}
 		{
-			dependencies: ["6CC626B69B8397C3"]
+			dependencies: ["516B0432480CC9AD"]
+			description: ["Emulsifying the blizz powder with oil creates cooling fluid."]
 			id: "48E2BD9DA3164BFD"
 			tasks: [{
 				id: "6CDE2AE3C399F8FF"
@@ -404,15 +465,43 @@
 				type: "item"
 			}]
 			x: 12.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["0D8EEDC8F9ABC762"]
+			description: ["Blizz cubes drop from blizzes as a mob drop."]
+			id: "72B7B74605D5D015"
+			tasks: [{
+				id: "111F5CCC9F8CE842"
+				item: "thermal:blizz_rod"
+				type: "item"
+			}]
+			x: 10.0d
+			y: -4.0d
+		}
+		{
+			dependencies: ["72B7B74605D5D015"]
+			description: ["Centrifuging blizz cubes at high velocity yields blizz powder."]
+			id: "516B0432480CC9AD"
+			tasks: [{
+				id: "6146038467E7257D"
+				item: "thermal:blizz_powder"
+				type: "item"
+			}]
+			x: 12.0d
 			y: -4.0d
 		}
 		{
 			dependencies: ["72A9B400051E9C47"]
-			id: "6CC626B69B8397C3"
+			description: ["Anima essence will animate a piece of blue ice into a blizz."]
+			id: "0D8EEDC8F9ABC762"
 			tasks: [{
-				id: "44BEC6CCF56E1D9A"
-				item: "minecraft:snow_block"
-				type: "item"
+				icon: "thermal:blizz_spawn_egg"
+				id: "71B7E0EDCE82AE1E"
+				observe_type: 5
+				timer: 0L
+				to_observe: "thermal:blizz"
+				type: "observation"
 			}]
 			x: 8.0d
 			y: -4.0d

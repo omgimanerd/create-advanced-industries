@@ -15,7 +15,7 @@
 			description: [
 				"Chapter 5a unlocks Logistics Mechanisms, but you'll unlock a lot of other stuff along the way."
 				""
-				"The upper technology tree unlocks oil and petrochemical processing. This gives you access to a powerful source of fuel as well as plastics. &lI highly recommend starting with this branch.&r"
+				"The upper technology tree unlocks oil and petrochemical processing. This gives you access to a powerful source of fuel as well as plastics."
 				""
 				"The middle technology tree unlocks electricity generation, giving you access to circuitry and machinery."
 				""
@@ -23,7 +23,7 @@
 				""
 				"All of these will go hand in hand to unlock advanced logistics."
 				""
-				"Note that as soon as you click the checkmark, several different quests in this chapter will unlock. There is more than one starting point, but you should probably start from this side."
+				"Note that as soon as you click the checkmark, several different quests in this chapter will unlock. There is more than one starting point, but you all of them to finish the chapter."
 			]
 			id: "5978BE35C75966ED"
 			min_width: 400
@@ -98,7 +98,7 @@
 				type: "item"
 			}]
 			shape: "gear"
-			size: 1.5d
+			size: 2.0d
 			tasks: [{
 				id: "77DD8CC5F0E44F5D"
 				item: "pneumaticcraft:plastic"
@@ -581,6 +581,12 @@
 			dependency_requirement: "one_completed"
 			description: ["The Thermopneumatic Processing Plant is an important machine that uses both heat and pressure to process things. It will be used for a lot of different things in this chapter."]
 			id: "646D6F79EF32D089"
+			rewards: [{
+				count: 4
+				id: "6150955D7470D2A2"
+				item: "pneumaticcraft:thermopneumatic_processing_plant"
+				type: "item"
+			}]
 			tasks: [{
 				id: "426E3CB9F0A5AF9E"
 				item: "pneumaticcraft:thermopneumatic_processing_plant"
@@ -828,7 +834,7 @@
 			icon: "pneumaticcraft:assembly_controller"
 			id: "4F5053EC6278DC86"
 			shape: "gear"
-			size: 1.5d
+			size: 2.0d
 			tasks: [
 				{
 					id: "2E59F8757F7A2A7D"
@@ -1036,7 +1042,7 @@
 				type: "item"
 			}]
 			shape: "gear"
-			size: 1.5d
+			size: 2.0d
 			tasks: [
 				{
 					id: "699B30A5DC8DADCC"
@@ -1319,7 +1325,7 @@
 			description: [
 				"You'll then need to process the molten silicon at high temperature and pressure with more coal coke. The silicon carbide should vaporize at a high enough temperature, leaving behind pure graphite."
 				""
-				"It might be a challenge heating it to the required temperature though."
+				"&lIt might be a challenge heating it to the required temperature though.&r"
 			]
 			id: "4D56CF3158929A30"
 			tasks: [{
@@ -1505,7 +1511,7 @@
 				type: "item"
 			}]
 			shape: "gear"
-			size: 1.5d
+			size: 2.0d
 			tasks: [{
 				id: "0E40D1B7BFB777A1"
 				item: "pneumaticcraft:advanced_pressure_tube"

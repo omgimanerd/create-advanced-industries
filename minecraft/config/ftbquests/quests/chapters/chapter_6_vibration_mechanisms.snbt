@@ -51,6 +51,11 @@
 				}
 			}
 			id: "75A7D7288DF25E12"
+			rewards: [{
+				id: "4B453E8B1E4A358C"
+				type: "xp_levels"
+				xp_levels: 50
+			}]
 			size: 2.0d
 			tasks: [{
 				icon: {
@@ -105,6 +110,11 @@
 				}
 			}
 			id: "3E42BEA143D5E555"
+			rewards: [{
+				id: "078943AC209D090B"
+				type: "xp_levels"
+				xp_levels: 50
+			}]
 			size: 2.0d
 			tasks: [
 				{
@@ -260,8 +270,15 @@
 				"Go to the end and defeat the ender dragon."
 				""
 				"The ender dragon will always drop its head when defeated."
+				""
+				"If you are on a multiplayer server, you might need to check out the bottom of this chapter for end crystals to respawn the dragon."
 			]
 			id: "7F0A4231CA344359"
+			rewards: [{
+				id: "079BBD759247E3B5"
+				type: "xp_levels"
+				xp_levels: 50
+			}]
 			size: 2.0d
 			tasks: [{
 				id: "5D3CA59758B2C08A"
@@ -1374,6 +1391,26 @@
 				"Ponder the beacon to understand how it works."
 			]
 			id: "56176D126878352C"
+			rewards: [
+				{
+					count: 16
+					id: "4D84455E3995F3D0"
+					item: "create_new_age:overcharged_iron"
+					type: "item"
+				}
+				{
+					count: 16
+					id: "62667CA973E45477"
+					item: "create_new_age:overcharged_gold"
+					type: "item"
+				}
+				{
+					count: 16
+					id: "70E99900ABE75F5E"
+					item: "create_new_age:overcharged_diamond"
+					type: "item"
+				}
+			]
 			tasks: [{
 				id: "62C870E4E2A7D277"
 				item: "minecraft:beacon"
@@ -1410,6 +1447,34 @@
 			}]
 			x: 22.0d
 			y: 0.0d
+		}
+		{
+			dependencies: ["243F51DA64564519"]
+			description: [
+				"Once you unlock energized beacon crafting, you can make tesseracts from the end crystals."
+				""
+				"Among other things, this becomes a tremendously more efficient beacon crafting recipe."
+			]
+			id: "6796A3AD3DD1CD86"
+			invisible: true
+			rewards: [{
+				id: "6A864A61C8605252"
+				item: {
+					Count: 1b
+					id: "gag:energized_hearthstone"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			tasks: [{
+				id: "15453F86A4A3DB20"
+				item: "kubejs:tesseract"
+				type: "item"
+			}]
+			x: 14.0d
+			y: 4.0d
 		}
 	]
 	title: "Chapter 6: Vibration Mechanisms"
