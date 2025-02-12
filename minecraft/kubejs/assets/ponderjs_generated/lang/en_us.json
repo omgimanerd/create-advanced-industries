@@ -74,6 +74,7 @@
   "kubejs.ponder.ender_inhibitor.header": "Ender Inhibitor",
   "kubejs.ponder.ender_inhibitor.text_1": "The Ender Inhibitor can inhibit nearby entities from teleporting.",
   "kubejs.ponder.ender_inhibitor.text_2": "It has an effective range of 9x9, centered on the block",
+  "kubejs.ponder.ender_inhibitor.text_3": "Make sure the Ender Inhibitor has somewhere to put the fluid, or it will explode!",
   "kubejs.ponder.fluid_sourcelink.header": "Fluid Sourcelink",
   "kubejs.ponder.fluid_sourcelink.text_1": "Ars Nouveau requires source to be in its raw form inside source jars for its machines and blocks.",
   "kubejs.ponder.fluid_sourcelink.text_2": "The Fluid Sourcelink is the only way to get source into these jars from its liquid form.",
