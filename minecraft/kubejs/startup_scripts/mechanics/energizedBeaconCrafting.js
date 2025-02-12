@@ -205,4 +205,13 @@ global.CorundumClusterMapping = {
     beaconColor: global.CorundumClusterMapping.white.beaconColor,
     energy: 2000,
   })
+
+  // Refined Radiance
+  global.EnergizedBeaconCraftingRecipes.push({
+    ingredient: 'create:chromatic_compound',
+    results: ['create:refined_radiance'],
+    redirectorBlock: global.CorundumClusterMapping.magenta.cluster,
+    beaconColor: global.CorundumClusterMapping.magenta.beaconColor,
+    energy: 10000,
+  })
 })()
