@@ -35,8 +35,8 @@ ItemEvents.tooltip((e) => {
           [
             'Look! A gay stick!',
             '',
-            'Hit a colored sheep above a drain with the Chromatic Bop Stick ' +
-              'to drain out Chromatic Fluid.',
+            'Hit a colored sheep above a Create drain with the Chromatic Bop ' +
+              'Stick to drain out Chromatic Fluid.',
             '',
             'Each usage will use one color charge of the corresponding ' +
               'color. The wand will not work without a color charge.',
