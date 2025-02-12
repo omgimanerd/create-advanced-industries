@@ -155,6 +155,22 @@ ServerEvents.recipes((e) => {
     .fill(Fluid.of('minecraft:milk', 250))
     .outputs('farmersdelight:stuffed_potato')
 
+  // Straw can be obtained from wheat.
+  e.remove({ id: 'create:milling/wheat' })
+  create.milling(
+    [
+      'create:wheat_flour',
+      'farmersdelight:straw',
+      Item.of('create:wheat_flour', 2).withChance(0.25),
+    ],
+    'minecraft:wheat'
+  )
+  e.recipes.farmersdelight.cutting(
+    'minecraft:wheat_seeds',
+    ['create:wheat_flour', 'farmersdelight:straw'],
+    '#farmersdelight:tools/knives'
+  )
+
   // Create: Sweets and Treats
   e.remove({ id: 'create:filling/gunpowdercake' })
   create

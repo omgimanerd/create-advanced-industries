@@ -27,6 +27,7 @@
     })
   }
 
+  // TODO register more relevant mobs
   registerAnimaEssenceSpawn('minecraft:cobweb', 'minecraft:spider')
   // The relevant wool color can spawn a sheep.
   global.CHROMATIC_BOP_STICK_COLORS.map((color, index) => {

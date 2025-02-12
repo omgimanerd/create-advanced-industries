@@ -35,6 +35,7 @@ ServerEvents.recipes((e) => {
   )
 
   // Refined Radiance overhaul, in-world crafting disabled in Create config.
+  // Energized beacon crafting recipes is defined in the relevant file.
   create
     .SequencedAssembly('create:chromatic_compound')
     .energize(100000)
@@ -50,6 +51,15 @@ ServerEvents.recipes((e) => {
     'create:refined_radiance'
   )
 
+  // Blizz Powder
+  e.remove({ id: 'thermal:blizz_powder' })
+  create.centrifuging(
+    ['minecraft:snow_block', '2x thermal:blizz_powder'],
+    'thermal:blizz_rod',
+    256,
+    100
+  )
+
   // Cooling Fluid
   e.remove({ id: 'tfmg:mixing/cooling_fluid' })
   create.mixing(Fluid.of('tfmg:cooling_fluid', 250), [
@@ -63,6 +73,13 @@ ServerEvents.recipes((e) => {
     .pressure(2)
     .temperature({ max_temp: 273 - 200 })
     .fluid_output(Fluid.of('tfmg:cooling_fluid', 250))
+  pneumaticcraft
+    .heat_properties()
+    .fluid('tfmg:cooling_fluid')
+    .temperature(273 - 200)
+    .thermalResistance(50)
+    .heatCapacity(50000)
+    .transformHot({ block: 'minecraft:air' })
 
   // Tri-Steel Plating to Chorium Ingot Forging
   create
@@ -95,6 +112,20 @@ ServerEvents.recipes((e) => {
     .outputs('createcasing:chorium_ingot')
   e.remove({ output: 'createcasing:chorium_ingot' })
 
+  // Alternative Ink Recipe
+  e.shaped(
+    'create_enchantment_industry:ink_bucket',
+    [
+      'DDD', //
+      'DBD', //
+      'DDD', //
+    ],
+    {
+      D: '#create_enchantment_industry:ink_ingredient',
+      B: 'minecraft:water_bucket',
+    }
+  ).id('kubejs:ink_bucket_manual_only')
+
   // Empty music discs
   create
     .SequencedAssembly('pneumaticcraft:plastic')
@@ -103,6 +134,7 @@ ServerEvents.recipes((e) => {
     .laser(8000, 1000)
     .outputs('kubejs:empty_music_disc')
 
+  // TODO: writing music discs?
   // TODO: right clickable inspiration item
 
   // Disc fragment cutting and recycling
