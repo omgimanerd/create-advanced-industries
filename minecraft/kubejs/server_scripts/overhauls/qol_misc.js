@@ -155,4 +155,13 @@ ServerEvents.recipes((e) => {
       Fluid.of('kubejs:molten_diamond', global.MeltableItem.DEFAULT_INGOT_FLUID)
     )
     .outputs('minecraft:netherite_upgrade_smithing_template')
+
+  // End portal frames can be crafted
+  create
+    .SequencedAssembly('minecraft:end_stone')
+    .cut()
+    .curve(CONVEX_CURVING_HEAD)
+    .fill(Fluid.of('thermal:ender', 1000))
+    .fill(Fluid.of('kubejs:teleportation_juice', 1000))
+    .outputs('minecraft:end_portal_frame')
 })
