@@ -645,6 +645,13 @@ ServerEvents.recipes((e) => {
       '4x refinedstorage:silicon'
     )
     .max_temp(-50)
+  pneumaticcraft
+    .fluid_mixer(
+      Fluid.of('kubejs:molten_silicon', 1000),
+      Fluid.of('tfmg:cooling_fluid', 100)
+    )
+    .pressure(0)
+    .item_output('12x refinedstorage:silicon')
 
   // Continuing to process silicon with coal coke yields
   pneumaticcraft
