@@ -7,7 +7,8 @@ ItemEvents.canPickUp('kubejs:unstable_singularity', (e) => {
 
 // Stable singularities can be used to remove any block from existence.
 BlockEvents.rightClicked((e) => {
-  const { item, hand, block, level } = e
+  const { item, hand, block, level, player } = e
+  if (player.isFake()) return
   if (hand !== 'main_hand') return
   if (item.id !== 'kubejs:singularity') return
 
