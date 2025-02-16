@@ -483,17 +483,11 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'minecraft:beacon' })
   create
     .SequencedAssembly('minecraft:obsidian')
-    .deploy('minecraft:end_crystal')
-    .deploy('minecraft:diamond_block')
-    .deploy('minecraft:glass')
-    .outputs('minecraft:beacon')
-  create
-    .SequencedAssembly('minecraft:obsidian')
     .press()
     .deploy('kubejs:tesseract')
     .deploy('minecraft:diamond_block')
     .deploy('minecraft:glass')
-    .outputs('4x minecraft:beacon')
+    .outputs('minecraft:beacon')
 
   // Final Vibration Mechanism craft
   e.remove({ id: 'create_things_and_misc:vibration_mecanism_craft' })

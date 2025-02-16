@@ -115,7 +115,7 @@ ServerEvents.recipes((e) => {
     Fluid.of('create_things_and_misc:slime', 5),
   ])
 
-  // Control chip overhaul
+  // TODO: Control chip overhaul
   // e.remove({ id: 'create_connected:sequenced_assembly/control_chip' })
   // create
   //   .SequencedAssembly('create:brass_sheet')

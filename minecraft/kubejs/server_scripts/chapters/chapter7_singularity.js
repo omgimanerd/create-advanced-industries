@@ -5,6 +5,35 @@ ItemEvents.canPickUp('kubejs:unstable_singularity', (e) => {
   e.cancel()
 })
 
+// Stable singularities can be used to remove any block from existence.
+BlockEvents.rightClicked((e) => {
+  const { item, hand, block, level } = e
+  if (hand !== 'main_hand') return
+  if (item.id !== 'kubejs:singularity') return
+
+  item.shrink(1)
+  block.set('minecraft:air')
+  spawnParticles(
+    level, // level
+    'minecraft:cloud', // particle
+    block.pos.center, // pos
+    [0.5, 0.5, 0.5], // v
+    35, // count
+    0.01 // speed
+  )
+  level.playSound(
+    null, //player
+    block.x,
+    block.y,
+    block.z,
+    'gag:generic.teleport',
+    'players',
+    3, //volume
+    0 //pitch
+  )
+  e.cancel()
+})
+
 EntityEvents.spawned('minecraft:item', (e) => {
   const { entity, level } = e
   if (!entity.item || entity.item.id !== 'kubejs:unstable_singularity') return
@@ -72,7 +101,7 @@ ServerEvents.recipes((e) => {
     'kubejs:magnetic_confinement_unit',
     [
       'PAAAAAP', //
-      'LMBTBML', //
+      'LMB BML', //
       'PAAAAAP', //
     ],
     {
@@ -81,11 +110,11 @@ ServerEvents.recipes((e) => {
       L: 'kubejs:logistics_mechanism',
       M: 'create_new_age:netherite_magnet',
       B: 'minecraft:beacon',
-      T: 'kubejs:tesseract',
     }
   )
   create
     .SequencedAssembly('kubejs:magnetic_confinement_unit')
+    .deploy('kubejs:tesseract')
     .fill(Fluid.of('kubejs:teleportation_juice', 250))
     .fill(potionFluid('ars_elemental:enderference_potion_long', 250))
     .energize(500000)

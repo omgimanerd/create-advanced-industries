@@ -191,7 +191,7 @@ global.CorundumClusterMapping = {
     results: 'kubejs:tesseract',
     redirectorBlock: global.CorundumClusterMapping.white.cluster,
     beaconColor: global.CorundumClusterMapping.white.beaconColor,
-    energy: 5000,
+    energy: 10000,
   })
 
   // Magnetic Confinement Units for Antimatter
@@ -203,7 +203,7 @@ global.CorundumClusterMapping = {
     ],
     redirectorBlock: global.CorundumClusterMapping.white.cluster,
     beaconColor: global.CorundumClusterMapping.white.beaconColor,
-    energy: 2000,
+    energy: 20000,
   })
 
   // Refined Radiance

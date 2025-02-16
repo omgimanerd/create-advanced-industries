@@ -217,11 +217,13 @@ StartupEvents.registry('item', (e) => {
   registerItem('kubejs:quantum_chip')
   registerItem('kubejs:incomplete_quantum_chip', 'create:sequenced_assembly')
 
-  // Magnetic Confinement Unit and Antimatter
+  // Magnetic Confinement Unit and Singularities
   registerItem('kubejs:unstable_singularity').tooltip(
     'Cannot be picked up. Decays rapidly once in the world.'
   )
-  registerItem('kubejs:singularity')
+  registerItem('kubejs:singularity').tooltip(
+    Text.red('Warning: This is capable of deleting ANY block from the world.')
+  )
   registerItem('kubejs:magnetic_confinement_unit')
   e.create('kubejs:magnetic_confinement_unit_filled').displayName(
     'Magnetic Confinement Unit (Filled)'
