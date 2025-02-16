@@ -131,14 +131,21 @@
 			description: ["Blow it up with some TNT to activate it."]
 			icon: "molten_vents:active_molten_asurine"
 			id: "52C4538635906B7E"
-			tasks: [{
-				icon: "molten_vents:active_molten_asurine"
-				id: "55BE27EC27A2F0F2"
-				observe_type: 1
-				timer: 0L
-				to_observe: "kubejs:active_vent"
-				type: "observation"
-			}]
+			tasks: [
+				{
+					icon: "molten_vents:active_molten_asurine"
+					id: "55BE27EC27A2F0F2"
+					observe_type: 1
+					timer: 0L
+					to_observe: "kubejs:active_vent"
+					type: "observation"
+				}
+				{
+					id: "10FEF6748A9E1FC3"
+					item: "minecraft:tnt"
+					type: "item"
+				}
+			]
 			title: "Activating a Molten Vent"
 			x: 2.0d
 			y: 10.0d
@@ -686,7 +693,11 @@
 		}
 		{
 			dependencies: ["19F1809E10BAAC61"]
-			description: ["Harvesting the stone and crush it."]
+			description: [
+				"Harvest the stone and crush it."
+				""
+				"Building a contraption to do this underwater is quite a challenge."
+			]
 			id: "04F20036D8172501"
 			tasks: [{
 				icon: "kubejs:crushed_asurine"
