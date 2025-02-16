@@ -68,11 +68,11 @@ ServerEvents.recipes((e) => {
   ])
   pneumaticcraft
     .thermo_plant()
-    .fluid_input(Fluid.of('createaddition:seed_oil', 150))
+    .fluid_input(Fluid.of('createaddition:seed_oil', 250))
     .item_input('thermal:blizz_powder')
     .pressure(2)
     .temperature({ max_temp: 273 - 200 })
-    .fluid_output(Fluid.of('tfmg:cooling_fluid', 250))
+    .fluid_output(Fluid.of('tfmg:cooling_fluid', 500))
   pneumaticcraft
     .heat_properties()
     .fluid('tfmg:cooling_fluid')

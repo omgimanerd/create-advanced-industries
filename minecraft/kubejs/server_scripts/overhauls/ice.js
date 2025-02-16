@@ -17,6 +17,10 @@ ServerEvents.recipes((e) => {
   pneumaticcraft
     .heat_frame_cooling(Fluid.water(1000), 'minecraft:ice')
     .max_temp(iceTemperature)
+  pneumaticcraft
+    .fluid_mixer(Fluid.water(1000), Fluid.of('tfmg:cooling_fluid', 50))
+    .pressure(0)
+    .item_output('minecraft:ice')
 
   // Packed Ice
   const packedIceTemperature = 273 - 20
@@ -32,6 +36,11 @@ ServerEvents.recipes((e) => {
   pneumaticcraft
     .heat_frame_cooling('minecraft:ice', 'minecraft:packed_ice')
     .max_temp(packedIceTemperature)
+  pneumaticcraft
+    .thermo_plant()
+    .item_input('minecraft:ice')
+    .fluid_input(Fluid.of('tfmg:cooling_fluid', 50))
+    .item_output('minecraft:packed_ice')
 
   // Blue Ice
   const blueIceTemperature = 273 - 40
@@ -46,6 +55,11 @@ ServerEvents.recipes((e) => {
   pneumaticcraft
     .heat_frame_cooling('minecraft:packed_ice', 'minecraft:blue_ice')
     .max_temp(blueIceTemperature)
+  pneumaticcraft
+    .thermo_plant()
+    .item_input('minecraft:packed_ice')
+    .fluid_input(Fluid.of('tfmg:cooling_fluid', 100))
+    .item_output('minecraft:blue_ice')
 
   // Snow Blocks
   create.mixing(
