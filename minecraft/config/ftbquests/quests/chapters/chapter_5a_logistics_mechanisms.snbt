@@ -280,7 +280,7 @@
 		}
 		{
 			dependencies: ["7A306159E94EA54C"]
-			description: ["Combining diesel with a seed oil produces lubricant."]
+			description: ["Combining diesel with seed oil produces lubricant."]
 			icon: "pneumaticcraft:lubricant_bucket"
 			id: "5F46DBF36BF850AF"
 			tasks: [
@@ -814,7 +814,7 @@
 		}
 		{
 			dependencies: ["5AAAFF9CC002EB70"]
-			description: ["Strangely enough, molten silicon cannot be casted, so you'll need to find another technology in this chapter to solidify it."]
+			description: ["Molten silicon cannot be casted, so you'll need to find another technology in this chapter to solidify it."]
 			id: "33C57686C54AE721"
 			tasks: [{
 				id: "5361020FCDD8E836"
