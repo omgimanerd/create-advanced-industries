@@ -452,7 +452,7 @@
 				item: "minecraft:wither_skeleton_skull"
 				type: "item"
 			}]
-			x: 12.0d
+			x: 14.0d
 			y: 4.0d
 		}
 		{
@@ -469,7 +469,7 @@
 				type: "item"
 			}]
 			x: 12.0d
-			y: 6.0d
+			y: 4.0d
 		}
 		{
 			dependencies: [
@@ -1037,10 +1037,10 @@
 		}
 		{
 			dependencies: [
-				"0CE7E80FB2C2864E"
 				"73263EC95364E1E4"
+				"0CE7E80FB2C2864E"
 			]
-			description: ["Being able to craft an end crystal also means you can craft a beacon."]
+			description: ["Being able to craft an end crystal also means you're almost ready to craft a beacon."]
 			id: "243F51DA64564519"
 			tasks: [{
 				id: "7561606C118A67DE"
@@ -1048,7 +1048,7 @@
 				type: "item"
 			}]
 			x: 16.0d
-			y: 4.0d
+			y: 6.0d
 		}
 		{
 			dependencies: [
@@ -1382,7 +1382,7 @@
 			y: 14.0d
 		}
 		{
-			dependencies: ["243F51DA64564519"]
+			dependencies: ["6796A3AD3DD1CD86"]
 			description: [
 				"A beacon is required to perform energized beacon crafting."
 				""
@@ -1450,13 +1450,8 @@
 		}
 		{
 			dependencies: ["243F51DA64564519"]
-			description: [
-				"Once you unlock energized beacon crafting, you can make tesseracts from the end crystals."
-				""
-				"Among other things, this becomes a tremendously more efficient beacon crafting recipe."
-			]
+			description: ["Once you unlock energized beacon crafting, you can make tesseracts from the end crystals."]
 			id: "6796A3AD3DD1CD86"
-			invisible: true
 			rewards: [{
 				id: "6A864A61C8605252"
 				item: {
@@ -1473,7 +1468,7 @@
 				item: "kubejs:tesseract"
 				type: "item"
 			}]
-			x: 14.0d
+			x: 16.0d
 			y: 4.0d
 		}
 	]

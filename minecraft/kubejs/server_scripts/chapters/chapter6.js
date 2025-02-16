@@ -479,6 +479,9 @@ ServerEvents.recipes((e) => {
     .energize(25000)
     .outputs('minecraft:end_crystal')
 
+  // Tesseracts
+  create.energizing('kubejs:tesseract', 'minecraft:end_crystal', 1000000)
+
   // Beacon overhaul
   e.remove({ id: 'minecraft:beacon' })
   create
