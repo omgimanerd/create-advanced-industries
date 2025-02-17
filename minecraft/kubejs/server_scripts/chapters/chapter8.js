@@ -1,28 +1,9 @@
 // priority: 500
 
-ItemEvents.rightClicked('kubejs:creative_remote', (e) => {
-  const { player, level, server } = e
-  if (!player || player.isFake()) return
-  const mode = player.isCreative() ? 'survival' : 'creative'
-  server.runCommandSilent(`/gamemode ${mode} ${player.name.string}`)
-  level.playSound(
-    null, //
-    player.x,
-    player.y,
-    player.z,
-    player.isCreative() ? 'kubejs:creative_on' : 'kubejs:creative_off',
-    'players',
-    3, // volume
-    1 // pitch
-  )
-  player.swing()
-})
-
 ItemEvents.entityInteracted('kubejs:uninspired_spark', (e) => {
   const { item, entity, target, level } = e
-
   if (target.isPlayer()) {
-    target.tell('A truly creative being...')
+    target.tell(Text.lightPurple('A truly creative being...'))
     item.shrink(1)
     entity.giveInHand('kubejs:inspired_spark')
     level.playSound(
@@ -212,7 +193,6 @@ ServerEvents.recipes((e) => {
     .outputs('kubejs:empty_music_disc')
 
   // TODO: writing music discs?
-  // TODO: right clickable inspiration item
 
   // Disc fragment cutting and recycling
   // create.cutting(
@@ -233,4 +213,7 @@ ServerEvents.recipes((e) => {
     .deploy('kubejs:empty_disc_fragment')
     .loops(3)
     .outputs('kubejs:empty_music_disc')
+
+  // TODO creative remote
+  // TODO creative mechanism
 })
