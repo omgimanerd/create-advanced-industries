@@ -20,4 +20,37 @@ ClientEvents.lang('en_us', (e) => {
 
   // Name this a mechanism instead of a module.
   e.renameItem('vintageimprovements:redstone_module', 'Redstone Mechanism')
+
+  // Creative Items whose names aren't colored
+  const creative = [
+    { type: 'item', id: 'ars_nouveau:creative_spell_book' },
+    { type: 'block', id: 'ars_nouveau:creative_source_jar' },
+    { type: 'item', id: 'wands:creative_wand' },
+    { type: 'item', id: 'refinedstorage:creative_storage_disk' },
+    { type: 'item', id: 'refinedstorage:creative_fluid_storage_disk' },
+    { type: 'item', id: 'refinedstorage:creative_wireless_grid' },
+    { type: 'item', id: 'refinedstorage:creative_wireless_crafting_monitor' },
+    { type: 'block', id: 'refinedstorage:creative_portable_grid' },
+    { type: 'block', id: 'refinedstorage:creative_storage_block' },
+    { type: 'block', id: 'refinedstorage:creative_fluid_storage_block' },
+    { type: 'block', id: 'refinedstorage:creative_controller' },
+    { type: 'item', id: 'universalgrid:creative_wireless_universal_grid' },
+  ]
+  for (const { type, id } of creative) {
+    let displayName = id
+      .replace(/[a-zA-Z0-9_]+:/, '')
+      .split('_')
+      .map((c) => c[0].toUpperCase() + c.substring(1))
+      .join(' ')
+    switch (type) {
+      case 'item':
+        e.renameItem(id, `§d${displayName}`)
+        break
+      case 'block':
+        e.renameBlock(id, `§d${displayName}`)
+        break
+      default:
+        throw new Error(`Unknown type ${type}`)
+    }
+  }
 })

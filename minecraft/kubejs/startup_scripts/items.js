@@ -309,12 +309,17 @@ StartupEvents.registry('item', (e) => {
     .maxStackSize(1)
 
   // Creative Storage Part
-  registerItem('kubejs:creative_storage_part')
-  registerItem('kubejs:creative_fluid_storage_part')
+  e.create('kubejs:creative_storage_part').displayName(
+    '§dCreative Storage Part'
+  )
+  e.create('kubejs:creative_fluid_storage_part').displayName(
+    '§dCreative Fluid Storage Part'
+  )
 
   // Creative Remote
   e.create('kubejs:creative_remote')
-    .displayName(Text.lightPurple('Creative Remote'))
+    // Display names here do not support text components.
+    .displayName('§dCreative Remote')
     .fireResistant()
     .maxStackSize(1)
 })
