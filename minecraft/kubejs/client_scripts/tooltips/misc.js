@@ -45,6 +45,7 @@ ItemEvents.tooltip((e) => {
     ],
   })
 
+  // TODO: remove for 1.0 release
   // Neat utility to display NBT in the tooltip, debug only, remove for the 1.0
   // release.
   e.addAdvancedToAll((item, _, text) => {

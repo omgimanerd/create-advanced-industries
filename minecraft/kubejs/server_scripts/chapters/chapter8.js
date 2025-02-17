@@ -1,5 +1,63 @@
 // priority: 500
 
+ItemEvents.entityInteracted('kubejs:uninspired_spark', (e) => {
+  const { item, entity, target, level } = e
+
+  if (target.isPlayer()) {
+    target.tell('A truly creative being...')
+    item.shrink(1)
+    entity.giveInHand('kubejs:inspired_spark')
+    level.playSound(
+      null, // player
+      target.x,
+      target.y,
+      target.z,
+      'kubejs:wow',
+      'players',
+      10, // volume
+      1 // pitch
+    )
+    spawnParticles(
+      level,
+      'minecraft:enchant', // particle
+      target, // pos
+      [1.2, 1.2, 1.2], // v
+      2000, // count
+      0.1
+    ) // speed
+    return
+  }
+
+  const lowInspiration = [
+    'Nope, no creativity to be found here.',
+    'Seems quite mundane...',
+    'Maybe try something else?',
+    "Doesn't seem very creative...",
+    'Maybe if they went to art school first...',
+  ]
+  const highInspiration = [
+    "Whoa! Here's some creativity, but not quite enough.",
+    "A interesting specimen, but perhaps there's something even more " +
+      'inspiring.',
+    "Now this guy's a true craftsman! Maybe we can find someone even better?",
+    "He's got the vibe, but not the pizzazz,",
+    "You touch the spark to them. It wiggles a little bit, but doesn't change.",
+  ]
+  const hint =
+    'Can you figure out how to right click this on someone truly inspiring?'
+  const uses = item.nbt === null || item.nbt.uses === null ? 0 : item.nbt.uses
+  if (uses >= 10) {
+    entity.tell(hint)
+  } else if (target.name === 'minecraft:villager') {
+    entity.tell(highInspiration[uses % highInspiration.length])
+  } else {
+    entity.tell(lowInspiration[uses % lowInspiration.length])
+  }
+  item.setNbt({
+    uses: Math.min(10, uses + 1),
+  })
+})
+
 ServerEvents.tags('item', (e) => {
   // Missing plate tags for void steel
   e.add('forge:plates', 'createutilities:void_steel_sheet')
@@ -35,6 +93,7 @@ ServerEvents.recipes((e) => {
   )
 
   // Refined Radiance overhaul, in-world crafting disabled in Create config.
+  // Shadow steel is also disabled, and done using void conversion in kubejs.
   // Energized beacon crafting recipes is defined in the relevant file.
   create
     .SequencedAssembly('create:chromatic_compound')

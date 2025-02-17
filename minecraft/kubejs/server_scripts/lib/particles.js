@@ -25,6 +25,7 @@ const parseVec3Like = (v) => {
 
 /**
  * Helper for calling Level.spawnParticles
+ * https://minecraft.fandom.com/wiki/Commands/particle
  * @param {Internal.Level_} level
  * @param {Internal.ParticleOptions_} particle
  * @param {Vec3Like} pos

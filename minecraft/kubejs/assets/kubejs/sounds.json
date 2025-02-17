@@ -1,0 +1,7 @@
+{
+  "wow": {
+    "category": "block",
+    "subtitle": "Wow!",
+    "sounds": ["kubejs:wow"]
+  }
+}
