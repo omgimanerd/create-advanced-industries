@@ -39,7 +39,6 @@ Ponder.registry((e) => {
         'minecraft:enderman',
         endermanLoc.getCenter()
       )
-      console.log(endermanLoc.getCenter())
       scene.idle(40)
       for (let tankContents = 0; tankContents < 8000; tankContents += 2000) {
         scene.world.modifyEntity(enderman, (entity) => {
