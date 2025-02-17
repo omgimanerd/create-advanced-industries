@@ -42,7 +42,7 @@ JEIAddedEvents.registerCategories((e) => {
         .icon(
           doubleItemIcon(
             'vintageimprovements:centrifuge',
-            Item.of('minecraft:potion', '{Potion:"minecraft:healing"}')
+            Item.of('minecraft:potion', { Potion: 'minecraft:healing' })
           )
         )
         .isRecipeHandled(() => true) // Only relevant recipes are registered

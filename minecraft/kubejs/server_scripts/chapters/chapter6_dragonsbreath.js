@@ -12,7 +12,7 @@ LootJS.modifiers((e) => {
 BlockEvents.rightClicked('minecraft:dragon_head', (e) => {
   const { block, hand, item, player, server } = e
   if (hand !== 'main_hand') return
-  const requiredPotion = Item.of('minecraft:potion').withNBT({
+  const requiredPotion = Item.of('minecraft:potion', {
     Potion: 'minecraft:strong_regeneration',
   })
   if (!item.equalsIgnoringCount(requiredPotion)) return

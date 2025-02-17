@@ -20,7 +20,7 @@ Ponder.registry((e) => {
       scene.idleSeconds(1)
 
       // Trigger dragon's breath
-      const strongRegenPotion = Item.of('minecraft:potion').withNBT({
+      const strongRegenPotion = Item.of('minecraft:potion', {
         Potion: 'minecraft:strong_regeneration',
       })
       scene.addKeyframe()
