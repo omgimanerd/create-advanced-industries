@@ -3,5 +3,15 @@
     "category": "block",
     "subtitle": "Wow!",
     "sounds": ["kubejs:wow"]
+  },
+  "creative_on": {
+    "category": "player",
+    "subtitle": "Activates Creative Mode",
+    "sounds": ["kubejs:creative_on"]
+  },
+  "creative_off": {
+    "category": "player",
+    "subtitle": "Deactivates Creative Mode",
+    "sounds": ["kubejs:creative_off"]
   }
 }

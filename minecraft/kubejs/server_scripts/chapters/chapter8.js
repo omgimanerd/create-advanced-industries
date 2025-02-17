@@ -1,5 +1,23 @@
 // priority: 500
 
+ItemEvents.rightClicked('kubejs:creative_remote', (e) => {
+  const { player, level, server } = e
+  if (!player || player.isFake()) return
+  const mode = player.isCreative() ? 'survival' : 'creative'
+  server.runCommandSilent(`/gamemode ${mode} ${player.name.string}`)
+  level.playSound(
+    null, //
+    player.x,
+    player.y,
+    player.z,
+    player.isCreative() ? 'kubejs:creative_on' : 'kubejs:creative_off',
+    'players',
+    3, // volume
+    1 // pitch
+  )
+  player.swing()
+})
+
 ItemEvents.entityInteracted('kubejs:uninspired_spark', (e) => {
   const { item, entity, target, level } = e
 
@@ -14,7 +32,7 @@ ItemEvents.entityInteracted('kubejs:uninspired_spark', (e) => {
       target.z,
       'kubejs:wow',
       'players',
-      10, // volume
+      4, // volume
       1 // pitch
     )
     spawnParticles(

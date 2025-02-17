@@ -311,6 +311,12 @@ StartupEvents.registry('item', (e) => {
   // Creative Storage Part
   registerItem('kubejs:creative_storage_part')
   registerItem('kubejs:creative_fluid_storage_part')
+
+  // Creative Remote
+  e.create('kubejs:creative_remote')
+    .displayName(Text.lightPurple('Creative Remote'))
+    .fireResistant()
+    .maxStackSize(1)
 })
 
 ItemEvents.modification((e) => {
