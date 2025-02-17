@@ -4,4 +4,5 @@
 
 NetworkEvents.dataReceived('worldSeed', (e) => {
   global.WORLD_SEED = e.data.worldSeed
+  console.info(`Successfully received world seed: ${global.WORLD_SEED}`)
 })

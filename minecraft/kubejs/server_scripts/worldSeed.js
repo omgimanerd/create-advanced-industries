@@ -5,7 +5,7 @@ ServerEvents.recipes(() => {
   global.WORLD_SEED =
     server === null ? null : server.worldData.worldGenOptions().seed()
   if (global.WORLD_SEED !== null) {
-    console.log(`Successfully got world seed: ${global.WORLD_SEED}`)
+    console.info(`Successfully got world seed: ${global.WORLD_SEED}`)
   } else {
     throw new Error('Forced reload was not triggered! World seed unavailable!')
   }
