@@ -311,15 +311,14 @@ StartupEvents.registry('item', (e) => {
   }
 
   // Spark of Inspiration
-  e.create('kubejs:uninspired_spark')
-    .displayName('Uninspired Spark')
+  registerItem('kubejs:uninspired_spark')
     .tooltip(
       Text.green('If only there was a way to find some genuine inspiration...')
     )
     .maxStackSize(1)
-  e.create('kubejs:inspired_spark')
-    .displayName('Spark of Inspiration')
-    .maxStackSize(1)
+  registerItem('kubejs:inspired_spark', '§sSpark of Inspiration').maxStackSize(
+    1
+  )
 
   // Creative Storage Part
   registerItem('kubejs:creative_storage_part', '§dCreative Storage Part')

@@ -184,6 +184,45 @@ ServerEvents.recipes((e) => {
     }
   ).id('kubejs:ink_bucket_manual_only')
 
+  // Sparks of Inspiration
+  create
+    .SequencedAssembly('create:refined_radiance')
+    .fill(Fluid.of('kubejs:molten_lumium', 1000))
+    .fill(potionFluid('ars_elemental:shock_potion', 250))
+    .energize(25000)
+    .outputs('kubejs:uninspired_spark')
+  for (const [painting, rarity] in global.getTieredPaintingVariants()) {
+    let probability = 0
+    switch (rarity) {
+      case 'artifact':
+        probability = 0.5
+        break
+      case 'legendary':
+        probability = 0.25
+        break
+      case 'epic':
+        probability = 0.15
+        break
+      case 'rare':
+        probability = 0.1
+        break
+      default:
+        throw new Error(`Unknown painting rarity ${rarity}`)
+    }
+    create.mixing(
+      [
+        'kubejs:inspired_spark',
+        Item.of('kubejs:inspired_spark').withChance(probability),
+      ],
+      [
+        'kubejs:inspired_spark',
+        Item.of('minecraft:painting', {
+          EntityTag: { variant: painting },
+        }).weakNBT(),
+      ]
+    )
+  }
+
   // Empty music discs
   create
     .SequencedAssembly('pneumaticcraft:plastic')
@@ -191,8 +230,17 @@ ServerEvents.recipes((e) => {
     .fill(Fluid.of('kubejs:molten_silver', 125))
     .laser(8000, 1000)
     .outputs('kubejs:empty_music_disc')
-
-  // TODO: writing music discs?
+  const allDiscs = [Item.of('kubejs:empty_music_disc').withChance(1)].concat(
+    Ingredient.of('#minecraft:music_discs').itemIds.map((id) => {
+      // Weight chance, not probability
+      return Item.of(id).withChance(5)
+    })
+  )
+  create
+    .SequencedAssembly('kubejs:empty_music_disc')
+    .deploy('kubejs:inspired_spark')
+    .laser(1000)
+    .outputs(allDiscs)
 
   // Disc fragment cutting and recycling
   // create.cutting(
@@ -214,6 +262,5 @@ ServerEvents.recipes((e) => {
     .loops(3)
     .outputs('kubejs:empty_music_disc')
 
-  // TODO creative remote
   // TODO creative mechanism
 })
