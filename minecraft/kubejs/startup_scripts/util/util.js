@@ -40,6 +40,7 @@ const getTextureLocation = (name) => {
 /**
  * @callback RegisterItemCallback
  * @param {string} name
+ * @param {string?} displayName
  * @param {string?} type
  * @returns {Internal.BasicItemJS$Builder_}
  *
@@ -50,11 +51,15 @@ const registerItem_ = (e) => {
   /**
    * @type {RegisterItemCallback}
    */
-  return (name, type) => {
+  return (name, displayName, type) => {
     checkModPrefix(name)
     const item = type === undefined ? e.create(name) : e.create(name, type)
     return item
       .texture(getTextureLocation(name))
-      .displayName(getDisplayName(name))
+      .displayName(
+        displayName === null || displayName === undefined
+          ? getDisplayName(name)
+          : displayName
+      )
   }
 }

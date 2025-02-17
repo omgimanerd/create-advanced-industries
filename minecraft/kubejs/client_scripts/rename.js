@@ -29,6 +29,7 @@ ClientEvents.lang('en_us', (e) => {
     { type: 'item', id: 'refinedstorage:creative_storage_disk' },
     { type: 'item', id: 'refinedstorage:creative_fluid_storage_disk' },
     { type: 'item', id: 'refinedstorage:creative_wireless_grid' },
+    { type: 'item', id: 'refinedstorage:creative_wireless_fluid_grid' },
     { type: 'item', id: 'refinedstorage:creative_wireless_crafting_monitor' },
     { type: 'block', id: 'refinedstorage:creative_portable_grid' },
     { type: 'block', id: 'refinedstorage:creative_storage_block' },

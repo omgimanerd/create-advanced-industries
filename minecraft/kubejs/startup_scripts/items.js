@@ -6,8 +6,8 @@ StartupEvents.registry('item', (e) => {
    * @type {RegisterItemCallback}
    */
   const registerItem = registerItem_(e)
-  const registerMechanism = (name) => {
-    registerItem(name)
+  const registerMechanism = (name, displayNameOverride) => {
+    registerItem(name, displayNameOverride)
     registerItem(
       `kubejs:incomplete_${stripModPrefix(name)}`,
       'create:sequenced_assembly'
@@ -31,7 +31,7 @@ StartupEvents.registry('item', (e) => {
   // Chapter 7: Quantum Mechanisms, texture from Create: Teleporters
   registerMechanism('kubejs:quantum_mechanism')
   // Chapter 8: Creative Mechanisms
-  registerMechanism('kubejs:creative_mechanism')
+  registerMechanism('kubejs:creative_mechanism', '§dCreative Mechanism')
 
   // Wooden hand used for crafting deployers
   registerItem('kubejs:wooden_hand')
@@ -163,11 +163,19 @@ StartupEvents.registry('item', (e) => {
 
   // Totem of Undying Parts
   registerItem('kubejs:totem_body_casing')
-  registerItem('kubejs:incomplete_totem_body', 'create:sequenced_assembly')
+  registerItem(
+    'kubejs:incomplete_totem_body',
+    'Incomplete Totem Body',
+    'create:sequenced_assembly'
+  )
   registerItem('kubejs:totem_body')
 
   registerItem('kubejs:totem_head_casing')
-  registerItem('kubejs:incomplete_totem_head', 'create:sequenced_assembly')
+  registerItem(
+    'kubejs:incomplete_totem_head',
+    'Incomplete Totem Head',
+    'create:sequenced_assembly'
+  )
   registerItem('kubejs:totem_head')
 
   registerItem('kubejs:inactive_totem')
@@ -215,7 +223,11 @@ StartupEvents.registry('item', (e) => {
 
   // Quantum chips
   registerItem('kubejs:quantum_chip')
-  registerItem('kubejs:incomplete_quantum_chip', 'create:sequenced_assembly')
+  registerItem(
+    'kubejs:incomplete_quantum_chip',
+    'Incomplete Quantum Chip',
+    'create:sequenced_assembly'
+  )
 
   // Magnetic Confinement Unit and Singularities
   registerItem('kubejs:unstable_singularity').tooltip(
@@ -249,9 +261,10 @@ StartupEvents.registry('item', (e) => {
     .tooltip(Text.green('Summons a depressed artist named Pembi!'))
 
   // Creative Smithing Template
-  e.create('kubejs:creative_upgrade_smithing_template')
-    .displayName('Smithing Template')
-    .fireResistant()
+  registerItem(
+    'kubejs:creative_upgrade_smithing_template',
+    '§dSmithing Template'
+  ).fireResistant()
 
   // Tri-Steel Plating
   {
@@ -309,17 +322,14 @@ StartupEvents.registry('item', (e) => {
     .maxStackSize(1)
 
   // Creative Storage Part
-  e.create('kubejs:creative_storage_part').displayName(
-    '§dCreative Storage Part'
-  )
-  e.create('kubejs:creative_fluid_storage_part').displayName(
+  registerItem('kubejs:creative_storage_part', '§dCreative Storage Part')
+  registerItem(
+    'kubejs:creative_fluid_storage_part',
     '§dCreative Fluid Storage Part'
   )
 
   // Creative Remote
-  e.create('kubejs:creative_remote')
-    // Display names here do not support text components.
-    .displayName('§dCreative Remote')
+  registerItem('kubejs:creative_remote', '§dCreative Remote')
     .fireResistant()
     .maxStackSize(1)
 })
