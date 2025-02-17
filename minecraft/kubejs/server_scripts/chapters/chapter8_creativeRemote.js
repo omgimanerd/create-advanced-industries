@@ -25,11 +25,11 @@ ServerEvents.recipes((e) => {
     'kubejs:creative_remote',
     [
       '  S  ', //
-      'IIIII', //
-      'IPRPI', //
-      'IAMEI', //
-      'IBCDI', //
-      'IIIII', //
+      'IMMMI', //
+      'MPRPM', //
+      'MAMEM', //
+      'MBCDM', //
+      'IMMMI', //
     ],
     {
       I: 'createcasing:chorium_ingot',
