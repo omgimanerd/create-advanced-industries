@@ -1,0 +1,3 @@
+Don't use ES6 style classes.
+
+Do not use the nullish coalescing operator or optional chaining.
