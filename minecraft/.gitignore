@@ -22,6 +22,9 @@ ESM/
 kubejs/**/__pycache__/
 kubejs/probe/
 kubejs/config/
+kubejs/client_scripts/.kjspkg/
+kubejs/startup_scripts/.kjspkg/
+kubejs/server_scripts/.kjspkg/
 
 local/
 logs/

@@ -1,0 +1,8 @@
+{
+  "installed": {
+    "parse-text-format": [],
+    "sequenced-assembly": []
+  },
+  "version": 10,
+  "modloader": "forge"
+}
