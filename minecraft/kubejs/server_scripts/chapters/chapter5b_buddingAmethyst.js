@@ -32,7 +32,7 @@ global.BuddingAmethystSpoutHandlerCallback = (block, fluid, simulate) => {
     .filter((block) => block.id in growthStates)
     .toArray()
   /** @type {Internal.BlockContainerJS_} */
-  const candidate = global.choice(growCandidates)
+  const candidate = choice(growCandidates)
   if (candidate === null) return 0
   // All possible short circuit conditions need to be evaluated before here.
   // The simulate check should only perform actual updates if necessary, but

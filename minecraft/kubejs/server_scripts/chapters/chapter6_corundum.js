@@ -23,7 +23,7 @@ global.CorundumBlockSpoutHandlerCallback = (block, fluid, simulate) => {
     })
     .toArray()
   if (growCandidates.length === 0) return 0
-  const candidate = global.choice(growCandidates)
+  const candidate = choice(growCandidates)
   // Each spouting has a 25% chance of growing a corundum cluster.
   if (Math.random() >= 0.25) return 0
   // All checks passed, perform the growth if we are not simulating.

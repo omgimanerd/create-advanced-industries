@@ -163,7 +163,7 @@ ServerEvents.recipes((e) => {
   }
 
   // Tier 3
-  const tier3Combinations = global.combinatorics(4, 3).map((indexes) => {
+  const tier3Combinations = combinatorics(4, 3).map((indexes) => {
     return indexes.map((i) => crushedStones[i])
   })
   for (const combination of tier3Combinations) {

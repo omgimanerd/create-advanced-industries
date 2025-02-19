@@ -112,10 +112,10 @@ global.PortalBlockTickingCallback = (e) => {
   let nextEatTime = pdata.getInt('next_eat_time') // stored as tick count
   const currentTime = level.server.getTickCount()
   if (nextEatTime === 0) {
-    nextEatTime = currentTime + global.randRangeInt(200, 400)
+    nextEatTime = currentTime + randRangeInt(200, 400)
   } else if (currentTime >= nextEatTime && surrounding.length > 0) {
     /** @type {Internal.BlockContainerJS_} */
-    let eatLocation = global.choice(surrounding)
+    let eatLocation = choice(surrounding)
     spawnParticles(
       level,
       'minecraft:enchant',
@@ -125,7 +125,7 @@ global.PortalBlockTickingCallback = (e) => {
       0.1 // speed
     )
     eatLocation.set('minecraft:air')
-    nextEatTime = currentTime + global.randRangeInt(200, 400)
+    nextEatTime = currentTime + randRangeInt(200, 400)
   }
   pdata.put('next_eat_time', nextEatTime)
 
@@ -145,7 +145,7 @@ global.PortalBlockTickingCallback = (e) => {
   } else {
     instability = 0
   }
-  if (global.randRange(100) < instability) {
+  if (randRange(100) < instability) {
     level.destroyBlock(block, false)
     block.createExplosion().causesFire(false).strength(1).explode()
   } else {

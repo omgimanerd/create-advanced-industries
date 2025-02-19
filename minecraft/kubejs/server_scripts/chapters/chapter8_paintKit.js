@@ -42,7 +42,7 @@ BlockEvents.rightClicked((e) => {
   if (!allColorsValid) return
 
   // Replace the block with one of a random color.
-  const newBlock = global.choice(repaintedBlocks)
+  const newBlock = choice(repaintedBlocks)
   block.set(newBlock, block.properties)
   player.swing()
   player.damageHeldItem('main_hand', 1, () => {
@@ -71,9 +71,9 @@ ItemEvents.entityInteracted('toms_storage:ts.paint_kit', (e) => {
   // Recolor the sheep a random color
   const nbt = target.nbt
   const currentColor = nbt.getByte('Color')
-  let newColor = global.randRangeInt(0, 16)
+  let newColor = randRangeInt(0, 16)
   while (newColor === currentColor) {
-    newColor = global.randRangeInt(0, 16)
+    newColor = randRangeInt(0, 16)
   }
   nbt.putByte('Color', newColor)
   target.setNbt(nbt)

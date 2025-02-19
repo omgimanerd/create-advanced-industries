@@ -68,7 +68,7 @@ const computeAmethystGolemFeedResults = (
   for (const effect of effects) {
     let mobEffectInstance = effect.getFirst()
     let mobEffect = mobEffectInstance.getEffect()
-    let effectApplied = global.randRange(0, 1) < effect.getSecond()
+    let effectApplied = randRange(0, 1) < effect.getSecond()
     if (!effectApplied) {
       continue
     }
@@ -104,7 +104,7 @@ const computeAmethystGolemFeedResults = (
   // d = -4
   //
   // Only beneficial effects can raise the lootTier above 3.2
-  const lootExponential = global.exponential(1, 1.123349, 0, -4)
+  const lootExponential = exponential(1, 1.123349, 0, -4)
   let lootTier = lootExponential(nutrition) * nutritionMultiplier
 
   // The quantity of output for each tier is also correlated with the
@@ -115,7 +115,7 @@ const computeAmethystGolemFeedResults = (
   // b = (5/1) ^ (1/10) ~ 1.174618
   // c = 0
   // d = -1
-  const quantityExponential = global.exponential(1, 1.174618, 0, -1)
+  const quantityExponential = exponential(1, 1.174618, 0, -1)
   const outputItems = [
     'minecraft:small_amethyst_bud',
     'minecraft:medium_amethyst_bud',
@@ -140,7 +140,7 @@ const computeAmethystGolemFeedResults = (
   // b = 0.8
   // c = 0
   // d = -4
-  const cooldownExponential = global.exponential(8, 0.8, 0, -4)
+  const cooldownExponential = exponential(8, 0.8, 0, -4)
   const avg =
     (saturation + nutrition) * 0.5 * nutritionMultiplier * saturationModifier
   // Feed cooldown in ticks

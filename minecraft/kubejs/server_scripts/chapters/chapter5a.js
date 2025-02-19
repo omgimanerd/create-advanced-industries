@@ -584,11 +584,11 @@ ServerEvents.recipes((e) => {
   }
   const randomOutputs = [
     Item.of('minecraft:ancient_debris').withChance(0.005),
-    Item.of('minecraft:iron_nugget').withChance(global.randRange(0.01, 0.1)),
-    Item.of('create:copper_nugget').withChance(global.randRange(0.01, 0.1)),
-    Item.of('minecraft:gold_nugget').withChance(global.randRange(0.01, 0.1)),
-    Item.of('create:zinc_nugget').withChance(global.randRange(0.01, 0.1)),
-    Item.of('thermal:silver_nugget').withChance(global.randRange(0.01, 0.1)),
+    Item.of('minecraft:iron_nugget').withChance(randRange(0.01, 0.1)),
+    Item.of('create:copper_nugget').withChance(randRange(0.01, 0.1)),
+    Item.of('minecraft:gold_nugget').withChance(randRange(0.01, 0.1)),
+    Item.of('create:zinc_nugget').withChance(randRange(0.01, 0.1)),
+    Item.of('thermal:silver_nugget').withChance(randRange(0.01, 0.1)),
   ]
   create.crushing(randomOutputs, probabilisticStone)
   create.crushing('minecraft:cobblestone', uselessStone)

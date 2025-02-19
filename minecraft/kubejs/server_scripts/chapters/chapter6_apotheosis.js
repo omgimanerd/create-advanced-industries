@@ -126,10 +126,7 @@ const getGemItem = (id, rarity) => {
     const rand = Utils.newRandom(global.WORLD_SEED)
     // Generate a shuffled list of 9C4 positions for 4 elements on a 3x3
     // crafting grid.
-    const positions = global.shuffle(
-      global.combinatorics(9, 4),
-      global.wrapSeededRandom(rand)
-    )
+    const positions = shuffle(combinatorics(9, 4), wrapSeededRandom(rand))
     const gemData = Object.entries(apotheoticGems)
     if (gemData.length > positions.length) {
       console.error('Not enough combinations to generate unique recipes!')
@@ -205,7 +202,7 @@ const getGemItem = (id, rarity) => {
       // XP bar.
       const xpCost = global.levelToXp(levels) - global.levelToXp(levels - 3)
       // Hyper XP is a 10:1 conversion to allow for higher experience levels.
-      let hyperXp = global.roundToNearest(xpCost / 10, 5)
+      let hyperXp = roundToNearest(xpCost / 10, 5)
       // Honey bottle enchanting is extremely inefficient, disabled to avoid
       // cluttering JEI
       if (recipe.input.item === 'minecraft:honey_bottle') return

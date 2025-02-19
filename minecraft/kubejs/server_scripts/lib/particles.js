@@ -97,9 +97,9 @@ const spawnEffectParticles = (level, pos, count, spread, color) => {
     level.spawnParticles(
       'minecraft:entity_effect',
       true, // overrideLimiter
-      x + global.randRange(-spread, spread), // x position
+      x + randRange(-spread, spread), // x position
       y, // y position
-      z + global.randRange(-spread, spread), //  z position
+      z + randRange(-spread, spread), //  z position
       r, // vx, used as r channel, values in [0, 1)
       g, // vy, used as g channel, values in [0, 1)
       b, // vz, used as b channel, values in [0, 1)

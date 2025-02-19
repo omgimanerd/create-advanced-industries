@@ -96,7 +96,7 @@ BlockEvents.rightClicked('minecraft:moss_block', (e) => {
     block.set(newBlock)
     server.scheduleInTicks(delay, (c) => {
       const newProbability = probability * decayFactor
-      const newDelay = delay + global.randRange(10)
+      const newDelay = delay + randRange(10)
       decayedSpread(block.north, newProbability, decayFactor, newDelay)
       decayedSpread(block.south, newProbability, decayFactor, newDelay)
       decayedSpread(block.east, newProbability, decayFactor, newDelay)
@@ -104,7 +104,7 @@ BlockEvents.rightClicked('minecraft:moss_block', (e) => {
       c.reschedule()
     })
   }
-  decayedSpread(block, 1, 0.5, global.randRange(10))
+  decayedSpread(block, 1, 0.5, randRange(10))
 })
 
 ServerEvents.compostableRecipes((e) => {

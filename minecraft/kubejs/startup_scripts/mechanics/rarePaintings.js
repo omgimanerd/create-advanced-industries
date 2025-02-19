@@ -37,9 +37,9 @@ const getPaintingRegistryAndWorldSeed = () => {
  */
 global.getTieredPaintingVariants = () => {
   const [variants, seed] = getPaintingRegistryAndWorldSeed()
-  const random = global.wrapSeededRandom(Utils.newRandom(seed))
+  const random = wrapSeededRandom(Utils.newRandom(seed))
   // This shuffled list is unique per world seed.
-  global.shuffle(variants, random)
+  shuffle(variants, random)
 
   // Select some number of painting variants for each tier of rarity.
   const tieredVariants = {}

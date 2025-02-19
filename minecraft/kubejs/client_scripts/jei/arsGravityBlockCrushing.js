@@ -100,7 +100,7 @@ JEIAddedEvents.registerCategories((e) => {
         // Code inspired by Flux Networks JEI rendering.
         // Draw the top void steel block
         pose.pushPose()
-        const offset = step > 20 ? 48 : global.lerp(step, 0, 20, 25, 48)
+        const offset = step > 20 ? 48 : lerp(step, 0, 20, 25, 48)
         pose.translate(70, offset, 128)
         pose.mulPose(quat)
         $GuiGameElement['of(net.minecraft.world.level.block.state.BlockState)'](
@@ -134,9 +134,7 @@ JEIAddedEvents.registerCategories((e) => {
         pose.translate(87, 42, 128 - 16)
         pose.scale(16, -16, 16)
         const xRot = displayedItem.block ? JavaMath.toRadians(30) : 0
-        const yRot = JavaMath.toRadians(
-          global.lerp(time % 100, 0, 100, -90, 90)
-        )
+        const yRot = JavaMath.toRadians(lerp(time % 100, 0, 100, -90, 90))
         quat.rotationXYZ(xRot, yRot, 0)
         pose.mulPose(quat)
         itemRenderer.renderStatic(

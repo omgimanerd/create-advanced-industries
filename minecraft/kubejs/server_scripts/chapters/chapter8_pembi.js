@@ -95,7 +95,7 @@
       // Select a painting variant.
       if (paintingVariantGenerator === null) {
         let distribution = global.getPaintingWeightDistribution()
-        paintingVariantGenerator = global.getVoseAliasSampler(distribution)
+        paintingVariantGenerator = getVoseAliasSampler(distribution)
       }
       let paintingVariant = paintingVariantGenerator()
       item.shrink(1)
