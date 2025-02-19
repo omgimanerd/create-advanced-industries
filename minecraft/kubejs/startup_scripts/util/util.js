@@ -1,45 +1,17 @@
 // priority: 1000
 
 /**
- * @param {string} s
- * @returns {string}
- */
-const stripModPrefix = (s) => {
-  return s.replace(/^#{0,1}[a-z_]+:/, '')
-}
-
-/**
- * @param {string} s
- */
-const checkModPrefix = (s) => {
-  if (s.search(/^#{0,1}[a-z_]+:/) < 0) {
-    throw new Error(`${s} does not have a mod prefix.`)
-  }
-}
-
-/**
- * @param {string} name
- * @returns {string}
- */
-const getDisplayName = (name) => {
-  return stripModPrefix(name)
-    .split('_')
-    .map((c) => c[0].toUpperCase() + c.substring(1))
-    .join(' ')
-}
-
-/**
  * @param {string} name
  * @returns {string}
  */
 const getTextureLocation = (name) => {
-  checkModPrefix(name)
+  checkNamespace(name)
   return name.replace(':', ':item/')
 }
 
 /**
  * @callback RegisterItemCallback
- * @param {string} name
+ * @param {string} id
  * @param {string?} displayName
  * @param {string?} type
  * @returns {Internal.BasicItemJS$Builder_}
@@ -51,14 +23,14 @@ const registerItem_ = (e) => {
   /**
    * @type {RegisterItemCallback}
    */
-  return (name, displayName, type) => {
-    checkModPrefix(name)
-    const item = type === undefined ? e.create(name) : e.create(name, type)
+  return (id, displayName, type) => {
+    checkNamespace(id)
+    const item = type === undefined ? e.create(id) : e.create(id, type)
     return item
-      .texture(getTextureLocation(name))
+      .texture(getTextureLocation(id))
       .displayName(
         displayName === null || displayName === undefined
-          ? getDisplayName(name)
+          ? getDisplayName(id)
           : displayName
       )
   }

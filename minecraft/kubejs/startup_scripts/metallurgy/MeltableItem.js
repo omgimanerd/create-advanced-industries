@@ -20,7 +20,7 @@ function MeltableItem(options) {
   // Information about the fluid that the metal/gem will melt into to help with
   // registration.
   this.fluid = options.fluid
-  this.fluidName = stripModPrefix(this.fluid)
+  this.fluidName = stripNamespace(this.fluid)
   this.fluidDisplayName = getDisplayName(this.fluid)
   this.bucketColor = options.bucketColor
   this.fluidTextureLocation = options.fluidTextureLocation

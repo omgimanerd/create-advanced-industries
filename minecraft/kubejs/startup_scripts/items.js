@@ -6,10 +6,10 @@ StartupEvents.registry('item', (e) => {
    * @type {RegisterItemCallback}
    */
   const registerItem = registerItem_(e)
-  const registerMechanism = (name, displayNameOverride) => {
-    registerItem(name, displayNameOverride)
+  const registerMechanism = (id, displayNameOverride) => {
+    registerItem(id, displayNameOverride)
     registerItem(
-      `kubejs:incomplete_${stripModPrefix(name)}`,
+      `kubejs:incomplete_${stripNamespace(id)}`,
       'create:sequenced_assembly'
     )
   }
@@ -127,10 +127,10 @@ StartupEvents.registry('item', (e) => {
   e.create('kubejs:treasure_net')
     .texture(getTextureLocation('thermal:junk_net'))
     .tooltip(
-      Text.empty()
-        .append(Text.of('Use in the ').gold())
-        .append(Text.of('Aquatic Entangler').yellow().italic())
-        .append(Text.of(' to catch treasure.').gold())
+      parseTextFormat(
+        '<gold>Use in the </gold><yellow><italic>Aquatic Entangler</yellow>' +
+          '</italic><gold> to catch treasure</gold>'
+      )
     )
     .displayName('Treasure Net')
     .glow(true)
@@ -315,10 +315,8 @@ StartupEvents.registry('item', (e) => {
     .tooltip(
       Text.green('If only there was a way to find some genuine inspiration...')
     )
-    .maxStackSize(1)
-  registerItem('kubejs:inspired_spark', '§sSpark of Inspiration').maxStackSize(
-    1
-  )
+    .unstackable()
+  registerItem('kubejs:inspired_spark', '§sSpark of Inspiration').unstackable()
 
   // Creative Storage Part
   registerItem('kubejs:creative_storage_part', '§dCreative Storage Part')
@@ -330,7 +328,7 @@ StartupEvents.registry('item', (e) => {
   // Creative Remote
   registerItem('kubejs:creative_remote', '§dCreative Remote')
     .fireResistant()
-    .maxStackSize(1)
+    .unstackable()
 })
 
 ItemEvents.modification((e) => {

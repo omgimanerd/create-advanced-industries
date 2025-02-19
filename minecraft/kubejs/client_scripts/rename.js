@@ -38,11 +38,7 @@ ClientEvents.lang('en_us', (e) => {
     { type: 'item', id: 'universalgrid:creative_wireless_universal_grid' },
   ]
   for (const { type, id } of creative) {
-    let displayName = id
-      .replace(/[a-zA-Z0-9_]+:/, '')
-      .split('_')
-      .map((c) => c[0].toUpperCase() + c.substring(1))
-      .join(' ')
+    let displayName = getDisplayName(id)
     switch (type) {
       case 'item':
         e.renameItem(id, `§d${displayName}`)
