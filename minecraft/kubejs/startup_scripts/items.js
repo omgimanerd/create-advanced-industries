@@ -29,9 +29,15 @@ StartupEvents.registry('item', (e) => {
   // Chapter 5b: Redstone Mechanisms defined by Create: Vintage Improvements
   // Chapter 6: Vibration Mechanisms defined by Create: Misc and Things
   // Chapter 7: Quantum Mechanisms, texture from Create: Teleporters
-  registerMechanism('kubejs:quantum_mechanism')
+  registerMechanism(
+    'kubejs:quantum_mechanism',
+    Text.darkPurple('Quantum Mechanism')
+  )
   // Chapter 8: Creative Mechanisms
-  registerMechanism('kubejs:creative_mechanism', '§dCreative Mechanism')
+  registerMechanism(
+    'kubejs:creative_mechanism',
+    Text.lightPurple('Creative Mechanism')
+  )
 
   // Wooden hand used for crafting deployers
   registerItem('kubejs:wooden_hand')
@@ -163,19 +169,11 @@ StartupEvents.registry('item', (e) => {
 
   // Totem of Undying Parts
   registerItem('kubejs:totem_body_casing')
-  registerItem(
-    'kubejs:incomplete_totem_body',
-    'Incomplete Totem Body',
-    'create:sequenced_assembly'
-  )
+  registerItem('kubejs:incomplete_totem_body', 'create:sequenced_assembly')
   registerItem('kubejs:totem_body')
 
   registerItem('kubejs:totem_head_casing')
-  registerItem(
-    'kubejs:incomplete_totem_head',
-    'Incomplete Totem Head',
-    'create:sequenced_assembly'
-  )
+  registerItem('kubejs:incomplete_totem_head', 'create:sequenced_assembly')
   registerItem('kubejs:totem_head')
 
   registerItem('kubejs:inactive_totem')
@@ -223,11 +221,7 @@ StartupEvents.registry('item', (e) => {
 
   // Quantum chips
   registerItem('kubejs:quantum_chip')
-  registerItem(
-    'kubejs:incomplete_quantum_chip',
-    'Incomplete Quantum Chip',
-    'create:sequenced_assembly'
-  )
+  registerItem('kubejs:incomplete_quantum_chip', 'create:sequenced_assembly')
 
   // Magnetic Confinement Unit and Singularities
   registerItem('kubejs:unstable_singularity').tooltip(
@@ -261,10 +255,9 @@ StartupEvents.registry('item', (e) => {
     .tooltip(Text.green('Summons a depressed artist named Pembi!'))
 
   // Creative Smithing Template
-  registerItem(
-    'kubejs:creative_upgrade_smithing_template',
-    '§dSmithing Template'
-  ).fireResistant()
+  e.create('kubejs:creative_upgrade_smithing_template')
+    .formattedDisplayName(Text.lightPurple('Smithing Template'))
+    .fireResistant()
 
   // Tri-Steel Plating
   {
@@ -316,17 +309,22 @@ StartupEvents.registry('item', (e) => {
       Text.green('If only there was a way to find some genuine inspiration...')
     )
     .unstackable()
-  registerItem('kubejs:inspired_spark', '§sSpark of Inspiration').unstackable()
+  e.create('kubejs:inspired_spark')
+    // §s formatting code for material_diamond
+    .formattedDisplayName(Text.of('Spark of Inspiration').color(0x2cbaa8))
+    .unstackable()
 
   // Creative Storage Part
-  registerItem('kubejs:creative_storage_part', '§dCreative Storage Part')
-  registerItem(
-    'kubejs:creative_fluid_storage_part',
-    '§dCreative Fluid Storage Part'
+  e.create('kubejs:creative_storage_part').formattedDisplayName(
+    Text.lightPurple('Creative Storage Part')
+  )
+  e.create('kubejs:creative_fluid_storage_part').formattedDisplayName(
+    Text.lightPurple('Creative Fluid Storage Part')
   )
 
   // Creative Remote
-  registerItem('kubejs:creative_remote', '§dCreative Remote')
+  e.create('kubejs:creative_remote')
+    .formattedDisplayName(Text.lightPurple('Creative Remote'))
     .fireResistant()
     .unstackable()
 })

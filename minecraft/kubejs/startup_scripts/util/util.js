@@ -10,6 +10,7 @@ const getTextureLocation = (name) => {
 }
 
 /**
+ * Only used for registering basic items whose display names match their ID.
  * @callback RegisterItemCallback
  * @param {string} id
  * @param {string?} displayName
@@ -26,12 +27,9 @@ const registerItem_ = (e) => {
   return (id, displayName, type) => {
     checkNamespace(id)
     const item = type === undefined ? e.create(id) : e.create(id, type)
+    displayName = displayName === undefined ? getDisplayName(id) : displayName
     return item
       .texture(getTextureLocation(id))
-      .displayName(
-        displayName === null || displayName === undefined
-          ? getDisplayName(id)
-          : displayName
-      )
+      .formattedDisplayName(displayName)
   }
 }
