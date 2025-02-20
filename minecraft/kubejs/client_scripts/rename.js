@@ -26,6 +26,7 @@ ClientEvents.lang('en_us', (e) => {
     { type: 'item', id: 'ars_nouveau:creative_spell_book' },
     { type: 'block', id: 'ars_nouveau:creative_source_jar' },
     { type: 'item', id: 'wands:creative_wand' },
+    { type: 'item', id: 'functionalstorage:creative_vending_upgrade' },
     { type: 'item', id: 'refinedstorage:creative_storage_disk' },
     { type: 'item', id: 'refinedstorage:creative_fluid_storage_disk' },
     { type: 'item', id: 'refinedstorage:creative_wireless_grid' },
