@@ -129,3 +129,24 @@ LootJS.modifiers((e) => {
     }
   })
 })
+
+ServerEvents.recipes((e) => {
+  e.remove({ id: 'gag:no_solicitors' })
+  e.shaped(
+    'gag:no_solicitors',
+    [
+      'BCD', //
+      'ASE', //
+      'FFF', //
+    ],
+    {
+      A: 'kubejs:mutilation_essence',
+      B: 'kubejs:debilitation_essence',
+      C: 'kubejs:torment_essence',
+      D: 'kubejs:suffering_essence',
+      E: 'kubejs:agony_essence',
+      S: '#minecraft:signs',
+      F: 'minecraft:emerald',
+    }
+  )
+})

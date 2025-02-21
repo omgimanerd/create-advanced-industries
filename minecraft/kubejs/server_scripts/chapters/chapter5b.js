@@ -226,6 +226,9 @@ ServerEvents.recipes((e) => {
   ])
   create.crushing('thermal:sawdust', '#minecraft:planks')
 
+  // Smelting recipe for sawdust to ash.
+  e.smelting('supplementaries:ash', 'thermal:sawdust')
+
   // Blasting recipe for sawdust to charcoal dust.
   e.remove({ id: 'create:milling/charcoal' })
   e.blasting('tfmg:charcoal_dust', 'thermal:sawdust')

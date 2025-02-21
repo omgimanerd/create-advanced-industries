@@ -164,4 +164,11 @@ ServerEvents.recipes((e) => {
     .fill(Fluid.of('thermal:ender', 1000))
     .fill(Fluid.of('kubejs:teleportation_juice', 1000))
     .outputs('minecraft:end_portal_frame')
+
+  // Antique Ink
+  create
+    .SequencedAssembly('minecraft:glass_bottle')
+    .fill(Fluid.of('create_enchantment_industry:ink', 250))
+    .deploy('supplementaries:ash')
+    .outputs('supplementaries:antique_ink')
 })

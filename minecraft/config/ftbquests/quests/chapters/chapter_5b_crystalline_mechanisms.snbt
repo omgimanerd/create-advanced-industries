@@ -376,6 +376,7 @@
 				"16F27A5ADC1090F1"
 			]
 			dependency_requirement: "one_completed"
+			description: ["If you can't find a dolphin or an ocean, there might be another way to get a Heart of the Sea. It's a little bit more difficult though."]
 			id: "084B381A4BBB7BFE"
 			tasks: [{
 				id: "066F7C4F8565E697"
@@ -1068,6 +1069,11 @@
 				"- Remy will get tired of the same food and remembers the last five things he's eaten. Feeding him something he's eaten before will incur a small penalty on the drops."
 			]
 			id: "6ED287BA9FAEA5E5"
+			rewards: [{
+				id: "0986C2A07CE099D3"
+				item: "farmersdelight:steak_and_potatoes"
+				type: "item"
+			}]
 			tasks: [{
 				id: "68A17AD8D07F2170"
 				item: {
@@ -1285,7 +1291,7 @@
 		{
 			dependencies: ["362F5A94CAA3AAAD"]
 			description: [
-				"These little shits always spawn around you when its most inconvenient. They're always dying in inconvenient places, and their llama drop skeep clogging up your belts."
+				"These little shits always spawn around you when its most inconvenient. They're always dying in inconvenient places, and their llama drops keep clogging up your belts."
 				""
 				"No more. Now we're going to show them we mean business when we say 'No Soliciting!'"
 				""
@@ -1524,6 +1530,11 @@
 			dependencies: ["33CA0C2F9BDF9EC2"]
 			description: ["Name tags are craftable, and can be used to automate naming an item with the printer."]
 			id: "0E63CEC9F5AFC6CE"
+			rewards: [{
+				id: "02B8489627F090B1"
+				item: "create_enchantment_industry:printer"
+				type: "item"
+			}]
 			tasks: [{
 				id: "77F0CB48DA957A7B"
 				item: "minecraft:name_tag"
@@ -1629,12 +1640,18 @@
 				""
 				"The eldritch gods demand labor, but luckily it seems like we've automated a source of that too. Spawn &lwandering traders&r and drop &llaborer's pickaxes&r near the portal."
 				""
-				"The portal must be surrounded by liquefied source on all four sides to sustain it, and it will absorb one every now and then. If it is not, it will rapidly become unstable and close."
+				"The portal must be surrounded by liquefied source on all four sides to sustain it, and it will absorb one every now and then. If it is not properly supplied, it will rapidly become unstable and close."
 				""
 				"Ponder the Arcane Portal for a visual example."
 			]
 			id: "36407A48939066C9"
 			min_width: 250
+			rewards: [{
+				count: 4
+				id: "1CD611801FFB9751"
+				item: "starbunclemania:source_fluid_bucket"
+				type: "item"
+			}]
 			tasks: [{
 				icon: "kubejs:arcane_portal"
 				id: "0080188B3D03B147"
