@@ -308,11 +308,11 @@ StartupEvents.registry('item', (e) => {
     .tooltip(
       Text.green('If only there was a way to find some genuine inspiration...')
     )
-    .unstackable()
+    .maxStackSize(4)
   e.create('kubejs:inspired_spark')
     // §s formatting code for material_diamond
     .formattedDisplayName(Text.of('Spark of Inspiration').color(0x2cbaa8))
-    .unstackable()
+    .maxStackSize(4)
 
   // Creative Storage Part
   e.create('kubejs:creative_storage_part').formattedDisplayName(
