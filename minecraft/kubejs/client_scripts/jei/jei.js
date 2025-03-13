@@ -73,6 +73,8 @@ JEIEvents.hideItems((e) => {
   e.hide('kubejs:incomplete_totem_body')
   e.hide('kubejs:incomplete_totem_head')
 
+  e.hide('compressedcreativity:incomplete_mesh_splashing')
+
   // Hide the colored Refined Storage items. Dark blue is the default.
   const colors = [
     'white',

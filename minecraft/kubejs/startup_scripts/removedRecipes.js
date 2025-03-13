@@ -31,6 +31,7 @@ global.removedRecipes = [
   // TODO maybe useful as an intermediate somewhere else?
   { output: 'create_connected:control_chip' },
   { output: /^create_connected:copycat_[a-z_]+$/ },
+  { output: 'create_connected:fan_freezing_catalyst' },
   { output: /^createdeco:[a-z_]+_coin$/ },
   { output: /^createdeco:[a-z_]+_coinstack$/ },
   { output: 'createdeco:netherite_nugget' },
