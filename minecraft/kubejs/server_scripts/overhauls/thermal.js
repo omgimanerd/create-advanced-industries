@@ -308,4 +308,20 @@ ServerEvents.recipes((e) => {
       ])
       .id(`kubejs:${to.replace(':', '_')}`)
   }
+
+  // Add compat crushing recipes for the basalz and blitz
+  create.milling(
+    [
+      '3x thermal:basalz_powder',
+      Item.of('thermal:basalz_powder').withChance(0.5),
+    ],
+    'thermal:basalz_rod'
+  )
+  create.milling(
+    [
+      '3x thermal:blitz_powder',
+      Item.of('thermal:blitz_powder').withChance(0.5),
+    ],
+    'thermal:blitz_rod'
+  )
 })
