@@ -64,6 +64,9 @@ ServerEvents.tags('item', (e) => {
 
   e.add('kubejs:disc_fragment', 'minecraft:disc_fragment_5')
   e.add('kubejs:disc_fragment', 'idas:disc_fragment_slither')
+
+  // Otherwise, empty music discs can be made from pancakes.
+  e.remove('minecraft:music_discs', 'supplementaries:pancake')
 })
 
 ServerEvents.recipes((e) => {
@@ -230,11 +233,17 @@ ServerEvents.recipes((e) => {
     .fill(Fluid.of('kubejs:molten_silver', 125))
     .laser(8000, 1000)
     .outputs('kubejs:empty_music_disc')
-  const allDiscs = [Item.of('kubejs:empty_music_disc').withChance(1)].concat(
-    Ingredient.of('#minecraft:music_discs').itemIds.map((id) => {
-      // Weight chance, not probability
-      return Item.of(id).withChance(5)
-    })
+  const allDiscs = [
+    Item.of('kubejs:empty_disc_fragment').withChance(80),
+  ].concat(
+    Ingredient.of('#minecraft:music_discs')
+      .itemIds.filter((id) => {
+        return id != 'supplementaries:pancake'
+      })
+      .map((id) => {
+        // Weight chance, not probability
+        return Item.of(id).withChance(5)
+      })
   )
   create
     .SequencedAssembly('kubejs:empty_music_disc')
@@ -242,17 +251,7 @@ ServerEvents.recipes((e) => {
     .laser(1000)
     .outputs(allDiscs)
 
-  // Disc fragment cutting and recycling
-  // create.cutting(
-  //   Item.of('kubejs:empty_disc_fragment').withChance(0.5),
-  //   '#minecraft:music_discs'
-  // )
-  // create.laser_cutting(
-  //   'kubejs:empty_disc_fragment',
-  //   '#minecraft:music_discs',
-  //   8000,
-  //   1000
-  // )
+  // Music discs can be wiped and reassembled
   create.splashing('kubejs:empty_disc_fragment', '#kubejs:disc_fragment')
   create.splashing('kubejs:empty_music_disc', '#minecraft:music_discs')
   create
@@ -262,5 +261,35 @@ ServerEvents.recipes((e) => {
     .loops(3)
     .outputs('kubejs:empty_music_disc')
 
-  // TODO creative mechanism
+  // Disc fragments can be made with cutting
+  create.cutting(
+    [
+      '5x kubejs:empty_disc_fragment',
+      Item.of('kubejs:empty_disc_fragment', 4).withChance(0.5),
+    ],
+    'kubejs:empty_music_disc',
+    5
+  )
+  create.cutting(
+    [
+      '5x minecraft:disc_fragment_5',
+      Item.of('minecraft:disc_fragment_5', 4).withChance(0.5),
+    ],
+    'minecraft:music_disc_5',
+    5
+  )
+  create.cutting(
+    [
+      '5x idas:disc_fragment_slither',
+      Item.of('idas:disc_fragment_slither', 4).withChance(0.5),
+    ],
+    'idas:music_disc_slither'
+  )
+
+  // Creative Mechanism
+  create
+    .SequencedAssembly('#minecraft:music_discs', INCOMPLETE_CREATIVE_MECHANISM)
+    .deploy('create:refined_radiance')
+    .deploy('createcasing:chorium_ingot')
+    .outputs(CREATIVE_MECHANISM)
 })
