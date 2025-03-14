@@ -11,42 +11,30 @@ JEIAddedEvents.registerCategories((e) => {
 
   // RecipeType and the actual underlying processing recipe. Needed to create a
   // RecipeType for the custom category registration.
-  // const $RecipeType = Java.loadClass('mezz.jei.api.recipe.RecipeType')
-  // const $IJeiAnvilRecipe = Java.loadClass(
-  //   'mezz.jei.api.recipe.vanilla.IJeiAnvilRecipe'
-  // )
-  // const nutrientInfusionRecipeType = $RecipeType.create(
-  //   'kubejs',
-  //   'nutrient_infusion',
-  //   $IJeiAnvilRecipe
-  // )
+  const $RecipeType = Java.loadClass('mezz.jei.api.recipe.RecipeType')
+  const $IJeiAnvilRecipe = Java.loadClass(
+    'mezz.jei.api.recipe.vanilla.IJeiAnvilRecipe'
+  )
+  const nutrientInfusionRecipeType = $RecipeType.create(
+    'kubejs',
+    'nutrient_infusion',
+    $IJeiAnvilRecipe
+  )
 
   const guiHelper = e.data.jeiHelpers.guiHelper
   // Create an concrete instance of the anvil recipe category and defer our
   // custom category to use its render code.
   const anvilRecipeCategory = new $AnvilRecipeCategory(guiHelper)
 
-  e.custom(NUTRIENT_INFUSION, (category) => {
+  // Wrap the vanilla anvil recipe category with our own category for nutrient
+  // infusion.
+  e.wrap(nutrientInfusionRecipeType, anvilRecipeCategory, (category) => {
     category
       .title('Nutrient Infusion')
-      .background(
-        guiHelper.createBlankDrawable(
-          anvilRecipeCategory.getWidth(),
-          anvilRecipeCategory.getHeight()
-        )
-      )
       .icon(
         doubleItemIcon('minecraft:anvil', 'minecraft:enchanted_golden_apple')
       )
       .isRecipeHandled(() => true)
-      .handleLookup((builder, recipe, focuses) => {
-        // TODO currently broken: anvilRecipeCategory.createRecipeExtras needs
-        // to be called in order to draw the arrow and experience costs.
-        anvilRecipeCategory.setRecipe(builder, recipe, focuses)
-      })
-      .setDrawHandler((recipe, slots, graphics, mouseX, mouseY) => {
-        anvilRecipeCategory.draw(recipe, slots, graphics, mouseX, mouseY)
-      })
   })
 })
 
