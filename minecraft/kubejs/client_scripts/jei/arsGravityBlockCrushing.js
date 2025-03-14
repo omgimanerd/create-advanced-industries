@@ -17,10 +17,12 @@ JEIAddedEvents.registerCategories((e) => {
   e.custom(global.ARS_GRAVITY_BLOCK_CRUSHING, (category) => {
     category
       .title('Void Steel Crushing')
-      .background(guiHelper.createBlankDrawable(177, 80))
       .icon(
         guiHelper.createDrawableItemStack('createutilities:void_steel_block')
       )
+      .background(null)
+      .setWidth(177)
+      .setHeight(80)
       .handleLookup((builder, recipe) => {
         const { ingredients, results, minimumSpeed, belowBlock } = recipe.data
 

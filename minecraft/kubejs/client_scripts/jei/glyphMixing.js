@@ -38,7 +38,6 @@ JEIAddedEvents.registerCategories((e) => {
     (category) => {
       category
         .title('Automated Glyph Crafting')
-        .background(background)
         .icon(
           doubleItemIcon('create:mechanical_mixer', 'ars_nouveau:glyph_craft')
         )

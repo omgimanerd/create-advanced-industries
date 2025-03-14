@@ -38,8 +38,10 @@ JEIAddedEvents.registerCategories((e) => {
   e.custom(global.RESONANCE_CRAFTING, (category) => {
     category
       .title('Resonance Crafting')
-      .background(guiHelper.createBlankDrawable(160, 60))
       .icon(guiHelper.createDrawableItemStack('minecraft:note_block'))
+      .background(null)
+      .setWidth(160)
+      .setHeight(60)
       .isRecipeHandled(() => true) // Only relevant recipes are registered
       .handleLookup((builder, recipe) => {
         const data = recipe.data

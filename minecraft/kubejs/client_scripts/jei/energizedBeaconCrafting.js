@@ -52,8 +52,10 @@ JEIAddedEvents.registerCategories((e) => {
   e.custom(global.ENERGIZED_BEACON_CRAFTING, (category) => {
     category
       .title('Energized Beacon Crafting')
-      .background(guiHelper.createBlankDrawable(177, 100))
       .icon(doubleItemIcon('minecraft:beacon', 'quark:red_corundum_cluster'))
+      .background(null)
+      .setWidth(177)
+      .setHeight(100)
       .isRecipeHandled(() => true) // Only relevant recipes are registered
       .handleLookup((builder, recipe) => {
         let { ingredient, results, redirectorBlock, energy } = recipe.data

@@ -12,8 +12,10 @@ JEIAddedEvents.registerCategories((e) => {
   e.custom(DEVICE_FISHER, (category) => {
     category
       .title('Aquatic Entangler')
-      .background(guiHelper.createBlankDrawable(160, 60))
       .icon(guiHelper.createDrawableItemStack('thermal:device_fisher'))
+      .background(null)
+      .setWidth(160)
+      .setHeight(60)
       .isRecipeHandled(() => true) // Only relevant recipes are registered
       .handleLookup((builder, recipe) => {
         const data = recipe.data

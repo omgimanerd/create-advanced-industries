@@ -30,9 +30,11 @@ JEIAddedEvents.registerCategories((e) => {
   e.custom(global.TIME_POUCH_CRAFTING, (category) => {
     category
       .title('Temporal Pouch Crafting')
-      // Dimensions from CreateJEI.java
-      .background(guiHelper.createBlankDrawable(177, 60))
       .icon(guiHelper.createDrawableItemStack('gag:time_sand_pouch'))
+      .background(null)
+      // Dimensions from CreateJEI.java
+      .setWidth(177)
+      .setHeight(60)
       .isRecipeHandled(() => true) // Only relevant recipes are registered
       .handleLookup((builder, recipe) => {
         const { input, output, cost } = recipe.data

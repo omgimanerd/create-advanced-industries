@@ -38,7 +38,6 @@ JEIAddedEvents.registerCategories((e) => {
     (category) => {
       category
         .title('Potion Centrifugation')
-        .background(background)
         .icon(
           doubleItemIcon(
             'vintageimprovements:centrifuge',
