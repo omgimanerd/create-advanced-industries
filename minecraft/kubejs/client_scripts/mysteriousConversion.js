@@ -1,18 +1,20 @@
 // priority: 0
 
-const $MysteriousItemConversionCategory = Java.loadClass(
-  'com.simibubi.create.compat.jei.category.MysteriousItemConversionCategory'
-)
-const $ConversionRecipe = Java.loadClass(
-  'com.simibubi.create.compat.jei.ConversionRecipe'
-)
-
-const registerMysteriousItemConversion = (output, input) => {
-  $MysteriousItemConversionCategory.RECIPES.add(
-    $ConversionRecipe.create(output, input)
+ClientEvents.highPriorityAssets(() => {
+  const $MysteriousItemConversionCategory = Java.loadClass(
+    'com.simibubi.create.compat.jei.category.MysteriousItemConversionCategory'
   )
-}
-registerMysteriousItemConversion(
-  'kubejs:uninspired_spark',
-  'kubejs:inspired_spark'
-)
+  const $ConversionRecipe = Java.loadClass(
+    'com.simibubi.create.compat.jei.ConversionRecipe'
+  )
+
+  const registerMysteriousItemConversion = (input, output) => {
+    $MysteriousItemConversionCategory.RECIPES.add(
+      $ConversionRecipe.create(input, output)
+    )
+  }
+  registerMysteriousItemConversion(
+    'kubejs:uninspired_spark',
+    'kubejs:inspired_spark'
+  )
+})
