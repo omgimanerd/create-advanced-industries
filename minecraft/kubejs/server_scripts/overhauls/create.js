@@ -349,6 +349,13 @@ ServerEvents.recipes((e) => {
       'minecraft:bone_meal',
       Fluid.of('sliceanddice:fertilizer', 250),
     ])
+
+    // Wand of Symmetry requires Refined Radiance
+    e.replaceInput(
+      'create:mechanical_crafting/wand_of_symmetry',
+      'minecraft:ender_pearl',
+      'create:refined_radiance'
+    )
   }
 
   ///////////////////

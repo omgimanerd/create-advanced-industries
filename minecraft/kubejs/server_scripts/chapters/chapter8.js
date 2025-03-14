@@ -101,16 +101,9 @@ ServerEvents.recipes((e) => {
     .SequencedAssembly('create:chromatic_compound')
     .energize(100000)
     .outputs([
-      Item.of('create:refined_radiance').withChance(8),
-      Item.of('create:chromatic_compound').withChance(2),
+      Item.of('create:refined_radiance').withChance(5),
+      Item.of('create:chromatic_compound').withChance(5),
     ])
-
-  // Wand of Symmetry requires Refined Radiance
-  e.replaceInput(
-    'create:mechanical_crafting/wand_of_symmetry',
-    'minecraft:ender_pearl',
-    'create:refined_radiance'
-  )
 
   // Blizz Powder
   e.remove({ id: 'thermal:blizz_powder' })
