@@ -311,8 +311,12 @@ StartupEvents.registry('item', (e) => {
     .maxStackSize(4)
   e.create('kubejs:inspired_spark')
     // §s formatting code for material_diamond
+    // https://minecraft.fandom.com/wiki/Formatting_codes
     .formattedDisplayName(Text.of('Spark of Inspiration').color(0x2cbaa8))
     .maxStackSize(4)
+
+  // Essence of Culture
+  registerItem('kubejs:essence_of_culture').maxStackSize(16)
 
   // Creative Storage Part
   e.create('kubejs:creative_storage_part').formattedDisplayName(
