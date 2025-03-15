@@ -58,20 +58,15 @@ JEIEvents.information((e) => {
   // Shattered Ender Pearls
   e.addItem(
     'kubejs:shattered_ender_pearl',
-    Text.of('A chance result that can come from crafting Redstone Pearls.')
-  )
-
-  // Singularities
-  e.addItem(
-    'kubejs:singularity',
-    Text.of(
-      'Crafted by dropping a redstone pearl into an unstable singularity.'
-    )
+    Text.of('A chance result that can result from crafting Redstone Pearls.')
   )
 
   // Paintings
   e.addItem(
     'minecraft:painting',
-    Text.of('Give paint kits and canvas to Pembi the Artist.')
+    Text.of(
+      'Give paint kits and canvas to Pembi the Artist for a chance of ' +
+        'obtaining masterpiece paintings.'
+    )
   )
 })

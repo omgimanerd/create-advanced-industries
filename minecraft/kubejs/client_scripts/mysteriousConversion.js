@@ -13,6 +13,14 @@ ClientEvents.highPriorityAssets(() => {
       $ConversionRecipe.create(input, output)
     )
   }
+
+  // Singularities
+  registerMysteriousItemConversion(
+    'kubejs:unstable_singularity',
+    'kubejs:singularity'
+  )
+
+  // Inspired Sparks
   registerMysteriousItemConversion(
     'kubejs:uninspired_spark',
     'kubejs:inspired_spark'
