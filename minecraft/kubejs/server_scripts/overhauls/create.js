@@ -1273,5 +1273,15 @@ ServerEvents.recipes((e) => {
     create
       .curving('minecraft:flower_pot', 'minecraft:brick')
       .mode(CONVEX_CURVING_HEAD)
+
+    // Remove the regular pressing recipes for shadow steel and refined radiance
+    e.remove({
+      type: 'create:pressing',
+      output: 'vintageimprovements:shadow_steel_sheet',
+    })
+    e.remove({
+      type: 'create:pressing',
+      output: 'vintageimprovements:refined_radiance_sheet',
+    })
   }
 })

@@ -111,12 +111,31 @@ ForgeEvents.onEvent(
     )
   }
 
+  // Netherite sheets
+  registerVoidSteelCrushingRecipe(
+    'vintageimprovements:netherite_sheet',
+    'minecraft:netherite_ingot'
+  )
+
+  // Higher yield powdered obsidian
   registerVoidSteelCrushingRecipe(
     '9x create:powdered_obsidian',
     'minecraft:obsidian'
   )
+
+  // Void Steel
   registerVoidSteelCrushingRecipe(
     'createutilities:void_steel_sheet',
     'createutilities:void_steel_ingot'
+  )
+
+  // Shadow Steel and Refined Radiance
+  registerVoidSteelCrushingRecipe(
+    'vintageimprovements:shadow_steel_sheet',
+    'create:shadow_steel'
+  )
+  registerVoidSteelCrushingRecipe(
+    'vintageimprovements:refined_radiance_sheet',
+    'create:refined_radiance'
   )
 })()
