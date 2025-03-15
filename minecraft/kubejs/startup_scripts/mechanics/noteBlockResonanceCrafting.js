@@ -7,6 +7,9 @@ const $ItemStack = Java.loadClass('net.minecraft.world.item.ItemStack')
 
 global.RESONANCE_CRAFTING = 'kubejs:resonance_crafting'
 
+// The radius around the note block to search for an affecting pedestal.
+global.RESONANCE_CRAFTING_RADIUS = 3
+
 /**
  * Global constants for the notes, with their index in the array corresponding
  * to the numerical pitch on the note block.
@@ -315,7 +318,8 @@ global.NoteBlockEventHandler = (e) => {
 
   // Search the surrounding pedestals for matching items in the resonance
   // crafts.
-  for (let offset of BlockPos.betweenClosed(-2, 0, -2, 2, 1, 2)) {
+  const r = global.RESONANCE_CRAFTING_RADIUS
+  for (let offset of BlockPos.betweenClosed(-r, 0, -r, r, 1, r)) {
     let p = pos.offset(offset)
     let block = level.getBlock(p)
     let blockId = block.getId()
