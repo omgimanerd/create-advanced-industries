@@ -244,6 +244,13 @@ ServerEvents.recipes((e) => {
     .laser(1000)
     .outputs(allDiscs)
 
+  // Ambience Disc: Water Droplets
+  create
+    .SequencedAssembly('kubejs:empty_music_disc')
+    .fill(Fluid.water(10))
+    .loops(10)
+    .outputs('quark:music_disc_drips')
+
   // Music discs can be wiped and reassembled
   create.splashing('kubejs:empty_disc_fragment', '#kubejs:disc_fragment')
   create.splashing('kubejs:empty_music_disc', '#minecraft:music_discs')

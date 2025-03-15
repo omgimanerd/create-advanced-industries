@@ -24,4 +24,46 @@ ServerEvents.recipes((e) => {
     'apotheosis:ancient_material',
     VIBRATION_MECHANISM
   )
+
+  // Add recipes for some of the shearing treasure enchantments
+  e.recipes.ars_nouveau.enchanting_apparatus(
+    [
+      'minecraft:shears',
+      'toms_storage:ts.paint_kit',
+      'minecraft:shears',
+      'toms_storage:ts.paint_kit',
+      'minecraft:shears',
+      'toms_storage:ts.paint_kit',
+      'minecraft:shears',
+      'toms_storage:ts.paint_kit',
+    ],
+    'minecraft:book',
+    Item.of('minecraft:enchanted_book').enchant('apotheosis:chromatic', 1)
+  )
+  e.recipes.ars_nouveau.enchanting_apparatus(
+    [
+      'kubejs:suffering_essence',
+      'kubejs:agony_essence',
+      'kubejs:suffering_essence',
+      'kubejs:agony_essence',
+    ],
+    Item.of('minecraft:enchanted_book')
+      .enchant('minecraft:fortune', 2)
+      .weakNBT(),
+    Item.of('minecraft:enchanted_book').enchant('apotheosis:exploitation', 1)
+  )
+  e.recipes.ars_nouveau.enchanting_apparatus(
+    [
+      'minecraft:grass_block',
+      'minecraft:green_wool',
+      'sliceanddice:fertilizer_bucket',
+      'minecraft:green_wool',
+      'minecraft:grass_block',
+      'minecraft:green_wool',
+      'sliceanddice:fertilizer_bucket',
+      'minecraft:green_wool',
+    ],
+    'minecraft:book',
+    Item.of('minecraft:enchanted_book').enchant('apotheosis:growth_serum', 1)
+  )
 })
