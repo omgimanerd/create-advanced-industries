@@ -15,7 +15,7 @@ BlockEvents.rightClicked('minecraft:crying_obsidian', (e) => {
 })
 
 /**
- * Helper method for the Arcane Portal's block entity callback.
+ * Checks if a pickaxe sacrified to the Arcane Portal is valid.
  * @param {Internal.ItemStack_} item
  * @returns {boolean}
  */
@@ -29,6 +29,46 @@ const checkPortalPickaxeSacrifice = (item) => {
   if (!item.hasEnchantment('minecraft:efficiency', 3)) return false
   if (!item.hasEnchantment('minecraft:unbreaking', 3)) return false
   return true
+}
+
+/**
+ * Checks if a written book sacrified to the Arcane Portal is valid.
+ * @param {Internal.ItemStack_} item
+ * @returns {boolean}
+ */
+const checkWrittenBookSacrifice = (item) => {
+  if (item.id !== 'minecraft:written_book') return false
+  if (item.nbt.title !== 'Literary Masterpiece') return false
+  if (item.nbt.author !== 'omgimanerd') return false
+  if (!item.nbt.resolved) return false
+  return true
+}
+
+/**
+ * Checks if an item sacrified to the Arcane Portal is a music disc.
+ * @param {Internal.ItemEntity_} entity
+ */
+
+/**
+ * Helper to discard the given entity, play a sound, and spawn particles when
+ * the entity is a valid entity to be consumed by the Arcane Portal
+ * @param {Internal.Entity_} entity
+ */
+const vanishValidEntity = (entity) => {
+  entity.discard()
+  entity.playSound(
+    'minecraft:entity.enderman.teleport',
+    /*volume=*/ 2,
+    /*pitch=*/ 1
+  )
+  spawnParticles(
+    entity.level,
+    'minecraft:enchant',
+    entity,
+    0.15, // v
+    75, // count
+    0.1 // speed
+  )
 }
 
 /**
@@ -51,10 +91,21 @@ function ArcanePortalHandler(e) {
   // CompoundTag accessor. Uses reflection to unpack the keys and values in the
   // persistent data into this class.
   ArcanePortalHandler.PDATA_KEYS = Object.entries({
+    // Used in Chapter 5b to automate hearthstones.
     laborersEaten_: 'Int',
     pickaxesEaten_: 'Int',
-    instability_: 'Int',
+
+    // Used in Chapter 8 to automate Essences of Culture.
+    musicDiscsEaten_: 'Int',
+    booksEaten_: 'Int',
+    paintingsEaten_: 'Int',
+
+    // Records the tick time when the portal will next consume a surrounding
+    // source fluid block.
     nextEatTime_: 'Long',
+    // The accumulated instability when there is insufficient source fluid
+    // around the portal.
+    instability_: 'Int',
   })
 
   /**
@@ -65,8 +116,7 @@ function ArcanePortalHandler(e) {
       const [field, type] = entry
       if (this[field] !== undefined && this[field] !== null) {
         throw new Error(
-          `Persistent data field ${field} already exists in ` +
-            `object ${field} as ${this[field]}`
+          `this.${field} already exists in object as ${this[field]}`
         )
       }
       // Insane reflection hack
@@ -90,7 +140,8 @@ function ArcanePortalHandler(e) {
   }
 
   /**
-   * Processes the entities near the arcane for interaction behavior.
+   * Processes the entities near the arcane portal, eating them if they are
+   * valid entities.
    */
   this.processNearbyEntities = () => {
     const entities = this.level_.getEntitiesWithin(
@@ -120,42 +171,37 @@ function ArcanePortalHandler(e) {
       // Process dropped item entities near the portal.
       let item = /** @type {net.minecraft.world.item.ItemStack} */ entity.item
       if (!item) continue
-      switch (item.id) {
-        // Laborer's pickaxes, for Chapter 5b
-        case 'minecraft:iron_pickaxe':
-          if (checkPortalPickaxeSacrifice(item)) {
-            entity.discard()
-            entity.playSound(
-              'minecraft:entity.enderman.teleport',
-              /*volume=*/ 2,
-              /*pitch=*/ 1
-            )
-            this.pickaxesEaten_ = Math.min(5, this.pickaxesEaten_ + 1)
-            spawnParticles(
-              this.level_,
-              'minecraft:enchant',
-              entity,
-              0.15, // v
-              75, // count
-              0.1 // speed
-            )
-          }
-          break
 
-        case 'minecraft:painting':
-          break
-
-        // All other items have floating particles
-        default:
-          spawnParticles(
-            this.level_,
-            'minecraft:poof',
-            this.pos_,
-            0.1, // v
-            3, // count
-            0.01 // speed
-          )
+      // Laborer's pickaxes, for Chapter 5b
+      if (checkPortalPickaxeSacrifice(item)) {
+        this.pickaxesEaten_ = Math.min(5, this.pickaxesEaten_ + 1)
+        vanishValidEntity(entity)
+        continue
       }
+
+      // Written books, for Chapter 8
+      if (checkWrittenBookSacrifice(item)) {
+        this.booksEaten_ = Math.min(10, this.booksEaten_ + 1)
+        vanishValidEntity(entity)
+        continue
+      }
+
+      // Music Discs, for Chapter 8
+      if (item.hasTag('minecraft:music_discs')) {
+        this.musicDiscsEaten_ = Math.min(10, this.musicDiscsEaten_ + 1)
+        vanishValidEntity(entity)
+        continue
+      }
+
+      // All other items have floating particles displayed around them.
+      spawnParticles(
+        this.level_,
+        'minecraft:poof',
+        this.pos_,
+        0.1, // v
+        3, // count
+        0.01 // speed
+      )
     }
   }
 
@@ -185,7 +231,8 @@ function ArcanePortalHandler(e) {
   }
 
   /**
-   * Processes the surrounding blocks
+   * Processes the surrounding blocks to see if there is enough source fluid
+   * to sustain the portal, consuming a source fluid block every now and then.
    */
   this.processConsumption = () => {
     // Eat surrounding fluid source blocks to sustain the portal.
@@ -256,6 +303,5 @@ function ArcanePortalHandler(e) {
  * @param {Internal.BlockEntityJS_} e
  */
 global.PortalBlockTickingCallback = (e) => {
-  const handler = new ArcanePortalHandler(e)
-  handler.run()
+  new ArcanePortalHandler(e).run()
 }
