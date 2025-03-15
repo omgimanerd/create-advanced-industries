@@ -17,6 +17,7 @@ BlockEvents.rightClicked('minecraft:crying_obsidian', (e) => {
 /**
  * Helper method for the Arcane Portal's block entity callback.
  * @param {Internal.ItemStack_} item
+ * @returns {boolean}
  */
 const checkPortalPickaxeSacrifice = (item) => {
   if (item.id !== 'minecraft:iron_pickaxe') return false
