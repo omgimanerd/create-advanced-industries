@@ -160,7 +160,7 @@
     create.emptying(
       [
         'farmersdelight:canvas',
-        Fluid.of('create_enchantment_industry:ink', 250),
+        Fluid.of('create_enchantment_industry:ink', 10),
       ],
       'minecraft:painting'
     )
@@ -168,7 +168,9 @@
     // Crafting the Pembi Spawner
     e.recipes.ars_nouveau.enchanting_apparatus(
       [
-        'toms_storage:ts.paint_kit',
+        Item.of('minecraft:enchanted_book')
+          .enchant('apotheosis:exploitation', 1)
+          .weakNBT(),
         'kubejs:suffering_essence',
         'toms_storage:ts.paint_kit',
         'kubejs:suffering_essence',
