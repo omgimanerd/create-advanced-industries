@@ -9,7 +9,7 @@
  *
  * @returns {[ResourceLocation[], number]}
  */
-const getPaintingRegistryAndWorldSeed = () => {
+global.getPaintingRegistryAndWorldSeed = () => {
   const variants = Utils.getRegistryIds('painting_variant')
   if (!variants || variants.length === 0) {
     throw new Error(
@@ -29,6 +29,12 @@ const getPaintingRegistryAndWorldSeed = () => {
   return [variants, global.WORLD_SEED]
 }
 
+// Cache for the tiered painting variants, lazily loaded the first time
+// getTieredPaintingVariants is called. Because of weird KubeJS things, this
+// cannot be set to the actual null or it will make every script that tries to
+// access it explode.
+global.TIERED_PAINTING_VARIANTS = 'null'
+
 /**
  * Gets the world seed and generates a listing of the paintings that are
  * considered artifact, legendary, epic, and rare using this world seed.
@@ -36,7 +42,10 @@ const getPaintingRegistryAndWorldSeed = () => {
  * @returns {{ ResourceLocation_ : string }}
  */
 global.getTieredPaintingVariants = () => {
-  const [variants, seed] = getPaintingRegistryAndWorldSeed()
+  if (global.TIERED_PAINTING_VARIANTS !== 'null') {
+    return global.TIERED_PAINTING_VARIANTS
+  }
+  const [variants, seed] = global.getPaintingRegistryAndWorldSeed()
   const random = wrapSeededRandom(Utils.newRandom(seed))
   // This shuffled list is unique per world seed.
   shuffle(variants, random)
@@ -54,33 +63,6 @@ global.getTieredPaintingVariants = () => {
       tieredVariants[variants[i++]] = tier
     }
   }
+  global.TIERED_PAINTING_VARIANTS = tieredVariants
   return tieredVariants
-}
-
-/**
- * Generates the probability weight distribution that a rare painting is
- * produced from Pembi the Artist using the world seed's RNG.
- *
- * This can be used by the Vose Alias sampler to generate the painting variants
- * in their corresponding yield probability.
- */
-global.getPaintingWeightDistribution = () => {
-  const [variants, _] = getPaintingRegistryAndWorldSeed()
-  const tieredVariants = global.getTieredPaintingVariants()
-  const weights = {}
-  const tierWeight = {
-    artifact: 1, // 1 total artifact painting
-    legendary: 3, // 2 total legendary paintings for a total weight of 6
-    epic: 10, // 3 total epic paintings for a total weight of 30
-    rare: 15, // 5 total rare paintings for a total weight of 75
-    other: 20, // All other paintings take up the rest of the probability space
-  }
-  variants.forEach((variant) => {
-    if (variant in tieredVariants) {
-      weights[variant] = tierWeight[tieredVariants[variant]]
-    } else {
-      weights[variant] = tierWeight.other
-    }
-  })
-  return weights
 }

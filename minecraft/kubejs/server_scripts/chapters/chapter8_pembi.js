@@ -56,10 +56,41 @@
       })
   })
 
+  // Function that can be invoked to randomly generate a painting variant.
+  // Lazily populated when it is called the first time using the painting
+  // weight distribution in the Vose Alias sampler.
+  let paintingVariantGenerator = null
+  /**
+   * Generates the probability weight distribution that a rare painting is
+   * produced from Pembi the Artist using the world seed's RNG.
+   *
+   * Used by the Vose Alias sampler to generate the painting variants in their
+   * corresponding yield probability.
+   */
+  const getPaintingWeightDistribution = () => {
+    const [variants, _] = global.getPaintingRegistryAndWorldSeed()
+    const tieredVariants = global.getTieredPaintingVariants()
+    const weights = {}
+    const tierWeight = {
+      artifact: 1, // 1 total artifact painting
+      legendary: 3, // 2 total legendary paintings for a total weight of 6
+      epic: 10, // 3 total epic paintings for a total weight of 30
+      rare: 15, // 5 total rare paintings for a total weight of 75
+      other: 20, // All other paintings take up the rest of the probability
+    }
+    variants.forEach((variant) => {
+      if (variant in tieredVariants) {
+        weights[variant] = tierWeight[tieredVariants[variant]]
+      } else {
+        weights[variant] = tierWeight.other
+      }
+    })
+    return weights
+  }
+
   /**
    * Event handler for interacting with Pembi the Artist
    */
-  let paintingVariantGenerator = null
   ItemEvents.entityInteracted((e) => {
     const { item, hand, level, player, server, target } = e
     if (hand !== 'main_hand') return
@@ -92,10 +123,12 @@
       } else {
         target.persistentData.putInt('paintLevel', paintLevel - 1)
       }
-      // Select a painting variant.
+      // Select a painting variant. Lazily populate the paintingVariantGenerator
+      // function if it is not populated.
       if (paintingVariantGenerator === null) {
-        let distribution = global.getPaintingWeightDistribution()
-        paintingVariantGenerator = getVoseAliasSampler(distribution)
+        paintingVariantGenerator = getVoseAliasSampler(
+          getPaintingWeightDistribution()
+        )
       }
       let paintingVariant = paintingVariantGenerator()
       item.shrink(1)
