@@ -45,6 +45,15 @@ const checkWrittenBookSacrifice = (item) => {
 }
 
 /**
+ * Checks if a painting sacrified to the Arcane Portal is valid.
+ */
+const checkPaintingSacrifice = (item) => {
+  if (item.id !== 'minecraft:painting') return false
+  if (item.nbt?.EntityTag?.variant === undefined) return false
+  return true
+}
+
+/**
  * Checks if an item sacrified to the Arcane Portal is a music disc.
  * @param {Internal.ItemEntity_} entity
  */
@@ -186,6 +195,13 @@ function ArcanePortalHandler(e) {
         continue
       }
 
+      // Paintings, for Chapter 8
+      if (checkPaintingSacrifice(item)) {
+        this.paintingsEaten_ = Math.min(10, this.paintingsEaten_ + 1)
+        vanishValidEntity(entity)
+        continue
+      }
+
       // Music Discs, for Chapter 8
       if (item.hasTag('minecraft:music_discs')) {
         this.musicDiscsEaten_ = Math.min(10, this.musicDiscsEaten_ + 1)
@@ -197,7 +213,7 @@ function ArcanePortalHandler(e) {
       spawnParticles(
         this.level_,
         'minecraft:poof',
-        this.pos_,
+        entity.pos,
         0.1, // v
         3, // count
         0.01 // speed
