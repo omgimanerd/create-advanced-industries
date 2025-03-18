@@ -9,8 +9,17 @@
             "probe/user",
             "server_scripts",
             "startup_scripts",
-            "client_scripts"
+            "client_scripts",
         ],
         "target": "ES2015"
-    }
+    },
+    "include": [
+        "probe/**/*",
+        "server_scripts/**/*",
+        "server_scripts/.kjspkg/**/*",
+        "startup_scripts/**/*",
+        "startup_scripts/.kjspkg/**/*",
+        "client_scripts/**/*",
+        "client_scripts/.kjgpkg/**/*",
+    ]
 }
