@@ -1,5 +1,0 @@
-Don't use ES6 style classes.
-
-Target ES2015 style JavaScript.
-
-Do not use the nullish coalescing operator or optional chaining.
