@@ -27,6 +27,7 @@ ItemEvents.entityInteracted('kubejs:uninspired_spark', (e) => {
     return
   }
 
+  const maxUses = 10
   const lowInspiration = [
     'Nope, no creativity to be found here.',
     'Seems quite mundane...',
@@ -45,7 +46,7 @@ ItemEvents.entityInteracted('kubejs:uninspired_spark', (e) => {
   const hint =
     'Can you figure out how to right click this on someone truly inspiring?'
   const uses = item.nbt === null || item.nbt.uses === null ? 0 : item.nbt.uses
-  if (uses >= 10) {
+  if (uses >= maxUses) {
     entity.tell(hint)
   } else if (target.name === 'minecraft:villager') {
     entity.tell(highInspiration[uses % highInspiration.length])
@@ -53,7 +54,7 @@ ItemEvents.entityInteracted('kubejs:uninspired_spark', (e) => {
     entity.tell(lowInspiration[uses % lowInspiration.length])
   }
   item.setNbt({
-    uses: Math.min(10, uses + 1),
+    uses: Math.min(maxUses, uses + 1),
   })
 })
 
@@ -286,10 +287,28 @@ ServerEvents.recipes((e) => {
     'idas:music_disc_slither'
   )
 
+  // Literary Masterpieces
+  const literaryMasterpiece = Item.of('minecraft:written_book', {
+    author: 'omgimanerd',
+    pages: [
+      JSON.stringify({
+        text: "wtf there's nothing here",
+      }),
+    ],
+    resolved: true,
+    title: 'Literary Masterpiece',
+  })
+  create
+    .SequencedAssembly('minecraft:book')
+    .fill(Fluid.of('create_enchantment_industry:ink', 100))
+    .deploy('create:refined_radiance')
+    .outputs(literaryMasterpiece.weakNBT())
+
   // Creative Mechanism
   create
     .SequencedAssembly('#minecraft:music_discs', INCOMPLETE_CREATIVE_MECHANISM)
-    .deploy('create:refined_radiance')
     .deploy('createcasing:chorium_ingot')
+    .deploy(QUANTUM_MECHANISM)
+    .deploy('kubejs:essence_of_culture')
     .outputs(CREATIVE_MECHANISM)
 })

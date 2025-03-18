@@ -226,24 +226,47 @@ function ArcanePortalHandler(e) {
    * certain output items being spawned.
    */
   this.processSatisfaction = () => {
-    // If the portal is satisfied, a hearthstone is spawned in 100 ticks
+    // If the portal is satisfied with laborers and pickaxes, a hearthstone is
+    // spawned.
     if (this.laborersEaten_ > 0 && this.pickaxesEaten_ > 0) {
       this.laborersEaten_--
       this.pickaxesEaten_--
-      this.server_.scheduleInTicks(50, () => {
-        this.level_.playSound(
-          null, // player
-          this.pos_.x,
-          this.pos_.y,
-          this.pos_.z,
-          'minecraft:block.amethyst_block.step',
-          'blocks',
-          2, // volume
-          1 // pitch
-        )
-        this.block_.popItemFromFace('gag:hearthstone', 'up')
-      })
+      this.spawnReward('gag:hearthstone')
     }
+
+    // If the portal is satisfied with art, music, and writing, an essence of
+    // culture is spawned.
+    if (
+      this.paintingsEaten_ > 0 &&
+      this.musicDiscsEaten_ > 0 &&
+      this.booksEaten_ > 0
+    ) {
+      this.paintingsEaten_--
+      this.musicDiscsEaten_--
+      this.booksEaten_--
+      this.spawnReward('kubejs:essence_of_culture')
+    }
+  }
+
+  /**
+   * Helper to spawn a reward item from the top of the arcane portal with the
+   * corresponding sound effect and delay.
+   * @param {Internal.ItemStack_} reward The reward item to spawn
+   */
+  this.spawnReward = (reward) => {
+    this.server_.scheduleInTicks(50, () => {
+      this.level_.playSound(
+        null, // player
+        this.pos_.x,
+        this.pos_.y,
+        this.pos_.z,
+        'minecraft:block.amethyst_block.step',
+        'blocks',
+        2, // volume
+        1 // pitch
+      )
+      this.block_.popItemFromFace(reward, 'up')
+    })
   }
 
   /**
