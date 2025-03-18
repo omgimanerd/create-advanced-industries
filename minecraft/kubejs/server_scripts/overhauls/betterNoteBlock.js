@@ -1,10 +1,8 @@
 // priority: 100
 
 BlockEvents.rightClicked('minecraft:note_block', (e) => {
-  const { player, item, block, level } = e
-  // Only works if shift clicking with an empty hand. Otherwise, if the player
-  // is holding a block it will place the block for an instant.
-  if (!player.isCrouching() || item.id !== 'minecraft:air') return
+  const { player, block, level } = e
+  if (!player.isCrouching()) return
 
   // Set the block note to the previous note
   // https://minecraft.fandom.com/wiki/Note_Block
