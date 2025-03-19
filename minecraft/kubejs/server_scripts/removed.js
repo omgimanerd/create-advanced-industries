@@ -1,9 +1,14 @@
 // priority: 500
 
+ServerEvents.tags('item', (e) => {
+  e.removeAllTagsFrom(global.REMOVED_ITEMS)
+  e.add('kubejs:removed', global.REMOVED_ITEMS)
+})
+
 // Recipes that are removed for duplication reasons.
 ServerEvents.recipes((e) => {
   // Debug logging
-  // global.removedRecipes.forEach((r) => {
+  // global.REMOVED_ITEMS.forEach((r) => {
   //   e.forEachRecipe(r, (r2) => {
   //     const json = JSON.parse(r2.json)
   //     console.log(r)
@@ -13,8 +18,9 @@ ServerEvents.recipes((e) => {
   //   })
   // })
 
-  global.removedRecipes.forEach((r) => {
-    e.remove(r)
+  global.REMOVED_ITEMS.forEach((r) => {
+    e.remove({ output: r })
+    e.remove({ input: r })
   })
 
   ////////////
