@@ -2,6 +2,14 @@
 // Information Recipe categories for nontrivial recipes.
 
 JEIEvents.information((e) => {
+  // Blaze milk buckets
+  e.addItem(
+    'kubejs:blaze_milk_bucket',
+    Text.of(
+      'Obtain by right clicking a blaze with an empty bucket after feeding it.'
+    )
+  )
+
   // Amethyst Buds
   ;[
     'minecraft:small_amethyst_bud',
