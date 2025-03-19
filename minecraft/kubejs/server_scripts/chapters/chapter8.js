@@ -297,12 +297,17 @@ ServerEvents.recipes((e) => {
     ],
     resolved: true,
     title: 'Literary Masterpiece',
-  })
-  create
-    .SequencedAssembly('minecraft:book')
-    .fill(Fluid.of('create_enchantment_industry:ink', 100))
-    .deploy('create:refined_radiance')
-    .outputs(literaryMasterpiece.weakNBT())
+  }).weakNBT()
+  e.recipes.ars_nouveau.enchanting_apparatus(
+    [
+      'supplementaries:antique_ink',
+      'create_enchantment_industry:hyper_experience_bottle',
+      'create:refined_radiance',
+      'create_enchantment_industry:hyper_experience_bottle',
+    ],
+    'minecraft:book',
+    literaryMasterpiece
+  )
 
   // Creative Mechanism
   create
