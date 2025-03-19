@@ -42,20 +42,53 @@
 				item: "createcasing:chorium_ingot"
 				type: "item"
 			}]
-			x: 12.0d
-			y: -10.0d
+			x: 14.0d
+			y: -8.0d
 		}
 		{
-			dependencies: ["11F54CD0E5709EF8"]
+			dependencies: [
+				"11F54CD0E5709EF8"
+				"2BA364B6D663A4E5"
+				"3A6D57DB6A76B9ED"
+			]
+			description: [
+				"And now finally..."
+				""
+				"We can craft our Creative Mechanism."
+				""
+				"With this, your automation journey is over. You've beaten the modpack!"
+				""
+				"Please share your builds with me! I'm super interested in the contraptions you've built for Chapter 5b especially. You can join the discord via the link on the main menu."
+				""
+				"Thank you so much for playing my modpack, I hope you had as much fun playing as I had designing it."
+				""
+				""
+				""
+				"&oCreate: Advanced Industries 2 is in the works, so stay tuned."
+			]
 			id: "7765615953317C7E"
+			min_width: 300
+			rewards: [
+				{
+					id: "6424DF77A8227E56"
+					type: "xp_levels"
+					xp_levels: 100
+				}
+				{
+					count: 16
+					id: "7B2EEAE3E46207DC"
+					item: "farmersdelight:salmon_roll"
+					type: "item"
+				}
+			]
 			size: 2.0d
 			tasks: [{
 				id: "2AD09FA92A6C2A10"
 				item: "kubejs:creative_mechanism"
 				type: "item"
 			}]
-			x: 16.0d
-			y: -8.0d
+			x: 14.0d
+			y: 6.0d
 		}
 		{
 			dependencies: ["26A153012F13D271"]
@@ -70,8 +103,8 @@
 				}
 				type: "item"
 			}]
-			x: 0.0d
-			y: -10.0d
+			x: 2.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["2AD39A88E707A885"]
@@ -82,8 +115,8 @@
 				item: "create:shadow_steel"
 				type: "item"
 			}]
-			x: 2.0d
-			y: -10.0d
+			x: 4.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["2AD39A88E707A885"]
@@ -94,8 +127,8 @@
 				item: "create:refined_radiance"
 				type: "item"
 			}]
-			x: 2.0d
-			y: -8.0d
+			x: 4.0d
+			y: -6.0d
 		}
 		{
 			dependencies: ["19C4086752C5E343"]
@@ -122,6 +155,20 @@
 			dependencies: ["442E76A8E99688F9"]
 			description: ["Having fun whacking that sheep?"]
 			id: "1AD127B4B828B2BB"
+			rewards: [
+				{
+					count: 4
+					id: "7E9164200A5C2326"
+					item: "thermal:pink_rockwool"
+					type: "item"
+				}
+				{
+					count: 4
+					id: "76B818E5868064E3"
+					item: "ars_elemental:anima_essence"
+					type: "item"
+				}
+			]
 			tasks: [{
 				icon: "minecraft:sheep_spawn_egg"
 				id: "7BC8A3F8B98731C7"
@@ -130,8 +177,8 @@
 				to_observe: "minecraft:sheep"
 				type: "observation"
 			}]
-			x: 4.0d
-			y: -6.0d
+			x: 2.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["4069BFCE7C742DAD"]
@@ -142,19 +189,21 @@
 				item: "kubejs:empty_music_disc"
 				type: "item"
 			}]
-			x: 2.0d
-			y: -2.0d
+			x: 0.0d
+			y: 6.0d
 		}
 		{
-			dependencies: ["4F876B31FA1CC881"]
+			dependencies: ["2BA364B6D663A4E5"]
+			description: ["Did you break a disc in the process? You can recycle the fragments back into empty music discs."]
 			id: "3F6311178AADCB8E"
+			invisible: true
 			tasks: [{
 				id: "6C64DF261D8ADEE0"
 				item: "kubejs:empty_disc_fragment"
 				type: "item"
 			}]
-			x: 6.0d
-			y: -2.0d
+			x: 10.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["2AD39A88E707A885"]
@@ -182,14 +231,19 @@
 				"02A6FEC4CF21D2A8"
 				"4786498A2E13B4D6"
 			]
+			description: [
+				"Summon Pembi the Artist by crafting their golem charm."
+				""
+				"\"Artists must suffer for the art. That's why it's called pain-ting.\" -Danny Devito"
+			]
 			id: "0997250298CBFB8F"
 			tasks: [{
 				id: "1114B5476E3EDCF2"
 				item: "kubejs:pembi_spawner"
 				type: "item"
 			}]
-			x: 4.0d
-			y: 4.0d
+			x: 6.0d
+			y: 0.0d
 		}
 		{
 			dependencies: ["4069BFCE7C742DAD"]
@@ -212,7 +266,7 @@
 			}]
 			title: "Dye"
 			x: 2.0d
-			y: 0.0d
+			y: 2.0d
 		}
 		{
 			dependencies: ["55033B2BBF898840"]
@@ -223,13 +277,12 @@
 				item: "farmersdelight:canvas"
 				type: "item"
 			}]
-			x: 2.0d
-			y: 6.0d
+			x: 4.0d
+			y: -2.0d
 		}
 		{
 			dependencies: [
 				"153FC6A5ACD6148D"
-				"2BBBC9DE78CBB47B"
 				"3B58D984466057A1"
 			]
 			description: ["Craft a Paint Kit with dyes, brushes, and ink. Paint kits can be used to &orecolor most dye-able things&r."]
@@ -245,8 +298,8 @@
 				}
 				type: "item"
 			}]
-			x: 4.0d
-			y: 2.0d
+			x: 6.0d
+			y: 4.0d
 		}
 		{
 			dependencies: ["4069BFCE7C742DAD"]
@@ -264,18 +317,7 @@
 				type: "item"
 			}]
 			x: 2.0d
-			y: 2.0d
-		}
-		{
-			dependencies: ["3B2B73F0536813B2"]
-			id: "4F876B31FA1CC881"
-			tasks: [{
-				id: "69CA85091858EF24"
-				item: "minecraft:jukebox"
-				type: "item"
-			}]
-			x: 4.0d
-			y: -2.0d
+			y: 4.0d
 		}
 		{
 			dependencies: [
@@ -293,8 +335,8 @@
 				item: "minecraft:painting"
 				type: "item"
 			}]
-			x: 4.0d
-			y: 6.0d
+			x: 6.0d
+			y: -2.0d
 		}
 		{
 			dependencies: ["4069BFCE7C742DAD"]
@@ -305,8 +347,8 @@
 				item: "farmersdelight:straw"
 				type: "item"
 			}]
-			x: 0.0d
-			y: 6.0d
+			x: 2.0d
+			y: -2.0d
 		}
 		{
 			dependencies: ["4069BFCE7C742DAD"]
@@ -323,7 +365,7 @@
 				type: "item"
 			}]
 			x: 2.0d
-			y: 4.0d
+			y: 0.0d
 		}
 		{
 			dependencies: ["2BBBC9DE78CBB47B"]
@@ -344,7 +386,7 @@
 			]
 			title: "Ink"
 			x: 4.0d
-			y: 0.0d
+			y: 2.0d
 		}
 		{
 			dependencies: ["4069BFCE7C742DAD"]
@@ -369,7 +411,7 @@
 			]
 			title: "Sulfuric Acid"
 			x: 0.0d
-			y: -6.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["4069BFCE7C742DAD"]
@@ -380,8 +422,8 @@
 				item: "minecraft:ice"
 				type: "item"
 			}]
-			x: 2.0d
-			y: -4.0d
+			x: 0.0d
+			y: -10.0d
 		}
 		{
 			dependencies: ["6D5FF2F1C1775AF6"]
@@ -392,8 +434,8 @@
 				item: "minecraft:packed_ice"
 				type: "item"
 			}]
-			x: 4.0d
-			y: -4.0d
+			x: 2.0d
+			y: -10.0d
 		}
 		{
 			dependencies: ["5C7522587633095B"]
@@ -404,8 +446,8 @@
 				item: "minecraft:blue_ice"
 				type: "item"
 			}]
-			x: 6.0d
-			y: -4.0d
+			x: 4.0d
+			y: -10.0d
 		}
 		{
 			dependencies: ["1FE86472FA2F13A3"]
@@ -416,8 +458,8 @@
 				item: "kubejs:tri_steel_plating_semiforged_heated"
 				type: "item"
 			}]
-			x: 10.0d
-			y: -10.0d
+			x: 12.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["2465D87B63720747"]
@@ -428,8 +470,8 @@
 				item: "kubejs:tri_steel_plating_semiforged"
 				type: "item"
 			}]
-			x: 8.0d
-			y: -10.0d
+			x: 10.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["5BC492F12DD24AB9"]
@@ -440,8 +482,8 @@
 				item: "kubejs:tri_steel_plating_heated"
 				type: "item"
 			}]
-			x: 6.0d
-			y: -10.0d
+			x: 8.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["5ECA2EB53C7BA239"]
@@ -452,8 +494,8 @@
 				item: "kubejs:tri_steel_plating"
 				type: "item"
 			}]
-			x: 4.0d
-			y: -10.0d
+			x: 6.0d
+			y: -8.0d
 		}
 		{
 			dependencies: ["516B0432480CC9AD"]
@@ -464,8 +506,8 @@
 				item: "tfmg:cooling_fluid_bucket"
 				type: "item"
 			}]
-			x: 12.0d
-			y: -6.0d
+			x: 14.0d
+			y: -10.0d
 		}
 		{
 			dependencies: ["0D8EEDC8F9ABC762"]
@@ -476,8 +518,8 @@
 				item: "thermal:blizz_rod"
 				type: "item"
 			}]
-			x: 10.0d
-			y: -4.0d
+			x: 8.0d
+			y: -10.0d
 		}
 		{
 			dependencies: ["72B7B74605D5D015"]
@@ -489,7 +531,7 @@
 				type: "item"
 			}]
 			x: 12.0d
-			y: -4.0d
+			y: -10.0d
 		}
 		{
 			dependencies: ["72A9B400051E9C47"]
@@ -503,8 +545,159 @@
 				to_observe: "thermal:blizz"
 				type: "observation"
 			}]
+			x: 6.0d
+			y: -10.0d
+		}
+		{
+			dependencies: ["6DEED6CF2A933B68"]
+			description: ["A mundane item, what to do with it?"]
+			id: "210290BD924C936D"
+			tasks: [{
+				id: "4CF1CB681965DFBD"
+				item: "kubejs:uninspired_spark"
+				type: "item"
+			}]
+			x: 6.0d
+			y: -6.0d
+		}
+		{
+			dependencies: [
+				"73F5B4664D8238C4"
+				"210290BD924C936D"
+			]
+			description: [
+				"You first need to solve the puzzle in the top half of this chapter to obtain a Spark of Inspiration."
+				""
+				"They can be duplicated afterwards using masterpiece quality paintings from Pembi the Artist."
+			]
+			id: "419D729B0AA47B3F"
+			shape: "diamond"
+			size: 2.0d
+			tasks: [{
+				id: "51EF6549E2D852C0"
+				item: "kubejs:inspired_spark"
+				type: "item"
+			}]
 			x: 8.0d
+			y: -6.0d
+		}
+		{
+			dependencies: [
+				"3B2B73F0536813B2"
+				"419D729B0AA47B3F"
+			]
+			description: ["A Spark of Inspiration will turn an empty music disc into a playable music disc after engraving."]
+			id: "2BA364B6D663A4E5"
+			rewards: [{
+				id: "782DBB6DB422F334"
+				item: "supplementaries:pancake"
+				type: "item"
+			}]
+			tasks: [{
+				id: "48DCD3A47622AFA3"
+				item: {
+					Count: 1b
+					id: "ftbfiltersystem:smart_filter"
+					tag: {
+						"ftbfiltersystem:filter": "item_tag(minecraft:music_discs)"
+					}
+				}
+				title: "Music Discs"
+				type: "item"
+			}]
+			title: "Music Discs"
+			x: 8.0d
+			y: 6.0d
+		}
+		{
+			dependencies: [
+				"2BA364B6D663A4E5"
+				"73F5B4664D8238C4"
+				"7F618606B81E3D6A"
+			]
+			description: [
+				"You'll need your arcane portal again. This time, feed it paintings, Literary Masterpieces, and music discs."
+				""
+				"Look up the Arcane Portal in JEI and Ponder it for a visual example."
+			]
+			id: "689DBE21A68903B4"
+			tasks: [{
+				icon: "kubejs:arcane_portal"
+				id: "1B1D0F4501C82F9F"
+				observe_type: 0
+				timer: 0L
+				title: "Open an Arcane Portal"
+				to_observe: "kubejs:arcane_portal"
+				type: "observation"
+			}]
+			title: "Hello Again"
+			x: 10.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["1CD12A052C65190A"]
+			description: ["Books can also be automated like this. You probably have a bunch of these from Chapter 5b."]
+			id: "494E1712CA7DE985"
+			tasks: [{
+				id: "637336A901098838"
+				item: "minecraft:book"
+				type: "item"
+			}]
+			x: 4.0d
 			y: -4.0d
+		}
+		{
+			dependencies: ["689DBE21A68903B4"]
+			description: [
+				"Feeding the proper sacrifices to the Arcane Portal will yield Essences of Culture."
+				""
+				"Aside from being a crafting ingredient to the Creative Mechanism, these also [TBD]."
+			]
+			id: "3A6D57DB6A76B9ED"
+			tasks: [{
+				id: "722F604B55AD41CE"
+				item: "kubejs:essence_of_culture"
+				type: "item"
+			}]
+			x: 12.0d
+			y: -2.0d
+		}
+		{
+			dependencies: [
+				"419D729B0AA47B3F"
+				"494E1712CA7DE985"
+			]
+			description: ["Some ink, hyper experience, and refined radiance can turn a regular book into a Literary Masterpiece, written by yours truly."]
+			id: "7F618606B81E3D6A"
+			tasks: [{
+				id: "28996B87C79D255C"
+				item: {
+					Count: 1b
+					id: "minecraft:written_book"
+					tag: {
+						author: "omgimanerd"
+						pages: ["{\"text\":\"wtf there's nothing here\"}"]
+						resolved: 1b
+						title: "§pLiterary Masterpiece"
+					}
+				}
+				type: "item"
+			}]
+			x: 10.0d
+			y: -4.0d
+		}
+		{
+			dependencies: ["7F618606B81E3D6A"]
+			description: ["Did you figure out how to cheese this?"]
+			id: "4D683293B5A651A5"
+			invisible: true
+			tasks: [{
+				id: "06E0B4801700536E"
+				item: "create_enchantment_industry:printer"
+				type: "item"
+			}]
+			x: 10.0d
+			y: -6.0d
 		}
 	]
 	title: "Chapter 8: Creative Mechanisms"

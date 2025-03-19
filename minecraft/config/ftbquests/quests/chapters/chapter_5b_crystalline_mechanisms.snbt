@@ -1642,7 +1642,7 @@
 				""
 				"The portal must be surrounded by liquefied source on all four sides to sustain it, and it will absorb one every now and then. If it is not properly supplied, it will rapidly become unstable and close."
 				""
-				"Ponder the Arcane Portal for a visual example."
+				"&2Look up the Arcane Portal in JEI and Ponder it for a visual example."
 			]
 			id: "36407A48939066C9"
 			min_width: 250
@@ -1657,9 +1657,11 @@
 				id: "0080188B3D03B147"
 				observe_type: 0
 				timer: 0L
+				title: "Open an Arcane Portal"
 				to_observe: "kubejs:arcane_portal"
 				type: "observation"
 			}]
+			title: "Open an Arcane Portal"
 			x: 8.0d
 			y: 17.0d
 		}
@@ -1748,7 +1750,7 @@
 		{
 			dependencies: ["36407A48939066C9"]
 			description: [
-				"Providing the portal with the right offerings, and the gods will give you treasure in return."
+				"Providing the portal with the right offerings, and the eldritch gods will give you treasure in return."
 				""
 				"For every laborer and pickaxe, the portal will spit out a hearthstone. Useful for teleporting back to spawn, but also a necessary ingredient in the Crystalline Mechanism."
 			]
