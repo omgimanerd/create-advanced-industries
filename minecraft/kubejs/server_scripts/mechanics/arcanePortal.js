@@ -244,6 +244,8 @@ function ArcanePortalHandler(e) {
       this.paintingsEaten_--
       this.musicDiscsEaten_--
       this.booksEaten_--
+      // Reset the eat time so we instantly consume source.
+      this.nextEatTime_ = this.server_.getTickCount()
       this.spawnReward('kubejs:essence_of_culture')
     }
   }
@@ -320,7 +322,9 @@ function ArcanePortalHandler(e) {
     } else {
       this.instability_ = 0
     }
-    if (randRange(100) < this.instability_) {
+    // Put a lower limit on the amount of instability that needs to accumulate
+    // before we can explode.
+    if (this.instability_ > 10 && randRange(100) < this.instability_) {
       level.destroyBlock(block, false)
       block.createExplosion().causesFire(false).strength(1).explode()
     }
