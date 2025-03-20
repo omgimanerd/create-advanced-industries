@@ -72,15 +72,11 @@ Ponder.registry((e) => {
         [2, 2, 2]
       )
       scene
-        .showControls(40, [2, 1, 2], 'up')
+        .showControls(40, center, 'up')
         .rightClick()
         .withItem('ars_nouveau:source_gem')
       scene.idleSeconds(1)
-      scene.world.replaceBlocks(
-        util.select.position([2, 1, 2]),
-        'kubejs:arcane_portal',
-        true
-      )
+      scene.world.replaceBlocks(center, 'kubejs:arcane_portal', true)
       scene.world.createEntity('lightning_bolt', [2.5, 2, 2.5])
       scene.idleSeconds(3)
 
@@ -199,5 +195,7 @@ Ponder.registry((e) => {
         'gag:hearthstone'
       )
       scene.idleSeconds(1)
+
+      // TODO add text for Creative Mechanism chapter.
     })
 })
