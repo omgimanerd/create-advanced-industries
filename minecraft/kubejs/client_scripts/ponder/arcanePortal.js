@@ -196,6 +196,13 @@ Ponder.registry((e) => {
       )
       scene.idleSeconds(1)
 
-      // TODO add text for Creative Mechanism chapter.
+      // Chapter 8
+      scene.text(
+        60,
+        'Chapter 8 has its own mechanic that also involves sacrificing items ' +
+          'to the Arcane Portal. You can read about it in the questbook.',
+        center
+      )
+      scene.idle(70)
     })
 })
