@@ -1,6 +1,61 @@
 # Changelog
 Use `git log --format='format:%s' {version}..HEAD | reverse` to generate.
 
+## v1.0.0
+
+### New Mods / Major Changes
+- Added Easel Does It, Portfolio, and Blueprint mods for painting variety.
+- Bundle Chaotix Apotheotic Tweaks and Create New Age Retexture resource pack.
+- Update to kubejs-forge-2001.6.5-build.16 and rhino-forge-2001.2.3-build.10
+- Update KubeJS Additions to v4.3.4 and refactor nutrient infusion to use
+  .wrap() category creator after NPE bugfix.
+- Add custom main menu with looping animation background.
+- Update Xaero's Minimap to v25.2.0
+
+### Tweaks and Adjustments
+- Add a custom animated texture for the Codex Indestructia.
+- Remove usages of #forge:sheets in recipes.
+- Replace Vintage Improvements netherite sheet with Create Deco instance.
+- Add recipes for all dyes to be broken down in a millstone/crusher.
+- Add alternative pathway to red dye for Chapter 2b.
+- Added tesseract crystal intermediary for beacon crafting.
+- Modify the energized beacon crafting JEI recipes to only show valid energizing
+  items for recipes.
+- Improve all custom ponders with smoother transitions and setup animations,
+  standardized delays and setup function calls.
+- Add JEI information text for amethyst buds of all sizes.
+- Add a custom ponder for the Ender Inhibitor.
+- Add an energized beacon crafting recipe for refined radiance.
+- Add alternative efficient recipes for Paint Kits.
+- Add quests and overhaul recipes for Chapter 8.
+- Nerf Tom's Simple Storage inventory connector ranges.
+- Add the ability for the singularity to delete any block from the game.
+- Add an alternative silicon solidification recipe for cooling fluid.
+- Add a crafting recipe for end portal frames.
+- Add a JEI information category for teleportation juice.
+- Implement the item, sound, and base behavior for the uninspired and inspired
+  sparks.
+- Implemented custom sounds, item, and texture for Creative Remote.
+- Add some additional QoL quest text, rewards, and recipes for Chapter 5b.
+- Add a Mysterious Item Conversion JEI recipe category for the inspired spark.
+- Add additional music disc recipes to Creative Mechanism.
+- Add compat crushing recipes for basalz and blitz products.
+- Remove and hide the encased fan freezing catalysts.
+- Nerf energizing refined radiance, move wand of symmetry recipe to overhauls dir.
+- Disable pneumaticcraft dungeon loot.
+- Increase note block resonance crafting radius to 3.
+- Add support to the Arcane Portal for eating paintings.
+- Add recipe reward to arcane portal for essence of culture.
+- Add essence of culture to creative mechanism recipe.
+- Add an jei:information category for blaze milk.
+- Add a custom ponder for the Chromatic Bop Stick.
+
+### Bugfixes
+- Fix extra colored pixels in Chromatic Bop-Stick texture.
+- Fix typo in chromatic bop stick recipe.
+- Fix a bug where ingot casts would be incorrectly rotated on belts and depots.
+
+
 ## v0.0.14-playtest
 
 ### New Mods / Major Changes
