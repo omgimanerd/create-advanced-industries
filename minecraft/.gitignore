@@ -32,6 +32,12 @@ modernfix/
 mods/*.jar
 mods/*.jar.disabled
 patchouli_books/
+
+# Resource Packs
+resourcepacks/*
+!resourcepacks/Quark*zip
+!resourcepacks/VanillaTweaks*zip
+
 saves/
 schematics/
 screenshots/
@@ -49,7 +55,7 @@ hotbar.nbt
 options.txt
 patchouli_data.json
 rhino.local.properties
-server-pack*.zip
+*server-pack*.zip
 servers.dat
 servers.dat_old
 usercache.json

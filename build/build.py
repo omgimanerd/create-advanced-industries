@@ -14,6 +14,8 @@ INCLUDE = [
     'config',
     'defaultconfigs',
     'kubejs',
+    # Curseforge resource packs should be added to manifest_template.json as
+    # manual project IDs and files.
     'resourcepacks',
     'icon.png'
 ]
@@ -47,7 +49,7 @@ def generate_manifest(template_path: pathlib.Path, mods_path: pathlib.Path,
             'projectID': data['update']['curseforge']['project-id'],
             'required': True
         })
-    manifest['files'] = files
+    manifest['files'] += files
     return manifest
 
 
