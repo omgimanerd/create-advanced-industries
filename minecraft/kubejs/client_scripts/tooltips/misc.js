@@ -19,7 +19,9 @@ ItemEvents.tooltip((e) => {
 
   // Add some additional text to the FTB Quests book.
   tooltipHelper(e, 'ftbquests:book', {
-    baseText: Text.gray('You can also bind the quest window to a keybind'),
+    baseText: Text.gray(
+      'You can also assign a keybind to open the quest window'
+    ),
   })
 
   // Add a Create-style tooltip to the glass shaft.
@@ -43,14 +45,5 @@ ItemEvents.tooltip((e) => {
       '<gray>Ingredients:</gray>',
       '<blue> Creative Mechanism</blue>',
     ],
-  })
-
-  // TODO: remove for 1.0 release
-  // Neat utility to display NBT in the tooltip, debug only, remove for the 1.0
-  // release.
-  e.addAdvancedToAll((item, _, text) => {
-    if (item.nbt && e.alt) {
-      text.add(Text.of('NBT: ').append(Text.prettyPrintNbt(item.nbt)))
-    }
   })
 })
