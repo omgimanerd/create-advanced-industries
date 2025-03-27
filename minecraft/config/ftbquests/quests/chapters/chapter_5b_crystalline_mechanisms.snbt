@@ -11,7 +11,7 @@
 	quest_links: [ ]
 	quests: [
 		{
-			dependencies: ["6B75CD039419AEFC"]
+			dependencies: ["2061A7E481B97D93"]
 			description: [
 				"Welcome to Chapter 5b."
 				""

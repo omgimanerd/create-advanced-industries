@@ -11,7 +11,7 @@
 	quest_links: [ ]
 	quests: [
 		{
-			dependencies: ["45F67208743BAE3E"]
+			dependencies: ["08663D81454F44E8"]
 			description: [
 				"Chapter 4a unlocks Steel Mechanisms, which unlock things like oil refining and power."
 				""

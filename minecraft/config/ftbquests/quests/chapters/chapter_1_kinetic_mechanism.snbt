@@ -11,7 +11,7 @@
 	quest_links: [ ]
 	quests: [
 		{
-			dependencies: ["2F39752E838CCB4F"]
+			dependencies: ["327F51A143F583D4"]
 			description: ["Ready to start Chapter 1? Here we go!"]
 			id: "0A1CEFA45C20D991"
 			tasks: [{

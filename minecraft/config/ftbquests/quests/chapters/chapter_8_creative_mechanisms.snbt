@@ -11,7 +11,7 @@
 	quest_links: [ ]
 	quests: [
 		{
-			dependencies: ["153FD9A28FA6A841"]
+			dependencies: ["23A0F081DF173BAF"]
 			description: [
 				"Chapter 8."
 				""

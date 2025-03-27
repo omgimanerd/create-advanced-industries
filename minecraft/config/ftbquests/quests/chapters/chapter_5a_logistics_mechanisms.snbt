@@ -11,7 +11,7 @@
 	quest_links: [ ]
 	quests: [
 		{
-			dependencies: ["11BA49A842F724F6"]
+			dependencies: ["2061A7E481B97D93"]
 			description: [
 				"Chapter 5a unlocks Logistics Mechanisms, but you'll unlock a lot of other stuff along the way."
 				""

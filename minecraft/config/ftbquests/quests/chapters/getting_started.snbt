@@ -260,17 +260,6 @@
 					item: "create:crafting_blueprint"
 					type: "item"
 				}
-				{
-					id: "4EE5682753E99370"
-					item: {
-						Count: 1b
-						id: "create:super_glue"
-						tag: {
-							Damage: 0
-						}
-					}
-					type: "item"
-				}
 			]
 			shape: "gear"
 			size: 1.5d
@@ -297,13 +286,11 @@
 				"Kinetic Mechanisms unlock the basics of Create, and are the subject of Chapter 1."
 				""
 				"They're quite expensive if you handcraft them, so let's try and automate them. The rest of the quests in this chapter are optional, but will help guide you through some of the basic Create machines. As always, remember to ponder them if you get stuck."
-				""
-				"&oGo to the Progression chapter to start.&r"
 			]
 			id: "327F51A143F583D4"
 			rewards: [
 				{
-					count: 8
+					count: 16
 					id: "670BA254F927F34B"
 					item: "kubejs:kinetic_mechanism"
 					type: "item"
@@ -599,12 +586,37 @@
 			]
 			icon: "create:mechanical_bearing"
 			id: "0773214DEB80495F"
-			rewards: [{
-				count: 4
-				id: "358F38BC0C437C08"
-				item: "create:portable_storage_interface"
-				type: "item"
-			}]
+			rewards: [
+				{
+					id: "53A83E3F4DEE2645"
+					item: {
+						Count: 1b
+						id: "create:super_glue"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+				{
+					count: 4
+					id: "358F38BC0C437C08"
+					item: "create:portable_storage_interface"
+					type: "item"
+				}
+				{
+					count: 4
+					id: "111AD63EE88C49A0"
+					item: "create:linear_chassis"
+					type: "item"
+				}
+				{
+					count: 4
+					id: "62E857340C8A8412"
+					item: "create:radial_chassis"
+					type: "item"
+				}
+			]
 			tasks: [{
 				id: "2FFB57BE06E2DB78"
 				item: {

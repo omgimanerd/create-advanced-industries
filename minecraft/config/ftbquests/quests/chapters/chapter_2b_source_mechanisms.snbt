@@ -11,7 +11,7 @@
 	quest_links: [ ]
 	quests: [
 		{
-			dependencies: ["5013E6F84B112682"]
+			dependencies: ["33F8E4848D9165B2"]
 			description: ["Chapter 2b unlocks source mechanisms, which are the entry point into Ars Nouveau."]
 			id: "001AE1E4A8E1972E"
 			rewards: [{

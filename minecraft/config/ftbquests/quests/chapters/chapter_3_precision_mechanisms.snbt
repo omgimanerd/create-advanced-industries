@@ -11,7 +11,10 @@
 	quest_links: [ ]
 	quests: [
 		{
-			dependencies: ["556060C29831B165"]
+			dependencies: [
+				"2D2665410D75CA15"
+				"39E20F0E25618A92"
+			]
 			description: [
 				"Chapter 3 unlocks precision mechanisms, an important pillar in Create logistics."
 				""

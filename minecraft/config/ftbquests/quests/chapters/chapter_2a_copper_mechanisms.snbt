@@ -11,7 +11,7 @@
 	quest_links: [ ]
 	quests: [
 		{
-			dependencies: ["413CB04319D49CDB"]
+			dependencies: ["33F8E4848D9165B2"]
 			description: [
 				"Chapter 2 focuses on the copper mechanism, which unlocks fluid manipulation in Create and lets you automate belts as well."
 				""
