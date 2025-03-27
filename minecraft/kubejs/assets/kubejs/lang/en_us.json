@@ -2,5 +2,7 @@
   "item.minecraft.potion.effect.sin": "Potion of Sin",
   "item.minecraft.splash_potion.effect.sin": "Splash Potion of Sin",
   "item.minecraft.lingering_potion.effect.sin": "Lingering Potion of Sin",
+  "fluid_type.createsweetsandtreets.applesyrup": "Apple Syrup",
+  "fluid_type.create_things_and_misc.slime": "Liquid Slime",
   "effect.kubejs.sin.desc": "Have you atoned for your sins?"
 }
