@@ -142,7 +142,7 @@ ServerEvents.recipes((e) => {
 
   // Pressurizing recipe for redstone gated by steel
   create
-    .pressurizing(['8x minecraft:cobblestone', 'minecraft:red_dye'])
+    .pressurizing(['minecraft:cobblestone', 'minecraft:red_dye'])
     .secondaryFluidInput(Fluid.of('starbunclemania:source_fluid', 400))
     .heated()
     .outputs('8x minecraft:redstone', 8)

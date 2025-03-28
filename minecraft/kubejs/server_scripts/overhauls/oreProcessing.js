@@ -130,6 +130,7 @@ ServerEvents.recipes((e) => {
     'kubejs:crushed_asurine': 'create:raw_zinc',
   }
   const crushedStones = Object.keys(tier1Crushing)
+  // Every Create stone has a dichotomic opposite.
   const dichotomicSecondary = {
     'minecraft:raw_iron': 'thermal:raw_nickel',
     'minecraft:raw_copper': 'thermal:raw_tin',
@@ -137,7 +138,7 @@ ServerEvents.recipes((e) => {
     'create:raw_zinc': 'thermal:raw_lead',
   }
   for (const [stone, result] of Object.entries(tier1Crushing)) {
-    // Tier 1
+    // Tier 1: Basic crushing yields its direct result.
     create.crushing(
       [
         Item.of(result),
@@ -147,7 +148,8 @@ ServerEvents.recipes((e) => {
       stone
     )
 
-    // Tier 2
+    // Tier 2: Mixing with crushed magma has a chance to yield the dichotomic
+    // secondary and some rich slag.
     let secondary = dichotomicSecondary[result]
     create
       .mixing(
@@ -160,23 +162,17 @@ ServerEvents.recipes((e) => {
         [stone, 'create_things_and_misc:crushed_magma']
       )
       .heated()
-  }
 
-  // Tier 3
-  const tier3Combinations = combinatorics(4, 3).map((indexes) => {
-    return indexes.map((i) => crushedStones[i])
-  })
-  for (const combination of tier3Combinations) {
-    let primaries = combination.map((v) => tier1Crushing[v])
-    let secondaries = primaries.map((v) => dichotomicSecondary[v])
-    let primaryItems = primaries.map((i) => Item.of(i).withChance(0.25))
-    let secondaryItems = secondaries.map((i) => Item.of(i))
+    // Tier 3: Using liquid source as a catalyst can quadruple the output.
     create
-      .pressurizing(
-        combination.concat(Fluid.of('starbunclemania:source_fluid', 300))
-      )
-      .secondaryFluidInput(Fluid.of('vintageimprovements:sulfuric_acid', 150))
+      .pressurizing([stone, 'create_things_and_misc:crushed_magma'])
+      .secondaryFluidInput(Fluid.of('starbunclemania:source_fluid', 250))
       .heated()
-      .outputs(primaryItems.concat(secondaryItems))
+      .outputs([
+        Item.of(result, 3),
+        Item.of(secondary, 1),
+        Item.of(secondary).withChance(0.5),
+        '2x thermal:rich_slag',
+      ])
   }
 })

@@ -2,7 +2,8 @@
 
 /**
  * @param {Internal.RecipesEventJS_} e
- * @param {($InputItem_|$InputFluid_)[]} inputs
+ * @param {($InputItem_|$InputFluid_)[]} inputs List of input items and fluid.
+ *   Accepts fluid stacks of any size, but items may only be single items.
  */
 function CVIPressurizingWrapper(e, inputs) {
   this.e_ = e
