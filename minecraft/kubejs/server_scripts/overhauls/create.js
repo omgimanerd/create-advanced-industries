@@ -1028,15 +1028,20 @@ ServerEvents.recipes((e) => {
     Ingredient.of('#forge:concrete_powders').itemIds.forEach((powder) => {
       const match = powder.match(/^[a-z]+:([a-z_]+)_concrete_powder$/)
       if (match.length < 2) return
-      const dye = Item.of(`minecraft:${match[1]}_dye`)
-      create.mixing(Item.of(powder, 16), [dye, '16x tfmg:concrete_mixture'])
+      const color = match[1]
+      const dye = Item.of(`minecraft:${color}_dye`)
+      create
+        .mixing(Item.of(powder, 16), [dye, '16x tfmg:concrete_mixture'])
+        .id(`kubejs:${color}_concrete_mixture`)
 
       const concrete = powder.replace('_powder', '')
-      create.mixing(Item.of(concrete, 16), [
-        dye,
-        '16x tfmg:concrete_mixture',
-        Fluid.water(1000),
-      ])
+      create
+        .mixing(Item.of(concrete, 16), [
+          dye,
+          '16x tfmg:concrete_mixture',
+          Fluid.water(1000),
+        ])
+        .id(`kubejs:${color}_concrete`)
     })
   }
 
