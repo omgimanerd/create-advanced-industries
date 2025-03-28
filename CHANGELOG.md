@@ -1,5 +1,28 @@
 # Changelog
-Use `git log --format='format:%s' {version}..HEAD | reverse` to generate.
+Use `git log --format='format:%s' {version}..HEAD | tac` to generate.
+
+## v1.0.1
+
+### New Mods / Major Changes
+- Update all FTB mods to latest version.
+- Remove Create: Sweets & Treats. This is a slop mod.
+- Update Create: Vintage Improvements to v0.2.0.3.
+- Update Sophisticated Core to v1.2.23.902, Sophisticated Backpacks to v3.23.6.1211 to fix JEI crash.
+
+### Tweaks and Adjustments
+- Fix and rebalance all Pressurizing recipes to only accept single itemstack inputs.
+- Remove Progression chapter, make chapters unlock immediate when previous is done.
+- Add custom ponders to custom mechanics tag list.
+
+### Bugfixes
+- Reduce main menu frame count and rescale pngs to 1280x720, cuts down fma file from 255MB to 88MB.
+- Force creative tab appends as a potential mitigation for Creative tab items not showing.
+- Removed translation keys for unused sin potions.
+- Add recipe IDs to custom mixing and compacting recipes for tracing in logs.
+- Fix broken translation key for Apple Syrup and Liquid Slime.
+- Reduce FTB Quests inventory check time from 20 ticks to 1t.
+- Remove playtesting command, tooltip helper, and misc mod starting items.
+
 
 ## v1.0.0
 
