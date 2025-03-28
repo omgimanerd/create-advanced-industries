@@ -239,7 +239,7 @@
 			tasks: [{
 				id: "5CF796AB1F19F1D3"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "ftbfiltersystem:smart_filter"
 					tag: {
 						"ftbfiltersystem:filter": "or(item(create:blaze_cake)item(createaddition:bioethanol_bucket))"
@@ -349,7 +349,7 @@
 			rewards: [{
 				id: "0D2F6951E78A54BA"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "minecraft:ocelot_spawn_egg"
 					tag: {
 						RepairCost: 0
@@ -622,7 +622,7 @@
 			tasks: [{
 				id: "23F85CFE9E74B2AD"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "tfmg:screwdriver"
 					tag: {
 						Damage: 0

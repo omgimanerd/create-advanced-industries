@@ -262,7 +262,7 @@
 				{
 					id: "64C6679E1B38FD9F"
 					item: {
-						Count: 1b
+						Count: 1
 						id: "ftbfiltersystem:smart_filter"
 						tag: {
 							"ftbfiltersystem:filter": "ftbfiltersystem:item_tag(minecraft:logs)"
@@ -294,7 +294,7 @@
 				{
 					id: "4ED6DA8AF40937D9"
 					item: {
-						Count: 1b
+						Count: 1
 						id: "ftbfiltersystem:smart_filter"
 						tag: {
 							"ftbfiltersystem:filter": "ftbfiltersystem:item_tag(forge:stripped_logs)"
@@ -326,7 +326,7 @@
 				{
 					id: "1284F739C030C99B"
 					item: {
-						Count: 1b
+						Count: 1
 						id: "ftbfiltersystem:smart_filter"
 						tag: {
 							"ftbfiltersystem:filter": "ftbfiltersystem:item_tag(minecraft:planks)"
@@ -410,7 +410,7 @@
 			tasks: [{
 				id: "451FE5A772714F7C"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "ftbfiltersystem:smart_filter"
 					tag: {
 						"ftbfiltersystem:filter": "or(item_tag(minecraft:wooden_slabs))"
@@ -435,7 +435,7 @@
 			tasks: [{
 				id: "0C2A6342159FA53F"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "ftbfiltersystem:smart_filter"
 					tag: {
 						"ftbfiltersystem:filter": "item_tag(functionalstorage:drawer)"

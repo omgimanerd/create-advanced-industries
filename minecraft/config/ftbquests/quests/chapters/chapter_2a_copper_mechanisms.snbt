@@ -206,7 +206,7 @@
 			tasks: [{
 				id: "69C0EC7C8A8E5A52"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "ftbfiltersystem:smart_filter"
 					tag: {
 						"ftbfiltersystem:filter": "item_tag(minecraft:leaves)"

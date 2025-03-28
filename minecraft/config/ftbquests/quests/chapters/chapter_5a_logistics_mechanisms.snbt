@@ -319,7 +319,7 @@
 			rewards: [{
 				id: "235CDDC61066B517"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "minecraft:white_banner"
 					tag: {
 						BlockEntityTag: {
@@ -374,7 +374,7 @@
 				{
 					count: 64L
 					id: "2E072E5F5031242D"
-					item: { Count: 64b, id: "tfmg:industrial_pipe" }
+					item: { Count: 64, id: "tfmg:industrial_pipe" }
 					type: "item"
 				}
 				{
@@ -385,7 +385,7 @@
 				{
 					count: 3L
 					id: "02ADD3406FEF693B"
-					item: { Count: 3b, id: "tfmg:steel_truss" }
+					item: { Count: 3, id: "tfmg:steel_truss" }
 					type: "item"
 				}
 				{
@@ -396,7 +396,7 @@
 				{
 					count: 5L
 					id: "4889ECF27463B632"
-					item: { Count: 5b, id: "tfmg:pumpjack_hammer_part" }
+					item: { Count: 5, id: "tfmg:pumpjack_hammer_part" }
 					type: "item"
 				}
 				{
@@ -696,7 +696,7 @@
 			tasks: [{
 				id: "5AA1926C78CD6099"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "pneumaticcraft:empty_pcb"
 					tag: {
 						"pneumaticcraft:uv_exposure": 100
@@ -882,7 +882,7 @@
 			tasks: [{
 				id: "5E3A62F33712CAF7"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "kubejs:diamond_saw_blade"
 					tag: {
 						Damage: 0
@@ -1640,7 +1640,7 @@
 				"Liquid glue might be better for your logistics though..."
 			]
 			icon: {
-				Count: 1b
+				Count: 1
 				id: "create:super_glue"
 				tag: {
 					Damage: 0
@@ -1734,7 +1734,7 @@
 			tasks: [{
 				count: 16L
 				id: "659EEC7D6A731D76"
-				item: { Count: 16b, id: "vintageimprovements:redstone_module" }
+				item: { Count: 16, id: "vintageimprovements:redstone_module" }
 				type: "item"
 			}]
 			title: "Redstone Mechanisms"
@@ -1819,7 +1819,7 @@
 			tasks: [{
 				id: "1DCCC76426083DBA"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "ftbfiltersystem:smart_filter"
 					tag: {
 						"ftbfiltersystem:filter": "item_tag(forge:concrete)"

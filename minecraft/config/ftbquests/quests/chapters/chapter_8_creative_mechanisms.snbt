@@ -97,7 +97,7 @@
 			tasks: [{
 				id: "0C3DA09354A1AA59"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "create:chromatic_compound"
 					tag: { }
 				}
@@ -256,7 +256,7 @@
 			tasks: [{
 				id: "4BD87570448BDB4C"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "ftbfiltersystem:smart_filter"
 					tag: {
 						"ftbfiltersystem:filter": "item_tag(forge:dyes)"
@@ -290,7 +290,7 @@
 			tasks: [{
 				id: "6474E3BE0729AADA"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "toms_storage:ts.paint_kit"
 					tag: {
 						Damage: 0
@@ -308,7 +308,7 @@
 			tasks: [{
 				id: "6253487AC240E7C3"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "minecraft:brush"
 					tag: {
 						Damage: 0
@@ -596,7 +596,7 @@
 			tasks: [{
 				id: "48DCD3A47622AFA3"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "ftbfiltersystem:smart_filter"
 					tag: {
 						"ftbfiltersystem:filter": "item_tag(minecraft:music_discs)"
@@ -672,7 +672,7 @@
 			tasks: [{
 				id: "28996B87C79D255C"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "minecraft:written_book"
 					tag: {
 						author: "omgimanerd"

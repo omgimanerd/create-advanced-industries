@@ -26,7 +26,7 @@
 				{
 					id: "1BD482322C3737A1"
 					item: {
-						Count: 1b
+						Count: 1
 						id: "minecraft:stone_pickaxe"
 						tag: {
 							Damage: 0
@@ -37,7 +37,7 @@
 				{
 					id: "3CE35A820B775982"
 					item: {
-						Count: 1b
+						Count: 1
 						id: "minecraft:stone_shovel"
 						tag: {
 							Damage: 0
@@ -48,7 +48,7 @@
 				{
 					id: "17935A7C860D71B2"
 					item: {
-						Count: 1b
+						Count: 1
 						id: "minecraft:stone_axe"
 						tag: {
 							Damage: 0
@@ -59,7 +59,7 @@
 				{
 					id: "2DF6F1B1AC785858"
 					item: {
-						Count: 1b
+						Count: 1
 						id: "minecraft:stone_sword"
 						tag: {
 							Damage: 0
@@ -89,7 +89,7 @@
 			tasks: [{
 				id: "16D9B6649110EFC8"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "ftbfiltersystem:smart_filter"
 					tag: {
 						"ftbfiltersystem:filter": "item_tag(minecraft:logs)"
@@ -590,7 +590,7 @@
 				{
 					id: "53A83E3F4DEE2645"
 					item: {
-						Count: 1b
+						Count: 1
 						id: "create:super_glue"
 						tag: {
 							Damage: 0
@@ -620,7 +620,7 @@
 			tasks: [{
 				id: "2FFB57BE06E2DB78"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "ftbfiltersystem:smart_filter"
 					tag: {
 						"ftbfiltersystem:filter": "or(item(create:mechanical_piston)item(create:sticky_mechanical_piston)item(create:gantry_carriage)item(create:mechanical_bearing)item(create:rope_pulley)item(create:cart_assembler)item(create:windmill_bearing))"

@@ -432,7 +432,7 @@
 			tasks: [{
 				id: "55721D63531A330F"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "minecraft:potion"
 					tag: {
 						Potion: "quark:resilience"
@@ -474,7 +474,7 @@
 			tasks: [{
 				id: "3083E36F8B5375E5"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "minecraft:potion"
 					tag: {
 						Potion: "ars_elemental:shock_potion"
@@ -584,7 +584,7 @@
 			tasks: [{
 				id: "45CB89B42505101D"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "ftbfiltersystem:smart_filter"
 					tag: {
 						"ftbfiltersystem:filter": "item_tag(kubejs:create_stone_ore_processing)"
@@ -624,7 +624,7 @@
 			tasks: [{
 				id: "42E91BA854E0C990"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "ftbfiltersystem:smart_filter"
 					tag: {
 						"ftbfiltersystem:filter": "item_tag(forge:raw_materials)"
@@ -680,7 +680,7 @@
 			tasks: [{
 				id: "4E0C2D8CCAA2EFEC"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "minecraft:potion"
 					tag: {
 						Potion: "ars_elemental:enderference_potion"
@@ -703,7 +703,7 @@
 				icon: "kubejs:crushed_asurine"
 				id: "4DB9220A468F5EB7"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "ftbfiltersystem:smart_filter"
 					tag: {
 						"ftbfiltersystem:filter": "item_tag(kubejs:crushed_create_stones)"

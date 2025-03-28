@@ -523,7 +523,7 @@
 				"Luckily, you can also create a filled blaze burner with some fire essences from Ars Nouveau."
 			]
 			icon: {
-				Count: 1b
+				Count: 1
 				id: "ftbquests:custom_icon"
 				tag: {
 					Icon: "minecraft:block/nether_portal"

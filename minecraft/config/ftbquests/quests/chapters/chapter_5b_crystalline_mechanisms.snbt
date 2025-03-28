@@ -391,7 +391,7 @@
 			description: ["Since you need to do some underwater exploration, perhaps some diving gear might come in handy?"]
 			hide_dependency_lines: true
 			icon: {
-				Count: 1b
+				Count: 1
 				id: "create:copper_diving_helmet"
 				tag: {
 					Damage: 0
@@ -402,7 +402,7 @@
 				{
 					id: "2F0F9E8348170C2C"
 					item: {
-						Count: 1b
+						Count: 1
 						id: "create:copper_diving_helmet"
 						tag: {
 							Damage: 0
@@ -413,7 +413,7 @@
 				{
 					id: "340F15EAFE375A4D"
 					item: {
-						Count: 1b
+						Count: 1
 						id: "create:copper_backtank"
 						tag: {
 							Air: 900
@@ -472,7 +472,7 @@
 			tasks: [{
 				id: "2D483F1E267AA49A"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "minecraft:potion"
 					tag: {
 						Potion: "minecraft:awkward"
@@ -591,7 +591,7 @@
 				"Here's a name tag to name your blaze so it won't despawn."
 			]
 			icon: {
-				Count: 1b
+				Count: 1
 				id: "ars_nouveau:mob_jar"
 				tag: {
 					BlockEntityTag: {
@@ -709,7 +709,7 @@
 			}]
 			tasks: [{
 				icon: {
-					Count: 1b
+					Count: 1
 					id: "ars_nouveau:mob_jar"
 					tag: {
 						BlockEntityTag: {
@@ -1077,7 +1077,7 @@
 			tasks: [{
 				id: "68A17AD8D07F2170"
 				item: {
-					Count: 1b
+					Count: 1
 					ForgeCaps: {
 						Parent: { }
 					}
@@ -1185,7 +1185,7 @@
 			tasks: [{
 				id: "68577282F8FEBFD7"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "minecraft:potion"
 					tag: {
 						Potion: "ars_nouveau:spell_damage_potion_strong"
@@ -1207,7 +1207,7 @@
 			tasks: [{
 				id: "6B4F1EC48866FC21"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "minecraft:potion"
 					tag: {
 						Potion: "ars_nouveau:mana_regen_potion_long"
@@ -1302,7 +1302,7 @@
 				"Note that if you place down the No Soliciting sign, it will suppress wandering trader spawns in a large area around it!"
 			]
 			icon: {
-				Count: 1b
+				Count: 1
 				id: "ftbquests:custom_icon"
 				tag: {
 					Icon: "ftbchunks:textures/faces/minecraft/wandering_trader.png"
@@ -1317,7 +1317,7 @@
 			}]
 			tasks: [{
 				icon: {
-					Count: 1b
+					Count: 1
 					id: "ftbquests:custom_icon"
 					tag: {
 						Icon: "ftbchunks:textures/faces/minecraft/wandering_trader.png"
@@ -1347,7 +1347,7 @@
 			tasks: [{
 				id: "3817E00D0A1068CF"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "ftbfiltersystem:smart_filter"
 					tag: {
 						"ftbfiltersystem:filter": "or(item(minecraft:brown_mushroom_block)item(minecraft:red_mushroom_block))"
@@ -1374,7 +1374,7 @@
 			tasks: [{
 				id: "6BDBDDC4C2377093"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "ftbfiltersystem:smart_filter"
 					tag: {
 						"ftbfiltersystem:filter": "or(item(minecraft:bone_meal)item(thermal:compost))"
@@ -1447,7 +1447,7 @@
 			tasks: [{
 				id: "11D28A1D272DA7E1"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "ars_nouveau:dowsing_rod"
 					tag: {
 						Damage: 0
@@ -1466,7 +1466,7 @@
 				"Ars Nouveau has basic enchanting through the enchantment apparatus that is accessible, but expensive. Once you have one book though, you can print more."
 			]
 			icon: {
-				Count: 1b
+				Count: 1
 				id: "minecraft:enchanted_book"
 				tag: {
 					StoredEnchantments: [{
@@ -1479,7 +1479,7 @@
 			tasks: [{
 				id: "4DAC4D253230C5D2"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "minecraft:enchanted_book"
 					tag: {
 						StoredEnchantments: [{
@@ -1554,7 +1554,7 @@
 			tasks: [{
 				id: "0692758B86F07609"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "minecraft:enchanted_book"
 					tag: {
 						StoredEnchantments: [{
@@ -1606,7 +1606,7 @@
 			tasks: [{
 				id: "3669E0B5BFC4A6A5"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "minecraft:iron_pickaxe"
 					tag: {
 						Damage: 0
@@ -1725,7 +1725,7 @@
 				""
 				"It's good for temporarily keeping monsters away, but also a key ingredient in the Crystalline Mechanism."
 			]
-			hide: false
+			hide_until_deps_visible: false
 			id: "69472ECD6121E4E5"
 			tasks: [{
 				id: "52EC247C5D29A906"
@@ -1758,7 +1758,7 @@
 			tasks: [{
 				id: "445732049E8F9246"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "gag:hearthstone"
 					tag: {
 						Damage: 0
@@ -1813,7 +1813,7 @@
 			tasks: [{
 				id: "55B4682341C25AF5"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "minecraft:potion"
 					tag: {
 						Potion: "minecraft:strong_harming"
@@ -1835,7 +1835,7 @@
 			tasks: [{
 				id: "7407C3A5B6C5EB1E"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "minecraft:potion"
 					tag: {
 						Potion: "ars_elemental:shock_potion"
@@ -1991,7 +1991,7 @@
 			tasks: [{
 				id: "769B4D851196E75C"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "minecraft:enchanted_book"
 					tag: {
 						StoredEnchantments: [{
@@ -2086,7 +2086,7 @@
 			tasks: [{
 				id: "3127DBA89C21CA6A"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "minecraft:splash_potion"
 					tag: {
 						Potion: "minecraft:strength"
@@ -2160,7 +2160,7 @@
 			id: "16F27A5ADC1090F1"
 			tasks: [{
 				icon: {
-					Count: 1b
+					Count: 1
 					id: "ftbquests:custom_icon"
 					tag: {
 						Icon: "minecraft:textures/mob_effect/dolphins_grace.png"
@@ -2195,7 +2195,7 @@
 			rewards: [{
 				id: "466DA06471948534"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "tfmg:screwdriver"
 					tag: {
 						Damage: 0

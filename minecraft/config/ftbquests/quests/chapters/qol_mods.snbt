@@ -5,7 +5,7 @@
 	filename: "qol_mods"
 	group: ""
 	icon: {
-		Count: 1b
+		Count: 1
 		id: "simplemagnets:basicmagnet"
 		tag: { }
 	}
@@ -26,7 +26,7 @@
 				{
 					id: "0B5590213C9E0A8D"
 					item: {
-						Count: 1b
+						Count: 1
 						id: "charginggadgets:charging_station"
 						tag: { }
 					}
@@ -42,7 +42,7 @@
 			tasks: [{
 				id: "54E8D270F29A2FF5"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "ftbfiltersystem:smart_filter"
 					tag: {
 						"ftbfiltersystem:filter": "or(item(buildinggadgets2:gadget_building)item(buildinggadgets2:gadget_exchanging)item(buildinggadgets2:gadget_copy_paste)item(buildinggadgets2:gadget_cut_paste)item(buildinggadgets2:gadget_destruction))"
@@ -62,7 +62,7 @@
 			tasks: [{
 				id: "018C2116112C326F"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "wands:stone_wand"
 					tag: {
 						Damage: 0
@@ -87,7 +87,7 @@
 			tasks: [{
 				id: "17530114C5F24840"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "simplemagnets:basicmagnet"
 					tag: { }
 				}
@@ -116,7 +116,7 @@
 			tasks: [{
 				id: "7EFC94E7A93C74A2"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "ftbfiltersystem:smart_filter"
 					tag: {
 						"ftbfiltersystem:filter": "item_tag(minecraft:beds)"
@@ -133,7 +133,7 @@
 			dependencies: ["76EA7D462C854493"]
 			description: ["Need more inventory space? How about a Sophisticated Backpack?"]
 			icon: {
-				Count: 1b
+				Count: 1
 				id: "sophisticatedbackpacks:backpack"
 				tag: {
 					contentsUuid: [I;
@@ -162,7 +162,7 @@
 			tasks: [{
 				id: "22767FB4894F58A3"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "ftbfiltersystem:smart_filter"
 					tag: {
 						"ftbfiltersystem:filter": "or(item(sophisticatedbackpacks:backpack)item(sophisticatedbackpacks:copper_backpack)item(sophisticatedbackpacks:iron_backpack)item(sophisticatedbackpacks:gold_backpack)item(sophisticatedbackpacks:diamond_backpack)item(sophisticatedbackpacks:netherite_backpack))"
@@ -187,7 +187,7 @@
 			tasks: [{
 				id: "0AEBD57C41CF2D1E"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "pocketstorage:psu_1"
 					tag: { }
 				}
@@ -204,7 +204,7 @@
 			tasks: [{
 				id: "6D41D3D060AF5CE9"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "create_jetpack:jetpack"
 					tag: {
 						Air: 900.0f
@@ -223,7 +223,7 @@
 			tasks: [{
 				id: "65F2559AB4960FDF"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "ftbfiltersystem:smart_filter"
 					tag: {
 						"ftbfiltersystem:filter": "or(item(create_connected:encased_chain_cogwheel)item(create_connected:inverted_clutch)item(create_connected:inverted_gearshift)item(create_connected:parallel_gearbox)item(create_connected:vertical_parallel_gearbox)item(create_connected:six_way_gearbox)item(create_connected:vertical_six_way_gearbox)item(create_connected:brass_gearbox)item(create_connected:vertical_brass_gearbox)item(create_connected:overstress_clutch)item(create_connected:centrifugal_clutch)item(create_connected:freewheel_clutch)item(create_connected:brake)item(create_connected:empty_fan_catalyst))"
@@ -243,7 +243,7 @@
 			rewards: [{
 				id: "0E86549566392083"
 				item: {
-					Count: 1b
+					Count: 1
 					id: "minecraft:potion"
 					tag: {
 						Potion: "apotheosis:flying"
@@ -263,7 +263,7 @@
 			dependencies: ["76EA7D462C854493"]
 			description: ["Ultimine is in this pack as a means to reduce the early game grind. Hold ~ to activate it and mine all similar connected blocks when you break a block."]
 			icon: {
-				Count: 1b
+				Count: 1
 				id: "minecraft:stone_pickaxe"
 				tag: {
 					Damage: 0

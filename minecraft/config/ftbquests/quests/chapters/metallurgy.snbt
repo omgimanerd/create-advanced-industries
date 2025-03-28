@@ -8,11 +8,7 @@
 	icon: "minecraft:iron_ingot"
 	id: "15BD896D68D60F3C"
 	images: [{
-		click: ""
-		corner: false
-		dev: false
 		height: 12.0d
-		hover: [ ]
 		image: "kubejs:textures/gui/metallurgy_bg.png"
 		rotation: 0.0d
 		width: 12.0d
