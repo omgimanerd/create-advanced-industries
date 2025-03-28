@@ -171,35 +171,6 @@ ServerEvents.recipes((e) => {
     '#farmersdelight:tools/knives'
   )
 
-  // Create: Sweets and Treats
-  e.remove({ id: 'create:filling/gunpowdercake' })
-  create
-    .SequencedAssembly('create:dough')
-    .deploy('minecraft:gunpowder')
-    .fill(Fluid.of('minecraft:milk', 250))
-    .custom('Next: Cook to perfection!', (pre, post) => {
-      e.smoking(post[0], pre)
-    })
-    .outputs('createsweetsandtreets:gunpowder_cake')
-
-  e.remove({ id: 'createsweetsandtreets:brass_cake_pan_craft' })
-  create
-    .curving('createsweetsandtreets:brass_cake_pan', 'create:brass_sheet')
-    .mode(CONVEX_CURVING_HEAD)
-
-  // Remove the Create: Sweets and Treats brownie and replace with our own.
-  e.remove({ id: 'create:filling/powderedbrownie1' })
-  create.filling('kubejs:uncooked_brownie', [
-    'createsweetsandtreets:brass_cake_pan',
-    Fluid.of('create:chocolate', 250),
-  ])
-  e.smoking('kubejs:brownie', 'kubejs:uncooked_brownie')
-  e.shapeless('createsweetsandtreets:sugar_cookie', [
-    'minecraft:wheat',
-    'minecraft:sugar',
-    'minecraft:wheat',
-  ])
-
   // Remove broken recipes for raw dough
   e.remove({ id: 'create:compacting/raw_donut' })
   e.remove({ id: 'create:compacting/taco1' })
