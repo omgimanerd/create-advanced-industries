@@ -1,6 +1,15 @@
 // priority: 0
 
 ClientEvents.lang('en_us', (e) => {
+  // Rename Thermal's alloy blends
+  e.renameItem('thermal:bronze_dust', 'Bronze Dust')
+  e.renameItem('thermal:electrum_dust', 'Electrum Dust')
+  e.renameItem('thermal:invar_dust', 'Invar Dust')
+  e.renameItem('thermal:constantan_dust', 'Constantan Dust')
+  e.renameItem('thermal:signalum_dust', 'Signalum Dust')
+  e.renameItem('thermal:lumium_dust', 'Lumium Dust')
+  e.renameItem('thermal:enderium_dust', 'Enderium Dust')
+
   // The TFMG plastic sheet will be used as the primary liquid plastic output
   // and can be cut into the Pneumaticcraft plastic sheets.
   e.renameItem('tfmg:plastic_sheet', 'Plastic')
