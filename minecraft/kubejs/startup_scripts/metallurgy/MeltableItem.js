@@ -46,6 +46,7 @@ function MeltableItem(options) {
 MeltableItem.DEFAULT_NUGGET_FLUID = 10
 MeltableItem.DEFAULT_INGOT_FLUID = 90
 MeltableItem.DEFAULT_BLOCK_RATIO = 9
+MeltableItem.DEFAULT_CRUSH_RETURN_CHANCE = 0.75
 
 MeltableItem.CERAMIC_INGOT_CAST = 'kubejs:ceramic_ingot_cast'
 MeltableItem.CERAMIC_CAST_RETURN_CHANCE = 0.25
@@ -127,7 +128,7 @@ MeltableItem.prototype.registerMeltingRecipe = function (e, item, fluid) {
 }
 
 /**
- * Registers the melting recipes for the nugget, ingot, and block of this
+ * Registers the melting recipes for the nugget, ingot, block, and dust of this
  * MeltableItem.
  * Can only be called in server_scripts.
  * @param {Internal.RecipesEventJS_} e
@@ -155,7 +156,7 @@ MeltableItem.prototype.registerMeltingRecipes = function (e) {
     this.registerMeltingRecipe(
       e,
       this.dust,
-      Fluid.of(this.fluid, MeltableItem.DEFAULT_INGOT_FLUID)
+      Fluid.of(this.fluid, MeltableItem.DEFAULT_INGOT_FLUID * (4 / 3))
     )
   }
   return this
@@ -214,7 +215,10 @@ MeltableItem.prototype.registerWashedCastRecipes = function (e) {
  */
 MeltableItem.prototype.registerDustCrushingRecipes = function (e) {
   if (this.dust) {
-    e.recipes.create.milling(this.dust, this.ingot)
+    e.recipes.create.milling(
+      Item.of(this.dust).withChance(MeltableItem.DEFAULT_CRUSH_RETURN_CHANCE),
+      this.ingot
+    )
   }
   return this
 }

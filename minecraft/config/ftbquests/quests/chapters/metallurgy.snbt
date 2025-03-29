@@ -74,7 +74,7 @@
 				"0BCB7FA490D47F49"
 				"6A394DBD8571B96F"
 			]
-			description: ["Melting and casting an ore processing product takes more effort, but will always give slightly higher yields."]
+			description: ["Melting and casting an ore processing product takes more effort, but will always give higher yields."]
 			icon: "kubejs:steel_ingot_cast"
 			id: "6D76F15E31EA5C4F"
 			tasks: [
@@ -88,7 +88,7 @@
 					type: "item"
 				}
 			]
-			title: "Melting: 1-1.3x"
+			title: "Melting: 1.33x"
 			x: -2.5d
 			y: 6.0d
 		}
@@ -146,7 +146,7 @@
 					type: "item"
 				}
 			]
-			title: "Washing: 1.1x"
+			title: "Washing: 1.5x"
 			x: 0.5d
 			y: 8.0d
 		}

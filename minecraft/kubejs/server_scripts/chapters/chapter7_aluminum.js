@@ -31,6 +31,11 @@ ServerEvents.recipes((e) => {
     .item_output('create:crushed_raw_aluminum')
 
   // Manually added recipes for aluminum dust
-  create.crushing('kubejs:aluminum_dust', 'tfmg:aluminum_ingot')
+  create.crushing(
+    Item.of('kubejs:aluminum_dust').withChance(
+      MeltableItem.DEFAULT_CRUSH_RETURN_CHANCE
+    ),
+    'tfmg:aluminum_ingot'
+  )
   e.smelting('tfmg:aluminum_ingot', 'kubejs:aluminum_dust')
 })

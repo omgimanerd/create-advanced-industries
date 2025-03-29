@@ -64,14 +64,14 @@ ServerEvents.recipes((e) => {
   const ingotDustMap = {
     'thermal:ruby': 'thermal:ruby_dust',
     'thermal:sapphire': 'thermal:sapphire_dust',
-    'thermal:apatite': 'thermal:apatite_dust',
-    'thermal:cinnabar': 'thermal:cinnabar_dust',
     'thermal:niter': 'thermal:niter_dust',
     // Sulfur dust overhauled in chapter 5a
-    'minecraft:netherite_ingot': 'thermal:netherite_dust',
   }
   for (const [ingot, dust] of Object.entries(ingotDustMap)) {
-    create.milling(dust, ingot)
+    create.milling(
+      Item.of(dust).withChance(MeltableItem.DEFAULT_CRUSH_RETURN_CHANCE),
+      ingot
+    )
   }
 
   // Register all metallic alloying recipes, and remove the custom blend

@@ -42,7 +42,8 @@ ServerEvents.recipes((e) => {
     ingot,
     fluid,
   } of oreProcessingMetals) {
-    // Overhaul crushing the raw ore to the crushed form.
+    // Crushing the raw ore yields the crushed form with better yields and some
+    // experience as a byproduct.
     e.remove({ type: 'create:crushing', output: crushed })
     create.crushing(
       [
@@ -53,38 +54,30 @@ ServerEvents.recipes((e) => {
       raw
     )
 
-    // Melting the raw ore has a slight additional yield and has slag byproduct.
-    create
-      .mixing(
-        [Fluid.of(fluid, DEFAULT_INGOT_FLUID * (10 / 9)), 'thermal:slag'],
-        raw
-      )
-      .heated()
-
     // The crushed form can be vibrated to dirty dust.
     create.vibrating([dirty, Item.of(dirty).withChance(0.5)], crushed)
 
-    // The crushed form can also be smelted into ingots.
-    e.blasting(ingot, dirty)
+    // Dirty dust can be washed to the regular dust form. This has a higher
+    // yield to compensate for the fact that melting dust is a 1x conversion.
+    create.splashing([dust, Item.of(dust).withChance(0.5)], dirty)
 
-    // Melting the crushed form has slight additional yield
-    create
-      .mixing(
-        [Fluid.of(fluid, DEFAULT_INGOT_FLUID * (11 / 9)), 'thermal:slag'],
-        crushed
-      )
-      .heated()
+    // The dirty dust can also be smelted into ingots (lazy conversion).
+    e.smelting(ingot, dirty)
 
-    // Dirty dust can be washed to the regular dust form.
-    create.splashing([dust, Item.of(dust).withChance(0.1)], dirty)
-
-    // Dirty dust can be melted for a slight gain and slag output
-    create
-      .mixing(
-        [Fluid.of(fluid, DEFAULT_INGOT_FLUID * (12 / 9)), 'thermal:slag'],
-        dirty
-      )
-      .heated()
+    // Melting each of the raw intermediate forms increases yield and has a slag
+    // byproduct. This is only not applicable to dust, otherwise ore can be
+    // duped with crushing + melting.
+    for (const form of [raw, crushed, dirty]) {
+      create
+        .mixing(
+          [
+            Fluid.of(fluid, DEFAULT_INGOT_FLUID * (4 / 3)),
+            Fluid.of('tfmg:molten_slag', DEFAULT_INGOT_FLUID),
+          ],
+          form
+        )
+        .heated()
+    }
   }
 
   // Only zinc dust does not have a smelting recipe.
@@ -129,7 +122,6 @@ ServerEvents.recipes((e) => {
     'kubejs:crushed_ochrum': 'minecraft:raw_gold',
     'kubejs:crushed_asurine': 'create:raw_zinc',
   }
-  const crushedStones = Object.keys(tier1Crushing)
   // Every Create stone has a dichotomic opposite.
   const dichotomicSecondary = {
     'minecraft:raw_iron': 'thermal:raw_nickel',
