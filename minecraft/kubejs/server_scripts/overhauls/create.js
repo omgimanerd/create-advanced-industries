@@ -18,6 +18,8 @@ ServerEvents.tags('item', (e) => {
 
   // Heavy plate is missing generic plates tag
   e.add('forge:plates', 'tfmg:heavy_plate')
+  // Rebar rods is missing forge:rods/steel tag
+  e.add('forge:rods/steel', 'tfmg:rebar')
 
   // Overcharged material sheets
   tagMaterialPlate('overcharged_iron', 'create_new_age')
