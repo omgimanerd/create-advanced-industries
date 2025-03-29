@@ -153,6 +153,8 @@ global.REMOVED_ITEMS = [
   'vintageimprovements:andesite_sheet',
   'vintageimprovements:cast_iron_sheet',
   'vintageimprovements:zinc_sheet',
+  // Unused ingot type
+  /^vintageimprovements:vanadium.*/,
   // Remove CVI Steel Rod in favor of using TFMG's rebar
   'vintageimprovements:steel_rod',
   /^vintageimprovements:small_[a-z_]+_spring$/,
