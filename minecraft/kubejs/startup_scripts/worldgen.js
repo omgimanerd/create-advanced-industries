@@ -5,6 +5,12 @@
 
 WorldgenEvents.remove((e) => {
   e.removeOres((ores) => {
-    ores.blocks = ['create_new_age:thorium_ore']
+    ores.blocks = [
+      'create_new_age:thorium_ore',
+      'thermal:apatite_ore',
+      'thermal:deepslate_apatite_ore',
+      'thermal:cinnabar_ore',
+      'thermal:deepslate_cinnabar_ore',
+    ]
   })
 })

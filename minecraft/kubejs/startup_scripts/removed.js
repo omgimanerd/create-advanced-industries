@@ -88,6 +88,8 @@ global.REMOVED_ITEMS = [
   'tfmg:steel_distillation_output',
   'tfmg:sulfur_dust',
   'tfmg:turbine_blade',
+  /^thermal:.*apatite.*/,
+  /^thermal:.*cinnabar.*/,
   'thermal:apple_block',
   'thermal:beetroot_block',
   'thermal:carrot_block',
