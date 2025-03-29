@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-'''Builds the modpack's client and server zipfile.
-'''
+'''Builds the modpack's client and server zipfile from the current minecraft/
+directory contents.'''
 
 import fnmatch
 import json
@@ -26,16 +26,17 @@ EXCLUDE_CLIENT = [
     'config/adaptive_performance_tweaks/spawn/*',
     'config/ars_elemental/glyph_*.toml',
     'config/ars_nouveau/glyph_*.toml',
-
     'config/jei/world*',
     'config/embeddium-fingerprint.json',
     'config/xaerominimap*',
     'config/xaeroworldmap*',
+    'kubejs/config/probe*',
     'kubejs/probe*',
     'kubejs/startup_scripts/@recipes',
     '*__pycache__',
     '*.committed',
-    '*.bak'
+    '*.bak',
+    '*.gitignore'
 ]
 
 INCLUDE_SERVER = [
@@ -55,19 +56,21 @@ EXCLUDE_SERVER = [
     'config/embeddium-fingerprint.json',
     'config/xaerominimap*',
     'config/xaeroworldmap*',
+    'kubejs/config/probe*',
     'kubejs/probe*',
     'mods/probejs*',
     'mods/Xaeros*',
     '*__pycache__',
     '*.committed',
-    '*.bak'
+    '*.bak',
+    '*.gitignore'
 ]
 
 FILE_DIR = pathlib.Path(__file__).parent.absolute()
 
 
 def generate_manifest(template_path: pathlib.Path, mods_path: pathlib.Path,
-                      version_: str):
+                      version_: str) -> dict:
     '''Generates the manifest.json from the template manifest and mods
     directory. Does not package resource packs. CurseForge resource packs should
     be hardcoded into the manifest template.
@@ -77,6 +80,9 @@ def generate_manifest(template_path: pathlib.Path, mods_path: pathlib.Path,
         a template.
       mods_path: The path to the mods/ directory.
       version_: The version string to encode into the manifest template.
+
+    Returns:
+      The manifest as a JSON-serializable dictionary.
     '''
     with open(template_path, encoding='utf-8') as f:
         manifest = json.load(f)
@@ -94,20 +100,22 @@ def generate_manifest(template_path: pathlib.Path, mods_path: pathlib.Path,
     return manifest
 
 
-def copy_pack_files(include: list[str], exclude: list[str],
-                    destination: pathlib.Path, mc_dir: pathlib.Path,
-                    version_: str):
+def copy_pack_files(
+        mc_dir: pathlib.Path,
+        destination: pathlib.Path,
+        include: list[str],
+        exclude: list[str]):
     '''Copies all the include patterns into destination, excluding any files
     that match the exclusion pattern.
 
     Args:
+        mc_dir: the absolute path to the minecraft/ directory to start searching
+          from
+        destination: the absolute path to the destination directory to copy
+          files to
         include: list of directories and files to include, relative to mc_dir
         exclude: patterns for directories or files to exclude, relative to
           mc_dir
-        destination: the absolute path to the destination directory to copy
-          files to
-        mc_dir: the absolute path to the minecraft/ directory to start searching
-          from
     '''
     # Argument to shutil.copytree's ignore kwargs
     def ignore_callback(path, names):
@@ -139,15 +147,10 @@ def copy_pack_files(include: list[str], exclude: list[str],
             print(f'Copying {target.absolute().relative_to(mc_dir)}')
     print('Finished copying files...')
 
-    # Generate manifest.json
-    manifest = generate_manifest(
-        FILE_DIR / 'manifest_template.json', mc_dir / 'mods/.index', version_)
-    with open(destination / 'manifest.json', 'w+', encoding='utf-8') as f:
-        json.dump(manifest, f, indent=2, sort_keys=True)
-
 
 if __name__ == '__main__':
-    # Get the version from args or git tag.
+    # Get the version from args or git tag. This is just for naming and for
+    # generating the manifest.
     if len(sys.argv) == 2:
         version = sys.argv[1]
     p = subprocess.run(
@@ -162,8 +165,9 @@ if __name__ == '__main__':
     if TMP_DIR.exists():
         shutil.rmtree(TMP_DIR.absolute())
     TMP_DIR.mkdir(exist_ok=True)
-    OVERRIDES_DIR = TMP_DIR / 'overrides'
     print('Wiped tmp directory')
+    TMP_DIR_CLIENT = TMP_DIR / 'client'
+    TMP_DIR_SERVER = TMP_DIR / 'server'
 
     # Clear output directory
     OUTPUT_DIR = FILE_DIR / 'output'
@@ -175,15 +179,27 @@ if __name__ == '__main__':
     MC_DIR = FILE_DIR.parent / 'minecraft'
 
     # Client zip
-    print('Packaging client zipfile')
-    tmpDir = TMP_DIR / 'client'
-    copy_pack_files(INCLUDE_CLIENT, EXCLUDE_CLIENT, tmpDir, MC_DIR, version)
+    print('Packaging client modpack...')
+    # Client zip files need to go inside an 'overrides' subdirectory
+    copy_pack_files(MC_DIR, TMP_DIR_CLIENT / 'overrides',
+                    INCLUDE_CLIENT, EXCLUDE_CLIENT)
+    # Write the manifest.json, which must be copied into the root of the modpack
+    with open(TMP_DIR_CLIENT / 'manifest.json', 'w+',
+              encoding='utf-8') as f:
+        json.dump(generate_manifest(
+            FILE_DIR / 'manifest_template.json', MC_DIR / 'mods/.index',
+            version), f, indent=2, sort_keys=True)
+    # Package the modpack files into a zip file
     shutil.make_archive(
-        OUTPUT_DIR / OUTPUT_PREFIX, 'zip', tmpDir.absolute(), '.')
+        OUTPUT_DIR / OUTPUT_PREFIX, 'zip',
+        root_dir=TMP_DIR_CLIENT.absolute())
+    print('Finished packaging', f'{OUTPUT_PREFIX}.zip')
 
     # Server zip
     print('Packaging server zipfile')
-    tmpDir = TMP_DIR / 'server'
-    copy_pack_files(INCLUDE_SERVER, EXCLUDE_SERVER, tmpDir, MC_DIR, version)
+    copy_pack_files(MC_DIR, TMP_DIR_SERVER,
+                    INCLUDE_SERVER, EXCLUDE_SERVER)
     shutil.make_archive(
-        OUTPUT_DIR / f'{OUTPUT_PREFIX}-server', 'zip', tmpDir.absolute(), '.')
+        OUTPUT_DIR / f'{OUTPUT_PREFIX}-server', 'zip',
+        root_dir=TMP_DIR_SERVER.absolute())
+    print('Finished packaging', f'{OUTPUT_PREFIX}-server.zip')
