@@ -66,6 +66,10 @@ EXCLUDE_SERVER = [
     '*.gitignore'
 ]
 
+EXCLUDE_MANIFEST = [
+    'probejs.pw.toml',
+]
+
 FILE_DIR = pathlib.Path(__file__).parent.absolute()
 
 
@@ -88,9 +92,12 @@ def generate_manifest(template_path: pathlib.Path, mods_path: pathlib.Path,
         manifest = json.load(f)
     manifest['version'] = version_
     files = []
-    for f in mods_path.glob('*.toml'):
-        with open(f, 'r', encoding='utf-8') as f_:
-            data = toml.loads(f_.read())
+    for filename in mods_path.glob('*.toml'):
+        if filename.name in EXCLUDE_MANIFEST:
+            print(f'Excluding {filename.name} from manifest.json')
+            continue
+        with open(filename, 'r', encoding='utf-8') as f:
+            data = toml.loads(f.read())
         files.append({
             'fileID': data['update']['curseforge']['file-id'],
             'projectID': data['update']['curseforge']['project-id'],
