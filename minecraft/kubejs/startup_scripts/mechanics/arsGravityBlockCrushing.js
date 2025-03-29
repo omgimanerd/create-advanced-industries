@@ -111,11 +111,51 @@ ForgeEvents.onEvent(
     )
   }
 
-  // Netherite sheets
+  // Crushing the Create stones
   registerVoidSteelCrushingRecipe(
-    'vintageimprovements:netherite_sheet',
-    'minecraft:netherite_ingot'
+    '2x kubejs:crushed_crimsite',
+    'create:crimsite'
   )
+  registerVoidSteelCrushingRecipe(
+    '2x kubejs:crushed_veridium',
+    'create:veridium'
+  )
+  registerVoidSteelCrushingRecipe('2x kubejs:crushed_ochrum', 'create:ochrum')
+  registerVoidSteelCrushingRecipe('2x kubejs:crushed_asurine', 'create:asurine')
+
+  // Ingot to sheet map
+  const ingotSheetMap = {
+    'minecraft:copper_ingot': 'create:copper_sheet',
+    'create:brass_ingot': 'create:brass_sheet',
+    'minecraft:iron_ingot': 'create:iron_sheet',
+    'minecraft:gold_ingot': 'create:golden_sheet',
+    'thermal:electrum_ingot': 'createaddition:electrum_sheet',
+    'create:andesite_alloy': 'createdeco:andesite_sheet',
+    'create:zinc_ingot': 'createdeco:zinc_sheet',
+    'createdeco:industrial_iron_ingot': 'createdeco:industrial_iron_sheet',
+    'create_new_age:overcharged_iron': 'create_new_age:overcharged_iron_sheet',
+    'tfmg:steel_ingot': 'tfmg:heavy_plate',
+    'create:polished_rose_quartz': 'create_things_and_misc:rose_quartz_sheet',
+    'create:experience_nugget': 'create_things_and_misc:experience_sheet',
+    'createutilities:void_steel_ingot': 'createutilities:void_steel_sheet',
+    'tfmg:aluminum_ingot': 'vintageimprovements:aluminum_sheet',
+    'thermal:bronze_ingot': 'vintageimprovements:bronze_sheet',
+    'thermal:constantan_ingot': 'vintageimprovements:constantan_sheet',
+    'thermal:enderium_ingot': 'vintageimprovements:enderium_sheet',
+    'thermal:invar_ingot': 'vintageimprovements:invar_sheet',
+    'thermal:lead_ingot': 'vintageimprovements:lead_sheet',
+    'thermal:lumium_ingot': 'vintageimprovements:lumium_sheet',
+    'minecraft:netherite_ingot': 'vintageimprovements:netherite_sheet',
+    'thermal:nickel_ingot': 'vintageimprovements:nickel_sheet',
+    'thermal:signalum_ingot': 'vintageimprovements:signalum_sheet',
+    'thermal:silver_ingot': 'vintageimprovements:silver_sheet',
+    'thermal:tin_ingot': 'vintageimprovements:tin_sheet',
+    'create:shadow_steel': 'vintageimprovements:shadow_steel_sheet',
+    'create:refined_radiance': 'vintageimprovements:refined_radiance_sheet',
+  }
+  for (const [ingot, sheet] of Object.entries(ingotSheetMap)) {
+    registerVoidSteelCrushingRecipe(sheet, ingot)
+  }
 
   // Higher yield powdered obsidian
   registerVoidSteelCrushingRecipe(
@@ -123,19 +163,9 @@ ForgeEvents.onEvent(
     'minecraft:obsidian'
   )
 
-  // Void Steel
+  // Mysterious Scrap Metal
   registerVoidSteelCrushingRecipe(
-    'createutilities:void_steel_sheet',
-    'createutilities:void_steel_ingot'
-  )
-
-  // Shadow Steel and Refined Radiance
-  registerVoidSteelCrushingRecipe(
-    'vintageimprovements:shadow_steel_sheet',
-    'create:shadow_steel'
-  )
-  registerVoidSteelCrushingRecipe(
-    'vintageimprovements:refined_radiance_sheet',
-    'create:refined_radiance'
+    '4x apotheosis:common_material',
+    'tfmg:steel_mechanism'
   )
 })()

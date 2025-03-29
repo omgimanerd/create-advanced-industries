@@ -37,7 +37,13 @@ ServerEvents.recipes((e) => {
 
   // Apotheosis material automation
   // Common Material: Mysterious Scrap Metal
-  create.crushing('4x apotheosis:common_material', STEEL_MECHANISM)
+  create.crushing(
+    [
+      '2x apotheosis:common_material',
+      Item.of('apotheosis:common_material').withChance(0.25),
+    ],
+    STEEL_MECHANISM
+  )
   // Uncommon Material: Timeworn Fabric
   e.remove({ id: 'apotheotic_additions:stonecutting/timeworn_fabric' })
   e.remove({ id: 'apotheotic_additions:stonecutting/timeworn_fancy' })
