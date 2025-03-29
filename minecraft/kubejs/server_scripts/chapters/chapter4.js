@@ -206,8 +206,8 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'tfmg:stonecutting/screw' })
   create.cutting('4x tfmg:screw', 'tfmg:steel_ingot')
   create
-    .turning(['64x tfmg:screw', 'kubejs:steel_dust'], 'tfmg:steel_block')
-    .processingTime(100)
+    .turning(['48x tfmg:screw', 'kubejs:steel_dust'], 'tfmg:steel_block')
+    .processingTime(200)
 
   // Steel mechanism overhaul
   e.remove({ id: 'tfmg:sequenced_assembly/steel_mechanism' })
