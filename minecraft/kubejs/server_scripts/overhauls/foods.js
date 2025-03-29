@@ -171,9 +171,12 @@ ServerEvents.recipes((e) => {
     '#farmersdelight:tools/knives'
   )
 
-  // Remove broken recipes for raw dough
-  e.remove({ id: 'create:compacting/raw_donut' })
-  e.remove({ id: 'create:compacting/taco1' })
+  // Cookies?
+  e.remove({ id: 'create_central_kitchen:compacting/cookie' })
+  create.mixing('8x minecraft:cookie', [
+    '#forge:dough/wheat',
+    'minecraft:cocoa_beans',
+  ])
 
   // Pneumaticcraft foods
   e.remove({ id: 'pneumaticcraft:thermo_plant/chips' })
@@ -186,11 +189,11 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'pneumaticcraft:raw_salmon_tempura' })
   e.shapeless('pneumaticcraft:raw_salmon_tempura', [
     'farmersdelight:salmon_slice',
-    'create:dough',
+    '#forge:dough/wheat',
   ])
   create.deploying('pneumaticcraft:raw_salmon_tempura', [
     'farmersdelight:salmon_slice',
-    'create:dough',
+    '#forge:dough/wheat',
   ])
   e.remove({ id: 'pneumaticcraft:thermo_plant/salmon_tempura' })
   create

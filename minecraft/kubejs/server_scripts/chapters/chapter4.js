@@ -35,7 +35,7 @@ ServerEvents.recipes((e) => {
   ])
 
   // Eggs from dough
-  create.haunting('minecraft:egg', 'create:dough')
+  create.haunting('minecraft:egg', '#forge:dough/wheat')
 
   // Lava generation should be cheaper
   e.remove({ id: 'create:mixing/lava_from_cobble' })
