@@ -22,16 +22,22 @@ JEIAddedEvents.registerCategories((e) => {
   )
 
   const guiHelper = e.data.jeiHelpers.guiHelper
-  // MixingCategory needs a reference to the background IDrawable.
-  const background = guiHelper.createBlankDrawable(177, 103)
   // Create a concrete instance of the basin mixing recipe category and
   // defer our custom category to use its rendering code.
   const mixingCategory = $MixingCategory.standard(
     // Don't actually need any of the subfields, just need an instance of
     // MixingCategory to call its lookup and draw handler.
-    new $Info(null, null, background, null, null, null)
+    new $Info(
+      null,
+      null,
+      guiHelper.createBlankDrawable(177, 103),
+      null,
+      null,
+      null
+    )
   )
   const [rl, id] = GLYPH_MIXING.split(':')
+  // Wrap the existing recipe category to use its rendering logic.
   e.wrap(
     $RecipeType.create(rl, id, $MixingRecipe),
     mixingCategory,
@@ -41,7 +47,7 @@ JEIAddedEvents.registerCategories((e) => {
         .icon(
           doubleItemIcon('create:mechanical_mixer', 'ars_nouveau:glyph_craft')
         )
-        .isRecipeHandled(() => true) // Only relevant recipes are registered
+        .isRecipeHandled(() => true) // All relevant recipes are registered
     }
   )
 })

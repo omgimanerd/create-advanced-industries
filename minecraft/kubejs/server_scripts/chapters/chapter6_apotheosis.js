@@ -133,7 +133,8 @@ const getGemItem = (id, rarity) => {
       return
     }
     // Define automatable upgrade recipes for all the apotheotic gems.
-    let numRecipes = 0
+    let numGemRecipes = 1
+    let numCompactingRecipes = 1
     for (let [gem, tiers] of gemData) {
       // Generate upgrade recipes for each tier of gem.
       for (let i = 0; i < tiers.length - 1; ++i) {
@@ -158,12 +159,8 @@ const getGemItem = (id, rarity) => {
           ])
           if (tierIndex >= 4) recipe.superheated()
           else if (tierIndex >= 2) recipe.heated()
-
-          // Pressure Chamber
-          pneumaticcraft.pressure_chamber(
-            [material, Item.of('apotheosis:gem_dust', gemDustCost), fromGem],
-            [toGem],
-            global.lerp(tierIndex, 0, tierOrder.length, 0, 5)
+          recipe.id(
+            `kubejs:apotheosis_gem_compacting_${numCompactingRecipes++}`
           )
         }
       }
@@ -176,7 +173,7 @@ const getGemItem = (id, rarity) => {
         'ABBBA', //
         ' AAA ', //
       ]
-      positions[numRecipes].forEach((idx) => {
+      positions[numGemRecipes].forEach((idx) => {
         let x = (idx % 3) + 1
         let y = Math.floor(idx / 3) + 1
         const rowstring = pattern[x]
@@ -188,7 +185,7 @@ const getGemItem = (id, rarity) => {
         B: 'create:experience_nugget',
         M: CRYSTALLINE_MECHANISM,
       })
-      ++numRecipes
+      numGemRecipes++
     }
 
     /**
