@@ -12,17 +12,22 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:heart_of_the_sea",
-          "weight": 17
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "apotheotic_additions:apotheotic_coin",
+          "weight": 1
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:emerald",
-          "weight": 10
+          "weight": 5
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:leather_boots",
-          "weight": 10,
+          "weight": 15,
           "functions": [
             {
               "function": "minecraft:set_damage",
@@ -46,7 +51,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:book",
-          "weight": 10,
+          "weight": 15,
           "functions": [
             {
               "function": "minecraft:enchant_with_levels",

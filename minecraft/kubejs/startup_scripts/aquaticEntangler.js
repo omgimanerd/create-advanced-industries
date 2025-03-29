@@ -19,7 +19,7 @@ global.AquaticEntanglerRecipes = [
   },
   {
     input: 'thermal:junk_net',
-    useChance: 0,
+    useChance: 0.05,
     lootTable: 'kubejs:gameplay/fishing/junk_net',
   },
   {
