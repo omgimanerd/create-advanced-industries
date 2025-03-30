@@ -68,6 +68,7 @@ EXCLUDE_SERVER = [
 
 EXCLUDE_MANIFEST = [
     'probejs.pw.toml',
+    'reforgedplay-mod.pw.toml'
 ]
 
 FILE_DIR = pathlib.Path(__file__).parent.absolute()

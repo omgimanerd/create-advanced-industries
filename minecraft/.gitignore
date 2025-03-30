@@ -1,4 +1,5 @@
 .mixin.out/
+.replay_cache/
 .probe/
 .vscode/
 
@@ -10,6 +11,7 @@ config/fancymenu/fancymenu_data/
 
 config/embeddium-fingerprint.json
 config/packetfixer.properties
+config/replaymod.json
 config/xaeropatreon.txt
 config/xaerominimap*
 config/xaeroworldmap*
@@ -32,6 +34,9 @@ modernfix/
 mods/*.jar
 mods/*.jar.disabled
 patchouli_books/
+
+# Replays
+replay_recordings/
 
 # Resource Packs
 resourcepacks/*
