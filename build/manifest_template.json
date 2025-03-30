@@ -1,17 +1,6 @@
 {
   "author": "omgimanerd",
-  "files": [
-    {
-      "fileID": 5544435,
-      "projectID": 970522,
-      "required": true
-    },
-    {
-      "fileID": 5864882,
-      "projectID": 1068890,
-      "required": true
-    }
-  ],
+  "files": [],
   "manifestType": "minecraftModpack",
   "manifestVersion": 1,
   "minecraft": {

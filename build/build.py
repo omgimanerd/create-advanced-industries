@@ -16,9 +16,6 @@ INCLUDE_CLIENT = [
     'config',
     'defaultconfigs',
     'kubejs',
-    # Curseforge resource packs should be added to manifest_template.json as
-    # manual project IDs and files.
-    'resourcepacks',
     'icon.png'
 ]
 
@@ -34,6 +31,7 @@ EXCLUDE_CLIENT = [
     'kubejs/probe*',
     'kubejs/startup_scripts/@recipes',
     '*__pycache__',
+    '*.py',
     '*.committed',
     '*.bak',
     '*.gitignore'
@@ -61,9 +59,26 @@ EXCLUDE_SERVER = [
     'mods/probejs*',
     'mods/Xaeros*',
     '*__pycache__',
+    '*.py',
     '*.committed',
     '*.bak',
     '*.gitignore'
+]
+
+# Resource packs which must be included.
+RESOURCEPACK_MANIFEST = [
+    # https://www.curseforge.com/minecraft/texture-packs/create-new-age-retexture
+    {
+        "fileID": 5864882,
+        "projectID": 1068890,
+        "required": True
+    },
+    # https://www.curseforge.com/minecraft/texture-packs/create-advanced-industries-main-menu
+    {
+        "fileID": 6365115,
+        "projectID": 1231605,
+        "required": True
+    }
 ]
 
 EXCLUDE_MANIFEST = [
@@ -89,21 +104,23 @@ def generate_manifest(template_path: pathlib.Path, mods_path: pathlib.Path,
     Returns:
       The manifest as a JSON-serializable dictionary.
     '''
-    with open(template_path, encoding='utf-8') as f:
-        manifest = json.load(f)
+    with open(template_path, encoding='utf-8') as template_f:
+        manifest = json.load(template_f)
     manifest['version'] = version_
     files = []
     for filename in mods_path.glob('*.toml'):
         if filename.name in EXCLUDE_MANIFEST:
             print(f'Excluding {filename.name} from manifest.json')
             continue
-        with open(filename, 'r', encoding='utf-8') as f:
-            data = toml.loads(f.read())
+        with open(filename, 'r', encoding='utf-8') as mod_toml_f:
+            data = toml.loads(mod_toml_f.read())
         files.append({
             'fileID': data['update']['curseforge']['file-id'],
             'projectID': data['update']['curseforge']['project-id'],
             'required': True
         })
+    for obj in RESOURCEPACK_MANIFEST:
+        files.append(obj)
     manifest['files'] += files
     return manifest
 

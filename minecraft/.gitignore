@@ -23,7 +23,8 @@ ESM/
 # KubeJS
 kubejs/**/__pycache__/
 kubejs/probe/
-kubejs/config/
+kubejs/config/*.json
+kubejs/config/*.properties
 kubejs/client_scripts/.kjspkg/
 kubejs/startup_scripts/.kjspkg/
 kubejs/server_scripts/.kjspkg/
@@ -40,7 +41,6 @@ replay_recordings/
 
 # Resource Packs
 resourcepacks/*
-!resourcepacks/Quark*zip
 !resourcepacks/VanillaTweaks*zip
 
 saves/
