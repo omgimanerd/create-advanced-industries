@@ -140,8 +140,8 @@ ServerEvents.recipes((e) => {
       stone
     )
 
-    // Tier 2: Mixing with crushed magma has a chance to yield the dichotomic
-    // secondary and some rich slag.
+    // Tier 2: Mixing with slag has a chance to yield the dichotomic secondary
+    // and some rich slag.
     let secondary = dichotomicSecondary[result]
     create
       .mixing(
@@ -151,13 +151,13 @@ ServerEvents.recipes((e) => {
           Item.of(secondary).withChance(0.75),
           'thermal:rich_slag',
         ],
-        [stone, 'create_things_and_misc:crushed_magma']
+        [stone, 'thermal:slag']
       )
       .heated()
 
     // Tier 3: Using liquid source as a catalyst can quadruple the output.
     create
-      .pressurizing([stone, 'create_things_and_misc:crushed_magma'])
+      .pressurizing([stone, 'thermal:slag'])
       .secondaryFluidInput(Fluid.of('starbunclemania:source_fluid', 250))
       .heated()
       .outputs([

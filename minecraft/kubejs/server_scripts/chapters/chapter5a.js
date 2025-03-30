@@ -626,13 +626,19 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'refinedstorage:silicon' })
   create
     .mixing(
-      [Fluid.of('kubejs:molten_silicon', 3 * ingotFluid), '2x thermal:slag'],
+      [
+        Fluid.of('kubejs:molten_silicon', 3 * ingotFluid),
+        Fluid.of('tfmg:molten_slag', 2 * ingotFluid),
+      ],
       ['4x minecraft:quartz', '2x tfmg:coal_coke_dust']
     )
     .superheated()
   create
     .mixing(
-      [Fluid.of('kubejs:molten_silicon', 3 * ingotFluid), '2x thermal:slag'],
+      [
+        Fluid.of('kubejs:molten_silicon', 3 * ingotFluid),
+        Fluid.of('tfmg:molten_slag', 2 * ingotFluid),
+      ],
       [
         Fluid.of('kubejs:molten_quartz', 3 * ingotFluid),
         '2x tfmg:coal_coke_dust',

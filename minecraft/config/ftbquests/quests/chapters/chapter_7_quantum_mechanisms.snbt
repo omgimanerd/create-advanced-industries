@@ -602,7 +602,7 @@
 				"04F20036D8172501"
 				"4F438C24128D042B"
 			]
-			description: ["Crushed magma is a catalyst used in the crushed stone processing that guarantees rich slag in the output."]
+			description: ["Rich slag is a byproduct from the crushed stone processing."]
 			id: "2582523C7629E8F4"
 			tasks: [{
 				id: "6C5B0A5721A8E2E1"
@@ -639,7 +639,7 @@
 		}
 		{
 			dependencies: ["2582523C7629E8F4"]
-			description: ["Rich slag can then be infused with molten slag to get chunks of raw aluminum."]
+			description: ["Rich slag and crushed magma can be centrifuged to obtain trace amounts of aluminum."]
 			id: "1ED09B0DF667E2FB"
 			tasks: [{
 				id: "5A0DE611B90CB096"

@@ -2,33 +2,25 @@
 
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
-  const pneumaticcraft = definePneumaticcraftRecipes(e)
 
   const MeltableItem = global.MeltableItem
+  const ingotFluid = MeltableItem.DEFAULT_INGOT_FLUID
 
   // Aluminum overhaul
   e.remove({ id: 'tfmg:crushing/bauxite_recycling' })
-  create
-    .pressurizing('thermal:rich_slag')
-    .secondaryFluidInput(
-      Fluid.of('tfmg:molten_slag', MeltableItem.DEFAULT_INGOT_FLUID * 4)
-    )
-    .heated()
-    .processingTime(200)
-    .outputs('create:crushed_raw_aluminum')
-  e.recipes.thermal
-    .crystallizer('create:crushed_raw_aluminum', [
+  create.centrifuging(
+    [
+      Item.of('create:crushed_raw_aluminum').withChance(0.25),
+      Fluid.of('tfmg:molten_slag', ingotFluid * 5),
+    ],
+    [
       'thermal:rich_slag',
-      Fluid.of('tfmg:molten_slag', MeltableItem.DEFAULT_INGOT_FLUID * 2),
-    ])
-    .energy(36000)
-  pneumaticcraft
-    .thermo_plant()
-    .item_input('thermal:rich_slag')
-    .fluid_input(Fluid.of('tfmg:molten_slag', MeltableItem.DEFAULT_INGOT_FLUID))
-    .temperature({ min_temp: 273 + 250 })
-    .pressure(4)
-    .item_output('create:crushed_raw_aluminum')
+      'create_things_and_misc:crushed_magma',
+      Fluid.lava(ingotFluid * 4),
+    ],
+    192,
+    1000
+  )
 
   // Manually added recipes for aluminum dust
   create.crushing(
@@ -37,5 +29,6 @@ ServerEvents.recipes((e) => {
     ),
     'tfmg:aluminum_ingot'
   )
+  // TODO add dirty aluminum dust, add aluminum to metallurgy screen
   e.smelting('tfmg:aluminum_ingot', 'kubejs:aluminum_dust')
 })

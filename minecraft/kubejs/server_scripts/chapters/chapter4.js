@@ -150,7 +150,10 @@ ServerEvents.recipes((e) => {
   e.remove({ id: 'tfmg:industrial_blasting/steel' })
   create
     .mixing(
-      [Fluid.of('tfmg:molten_steel', 3 * ingotFluid), '2x thermal:slag'],
+      [
+        Fluid.of('tfmg:molten_steel', 3 * ingotFluid),
+        Fluid.of('tfmg:molten_slag', 2 * ingotFluid),
+      ],
       [
         '2x tfmg:coal_coke_dust',
         Fluid.of('kubejs:molten_iron', 3 * ingotFluid),
