@@ -1,6 +1,34 @@
 # Changelog
 Use `git log --format='format:%s' {version}..HEAD | tac` to generate.
 
+
+## v1.0.2
+
+### New Mods / Major Changes
+- Update FancyMenu to v3.4.6
+- Separate out the main menu assets image assets into a separate texture pack
+  and bundle it as a pack dependency through the Curseforge manifest.
+
+### Tweaks and Adjustments
+- Slight adjustment to steel screw recipe for ratios.
+- Change ratios for ore processing recipes. Crushing all ores now has 0.75x
+  yield to dust.
+- Remove Thermal's Apatite and Cinnabar.
+- Rename all Thermal's blends to dusts for internal consistency.
+- Add Ars Gravity block crushing recipes for all plate crafting.
+- Add Apotheotic coins to treasure net loot. Adjust fishing nets to also have a
+  5% chance of breaking.
+- Remove Vanadium ingots, ore, and items.
+- Move all gem compacting recipes to their own JEI category.
+- Refactor slag processing, make ore processing always yield molten slag
+  instead. Change aluminum's rich slag dependency.
+- Remove Create: New Age's stirling engine and nerf magnet recipe.
+
+### Bugfixes
+- Fix TFMG rebar missing the forge:rods/steel tag.
+- Minor tag tweak for forge:dough.
+
+
 ## v1.0.1
 
 ### New Mods / Major Changes
