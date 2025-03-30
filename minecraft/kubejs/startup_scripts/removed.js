@@ -50,6 +50,7 @@ global.REMOVED_ITEMS = [
   /^create_new_age:reactor.*/,
   'create_new_age:nuclear_fuel',
   /^create_new_age:.[a-z_]*solar_heating_plate/,
+  'create_new_age:stirling_engine',
   /^create_new_age:.*thorium.*/,
   'create_things_and_misc:sprinkler',
   'create_things_and_misc:sprinkler_head',

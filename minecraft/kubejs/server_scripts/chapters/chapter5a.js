@@ -430,7 +430,7 @@ ServerEvents.recipes((e) => {
   // Generator coils
   e.remove({ id: 'create_new_age:shaped/generator_coil' })
   create.mechanical_crafting(
-    '16x create_new_age:generator_coil',
+    '4x create_new_age:generator_coil',
     [
       'CCCCCCC', //
       'CMMMMMC', //
@@ -488,13 +488,13 @@ ServerEvents.recipes((e) => {
   )
   e.remove({ id: 'create_new_age:shaped/layered_magnet' })
   create.mechanical_crafting(
-    '8x create_new_age:layered_magnet',
+    'create_new_age:layered_magnet',
     [
-      'GGGGG', //
+      'GIGIG', //
       'IWWWI', //
       'GWMWG', //
       'IWWWI', //
-      'GGGGG', //
+      'GIGIG', //
     ],
     {
       G: 'create_new_age:overcharged_golden_sheet',
@@ -505,7 +505,7 @@ ServerEvents.recipes((e) => {
   )
   e.remove({ id: 'create_new_age:shaped/fluxuated_magnetite' })
   create.mechanical_crafting(
-    '8x create_new_age:fluxuated_magnetite',
+    'create_new_age:fluxuated_magnetite',
     [
       'GDGDG', //
       'DWWWD', //
@@ -522,7 +522,7 @@ ServerEvents.recipes((e) => {
   )
   e.remove({ id: 'create_new_age:shaped/netherite_magnet' })
   create.mechanical_crafting(
-    '8x create_new_age:netherite_magnet',
+    'create_new_age:netherite_magnet',
     [
       'DNNND', //
       'NWWWN', //
