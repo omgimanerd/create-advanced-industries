@@ -57,6 +57,7 @@ EXCLUDE_SERVER = [
     'kubejs/config/probe*',
     'kubejs/probe*',
     'mods/probejs*',
+    'mods/reforgedplaymod*',
     'mods/Xaeros*',
     '*__pycache__',
     '*.py',
