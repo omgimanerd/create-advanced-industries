@@ -8,8 +8,10 @@ StartupEvents.registry('item', (e) => {
   const registerItem = registerItem_(e)
   const registerMechanism = (id, displayNameOverride) => {
     registerItem(id, displayNameOverride)
+    const incompleteItem = `kubejs:incomplete_${stripNamespace(id)}`
     registerItem(
-      `kubejs:incomplete_${stripNamespace(id)}`,
+      incompleteItem,
+      getDisplayName(incompleteItem),
       'create:sequenced_assembly'
     )
   }
