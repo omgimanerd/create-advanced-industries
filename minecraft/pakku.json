@@ -1,0 +1,58 @@
+{
+  "name": "create-advanced-industries",
+  "version": "v1.0.3",
+  "description": "Create-centric automation, puzzle, and factory building modpack for Minecraft 1.20.1 (Forge)",
+  "author": "omgimanerd",
+  "overrides": [
+    "config",
+    "!config/adaptive_performance_tweaks/spawn/*",
+    "!config/**/glyph_*.toml",
+    "!config/jei/world*",
+    "!config/xaerominimap*",
+    "!config/xaeroworldmap*",
+    "defaultconfigs",
+    "kubejs",
+    "!kubejs/assets/**",
+    "!kubejs/config/probe-settings.json",
+    "!kubejs/config/probejs.json",
+    "!kubejs/jsconfig.json",
+    "!kubejs/probe/**",
+    "icon.png",
+    "!**__pycache__**",
+    "!**.cjs",
+    "!**.committed",
+    "!**.bak",
+    "!**.py"
+  ],
+  "server_overrides": [
+    "server-icon.png",
+    "server.properties",
+    "start.sh",
+    "variables.txt"
+  ],
+  "client_overrides": ["kubejs/assets/**"],
+  "paths": {
+    "mods": "mods",
+    "resource_packs": "resourcepacks"
+  },
+  "projects": {
+    "cmdcam": {
+      "export": false
+    },
+    "create-advanced-industries-main-menu": {
+      "update_strategy": "LATEST"
+    },
+    "create-new-age-retexture": {
+      "update_strategy": "NONE"
+    },
+    "probejs": {
+      "export": false
+    },
+    "xaeros-minimap": {
+      "update_strategy": "LATEST"
+    },
+    "xaeros-world-map": {
+      "update_strategy": "LATEST"
+    }
+  }
+}
