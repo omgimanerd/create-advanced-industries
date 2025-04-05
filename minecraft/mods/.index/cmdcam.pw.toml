@@ -1,0 +1,13 @@
+filename = 'CMDCam_FORGE_v2.2.0_mc1.20.1.jar'
+name = 'CMDCam'
+side = 'both'
+
+[download]
+hash = '77efad128734603800f65fe4c21c8958d74aff2a'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 6099081
+project-id = 251244
