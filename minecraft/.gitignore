@@ -1,58 +1,59 @@
-.mixin.out/
-.replay_cache/
-.probe/
-.vscode/
+/.mixin.out/
+/.probe/
+/.vscode/
 
-backups/
-build/
+/backups/
+/build/
 
-fancymenu_data/
+/fancymenu_data/
 
-config/jei/world/
-config/fancymenu/fancymenu_data/
+/config/jei/world/
+/config/fancymenu/fancymenu_data/
 
-config/embeddium-fingerprint.json
-config/packetfixer.properties
-config/xaeropatreon.txt
-config/xaerominimap*
-config/xaeroworldmap*
-config/**/*.bak
+/config/embeddium-fingerprint.json
+/config/packetfixer.properties
+/config/xaeropatreon.txt
+/config/xaerominimap*
+/config/xaeroworldmap*
 
-crash-reports/
-ESM/
+/crash-reports/
+/ESM/
 
 # KubeJS
-kubejs/**/__pycache__/
-kubejs/probe/
-kubejs/config/*.json
-kubejs/config/*.properties
-kubejs/**/.kjspkg/
+/kubejs/**/__pycache__/
+/kubejs/probe/
+/kubejs/config/*.json
+/kubejs/config/*.properties
+/kubejs/**/.kjspkg/
 
-local/
-logs/
-modernfix/
-mods/
-patchouli_books/
+/local/
+/logs/
+/modernfix/
+/mods/
+/patchouli_books/
 
-resourcepacks/
-saves/
-schematics/
-screenshots/
-server-resource-packs/
-shaderpacks/
-texturepacks/
-xaero/
+/resourcepacks/
+/saves/
+/schematics/
+/screenshots/
+/server-resource-packs/
+/shaderpacks/
+/texturepacks/
+/xaero/
 
-XaeroWaypoints*
-XaeroWorldMap*
+/XaeroWaypoints*
+/XaeroWorldMap*
 
 # Individual Files
-.qmenu_opened.marker
-hotbar.nbt
-options.txt
-patchouli_data.json
-rhino.local.properties
-servers.dat
-servers.dat_old
-usercache.json
-usernamecache.json
+/.qmenu_opened.marker
+/hotbar.nbt
+/options.txt
+/patchouli_data.json
+/rhino.local.properties
+/servers.dat
+/servers.dat_old
+/usercache.json
+/usernamecache.json
+
+# Global ignores
+*.bak
