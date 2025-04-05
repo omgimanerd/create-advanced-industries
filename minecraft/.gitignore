@@ -4,6 +4,7 @@
 .vscode/
 
 backups/
+build/
 
 fancymenu_data/
 
