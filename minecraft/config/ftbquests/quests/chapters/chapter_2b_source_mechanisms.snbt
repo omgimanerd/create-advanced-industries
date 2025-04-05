@@ -293,6 +293,23 @@
 			x: 2.5d
 			y: 0.0d
 		}
+		{
+			dependencies: ["55EA259C79123D5E"]
+			description: ["You'll need a Scribe's Table to craft more glyphs."]
+			id: "44853081B914ECAC"
+			rewards: [{
+				id: "037DAD61D33E496F"
+				item: "ars_nouveau:glyph_crush"
+				type: "item"
+			}]
+			tasks: [{
+				id: "1635F3B02BF9B528"
+				item: "ars_nouveau:scribes_table"
+				type: "item"
+			}]
+			x: 5.0d
+			y: -10.0d
+		}
 	]
 	title: "Chapter 2b: Source Mechanisms"
 }
