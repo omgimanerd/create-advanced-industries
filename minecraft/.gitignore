@@ -4,7 +4,6 @@
 .vscode/
 
 backups/
-build/
 
 fancymenu_data/
 
@@ -13,7 +12,6 @@ config/fancymenu/fancymenu_data/
 
 config/embeddium-fingerprint.json
 config/packetfixer.properties
-config/replaymod.json
 config/xaeropatreon.txt
 config/xaerominimap*
 config/xaeroworldmap*
@@ -27,24 +25,15 @@ kubejs/**/__pycache__/
 kubejs/probe/
 kubejs/config/*.json
 kubejs/config/*.properties
-kubejs/client_scripts/.kjspkg/
-kubejs/startup_scripts/.kjspkg/
-kubejs/server_scripts/.kjspkg/
+kubejs/**/.kjspkg/
 
 local/
 logs/
 modernfix/
-mods/*.jar
-mods/*.jar.disabled
+mods/
 patchouli_books/
 
-# Replays
-replay_recordings/
-
-# Resource Packs
-resourcepacks/*
-!resourcepacks/VanillaTweaks*zip
-
+resourcepacks/
 saves/
 schematics/
 screenshots/
@@ -62,7 +51,6 @@ hotbar.nbt
 options.txt
 patchouli_data.json
 rhino.local.properties
-*server-pack*.zip
 servers.dat
 servers.dat_old
 usercache.json
