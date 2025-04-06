@@ -48,6 +48,9 @@
     "probejs": {
       "export": false
     },
+    "worldedit": {
+      "export": false
+    },
     "xaeros-minimap": {
       "update_strategy": "LATEST"
     },

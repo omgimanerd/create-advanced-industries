@@ -792,6 +792,7 @@
             "id": {
                 "curseforge": "251244"
             },
+            "export": false,
             "files": [
                 {
                     "type": "curseforge",
@@ -5715,6 +5716,44 @@
                     ],
                     "size": 43879,
                     "date_published": "2023-11-04T11:58:52.730Z"
+                }
+            ]
+        },
+        {
+            "pakku_id": "inEvhJYbwFf0yEKe",
+            "type": "MOD",
+            "slug": {
+                "curseforge": "worldedit"
+            },
+            "name": {
+                "curseforge": "WorldEdit"
+            },
+            "id": {
+                "curseforge": "225608"
+            },
+            "files": [
+                {
+                    "type": "curseforge",
+                    "file_name": "worldedit-mod-7.2.15.jar",
+                    "mc_versions": [
+                        "1.20.1",
+                        "1.20"
+                    ],
+                    "loaders": [
+                        "fabric",
+                        "forge"
+                    ],
+                    "release_type": "release",
+                    "url": "https://edge.forgecdn.net/files/4586/218/worldedit-mod-7.2.15.jar",
+                    "id": "4586218",
+                    "parent_id": "225608",
+                    "hashes": {
+                        "sha1": "9c52765ca56f917ef8cbafc20e9a4f45c346508f",
+                        "md5": "bd0e7cff7896348faab92e43300d0639"
+                    },
+                    "required_dependencies": [],
+                    "size": 5825402,
+                    "date_published": "2023-06-14T09:09:03.587Z"
                 }
             ]
         },
