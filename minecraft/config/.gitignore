@@ -1,0 +1,17 @@
+# .gitignore
+/embeddium-fingerprint.json
+
+# Per-world files
+/jei/world
+
+# Contains expanded main menu files
+/fancymenu/fancymenu_data
+
+# Has timestamps that change per world load.
+/packetfixer.properties
+/worldedit/worldedit.properties
+
+# Backup and per-world files
+/xaeropatreon.txt
+/xaerominimap*
+/xaeroworldmap*
