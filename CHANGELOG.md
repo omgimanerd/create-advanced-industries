@@ -2,6 +2,23 @@
 Use `git log --format='format:%s' {version}..HEAD | tac` to generate.
 
 
+## v1.0.3
+
+### New Mods / Major Changes
+- Update ModernFix to v5.20.2.
+- Update Moonlight Lib to v1.20-2.13.81 to fix an obscure crash with multiplayer
+  worlds with LAN mods.
+
+### Tweaks and Adustments
+- Add a quest for the Scribe's table.
+- Adjust quest text in chapter 3 for liquefied slag.
+- Add create:goggles to JEI.
+
+### Bugfixes
+- Fix a typo in intermediate sequenced assembly item registration.
+- Remove FTBQuestsOptimizer mod. This was causing quest completion to lag.
+
+
 ## v1.0.2
 
 ### New Mods / Major Changes

@@ -6,4 +6,7 @@ else
   START=$1
 fi
 
-git log --format='format:%s' "$START..HEAD" | tac
+echo '### New Mods / Major Changes'
+echo '### Tweaks and Adustments'
+echo '### Bugfixes'
+git log --format='format:%s' "$START..HEAD" | tac | sed 's/^/- /'
