@@ -321,7 +321,7 @@
 		}
 		{
 			dependencies: ["42AD35328B048497"]
-			description: ["Mill or crush cobblestone to get gravel."]
+			description: ["Gravel can be melted in a heated mixer to get liquefied slag, which is then compacted into slag."]
 			id: "49D1BE5206E9F4EA"
 			tasks: [{
 				id: "4C779D50540CA22B"
@@ -345,7 +345,7 @@
 		}
 		{
 			dependencies: ["49D1BE5206E9F4EA"]
-			description: ["You can smelt or blast gravel into slag."]
+			description: ["Gravel can be melted in a heated mixer into liquefied slag, and then compacted back into slag."]
 			id: "1CC432A2892B42D5"
 			tasks: [{
 				id: "7C53BB2658CD595F"
