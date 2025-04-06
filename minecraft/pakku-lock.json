@@ -2825,42 +2825,6 @@
             ]
         },
         {
-            "pakku_id": "vpyeMKobTZ0FPIyl",
-            "type": "MOD",
-            "slug": {
-                "curseforge": "ftb-quests-optimizer"
-            },
-            "name": {
-                "curseforge": "FTB Quests Optimizer"
-            },
-            "id": {
-                "curseforge": "912469"
-            },
-            "files": [
-                {
-                    "type": "curseforge",
-                    "file_name": "FTBQuestsOptimizer-forge-2.0.3-1.20.1.jar",
-                    "mc_versions": [
-                        "1.20.1"
-                    ],
-                    "loaders": [
-                        "forge"
-                    ],
-                    "release_type": "release",
-                    "url": "https://edge.forgecdn.net/files/5444/207/FTBQuestsOptimizer-forge-2.0.3-1.20.1.jar",
-                    "id": "5444207",
-                    "parent_id": "912469",
-                    "hashes": {
-                        "sha1": "308acda7d7802d85f2b33f103baa63b5122b7e7a",
-                        "md5": "3527a8ec1d72c2bc40add4db45630e47"
-                    },
-                    "required_dependencies": [],
-                    "size": 14175,
-                    "date_published": "2024-06-19T12:12:12.167Z"
-                }
-            ]
-        },
-        {
             "pakku_id": "UiphcnjG4jmxen7L",
             "type": "MOD",
             "slug": {
@@ -5731,6 +5695,7 @@
             "id": {
                 "curseforge": "225608"
             },
+            "export": false,
             "files": [
                 {
                     "type": "curseforge",
