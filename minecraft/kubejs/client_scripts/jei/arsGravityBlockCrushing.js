@@ -36,8 +36,15 @@ JEIAddedEvents.registerCategories((e) => {
           .addSlot('input', 155, 10)
           .setBackground(slotDrawable, -1, -1)
           .addItemStack('ars_nouveau:glyph_gravity')
-
         for (let i = 0; i < ingredients.length; ++i) {
+          // WARNING (2025/04/06): It looks like Create does some strange
+          // registry stuff with shadow steel.
+          Ingredient.of(ingredients[i]).itemIds
+          // Ingredient.of('create:shadow_steel').itemStacks will return a
+          // nullptr the first time it is called. However, we call .itemIds
+          // first, it seems to populate whatever registry cache is working
+          // behind the scenes. The call above has no functional purpose other
+          // than to make sure that .itemStacks is not a nullptr.
           builder
             .addSlot('input', 7 + i * 7, 35)
             .addItemStacks(Ingredient.of(ingredients[i]).itemStacks)
