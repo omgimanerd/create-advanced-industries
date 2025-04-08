@@ -26,9 +26,9 @@ global.REMOVED_ITEMS = [
   'create_central_kitchen:cherry_pie_slice',
   'create_central_kitchen:truffle_pie_slice',
   'create_central_kitchen:mulberry_pie_slice',
-  'create_central_kitchen:yucca_pie_slice',
-  'create_central_kitchen:aloe_pie_slice',
-  'create_central_kitchen:passionfruit_pie_slice',
+  'create_central_kitchen:yucca_cake_slice',
+  'create_central_kitchen:aloe_cake_slice',
+  'create_central_kitchen:passionfruit_cake_slice',
   'create_central_kitchen:pumpkin_cake_slice',
   'create_central_kitchen:sweet_berry_cake_slice',
   // TODO maybe useful as an intermediate somewhere else?
@@ -56,7 +56,6 @@ global.REMOVED_ITEMS = [
   'create_things_and_misc:sprinkler_head',
   'createutilities:gearcube',
   'farmersdelight:wheat_dough',
-  /.*jumbo_smelting/,
   'morered:soldering_table',
   /^morered:.*stone_plate/,
   // Compressed iron gear is disabled.

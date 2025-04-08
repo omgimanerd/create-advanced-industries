@@ -78,3 +78,9 @@ ServerEvents.recipes((e) => {
   // Remove all fire charge alloying
   e.remove({ id: /^thermal:fire_charge.*$/ })
 })
+
+LootJS.modifiers((e) => {
+  for (const entry of global.REMOVED_ITEMS) {
+    e.addLootTypeModifier(LootType.CHEST).removeLoot(Item.of(entry))
+  }
+})
