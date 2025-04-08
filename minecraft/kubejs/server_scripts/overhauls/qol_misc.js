@@ -1,6 +1,12 @@
 // priority: 0
 // Recipe overhauls for uncategorized misc and qol mods.
 
+ServerEvents.tags('block', (e) => {
+  // For some reason Jumbo Furnaces is packaged JIJ with More Red. Disable the
+  // multiblock from forming.
+  e.remove('jumbofurnace:jumbofurnaceable', /.*/)
+})
+
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
   const pneumaticcraft = definePneumaticcraftRecipes(e)
