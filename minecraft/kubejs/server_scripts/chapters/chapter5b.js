@@ -1,112 +1,6 @@
 // priority: 100
 // Recipe overhauls for Chapter 5B progression.
 
-/**
- * Callback handler for feeding and milking a blaze.
- */
-ItemEvents.entityInteracted((e) => {
-  const { hand, item, player, target, server } = e
-  if (hand !== 'main_hand') return
-  if (target.type !== 'minecraft:blaze') return
-  if (
-    item.id !== 'minecraft:bucket' &&
-    item.id !== 'minecraft:lava_bucket' &&
-    item.id !== 'create:blaze_cake'
-  ) {
-    return
-  }
-
-  let remainingMilks = target.persistentData.getInt('remaining_milks')
-  // Feeding a blaze cake to the blaze.
-  if (item.id === 'create:blaze_cake') {
-    item.count--
-    repeat(
-      /*server*/ server,
-      /*duration*/ 10,
-      /*interval*/ 3,
-      /*cb*/ () => {
-        target.playSound('entity.generic.eat', /*volume=*/ 3, /*pitch=*/ 0)
-      }
-    )
-    remainingMilks = Math.max(10, remainingMilks)
-  }
-
-  // Feeding lava to the blaze.
-  if (item.id === 'minecraft:lava_bucket') {
-    item.count--
-    player.addItem(item.getCraftingRemainingItem())
-    target.playSound(
-      'entity.wandering_trader.drink_milk',
-      /*volume=*/ 3,
-      /*pitch=*/ 1
-    )
-    remainingMilks = Math.max(3, remainingMilks)
-  }
-
-  // Milking the blaze
-  if (item.id === 'minecraft:bucket') {
-    if (remainingMilks === 0) {
-      target.playSound('entity.villager.ambient', /*volume=*/ 3, /*pitch=*/ 2)
-    } else {
-      item.count--
-      remainingMilks--
-      player.addItem('kubejs:blaze_milk_bucket')
-      target.playSound('entity.cow.milk', /*volume=*/ 3, /*pitch=*/ 1)
-    }
-  }
-
-  player.swing()
-  target.persistentData.putInt('remaining_milks', remainingMilks)
-  e.cancel()
-})
-
-/**
- * Event handler for mushroom growth from moss blocks.
- */
-BlockEvents.rightClicked('minecraft:moss_block', (e) => {
-  const { item, hand, block, level, server } = e
-  if (hand !== 'main_hand') return
-  if (
-    item.id !== 'minecraft:brown_mushroom' &&
-    item.id !== 'minecraft:red_mushroom'
-  ) {
-    return
-  }
-  const newBlock = `${item.id}_block`
-
-  /**
-   * Recursive function to spread mushroom blocks to nearby moss blocks with
-   * a configurable decay and increasing delay.
-   * @param {Internal.BlockContainerJS_} block
-   * @param {number} probability
-   * @param {number} decayFactor
-   * @param {number} delay
-   */
-  const decayedSpread = (block, probability, decayFactor, delay) => {
-    if (block.id !== 'minecraft:moss_block') return
-    if (Math.random() > probability) return
-    spawnParticles(
-      level,
-      'minecraft:composter',
-      block.pos.center.add(0, 0.5, 0),
-      0.3,
-      20,
-      0.3
-    )
-    block.set(newBlock)
-    server.scheduleInTicks(delay, (c) => {
-      const newProbability = probability * decayFactor
-      const newDelay = delay + randRange(10)
-      decayedSpread(block.north, newProbability, decayFactor, newDelay)
-      decayedSpread(block.south, newProbability, decayFactor, newDelay)
-      decayedSpread(block.east, newProbability, decayFactor, newDelay)
-      decayedSpread(block.west, newProbability, decayFactor, newDelay)
-      c.reschedule()
-    })
-  }
-  decayedSpread(block, 1, 0.5, randRange(10))
-})
-
 ServerEvents.compostableRecipes((e) => {
   // Edit compostable chances
   e.remove('minecraft:flowering_azalea')
@@ -441,14 +335,10 @@ ServerEvents.recipes((e) => {
     )
 
     // Archwood tree sap can be processed into liquid essence
-    // Create mixing recipes have slight loss compared to Pneumaticcraft
+    // Create mixing recipes have loss compared to Pneumaticcraft
     let mixing = create.mixing(
-      [
-        Fluid.of(essence_fluid, 20),
-        Fluid.of('starbunclemania:source_fluid', 10),
-        Fluid.of(sap_byproduct, 5),
-      ],
-      Fluid.of(archwood_sap, 50)
+      [Fluid.of(essence_fluid, 20), Fluid.of(sap_byproduct, 5)],
+      Fluid.of(archwood_sap, 100)
     )
     if (element === 'fire') {
       mixing.superheated()
@@ -456,7 +346,7 @@ ServerEvents.recipes((e) => {
       mixing.heated()
     }
     pneumaticcraft.refinery(
-      Fluid.of(archwood_sap, 50),
+      Fluid.of(archwood_sap, 100),
       [
         Fluid.of(essence_fluid, 25),
         Fluid.of('starbunclemania:source_fluid', 15),
@@ -499,13 +389,12 @@ ServerEvents.recipes((e) => {
       [
         Fluid.of('starbunclemania:source_fluid', 25),
         Fluid.of('thermal:latex', 5),
-        Fluid.of('kubejs:crystal_growth_accelerator', 5),
       ],
-      Fluid.of('kubejs:vexing_archwood_sap', 50)
+      Fluid.of('kubejs:vexing_archwood_sap', 100)
     )
     .heated()
   pneumaticcraft.refinery(
-    Fluid.of('kubejs:vexing_archwood_sap', 50),
+    Fluid.of('kubejs:vexing_archwood_sap', 100),
     [
       Fluid.of('starbunclemania:source_fluid', 30),
       Fluid.of('thermal:latex', 10),
