@@ -3,7 +3,6 @@
 
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
-  const pneumaticcraft = definePneumaticcraftRecipes(e)
   const redefineRecipe = redefineRecipe_(e)
 
   ////////////////////
@@ -321,5 +320,60 @@ ServerEvents.recipes((e) => {
       Item.of('thermal:blitz_powder').withChance(0.5),
     ],
     'thermal:blitz_rod'
+  )
+
+  // Beekeeper gear does not have a crafting recipe.
+  redefineRecipe(
+    'thermal:beekeeper_fabric',
+    [
+      ' S ', //
+      'SCS', //
+      ' S ', //
+    ],
+    { S: 'minecraft:string', C: 'farmersdelight:canvas' }
+  )
+  redefineRecipe(
+    'thermal:hazmat_fabric',
+    [
+      ' R ', //
+      'RPR', //
+      ' R ', //
+    ],
+    { R: 'thermal:cured_rubber', P: 'thermal:beekeeper_fabric' }
+  )
+  redefineRecipe(
+    'thermal:beekeeper_boots',
+    [
+      'P P', //
+      'P P', //
+    ],
+    { P: 'thermal:beekeeper_fabric' }
+  )
+  redefineRecipe(
+    'thermal:beekeeper_leggings',
+    [
+      'PPP', //
+      'P P', //
+      'P P', //
+    ],
+    { P: 'thermal:beekeeper_fabric' }
+  )
+  redefineRecipe(
+    'thermal:beekeeper_chestplate',
+    [
+      'P P', //
+      'PPP', //
+      'PPP', //
+    ],
+    { P: 'thermal:beekeeper_fabric' }
+  )
+  redefineRecipe(
+    'thermal:beekeeper_helmet',
+    [
+      'PPP', //
+      'P P', //
+      '   ', //
+    ],
+    { P: 'thermal:beekeeper_fabric' }
   )
 })

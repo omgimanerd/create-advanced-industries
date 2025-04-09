@@ -11,6 +11,10 @@ WorldgenEvents.remove((e) => {
       'thermal:deepslate_apatite_ore',
       'thermal:cinnabar_ore',
       'thermal:deepslate_cinnabar_ore',
+      'thermal:ruby_ore',
+      'thermal:deepslate_ruby_ore',
+      'thermal:sapphire_ore',
+      'thermal:deepslate_sapphire_ore',
     ]
   })
 })

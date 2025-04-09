@@ -937,12 +937,58 @@
 			]
 			icon: "minecraft:beehive"
 			id: "6651B17B190DD8F4"
-			rewards: [{
-				count: 4
-				id: "02A6E99E2CCBD959"
-				item: "minecraft:bee_spawn_egg"
-				type: "item"
-			}]
+			rewards: [
+				{
+					count: 4
+					id: "02A6E99E2CCBD959"
+					item: "minecraft:bee_spawn_egg"
+					type: "item"
+				}
+				{
+					id: "1A8EC1C67AF68A6F"
+					item: {
+						Count: 1
+						id: "thermal:beekeeper_helmet"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "5C84179552462E09"
+					item: {
+						Count: 1
+						id: "thermal:beekeeper_chestplate"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "609A668E7FE35F69"
+					item: {
+						Count: 1
+						id: "thermal:beekeeper_leggings"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "56C3A681191461C6"
+					item: {
+						Count: 1
+						id: "thermal:beekeeper_boots"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+			]
 			tasks: [
 				{
 					id: "13BFD4CD1D894C1D"
