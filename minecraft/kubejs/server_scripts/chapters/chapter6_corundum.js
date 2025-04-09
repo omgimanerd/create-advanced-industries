@@ -64,11 +64,35 @@ ServerEvents.recipes((e) => {
       ],
       [
         'apotheosis:gem_dust',
-        Fluid.of('starbunclemania:source_fluid', 250),
-        Fluid.of('kubejs:crystal_growth_accelerator', 250),
+        Fluid.of('starbunclemania:source_fluid', 500),
+        Fluid.of('kubejs:crystal_growth_accelerator', 500),
       ]
     )
     .heated()
+
+  // Ruby and sapphire growth
+  create.mixing(
+    [
+      Item.of('quark:blue_corundum_cluster').withChance(0.25),
+      Item.of('quark:indigo_corundum_cluster').withChance(0.25),
+    ],
+    [
+      'thermal:sapphire_dust',
+      Fluid.of('starbunclemania:source_fluid', 250),
+      Fluid.of('kubejs:crystal_growth_accelerator', 250),
+    ]
+  )
+  create.mixing(
+    [
+      Item.of('quark:red_corundum_cluster').withChance(0.25),
+      Item.of('quark:violet_corundum_cluster').withChance(0.25),
+    ],
+    [
+      'thermal:ruby_dust',
+      Fluid.of('starbunclemania:source_fluid', 250),
+      Fluid.of('kubejs:crystal_growth_accelerator', 250),
+    ]
+  )
 
   // Aluminum oxide growth acceleration.
   create
@@ -79,12 +103,10 @@ ServerEvents.recipes((e) => {
     ])
     .heated()
 
-  // Corundum clusters are tagged by a datapack file.
+  // Register dyeing recipes for corundum clusters and blocks.
   for (const [color, data] of Object.entries(global.CorundumClusterMapping)) {
     let { cluster, block } = data
     let dye = `minecraft:${color}_dye`
-
-    // Make manual dyeing recipes
     e.shaped(
       cluster,
       [
