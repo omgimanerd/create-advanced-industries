@@ -257,7 +257,7 @@ ServerEvents.recipes((e) => {
     },
     {
       element: 'water',
-      gem: 'minecraft:lapis_lazuli',
+      gem: 'thermal:sapphire',
       focus: 'ars_elemental:lesser_water_focus',
       essence: 'ars_nouveau:water_essence',
       essence_fluid: 'kubejs:liquid_water_essence',

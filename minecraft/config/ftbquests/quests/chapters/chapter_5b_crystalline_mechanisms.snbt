@@ -2051,10 +2051,10 @@
 			id: "2ABA41C161D6BF9E"
 			tasks: [{
 				id: "736BC95F39FC4BDF"
-				item: "minecraft:lapis_lazuli"
+				item: "thermal:sapphire"
 				type: "item"
 			}]
-			title: "Lapis Lazuli: The Gem of Water"
+			title: "Sapphire: The Gem of Water"
 			x: 4.0d
 			y: 28.0d
 		}

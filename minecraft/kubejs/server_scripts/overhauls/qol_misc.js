@@ -101,6 +101,11 @@ ServerEvents.recipes((e) => {
     .pressure(2)
     .item_output('minecraft:slime_ball')
 
+  // Lapis dust can be converted to blue dye, remove the standard lapis crushing
+  // recipe.
+  e.remove({ id: 'create:milling/lapis_lazuli' })
+  e.shapeless('2x minecraft:blue_dye', 'thermal:lapis_dust')
+
   // Another alternative paper recipe
   create
     .SequencedAssembly('thermal:sawdust')
