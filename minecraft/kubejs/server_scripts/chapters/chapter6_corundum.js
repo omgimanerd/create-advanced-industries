@@ -57,8 +57,8 @@ ServerEvents.recipes((e) => {
   create
     .mixing(
       [
-        Item.of('quark:red_corundum_cluster').withChance(0.15),
-        Item.of('quark:violet_corundum_cluster').withChance(0.15),
+        Item.of('quark:red_corundum_cluster').withChance(0.1),
+        Item.of('quark:violet_corundum_cluster').withChance(0.1),
         Item.of('quark:orange_corundum_cluster').withChance(0.05),
         Item.of('quark:yellow_corundum_cluster').withChance(0.05),
       ],
@@ -72,7 +72,7 @@ ServerEvents.recipes((e) => {
 
   // Aluminum oxide growth acceleration.
   create
-    .mixing(getCorundumClusterOutput(0.25), [
+    .mixing(getCorundumClusterOutput(0.05), [
       'kubejs:aluminum_dust',
       Fluid.water(100),
       Fluid.of('kubejs:crystal_growth_accelerator', 100),
