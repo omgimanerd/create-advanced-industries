@@ -2,6 +2,31 @@
 Use `git log --format='format:%s' {version}..HEAD | tac` to generate.
 
 
+## v1.0.4
+
+### New Mods / Major Changes
+- n/a
+
+### Tweaks and Adustments
+- Adjust corundum cluster growth percentages.
+- Add a recipe for ruby and sapphire dust to corundum.
+- Change Chapter 5b's Gem of Water to Sapphire, adjusting recipes and removing
+  lapis dependencies.
+- Remove all disabled items from loot chests automatically with LootJS.
+
+### Bugfixes
+- Nerf sap mixing recipes since Create basins can only have 3 liquids present at
+  any given time. Refactor Chapter 5b scripts into separate files.
+- Fix a bug where the Ars Gravity Block Crushing custom JEI category would not
+  render properly if the ingredient was create:shadow_steel due to registry
+  funkiness.
+- Remove all blocks from jumbofurnaceable tag to disable jumbo furnace
+  formation.
+- Update Apotheosis to v7.4.6 and Create: Balanced Flight to v2.3.0 to fix
+  creative flight potion bug.
+- Remove unused thermal items, add recipes for beekeeper gear in thermal.
+
+
 ## v1.0.3
 
 ### New Mods / Major Changes
