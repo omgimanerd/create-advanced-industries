@@ -53,6 +53,7 @@ global.REMOVED_ITEMS = [
   'create_new_age:stirling_engine',
   /^create_new_age:.*thorium.*/,
   'create_things_and_misc:blaze_ballon', // wtf is this shit
+  'create_things_and_misc:blaze_balloon_fire',
   'create_things_and_misc:sprinkler',
   'create_things_and_misc:sprinkler_head',
   'createutilities:gearcube',

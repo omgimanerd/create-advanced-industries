@@ -301,6 +301,7 @@ ServerEvents.recipes((e) => {
 
     // Elemental gem to elemental foci crafting.
     e.remove({ id: focus })
+    e.remove({ type: 'ars_nouveau:imbuement', output: focus })
     e.recipes.ars_nouveau.enchanting_apparatus(
       [essence, 'minecraft:gold_ingot', essence, 'minecraft:gold_ingot'],
       gem,
