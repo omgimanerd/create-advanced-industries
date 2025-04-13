@@ -95,26 +95,16 @@ ServerEvents.recipes((e) => {
   e.remove({ id: /^create:crushing\/asurine.*$/ })
   e.remove({ id: /^create:crushing\/ochrum.*$/ })
 
-  create.crushing('kubejs:crushed_crimsite', 'create:crimsite')
-  e.recipes.ars_nouveau.crush(
-    'create:crimsite',
-    Item.of('kubejs:crushed_crimsite').withChance(1)
-  )
-  create.crushing('kubejs:crushed_veridium', 'create:veridium')
-  e.recipes.ars_nouveau.crush(
-    'create:veridium',
-    Item.of('kubejs:crushed_veridium').withChance(1)
-  )
-  create.crushing('kubejs:crushed_ochrum', 'create:ochrum')
-  e.recipes.ars_nouveau.crush(
-    'create:ochrum',
-    Item.of('kubejs:crushed_ochrum').withChance(1)
-  )
-  create.crushing('kubejs:crushed_asurine', 'create:asurine')
-  e.recipes.ars_nouveau.crush(
-    'create:asurine',
-    Item.of('kubejs:crushed_ochrum').withChance(1)
-  )
+  const basicCrushing = {
+    'create:crimsite': 'kubejs:crushed_crimsite',
+    'create:veridium': 'kubejs:crushed_veridium',
+    'create:ochrum': 'kubejs:crushed_ochrum',
+    'create:asurine': 'kubejs:crushed_asurine',
+  }
+  for (const [raw, crushed] of Object.entries(basicCrushing)) {
+    create.crushing(crushed, raw)
+    e.recipes.ars_nouveau.crush(raw, Item.of(crushed).withChance(1))
+  }
 
   const tier1Crushing = {
     'kubejs:crushed_crimsite': 'minecraft:raw_iron',
