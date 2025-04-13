@@ -7,17 +7,7 @@ ServerEvents.tags('item', (e) => {
 
 // Recipes that are removed for duplication reasons.
 ServerEvents.recipes((e) => {
-  // Debug logging
-  // global.REMOVED_ITEMS.forEach((r) => {
-  //   e.forEachRecipe(r, (r2) => {
-  //     const json = JSON.parse(r2.json)
-  //     console.log(r)
-  //     console.log(json.result)
-  //     console.log(json)
-  //     console.log('================')
-  //   })
-  // })
-
+  // Remove all items from recipe inputs and outputs.
   global.REMOVED_ITEMS.forEach((r) => {
     e.remove({ output: r })
     e.remove({ input: r })
@@ -79,8 +69,36 @@ ServerEvents.recipes((e) => {
   e.remove({ id: /^thermal:fire_charge.*$/ })
 })
 
+ServerEvents.afterRecipes((e) => {
+  global.REMOVED_ITEMS.forEach((item) => {
+    console.log(Block.getId(item))
+  })
+})
+
 LootJS.modifiers((e) => {
+  global.REMOVED_ITEMS.forEach((item) => {
+    e.addLootTypeModifier(
+      LootType.ADVANCEMENT_ENTITY,
+      LootType.ADVANCEMENT_REWARD,
+      LootType.BLOCK,
+      LootType.CHEST,
+      LootType.ENTITY,
+      LootType.FISHING,
+      LootType.GIFT,
+      LootType.PIGLIN_BARTER,
+      LootType.UNKNOWN
+    ).removeLoot(Item.of(item))
+  })
+})
+
+MoreJSEvents.wandererTrades((e) => {
   for (const entry of global.REMOVED_ITEMS) {
-    e.addLootTypeModifier(LootType.CHEST).removeLoot(Item.of(entry))
+    e.removeTrades(TradeItem.of(Item.of(entry)))
+  }
+})
+
+MoreJSEvents.villagerTrades((e) => {
+  for (const entry of global.REMOVED_ITEMS) {
+    e.removeTrades(TradeItem.of(Item.of(entry)))
   }
 })
