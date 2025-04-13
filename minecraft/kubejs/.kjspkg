@@ -2,6 +2,7 @@
   "installed": {
     "better-note-block": [],
     "parse-text-format": [],
+    "reload": [],
     "sequenced-assembly": []
   },
   "version": 10,
