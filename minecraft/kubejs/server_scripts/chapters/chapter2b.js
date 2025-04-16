@@ -8,12 +8,12 @@ ServerEvents.recipes((e) => {
   // Source fluid automation
   create.compacting(
     Fluid.of('starbunclemania:source_fluid', 125),
-    'ars_nouveau:sourceberry_bush'
+    Item.of('ars_nouveau:sourceberry_bush').strongNBT()
   )
 
   // Enchanted sourceberries can be emptied for additional fluid
   for (let level = 1; level <= 5; ++level) {
-    create.emptying(
+    create.compacting(
       Fluid.of('starbunclemania:source_fluid', 125 * (level + 1)),
       Item.of('ars_nouveau:sourceberry_bush')
         .enchant('kubejs:nutrient_infusion', level)
