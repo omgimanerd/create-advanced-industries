@@ -1,1 +1,4 @@
+# .gitignore
+
+/build/
 instance.cfg

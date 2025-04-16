@@ -1,4 +1,5 @@
 # .gitignore
+
 /embeddium-fingerprint.json
 
 # Per-world files

@@ -69,12 +69,6 @@ ServerEvents.recipes((e) => {
   e.remove({ id: /^thermal:fire_charge.*$/ })
 })
 
-ServerEvents.afterRecipes((e) => {
-  global.REMOVED_ITEMS.forEach((item) => {
-    console.log(Block.getId(item))
-  })
-})
-
 LootJS.modifiers((e) => {
   global.REMOVED_ITEMS.forEach((item) => {
     e.addLootTypeModifier(
