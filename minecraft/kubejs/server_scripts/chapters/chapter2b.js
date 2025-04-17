@@ -32,6 +32,16 @@ ServerEvents.recipes((e) => {
     mb_to_source_ratio: 1,
   })
 
+  // Source fluid has a block heat property
+  pneumaticcraft
+    .heat_properties()
+    .fluid('starbunclemania:source_fluid')
+    .temperature(223)
+    .thermalResistance(50)
+    .heatCapacity(20000)
+    .transformHot({ block: 'minecraft:air' })
+    .transformCold({ block: 'ars_nouveau:source_gem_block' })
+
   // Gold nugget washing automation
   e.remove({ id: 'create:splashing/sand' })
   create.splashing(
