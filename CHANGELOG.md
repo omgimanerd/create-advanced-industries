@@ -6,7 +6,7 @@ Use `git log --format='format:%s' {version}..HEAD | tac` to generate.
 
 ### New Mods / Major Changes
 - Update Apotheosis to v7.4.7 to fix a crash in the anvil menu.
-- Update Bonemeal Config to v1.0.5 to fix cacti and shit growing through blocks.
+- Update Bonemeal Config to v1.0.1 to fix cacti and shit growing through blocks.
 
 ### Tweaks and Adjustments
 - Remove Create: Things and Misc Blaze Ballon
