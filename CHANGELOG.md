@@ -2,6 +2,23 @@
 Use `git log --format='format:%s' {version}..HEAD | tac` to generate.
 
 
+## v1.0.5
+
+### New Mods / Major Changes
+- Update Apotheosis to v7.4.7 to fix a crash in the anvil menu.
+- Update Bonemeal Config to v1.0.5 to fix cacti and shit growing through blocks.
+
+### Tweaks and Adjustments
+- Remove Create: Things and Misc Blaze Ballon
+- Remove imbuement recipes for lesser ars foci.
+- Remove disabled items from trades and additional loot.
+
+### Bugfixes
+- Fix typo in create stone crushing, refactor for better readability.
+- Remove block swap mod, remove disabled items from IDAS structures.
+- Fix enchanted sourceberry juicing to work properly in a compacting basin.
+
+
 ## v1.0.4
 
 ### New Mods / Major Changes
