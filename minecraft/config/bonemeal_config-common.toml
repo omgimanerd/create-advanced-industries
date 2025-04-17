@@ -8,7 +8,7 @@ cactus_growth = 5
 cactus_height = 5
 #Can chorus flowers and plants be bonemealed?
 chorus = true
-#Chance to grow a flower on each bonemeal.
+#Chance to grow the chorus plant on each bonemeal.
 #Range: 0.0 ~ 1.0
 chorus_chance = 0.4
 #Maximum size in blocks that the chorus plant can grow to with bonemeal.
@@ -48,4 +48,7 @@ sugar_cane_height = 5
 vine = true
 #Can lilypads be bonemealed?
 waterlily = true
+#Chance to advance the growth stage of nether wart per bonemeal.
+#Range: 0.0 ~ 1.0
+nether_wart_chance = 0.4
 
