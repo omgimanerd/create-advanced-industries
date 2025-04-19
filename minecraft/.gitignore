@@ -12,10 +12,11 @@
 
 # KubeJS
 /kubejs/**/__pycache__/
+/kubejs/**/.kjspkg/
 /kubejs/probe/
 /kubejs/config/*.json
 /kubejs/config/*.properties
-/kubejs/**/.kjspkg/
+/kubejs/README.txt
 
 /local/
 /logs/
