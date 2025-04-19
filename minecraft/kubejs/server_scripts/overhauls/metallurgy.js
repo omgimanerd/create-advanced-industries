@@ -46,15 +46,7 @@ ServerEvents.recipes((e) => {
     Fluid.of('kubejs:molten_glass', MeltableItem.DEFAULT_INGOT_FLUID * 4),
     MeltableItem.STEEL_INGOT_CAST,
   ])
-  create.splashing(
-    [
-      'minecraft:glass',
-      Item.of(MeltableItem.CERAMIC_INGOT_CAST).withChance(
-        MeltableItem.CERAMIC_CAST_RETURN_CHANCE
-      ),
-    ],
-    ceramicCastedMoltenGlass
-  )
+  create.splashing(['minecraft:glass'], ceramicCastedMoltenGlass)
   create.splashing(
     ['minecraft:glass', MeltableItem.STEEL_INGOT_CAST],
     steelCastedMoltenGlass

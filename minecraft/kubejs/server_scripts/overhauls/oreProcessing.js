@@ -69,7 +69,7 @@ ServerEvents.recipes((e) => {
     // duped with crushing + melting.
     for (const form of [raw, crushed, dirty]) {
       create
-        .mixing(
+        .compacting(
           [
             Fluid.of(fluid, DEFAULT_INGOT_FLUID * (4 / 3)),
             Fluid.of('tfmg:molten_slag', DEFAULT_INGOT_FLUID),

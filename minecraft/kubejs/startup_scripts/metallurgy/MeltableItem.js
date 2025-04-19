@@ -49,7 +49,6 @@ MeltableItem.DEFAULT_BLOCK_RATIO = 9
 MeltableItem.DEFAULT_CRUSH_RETURN_CHANCE = 0.75
 
 MeltableItem.CERAMIC_INGOT_CAST = 'kubejs:ceramic_ingot_cast'
-MeltableItem.CERAMIC_CAST_RETURN_CHANCE = 0.25
 MeltableItem.STEEL_INGOT_CAST = 'kubejs:steel_ingot_cast'
 
 /**
@@ -118,7 +117,7 @@ MeltableItem.prototype.registerCastedItems = function (e) {
  * @returns {MeltableItem}
  */
 MeltableItem.prototype.registerMeltingRecipe = function (e, item, fluid) {
-  const recipe = e.recipes.create.mixing([fluid], item)
+  const recipe = e.recipes.create.compacting([fluid], item)
   if (this.superheated) {
     recipe.superheated()
   } else {
@@ -190,15 +189,7 @@ MeltableItem.prototype.registerCastingRecipes = function (e) {
  */
 MeltableItem.prototype.registerWashedCastRecipes = function (e) {
   if (!this.noIngotCastingRecipe) {
-    e.recipes.create.splashing(
-      [
-        this.ingot,
-        Item.of(MeltableItem.CERAMIC_INGOT_CAST).withChance(
-          MeltableItem.CERAMIC_CAST_RETURN_CHANCE
-        ),
-      ],
-      this.ceramicMoltenIngotCast
-    )
+    e.recipes.create.splashing([this.ingot], this.ceramicMoltenIngotCast)
     e.recipes.create.splashing(
       [this.ingot, MeltableItem.STEEL_INGOT_CAST],
       this.steelMoltenIngotCast
