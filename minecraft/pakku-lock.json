@@ -1701,7 +1701,7 @@
             ]
         },
         {
-            "pakku_id": "B11O3tTj9mKfxxW6",
+            "pakku_id": "ryyMewDaKgjx9oUB",
             "type": "RESOURCE_PACK",
             "slug": {
                 "curseforge": "create-advanced-industries-main-menu"
@@ -1712,25 +1712,24 @@
             "id": {
                 "curseforge": "1231605"
             },
-            "redistributable": false,
             "files": [
                 {
                     "type": "curseforge",
-                    "file_name": "create-advanced-industries-main-menu.zip",
+                    "file_name": "create-advanced-industries-main-menu-v1.0.1.zip",
                     "mc_versions": [
                         "1.20.1"
                     ],
                     "release_type": "release",
-                    "url": "https://edge.forgecdn.net/files/6365/115/create-advanced-industries-main-menu.zip",
-                    "id": "6365115",
+                    "url": "https://edge.forgecdn.net/files/6445/631/create-advanced-industries-main-menu-v1.0.1.zip",
+                    "id": "6445631",
                     "parent_id": "1231605",
                     "hashes": {
-                        "sha1": "03c17db202a4b8a766ef313f14018cc0e4136e22",
-                        "md5": "1d1f88857cf51eb9dcf81ce08ab086bf"
+                        "sha1": "152405c1dd6e51e9e020ebc86e4c2e4e5d700a59",
+                        "md5": "99f9e812b9aa3c9019c8b89d1053c528"
                     },
                     "required_dependencies": [],
-                    "size": 106757524,
-                    "date_published": "2025-03-29T23:17:30.857Z"
+                    "size": 106769232,
+                    "date_published": "2025-04-20T21:22:38.167Z"
                 }
             ]
         },

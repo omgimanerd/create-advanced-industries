@@ -1,1 +1,1 @@
-resourcePacks:["vanilla","mod_resources","Moonlight Mods Dynamic Assets","file/VanillaTweaks_r915427_MC1.20.x.zip","file/Create New Age Retexture 0.2.zip","file/create-advanced-industries-main-menu.zip"]
+resourcePacks:["vanilla","mod_resources","Moonlight Mods Dynamic Assets","file/VanillaTweaks_r915427_MC1.20.x.zip","file/Create New Age Retexture 0.2.zip","file/create-advanced-industries-main-menu-v1.0.1.zip"]
