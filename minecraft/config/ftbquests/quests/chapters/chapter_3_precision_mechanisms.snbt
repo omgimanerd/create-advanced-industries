@@ -121,9 +121,9 @@
 		{
 			dependencies: ["4A50DE1D6F439D92"]
 			description: [
-				"And wash it to cool it down."
+				"And wash it to cool it down. Ceramic casts break after each usage."
 				""
-				"You have a chance of getting back the ceramic cast."
+				"Wouldn't it be nice to have reusable ones?"
 			]
 			id: "35FEE70D2889724B"
 			shape: "gear"
@@ -291,7 +291,7 @@
 			description: [
 				"Press the clay blocks into an unfired ingot cast using a deployer and any ingot. The ingot is not consumed."
 				""
-				"For now, we don't have the capabilities to make reuseable casts. Clay casts have a chance of breaking each time they are used to cast something."
+				"For now, we don't have the capabilities to make reuseable casts. Ceramic casts break each time they are used to cast something."
 				""
 				"It's a good idea to automate clay anyway, since it might be useful in the future as well (hint hint)."
 			]
@@ -557,15 +557,23 @@
 				"1FAF850E383E186C"
 				"0E97887518973ED6"
 			]
-			description: ["You can also choose to melt the nether quartz instead."]
+			description: ["Did you figure out that melting the soul sand yields more nether quartz?"]
 			id: "064458511DEB323C"
-			optional: true
-			rewards: [{
-				count: 16
-				id: "271264FD6A0CDA69"
-				item: "kubejs:ceramic_ingot_cast"
-				type: "item"
-			}]
+			invisible: true
+			rewards: [
+				{
+					count: 16
+					id: "271264FD6A0CDA69"
+					item: "kubejs:ceramic_ingot_cast"
+					type: "item"
+				}
+				{
+					count: 16
+					id: "68BAE5ACDB408142"
+					item: "minecraft:quartz"
+					type: "item"
+				}
+			]
 			tasks: [{
 				id: "07F3484B900E9C6E"
 				item: "kubejs:ceramic_ingot_cast_molten_quartz"
