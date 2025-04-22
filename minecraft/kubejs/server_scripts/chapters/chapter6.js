@@ -515,3 +515,8 @@ ServerEvents.recipes((e) => {
     .vibrate(200)
     .outputs(VIBRATION_MECHANISM)
 })
+
+MoreJSEvents.wandererTrades((e) => {
+  e.removeTrades(TradeItem.of(Item.of('minecraft:beacon')))
+  e.removeTrades(TradeItem.of(Item.of('minecraft:totem_of_undying')))
+})
