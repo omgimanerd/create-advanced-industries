@@ -517,6 +517,14 @@ ServerEvents.recipes((e) => {
 })
 
 MoreJSEvents.wandererTrades((e) => {
-  e.removeTrades(TradeItem.of(Item.of('minecraft:beacon')))
-  e.removeTrades(TradeItem.of(Item.of('minecraft:totem_of_undying')))
+  e.removeTrades({
+    firstItem: 'minecraft:emerald',
+    secondItem: null,
+    outputItem: 'minecraft:beacon',
+  })
+  e.removeTrades({
+    firstItem: 'minecraft:emerald',
+    secondItem: null,
+    outputItem: 'minecraft:totem_of_undying',
+  })
 })

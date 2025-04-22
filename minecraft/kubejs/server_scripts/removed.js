@@ -86,13 +86,73 @@ LootJS.modifiers((e) => {
 })
 
 MoreJSEvents.wandererTrades((e) => {
-  for (const entry of global.REMOVED_ITEMS) {
-    e.removeTrades(TradeItem.of(Item.of(entry)))
-  }
+  const removed = {}
+  Ingredient.of(global.REMOVED_ITEMS).itemIds.forEach((id) => {
+    removed[id] = true
+  })
+  e.getTrades(1)
+    .concat(e.getTrades(2))
+    .forEach((trade) => {
+      let costA, costB, result
+      try {
+        let offer = trade.getOffer(null, null)
+        costA = offer.getCostA()
+        costB = offer.getCostB()
+        result = offer.getResult()
+      } catch (e) {
+        // Skip this trade if we could not fetch the costs and result.
+        return
+      }
+      if (result.id in removed) {
+        e.removeTrades({
+          firstItem: costA.id,
+          secondItem: costB.id,
+          outputItem: result.id,
+        })
+      }
+    })
 })
 
 MoreJSEvents.villagerTrades((e) => {
-  for (const entry of global.REMOVED_ITEMS) {
-    e.removeTrades(TradeItem.of(Item.of(entry)))
+  const removed = {}
+  Ingredient.of(global.REMOVED_ITEMS).itemIds.forEach((id) => {
+    removed[id] = true
+  })
+  for (const profession of [
+    'minecraft:farmer',
+    'minecraft:fisherman',
+    'minecraft:shepherd',
+    'minecraft:fletcher',
+    'minecraft:librarian',
+    'minecraft:cartographer',
+    'minecraft:cleric',
+    'minecraft:armorer',
+    'minecraft:weaponsmith',
+    'minecraft:toolsmith',
+    'minecraft:butcher',
+    'minecraft:leatherworker',
+    'minecraft:mason',
+  ]) {
+    e.getTrades(profession, 1)
+      .concat(e.getTrades(profession, 2))
+      .forEach((trade) => {
+        let costA, costB, result
+        try {
+          let offer = trade.getOffer(null, null)
+          costA = offer.getCostA()
+          costB = offer.getCostB()
+          result = offer.getResult()
+        } catch (e) {
+          // Skip this trade if we could not fetch the costs and result.
+          return
+        }
+        if (result.id in removed) {
+          e.removeTrades({
+            firstItem: costA.id,
+            secondItem: costB.id,
+            outputItem: result.id,
+          })
+        }
+      })
   }
 })
