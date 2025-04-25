@@ -145,6 +145,9 @@ ServerEvents.recipes((e) => {
   )
   create.burnableFluid('tfmg:creosote', 2400) // 2 minutes
 
+  // Coke dust can also be millstoned.
+  create.milling('tfmg:coal_coke_dust', 'tfmg:coal_coke')
+
   // Steel overhaul
   e.remove({ id: 'tfmg:casting/steel' })
   e.remove({ id: 'tfmg:industrial_blasting/steel' })
