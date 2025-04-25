@@ -32,6 +32,7 @@ ServerEvents.tags('item', (e) => {
 
 ServerEvents.recipes((e) => {
   const create = defineCreateRecipes(e)
+  const pneumaticcraft = definePneumaticcraftRecipes(e)
 
   // Generate utility functions from util.js
   const redefineRecipe = redefineRecipe_(e)
@@ -535,6 +536,29 @@ ServerEvents.recipes((e) => {
       'create:brass_casing',
       'minecraft:air'
     )
+
+    // Register block heat properties for the Create: Crafts & Additions Liquid
+    // Blaze Burner.
+    let liquidBlazeBurnerSettings = {
+      smouldering: 100000,
+      fading: 1000,
+      kindled: 500,
+      seething: 50,
+    }
+    for (let [heatState, thermalResistance] of Object.entries(
+      liquidBlazeBurnerSettings
+    )) {
+      let displayName = heatState[0].toUpperCase() + heatState.substring(1)
+      pneumaticcraft
+        .heat_properties()
+        .block('createaddition:liquid_blaze_burner')
+        .statePredicate({
+          blaze: heatState,
+        })
+        .temperature(1700)
+        .thermalResistance(thermalResistance)
+        .description(`${displayName} [Liquid]`)
+    }
   }
 
   ///////////////////////
