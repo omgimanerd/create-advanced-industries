@@ -2,6 +2,27 @@
 Use `git log --format='format:%s' {version}..HEAD | tac` to generate.
 
 
+## v1.0.6
+
+### New Mods / Major Changes
+- Add Amendments v1.2.19 and update Moonlight lib to v2.13.82
+- Update main menu resource pack to v1.0.1 with GitHub logo on title screen.
+- Add AdvancementJS and remove all advancements from the game.
+
+### Tweaks and Adustments
+- Make primary and secondary metal melting in a compacting basin. Alloying is
+  always done by mixer now. Ceramic ingot casts will always break.
+- Add a custom pause screen with an alternate button layout.
+- Remove beacons and totems of undying from wandering villager trades.
+- Add a milling recipe for coal coke.
+
+### Bugfixes
+- Register Create: Crafts & Additions Liquid Blaze Burner to as a PNCR heat
+  source.
+- Fix incorrect temperatures in some cooling recipes, change some heat frame
+  recipes to TPP recipes to fix broken fluid tags.
+
+
 ## v1.0.5
 
 ### New Mods / Major Changes
