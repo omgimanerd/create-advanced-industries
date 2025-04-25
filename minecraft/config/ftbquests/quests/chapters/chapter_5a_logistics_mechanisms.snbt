@@ -150,7 +150,7 @@
 		{
 			dependencies: ["5BDC36619B26699B"]
 			description: [
-				"Heat frames can be used to smelt or cool items. It can be used to solidify liquid plastic (and molten silicon as well)."
+				"Heat frames can be used to smelt or cool items. It can be used to solidify liquid plastic, but you can always use the Thermopneumatic Processing Plant."
 				""
 				"One option to create a temperature differential is the vortex tube, but there are lots of other ways."
 			]

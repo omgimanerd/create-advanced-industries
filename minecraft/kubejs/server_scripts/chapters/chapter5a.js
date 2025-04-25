@@ -218,6 +218,7 @@ ServerEvents.recipes((e) => {
     .outputs('pneumaticcraft:pneumatic_cylinder')
 
   // Plastic must come from petrochemical processing, nerf it a little bit
+  e.remove({ id: 'tfmg:compacting/plastic_molding' })
   e.remove({ id: 'pneumaticcraft:thermo_plant/plastic_from_biodiesel' })
   e.remove({ id: 'pneumaticcraft:thermo_plant/plastic_from_lpg' })
   pneumaticcraft
@@ -235,13 +236,12 @@ ServerEvents.recipes((e) => {
       '2x tfmg:plastic_sheet'
     )
     .bonus_output({ limit: 1, multiplier: 0.01 })
-    .max_temp(50)
+    .max_temp(273 + 0)
   pneumaticcraft
     .thermo_plant()
     .fluid_input(Fluid.of('pneumaticcraft:plastic', 1000))
     .item_output('2x tfmg:plastic_sheet')
-    .pressure(-0.75)
-    .temperature({ max_temp: 273 + 0 })
+    .temperature({ max_temp: 273 + 30 })
 
   // Plastic sheets are cut from plastic
   create.cutting('3x pneumaticcraft:plastic', 'tfmg:plastic_sheet')
@@ -622,7 +622,7 @@ ServerEvents.recipes((e) => {
     .temperature({ min_temp: 273 + 800 })
     .fluid_output(Fluid.of('kubejs:molten_netherite', ingotFluid))
 
-  // Silicon overhaul, must be solidified in a heat frame or TPP
+  // Silicon overhaul, must be solidified in a TPP
   e.remove({ id: 'refinedstorage:silicon' })
   create
     .mixing(
@@ -646,11 +646,11 @@ ServerEvents.recipes((e) => {
     )
     .superheated()
   pneumaticcraft
-    .heat_frame_cooling(
-      Fluid.of('kubejs:molten_silicon', 360),
-      '4x refinedstorage:silicon'
-    )
-    .max_temp(-50)
+    .thermo_plant()
+    .fluid_input(Fluid.of('kubejs:molten_silicon', 1000))
+    .pressure(0)
+    .temperature({ max_temp: 273 - 50 })
+    .item_output('4x refinedstorage:silicon')
   pneumaticcraft
     .fluid_mixer(
       Fluid.of('kubejs:molten_silicon', 1000),
