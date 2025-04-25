@@ -538,7 +538,13 @@
 			description: ["Anima essence will animate a piece of blue ice into a blizz."]
 			id: "0D8EEDC8F9ABC762"
 			tasks: [{
-				icon: "thermal:blizz_spawn_egg"
+				icon: {
+					Count: 1
+					id: "ftbquests:custom_icon"
+					tag: {
+						Icon: "ftbchunks:textures/faces/thermal/blizz.png"
+					}
+				}
 				id: "71B7E0EDCE82AE1E"
 				observe_type: 5
 				timer: 0L
