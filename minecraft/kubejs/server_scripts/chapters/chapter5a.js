@@ -226,7 +226,7 @@ ServerEvents.recipes((e) => {
     .fluid_input({ tag: 'forge:lpg', amount: 250 })
     .item_input('minecraft:coal')
     .fluid_output(Fluid.of('pneumaticcraft:plastic', 250))
-    .temperature({ min_temp: 100 })
+    .temperature({ min_temp: 273 + 100 })
 
   // Cool plastic in a heat frame or TPP
   e.remove({ id: 'pneumaticcraft:heat_frame_cooling/plastic' })
@@ -239,6 +239,7 @@ ServerEvents.recipes((e) => {
     .max_temp(273 + 0)
   pneumaticcraft
     .thermo_plant()
+    .exothermic(true)
     .fluid_input(Fluid.of('pneumaticcraft:plastic', 1000))
     .item_output('2x tfmg:plastic_sheet')
     .temperature({ max_temp: 273 + 30 })
@@ -650,6 +651,7 @@ ServerEvents.recipes((e) => {
     .fluid_input(Fluid.of('kubejs:molten_silicon', 1000))
     .pressure(0)
     .temperature({ max_temp: 273 - 50 })
+    .exothermic(true)
     .item_output('4x refinedstorage:silicon')
   pneumaticcraft
     .fluid_mixer(

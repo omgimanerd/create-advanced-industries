@@ -127,6 +127,7 @@ ServerEvents.recipes((e) => {
     .item_input('thermal:blizz_powder')
     .pressure(2)
     .temperature({ max_temp: 273 - 200 })
+    .exothermic(true)
     .fluid_output(Fluid.of('tfmg:cooling_fluid', 500))
   pneumaticcraft
     .heat_properties()

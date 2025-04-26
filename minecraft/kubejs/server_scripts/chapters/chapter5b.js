@@ -363,6 +363,7 @@ ServerEvents.recipes((e) => {
       .thermo_plant()
       .fluid_input(Fluid.of(essence_fluid, 1000))
       .temperature({ max_temp: 273 + 0 })
+      .exothermic(true)
       .item_output(Item.of(essence, 10))
 
     // The liquid essence can be crystallized directly into the elemental gem.

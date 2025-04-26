@@ -13,6 +13,7 @@ ServerEvents.recipes((e) => {
     .thermo_plant()
     .fluid_input(Fluid.water(1000))
     .temperature({ max_temp: iceTemperature })
+    .exothermic(true)
     .item_output('minecraft:ice')
   pneumaticcraft
     .heat_frame_cooling(Fluid.water(1000), 'minecraft:ice')
@@ -32,6 +33,7 @@ ServerEvents.recipes((e) => {
     .thermo_plant()
     .item_input('minecraft:ice')
     .temperature({ max_temp: packedIceTemperature })
+    .exothermic(true)
     .item_output('minecraft:packed_ice')
   pneumaticcraft
     .heat_frame_cooling('minecraft:ice', 'minecraft:packed_ice')
@@ -51,6 +53,7 @@ ServerEvents.recipes((e) => {
     .thermo_plant()
     .item_input('minecraft:packed_ice')
     .temperature({ max_temp: blueIceTemperature })
+    .exothermic(true)
     .item_output('minecraft:blue_ice')
   pneumaticcraft
     .heat_frame_cooling('minecraft:packed_ice', 'minecraft:blue_ice')
