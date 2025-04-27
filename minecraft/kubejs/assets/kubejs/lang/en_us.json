@@ -1,3 +1,5 @@
 {
-  "fluid_type.create_things_and_misc.slime": "Liquid Slime"
+  "fluid_type.create_things_and_misc.slime": "Liquid Slime",
+  "vintageimprovements.jei.text.secondary_fluid_result": "This fluid is a secondary result, and appears inside the Compressor after crafting.",
+  "vintageimprovements.jei.text.secondary_fluid_ingredient": "This fluid is a secondary ingredient, and must be pumped into the Compressor to craft."
 }
