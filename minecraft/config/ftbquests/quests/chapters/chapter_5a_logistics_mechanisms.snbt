@@ -1266,7 +1266,7 @@
 			id: "33F1AFE2ADCD04DD"
 			tasks: [{
 				id: "59CEE6A0CFA7D542"
-				item: "thermal:silver_plate"
+				item: "vintageimprovements:silver_sheet"
 				type: "item"
 			}]
 			x: 38.0d
