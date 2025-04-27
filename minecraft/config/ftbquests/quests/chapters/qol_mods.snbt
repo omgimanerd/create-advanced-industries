@@ -261,7 +261,7 @@
 		}
 		{
 			dependencies: ["76EA7D462C854493"]
-			description: ["Ultimine is in this pack as a means to reduce the early game grind. Hold ~ to activate it and mine all similar connected blocks when you break a block."]
+			description: ["Ultimine is in this pack as a means to reduce the early game grind. Hold ` (backtick) to activate it and mine all similar connected blocks when you break a block."]
 			icon: {
 				Count: 1
 				id: "minecraft:stone_pickaxe"
