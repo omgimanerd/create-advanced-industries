@@ -261,16 +261,7 @@ ServerEvents.recipes((e) => {
     .SequencedAssembly('create_new_age:blank_circuit')
     .deploy('morered:red_alloy_wire')
     .press()
-    .deploy('create:super_glue')
-    .deploy('create_new_age:copper_wire')
-    .press()
-    .outputs('create_new_age:copper_circuit')
-  create
-    .SequencedAssembly('create_new_age:blank_circuit')
-    .deploy('morered:red_alloy_wire')
-    .press()
-    .fill(Fluid.of('create_things_and_misc:slime', 5))
-    .deploy('create_new_age:copper_wire')
+    .deploy('#forge:wires/copper')
     .press()
     .outputs('create_new_age:copper_circuit')
 

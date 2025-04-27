@@ -939,7 +939,7 @@
 				"4C5481815C938E67"
 				"2EDD47F79BFDE8F0"
 			]
-			description: ["Apply red alloy ingots, glue, and copper wire to the blank circuit to make a copper circuit."]
+			description: ["Apply red alloy wire and copper wire to the blank circuit to make a copper circuit."]
 			id: "097A84D100994B26"
 			tasks: [{
 				id: "694515FB00B52BEB"
