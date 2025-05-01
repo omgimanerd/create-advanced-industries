@@ -123,9 +123,9 @@ ServerEvents.recipes((e) => {
   // Smelting recipe for sawdust to ash.
   e.smelting('supplementaries:ash', 'thermal:sawdust')
 
-  // Blasting recipe for sawdust to charcoal dust.
+  // Smoking recipe for sawdust to charcoal dust.
   e.remove({ id: 'create:milling/charcoal' })
-  e.blasting('tfmg:charcoal_dust', 'thermal:sawdust')
+  e.smoking('tfmg:charcoal_dust', 'thermal:sawdust')
 
   // Potash/potassium nitrate, or nitrate dust.
   create
