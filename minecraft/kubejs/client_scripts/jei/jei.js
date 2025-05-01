@@ -34,6 +34,7 @@ JEIEvents.addItems((e) => {
   e.add('create:goggles')
   e.add('create:refined_radiance')
   e.add('create:shadow_steel')
+  e.add('quark:crate')
   e.add('thermal:drill_head')
   e.add('thermal:saw_blade')
   e.add('vintageimprovements:refined_radiance_rod')
@@ -89,6 +90,9 @@ JEIEvents.hideItems((e) => {
     'black',
   ]
   e.hide(new RegExp(`refinedstorage:(${colors.join('|')}).*`))
+
+  // Hide the debug stick
+  e.hide('minecraft:debug_stick')
 })
 
 JEIEvents.addFluids((e) => {

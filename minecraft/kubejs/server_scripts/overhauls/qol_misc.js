@@ -182,4 +182,15 @@ ServerEvents.recipes((e) => {
     .fill(Fluid.of('create_enchantment_industry:ink', 250))
     .deploy('supplementaries:ash')
     .outputs('supplementaries:antique_ink')
+
+  // Weird storage crates from Quark
+  e.shaped(
+    'quark:crate',
+    [
+      'WSW', //
+      'S S', //
+      'WSW', //
+    ],
+    { W: '#minecraft:planks', S: 'minecraft:stick' }
+  )
 })
