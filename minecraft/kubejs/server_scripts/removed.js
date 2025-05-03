@@ -1,16 +1,29 @@
 // priority: 500
 
+// Untag all removed items and label them with kubejs:removed
 ServerEvents.tags('item', (e) => {
   e.removeAllTagsFrom(global.REMOVED_ITEMS)
   e.add('kubejs:removed', global.REMOVED_ITEMS)
 })
 
+// Untag all removed fluids and label them with kubejs:removed
+ServerEvents.tags('fluid', (e) => {
+  e.removeAllTagsFrom(global.REMOVED_FLUIDS)
+  e.add('kubejs:removed', global.REMOVED_FLUIDS)
+})
+
 // Recipes that are removed for duplication reasons.
 ServerEvents.recipes((e) => {
-  // Remove all items from recipe inputs and outputs.
-  global.REMOVED_ITEMS.forEach((r) => {
-    e.remove({ output: r })
-    e.remove({ input: r })
+  // Remove all recipes that contain removed items as an input or output.
+  global.REMOVED_ITEMS.forEach((item) => {
+    e.remove({ output: item })
+    e.remove({ input: item })
+  })
+
+  // Remove all recipes that contain removed fluids as an input or output.
+  global.REMOVED_FLUIDS.forEach((fluid) => {
+    e.remove({ output: fluid })
+    e.remove({ input: fluid })
   })
 
   ////////////

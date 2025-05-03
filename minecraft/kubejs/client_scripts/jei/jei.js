@@ -1,32 +1,5 @@
 // priority: 0
 
-// Duplicate fluids or ones removed by the modpack.
-const hiddenFluids = [
-  'cofh_core:experience',
-  'cofh_core:honey',
-  'cofh_core:potion',
-  'createarmory:molten_brass',
-  'create_things_and_misc:diluted_bonemeal',
-  'pneumaticcraft:oil',
-  'pneumaticcraft:memory_essence',
-  'pneumaticcraft:vegetable_oil',
-  'sophisticatedcore:xp_still',
-  'thermal:creosote',
-  'thermal:crude_oil',
-  'thermal:heavy_oil',
-  'thermal:light_oil',
-  'thermal:refined_fuel',
-  'thermal:tree_oil',
-  'tfmg:liquid_plastic',
-  'tfmg:gasoline',
-  'tfmg:diesel',
-  'tfmg:kerosene',
-  'tfmg:naphtha',
-  'tfmg:heavy_oil',
-  'tfmg:liquid_concrete',
-  'tfmg:lubrication_oil',
-]
-
 JEIEvents.addItems((e) => {
   e.add('apotheosis:ancient_material')
   e.add('create:chromatic_compound')
@@ -43,8 +16,8 @@ JEIEvents.addItems((e) => {
 })
 
 JEIEvents.hideItems((e) => {
-  // Hide all the buckets for unused fluids.
-  hiddenFluids.forEach((fluid) => {
+  // Hide all the bucket items for unused fluids.
+  global.REMOVED_FLUIDS.forEach((fluid) => {
     e.hide(`${fluid}_bucket`)
   })
 
@@ -96,18 +69,20 @@ JEIEvents.hideItems((e) => {
 })
 
 JEIEvents.addFluids((e) => {
-  // Add the Create awkward potion so custom brewing recipes can be looked up.
+  // Add the Create awkward potion to JEI so custom brewing recipes can be
+  // looked up.
   e.add(
     Fluid.of('create:potion').withNBT({
       Bottle: 'REGULAR',
       Potion: 'minecraft:awkward',
     })
   )
+  // Add CCK's dragon breath to JEI so it can be looked up.
   e.add('create_central_kitchen:dragon_breath')
 })
 
 JEIEvents.hideFluids((e) => {
-  hiddenFluids.forEach((fluid) => {
+  global.REMOVED_FLUIDS.forEach((fluid) => {
     e.hide(fluid)
   })
 })

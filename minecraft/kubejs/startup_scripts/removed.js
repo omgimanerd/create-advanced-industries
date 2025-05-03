@@ -171,3 +171,33 @@ global.REMOVED_ITEMS = [
   'vintageimprovements:steel_rod',
   /^vintageimprovements:small_[a-z_]+_spring$/,
 ]
+
+/**
+ * List of fluids whose recipes should be fully removed and should be hidden
+ * in JEI.
+ */
+global.REMOVED_FLUIDS = [
+  'cofh_core:experience',
+  'cofh_core:honey',
+  'cofh_core:potion',
+  'createarmory:molten_brass',
+  'create_things_and_misc:diluted_bonemeal',
+  'pneumaticcraft:oil',
+  'pneumaticcraft:memory_essence',
+  'pneumaticcraft:vegetable_oil',
+  'sophisticatedcore:xp_still',
+  'thermal:creosote',
+  'thermal:crude_oil',
+  'thermal:heavy_oil',
+  'thermal:light_oil',
+  'thermal:refined_fuel',
+  'thermal:tree_oil',
+  'tfmg:liquid_plastic',
+  'tfmg:gasoline',
+  'tfmg:diesel',
+  'tfmg:kerosene',
+  'tfmg:naphtha',
+  'tfmg:heavy_oil',
+  'tfmg:liquid_concrete',
+  'tfmg:lubrication_oil',
+]
