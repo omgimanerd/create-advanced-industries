@@ -74,6 +74,9 @@ ServerEvents.recipes((e) => {
   // Create //
   ////////////
   {
+    // Nugget splashing recipes are all disabled.
+    e.remove({ output: '#forge:nuggets', type: 'create:splashing' })
+
     redefineRecipe(
       'create:copper_backtank',
       [
@@ -598,6 +601,11 @@ ServerEvents.recipes((e) => {
     }
   )
 
+  /////////////////
+  // Create Deco //
+  /////////////////
+  e.remove({ id: 'createdeco:netherite_ingot' })
+
   /////////////////////
   // Create: Encased //
   /////////////////////
@@ -897,6 +905,10 @@ ServerEvents.recipes((e) => {
   // Create: The Factory Must Grow //
   ///////////////////////////////////
   {
+    // Suppresses colored concrete warnings in KubeJS logs.
+    e.remove(/^tfmg:colored_concrete\/full_block\/[a-z_]+concrete/)
+    e.remove({ id: 'tfmg:fractional_distillation/crude_oil' })
+
     // Replace concrete stonecutting recipes with vanilla concrete
     e.forEachRecipe(
       {

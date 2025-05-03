@@ -86,6 +86,12 @@ ServerEvents.recipes((e) => {
   ///////////////////////////////////
   // Pneumaticcraft: Repressurized //
   ///////////////////////////////////
+
+  // Recipes removed for duplication reasons
+  e.remove({ type: 'pneumaticcraft:explosion_crafting' })
+  e.remove({ id: 'pneumaticcraft:thermo_plant/compressed_iron_drill_bit' })
+  e.remove({ id: 'pneumaticcraft:copper_ingot_from_nugget' })
+
   const pneumaticcraftMapping = {
     '#forge:ingots/compressed_iron': 'tfmg:steel_ingot',
     'pneumaticcraft:compressed_iron_block': 'tfmg:steel_block',

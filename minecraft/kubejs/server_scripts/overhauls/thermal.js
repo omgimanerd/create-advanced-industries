@@ -8,6 +8,26 @@ ServerEvents.recipes((e) => {
   ////////////////////
   // Thermal Series //
   ////////////////////
+
+  // Remove all recipes for disabled machines.
+  e.remove({ type: 'thermal:press' })
+  e.remove({ type: 'thermal:sawmill' })
+  e.remove({ type: 'thermal:pulverizer' })
+  e.remove({ type: 'thermal:smelter' })
+  e.remove({ type: 'thermal:insolator' })
+  e.remove({ type: 'thermal:centrifuge' })
+  e.remove({ type: 'thermal:press' })
+  e.remove({ type: 'thermal:crucible' })
+  e.remove({ type: 'thermal:bottler' })
+  e.remove({ type: 'thermal:brewer' })
+
+  // Remove the default copper recipe
+  e.remove({ id: 'thermal:storage/copper_ingot_from_nuggets' })
+  // Remove all earth charge recipes crushing
+  e.remove({ id: /^thermal:earth_charge\/[a-z_]+/ })
+  // Remove all fire charge alloying
+  e.remove({ id: /^thermal:fire_charge.*$/ })
+
   const thermalMachineKeys = {
     C: 'tfmg:heavy_machinery_casing',
     P: 'pneumaticcraft:printed_circuit_board',
