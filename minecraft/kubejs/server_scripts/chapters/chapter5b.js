@@ -264,7 +264,7 @@ ServerEvents.recipes((e) => {
       archwood: 'ars_nouveau:blue_archwood', // not a complete id
       archwood_sap: 'kubejs:cascading_archwood_sap',
       archwood_fruit: 'ars_nouveau:frostaya_pod',
-      sap_byproduct: 'thermal:latex',
+      sap_byproduct: 'kubejs:molten_lapis',
     },
     {
       element: 'fire',
