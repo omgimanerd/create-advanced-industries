@@ -2,6 +2,29 @@
 Use `git log --format='format:%s' {version}..HEAD | tac` to generate.
 
 
+## v1.0.7
+
+### New Mods / Major Changes
+- Removed Corpse mod.
+
+### Tweaks and Adustments
+- Slightly simplify the recipe for blank circuits in Chapter 5a.
+- Add a recipe for Quark's weird storage crate and show it in JEI.
+- Add a script to set keepInventory gamerule to true and disable death waypoints
+  by default.
+- Change cascading archwood sap to yield molten lapis as byproduct.
+
+### Bugfixes
+- Correctly set all TPG cooling recipes to be exothermic.
+- Fix a typo in Create: Vintage Improvement's Compressor JEI category tooltip.
+- Fix minor typo in Ultimine QoL quest.
+- Fix the silver plate quest requirement in Chapter 5a.
+- Fix a typo in sawdust smoking/smelting recipe.
+- Refactor removed fluids logic so recipes for removed fluids are disabled as
+  well. Fixes bugs where removed fluids can still be accessed via hidden
+  recipes.
+
+
 ## v1.0.6
 
 ### New Mods / Major Changes
