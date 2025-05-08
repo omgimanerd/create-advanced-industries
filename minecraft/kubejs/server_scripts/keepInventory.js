@@ -1,5 +1,5 @@
 // priority: 0
 
 ServerEvents.loaded((e) => {
-  e.server.runCommandSilent('/gamerule keepInventory true')
+  e.server.gameRules.set('keepInventory', true)
 })
