@@ -6,6 +6,7 @@ Use `git log --format='format:%s' {version}..HEAD | tac` to generate.
 
 ### New Mods / Major Changes
 - Removed Corpse mod.
+- Add SmarterContraptionStorage mod.
 
 ### Tweaks and Adustments
 - Slightly simplify the recipe for blank circuits in Chapter 5a.
