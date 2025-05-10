@@ -454,11 +454,12 @@ ServerEvents.recipes((e) => {
     [
       ' R ', //
       'LGL', //
-      'LPL', //
+      'LCL', //
     ],
     Object.assign({}, pneumaticcraftKeys, {
       R: 'minecraft:redstone_torch',
       G: '#forge:glass_panes',
+      C: 'minecraft:compass',
     })
   )
   redefineRecipe(
