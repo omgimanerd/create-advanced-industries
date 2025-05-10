@@ -676,12 +676,20 @@
 				"59A963F58BC7A631"
 			]
 			description: ["Put the empty PCB in an etching tank with etching acid. You can heat it to speed it up, but it will consume etching acid if you do."]
+			icon: "pneumaticcraft:unassembled_pcb"
 			id: "283654598316099F"
-			tasks: [{
-				id: "5384F6D47014D77A"
-				item: "pneumaticcraft:unassembled_pcb"
-				type: "item"
-			}]
+			tasks: [
+				{
+					id: "5384F6D47014D77A"
+					item: "pneumaticcraft:unassembled_pcb"
+					type: "item"
+				}
+				{
+					id: "615FF8590607D26D"
+					item: "pneumaticcraft:etching_tank"
+					type: "item"
+				}
+			]
 			x: 24.0d
 			y: -8.0d
 		}
@@ -692,18 +700,32 @@
 				""
 				"This process is rather slow, but you'll need the finished PCBs to unlock speed upgrades."
 			]
-			id: "012D0C32277CAEA4"
-			tasks: [{
-				id: "5AA1926C78CD6099"
-				item: {
-					Count: 1
-					id: "pneumaticcraft:empty_pcb"
-					tag: {
-						"pneumaticcraft:uv_exposure": 100
-					}
+			icon: {
+				Count: 1
+				id: "pneumaticcraft:empty_pcb"
+				tag: {
+					"pneumaticcraft:uv_exposure": 100
 				}
-				type: "item"
-			}]
+			}
+			id: "012D0C32277CAEA4"
+			tasks: [
+				{
+					id: "5AA1926C78CD6099"
+					item: {
+						Count: 1
+						id: "pneumaticcraft:empty_pcb"
+						tag: {
+							"pneumaticcraft:uv_exposure": 100
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "5F2C792C1EEC60C4"
+					item: "pneumaticcraft:uv_light_box"
+					type: "item"
+				}
+			]
 			title: "UV-Exposed Empty PCB"
 			x: 22.0d
 			y: -8.0d
