@@ -167,6 +167,15 @@ global.CorundumClusterMapping = {
     })
   }
 
+  // PCB etching
+  global.EnergizedBeaconCraftingRecipes.push({
+    ingredient: 'pneumaticcraft:empty_pcb',
+    results: 'pneumaticcraft:unassembled_pcb',
+    redirectorBlock: global.CorundumClusterMapping.magenta.cluster,
+    beaconColor: global.CorundumClusterMapping.magenta.beaconColor,
+    energy: 5000,
+  })
+
   // Ghast Tears
   global.EnergizedBeaconCraftingRecipes.push({
     ingredient: 'kubejs:honey_droplet',
