@@ -66,6 +66,11 @@ JEIEvents.hideItems((e) => {
 
   // Hide the debug stick
   e.hide('minecraft:debug_stick')
+
+  // Hide the Soulbound enchantment
+  e.hide(
+    Item.of('minecraft:enchanted_book').enchant('ars_elemental:soulbound', 1)
+  )
 })
 
 JEIEvents.addFluids((e) => {

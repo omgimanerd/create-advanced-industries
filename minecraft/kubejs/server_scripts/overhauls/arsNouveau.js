@@ -37,6 +37,11 @@ ServerEvents.recipes((e) => {
     PRECISION_MECHANISM,
   ])
 
+  ///////////////////
+  // Ars Elemental //
+  ///////////////////
+  e.remove({ id: 'ars_nouveau:soulbound_1' })
+
   /////////////////
   // Ars Nouveau //
   /////////////////
